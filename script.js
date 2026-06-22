@@ -217,6 +217,7 @@ class TerminalResume {
       "calc",
       "calculate",
       "pdf",
+      "linkedin-cover",
     ];
 
     // Find matching commands
@@ -542,7 +543,7 @@ class TerminalResume {
         "#888888"
       ) +
       this.wrapWithColor(
-        "      Senior Software Engineer • Cloud • Distributed Systems\n",
+        "      Software Engineer • Cybersecurity Enthusiast\n",
         "#666666"
       ) +
       this.wrapWithColor(divider + "\n\n", "#555555") +
@@ -671,7 +672,7 @@ ${this.wrapWithColor(
   "   Positions held in Lagos, Abuja, Port Harcourt, Asaba",
   "#ffffff"
 )}
-${this.wrapWithColor("   Go, Node.js, React, Python, Google Cloud", "#ff8c00")}
+${this.wrapWithColor("   PHP, Go, Node.js, React, Python, Google Cloud", "#ff8c00")}
 
 ${this.wrapWithColor("⚡ Notable Work", "#ff8c00")}
 ${this.wrapWithColor(
@@ -679,7 +680,11 @@ ${this.wrapWithColor(
   "#ffffff"
 )}
 ${this.wrapWithColor(
-  "   Mobile LTD: bills, bulk SMS, real-time transfers, airtime",
+  "   Mobile LTD: bills, bulk SMS, real-time transfers, airtime.",
+  "#ffffff"
+)}
+${this.wrapWithColor(
+  "   Ventriplus A multi-tenant inventory pos system designed to manage retail business.",
   "#ffffff"
 )}
 
@@ -941,7 +946,7 @@ ${this.wrapWithColor(
     const skills = `<span style="color: #ffff00; font-weight: bold;">🛠️ SKILLS</span>
 
 ${this.wrapWithColor("Languages:", "#00ffff")}
-• ${this.wrapWithColor("Go", "#ffffff")}  • ${this.wrapWithColor("JavaScript", "#ffffff")}  • ${this.wrapWithColor("TypeScript", "#ffffff")}  • ${this.wrapWithColor("Python", "#ffffff")}  • ${this.wrapWithColor("Kotlin", "#ffffff")}  • ${this.wrapWithColor("SQL", "#ffffff")}  • ${this.wrapWithColor("HTML", "#ffffff")}  • ${this.wrapWithColor("CSS", "#ffffff")}
+• ${this.wrapWithColor("PHP", "#ffffff")} • ${this.wrapWithColor("Go", "#ffffff")}  • ${this.wrapWithColor("JavaScript", "#ffffff")}  • ${this.wrapWithColor("TypeScript", "#ffffff")}  • ${this.wrapWithColor("Python", "#ffffff")}  • ${this.wrapWithColor("Kotlin", "#ffffff")}  • ${this.wrapWithColor("SQL", "#ffffff")}  • ${this.wrapWithColor("HTML", "#ffffff")}  • ${this.wrapWithColor("CSS", "#ffffff")}
 
 ${this.wrapWithColor("Frontend:", "#00ffff")}
 • ${this.wrapWithColor("React.js", "#ffffff")}  • ${this.wrapWithColor("Vue 3", "#ffffff")}  • ${this.wrapWithColor("Next.js", "#ffffff")}  • ${this.wrapWithColor("Redux", "#ffffff")}  • ${this.wrapWithColor("Bootstrap", "#ffffff")}  • ${this.wrapWithColor("Material-UI", "#ffffff")}  • ${this.wrapWithColor("React Native", "#ffffff")}
@@ -986,7 +991,7 @@ ${this.wrapWithColor("🌐", "#ff8c00")}  ${this.wrapWithColor(
       "Website:",
       "#ff8c00"
     )} ${this.wrapWithColor(
-      '<a href="https://mbosinwa.me" target="_blank" style="color: #ffffff; text-decoration: none;">mbosinwa.me</a>',
+      '<a href="https://mbosinwa.dev" target="_blank" style="color: #ffffff; text-decoration: none;">mbosinwa.dev</a>',
       "#ffffff"
     )}
 
@@ -1059,7 +1064,7 @@ ${this.wrapWithColor("╰──────────────────�
         description: "A unique terminal-based resume with interactive features",
         image: "image/social-cover.png",
         technologies: ["JavaScript", "HTML", "CSS"],
-        demo: "https://mbosinwa.me/terminal",
+        demo: "https://mbosinwa.dev/terminal",
         repo: "https://github.com/mbosinwa/mbosinwa.me",
       },
       {
@@ -1069,6 +1074,14 @@ ${this.wrapWithColor("╰──────────────────�
         technologies: ["NodeJS", "Cloudflare pages"],
         demo: "https://portalsolutions.ng/",
         repo: "https://github.com/mbosinwa/portalsolutions.ng",
+      },
+      {
+        title: "Ventriplus : Business Tools | POS | Inventory | Analytics",
+        description: "A comprehensive multi-tenant inventory pos system designed to manage retail business. Built with Go.",
+        image: "image/ventriplus-og-image.png",
+        technologies: ["Golang", "TypeScript", "Vite", "GraphQL"],
+        demo: "https://ventriplus.com/",
+        repo: "https://github.com/Ventriplus",
       }
       // Add more projects
     ];
@@ -1077,27 +1090,28 @@ ${this.wrapWithColor("╰──────────────────�
   loadSkills() {
     this.skills = {
       languages: {
-        Go: 88,
-        JavaScript: 95,
-        TypeScript: 92,
-        Python: 85,
+        PHP: 88,
+        Go: 80,
+        JavaScript: 85,
+        TypeScript: 82,
+        Python: 75,
       },
       frontend: {
-        "React.js": 90,
+        "React.js": 80,
         "Vue 3": 80,
         "Next.js": 82,
         "React Native": 78,
       },
       "cloud & devops": {
         "Google Cloud": 90,
-        Docker: 88,
-        Cloudflare: 82,
-        Kubernetes: 80,
+        Docker: 80,
+        Cloudflare: 98,
+        Kubernetes: 70,
       },
       databases: {
-        MongoDB: 90,
-        PostgreSQL: 88,
-        Supabase: 82,
+        MongoDB: 80,
+        PostgreSQL: 86,
+        Supabase: 88,
         Redis: 85,
       },
     };
@@ -1309,9 +1323,9 @@ ${this.wrapWithColor("╰──────────────────�
       "margin-bottom": "18px",
     });
     header.appendChild(H("div", { "font-size": "26px", "font-weight": "700", "letter-spacing": "-0.5px", color: "#111" }, "Mbosinwa Awunor"));
-    header.appendChild(H("div", { "font-size": "12px", color: "#444", "margin-top": "3px", "font-weight": "500" }, "Senior Software Engineer &nbsp;&middot;&nbsp; Cloud &nbsp;&middot;&nbsp; Distributed Systems"));
+    header.appendChild(H("div", { "font-size": "12px", color: "#444", "margin-top": "3px", "font-weight": "500" }, "Senior Software Engineer &nbsp;&middot;&nbsp; Team Lead &nbsp;&middot;&nbsp; Cybersecurity Enthusiast"));
     header.appendChild(H("div", { "margin-top": "6px", "font-size": "9.5px", color: "#555" },
-      "mbosinwa@portalsolutions.ng &nbsp;|&nbsp; mbosinwa.me &nbsp;|&nbsp; github.com/mbosinwa &nbsp;|&nbsp; linkedin.com/in/mbosinwa &nbsp;|&nbsp; Port Harcourt, Nigeria"
+      "mbosinwa@portalsolutions.ng &nbsp;|&nbsp; mbosinwa.dev &nbsp;|&nbsp; github.com/mbosinwa &nbsp;|&nbsp; linkedin.com/in/mbosinwa &nbsp;|&nbsp; Port Harcourt, Nigeria"
     ));
     page.appendChild(header);
 
@@ -1371,7 +1385,7 @@ ${this.wrapWithColor("╰──────────────────�
       "text-align": "center",
       "font-size": "9px",
       color: "#bbb",
-    }, "mbosinwa.me &nbsp;&middot;&nbsp; Generated from Interactive Terminal Resume"));
+    }, "mbosinwa.dev &nbsp;&middot;&nbsp; Generated from Interactive Terminal Resume"));
 
     wrapper.appendChild(page);
     document.body.appendChild(wrapper);
@@ -1975,7 +1989,7 @@ ${this.wrapWithColor("╰──────────────────�
 
     // Add terminal title
     const terminalTitle = document.createElement("div");
-    terminalTitle.textContent = "mbosinwa@mbosinwa.me: ~/interactive-resume";
+    terminalTitle.textContent = "mbosinwa@mbosinwa.dev: ~/interactive-resume";
     terminalTitle.style.color = "#f8f8f2";
     terminalTitle.style.fontSize = "12px";
     terminalTitle.style.fontFamily = "'Fira Code', monospace";
@@ -2032,7 +2046,7 @@ ${this.wrapWithColor("╰──────────────────�
 
     // Add role
     const role = document.createElement("div");
-    role.textContent = "Software Engineer • Cloud Architect • Tech Lead";
+    role.textContent = "Software Engineer • Team Lead • Cybersecurity Enthusiast";
     role.style.color = "#666666";
     role.style.fontSize = "10px";
     role.style.fontFamily = "'Fira Code', monospace";
@@ -2164,7 +2178,7 @@ ${this.wrapWithColor("╰──────────────────�
     urlContainer.style.textAlign = "center";
 
     const url = document.createElement("div");
-    url.textContent = "mbosinwa.me";
+    url.textContent = "mbosinwa.dev/terminal";
     url.style.color = "#87cefa";
     url.style.fontSize = "12px";
     url.style.fontFamily = "'Fira Code', monospace";
@@ -2186,6 +2200,33 @@ ${this.wrapWithColor("╰──────────────────�
 
     // Append the cover to the output
     outputElement.appendChild(coverContainer);
+
+    // Download button
+    const downloadBtn = document.createElement("button");
+    downloadBtn.textContent = "⬇ Download LinkedIn Cover PNG";
+    downloadBtn.style.display = "block";
+    downloadBtn.style.marginTop = "10px";
+    downloadBtn.style.padding = "8px 16px";
+    downloadBtn.style.backgroundColor = "#282a36";
+    downloadBtn.style.color = "#98fb98";
+    downloadBtn.style.border = "1px solid #98fb98";
+    downloadBtn.style.borderRadius = "4px";
+    downloadBtn.style.fontFamily = "'Fira Code', monospace";
+    downloadBtn.style.fontSize = "12px";
+    downloadBtn.style.cursor = "pointer";
+    downloadBtn.addEventListener("click", () => {
+      downloadBtn.textContent = "⏳ Generating...";
+      downloadBtn.disabled = true;
+      html2canvas(coverContainer, { scale: 2, useCORS: true, backgroundColor: "#1e1e2e" }).then((canvas) => {
+        const link = document.createElement("a");
+        link.download = "linkedin-cover.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        downloadBtn.textContent = "⬇ Download LinkedIn Cover PNG";
+        downloadBtn.disabled = false;
+      });
+    });
+    outputElement.appendChild(downloadBtn);
 
     // Scroll to make sure the cover is visible
     this.scrollToBottom(outputElement.closest(".terminal-content"));

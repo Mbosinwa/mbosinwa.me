@@ -1,10 +1,10 @@
-# mbosinwa.me
+# mbosinwa.dev
 
 A neo-brutalist personal portfolio built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools, no dependencies - just raw code with bold design choices.
 
 This is a personal fun project, not a production template. The code prioritizes creativity and experimentation over best practices. It's a playground for trying out ideas, animations, and interactions - not a reference architecture.
 
-**[Live Site](https://mbosinwa.me)**
+**[Live Site](https://mbosinwa.dev)**
 
 ## What is Neo-Brutalism?
 
@@ -54,7 +54,7 @@ The palette uses CSS custom properties for light/dark theming:
 
 ## Terminal Mode
 
-Visit [/terminal.html](https://mbosinwa.me/terminal.html) for an interactive terminal-style resume.
+Visit [/terminal.html](https://mbosinwa.dev/terminal.html) for an interactive terminal-style resume.
 
 Features:
 - Type `help` to see available commands
