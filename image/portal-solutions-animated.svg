@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 600" width="560" height="600">
+  <defs>
+    <style>
+      @keyframes trailIn {
+        0%, 100% {
+          opacity: 0.08;
+          transform: translateX(-20px);
+        }
+        22% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        78% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes channelIn {
+        0%, 100% { opacity: 0; }
+        22%, 78% { opacity: 1; }
+      }
+
+      @keyframes bodyGlow {
+        0%, 100% {
+          filter: drop-shadow(0 0 4px rgba(109, 193, 53, 0.15));
+        }
+        50% {
+          filter: drop-shadow(0 0 22px rgba(109, 193, 53, 0.65));
+        }
+      }
+
+      .trail {
+        fill: #6dc135;
+        animation: trailIn 2.2s ease-in-out infinite;
+      }
+
+      .channel {
+        fill: white;
+        animation: channelIn 2.2s ease-in-out infinite;
+      }
+
+      /* stagger: center first, outer last */
+      .d1 { animation-delay: 0.13s; }
+      .d2 { animation-delay: 0.26s; }
+
+      .body-wrap {
+        animation: bodyGlow 2.2s ease-in-out infinite;
+      }
+
+      .logo-text {
+        fill: #6dc135;
+        font-family: 'Arial Rounded MT Bold', 'Nunito', 'Varela Round', 'Trebuchet MS', sans-serif;
+        font-size: 43px;
+        font-weight: 900;
+      }
+    </style>
+  </defs>
+
+  <!-- ── Speed trail pills (left of body) ── -->
+
+  <!-- top small -->
+  <rect class="trail d2" x="150" y="112" width="78"  height="26" rx="13"/>
+  <!-- upper medium -->
+  <rect class="trail d1" x="89"  y="182" width="139" height="27" rx="13.5"/>
+  <!-- center largest  (d0 = delay 0, default) -->
+  <rect class="trail"    x="64"  y="253" width="164" height="29" rx="14.5"/>
+  <!-- lower medium -->
+  <rect class="trail d1" x="89"  y="323" width="139" height="27" rx="13.5"/>
+  <!-- bottom small -->
+  <rect class="trail d2" x="150" y="393" width="78"  height="26" rx="13"/>
+
+  <!-- ── Main D-body with animated speed channels ── -->
+  <g class="body-wrap">
+    <!-- solid D-body -->
+    <rect fill="#6dc135" x="232" y="68" width="264" height="400" rx="132"/>
+
+    <!-- white channel slots aligned with trail pills -->
+    <rect class="channel d2" x="232" y="112" width="110" height="26"/>
+    <rect class="channel d1" x="232" y="182" width="137" height="27"/>
+    <rect class="channel"    x="232" y="253" width="153" height="29"/>
+    <rect class="channel d1" x="232" y="323" width="137" height="27"/>
+    <rect class="channel d2" x="232" y="393" width="110" height="26"/>
+  </g>
+
+  <!-- ── Logotype ── -->
+  <text
+    class="logo-text"
+    x="280"
+    y="549"
+    text-anchor="middle"
+  >portal solutions</text>
+</svg>
