@@ -407,8 +407,11 @@ class TerminalResume {
       // For HTML content, use HTML typewriter
       return this.typeHTML(line, text, 20);
     } else {
-      // No typewriter effect
-      line.textContent = text;
+      if (text.includes("<")) {
+        line.innerHTML = text;
+      } else {
+        line.textContent = text;
+      }
       return Promise.resolve();
     }
   }
@@ -1223,15 +1226,180 @@ ${this.wrapWithColor("╰──────────────────�
     const outputElement = this.terminals[this.activeTerminal].input
       .closest(".terminal-content")
       .querySelector("[id^='output']");
-    this.printToOutput(outputElement, "Generating PDF resume...", "info");
-    // Placeholder for actual PDF generation
-    setTimeout(() => {
+
+    this.printToOutput(outputElement, "📄 Building resume PDF...", "info");
+
+    // Wrapper clips the element so it's in the DOM but invisible to the user.
+    // html2canvas requires the element to be in the document to render it.
+    const wrapper = document.createElement("div");
+    wrapper.style.cssText =
+      "position:fixed;top:0;left:0;overflow:hidden;width:0;height:0;z-index:-1;";
+
+    const S = (styles) => Object.entries(styles).map(([k, v]) => `${k}:${v}`).join(";");
+
+    const page = document.createElement("div");
+    page.style.cssText = S({
+      width: "794px",
+      "min-height": "1123px",
+      background: "#ffffff",
+      color: "#111111",
+      "font-family": "'Helvetica Neue',Arial,sans-serif",
+      "font-size": "11px",
+      "line-height": "1.5",
+      padding: "48px 52px",
+      "box-sizing": "border-box",
+    });
+
+    const H = (tag, style, ...children) => {
+      const el = document.createElement(tag);
+      if (style) el.style.cssText = S(style);
+      children.forEach((c) => {
+        if (typeof c === "string") el.innerHTML += c;
+        else if (c) el.appendChild(c);
+      });
+      return el;
+    };
+
+    const sectionTitle = (text) =>
+      H("div", {
+        "font-size": "9.5px",
+        "font-weight": "700",
+        "text-transform": "uppercase",
+        "letter-spacing": "1.4px",
+        color: "#111",
+        "border-bottom": "1.5px solid #bbb",
+        "padding-bottom": "3px",
+        "margin-bottom": "10px",
+      }, text);
+
+    const jobRow = (title, company, date, desc) => {
+      const wrap = H("div", { "margin-bottom": "10px" });
+
+      const row = H("div", { display: "flex", "justify-content": "space-between" });
+      row.appendChild(H("span", { "font-weight": "700", "font-size": "11px", color: "#111" }, title));
+      row.appendChild(H("span", { "font-size": "9.5px", color: "#777", "white-space": "nowrap", "margin-left": "10px" }, date));
+      wrap.appendChild(row);
+
+      wrap.appendChild(H("div", { "font-size": "10px", color: "#555", "margin-top": "1px" }, company));
+      wrap.appendChild(H("div", { "font-size": "9.5px", color: "#444", "margin-top": "3px", "line-height": "1.45" }, desc));
+      return wrap;
+    };
+
+    const skillBlock = (cat, list) => {
+      const wrap = H("div", { "margin-bottom": "6px" });
+      wrap.appendChild(H("div", { "font-weight": "700", "font-size": "9.5px", color: "#333", "margin-bottom": "2px" }, cat));
+      wrap.appendChild(H("div", { "font-size": "9.5px", color: "#555", "line-height": "1.4" }, list));
+      return wrap;
+    };
+
+    const eduRow = (title, school, date) => {
+      const wrap = H("div", { "margin-bottom": "8px" });
+      const row = H("div", { display: "flex", "justify-content": "space-between" });
+      row.appendChild(H("span", { "font-weight": "700", "font-size": "10.5px", color: "#111" }, title));
+      row.appendChild(H("span", { "font-size": "9.5px", color: "#777", "margin-left": "10px", "white-space": "nowrap" }, date));
+      wrap.appendChild(row);
+      if (school) wrap.appendChild(H("div", { "font-size": "9.5px", color: "#555", "margin-top": "1px" }, school));
+      return wrap;
+    };
+
+    // ── Header ──
+    const header = H("div", {
+      "border-bottom": "2.5px solid #111",
+      "padding-bottom": "14px",
+      "margin-bottom": "18px",
+    });
+    header.appendChild(H("div", { "font-size": "26px", "font-weight": "700", "letter-spacing": "-0.5px", color: "#111" }, "Mbosinwa Awunor"));
+    header.appendChild(H("div", { "font-size": "12px", color: "#444", "margin-top": "3px", "font-weight": "500" }, "Senior Software Engineer &nbsp;&middot;&nbsp; Cloud &nbsp;&middot;&nbsp; Distributed Systems"));
+    header.appendChild(H("div", { "margin-top": "6px", "font-size": "9.5px", color: "#555" },
+      "mbosinwa@portalsolutions.ng &nbsp;|&nbsp; mbosinwa.me &nbsp;|&nbsp; github.com/mbosinwa &nbsp;|&nbsp; linkedin.com/in/mbosinwa &nbsp;|&nbsp; Port Harcourt, Nigeria"
+    ));
+    page.appendChild(header);
+
+    // ── Summary ──
+    const sumSection = H("div", { "margin-bottom": "16px" });
+    sumSection.appendChild(sectionTitle("Summary"));
+    sumSection.appendChild(H("div", { "font-size": "10px", color: "#333", "line-height": "1.55" },
+      "Senior Software Engineer with 11+ years of experience building scalable technology products for African businesses. " +
+      "Specialises in Go, Node.js, TypeScript, React, and cloud-native architectures (Google Cloud, AWS, Azure). " +
+      "Proven track record designing microservices, distributed data pipelines, and modular monolith systems with async job processing."
+    ));
+    page.appendChild(sumSection);
+
+    // ── Experience ──
+    const expSection = H("div", { "margin-bottom": "16px" });
+    expSection.appendChild(sectionTitle("Experience"));
+    expSection.appendChild(jobRow("Software Engineer", "Ventriplus", "Dec 2023 – Present | Port Harcourt",
+      "Multi-tenant POS &amp; inventory platform for gadget stores and retail SMEs. Real-time stock tracking, multi-store management. Stack: Go, Node.js, React, PostgreSQL, Redis, Docker."));
+    expSection.appendChild(jobRow("Senior Software Engineer", "Portal Solutions", "Dec 2021 – Present | Port Harcourt",
+      "Full-stack development of custom web and mobile products for Nigerian businesses. Modular monolith with async job processing. Stack: Go, TypeScript, React, Vue 3, Next.js, Node.js, Fly.io, Cloudflare, Supabase, PostgreSQL."));
+    expSection.appendChild(jobRow("IT Support", "Premium Pension Limited", "Jun 2017 – Apr 2018 | Port Harcourt",
+      "Infrastructure management, system support, and network security."));
+    expSection.appendChild(jobRow("Lead Developer", "Emrinet Mobile LTD", "Mar 2014 – Feb 2016 | Lagos",
+      "Built SwitchTellerPay — bill payments (pay TV, utilities), bulk messaging, real-time money transfers across all banks, and airtime top-up. Stack: Node.js, JavaScript, MongoDB, Redis, NGINX."));
+    expSection.appendChild(jobRow("Senior Software Engineer", "Waploaded Media", "Jul 2011 – Jul 2015 | Abuja",
+      "Core team leading technology decisions at Waploaded.com, one of Nigeria's largest media platforms."));
+    expSection.appendChild(jobRow("Systems & Network Administrator", "State Secretariat Asaba", "2011 – 2012 | Asaba",
+      "Coordination of all government systems and networks; ensured system and network security."));
+    page.appendChild(expSection);
+
+    // ── Skills ──
+    const skillsSection = H("div", { "margin-bottom": "16px" });
+    skillsSection.appendChild(sectionTitle("Skills"));
+    const skillsGrid = H("div", { display: "grid", "grid-template-columns": "1fr 1fr 1fr", gap: "8px 16px" });
+    skillsGrid.appendChild(skillBlock("Languages", "Go · JavaScript · TypeScript · Python · Kotlin · SQL · HTML · CSS"));
+    skillsGrid.appendChild(skillBlock("Frontend", "React.js · Vue 3 · Next.js · Redux · Bootstrap · Material-UI · React Native"));
+    skillsGrid.appendChild(skillBlock("Backend", "Node.js · Express.js · Hapi · Firebase · Cloud Functions · AWS Lambda · NGINX · Fly.io"));
+    skillsGrid.appendChild(skillBlock("Cloud &amp; DevOps", "Google Cloud · AWS · Azure · Docker · Kubernetes · Terraform · Cloudflare · Cloud Run"));
+    skillsGrid.appendChild(skillBlock("Databases", "MongoDB · PostgreSQL · Supabase · Redis · Firestore · RethinkDB · BigQuery"));
+    skillsGrid.appendChild(skillBlock("Architecture &amp; Tools", "Microservices · Pub/Sub · GraphQL · Elasticsearch · CI/CD · TDD · Git"));
+    skillsSection.appendChild(skillsGrid);
+    page.appendChild(skillsSection);
+
+    // ── Education ──
+    const eduSection = H("div", { "margin-bottom": "16px" });
+    eduSection.appendChild(sectionTitle("Education"));
+    eduSection.appendChild(eduRow("ND & HND in Computer Science — Upper Credit", "Delta State Polytechnic Ogwashi-Uku | Delta State, Nigeria", "2012 – 2016"));
+    eduSection.appendChild(eduRow("Post Graduate Diploma in Computer Science", "Rivers State University | Rivers State, Nigeria", "2025 – 2026"));
+    eduSection.appendChild(eduRow("MSc in Computer Science", "Rivers State University | Rivers State, Nigeria", "In View"));
+    page.appendChild(eduSection);
+
+    // ── Footer ──
+    page.appendChild(H("div", {
+      "margin-top": "20px",
+      "border-top": "1px solid #eee",
+      "padding-top": "8px",
+      "text-align": "center",
+      "font-size": "9px",
+      color: "#bbb",
+    }, "mbosinwa.me &nbsp;&middot;&nbsp; Generated from Interactive Terminal Resume"));
+
+    wrapper.appendChild(page);
+    document.body.appendChild(wrapper);
+
+    const opt = {
+      margin: 0,
+      filename: "mbosinwa-awunor-resume.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, logging: false, width: 794 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    try {
+      await html2pdf().set(opt).from(page).save();
       this.printToOutput(
         outputElement,
-        "PDF generation is not yet implemented.",
+        "✅ Resume downloaded as mbosinwa-awunor-resume.pdf",
+        "info"
+      );
+    } catch (err) {
+      this.printToOutput(
+        outputElement,
+        `Error generating PDF: ${err.message}`,
         "error"
       );
-    }, 1000);
+    } finally {
+      document.body.removeChild(wrapper);
+    }
   }
 
   // Mini-game - Snake game with p5.js
@@ -1651,11 +1819,8 @@ ${this.wrapWithColor("╰──────────────────�
     );
 
     try {
-      // Using OpenWeatherMap API
-      const apiKey = "4331a27995f4c5b5e8d1eab1ed3d88b4"; // Free API key with limited usage
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-        location
-      )}&appid=${apiKey}&units=metric`;
+      const apiKey = "de8af98eb3fdf523a8c28f4316cb6fc4";
+      const url = `https://api.weatherstack.com/current?access_key=${apiKey}&query=${encodeURIComponent(location)}`;
 
       const response = await fetch(url);
 
@@ -1665,30 +1830,28 @@ ${this.wrapWithColor("╰──────────────────�
 
       const data = await response.json();
 
-      // Format weather data
+      if (data.error) {
+        throw new Error(data.error.info || "Location not found");
+      }
+
+      const c = data.current;
+      const l = data.location;
+
       const weatherHTML = `<div class="weather-container">
         <div class="weather-header">
-          <span style="color: #ffff00; font-weight: bold;">🌤️ Weather for ${
-            data.name
-          }, ${data.sys.country}</span>
+          <span style="color: #ffff00; font-weight: bold;">🌤️ Weather for ${l.name}, ${l.country}</span>
         </div>
         <div class="weather-body">
           <div class="weather-main">
-            <span style="font-size: 2rem; color: #ffffff;">${Math.round(
-              data.main.temp
-            )}°C</span>
-            <span style="color: #cccccc;">${data.weather[0].main}</span>
+            <span style="font-size: 2rem; color: #ffffff;">${c.temperature}°C</span>
+            <span style="color: #cccccc;">${c.weather_descriptions[0]}</span>
           </div>
           <div class="weather-details">
-            <div><span style="color: #87cefa;">Feels like:</span> ${Math.round(
-              data.main.feels_like
-            )}°C</div>
-            <div><span style="color: #87cefa;">Humidity:</span> ${
-              data.main.humidity
-            }%</div>
-            <div><span style="color: #87cefa;">Wind:</span> ${Math.round(
-              data.wind.speed * 3.6
-            )} km/h</div>
+            <div><span style="color: #87cefa;">Feels like:</span> ${c.feelslike}°C</div>
+            <div><span style="color: #87cefa;">Humidity:</span> ${c.humidity}%</div>
+            <div><span style="color: #87cefa;">Wind:</span> ${c.wind_speed} km/h ${c.wind_dir}</div>
+            <div><span style="color: #87cefa;">UV Index:</span> ${c.uv_index}</div>
+            <div><span style="color: #87cefa;">Visibility:</span> ${c.visibility} km</div>
           </div>
         </div>
       </div>`;
