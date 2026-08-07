@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 705 Lecture Notes — Part II — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 705 Programming Languages: Second part of the class notes.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-705-programming-languages/notes-2.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/">CMS 705 Programming Languages</a> / Lecture Notes — Part II</p>
+        <article class="doc">
+<h1 id="data-flow-in-programming-languages">Data Flow in Programming
+Languages</h1>
+<p><strong>Institution:</strong> Rivers State University,
+Nkpolu-Oroworukwo, Port Harcourt <strong>Course Code:</strong> CMS 705
+<strong>Course Title:</strong> Programming Languages
+<strong>Session:</strong> 2024/2025</p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p><strong>Working on:</strong> How data flows in a program.</p>
+<ul>
+<li><code>#include &lt;iostream&gt;</code></li>
+<li><code>using namespace std;</code></li>
+</ul>
+<p>Data flows through:</p>
+<ol type="1">
+<li><strong>Variables</strong></li>
+<li><strong>Assignments</strong> — giving a value to a variable
+(<code>variable = value;</code>)</li>
+<li><strong>Expressions</strong> — anything that produces a value (e.g.
+<code>5 + 8</code>)</li>
+<li><strong>Functions</strong> — a block of code that performs a
+task</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">return_type</span> function_name<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// code</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li><strong>B. Parameter</strong> — a value you give to a function so it
+can work with it.</li>
+<li><strong>C. Return value</strong> — what a function sends back after
+finishing its work.</li>
+<li><strong>4. Control Structures</strong></li>
+<li><strong>5. Memory</strong></li>
+</ul>
+<hr />
+<h3 id="example-basic-data-flow">Example: Basic Data Flow</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>    <span class="co">// input + storage (value stored in memory)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> b <span class="op">=</span> <span class="dv">8</span><span class="op">;</span>    <span class="co">// input + storage</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span> <span class="co">// processing</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> sum<span class="op">;</span>  <span class="co">// output</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p>The values <code>8</code> and <code>5</code> are first stored in
+memory. Then they are processed (added). Then the result is output. This
+is how data flows in the example above.</p>
+</blockquote>
+<hr />
+<h3 id="complete-data-flow-diagram">Complete Data Flow Diagram</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Input] --&gt; B[Store in Variables]
+    B --&gt; C[Process / Decision]
+    C --&gt; D[Update Variables]
+    D --&gt; E[Output]</code></pre>
+<blockquote>
+<p>Data flow is classified into two types: <strong>Based on Program
+Execution</strong> and <strong>Based on Visibility</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="types-of-data-flow-based-on-program-execution">Types of Data
+Flow Based on Program Execution</h2>
+<blockquote>
+<p>Describes how data moves structurally through a program.</p>
+</blockquote>
+<h3 id="1-sequential-data-flow">1. Sequential Data Flow</h3>
+<p>Data moves line by line in order: <code>A → B → C → D</code></p>
+<pre class="mermaid"><code>flowchart LR
+    A --&gt; B --&gt; C --&gt; D</code></pre>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> y <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> result <span class="op">=</span> x <span class="op">*</span> y<span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> result <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h3 id="2-conditional-data-flow-branching">2. Conditional Data Flow
+(Branching)</h3>
+<p>Data flows depending on a condition.</p>
+<pre class="mermaid"><code>flowchart TD
+    D{Condition} --&gt;|True| A[Block A]
+    D --&gt;|False| B[Block B]</code></pre>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> score <span class="op">=</span> <span class="dv">18</span><span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    string result<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">50</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="st">&quot;Pass&quot;</span><span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="st">&quot;Fail&quot;</span><span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> result <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p>Data flows differently depending on the condition.</p>
+</blockquote>
+<hr />
+<h3 id="3-iterative-data-flow-looping">3. Iterative Data Flow
+(Looping)</h3>
+<p>Data flows repeatedly or moves through a loop.</p>
+<pre class="mermaid"><code>flowchart TD
+    C{Condition} --&gt;|True| P[Process]
+    P --&gt; C
+    C --&gt;|False| E[Exit]</code></pre>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    sum <span class="op">+=</span> i<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cout <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
+<blockquote>
+<p>The data <code>i</code> flows multiple times.</p>
+</blockquote>
+<hr />
+<h3 id="4-procedural-functional-data-flow">4. Procedural (Functional)
+Data Flow</h3>
+<p>Data moves between functions. It is the movement of data through:</p>
+<ul>
+<li><strong>Parameters</strong> (input to function)</li>
+<li><strong>Local variables</strong> (processing inside function)</li>
+<li><strong>Return value</strong> (output from function)</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    Caller --&gt; Function --&gt; Processing --&gt; Return --&gt; Caller</code></pre>
+<p><strong>Note (in functional data flow):</strong></p>
+<ul>
+<li>Data moves between functions</li>
+<li>Each function performs a specific task</li>
+<li>Each function returns data</li>
+<li>No global variables used</li>
+<li>Data movement is <strong>explicit</strong> (clearly visible)</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Function to calculate total marks</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> calculateTotal<span class="op">(</span><span class="dt">int</span> maths<span class="op">,</span> <span class="dt">int</span> english<span class="op">,</span> <span class="dt">int</span> science<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> total <span class="op">=</span> maths <span class="op">+</span> english <span class="op">+</span> science<span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Function to calculate average</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> calculateAverage<span class="op">(</span><span class="dt">int</span> total<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> average <span class="op">=</span> total <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> average<span class="op">;</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">// Function to determine grade</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> determineGrade<span class="op">(</span><span class="dt">double</span> average<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>average <span class="op">&gt;=</span> <span class="dv">70</span><span class="op">)</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>average <span class="op">&gt;=</span> <span class="dv">60</span><span class="op">)</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ch">&#39;B&#39;</span><span class="op">;</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>average <span class="op">&gt;=</span> <span class="dv">50</span><span class="op">)</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ch">&#39;C&#39;</span><span class="op">;</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>average <span class="op">&gt;=</span> <span class="dv">45</span><span class="op">)</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ch">&#39;D&#39;</span><span class="op">;</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ch">&#39;F&#39;</span><span class="op">;</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> math    <span class="op">=</span> <span class="dv">75</span><span class="op">;</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> english <span class="op">=</span> <span class="dv">60</span><span class="op">;</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> science <span class="op">=</span> <span class="dv">30</span><span class="op">;</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Functional data flow begins</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> total        <span class="op">=</span> calculateTotal<span class="op">(</span>math<span class="op">,</span> english<span class="op">,</span> science<span class="op">);</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> average   <span class="op">=</span> calculateAverage<span class="op">(</span>total<span class="op">);</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> grade       <span class="op">=</span> determineGrade<span class="op">(</span>average<span class="op">);</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;total: &quot;</span>   <span class="op">&lt;&lt;</span> total   <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;average: &quot;</span> <span class="op">&lt;&lt;</span> average <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Grade: &quot;</span>   <span class="op">&lt;&lt;</span> grade   <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> When a parameter is passed to the program, it
+is called an <strong>argument</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="types-of-data-flow-based-on-visibility">Types of Data Flow Based
+on Visibility</h2>
+<blockquote>
+<p>A different description from program-execution types — describes
+<strong>how</strong> data movement is expressed in code. Two types:</p>
+</blockquote>
+<h3 id="1-explicit-data-flow">1. Explicit Data Flow</h3>
+<ul>
+<li>Data movement is <strong>clearly written and visible</strong></li>
+<li>Data is passed as parameters, returned from functions, and assigned
+directly</li>
+<li>Happens when the programmer clearly shows how data moves</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> result <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span>  <span class="co">// data processed</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span>       <span class="co">// data returned</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> y <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> sum <span class="op">=</span> add<span class="op">(</span>x<span class="op">,</span> y<span class="op">);</span>  <span class="co">// Explicit data flow</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;sum = &quot;</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p><strong>Explanation:</strong> <code>x = 10</code> and
+<code>y = 20</code> move into parameters <code>a</code> and
+<code>b</code>. Inside the function, <code>result = a + b</code>.
+<code>return result</code> moves value back to <code>main</code>, stored
+in <code>sum</code>.</p>
+</blockquote>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> y<span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> a <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> b <span class="op">=</span> <span class="dv">8</span><span class="op">;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> result <span class="op">=</span> multiply<span class="op">(</span>a<span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> result <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p>Note: Explicit data flow is clear, visible, and easy to trace and
+debug.</p>
+</blockquote>
+<hr />
+<h3 id="2-implicit-data-flow">2. Implicit Data Flow</h3>
+<ul>
+<li>Data movement happens <strong>indirectly</strong>, often through
+shared memory or global variables</li>
+<li>Data flow occurs through control structures and conditions, not
+directly through assignment</li>
+<li><strong>Not clearly visible</strong> — flows "as data-as-value"
+through decisions or execution paths</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>  <span class="co">// global variable</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> addToTotal<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> total <span class="op">+</span> value<span class="op">;</span>  <span class="co">// modifies global variable</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    addToTotal<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    addToTotal<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;total = &quot;</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><code>total = 0</code> is a global variable</li>
+<li><code>addToTotal(10)</code> modifies the global variable</li>
+<li><code>addToTotal(20)</code> modifies the same global variable</li>
+<li><code>main()</code> prints total</li>
+</ul>
+<p><strong>Note:</strong> Data can be retrieved without being passed
+between functions; hidden, data independence is small.</p>
+</blockquote>
+<hr />
+<h3 id="comparison-explicit-vs-implicit-data-flow">Comparison: Explicit
+vs Implicit Data Flow</h3>
+<table>
+<thead>
+<tr>
+<th>Explicit Data Flow</th>
+<th>Implicit Data Flow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct assignment</td>
+<td>Through shared structure</td>
+</tr>
+<tr>
+<td>Clearly visible in code</td>
+<td>Hidden or hard to trace</td>
+</tr>
+<tr>
+<td>e.g. <code>a = b; c = 5 + 0</code></td>
+<td>e.g. <code>if (a &gt; 0) b = a + 0</code></td>
+</tr>
+<tr>
+<td>Easier to trace</td>
+<td>Harder to trace</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="example-explicit-and-implicit-together">Example: Explicit and
+Implicit Together</h3>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> number <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>  <span class="co">// implicit data flow (global)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> increment<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    number<span class="op">++;</span>            <span class="co">// implicit (modifies global)</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>   <span class="co">// explicit</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> counter <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> nextNumber <span class="op">=</span> increment<span class="op">(</span>counter<span class="op">);</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Next Number = &quot;</span> <span class="op">&lt;&lt;</span> nextNumber <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;counter = &quot;</span>     <span class="op">&lt;&lt;</span> counter    <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li><code>value = 5</code> → Explicit data flow</li>
+<li><code>cout &lt;&lt;</code> → Explicit data flow</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="data-flow-in-memory">Data Flow in Memory</h2>
+<p>When a program runs, variables are stored in RAM. Two memory areas
+used between CPU:</p>
+<ul>
+<li><strong>Stack (local/primary memory)</strong></li>
+<li><strong>Heap (global memory)</strong></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> globalCounter <span class="op">=</span> <span class="dv">100</span><span class="op">;</span>  <span class="co">// stored in global area</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> processData<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> localVar <span class="op">=</span> value <span class="op">*</span> <span class="dv">2</span><span class="op">;</span>   <span class="co">// stored in stack</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    globalCounter <span class="op">+=</span> <span class="dv">10</span><span class="op">;</span>        <span class="co">// modifies global area</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span><span class="op">*</span> heapVar <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span>  <span class="co">// stored in heap</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>heapVar <span class="op">=</span> localVar <span class="op">+</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> result <span class="op">=</span> <span class="op">*</span>heapVar<span class="op">;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">delete</span> heapVar<span class="op">;</span>             <span class="co">// free heap memory</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span>              <span class="co">// returned to caller</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> number <span class="op">=</span> <span class="dv">20</span><span class="op">;</span>            <span class="co">// stored in stack</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> finalResult <span class="op">=</span> processData<span class="op">(</span>number<span class="op">);</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Final Result: &quot;</span>   <span class="op">&lt;&lt;</span> finalResult   <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Global Counter: &quot;</span> <span class="op">&lt;&lt;</span> globalCounter <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h2
+id="importance-of-data-flow-in-programming-languages-and-computer-science">Importance
+of Data Flow in Programming Languages and Computer Science</h2>
+<blockquote>
+<p>It is extremely important because:</p>
+</blockquote>
+<ol type="1">
+<li>It helps programmers understand how values move through a
+program</li>
+<li>It helps detect logical errors</li>
+<li>It helps in building large systems</li>
+<li>It helps in writing secure systems</li>
+<li>It helps in debugging</li>
+<li>It is used in <strong>compiler design</strong></li>
+<li>It improves optimization of programs</li>
+<li>It is fundamental in <strong>algorithm design</strong></li>
+<li>It is used in <strong>systems engineering</strong> (CSTs)</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Data flow is a <strong>core foundational
+concept</strong> in computer science because it is important in:</p>
+<ul>
+<li>Programming Languages</li>
+<li>Compiler Design</li>
+<li>Systems Engineering</li>
+<li>Operating Systems</li>
+<li>AI</li>
+<li>Data Structures &amp; Algorithms</li>
+<li>Cyber Security</li>
+<li>Parallel Programming</li>
+<li>Static Analysis</li>
+<li>Machine Learning</li>
+<li>Database Systems</li>
+</ul>
+</blockquote>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

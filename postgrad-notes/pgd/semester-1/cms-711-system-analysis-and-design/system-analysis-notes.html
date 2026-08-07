@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 711 System Analysis — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 711 System Analysis & Design: System analysis concepts and techniques.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/system-analysis-notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/">CMS 711 System Analysis & Design</a> / System Analysis</p>
+        <article class="doc">
+<h1 id="system-analysis--design">System Analysis &amp; Design</h1>
+<p><strong>Course:</strong> CMS 711 <strong>Contact:</strong></p>
+<hr />
+<h2 id="overview-of-systems-and-their-components">Overview of Systems
+and their Components</h2>
+<p>Systems are developed to solve a real-life problem. Systems are made
+up of <strong>interdependent component units</strong>.</p>
+<p>Systems are created to solve problems. A system exists because it is
+designed to achieve one or more objectives. The term <em>system</em> is
+derived from the Greek word <strong>Systema</strong>, which means an
+organized relationship amongst functional units and components.</p>
+<blockquote>
+<p><strong>Definition 1:</strong> A system is an organized collection of
+components that work together to achieve a specific or set of goals.</p>
+</blockquote>
+<blockquote>
+<p><strong>Definition 2:</strong> A system is a set of interrelated
+elements that collectively work together to achieve some common
+goals.</p>
+</blockquote>
+<p>Systems can be <strong>natural, technological, social,
+environmental</strong> etc., because every domain has sets of
+systems.</p>
+<hr />
+<h2 id="components-of-every-system">Components of Every System</h2>
+<p>Components of every system are as follows: <strong>Input, Process,
+Output, Feedback, Control, Boundary, Environment/Interface</strong>.</p>
+<h3 id="1-input">1. Input</h3>
+<p>Input can be resources, data, or materials that enter into the system
+to be processed.</p>
+<ul>
+<li>Examples: raw data, user commands, energy, materials, etc.</li>
+</ul>
+<h3 id="2-process">2. Process</h3>
+<p>These are activities or operations that transform input into
+output.</p>
+<ul>
+<li>Examples: data processing, computation, manufacturing, steps or
+transformation of raw materials.</li>
+</ul>
+<h3 id="3-output">3. Output</h3>
+<p>Outputs are results produced by the system after processing the
+input.</p>
+<ul>
+<li>Examples: processed information, finished product report, decisions,
+etc.</li>
+</ul>
+<h3 id="4-feedback">4. Feedback</h3>
+<p>Feedback is information about the output of a system that is used to
+make adjustment or improvement through the input or the process.</p>
+<h3 id="5-control">5. Control</h3>
+<p>It involves the mechanism that monitors and regulates the operations
+of the system to ensure it achieves its goal.</p>
+<ul>
+<li>Examples: quality control process, management oversight, automated
+control systems, etc.</li>
+</ul>
+<h3 id="6-environment">6. Environment</h3>
+<p>The environment encompasses everything outside the system that can
+influence its operations and performance.</p>
+<ul>
+<li>Examples: external data sources, regulatory constraints, economic
+conditions.</li>
+</ul>
+<h3 id="7-boundaries">7. Boundaries</h3>
+<p>It defines the limits of the system and differentiates it from its
+environment.</p>
+<ul>
+<li>Examples: scope of a project, organizational boundaries, the
+perimeter of a manufacturing plant, the fence of your house.</li>
+</ul>
+<h3 id="8-interface">8. Interface</h3>
+<p>The interface means the medium through which the users can interact
+with the system.</p>
+<hr />
+<h2 id="types-of-systems">Types of Systems</h2>
+<ol type="1">
+<li><strong>Open System</strong></li>
+<li><strong>Closed System</strong></li>
+<li><strong>Manual System</strong></li>
+<li><strong>Automated System</strong></li>
+</ol>
+<ul>
+<li>An <strong>open system</strong> interacts with the environment by
+receiving input and output — e.g., businesses, ecosystems, computer
+systems connected to the internet.</li>
+<li>A <strong>closed system</strong> does not interact with the
+environment. All input and output are contained within the system.</li>
+<li>A <strong>manual system</strong> is controlled by humans.</li>
+<li>An <strong>automated system</strong> is controlled by machines.</li>
+</ul>
+<hr />
+<h2 id="information-system">Information System</h2>
+<p><strong>Information System</strong> is a system that is designed to
+manage and process data to produce useful information within an
+organization. It is a set of interrelated components that stores,
+processes and distributes information, and supports decision making
+within the organization.</p>
+<p><strong>Components of Information Systems:</strong></p>
+<ul>
+<li>Hardware</li>
+<li>Software</li>
+<li>People</li>
+<li>Data</li>
+<li>Network</li>
+</ul>
+<hr />
+<h2 id="introduction-to-system-analysis-and-design">Introduction to
+System Analysis and Design</h2>
+<h3 id="system-development-life-cycle-sdlc">System Development Life
+Cycle (SDLC)</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Requirement Gathering] --&gt; B[System Modelling and Development]
+    B --&gt; C[Tools &amp; Techniques for System Development]
+    C --&gt; D[Security and Maintenance]</code></pre>
+<hr />
+<h2 id="requirements-gathering">Requirements Gathering</h2>
+<p><strong>Requirements Gathering</strong> is a crucial step in the
+System Development Lifecycle that involves collecting information from
+stakeholders to understand their needs and expectations for a new system
+and enhancements on an existing system.</p>
+<p>The primary goal is to ensure the system meets the user requirements
+and provides value for the organization.</p>
+<h3 id="what-is-a-requirement">What is a Requirement?</h3>
+<p>A requirement is simply a statement of what a system must do or what
+characteristics it must have.</p>
+<ul>
+<li>During <strong>analysis</strong>, requirements are written from the
+perspective of the business and focus on "who" of the system — these are
+called <strong>Business Requirements</strong>.</li>
+<li>During the <strong>design phase</strong>, business requirements
+evolve to become more technical and describe how the system will be
+implemented — these are called <strong>System
+Requirements</strong>.</li>
+</ul>
+<hr />
+<h2 id="types-of-requirements">Types of Requirements</h2>
+<p>Requirements can either be <strong>Functional</strong> (user needs)
+or <strong>Non-Functional</strong> (system needs).</p>
+<h3 id="functional-requirements">Functional Requirements</h3>
+<p>A functional requirement relates directly to a process a system must
+perform or an information it needs to obtain. Functional requirements
+flow directly into creation of:</p>
+<ul>
+<li>Functional models</li>
+<li>Structural models</li>
+<li>Behavioral models</li>
+</ul>
+<p>…that represent the functionality of an evolving system.</p>
+<h3 id="non-functional-requirements">Non-Functional Requirements</h3>
+<p>Non-functional requirements refer to the <strong>behavioral
+properties</strong> that the system must have, which deals with
+<em>how</em> the system would be developed.</p>
+<hr />
+<h2 id="requirements-gathering-techniques">Requirements Gathering
+Techniques</h2>
+<p>The System Analyst is responsible for gathering requirements using a
+variety of techniques that ensure the current business processes and
+needs of the new system are well understood before moving into
+design.</p>
+<p><strong>Techniques include:</strong></p>
+<ul>
+<li><strong>Interviews</strong> — structured or unstructured
+conversations with stakeholders</li>
+<li><strong>Questionnaires</strong> — paper-based or electronic (e.g.,
+Google Forms)</li>
+<li><strong>Joint Application Techniques (JAD/RAP)</strong> —
+collaborative workshops</li>
+<li><strong>Brainstorming</strong> — group idea generation sessions</li>
+<li><strong>Workshops</strong> — structured group sessions</li>
+</ul>
+<hr />
+<h2 id="task--assignment">Task / Assignment</h2>
+<p><strong>Gather/Analyse the functional and non-functional requirements
+of the following three systems:</strong></p>
+<ol type="1">
+<li>Enhanced Student Information Management System</li>
+<li>Enhanced E-Commerce Application Platform</li>
+<li>A Customer Relationship Management System</li>
+</ol>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

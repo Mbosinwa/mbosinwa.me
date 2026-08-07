@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 705 Lecture Notes — Part I — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 705 Programming Languages: First part of the class notes.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-705-programming-languages/notes-1.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/">CMS 705 Programming Languages</a> / Lecture Notes — Part I</p>
+        <article class="doc">
+<h1 id="programming-languages">Programming Languages</h1>
+<p><strong>Institution:</strong> Rivers State University,
+Nkpolu-Oroworukwo, Port Harcourt <strong>Course Code:</strong> CMS 705
+<strong>Course Title:</strong> Programming Languages
+<strong>Session:</strong> 2024/2025</p>
+<hr />
+<h2 id="what-is-a-language">What is a Language?</h2>
+<p>A <strong>language</strong> is the principal method of human
+communication, conveyed in structured and conventional word and thought
+— by speech, writing, or gesture. It is also a system of communication
+used by a particular country or community.</p>
+<p>In computing, it is a formal system of instructions used to
+communicate with a computer and also used to describe a system by
+formulae and rules for writing programs or algorithms (beyond
+taxonomy).</p>
+<blockquote>
+<p><strong>The meaning of a word can/does change in different
+contexts.</strong></p>
+<p>E.g. <em>"animal"</em> and <em>"cat"</em> change meaning in context —
+in word class: Noun (Verb), we've related (Verb).</p>
+</blockquote>
+<p>It is important because it helps in correct pronunciation and
+distinguishes meaning in spoken English.</p>
+<hr />
+<h2 id="language-structure">Language Structure</h2>
+<p>It is the systematic arrangement and organisation of language sounds
+and sentences to enable clear and concrete communication. It is often
+described as a "system of systems" where individual building blocks
+combine to create increasingly complex units according to specific rules
+— e.g. English.</p>
+<p><strong>Core Components of Language Structure:</strong></p>
+<h3 id="1-phonology">1. Phonology</h3>
+<p>It is the study of sound patterns — it studies the smallest unit of
+sound called a <strong>phoneme</strong> (the basic "sound" of a
+language, such as keywords, operators, identifiers, and numeric
+constants — various nodes).</p>
+<p>E.g. <code>int age;</code> —
+<code>cout &lt;&lt; "Enter age: ";</code> —
+<code>cin &gt;&gt; age;</code> — <code>cout &lt;&lt; age;</code></p>
+<h3 id="2-morphology">2. Morphology</h3>
+<p>It studies how words are derived and constructs; it deals with the
+smallest unit by meaning, which include root words and prefixes or
+suffixes.</p>
+<p>E.g. <code>whitespace = a + b + happy + ness</code> —
+<code>Walked = Walk + ed</code></p>
+<p>It is important because it explains rules, plurality, comparison, and
+derivation; it also helps to expand vocabulary.</p>
+<h3 id="3-syntax">3. Syntax</h3>
+<p>It is the study of how words are arranged to form sentences; it is a
+set of rules governing how words and phrases are arranged to create
+well-formed, legal sentences. It determines the order of words (e.g.
+Subject–Verb–Object) and how they relate to one another.</p>
+<p>E.g. <em>"She is reading"</em> — <em>"Your music is under a
+book"</em></p>
+<p>It is important because it ensures <strong>grammatical
+correctness</strong> and distinguishes questions, statements, and
+commands.</p>
+<h3 id="4-semantics-meaning-of-words">4. Semantics (Meaning of
+words)</h3>
+<ul>
+<li><strong>Lexical Semantics</strong> (meaning of words): homonyms
+(similar meaning), polysemy (many meanings)
+<ul>
+<li>E.g. <em>"the room is big and the moon is large"</em> (alt. —
+different objects)</li>
+</ul></li>
+<li><strong>Compositional/Sentence Semantics</strong> (meaning of
+sentences): <em>"the sky but the moon, and the sun but the
+sky"</em></li>
+</ul>
+<p>It is important because it prevents misunderstanding and enables
+clearer verbal meaning.</p>
+<h3 id="5-pragmatics">5. Pragmatics</h3>
+<p>It is the study of language in social contexts; it focuses on how
+context, speaker intention, and cultural norms influence the
+interpretation of meaning beyond the literal words used.</p>
+<p>E.g. <em>"Can you open the window?"</em> — this is a request, not a
+question about ability.</p>
+<p>It is important because it enables polite and appropriate
+communication and also explains implied meanings.</p>
+<hr />
+<h2 id="language-definition-semantics">Language Definition
+Semantics</h2>
+<p>In computer science, a language is a <strong>formal system</strong>
+of symbols and rules used to transmit information and instructions
+between a sender (human or program) and a receiver (computer or
+hardware). It is also a formal system designed to communicate
+information to a computer. Every instruction must have <strong>precise,
+single meaning</strong> in computer language.</p>
+<p><strong>Language Definition Semantics</strong> refers to the precise
+framework of rules used to specify a formal language such as a
+programming language to ensure a computer can process it without
+ambiguity — i.e., to avoid ambiguity, every programming language must be
+<strong>precisely defined</strong>.</p>
+<p>A language definition answers three key questions:</p>
+<ol type="1">
+<li>What programs look like (<strong>Syntax</strong>)</li>
+<li>What programs mean (<strong>Semantics</strong>)</li>
+<li>How programs are used in practice (<strong>Pragmatics</strong>)</li>
+</ol>
+<p><strong>Components or Layers of Language Definition
+Semantics:</strong></p>
+<p>Computer language definition structure follows the same structure as
+linguistics but focuses on three primary components:</p>
+<hr />
+<h2 id="phonology-general--components-in-programming">Phonology
+(General) — Components in Programming</h2>
+<p><strong>Phonology (General)</strong> — component details that
+describe the highest level representations of the structure; the creator
+uses our <strong>programs and procedures</strong> in programming.</p>
+<p>E.g. <code>my_age = 20;</code> —
+<code>Take_off (me, pg, + 3);</code></p>
+<h3 id="morphology-individualdistinctive-parts">Morphology
+(Individual/Distinctive Parts)</h3>
+<p>In English, it is how tokens are formed; in C++ how keywords,
+operations and identifiers are "building blocks" of the language and
+build meaningful units.</p>
+<p>E.g. <code>int c = 0;</code> —
+<code>variable = identifier (Enum, 15);</code> — <em><code>=</code> is a
+keyword of programming</em></p>
+<p><strong>Vocabulary &amp; Identifier</strong> — names given to various
+elements in a program (such as variables, functions, classes, and
+modules).</p>
+<p>E.g. Country</p>
+<h3 id="syntax-grammar-rules">Syntax (Grammar Rules)</h3>
+<p>It is the rules for correctly ordering sentences in a language; it is
+intended to be used for a programming language. It involves readability
+(clarity of syntax), writability (ease of syntax), and reliability
+(ability of syntax to prevent errors).</p>
+<p>E.g. In C++:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> a <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> a<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// loop body</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="static-semantics">Static Semantics</h3>
+<p>It involves checking the rules directly during compilation to prevent
+execution errors or ensuring a variable is declared before use (type
+compatibility) and kinds of errors.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">&quot;hello&quot;</span><span class="op">;</span> <span class="co">// Compile error because you cannot add</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="co">// a string to an integer type in many languages</span></span></code></pre></div>
+<h3 id="dynamic-semantics">Dynamic Semantics</h3>
+<p>It determines the action or behaviour of execution at runtime
+(evaluation, at runtime, of how expressions are evaluated, how values
+are computed, and how they change). It checks what actually happens when
+you execute an instruction or runtime.</p>
+<p>E.g. In C++:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> c <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">// If flag =&gt; 1 // overrides previous value</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cout <span class="op">&lt;&lt;</span> c<span class="op">;</span> <span class="co">// outputs: 1</span></span></code></pre></div>
+<h3 id="pragmatics-context-and-usage">Pragmatics (Context and
+Usage)</h3>
+<p>It is intended to be used for a programming language; it involves
+readability (clarity of syntax), writability (ease and quality of
+syntax), reliability (error prevention), and efficiency (runtime
+performance). It interrogates how the language relates to the real world
+and the meaning of language. The practical usage compared with the
+formal usage of a language for specific tasks.</p>
+<p>E.g. In C++:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> age <span class="op">=</span> ___<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Error age: &quot;</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>cin <span class="op">&gt;&gt;</span> age<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>cout <span class="op">&lt;&lt;</span> age<span class="op">;</span>  <span class="co">// outputs correctly</span></span></code></pre></div>
+<hr />
+<h2 id="types-of-language-levels-of-abstraction">Types of Language
+(Levels of Abstraction)</h2>
+<p>Languages are categorised by how far they are removed from the
+physical hardware.</p>
+<h3 id="1-lower-level-language-machine-language">1. Lower-level Language
+(Machine Language)</h3>
+<p>It is the language the computer understands directly. In binary
+digits (0 and 1), it is executed by the CPU directly. No translation is
+needed and is very difficult for humans to understand. It is also very
+fast since it is executed by the CPU directly — it is <strong>machine
+dependent</strong>. It has a full control over registers, memory, and
+I/O; it is used internally by the computer.</p>
+<h3 id="2-low-level-language-assembly-language">2. Low-level Language
+(Assembly Language)</h3>
+<p>It is a step above machine language and uses mnemonic codes (like
+ADD, MOV, CMP); it is more readable than machine language. It is
+dependent on machine language — it requires an assembler to convert to
+machine code. It also has full control over registers, memory, and I/O —
+it is used in device drivers and embedded systems.</p>
+<p>E.g. <code>MOV A, B</code> — <code>ADD A, 5</code></p>
+<h3 id="3-middle-level-language">3. Middle-level Language</h3>
+<p>It combines features of low-level and high-level languages; it can
+interact directly with hardware if needed. It supports structured
+programming — it is often used for systems programming and is both
+efficient and flexible; it is more readable than low-level machine
+language; it requires a compiler to translate to machine code. It is
+used in Operating Systems, compilers, and embedded systems; it is more
+complex than high-level languages; it can access hardware (memory
+addresses, pointers).</p>
+<p>E.g. <strong>C language</strong>: <code>int Sum = a+b;</code></p>
+<h3 id="4-high-level-language">4. High-level Language</h3>
+<p>It is designed to be easy for humans to read and understand
+(English-like); they are much more independent. They require compilers
+or interpreters. They are easy to use, end-user-focused. Examples are:
+Python, Java, C++, JavaScript.</p>
+<p><strong>Differences between Middle-level and High-level
+language:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Middle-level lang</th>
+<th>High-level lang</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portability</td>
+<td>Moderate because it may require other platform specific
+adjustments</td>
+<td>High because it is designed to be machine independent</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>Is faster because it produces higher/faster code directly</td>
+<td>Is slower because some compilation takes longer</td>
+</tr>
+<tr>
+<td>Memory Management</td>
+<td>Is manual because programs are automatic because it uses</td>
+<td></td>
+</tr>
+<tr>
+<td>Portability</td>
+<td>Moderate because it may require other-platform use</td>
+<td>Complex (System, dynamic) Applications</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>C, C++</td>
+<td>Python, Java, C++</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="core-structural-elements">Core Structural Elements</h2>
+<p>Most modern computer languages (programming languages) share common
+sets of structural building blocks that they all have:</p>
+<h3 id="a-variables">a. Variables</h3>
+<p>A variable stores data about any kind of things — variables can store
+data about any change during execution. They hold data placed in the
+example above.</p>
+<h3 id="b-control-structuresstatements">b. Control
+Structures/Statements</h3>
+<p>These statements make the flow of execution in a program; control
+structures determine the order of which statements are executed in a
+program.</p>
+<h3 id="c-functions-procedures">c. Functions (Procedures)</h3>
+<p>They are blocks of code designed to perform specific tasks, enhancing
+modularity.</p>
+<h3 id="d-comments">d. Comments</h3>
+<p>They are non-executable text used to explain code to other human
+readers.</p>
+<hr />
+<h2 id="implementation-methods">Implementation Methods</h2>
+<p>For a computer to run high-level instructions they must be translated
+into machine code. They are:</p>
+<ul>
+<li><strong>a. Assembly</strong> — a translates assembly language to
+machine code.</li>
+<li><strong>b. Compilation</strong> — the entire program is translated
+at once into an executable file (e.g. <code>.exe</code>).</li>
+<li><strong>c. Interpretation</strong> — the code is translated and
+executed line by line using an interpreter (e.g. Python,
+JavaScript).</li>
+<li><strong>d. Just-in-time (JIT)</strong> — it compiles the entire
+source code (Java); it is compiled on demand which is an executable,
+generates some form of code. Java Virtual Machine (JVM) interprets the
+bytecode online — JIT is compatible to convert bytecode to machine code
+at runtime (e.g. Java).</li>
+</ul>
+<hr />
+<h2 id="data-types">Data Types</h2>
+<p>A <strong>data type</strong> is a classification that tells the
+compiler what kind of data a variable can hold — how much memory to
+allocate and what operations are allowed on that data.</p>
+<p>Data types are important because the precise type allows program
+reliability false (the compiler type-checking). Operations involve
+program reliability false the compiler type-checking. Operations direct,
+enable efficient use of memory while making operations more
+efficient.</p>
+<p>In programming, data types are broadly categorised as
+<strong>primitive</strong> and <strong>non-primitive</strong> based on
+how they are defined in the language — they directly represent the
+data.</p>
+<h3 id="primitive-data-types-basic-data-types">Primitive Data Types
+(Basic Data Types)</h3>
+<p>They are the most basic building blocks of a programming language;
+they are provided by the language and represent single simple values
+directly understood by the CPU — they are usually stored directly in
+memory (a cache for very good cases). They are usually stored directly
+in binary form and cannot be null in many languages.</p>
+<h4 id="a-integer-int">a. Integer (int)</h4>
+<p>These are used to store whole numbers. They are usually used for
+counting, loop control, and indexing arrays. There are four types of
+integer:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>4 bytes</td>
+<td>Standard integer</td>
+</tr>
+<tr>
+<td><code>short int</code></td>
+<td>2 bytes</td>
+<td>Smaller integer</td>
+</tr>
+<tr>
+<td><code>long int</code></td>
+<td>4 or 8 bytes</td>
+<td>Large integers</td>
+</tr>
+<tr>
+<td><code>unsigned int</code></td>
+<td>4 bytes</td>
+<td>Non-negative integers (only positive values), used in SAE and other
+cases</td>
+</tr>
+</tbody>
+</table>
+<p>E.g. <code>int count = 10;</code> — the <code>+</code> and
+<code>-</code> Integer stores positive and negative whole numbers; it
+stores values (i.e. the standard int) from <code>-2,147,483,648</code>
+to <code>2,147,483,647</code>.</p>
+<h4 id="b-float">b. Float</h4>
+<p>It is used to store real numbers. There are three types, which
+are:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+<th>Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>4 bytes</td>
+<td>Single precision (7 decimal digits)</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8 bytes</td>
+<td>Double precision (15–16 decimal digits)</td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>8–16 bytes</td>
+<td>Extended precision (18+ decimal digits)</td>
+</tr>
+</tbody>
+</table>
+<p>E.g. <code>float temperature = 36.5;</code> —
+<code>double pi = 3.14159265358;</code></p>
+<h4 id="c-character">c. Character</h4>
+<p>It stores a single character; it is stored internally as ASCII or
+Unicode value; it is used to store single letters and symbol; it is used
+in text processing and it is 1 byte.</p>
+<p>E.g. <code>char grade = 'A';</code> — enclosed in single quotes.
+Size: 1 byte.</p>
+<h4 id="d-boolean">d. Boolean</h4>
+<p>It stores logical values (<code>true</code> or <code>false</code>; it
+is used in decision making, conditional statements — the size is 1
+byte.</p>
+<p>E.g. <code>bool isLogged = true;</code></p>
+<h4 id="e-void-no-value">e. Void (no value)</h4>
+<p>It is used for functions that return no value; it is used for
+functions with no return and can act as a generic pointer.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> display<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Hello&quot;</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h3 id="non-primitive-data-types">Non-Primitive Data Types</h3>
+<p>They are also called reference or derived types because they are more
+complex. Structures build using other data types — they are
+compiler-defined and can store multiple values or occurrences. They are
+defined by the programmer or built from primitive types. They have a
+dynamic size that may grow or shrink.</p>
+<h4 id="1-string">1. String</h4>
+<p>It is a sequence of characters used to represent text; it is enclosed
+in a double quote. String is a class with many functions like
+<code>length()</code>, etc. — it is a dynamic size.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;String&gt;</span><span class="pp">  </span><span class="co">// if it is from the String library</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  String name <span class="op">=</span> <span class="st">&quot;Alex Johnson&quot;</span><span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Length: &quot;</span> <span class="op">&lt;&lt;</span> name<span class="op">.</span>length<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="2-array">2. Array</h4>
+<p>It stores multiple values of the same data type. It is used for
+storing lots of data.</p>
+<p>E.g. <code>int numbers[] = {10, 20, 30, 40, 50};</code></p>
+<h4 id="3-structure-struct">3. Structure (Struct)</h4>
+<p>It groups variables of different data types.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;String&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Student <span class="op">{</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  String name<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">float</span> score<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  Student student1<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  student1<span class="op">.</span>name <span class="op">=</span> <span class="st">&quot;John&quot;</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  student1<span class="op">.</span>age <span class="op">=</span> <span class="dv">18</span><span class="op">;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  student1<span class="op">.</span>score <span class="op">=</span> <span class="fl">88.5</span><span class="op">;</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Student Name: &quot;</span> <span class="op">&lt;&lt;</span> student1<span class="op">.</span>name <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Age: &quot;</span> <span class="op">&lt;&lt;</span> student1<span class="op">.</span>age <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="4-class">4. Class</h4>
+<p>It is used as a user-defined object type used in OOP.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;String&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  String model<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> year<span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">void</span> display<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Model: &quot;</span> <span class="op">&lt;&lt;</span> model <span class="op">&lt;&lt;</span> <span class="st">&quot; Year: &quot;</span> <span class="op">&lt;&lt;</span> year <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  Car car1<span class="op">;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  car1<span class="op">.</span>model <span class="op">=</span> <span class="st">&quot;Toyota Camry&quot;</span><span class="op">;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  car1<span class="op">.</span>year <span class="op">=</span> <span class="dv">2025</span><span class="op">;</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  car1<span class="op">.</span>display<span class="op">();</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="5-pointer">5. Pointer</h4>
+<p>It stores the memory address of another variable; it is efficient and
+parameters passing and has dynamic memory use.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> c <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">*</span> ptr <span class="op">=</span> <span class="op">&amp;</span>c<span class="op">;</span></span></code></pre></div>
+<h4 id="6-enumeration-enum">6. Enumeration (Enum)</h4>
+<p>It defines a set of named integer constants.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> Day <span class="op">{</span>Mon<span class="op">,</span> Tue<span class="op">,</span> Wed<span class="op">,</span> Thu<span class="op">,</span> Fri<span class="op">,</span> Sat<span class="op">,</span> Sun<span class="op">};</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  Day Today <span class="op">=</span> Wed<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Day Number: &quot;</span> <span class="op">&lt;&lt;</span> Today <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h3
+id="differences-between-primitive-and-non-primitive-data-types">Differences
+Between Primitive and Non-Primitive Data Types</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Primitive</th>
+<th>Non-Primitive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. How created</td>
+<td>They are built in and created by the programming notes</td>
+<td>They are created by the programmer (and from C++ standard
+library)</td>
+</tr>
+<tr>
+<td>2. Value stored</td>
+<td>They store single single values</td>
+<td>Stores multiple or complex values</td>
+</tr>
+<tr>
+<td>3. Built-in functions</td>
+<td>They don't have built-in functions</td>
+<td>They have many built-in functions</td>
+</tr>
+<tr>
+<td>4. Memory required</td>
+<td>They require small (fixed) memory</td>
+<td>They require more (larger) memory</td>
+</tr>
+<tr>
+<td>5. Size</td>
+<td>They are fixed</td>
+<td>They are dynamic</td>
+</tr>
+<tr>
+<td>6. Examples (in C++)</td>
+<td><code>int</code>, <code>float</code>, <code>double</code>,
+<code>char</code>, <code>bool</code></td>
+<td><code>String</code>, <code>Array</code>, <code>class</code>,
+<code>Struct</code> (found in C++)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>A Stack memory</strong> is a special sub-region of a
+computer's RAM that stores temporary data created by functions; it uses
+the <strong>LIFO (Last-in, First-out)</strong> principle — the last
+piece of data added is the first to be removed.</p>
+<p><strong>A heap memory</strong> refers to a large pool of memory used
+for dynamic allocations. Or it is a region of a computer's RAM used to
+store data about large areas for a system or program to determine how
+much memory to use. Heap is normally where programs run from.</p>
+</blockquote>
+<blockquote>
+<p><strong>Basic data types</strong> define classes of representation
+and operations.</p>
+</blockquote>
+<hr />
+<h2 id="data-structures">Data Structures</h2>
+<p>A <strong>data structure</strong> is a method of organising, storing,
+and managing data in a computer so that it can be accessed and
+manipulated efficiently; it is also a way of arranging data in memory
+together within a set of operations that can be performed on that
+data.</p>
+<p><strong>Importance:</strong></p>
+<ol type="1">
+<li>It is efficient for data storage</li>
+<li>It has faster data access</li>
+<li>It enables better memory utilisation/allocation</li>
+<li>It improves program performance</li>
+<li>It is essential for large-scale applications</li>
+</ol>
+<h3 id="basic-operations-on-data-structures">Basic Operations on Data
+Structures</h3>
+<ol type="1">
+<li><strong>Insertion</strong> — it is the process of adding a new
+element into a data structure. Insertion can occur at the beginning, the
+end, or at a specified position. In arrays, insertion may require
+shifting elements — in linked lists, insertion is done by changing
+pointers.</li>
+<li><strong>Deletion</strong> — the process of removing an element from
+a data structure; it can be done from the beginning or at a specified
+value. Memory must be freed after deletion and every deletion.</li>
+<li><strong>Memory/Traversal</strong> — it visits all elements in the
+data structure once; it is important because it
+processes/visits/understands each element. Traversal also processes the
+data structure once. If you tell a program to traverse, you are telling
+it to "go through everything." If you tell it to search, you are telling
+it to "stop as soon as you find it."</li>
+<li><strong>Searching</strong> — it is the process of finding the
+location of a specific element in a data structure. There are two types
+of Searching: <strong>linear</strong> and <strong>binary</strong>
+(sorted same).</li>
+<li><strong>Updating</strong> — it means changing the value of an
+existing element.</li>
+<li><strong>Sorting</strong> — it is arranging elements in ascending or
+descending order. Bubble, Selection, and Insertion are common sorting
+methods.</li>
+<li><strong>Merging</strong> — it combines two data structures into one.
+These basic operations enable efficient manipulation and management of
+stored data.</li>
+</ol>
+<h3 id="classification-of-data-structures">Classification of Data
+Structures</h3>
+<p>This classification is based on how data elements are organised and
+accessed in memory. They are two: <strong>Linear</strong> and
+<strong>Non-linear</strong> data structures.</p>
+<hr />
+<h2 id="linear-data-structures">Linear Data Structures</h2>
+<p>It stores data elements in a sequential manner, each element is
+connected to its previous and next elements. Examples include array,
+linked list, and stack. Linear data structures are typically a
+single-level memory — they are easy to traverse and are arranged in a
+sequence.</p>
+<p><strong>General Representation:</strong> A → B → C → D → E</p>
+<h3 id="1-linked-list">1. Linked List</h3>
+<p>It is a sequence of nodes; each node contains data and a pointer
+(reference) to the next node. They allow for dynamic sizing and
+efficient insertion/deletion at the beginning or end. Operations allowed
+on the list are: inserts, delete, display, and search. There is a need
+for an extra memory for pointers.</p>
+<p><strong>Types of linked list:</strong> Singly, Doubly, and Circular
+linked list.</p>
+<pre><code>[Data | Next] → [Data | Next] → [Data | Next] → NULL</code></pre>
+<p><strong>C++ implementation of Singly Linked List:</strong></p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Node <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> data<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> next<span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> head <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> insertEnd<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> newNode <span class="op">=</span> <span class="kw">new</span> Node<span class="op">();</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  newNode<span class="op">-&gt;</span>data <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  newNode<span class="op">-&gt;</span>next <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>head <span class="op">==</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    head <span class="op">=</span> newNode<span class="op">;</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> temp <span class="op">=</span> head<span class="op">;</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>temp<span class="op">-&gt;</span>next <span class="op">!=</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    temp <span class="op">=</span> temp<span class="op">-&gt;</span>next<span class="op">;</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  temp<span class="op">-&gt;</span>next <span class="op">=</span> newNode<span class="op">;</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> display<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> temp <span class="op">=</span> head<span class="op">;</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>temp <span class="op">!=</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> temp<span class="op">-&gt;</span>data <span class="op">&lt;&lt;</span> <span class="st">&quot; -&gt; &quot;</span><span class="op">;</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="2-array-1">2. Array</h3>
+<p>It stores elements of the same data type in contiguous memory
+locations; it is fixed size (if not using vectors); it is used for
+storing, searching, mathematical image processing, and numerical
+processing.</p>
+<p>E.g. Index: <code>0, 1, 2, 3</code> —
+<code>Data: 10, 20, 40, 60 (of 1)</code></p>
+<h3 id="3-stack">3. Stack</h3>
+<p>It is a linear data structure that follows the <strong>LIFO
+(Last-in-First-out)</strong> principle. Its operations are:
+<strong>push</strong> (insert) and <strong>pop</strong> (remove). They
+are used for: function calls, expression evaluation, undo/redo, and
+browser back history.</p>
+<h3 id="4-queue">4. Queue</h3>
+<p>It follows the <strong>FIFO (First-in, First-out)</strong> principle.
+Elements are added to the rear (enqueue/insert) and removed from the
+front (dequeue/remove). This is also known as the <strong>order of
+preservation</strong>. They are used for: customer service, printer
+queue, CPU scheduling, and web server request handling.</p>
+<hr />
+<h2 id="non-linear-data-structures">Non-linear Data Structures</h2>
+<p>Some data elements hierarchically or graph-like; they are
+interconnected otherwise where one element can connect to many elements
+rather than a single line; it has multiple levels, complex relationships
+and efficient searching. Examples are: tree, graph, heap, hash table,
+trie.</p>
+<h3 id="1-tree">1. Tree</h3>
+<p>It is a hierarchical data structure and stores nodes as nodes
+connected by edges. It starts from a root. Single root nodes; each
+parent node can have multiple child nodes — forming a branching pattern.
+It is used to represent parent-child relationships. It is used in file
+systems (Finder) and HTML DOM — it represents hierarchy; it requires
+extra memory and is more complete. Tree terminologies are: root, parent,
+child, leaf, subtree, and height.</p>
+<p><strong>Types of Tree:</strong></p>
+<h4 id="a-binary-tree">a. Binary Tree</h4>
+<p>It is a tree where each node has at most two children.</p>
+<pre class="mermaid"><code>graph TD
+    A[10] --&gt; B[5]
+    A --&gt; C[20]
+    B --&gt; D[3]
+    B --&gt; E[8]
+    C --&gt; F[15]
+    C --&gt; G[25]</code></pre>
+<p><strong>C++ implementation using struct:</strong></p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Node <span class="op">{</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> data<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> left<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> right<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>Node<span class="op">*</span> createNode<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> newNode <span class="op">=</span> <span class="kw">new</span> Node<span class="op">();</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  newNode<span class="op">-&gt;</span>data <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  newNode<span class="op">-&gt;</span>left <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  newNode<span class="op">-&gt;</span>right <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> newNode<span class="op">;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  Node<span class="op">*</span> root <span class="op">=</span> createNode<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  root<span class="op">-&gt;</span>left <span class="op">=</span> createNode<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  root<span class="op">-&gt;</span>right <span class="op">=</span> createNode<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Root Node: &quot;</span> <span class="op">&lt;&lt;</span> root<span class="op">-&gt;</span>data<span class="op">;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="b-binary-search-tree-bst">b. Binary Search Tree (BST)</h4>
+<p>It is a binary tree where the left child is smaller than the parent
+and allowing for efficient searching.</p>
+<h4 id="c-avl-tree">c. AVL Tree</h4>
+<p>It is a self-balancing tree that maintains balance and and operations
+like search, insertion, and deletion remain in fast data access.</p>
+<h4 id="d-b-trees">d. B-trees</h4>
+<p>It is a self-balancing search tree where each node can have more than
+two children. Unlike binary trees, B-trees are optimised for systems
+that read and write large blocks of data. They maintain balance so that
+operations like search, insertion, and deletion remain efficient (O(log
+n)). B-trees are principally used in <strong>database systems</strong>
+and <strong>file systems</strong> (e.g. database engines, OS file
+directories) where data is stored on disk.</p>
+<h4 id="e-graph">e. Graph</h4>
+<p>It consists of vertices (nodes) and edges (connections). There are
+two types: directed and undirected graph. It is used in Google maps,
+computer networks, and social networks.</p>
+<h4 id="f-heap">f. Heap</h4>
+<p>A heap is a special tree structure. <strong>Max heap</strong> —
+Parent ≥ children (think: root is maximum value). <strong>Min
+heap</strong> — Parent ≤ children (and every parent node is less than or
+equal to its children).</p>
+<h4 id="g-hash-table">g. Hash Table</h4>
+<p>It is a data structure that maps <strong>keys to values</strong>
+using a <strong>hash function</strong>. The hash function converts a key
+into an index position in an underlying array, enabling very fast data
+access. Supported operations are: insertion, deletion, and lookup — all
+at O(1) average case. It is principally used for <strong>fast key-value
+lookups</strong>, caching, dictionary implementations, and database
+indexing.</p>
+<h4 id="h-trie">h. Trie</h4>
+<p>It is a tree-like structure for storing strings. It is used for
+auto-complete, spell checking.</p>
+<h3
+id="differences-between-linear-and-non-linear-data-structures">Differences
+between Linear and Non-linear Data Structures</h3>
+<table>
+<thead>
+<tr>
+<th>Linear Data Structure</th>
+<th>Non-linear Data Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>It is sequentially arranged</td>
+<td>It is arranged in a non-directly way</td>
+</tr>
+<tr>
+<td>It is simple to traverse</td>
+<td>It is complex to traverse</td>
+</tr>
+<tr>
+<td>It has a single level</td>
+<td>It has multiple levels</td>
+</tr>
+<tr>
+<td>Edges are linear (array, linked list)</td>
+<td>Tree, graph, heap</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="control-structures">Control Structures</h2>
+<p>They are the fundamental building blocks of programming that
+determine the flow of execution in a program. It determines the order in
+which statements are executed in a program; it decides which statement
+runs, when it runs, and how many times it runs.</p>
+<p>By default, programs execute line by line, top-down; control
+structures allow us to create branches, repetitions, to reach
+alternative actions, or to handle different parts of code.</p>
+<p><strong>Types of Control Structures</strong> — There are four main
+types:</p>
+<ol type="1">
+<li>Sequential Control</li>
+<li>Selection Control (<strong>Decision-making</strong>)</li>
+<li>Iteration/Looping Control</li>
+<li>Jump (Unconditional) Control</li>
+</ol>
+<h3 id="1-sequential-control">1. Sequential Control</h3>
+<p>In this structure, statements are executed one after another — in
+order and there is no branching or repetition. This is the default
+execution path.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> a <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> b <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> Sum <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;The sum is: &quot;</span> <span class="op">&lt;&lt;</span> Sum <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Execution Order:</strong></p>
+<ol type="1">
+<li>Declare a</li>
+<li>Declare b</li>
+<li>Compute Sum</li>
+<li>Print Result</li>
+</ol>
+<p>They are executed in the order in which they are written.</p>
+<hr />
+<h3 id="2-selection-control-decision-making">2. Selection Control
+(Decision-making)</h3>
+<p>They are used when the program needs to choose between alternatives
+or different paths based on whether a specific condition is true or
+false.</p>
+<p><strong>Types:</strong></p>
+<h4 id="a-if-statement">a. If Statement</h4>
+<p>It executes a block code only if the condition is true.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condition<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> age <span class="op">=</span> <span class="dv">18</span><span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">18</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;You can vote.&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Explanation:</strong> condition <code>age &gt;= 18</code> is
+true, so the statement block executes.</p>
+<h4 id="b-if-else-two-branch-statement">b. If-Else (Two-branch
+statement)</h4>
+<p>It provides two possible paths: executes if the condition is true;
+the other (<code>else</code>) block executes if it is false.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condition<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// true block</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// false block</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> number <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>number <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;The number is Even&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;The number is Odd&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Explanation:</strong> Number is 4 → condition is true →
+prints "The number is Even".</p>
+<h4 id="c-else-if">c. Else-if</h4>
+<p>It is used to check multiple conditions sequentially; the first one
+that is true executes its block.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condition <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>condition <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> score <span class="op">=</span> <span class="dv">70</span><span class="op">;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">70</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Grade A&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">60</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Grade B&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">50</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Grade C&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Fail&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Explanation:</strong> 75 ≥ 70, this is true, so prints Grade
+A. Remaining conditions are skipped.</p>
+<h4 id="d-nested-if-statements">d. Nested If Statements</h4>
+<p>A nested if statement is placing an if statement inside another if
+block to handle multi-layered logic. If the first condition was placed
+instead, the second can be checked — once it is used when one condition
+depends on another condition being true.</p>
+<p><strong>Note:</strong> If the first condition was false, the second
+condition could never be checked — once it is used when one condition
+depends on another condition being true.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condition <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>condition <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// statements</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>You can also nest inside else:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>condition <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>condition <span class="dv">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// statements</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h3 id="3-switch-statement">3. Switch Statement</h3>
+<p>Switch case is a selection statement for multi-way branching based on
+the value of a single variable or expression against multiple constant
+values. It is used when there are multiple fixed options.</p>
+<p>It is used when comparing one variable to many constant values.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span> <span class="op">(</span>expression<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> value1<span class="op">:</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// statements;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> value2<span class="op">:</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// statements;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// statements;</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> day <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">switch</span> <span class="op">(</span>day<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Monday&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">2</span><span class="op">:</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Tuesday&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="dv">3</span><span class="op">:</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Wednesday&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Invalid day&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h2 id="iteration-repetition-or-looping-control">Iteration (Repetition
+or Looping) Control</h2>
+<p><strong>Iteration</strong> (Repetition or Looping) control structure
+is to allow a block to be repeatedly executed until a specific condition
+is met or for a fixed number of times — that it is used to repeat a
+block of code multiple times.</p>
+<p><strong>Types:</strong></p>
+<h3 id="a-for-loop">a. For Loop</h3>
+<p>It is used when the number of iterations is known before hand; it
+typically combines initialisation, condition, and increment/decrement in
+one line.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>initialisation<span class="op">;</span> condition<span class="op">;</span> update<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">// It repeats the code 5 times</span></span></code></pre></div>
+<h3 id="b-while-loop">b. While Loop</h3>
+<p>It is an entry-controlled loop that runs as long as a condition is
+true. It is best used when the number of iterations is not known in
+advance; it is used when circumstances depend on condition.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>condition<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    i<span class="op">++;</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Repeats while condition is true</span></span></code></pre></div>
+<h3 id="c-do-while-loop">c. Do-While Loop</h3>
+<p>It is an exit-controlled loop that executes the code block at least
+once before checking the condition at the end.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements;</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span>condition<span class="op">);</span></span></code></pre></div>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">do</span> <span class="op">{</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    i<span class="op">++;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> <span class="dv">2</span><span class="op">);</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Executes at least once</span></span></code></pre></div>
+<h3 id="d-for-each-loop">d. For-each Loop</h3>
+<p>It is specifically designed to iterate through every element in a
+collection, such as an array or list.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>datatype variable <span class="op">:</span> collection<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// code</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li><code>datatype</code> → Type of element</li>
+<li><code>collection</code> → Array or container</li>
+<li><code>variable</code> → Temporary variable that stores each
+element</li>
+</ul>
+<p>E.g. 1 (for-each loop with array):</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> numbers<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">};</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> num <span class="op">:</span> numbers<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> num <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">// for-each loop with array</span></span></code></pre></div>
+<p>E.g. 2 (Calculating Sum using for-each loop):</p>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> numbers<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">};</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> num <span class="op">:</span> numbers<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    sum <span class="op">+=</span> num<span class="op">;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Sum: &quot;</span> <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h2 id="jump-unconditional-control">Jump (Unconditional) Control</h2>
+<p>Jump control statements allow the program to transfer control to
+another point in the code without evaluating a condition. It is used to
+alter the normal processing flow.</p>
+<p><strong>Types:</strong></p>
+<h3 id="a-break">a. Break</h3>
+<p>It immediately exits a loop or a switch statement; when break
+executes, control moves to the statement after the loop; it stops the
+current executing from continuing.</p>
+<p>Syntax: <code>break;</code></p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">==</span> <span class="dv">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co">// It terminates a loop early</span></span></code></pre></div>
+<h3 id="b-continue">b. Continue</h3>
+<p>It skips the remaining code in the current iteration and jumps to the
+next loop cycle. It is used only inside loops.</p>
+<p>Syntax: <code>continue;</code></p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">==</span> <span class="dv">6</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="c-return">c. Return</h3>
+<p>It exits a function and optionally returns a value to the caller.</p>
+<p>Syntax: <code>return expression; // for returning a value</code> AND
+<code>return; // for no return value/void functions</code></p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Program is running...&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;This will not execute&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>It ends the program immediately and anything after it will not
+execute.</p>
+<p>It is great to transfer control in limited occurrences/limited
+execution in the code. However, its overuse is generally discouraged as
+it can lead to "spaghetti code" (overusing the control flow creates an
+unstructured, messy and difficult-to-read code).</p>
+<h3 id="d-goto">d. Goto</h3>
+<p>It allows the program to jump immediately to a labelled statement in
+the program.</p>
+<p>Syntax:</p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">goto</span> label<span class="op">;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>label<span class="op">:</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// statements</span></span></code></pre></div>
+<p>Where <code>goto label</code> jumps to a label; <code>label</code> is
+a location in the program.</p>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;Start&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">goto</span> Skip<span class="op">;</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;This will not execute&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  Skip<span class="op">:</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> <span class="st">&quot;End&quot;</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>E.g. 2:</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  Start<span class="op">:</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    i<span class="op">++;</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">&lt;=</span> <span class="dv">4</span><span class="op">)</span> <span class="cf">goto</span> Start<span class="op">;</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<hr />
+<h2 id="control-structure-summary-table">Control Structure Summary
+Table</h2>
+<table>
+<thead>
+<tr>
+<th>Structure Type</th>
+<th>Idea/Function</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Sequential</td>
+<td>Execute in order</td>
+<td>line 1, line 2, line 3</td>
+</tr>
+<tr>
+<td>2. Selection</td>
+<td>Branching (decision)</td>
+<td>if, if-else, if-else-if, switch</td>
+</tr>
+<tr>
+<td>3. Iteration</td>
+<td>Repeating (looped)</td>
+<td>for, while, do-while</td>
+</tr>
+<tr>
+<td>4. Jump</td>
+<td>Transferring Control</td>
+<td>break, continue, return, goto</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="data-flow">Data Flow</h2>
+<p><strong>Data flow</strong> is a fundamental concept in Computer
+Science that describes how data values are created, modified,
+transported, and consumed throughout program execution and system
+operation.</p>
+<p>Or it refers to the movement, transformation, and usage of data
+within a program during execution; it describes how data moves through a
+program from input to processing to output. It explains how
+data/information flows through every step — where data is stored and how
+it is processed or transformed and where does it go next.</p>
+<h3 id="data-flow-model">Data Flow Model</h3>
+<p>Every program follows this fundamental model:</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Input] --&gt; B[Storage]
+    B --&gt; C[Processing]
+    C --&gt; D[Output]</code></pre>
+<ul>
+<li><strong>Input</strong> — data is entered in the program</li>
+<li><strong>Storage</strong> — data is stored in memory (from
+variables/the database)</li>
+<li><strong>Processing</strong> — the stored data is manipulated or
+computed</li>
+<li><strong>Output</strong> — the result is displayed or produced</li>
+</ul>
+<blockquote>
+<p>In programming, Storage naturally comes before Processing because the
+CPU must fetch data from memory before working on it.</p>
+</blockquote>
+<p>E.g.:</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> a <span class="op">=</span> <span class="dv">5</span><span class="op">;</span>  <span class="co">// Input + Storage (value stored in memory)</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> b <span class="op">=</span> <span class="dv">8</span><span class="op">;</span>  <span class="co">// Input + Storage</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> Sum <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span>  <span class="co">// Processing</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  cout <span class="op">&lt;&lt;</span> Sum <span class="op">&lt;&lt;</span> endl<span class="op">;</span>  <span class="co">// Output</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>When the values <code>a</code> and <code>b</code> are first defined
+as memory, then they are processed (added). Then the result is output —
+like the example's above.</p>
+<h3 id="how-data-flows-in-a-function">How Data Flows in a Function</h3>
+<ol type="1">
+<li><strong>Variable</strong> — data is the most basic element giving a
+value to a variable</li>
+<li><strong>Assignment</strong> — an assignment means giving a value to
+a variable (<code>variable = value;</code>)</li>
+<li><strong>Expression</strong> — it is anything that produces a value
+(<code>5 + 4</code>)</li>
+<li><strong>Function</strong> — it is a block of code that performs a
+task</li>
+</ol>
+<p><strong>Return type function_name() { // code }</strong></p>
+<ol start="5" type="1">
+<li><strong>Parameter</strong> — it is a value you give to a function so
+it can work with it</li>
+<li><strong>Return value</strong> — it is what a function sends back
+after finishing its work</li>
+<li><strong>Control Structures</strong> — determines how data flows</li>
+<li><strong>Memory</strong> — data is stored in memory</li>
+</ol>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

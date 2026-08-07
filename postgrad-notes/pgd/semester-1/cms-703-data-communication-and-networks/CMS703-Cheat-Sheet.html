@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CMS 703 — Data Communication & Networks — Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background: #0f0f0f;
+  }
+
+  /* ─── SLIDE BASE ─────────────────────────────────────────────────────── */
+  .slide {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 14mm 10mm 14mm;
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── COLOUR THEMES ──────────────────────────────────────────────────── */
+  .theme-cover   { background: linear-gradient(135deg, #0a0a2e 0%, #1a1a5e 50%, #0d3b6b 100%); color: #fff; }
+  .theme-blue    { background: linear-gradient(135deg, #0d2137 0%, #0e3460 100%); color: #fff; }
+  .theme-teal    { background: linear-gradient(135deg, #0d3333 0%, #0a5050 100%); color: #fff; }
+  .theme-purple  { background: linear-gradient(135deg, #1e0a3c 0%, #3b1a78 100%); color: #fff; }
+  .theme-dark    { background: linear-gradient(135deg, #111111 0%, #1f1f1f 100%); color: #fff; }
+  .theme-navy    { background: linear-gradient(135deg, #0b1e3d 0%, #1a3a6e 100%); color: #fff; }
+  .theme-green   { background: linear-gradient(135deg, #062015 0%, #0e4030 100%); color: #fff; }
+  .theme-crimson { background: linear-gradient(135deg, #1f0608 0%, #5c0f12 100%); color: #fff; }
+  .theme-amber   { background: linear-gradient(135deg, #1a1000 0%, #4a2e00 100%); color: #fff; }
+  .theme-slate   { background: linear-gradient(135deg, #12171e 0%, #202c3d 100%); color: #fff; }
+
+  /* ─── SLIDE HEADER ───────────────────────────────────────────────────── */
+  .slide-tag {
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 6mm;
+  }
+
+  .slide-title {
+    font-size: 40pt;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8mm;
+  }
+
+  .slide-subtitle {
+    font-size: 22pt;
+    font-weight: 400;
+    opacity: 0.8;
+    line-height: 1.3;
+    margin-bottom: 8mm;
+  }
+
+  /* ─── COVER SLIDE ────────────────────────────────────────────────────── */
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 4px 16px;
+    border-radius: 40px;
+    font-size: 13pt;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 10mm;
+  }
+
+  .cover-title {
+    font-size: 52pt;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 6mm;
+    background: linear-gradient(90deg, #ffffff, #89d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-sub {
+    font-size: 20pt;
+    font-weight: 400;
+    opacity: 0.75;
+    margin-bottom: 14mm;
+  }
+
+  .cover-meta {
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 6mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+
+  .meta-item { font-size: 13pt; opacity: 0.65; }
+  .meta-item span { opacity: 1; font-weight: 700; color: #89d4ff; display: block; font-size: 15pt; }
+
+  /* ─── CONTENT BLOCKS ─────────────────────────────────────────────────── */
+  .content { flex: 1; display: flex; flex-direction: column; gap: 5mm; }
+
+  /* Big numbered items */
+  .numbered-list { list-style: none; display: flex; flex-direction: column; gap: 4mm; }
+  .numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 5mm;
+    font-size: 20pt;
+    line-height: 1.35;
+    font-weight: 400;
+  }
+  .num {
+    min-width: 12mm;
+    height: 12mm;
+    background: rgba(137, 212, 255, 0.2);
+    border: 1.5px solid rgba(137, 212, 255, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16pt;
+    font-weight: 800;
+    color: #89d4ff;
+    flex-shrink: 0;
+    margin-top: 1mm;
+  }
+
+  .li-title { font-weight: 700; color: #89d4ff; }
+  .li-body  { opacity: 0.85; }
+
+  /* Big bullet list */
+  .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 3.5mm; }
+  .bullet-list li {
+    font-size: 19pt;
+    line-height: 1.35;
+    padding-left: 8mm;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #89d4ff;
+    font-size: 16pt;
+  }
+  .bullet-list li b { color: #89d4ff; }
+  .bullet-list li .dim { opacity: 0.7; font-size: 16pt; }
+
+  /* Cards grid */
+  .cards { display: grid; gap: 4mm; }
+  .cards-2 { grid-template-columns: 1fr 1fr; }
+  .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4mm;
+    padding: 5mm 6mm;
+  }
+  .card-label {
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #89d4ff;
+    opacity: 0.8;
+    margin-bottom: 2mm;
+  }
+  .card-title {
+    font-size: 22pt;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 2mm;
+  }
+  .card-body {
+    font-size: 15pt;
+    opacity: 0.75;
+    line-height: 1.4;
+  }
+  .card-examples {
+    margin-top: 2mm;
+    font-size: 13pt;
+    opacity: 0.55;
+    font-style: italic;
+  }
+
+  /* Three-mode cards (Simplex/Half/Full) */
+  .mode-cards { display: grid; grid-template-columns: 1fr; gap: 4mm; }
+  .mode-card {
+    padding: 5mm 6mm;
+    border-radius: 4mm;
+    display: flex;
+    align-items: center;
+    gap: 5mm;
+  }
+  .mode-simplex  { background: rgba(255,100,100,0.15); border: 1px solid rgba(255,100,100,0.3); }
+  .mode-half     { background: rgba(255,200,50,0.15);  border: 1px solid rgba(255,200,50,0.3); }
+  .mode-full     { background: rgba(80,220,120,0.15);  border: 1px solid rgba(80,220,120,0.3); }
+
+  .mode-icon { font-size: 30pt; flex-shrink: 0; }
+  .mode-info-title { font-size: 22pt; font-weight: 800; margin-bottom: 1mm; }
+  .mode-info-body  { font-size: 15pt; opacity: 0.75; line-height: 1.3; }
+  .mode-examples   { font-size: 13pt; opacity: 0.55; font-style: italic; }
+
+  /* Table */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 17pt; }
+  .data-table th {
+    background: rgba(137,212,255,0.15);
+    color: #89d4ff;
+    font-weight: 700;
+    padding: 3mm 4mm;
+    text-align: left;
+    font-size: 14pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(137,212,255,0.3);
+  }
+  .data-table td {
+    padding: 3mm 4mm;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    vertical-align: top;
+    line-height: 1.35;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td:first-child { font-weight: 700; color: #89d4ff; white-space: nowrap; }
+
+  /* Formula block */
+  .formula-box {
+    background: rgba(137,212,255,0.08);
+    border: 1.5px solid rgba(137,212,255,0.3);
+    border-radius: 4mm;
+    padding: 5mm 7mm;
+    text-align: center;
+    font-size: 22pt;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #c8e8ff;
+    line-height: 1.5;
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+  .formula-label {
+    font-size: 13pt;
+    opacity: 0.5;
+    text-align: center;
+    margin-top: 2mm;
+    font-family: 'Inter', Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: rgba(137,212,255,0.1);
+    border-left: 4px solid #89d4ff;
+    border-radius: 2mm;
+    padding: 4mm 6mm;
+    font-size: 18pt;
+    line-height: 1.4;
+    font-style: italic;
+    opacity: 0.9;
+  }
+  .callout-warn {
+    background: rgba(255,200,50,0.1);
+    border-left: 4px solid #ffc832;
+    color: #fff8e0;
+  }
+  .callout-green {
+    background: rgba(80,220,120,0.1);
+    border-left: 4px solid #50dc78;
+    color: #e0fff0;
+  }
+
+  /* OSI Layer rows */
+  .osi-table { width: 100%; border-collapse: separate; border-spacing: 0 2mm; font-size: 17pt; }
+  .osi-row td { padding: 3mm 4mm; }
+  .osi-row td:first-child {
+    border-radius: 3mm 0 0 3mm;
+    font-size: 13pt;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 10mm;
+  }
+  .osi-row td:nth-child(2) {
+    font-weight: 800;
+    font-size: 18pt;
+    white-space: nowrap;
+    padding-right: 5mm;
+  }
+  .osi-row td:last-child {
+    border-radius: 0 3mm 3mm 0;
+    font-size: 15pt;
+    opacity: 0.8;
+    line-height: 1.3;
+  }
+  .osi-7 { background: rgba(147,51,234,0.3); }
+  .osi-6 { background: rgba(79,70,229,0.3); }
+  .osi-5 { background: rgba(37,99,235,0.3); }
+  .osi-4 { background: rgba(6,182,212,0.3); }
+  .osi-3 { background: rgba(5,150,105,0.3); }
+  .osi-2 { background: rgba(245,158,11,0.3); }
+  .osi-1 { background: rgba(239,68,68,0.3); }
+
+  /* Exam tips */
+  .tip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+  .tip-item {
+    background: rgba(255,255,255,0.06);
+    border-radius: 3mm;
+    padding: 4mm 5mm;
+    display: flex;
+    gap: 3mm;
+    align-items: flex-start;
+  }
+  .tip-num {
+    font-size: 24pt;
+    font-weight: 900;
+    color: #89d4ff;
+    opacity: 0.4;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 10mm;
+  }
+  .tip-text { font-size: 14pt; line-height: 1.4; opacity: 0.85; }
+  .tip-text b { color: #89d4ff; }
+
+  /* Freq band viz */
+  .freq-bar {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    margin-bottom: 3mm;
+  }
+  .freq-label { font-size: 20pt; font-weight: 800; min-width: 40mm; }
+  .freq-range {
+    flex: 1;
+    height: 12mm;
+    border-radius: 3mm;
+    display: flex;
+    align-items: center;
+    padding: 0 5mm;
+    font-size: 15pt;
+    font-weight: 600;
+  }
+
+  /* Separator line */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 4mm 0;
+  }
+
+  .section-break-indicator {
+    margin-top: auto;
+    text-align: right;
+    font-size: 11pt;
+    opacity: 0.25;
+    letter-spacing: 2px;
+  }
+
+  /* Advantage/Disadvantage split */
+  .adv-dis { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .adv-box { background: rgba(80,220,120,0.1); border: 1px solid rgba(80,220,120,0.25); border-radius: 3mm; padding: 4mm 5mm; }
+  .dis-box { background: rgba(255,80,80,0.1);  border: 1px solid rgba(255,80,80,0.25);  border-radius: 3mm; padding: 4mm 5mm; }
+  .adv-dis-title { font-size: 14pt; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3mm; }
+  .adv-title { color: #50dc78; }
+  .dis-title { color: #ff6060; }
+  .adv-dis ul { list-style: none; display: flex; flex-direction: column; gap: 2mm; }
+  .adv-dis li { font-size: 15pt; line-height: 1.3; padding-left: 5mm; position: relative; }
+  .adv-dis li::before { position: absolute; left: 0; }
+  .adv-box li::before { content: "✓"; color: #50dc78; font-weight: 800; }
+  .dis-box li::before { content: "✗"; color: #ff6060; font-weight: 800; }
+
+  /* Comparison table */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .compare-col { background: rgba(255,255,255,0.05); border-radius: 3mm; padding: 4mm 5mm; }
+  .compare-head { font-size: 18pt; font-weight: 800; margin-bottom: 3mm; padding-bottom: 2mm; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .compare-head.blue  { color: #89d4ff; }
+  .compare-head.green { color: #50dc78; }
+  .compare-row { display: flex; gap: 2mm; font-size: 14pt; line-height: 1.4; margin-bottom: 2mm; }
+  .compare-row span:first-child { color: #89d4ff; font-weight: 700; min-width: 28mm; font-size: 13pt; }
+
+  /* Large single stat */
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; }
+  .stat-card { background: rgba(255,255,255,0.07); border-radius: 3mm; padding: 4mm 5mm; text-align: center; }
+  .stat-num { font-size: 42pt; font-weight: 900; color: #89d4ff; line-height: 1; }
+  .stat-label { font-size: 14pt; opacity: 0.65; margin-top: 1mm; line-height: 1.3; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 1 — COVER
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-cover">
+  <div class="cover-badge">CMS 703 · RSU 2024/2025</div>
+
+  <div class="cover-title">Data Communication<br>&amp; Networks</div>
+
+  <div class="cover-sub">Complete Exam Cheat Sheet<br>the lecturer · Rivers State University</div>
+
+  <div style="flex:1"></div>
+
+  <div style="display:flex; gap:4mm; flex-wrap:wrap; margin-bottom:10mm;">
+    <div style="background:rgba(137,212,255,0.12);border:1px solid rgba(137,212,255,0.3);border-radius:40px;padding:3px 14px;font-size:13pt;">5 Components</div>
+    <div style="background:rgba(137,212,255,0.12);border:1px solid rgba(137,212,255,0.3);border-radius:40px;padding:3px 14px;font-size:13pt;">Fourier Series &amp; Transform</div>
+    <div style="background:rgba(137,212,255,0.12);border:1px solid rgba(137,212,255,0.3);border-radius:40px;padding:3px 14px;font-size:13pt;">OSI 7 Layers</div>
+    <div style="background:rgba(137,212,255,0.12);border:1px solid rgba(137,212,255,0.3);border-radius:40px;padding:3px 14px;font-size:13pt;">Network Topologies</div>
+    <div style="background:rgba(137,212,255,0.12);border:1px solid rgba(137,212,255,0.3);border-radius:40px;padding:3px 14px;font-size:13pt;">Switching &amp; Routing</div>
+  </div>
+
+  <div class="cover-meta">
+    <div class="meta-item">Lecturer<span>the lecturer</span></div>
+    <div class="meta-item">Institution<span>Rivers State University</span></div>
+    <div class="meta-item">Course Code<span>CMS 703</span></div>
+    <div class="meta-item">Session<span>2024 / 2025</span></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 2 — DATA COMMUNICATION DEFINITION + 3 PRINCIPLES
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-blue">
+  <div class="slide-tag">Section 1</div>
+  <div class="slide-title">Data Communication</div>
+
+  <div class="content">
+    <div class="callout">
+      The <b>sharing/transfer of information</b> locally or remotely between two or more devices using computing and communication technologies.
+    </div>
+
+    <div style="height:2mm"></div>
+
+    <div class="slide-subtitle" style="font-size:20pt;margin-bottom:3mm;">3 Fundamental Principles</div>
+
+    <ul class="numbered-list">
+      <li>
+        <div class="num">1</div>
+        <div><span class="li-title">Delivery —</span> <span class="li-body">Data must reach the <b>correct destination/recipient</b></span></div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div><span class="li-title">Accuracy —</span> <span class="li-body">Data delivered <b>without alteration</b>; incomplete data = unusable</span></div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div><span class="li-title">Timeliness —</span> <span class="li-body">Data must be delivered <b>on time</b>; late delivery = ineffective</span></div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 3 — 5 COMPONENTS
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-navy">
+  <div class="slide-tag">Section 1 · Most Tested</div>
+  <div class="slide-title">5 Components of a<br>Data Communication System</div>
+
+  <div class="content">
+    <ul class="numbered-list">
+      <li>
+        <div class="num">1</div>
+        <div><span class="li-title">Message —</span> <span class="li-body">The actual data to be transmitted</span><br><span style="font-size:14pt;opacity:0.5;font-style:italic;">Text, numbers, pictures, audio, video</span></div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div><span class="li-title">Sender —</span> <span class="li-body">Originating device that sends the data</span><br><span style="font-size:14pt;opacity:0.5;font-style:italic;">Computer, phone, camera</span></div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div><span class="li-title">Receiver —</span> <span class="li-body">Destination device that receives the message</span><br><span style="font-size:14pt;opacity:0.5;font-style:italic;">TV, phone, workstation</span></div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div><span class="li-title">Transmission Medium —</span> <span class="li-body">Physical path from sender to receiver</span><br><span style="font-size:14pt;opacity:0.5;font-style:italic;">Twisted pair, coaxial, fibre-optic, radio waves</span></div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div><span class="li-title">Protocol —</span> <span class="li-body">Set of rules governing communication; enables synchronization</span><br><span style="font-size:14pt;opacity:0.5;font-style:italic;">HTTP, HTTPS, FTP, SSH</span></div>
+      </li>
+    </ul>
+
+    <div class="callout callout-warn" style="margin-top:3mm;font-size:15pt;">
+      Without a protocol: two devices may be connected but <b>not communicating</b> — like a French speaker talking to a Japanese-only speaker.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 4 — DATA REPRESENTATION
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-teal">
+  <div class="slide-tag">Section 2</div>
+  <div class="slide-title">Data Representation</div>
+  <div class="slide-subtitle">All data = bit patterns (0s and 1s)</div>
+
+  <div class="content">
+    <table class="data-table">
+      <tr>
+        <th>Type</th>
+        <th>How Represented</th>
+        <th>Key Detail</th>
+      </tr>
+      <tr>
+        <td>Text</td>
+        <td>Bit patterns (codes)</td>
+        <td style="font-size:15pt;"><b>Unicode</b> = 32 bits/char (all languages). ASCII = Basic Latin (127 chars), subset of Unicode</td>
+      </tr>
+      <tr>
+        <td>Numbers</td>
+        <td>Direct binary</td>
+        <td style="font-size:15pt;">NOT via ASCII — converted directly to binary; includes bits for math operations</td>
+      </tr>
+      <tr>
+        <td>Images</td>
+        <td>Matrix of pixels</td>
+        <td style="font-size:15pt;">Pixel bit patterns. Colour = <b>RGB</b> or <b>YCM</b>. Black=00, D.Grey=01, L.Grey=10, White=11</td>
+      </tr>
+      <tr>
+        <td>Audio</td>
+        <td>Continuous signal → digital</td>
+        <td style="font-size:15pt;">Sampled → Quantized → Encoded to bit patterns</td>
+      </tr>
+      <tr>
+        <td>Video</td>
+        <td>Images + signal processing</td>
+        <td style="font-size:15pt;">Continuous entity OR combination of images. Must be <b>Sampled → Quantized → Encoded</b></td>
+      </tr>
+    </table>
+
+    <div class="callout callout-green" style="font-size:16pt;">
+      <b>Key chain:</b> Continuous Signal → <b>Sample</b> (measure at intervals) → <b>Quantize</b> (approximate finite values) → <b>Encode</b> (represent as bits)
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 5 — DATA FLOW (3 MODES)
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-purple">
+  <div class="slide-tag">Section 3</div>
+  <div class="slide-title">Data Flow — 3 Transmission Modes</div>
+  <div class="slide-subtitle">Defines the <b>direction</b> of data transmission between devices</div>
+
+  <div class="content">
+    <div class="mode-cards">
+      <div class="mode-card mode-simplex">
+        <div class="mode-icon">→</div>
+        <div>
+          <div class="mode-info-title">Simplex</div>
+          <div class="mode-info-body"><b>One direction only.</b> Sender can only send; receiver can only receive.</div>
+          <div class="mode-examples">Keyboard→Computer · TV Broadcast · Radio · Computer→Printer · Monitor (output only)</div>
+        </div>
+      </div>
+      <div class="mode-card mode-half">
+        <div class="mode-icon">⇄</div>
+        <div>
+          <div class="mode-info-title">Half-Duplex</div>
+          <div class="mode-info-body"><b>Both directions, but NOT simultaneously.</b> One at a time; like a one-lane road with construction.</div>
+          <div class="mode-examples">Walkie-talkie (say "over") · WiFi · CB Radio · USB v2 · Ethernet Hubs · Web Browser</div>
+        </div>
+      </div>
+      <div class="mode-card mode-full">
+        <div class="mode-icon">⇌</div>
+        <div>
+          <div class="mode-info-title">Full Duplex</div>
+          <div class="mode-info-body"><b>Both directions simultaneously.</b> Channel capacity is shared between both directions.</div>
+          <div class="mode-examples">Telephone Network · Live Chat · Router+Switch · Duplex Fibre-Optic · USB v3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 6 — GUIDED MEDIA (TWISTED PAIR + COAXIAL)
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-blue">
+  <div class="slide-tag">Section 4 · Guided Media</div>
+  <div class="slide-title">Transmission Media — Guided</div>
+  <div class="slide-subtitle">Cable directs signals along a specific path (also called <b>bound media</b>)</div>
+
+  <div class="content">
+    <div class="cards cards-2">
+      <div class="card">
+        <div class="card-label">Type 1</div>
+        <div class="card-title">Twisted Pair</div>
+        <div class="card-body">Two <b>copper conductors</b> twisted together, each insulated with plastic. Number of twists per unit = quality.</div>
+        <hr class="divider"/>
+        <div style="font-size:14pt;opacity:0.8;"><b>STP</b> (Shielded) — foil + copper shielding; less interference; more secure<br><br>
+        <b>UTP</b> (Unshielded) — flexible; susceptible to interference; up to 1 km</div>
+        <div class="card-examples">Uses: Telephone, 10Base-T, 100Base-T LAN</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Type 2</div>
+        <div class="card-title">Coaxial Cable</div>
+        <div class="card-body">Central copper core → insulator → outer conductor foil → plastic cover.</div>
+        <hr class="divider"/>
+        <div style="font-size:14pt;opacity:0.8;line-height:1.4;"><b>Layers (inside → outside):</b><br>
+        Central Core → Insulator → Outer Conductor → Plastic Cover<br><br>
+        Outer conductor = noise shield AND circuit conductor</div>
+        <div class="card-examples">Uses: Cable TV, CCTV, Satellite install, Telephone networks</div>
+      </div>
+    </div>
+
+    <div class="callout" style="font-size:16pt;">
+      Both can be used for longer distances than twisted pair. Coaxial supports more stations on a common line.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 7 — FIBRE-OPTIC CABLE
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-teal">
+  <div class="slide-tag">Section 4 · Guided Media · High Exam Weight</div>
+  <div class="slide-title">Fibre-Optic Cable</div>
+
+  <div class="content">
+    <div class="cards cards-2" style="margin-bottom:4mm;">
+      <div class="card">
+        <div class="card-label">How it works</div>
+        <div class="card-body" style="font-size:16pt;line-height:1.5;">
+          Transmits signal as <b>light</b>. Made of glass or plastic. Uses <b>reflection</b> to guide light — beam moving through core reflects off cladding due to density difference.<br><br>
+          <b>Layers (outside → inside):</b><br>
+          Outer Jacket (PVC/Teflon) → Kevlar → <b>Cladding</b> → <b>Core</b>
+        </div>
+        <div class="card-examples">Uses: Internet backbone, 100Base-FX, 1000Base-X, undersea cables, medical laser surgery</div>
+      </div>
+      <div>
+        <div class="adv-dis" style="grid-template-columns:1fr;gap:3mm;">
+          <div class="adv-box">
+            <div class="adv-dis-title adv-title">6 Advantages</div>
+            <ul>
+              <li>High bandwidth</li>
+              <li>Low attenuation (8–50 km vs 5 km for copper)</li>
+              <li>Immune to EM interference</li>
+              <li>Resistant to corrosion (glass)</li>
+              <li>Lightweight</li>
+              <li>Immune to tapping</li>
+            </ul>
+          </div>
+          <div class="dis-box">
+            <div class="adv-dis-title dis-title">3 Disadvantages</div>
+            <ul>
+              <li>Requires expert installation</li>
+              <li>Expensive to install</li>
+              <li>Fragile — breaks if bent sharply</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 8 — UNGUIDED MEDIA (WIRELESS)
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-navy">
+  <div class="slide-tag">Section 4 · Unguided Media</div>
+  <div class="slide-title">Wireless Communication</div>
+  <div class="slide-subtitle">Signal travels in 3 ways: <b>Ground · Sky · Line-of-Sight</b></div>
+
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div class="freq-bar">
+        <div class="freq-label" style="color:#ff9966;">Radio</div>
+        <div class="freq-range" style="background:rgba(255,153,102,0.2);border:1px solid rgba(255,153,102,0.4);color:#ff9966;">3 KHz – 1 GHz · <b>Omnidirectional</b> · Long range (sky mode) · Multicasting</div>
+      </div>
+      <div class="freq-bar">
+        <div class="freq-label" style="color:#89d4ff;">Microwave</div>
+        <div class="freq-range" style="background:rgba(137,212,255,0.2);border:1px solid rgba(137,212,255,0.4);color:#89d4ff;">1 – 300 GHz · <b>Unidirectional</b> · Line-of-sight · Parabolic dish / Horn antenna</div>
+      </div>
+      <div class="freq-bar">
+        <div class="freq-label" style="color:#c084fc;">Infrared</div>
+        <div class="freq-range" style="background:rgba(192,132,252,0.2);border:1px solid rgba(192,132,252,0.4);color:#c084fc;">300 GHz – 400 THz · Cannot penetrate walls · <b>Short range only</b></div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <tr><th>Medium</th><th>Direction</th><th>Key Examples</th></tr>
+      <tr>
+        <td style="color:#ff9966;">Radio Waves</td>
+        <td>Omni</td>
+        <td style="font-size:15pt;">AM/FM radio, TV, Maritime, Cordless mics, Paging</td>
+      </tr>
+      <tr>
+        <td>Microwave</td>
+        <td>Uni</td>
+        <td style="font-size:15pt;">Terrestrial: short wireless; Satellite: TV, telephony, live news. Repeaters every 25–30 km</td>
+      </tr>
+      <tr>
+        <td style="color:#c084fc;">Infrared</td>
+        <td>Short</td>
+        <td style="font-size:15pt;">Remote controls, Night vision, Missile guidance, Thermal cameras, Gas detectors</td>
+      </tr>
+    </table>
+
+    <div class="callout callout-warn" style="font-size:15pt;">
+      <b>Microwave key rules:</b> Antennas MUST be aligned. Very high frequency cannot pass through walls. Some bands require regulatory permission.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 9 — FOURIER ANALYSIS OVERVIEW
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-dark">
+  <div class="slide-tag">Section 5 · Fourier Analysis</div>
+  <div class="slide-title">Fourier Analysis</div>
+
+  <div class="content">
+    <div class="callout" style="font-size:19pt;margin-bottom:5mm;">
+      Decomposes <b>complex signals → simple sine &amp; cosine waves</b>.<br>Converts data from <b>Time Domain → Frequency Domain</b>.<br>Created by <b>Joseph Fourier</b> (French mathematician &amp; physicist).
+    </div>
+
+    <div class="cards cards-2" style="margin-bottom:4mm;">
+      <div class="card">
+        <div class="card-label">Fourier Series</div>
+        <div class="card-title" style="font-size:18pt;">For <b>Periodic</b> Signals</div>
+        <div class="card-body">Signals that repeat from −∞ to +∞. Expands signal into harmonics (sin/cos with different amplitudes and frequencies).</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Fourier Transform</div>
+        <div class="card-title" style="font-size:18pt;">For <b>Non-Periodic</b> Signals</div>
+        <div class="card-body">Real-life signals are generally non-periodic. Decomposes into oscillatory functions. No information created or lost.</div>
+      </div>
+    </div>
+
+    <div class="slide-subtitle" style="font-size:17pt;margin-bottom:3mm;">4 Application Areas</div>
+    <div class="cards cards-2">
+      <div class="card"><div class="card-label">Engineering</div><div class="card-body" style="font-size:15pt;">Filter noise, compress signals, data analysis</div></div>
+      <div class="card"><div class="card-label">Physics</div><div class="card-body" style="font-size:15pt;">Acoustics, optics, quantum mechanics</div></div>
+      <div class="card"><div class="card-label">Neuroscience</div><div class="card-body" style="font-size:15pt;">Find hidden rhythms in neural recordings</div></div>
+      <div class="card"><div class="card-label">Mathematics</div><div class="card-body" style="font-size:15pt;">Reduce complex differential equations to algebraic</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 10 — FOURIER SERIES FORMULA + COEFFICIENTS
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-purple">
+  <div class="slide-tag">Section 6 · Fourier Series</div>
+  <div class="slide-title">Fourier Series Formula</div>
+
+  <div class="content">
+    <div class="formula-box">
+      f(x) = a₀/2 + Σ [ aₙ cos(nπx/L) + bₙ sin(nπx/L) ]
+    </div>
+    <div class="formula-label">Where n = 1 to ∞ and L = period of the signal</div>
+
+    <div style="height:3mm"></div>
+
+    <table class="data-table">
+      <tr><th>Coeff.</th><th>Formula</th><th>Meaning</th></tr>
+      <tr>
+        <td>a₀</td>
+        <td style="font-size:15pt;">(1/2L) ∫ f(x) dx</td>
+        <td style="font-size:15pt;">Average (DC) value of the signal</td>
+      </tr>
+      <tr>
+        <td>aₙ</td>
+        <td style="font-size:15pt;">(1/L) ∫ f(x)·cos(nπx/L) dx</td>
+        <td style="font-size:15pt;">Cosine coefficients</td>
+      </tr>
+      <tr>
+        <td>bₙ</td>
+        <td style="font-size:15pt;">(1/L) ∫ f(x)·sin(nπx/L) dx</td>
+        <td style="font-size:15pt;">Sine coefficients</td>
+      </tr>
+    </table>
+
+    <div class="cards cards-2" style="margin-top:3mm;">
+      <div class="card" style="background:rgba(255,200,80,0.1);border-color:rgba(255,200,80,0.3);">
+        <div class="card-label" style="color:#ffc850;">Even Function</div>
+        <div class="card-title" style="font-size:18pt;">bₙ = 0</div>
+        <div class="card-body">f(−x) = f(x)<br>→ <b>Fourier Cosine Series</b></div>
+      </div>
+      <div class="card" style="background:rgba(100,180,255,0.1);border-color:rgba(100,180,255,0.3);">
+        <div class="card-label" style="color:#64b4ff;">Odd Function</div>
+        <div class="card-title" style="font-size:18pt;">aₙ = 0</div>
+        <div class="card-body">f(−x) = −f(x)<br>→ <b>Fourier Sine Series</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 11 — PERIOD, FREQUENCY, AMPLITUDE
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-slate">
+  <div class="slide-tag">Section 6 · Fourier Series</div>
+  <div class="slide-title">Period · Frequency · Amplitude</div>
+
+  <div class="content">
+    <div class="cards" style="grid-template-columns:1fr 1fr 1fr;gap:4mm;margin-bottom:5mm;">
+      <div class="card">
+        <div class="card-label">Period (T)</div>
+        <div class="card-title">Distance before repeat</div>
+        <div class="card-body" style="font-size:15pt;">
+          sin(x) → <b>2π</b><br>
+          sin(nx) → <b>2π/n</b><br><br>
+          Larger n = <b>shorter</b> period<br><br>
+          sin(2x) = π<br>
+          sin(3x) = 2π/3<br>
+          sin(5x) = 2π/5
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Frequency (f)</div>
+        <div class="card-title">Opposite of Period</div>
+        <div class="card-body" style="font-size:15pt;">
+          <b>f = 1/T</b><br><br>
+          sin(x) → <b>Fundamental Frequency</b><br><br>
+          sin(3x), sin(5x), sin(7x)... → <b>Harmonics</b> (integer multiples of fundamental)
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Amplitude (A)</div>
+        <div class="card-title">Height of Wave</div>
+        <div class="card-body" style="font-size:15pt;">
+          Controls the <b>size</b> of the wave.<br><br>
+          y = A·sin(θ)<br><br>
+          If A = 1 → wave moves from <b>+1 to −1</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-green" style="font-size:17pt;">
+      <b>Square wave approximation:</b><br>
+      f(x) = (4/π) [ sin(x)/1 + sin(3x)/3 + sin(5x)/5 + sin(7x)/7 + … ]
+    </div>
+
+    <div style="height:2mm"></div>
+
+    <div class="callout" style="font-size:15pt;">
+      <b>3 Types of Fourier Series Expansion:</b> (1) Trigonometric — (2) Complex Exponential — (3) Polar / Harmonic
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 12 — SQUARE WAVE DERIVATION (EXAM ANSWER)
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-crimson">
+  <div class="slide-tag">Section 6 · Very High Exam Weight</div>
+  <div class="slide-title">Square Wave — Full Derivation</div>
+
+  <div class="content">
+    <div class="callout callout-warn" style="font-size:16pt;margin-bottom:4mm;">
+      Given: f(x) = <b>A</b> for 0 &lt; x &lt; π &nbsp;|&nbsp; f(x) = <b>−A</b> for π &lt; x &lt; 2π
+    </div>
+
+    <table class="data-table">
+      <tr><th>Step</th><th>Result</th><th>Why?</th></tr>
+      <tr>
+        <td>Find a₀</td>
+        <td style="font-size:17pt;color:#ffa0a0;"><b>a₀ = 0</b></td>
+        <td style="font-size:15pt;">Symmetric wave — positive and negative areas cancel: Aπ − Aπ = 0</td>
+      </tr>
+      <tr>
+        <td>Find aₙ</td>
+        <td style="font-size:17pt;color:#ffa0a0;"><b>aₙ = 0</b></td>
+        <td style="font-size:15pt;">sin(nπ) = 0 and sin(0) = 0 for all integer n — everything cancels</td>
+      </tr>
+      <tr>
+        <td>Find bₙ (even n)</td>
+        <td style="font-size:17pt;color:#ffa0a0;"><b>bₙ = 0</b></td>
+        <td style="font-size:15pt;">(−1)ⁿ = +1 when n is even → 1 − 1 = 0</td>
+      </tr>
+      <tr>
+        <td>Find bₙ (odd n)</td>
+        <td style="font-size:17pt;color:#50ff80;"><b>bₙ = 4A/nπ</b></td>
+        <td style="font-size:15pt;">(−1)ⁿ = −1 when n is odd → 1 − (−1) = 2 → bₙ = A/nπ × 2 × 2 = 4A/nπ</td>
+      </tr>
+    </table>
+
+    <div style="height:3mm"></div>
+
+    <div class="formula-box" style="font-size:19pt;">
+      f(x) = (4A/π) [ sin(x) + sin(3x)/3 + sin(5x)/5 + sin(7x)/7 + … ]
+    </div>
+
+    <div style="height:3mm"></div>
+
+    <div class="callout callout-warn" style="font-size:17pt;">
+      <b>KEY CONCLUSION: Only ODD harmonics survive. Even harmonics cancel out.</b>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 13 — FOURIER TRANSFORM
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-navy">
+  <div class="slide-tag">Section 7 · Fourier Transform</div>
+  <div class="slide-title">Fourier Transform</div>
+  <div class="slide-subtitle">For <b>non-periodic</b> signals — no information created or lost</div>
+
+  <div class="content">
+    <div class="cards cards-2" style="margin-bottom:4mm;">
+      <div>
+        <div class="formula-box" style="font-size:18pt;">
+          F(ω) = ∫ f(t) · e⁻ⁱωᵗ dt
+        </div>
+        <div class="formula-label">Forward Transform (time → frequency)</div>
+      </div>
+      <div>
+        <div class="formula-box" style="font-size:18pt;">
+          f(t) = (1/2π) ∫ F(ω) · eⁱωᵗ dω
+        </div>
+        <div class="formula-label">Inverse Transform (frequency → time)</div>
+      </div>
+    </div>
+
+    <div class="callout" style="font-size:15pt;margin-bottom:4mm;">
+      Note: e⁻ⁱωᵗ = cos(ωt) − i·sin(ωt) &nbsp;|&nbsp; f(t) = time domain &nbsp;|&nbsp; F(ω) = frequency domain
+    </div>
+
+    <div class="slide-subtitle" style="font-size:17pt;margin-bottom:2mm;">Worked Example (Exam Answer)</div>
+    <div class="card">
+      <div class="card-body" style="font-size:16pt;line-height:1.6;">
+        <b>Find F(ω) of f(t) = e⁻ᵃᵗ·u(t), a &gt; 0</b> where u(t)=1 for t≥0, u(t)=0 for t&lt;0<br><br>
+        F(ω) = ∫₀^∞ e⁻ᵃᵗ · e⁻ⁱωᵗ dt = ∫₀^∞ e⁻⁽ᵃ⁺ⁱω⁾ᵗ dt<br><br>
+        Using ∫₀^∞ e⁻ᵇᵗ dt = 1/b (where b = a+iω, a > 0):<br>
+        <span style="color:#89d4ff;font-size:19pt;font-weight:800;">F(ω) = 1 / (a + iω)</span>
+      </div>
+    </div>
+
+    <div style="height:3mm"></div>
+
+    <div class="callout callout-warn" style="font-size:15pt;">
+      <b>Square pulse:</b> F(ω) = T·sinc(ωT/2). Wider pulse in time → <b>narrower</b> frequency spread. Narrower pulse → <b>wider</b> spread.
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 14 — SERIAL vs PARALLEL
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-green">
+  <div class="slide-tag">Section 9</div>
+  <div class="slide-title">Serial vs Parallel Transmission</div>
+
+  <div class="content">
+    <div class="compare">
+      <div class="compare-col">
+        <div class="compare-head blue">Serial Transmission</div>
+        <div class="compare-row"><span>Bits:</span> One at a time</div>
+        <div class="compare-row"><span>Wires:</span> 1 channel</div>
+        <div class="compare-row"><span>Distance:</span> <b>Long distance</b></div>
+        <div class="compare-row"><span>Cost:</span> Cheaper</div>
+        <div class="compare-row"><span>Speed:</span> Slower (short dist.)</div>
+        <div class="compare-row"><span>Risk:</span> Sync issues</div>
+        <div style="margin-top:3mm;font-size:13pt;opacity:0.6;">USB · Ethernet · RS-232 · Satellite · WiFi · 4G/5G · Fibre backbone</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-head green">Parallel Transmission</div>
+        <div class="compare-row"><span>Bits:</span> Multiple at once</div>
+        <div class="compare-row"><span>Wires:</span> Multiple (1 per bit)</div>
+        <div class="compare-row"><span>Distance:</span> <b>Short distance only</b></div>
+        <div class="compare-row"><span>Cost:</span> Expensive</div>
+        <div class="compare-row"><span>Speed:</span> Faster</div>
+        <div class="compare-row"><span>Risk:</span> Signal skew</div>
+        <div style="margin-top:3mm;font-size:13pt;opacity:0.6;">CPU data bus · Computer printer port · Internal memory transfer</div>
+      </div>
+    </div>
+
+    <div style="height:3mm"></div>
+
+    <div class="slide-subtitle" style="font-size:16pt;margin-bottom:2mm;">Long-Distance Serial Examples</div>
+    <table class="data-table">
+      <tr><th>Technology</th><th>Detail</th></tr>
+      <tr><td>Digital Telephony</td><td style="font-size:14pt;">Voice sent bit by bit over T1/E1 lines</td></tr>
+      <tr><td>Fibre-Optic Internet</td><td style="font-size:14pt;">Light pulses in single stream — backbone &amp; undersea cables</td></tr>
+      <tr><td>WiFi / 4G / 5G</td><td style="font-size:14pt;">Data packets transmitted bit by bit over radio waves</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 15 — ASYNC vs SYNC TRANSMISSION
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-amber">
+  <div class="slide-tag">Section 10</div>
+  <div class="slide-title">Asynchronous vs Synchronous</div>
+
+  <div class="content">
+    <div class="compare">
+      <div class="compare-col">
+        <div class="compare-head blue">Asynchronous</div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:2mm;padding:3mm;font-size:14pt;margin-bottom:3mm;font-family:monospace;letter-spacing:1px;">
+          | Start | D0 D1 D2 D3 D4 D5 D6 D7 | Parity | Stop |
+        </div>
+        <div class="compare-row"><span>Unit:</span> Character by character</div>
+        <div class="compare-row"><span>Clock:</span> No shared clock</div>
+        <div class="compare-row"><span>Overhead:</span> Start + Stop bits</div>
+        <div class="compare-row"><span>Error:</span> Parity bit</div>
+        <div class="compare-row"><span>Best for:</span> Sporadic data</div>
+        <div style="margin-top:3mm;font-size:13pt;opacity:0.6;">RS-232 · Keyboard · Mouse · Dial-up modem<br>Real-life: Short text messages</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-head green">Synchronous</div>
+        <div style="background:rgba(255,255,255,0.06);border-radius:2mm;padding:3mm;font-size:14pt;margin-bottom:3mm;font-family:monospace;letter-spacing:1px;">
+          | Sync | Sync | Data | Data | Data | Data | Data |
+        </div>
+        <div class="compare-row"><span>Unit:</span> Blocks / Frames</div>
+        <div class="compare-row"><span>Clock:</span> Shared clock / preamble</div>
+        <div class="compare-row"><span>Overhead:</span> None (no start/stop)</div>
+        <div class="compare-row"><span>Error:</span> Checksum / CRC</div>
+        <div class="compare-row"><span>Best for:</span> Bulk continuous data</div>
+        <div style="margin-top:3mm;font-size:13pt;opacity:0.6;">Ethernet · Broadband · Digital Telephony<br>Real-life: Phone calls, Video calls</div>
+      </div>
+    </div>
+
+    <div style="height:3mm"></div>
+
+    <div class="adv-dis">
+      <div class="adv-box">
+        <div class="adv-dis-title adv-title">Async Advantages</div>
+        <ul><li>Simple &amp; cost-effective</li><li>Good for sporadic data</li><li>Easy to implement</li></ul>
+      </div>
+      <div class="dis-box">
+        <div class="adv-dis-title dis-title">Async Disadvantages</div>
+        <ul><li>Extra bits reduce efficiency</li><li>Slower for bulk data</li><li>Less precise timing</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 16 — COMPUTER NETWORKS + TYPES
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-blue">
+  <div class="slide-tag">Section 11</div>
+  <div class="slide-title">Computer Networks</div>
+  <div class="slide-subtitle">A collection of <b>interconnected devices</b> that communicate and share resources</div>
+
+  <div class="content">
+    <div class="stat-grid" style="margin-bottom:5mm;">
+      <div class="stat-card">
+        <div class="stat-num">LAN</div>
+        <div class="stat-label"><b>Local Area Network</b><br>Office/Home<br>High speed, small area, inexpensive</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">MAN</div>
+        <div class="stat-label"><b>Metropolitan Area Network</b><br>City / Large Campus<br>Connects nearby LANs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">WAN</div>
+        <div class="stat-label"><b>Wide Area Network</b><br>Global / Country<br>Connects LANs + MANs; Internet</div>
+      </div>
+    </div>
+
+    <div class="callout" style="font-size:16pt;">
+      <b>LAN properties:</b> Very high speed · Small geographical area · Less expensive technology · Share hardware/software · Send messages &amp; emails between users
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 17 — NETWORK TOPOLOGIES
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-slate">
+  <div class="slide-tag">Section 11 · Network Topologies</div>
+  <div class="slide-title">Network Topologies</div>
+  <div class="slide-subtitle">Connection arrangement of nodes — defines cable, computer &amp; peripheral configuration</div>
+
+  <div class="content">
+    <div class="cards cards-2">
+      <div class="card">
+        <div class="card-label">Bus Topology</div>
+        <div class="card-title" style="font-size:18pt;">Single Backbone Cable</div>
+        <div class="adv-box" style="margin-top:2mm;"><div class="adv-dis-title adv-title" style="font-size:12pt;">Advantages</div><ul style="font-size:13pt;"><li>Easy to add nodes</li><li>Less cable than star</li><li>Cheaper; good for small networks</li></ul></div>
+        <div class="dis-box" style="margin-top:2mm;"><div class="adv-dis-title dis-title" style="font-size:12pt;">Disadvantages</div><ul style="font-size:13pt;"><li>Main cable break = whole network down</li><li>Needs terminators at both ends</li><li>Low security; not for heavy traffic</li></ul></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Star Topology · Most Common</div>
+        <div class="card-title" style="font-size:18pt;">Central Hub/Switch</div>
+        <div class="adv-box" style="margin-top:2mm;"><div class="adv-dis-title adv-title" style="font-size:12pt;">Advantages</div><ul style="font-size:13pt;"><li>Easy install &amp; wiring</li><li>One node fail = others unaffected</li><li>Easy fault detection; easy add/remove</li></ul></div>
+        <div class="dis-box" style="margin-top:2mm;"><div class="adv-dis-title dis-title" style="font-size:12pt;">Disadvantages</div><ul style="font-size:13pt;"><li>Requires large cable length</li><li>Hub failure = entire network down</li></ul></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ring Topology</div>
+        <div class="card-title" style="font-size:18pt;">Closed Loop Circle</div>
+        <div class="adv-box" style="margin-top:2mm;"><div class="adv-dis-title adv-title" style="font-size:12pt;">Advantages</div><ul style="font-size:13pt;"><li>No central device needed</li><li>Equal access; easy install</li><li>Easy fault detection</li></ul></div>
+        <div class="dis-box" style="margin-top:2mm;"><div class="adv-dis-title dis-title" style="font-size:12pt;">Disadvantages</div><ul style="font-size:13pt;"><li>Sequential = delays</li><li>Single break = whole network disrupted</li></ul></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Mesh Topology</div>
+        <div class="card-title" style="font-size:18pt;">Every Node Connected</div>
+        <div class="adv-box" style="margin-top:2mm;"><div class="adv-dis-title adv-title" style="font-size:12pt;">Advantages</div><ul style="font-size:13pt;"><li>Simultaneous multi-device data</li><li>Node failure = network unaffected</li></ul></div>
+        <div class="dis-box" style="margin-top:2mm;"><div class="adv-dis-title dis-title" style="font-size:12pt;">Disadvantages</div><ul style="font-size:13pt;"><li>Very expensive; high redundancy</li><li>Setup &amp; maintenance very difficult</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 18 — OSI MODEL (7 LAYERS)
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-dark">
+  <div class="slide-tag">Section 12 · Extremely Common Exam Topic</div>
+  <div class="slide-title">OSI Model — 7 Layers</div>
+  <div class="slide-subtitle">Open Systems Interconnection · Released <b>1984 by ISO</b></div>
+
+  <div class="content">
+    <table class="osi-table">
+      <tr class="osi-row">
+        <td class="osi-7">7</td>
+        <td>Application</td>
+        <td>User interface; file, print, email, database services; user access to network</td>
+      </tr>
+      <tr class="osi-row">
+        <td class="osi-6">6</td>
+        <td>Presentation</td>
+        <td>Syntax &amp; grammar; data format, <b>encryption</b> and <b>compression</b>; translates between formats</td>
+      </tr>
+      <tr class="osi-row">
+        <td class="osi-5">5</td>
+        <td>Session</td>
+        <td>Manages sessions/dialogues; inserts <b>checkpoints</b>; resumes interrupted dialogues; security parameters</td>
+      </tr>
+      <tr class="osi-row">
+        <td class="osi-4">4</td>
+        <td>Transport</td>
+        <td>End-to-end delivery; divides into <b>packets</b>; resequences at destination; <b>flow &amp; error control</b></td>
+      </tr>
+      <tr class="osi-row">
+        <td class="osi-3">3</td>
+        <td>Network</td>
+        <td><b>Routing</b>; translates logical → physical addresses; manages traffic, switching, congestion</td>
+      </tr>
+      <tr class="osi-row">
+        <td class="osi-2">2</td>
+        <td>Data Link</td>
+        <td>Assembles into <b>frames</b>; converts frames↔bits; physical addressing; error/flow/access control — single link</td>
+      </tr>
+      <tr class="osi-row">
+        <td class="osi-1">1</td>
+        <td>Physical</td>
+        <td><b>Bit stream</b> over physical medium; electrical/mechanical/timing specs; data rate, synchronization; hardware-specific</td>
+      </tr>
+    </table>
+
+    <div style="height:3mm"></div>
+
+    <div class="cards cards-2">
+      <div class="callout callout-green" style="font-size:15pt;">
+        <b>Top-Down Mnemonic:</b><br>
+        <b>A</b>ll <b>P</b>eople <b>S</b>eem <b>T</b>o <b>N</b>eed <b>D</b>ata <b>P</b>rocessing
+      </div>
+      <div class="callout callout-warn" style="font-size:15pt;">
+        <b>Bottom-Up Mnemonic:</b><br>
+        <b>P</b>lease <b>D</b>o <b>N</b>ot <b>T</b>hrow <b>S</b>ausage <b>P</b>izza <b>A</b>way
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 19 — SWITCHING & ROUTING
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-teal">
+  <div class="slide-tag">Section 13 &amp; 14</div>
+  <div class="slide-title">Switching &amp; Routing</div>
+
+  <div class="content">
+    <div class="cards cards-2" style="margin-bottom:4mm;">
+      <div class="card">
+        <div class="card-label">Circuit Switching</div>
+        <div class="card-title" style="font-size:19pt;">Dedicated Circuit</div>
+        <div class="card-body" style="font-size:14pt;line-height:1.4;">Physical path <b>exclusively reserved</b> for one connection for its entire duration. Released after transfer.<br><br>Example: <b>Public Telephone Network (PTCL)</b></div>
+        <div class="adv-box" style="margin-top:2mm;"><ul style="font-size:13pt;"><li>Efficient, fewer errors, reliable</li></ul></div>
+        <div class="dis-box" style="margin-top:2mm;"><ul style="font-size:13pt;"><li>Bandwidth wasted (e.g. when listening)</li><li>Complex setup; slow circuit establishment</li></ul></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Packet Switching</div>
+        <div class="card-title" style="font-size:19pt;">Data in Packets</div>
+        <div class="card-body" style="font-size:14pt;line-height:1.4;">Data split into <b>packets</b> with headers (routing info). Packets independent, can take different paths. Path <b>shared</b> among users. <b>Connectionless.</b><br><br>Example: <b>The Internet</b></div>
+        <div class="adv-box" style="margin-top:2mm;"><ul style="font-size:13pt;"><li>Efficient resource use; handles variable rates</li></ul></div>
+        <div class="dis-box" style="margin-top:2mm;"><ul style="font-size:13pt;"><li>Packet reordering takes time</li><li>Not good for small data packages</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cards cards-2">
+      <div class="card">
+        <div class="card-label">Source Routing</div>
+        <div class="card-body" style="font-size:15pt;"><b>Source node specifies entire route</b> before transmission. Used to troubleshoot and improve performance.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Hop-by-Hop Routing</div>
+        <div class="card-body" style="font-size:15pt;">Source does NOT know full path. Each node passes packet to <b>next node only</b>. Based on channel availability.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 20 — PROTOCOLS + ANALOG vs DIGITAL + NIC
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-purple">
+  <div class="slide-tag">Section 15 &amp; 16</div>
+  <div class="slide-title">Protocols · Analog/Digital · NIC</div>
+
+  <div class="content">
+    <div class="cards cards-2" style="margin-bottom:4mm;">
+      <div class="card">
+        <div class="card-label">Protocol</div>
+        <div class="card-body" style="font-size:14pt;line-height:1.5;">A <b>set of rules and procedures</b> governing communication. Without it, connected devices cannot communicate.<br><br><b>Functions:</b> Defines packet size · Numbering scheme · Error/flow control · Connection setup/termination · Data security · Routing algorithms · Communication logs</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Analog vs Digital</div>
+        <div class="card-body" style="font-size:14pt;line-height:1.5;">
+          <b>Analog:</b> Continuous waveform (e.g. human voice)<br><br>
+          <b>Digital:</b> Discrete ON/OFF states (0 or 1)<br><br>
+          Digital→Analog for transmission (modulation), converted back at receiver<br><br>
+          <b>Bandwidth</b> = data transfer rate = bits per second (bps)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Network Interface Card (NIC)</div>
+      <div class="card-body" style="font-size:15pt;line-height:1.5;">Hardware device that physically connects computer to network cable. Installed in expansion slot. Provides port for cable.<br><br>
+      <b>Functions:</b> Send data to host · Receive &amp; translate incoming data to machine language · Prepare data from computer for network cable · Control data flow</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 21 — TOP 15 EXAM TIPS
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-crimson">
+  <div class="slide-tag">Exam Strategy</div>
+  <div class="slide-title">Top 15 Exam Tips</div>
+
+  <div class="content">
+    <div class="tip-grid">
+      <div class="tip-item"><div class="tip-num">1</div><div class="tip-text"><b>5 Components</b> — Know each definition + example. She defines them precisely.</div></div>
+      <div class="tip-item"><div class="tip-num">2</div><div class="tip-text"><b>3 Principles</b> (Delivery, Accuracy, Timeliness) — Easy 3-mark question.</div></div>
+      <div class="tip-item"><div class="tip-num">3</div><div class="tip-text"><b>Data Flow</b> — WiFi = half-duplex. Telephone = full duplex. Always include examples.</div></div>
+      <div class="tip-item"><div class="tip-num">4</div><div class="tip-text"><b>Fibre-Optic</b> — Know all <b>6 advantages</b> + 3 disadvantages by heart.</div></div>
+      <div class="tip-item"><div class="tip-num">5</div><div class="tip-text"><b>Square Wave derivation</b> — Know why a₀=0, aₙ=0, bₙ=4A/nπ (odd only).</div></div>
+      <div class="tip-item"><div class="tip-num">6</div><div class="tip-text"><b>Even/Odd functions</b> — Even→Cosine Series; Odd→Sine Series.</div></div>
+      <div class="tip-item"><div class="tip-num">7</div><div class="tip-text"><b>Period formula</b> — sin(nx) = 2π/n. Calculate for any n instantly.</div></div>
+      <div class="tip-item"><div class="tip-num">8</div><div class="tip-text"><b>F.T. worked example</b> — e⁻ᵃᵗu(t) → 1/(a+iω). Know every step.</div></div>
+      <div class="tip-item"><div class="tip-num">9</div><div class="tip-text"><b>Time-Frequency</b> — Wider pulse = narrower spectrum. Narrower = wider.</div></div>
+      <div class="tip-item"><div class="tip-num">10</div><div class="tip-text"><b>Serial vs Parallel</b> — Serial = long distance. Parallel = short/internal.</div></div>
+      <div class="tip-item"><div class="tip-num">11</div><div class="tip-text"><b>Async vs Sync</b> — Know frame structures + error detection methods.</div></div>
+      <div class="tip-item"><div class="tip-num">12</div><div class="tip-text"><b>OSI Model</b> — All 7 layers, order, and functions. Both directions.</div></div>
+      <div class="tip-item"><div class="tip-num">13</div><div class="tip-text"><b>Topologies</b> — All 4: advantages + disadvantages (Bus, Star, Ring, Mesh).</div></div>
+      <div class="tip-item"><div class="tip-num">14</div><div class="tip-text"><b>Circuit vs Packet</b> — Dedicated path vs shared path. PTCL vs Internet.</div></div>
+      <div class="tip-item"><div class="tip-num">15</div><div class="tip-text"><b>OFDM</b> = Orthogonal Frequency Division Multiplexing → <b>5G &amp; LTE</b>. Fourier in real life.</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  SLIDE 22 — QUICK REFERENCE MASTER TABLE
+═══════════════════════════════════════════════════════════════════════ -->
+<div class="slide theme-dark">
+  <div class="slide-tag">Quick Reference</div>
+  <div class="slide-title">Master Reference Tables</div>
+
+  <div class="content">
+    <div class="slide-subtitle" style="font-size:17pt;margin-bottom:3mm;">Transmission Media</div>
+    <table class="data-table" style="margin-bottom:5mm;">
+      <tr><th>Media</th><th>Type</th><th>Direction</th><th>Frequency</th><th>Key Use</th></tr>
+      <tr><td>Twisted Pair</td><td>Guided</td><td>Both</td><td>—</td><td style="font-size:14pt;">LAN, Telephone</td></tr>
+      <tr><td>Coaxial</td><td>Guided</td><td>Both</td><td>—</td><td style="font-size:14pt;">Cable TV, CCTV</td></tr>
+      <tr><td>Fibre-Optic</td><td>Guided</td><td>Both</td><td>—</td><td style="font-size:14pt;">Internet Backbone</td></tr>
+      <tr><td style="color:#ff9966;">Radio Waves</td><td>Unguided</td><td>Omni</td><td>3KHz–1GHz</td><td style="font-size:14pt;">Broadcasting</td></tr>
+      <tr><td>Microwave</td><td>Unguided</td><td>Uni</td><td>1–300GHz</td><td style="font-size:14pt;">Long distance, Satellite</td></tr>
+      <tr><td style="color:#c084fc;">Infrared</td><td>Unguided</td><td>Short</td><td>300GHz–400THz</td><td style="font-size:14pt;">Remote controls</td></tr>
+    </table>
+
+    <div class="slide-subtitle" style="font-size:17pt;margin-bottom:3mm;">OSI Layers — One-Word Recall</div>
+    <div class="cards" style="grid-template-columns:repeat(7,1fr);gap:2mm;">
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(147,51,234,0.3);">
+        <div style="font-size:22pt;font-weight:900;">7</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Application</div>
+        <div style="font-size:11pt;opacity:0.6;">User</div>
+      </div>
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(79,70,229,0.3);">
+        <div style="font-size:22pt;font-weight:900;">6</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Presentation</div>
+        <div style="font-size:11pt;opacity:0.6;">Format</div>
+      </div>
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(37,99,235,0.3);">
+        <div style="font-size:22pt;font-weight:900;">5</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Session</div>
+        <div style="font-size:11pt;opacity:0.6;">Dialogue</div>
+      </div>
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(6,182,212,0.3);">
+        <div style="font-size:22pt;font-weight:900;">4</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Transport</div>
+        <div style="font-size:11pt;opacity:0.6;">Packets</div>
+      </div>
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(5,150,105,0.3);">
+        <div style="font-size:22pt;font-weight:900;">3</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Network</div>
+        <div style="font-size:11pt;opacity:0.6;">Routing</div>
+      </div>
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(245,158,11,0.3);">
+        <div style="font-size:22pt;font-weight:900;">2</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Data Link</div>
+        <div style="font-size:11pt;opacity:0.6;">Frames</div>
+      </div>
+      <div class="card" style="text-align:center;padding:3mm 2mm;background:rgba(239,68,68,0.3);">
+        <div style="font-size:22pt;font-weight:900;">1</div>
+        <div style="font-size:12pt;font-weight:700;color:#89d4ff;">Physical</div>
+        <div style="font-size:11pt;opacity:0.6;">Bits</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

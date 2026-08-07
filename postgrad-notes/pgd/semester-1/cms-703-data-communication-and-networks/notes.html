@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 703 Lecture Notes — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 703 Data Communication & Networks: Full class notes — data communication components, transmission, networking and the OSI model.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-703-data-communication-and-networks/notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-703-data-communication-and-networks/">CMS 703 Data Communication & Networks</a> / Lecture Notes</p>
+        <article class="doc">
+<h1 id="data-communication-and-networks---cms-703">Data Communication
+and Networks - CMS 703</h1>
+<p><strong>Institution:</strong> Rivers State University,
+Nkpolu-Oroworukwo, Port Harcourt <strong>Course Code:</strong> CMS 703
+<strong>Course Title:</strong> Data Communication and Networks
+<strong>Session:</strong> 2024/2025</p>
+<hr />
+<h2 id="data-communication">Data Communication</h2>
+<p>It is the sharing of information locally or remotely.</p>
+<p>A <strong>Data Communication System</strong> has five components that
+make up the data communication system:</p>
+<ol type="1">
+<li><strong>Message</strong> — refers to the data (information) to be
+transmitted (e.g. pictures, text, audio, numbers, etc.)</li>
+<li><strong>Sender</strong> — originating device from which the data is
+sent (e.g. mobile phone, computer, camera, etc.)</li>
+<li><strong>Receiver</strong> — the destination device that will receive
+the message (e.g. mobile phone, television, etc.)</li>
+<li><strong>Transmission Medium</strong> — the physical path where the
+message travels (or passes) from the sender point to the receiving point
+(e.g. twisted pair wire, coaxial cable, fibre-optic cable, radio waves,
+etc.)</li>
+<li><strong>Protocol</strong> — a set of rules that guide data
+communication. It enables synchronization between the sender and
+receiver.</li>
+</ol>
+<pre class="mermaid"><code>flowchart LR
+    S[&quot;Sender&quot;] --&gt;|&quot;(Message)&quot;| R[&quot;Receiver&quot;]
+    S --- P1[&quot;Protocol (Rule)&quot;]
+    R --- P2[&quot;Protocol (Rule)&quot;]
+    S -.-&gt;|&quot;Medium&quot;| R</code></pre>
+<hr />
+<h2 id="representation-of-data">Representation of Data</h2>
+<p>The data that is communicated can be in different forms and has its
+representation that will enable comprehension by the end devices.</p>
+<h3 id="text">Text</h3>
+<p>Represented by bit patterns — a collection of binary bits (0s or
+1s).</p>
+<p>There are different sets of bit patterns (codes) used to represent
+text symbols and each set is called a <strong>code</strong>. The mostly
+used code is called <strong>Unicode</strong>. It uses 32 bits for a
+symbol or character in any language globally. The ASCII code makes up
+127 characters on the Unicode and is referred to as Basic Latin.</p>
+<p><strong>Numbers:</strong> Bit patterns also used to represent numbers
+but does not use the ASCII code. The number is converted directly to
+binary. The number includes bits that help in mathematical
+operations.</p>
+<h3 id="images">Images</h3>
+<p>Also represented by bit patterns. Composed of a matrix of pixels
+(picture elements). The size of the pixel depends on the
+<strong>resolution</strong>. An image divided into pixels — each pixel
+is assigned a bit pattern and the value and size depend on the image.
+For example:</p>
+<ul>
+<li>Black pixel assigned to <code>00</code></li>
+<li>Dark grey pixel assigned to <code>01</code></li>
+<li>Light grey pixel assigned to <code>10</code></li>
+<li>White pixel assigned to <code>11</code></li>
+</ul>
+<p><strong>RGB</strong> and <strong>YCM</strong> are methods used to
+represent colour images.</p>
+<h3 id="audio">Audio</h3>
+<p>Has a continuous signal and not discrete. Can be changed to digital.
+Represented as a smooth function of time.</p>
+<h3 id="video">Video</h3>
+<p>Can be a continuous entity or a combination of images. Can be changed
+to digital or analog (voltage, current, electromagnetic wave). To
+transmit a continuous signal digitally, it must first be
+<strong>sampled</strong> or <strong>quantized</strong> — the signal is
+measured at regular intervals. To quantize it, each sample is
+approximated with a finite set of values, and the values are represented
+as bit patterns which is called <strong>Encoding</strong>.</p>
+<hr />
+<h2 id="data-flow">Data Flow</h2>
+<p>Refers to the style in which data is transmitted from one point to
+another. There are <strong>3 forms</strong>:</p>
+<h3 id="simplex">Simplex</h3>
+<p>Communication is unidirectional. Only one end can transmit or send
+data.</p>
+<ul>
+<li>Examples: Keyboard and Monitor, TV and Remote, TV broadcast.</li>
+</ul>
+<h3 id="half-duplex">Half-Duplex</h3>
+<p>Communication from both ends but not at the same time.</p>
+<ul>
+<li>Examples: Walkie-talkie, Web browser, WiFi.</li>
+</ul>
+<h3 id="full-duplex">Full Duplex</h3>
+<p>Communication in both directions simultaneously or at the same
+time.</p>
+<ul>
+<li>Example: Telephone network, live chat. The capacity of the channel
+is shared.</li>
+</ul>
+<hr />
+<h2 id="transmission-media">Transmission Media</h2>
+<p>Refers to a free space, metallic cable or optical cable used to
+transport the message or information from source to destination.
+Subdivided into <strong>2 categories</strong>: <strong>Guided</strong>
+and <strong>Unguided</strong>.</p>
+<ul>
+<li><strong>Guided:</strong> Twisted Pair, Coaxial cable, and
+Fibre-Optic cable</li>
+<li><strong>Unguided (Wireless):</strong> Free space</li>
+</ul>
+<h3 id="twisted-pair-cable">Twisted-Pair Cable</h3>
+<p>Consists of two conductors (copper) each insulated with plastic and
+twisted together. The number of twists per unit length affects the
+quality of the cable. Used in telephone but to provide voice and data
+channels. Also used in 10Base-T and 100Base-T Local Area Networks.</p>
+<h3 id="coaxial-cable">Coaxial Cable</h3>
+<p>Has a central core conductor of solid or stranded copper wire
+enclosed in an insulated sheath and covered with an outer semi-metal
+foil conductor. This serves as a shield against noise and as a conductor
+to complete the circuit. Covered with a plastic cover as an insulator.
+Used in analog telephone networks and later in digital telephone
+networks. Replaced by fibre-optic cable. Cable TV also uses it.
+Applications: satellite installation, CCTV.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Coaxial[&quot;Coaxial Cable (Cross-section)&quot;]
+        A[&quot;Inner Conductor&quot;] --&gt; B[&quot;Insulator&quot;] --&gt; C[&quot;Outer Conductor&quot;] --&gt; D[&quot;Plastic Cover&quot;]
+    end</code></pre>
+<h3 id="fibre-optic-cable">Fibre-Optic Cable</h3>
+<p>Transmits signal in the form of light. Made of glass or plastic. Uses
+reflection to guide light through a channel. The difference in density
+of the two materials must be such that a beam of light moving through
+the core is reflected off the cladding.</p>
+<pre class="mermaid"><code>flowchart LR
+    S[&quot;Sender&quot;] --&gt; CL1[&quot;Cladding&quot;] --&gt; CR[&quot;Core&quot;] --&gt; CL2[&quot;Cladding&quot;] --&gt; R[&quot;Receiver&quot;]</code></pre>
+<p><strong>Cable composition layers:</strong> Outer Jacket (PVC or
+Teflon) → Inside Jacket (Kevlar) → Cladding → Core</p>
+<p>Usually found in backbone networks. Has wide bandwidth and is
+cost-effective. Cable TV uses fibre-optic and coaxial to create a hybrid
+network. Local area networks like 100Base-FX (Fast Ethernet) and
+1000Base-X also use fibre-optic cable.</p>
+<h4 id="advantages-of-fibre-optic-cable">Advantages of Fibre-Optic
+Cable</h4>
+<ol type="1">
+<li>High bandwidth</li>
+<li>Less signal attenuation — 8km for 50km vs coaxial or twisted pairs
+that need repeaters every 5km</li>
+<li>Immunity to electromagnetic interference (EM noise cannot affect
+it)</li>
+<li>Resistance to corrosive materials (glass)</li>
+<li>Light weight — much lighter</li>
+<li>Higher immunity to tapping (copper cables create antenna effects
+that can be tapped)</li>
+</ol>
+<h4 id="disadvantages-of-fibre-optic-cable">Disadvantages of Fibre-Optic
+Cable</h4>
+<ol type="1">
+<li>Installation and maintenance require expertise</li>
+<li>Expensive to install</li>
+<li>Fragile — can be broken if bent too sharply or under excessive
+pressure</li>
+</ol>
+<hr />
+<h2 id="unguided-media-wireless-communication">Unguided Media (Wireless
+Communication)</h2>
+<p>Signal travels from source to destination in 3 ways:</p>
+<ul>
+<li><strong>Ground Propagation</strong></li>
+<li><strong>Sky Propagation</strong> (Radio Waves)</li>
+<li><strong>Line-of-Sight Propagation</strong></li>
+</ul>
+<h3 id="radio-waves">Radio Waves</h3>
+<p>Characterized by frequencies ranging between <strong>3 KHz and 1
+GHz</strong>. Can be <strong>omnidirectional</strong> — sending and
+receiving antennas don't have to be aligned. Radio waves propagated in
+sky mode travel long distances, appropriate for broadcasting (AM radio).
+The radio wave band is relatively small (less than 1 GHz) compared to
+microwaves. Used for multicasting — one sender and many receivers.</p>
+<ul>
+<li><strong>Examples:</strong> AM and FM radio, TV, Maritime radio,
+cordless microphones, paging.</li>
+</ul>
+<h3 id="microwaves">Microwaves</h3>
+<p>Electromagnetic waves with frequencies ranging between <strong>1 and
+300 GHz</strong>. Microwave transmission emanates from an antenna and is
+focused since they are <strong>unidirectional</strong>. Sending and
+receiving antennas need to be aligned. Signals use unidirectional
+antennas based on the geometry of a parabola (e.g. parabolic dish, horn
+antenna).</p>
+<h4 id="characteristics-of-microwave-signals">Characteristics of
+Microwave Signals</h4>
+<ol type="1">
+<li><strong>Line-of-sight propagation</strong> — positioned towers or
+mounted antennas to avoid curvature of the earth. For very distant
+communication, repeaters are required.</li>
+<li>Very high frequency microwaves cannot pass through walls.</li>
+<li>Relatively wide band of about 299 GHz. Wider sub-bands can be
+allocated to achieve a high data rate.</li>
+<li>Some part of the band restricted, requires permission of regulatory
+authorities.</li>
+</ol>
+<h3 id="infrared">Infrared</h3>
+<p>Waves with frequencies between <strong>300 GHz to 400 THz</strong>,
+wavelength range from 1mm to 770nm. High frequencies cannot penetrate
+walls, preventing interference between systems. Used for
+<strong>short-distance communications</strong>.</p>
+<ul>
+<li><strong>Applications:</strong> Remote control, night vision devices
+(convert ambient photons of light into electrons), Fourier analysis
+using chemical process, Infrared Astronomy (for observing objects in the
+universe impossible to detect with light), infrared tracking/missile
+guidance systems, gas detectors, laser analysis, thermal-imaging cameras
+(to detect overheating of electronic components).</li>
+</ul>
+<hr />
+<h2 id="fourier-analysis">Fourier Analysis</h2>
+<p>A concept that analyses a function of time to generate a function of
+frequencies, revealing components that are not obvious in the original
+signal. Can be termed a mathematical method that <strong>decomposes
+complex signals or functions to simple sine and cosine waves</strong>,
+converting data from the <strong>time domain</strong> to the
+<strong>frequency domain</strong>.</p>
+<h3 id="applications-of-fourier-analysis">Applications of Fourier
+Analysis</h3>
+<ol type="1">
+<li><strong>Engineering and Signal Processing</strong> — to filter
+noise, data analysis, compress signals</li>
+<li><strong>Physics</strong> — important for acoustics, optics and
+quantum mechanics</li>
+<li><strong>Neuroscience</strong> — for analysing time series data to
+find hidden rhythms in neural recordings</li>
+<li><strong>Mathematics</strong> — for reducing complex differential
+equations to simpler algebraic ones</li>
+</ol>
+<hr />
+<h2 id="fourier-series">Fourier Series</h2>
+<p>An aspect of Fourier analysis. A method for representing
+<strong>periodic signals</strong>. Periodic signals are signals that
+repeat over and over (e.g. sine, square wave). Splits a periodic signal
+into a sum of sines and cosines with different amplitudes and
+frequencies.</p>
+<p>Represented mathematically as:</p>
+<p><span class="math display">$$f(x) = \frac{a_0}{2} +
+\sum_{n=1}^{\infty} \left[ a_n \cos\!\left(\frac{n\pi x}{L}\right) + b_n
+\sin\!\left(\frac{n\pi x}{L}\right) \right]$$</span></p>
+<p>Where:</p>
+<ul>
+<li><code>f(x)</code> is the periodic function</li>
+<li><code>L</code> is the period (L can be T)</li>
+<li><code>a₀</code> is the average value =
+<code>(1/2L) ∫ f(x) dx</code></li>
+<li><code>aₙ</code> is the <strong>Cosine Coefficient</strong> =
+<code>(1/L) ∫ f(x) cos(nπx/L) dx</code>, n &gt; 0</li>
+<li><code>bₙ</code> is the <strong>Sine Coefficient</strong> =
+<code>(1/L) ∫ f(x) sin(nπx/L) dx</code>, n &gt; 0</li>
+</ul>
+<blockquote>
+<p><strong>NOTE:</strong></p>
+<ul>
+<li>When f(x) is <strong>even</strong>: bₙ = 0 → <strong>Fourier Cosine
+Series</strong></li>
+<li>When f(x) is <strong>odd</strong>: aₙ = 0 → <strong>Fourier Sine
+Series</strong></li>
+</ul>
+</blockquote>
+<h3 id="period-frequency-and-amplitude">Period, Frequency, and
+Amplitude</h3>
+<ul>
+<li><p>The <strong>period</strong> is the distance on the x-axis after
+which the shape repeats = 2π.</p>
+<ul>
+<li>For sin(2x): period = π</li>
+<li>For sin(3x): period = 2π/3</li>
+<li>For sin(nx): period = 2π/n</li>
+<li><em>The larger the number in front of x, the shorter the
+period.</em></li>
+</ul></li>
+<li><p>The <strong>frequency</strong> is the opposite of period:
+<code>f = 1/T</code></p>
+<ul>
+<li>sinx → the <strong>fundamental frequency</strong></li>
+<li>sin(3x) → the <strong>harmonics</strong> (exact multiple of the
+fundamental frequency)</li>
+</ul></li>
+<li><p>The <strong>amplitude</strong> is how high or low the wave is —
+controls the size of the wave.</p>
+<ul>
+<li>E.g. y = A sin(θ). If A = 1, the wave moves amplitude from +1 to
+−1.</li>
+</ul></li>
+</ul>
+<p>Given
+<code>f(x) = (4/π)[sin(x)/1 + sin(3x)/3 + sin(5x)/5 + sin(7x)/7 + ...]</code>
+this approximates a square wave.</p>
+<h3 id="fourier-series-of-a-square-wave--worked-example">Fourier Series
+of a Square Wave — Worked Example</h3>
+<p>Given:</p>
+<pre><code>f(x) = { A   for 0 &lt; x &lt; π
+        {-A   for π &lt; x &lt; 2π</code></pre>
+<p><strong>Finding a₀:</strong></p>
+<p><span class="math display">$$a_0 = \frac{1}{2\pi}\int_0^{2\pi}
+f(x)\,dx = \frac{1}{2\pi}\left[\int_0^\pi A\,dx +
+\int_\pi^{2\pi}(-A)\,dx\right] = \frac{1}{2\pi}[A\pi - A\pi] =
+0$$</span></p>
+<p><em>(a₀ is the DC component of the wave)</em></p>
+<p><strong>Finding aₙ:</strong></p>
+<p><span class="math display">$$a_n = \frac{1}{\pi}\int_0^{2\pi}
+f(x)\cos(nx)\,dx = \frac{A}{\pi}\left[\int_0^\pi\cos(nx)\,dx -
+\int_\pi^{2\pi}\cos(nx)\,dx\right]$$</span></p>
+<p>Since sin of any integer multiplied by π = 0, and sin(0) = 0,
+everything cancels out:</p>
+<blockquote>
+<p><strong>aₙ = 0 for every integer n</strong></p>
+</blockquote>
+<p><strong>Finding bₙ:</strong></p>
+<p><span class="math display">$$b_n = \frac{1}{\pi}\int_0^{2\pi}
+f(x)\sin(nx)\,dx = \frac{A}{\pi}\left[\int_0^\pi\sin(nx)\,dx -
+\int_\pi^{2\pi}\sin(nx)\,dx\right]$$</span></p>
+<p>After integration and substituting boundary values using cos(0) = 1,
+cos(2π) = 1, cos(nπ) = (−1)ⁿ:</p>
+<p><span class="math display">$$b_n = \frac{A}{n\pi}\left[2(1 -
+(-1)^n)\right]$$</span></p>
+<ul>
+<li>When <strong>n is even</strong> (n = 2, 4, 6, ...): (−1)ⁿ = 1, so
+<strong>bₙ = 0</strong></li>
+<li>When <strong>n is odd</strong> (n = 1, 3, 5, ...): (−1)ⁿ = −1, so
+<strong>bₙ = 4A/nπ</strong></li>
+</ul>
+<blockquote>
+<p><strong>It implies that only the odd harmonics exist and the even
+harmonics cancel out.</strong></p>
+</blockquote>
+<hr />
+<h2 id="fourier-transform">Fourier Transform</h2>
+<p>Refers to the relationship between the <strong>time domain</strong>
+of a single signal and its <strong>frequency domain</strong>. Decomposes
+a signal into oscillatory functions. The original signal can be obtained
+from its transformation; hence, no information is created or lost during
+the process.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f(t)</td>
+<td>Original signal (time domain)</td>
+</tr>
+<tr>
+<td>F(ω)</td>
+<td>Transform signal (frequency domain)</td>
+</tr>
+<tr>
+<td>ω</td>
+<td>Angular frequency</td>
+</tr>
+<tr>
+<td>i</td>
+<td>Imaginary unit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Forward Transform:</strong></p>
+<p><span
+class="math display"><em>F</em>(<em>ω</em>) = ∫<sub>−∞</sub><sup>∞</sup><em>f</em>(<em>t</em>) <em>e</em><sup>−<em>i</em><em>ω</em><em>t</em></sup> <em>d</em><em>t</em></span></p>
+<p>Note: <code>e^{-iωt} = cos(ωt) − i·sin(ωt)</code></p>
+<p><strong>Inverse Transform (to recover original signal):</strong></p>
+<p><span class="math display">$$f(t) =
+\frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega)\,e^{i\omega
+t}\,d\omega$$</span></p>
+<h3 id="examples-of-fourier-transform">Examples of Fourier
+Transform</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Fourier Transform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rectangular Pulse</td>
+<td>Sinc function in frequency domain</td>
+</tr>
+<tr>
+<td>Gaussian Function</td>
+<td>Remains Gaussian</td>
+</tr>
+<tr>
+<td>Sinusoidal wave</td>
+<td>Delta function at its frequency</td>
+</tr>
+</tbody>
+</table>
+<h3 id="applications-of-fourier-transform">Applications of Fourier
+Transform</h3>
+<ol type="1">
+<li><strong>Signal Processing</strong> — Compression, Filtering,
+Modulation</li>
+<li><strong>Image Processing</strong> — Edge detection, Blurring,
+Sharpening</li>
+<li><strong>Physics</strong> — Solving wave and heat equations</li>
+<li><strong>Engineering</strong> — Analyze vibrations, circuits and
+control systems</li>
+</ol>
+<h3 id="fourier-transform-of-a-square-pulse">Fourier Transform of a
+Square Pulse</h3>
+<p>Given a square pulse signal with period range of −T/2 to T/2, the
+Fourier Transform will be:</p>
+<p><span class="math display">$$F(\omega) =
+T\cdot\text{sinc}\!\left(\frac{\omega T}{2}\right)$$</span></p>
+<p>This means the square pulse contains many frequencies. The Sinc
+function shows how these frequencies are distributed: strongest at the
+centre and fading outward.</p>
+<blockquote>
+<p><strong>The wider the pulse in time, the narrower the frequency
+spread; the narrower the pulse in time, the wider the frequency
+spread.</strong></p>
+</blockquote>
+<h3 id="worked-example-fourier-transform">Worked Example: Fourier
+Transform</h3>
+<p><strong>Find the Fourier Transform of f(t) = e^{−at}u(t), a &gt;
+0</strong> where u(t) is the unit step function: u(t) = 1 for t ≥ 0 and
+u(t) = 0 for t &lt; 0.</p>
+<p><strong>Solution:</strong></p>
+<p><span
+class="math display"><em>F</em>(<em>ω</em>) = ∫<sub>−∞</sub><sup>∞</sup><em>f</em>(<em>t</em>) <em>e</em><sup>−<em>i</em><em>ω</em><em>t</em></sup> <em>d</em><em>t</em> = ∫<sub>0</sub><sup>∞</sup><em>e</em><sup>−<em>a</em><em>t</em></sup> <em>e</em><sup>−<em>i</em><em>ω</em><em>t</em></sup> <em>d</em><em>t</em> = ∫<sub>0</sub><sup>∞</sup><em>e</em><sup>−(<em>a</em> + <em>i</em><em>ω</em>)<em>t</em></sup> <em>d</em><em>t</em></span></p>
+<p>Using the standard exponential integral
+<code>∫₀^∞ e^{-bt} dt = 1/b</code> for Re(b) &gt; 0, where b = a + iω
+and a &gt; 0:</p>
+<p><span class="math display">$$\boxed{F(\omega) = \frac{1}{a +
+i\omega},\quad a &gt; 0}$$</span></p>
+<hr />
+<h2 id="real-life-scenario-bandwidth-allocation-in-communication">Real
+Life Scenario: Bandwidth Allocation in Communication</h2>
+<p>Designing a system that will transmit digital data over a physical
+medium (e.g. copper wire, fibre optic or wireless radio). Data is
+modeled as a time-domain signal (voltage or light intensity over
+time).</p>
+<p><strong>Key questions to answer:</strong> What frequencies are
+present? How much bandwidth does the signal occupy? Will it interfere
+with other signals?</p>
+<p><strong>Solution approach:</strong></p>
+<ol type="1">
+<li><strong>Model the signal</strong> (e.g. square pulses)</li>
+<li><strong>Apply Fourier Transform</strong> — transforms into Sinc
+function</li>
+<li><strong>Analyze the spectrum:</strong>
+<ul>
+<li>Identify the dominant frequencies</li>
+<li>Determine the bandwidth needed to transmit without distortion</li>
+<li>Design filters to remove noise or prevent interference with close
+channels</li>
+</ul></li>
+</ol>
+<pre class="mermaid"><code>flowchart LR
+    A[&quot;Digital Signal\n(binary 1,0)&quot;] --&gt; B[&quot;Fourier Transform\n(Sinc-like spectrum)&quot;] --&gt; C[&quot;Low-pass Filter\n(removes high frequencies)&quot;]</code></pre>
+<blockquote>
+<p>Engineers can use this to allocate frequency bands in WiFi, 4G, and
+5G. This principle powers <strong>OFDM (Orthogonal Frequency Division
+Multiplexing)</strong> — a core technology in 5G and LTE (Long Term
+Evolution).</p>
+</blockquote>
+<hr />
+<h2 id="serial-and-parallel-data-transmission">Serial and Parallel Data
+Transmission</h2>
+<p>Two basic methods: <strong>Serial</strong> and
+<strong>Parallel</strong> data transmission. Central for network design,
+computer architecture and communication systems.</p>
+<h3 id="serial-data-transmission">Serial Data Transmission</h3>
+<p>Method where data is transmitted <strong>one bit after
+another</strong> over a single communication channel. Characterized by
+one channel/wire for data transfer. Sequential travel of bits. Commonly
+used in long distance communication.</p>
+<h4 id="advantages-of-serial-transmission">Advantages of Serial
+Transmission</h4>
+<ol type="1">
+<li>Cost effective — requires fewer cables or wire</li>
+<li>Reliable over long distances (less signal distortion and data
+corruption)</li>
+<li>Widely used in modern networks (e.g. USB, Ethernet, serial ports
+RS-232)</li>
+</ol>
+<h4 id="disadvantages-of-serial-transmission">Disadvantages of Serial
+Transmission</h4>
+<ol type="1">
+<li>Slower than parallel transmission for short distances</li>
+<li>Requires synchronization between sender and receiver</li>
+<li>Not ideal for bulk transfers</li>
+<li>Hardware constraint can cap performance (max speed depends on how
+fast bits can be sent per second)</li>
+<li>Prone to synchronization challenges (sender and receiver must be in
+sync)</li>
+</ol>
+<h3 id="parallel-data-transmission">Parallel Data Transmission</h3>
+<p>Method where <strong>multiple bits are transmitted
+simultaneously</strong> across multiple channels/wires/cables.
+Characterized by use of multiple wires (one per bit). Transfers an
+entire word (byte) at once. Common in short distance, high-speed
+communication.</p>
+<h4 id="advantages-of-parallel-data-transmission">Advantages of Parallel
+Data Transmission</h4>
+<ol type="1">
+<li>High speed transfer (multiple bits transferred at same time)</li>
+<li>Efficient for short distances (within a computer)</li>
+</ol>
+<h4 id="disadvantages-of-parallel-data-transmission">Disadvantages of
+Parallel Data Transmission</h4>
+<ol type="1">
+<li>Expensive — requires more wires and connectors</li>
+<li>Signal might be skewed (bits arriving at different times)</li>
+<li>Not suitable for long distances due to interference and
+synchronization issues (e.g. computer buses, data bus in CPU, printer
+connections, internal memory transfer)</li>
+</ol>
+<h3 id="examples-of-long-distance-communication">Examples of
+Long-Distance Communication</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Transmission Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Telephone Network (Digital Telephony)</td>
+<td>Serial — voice sent bit by bit over T1, E1 lines</td>
+</tr>
+<tr>
+<td>Fibre Optic Communication</td>
+<td>Serial — light pulses in a single stream (Internet backbone,
+undersea cables)</td>
+</tr>
+<tr>
+<td>Satellite Communication</td>
+<td>Serial — bit streams before modulation and transmission</td>
+</tr>
+<tr>
+<td>Wireless (WiFi, 4G/5G)</td>
+<td>Serial — data packets transmitted one bit after another over radio
+waves</td>
+</tr>
+</tbody>
+</table>
+<h3 id="serial-communication-applications-in-embedded-systems">Serial
+Communication Applications in Embedded Systems</h3>
+<ul>
+<li><strong>RS-232, RS-485, SPI</strong> used in long distance control
+and monitoring (SCADA)</li>
+<li>Systems used in power plants, oil refineries, water treatments</li>
+<li>Oil and gas pipelines use RS-485 or Modbus to transmit pressure/flow
+data across kilometres</li>
+<li>Smart grid/power distribution: electrical sub-stations use
+<strong>DNP3</strong> over RS-232/RS-485</li>
+<li>Network monitoring tools (e.g. PRTG/Zabbix)</li>
+</ul>
+<hr />
+<h2 id="asynchronous-and-synchronous-transmission">Asynchronous and
+Synchronous Transmission</h2>
+<p>Two fundamental modes of data transfer related to timing and
+synchronization of devices.</p>
+<h3 id="asynchronous-transmission">Asynchronous Transmission</h3>
+<p>Characterized by <strong>character-by-character</strong> framing with
+Start and Stop bits. No shared clock; synchronization happens at the
+character level.</p>
+<p><strong>Frame structure:</strong></p>
+<pre><code>| Start bit | D0 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | [Parity] | Stop bit |</code></pre>
+<ul>
+<li><strong>Start bit</strong> — signals beginning of the character</li>
+<li><strong>Data bits</strong> — 7 or 8 bits (actual information)</li>
+<li><strong>Parity bit</strong> — optional, for error detection</li>
+<li><strong>Stop bit</strong> — signals end of the character</li>
+</ul>
+<h4 id="advantages-of-asynchronous-transmission">Advantages of
+Asynchronous Transmission</h4>
+<ol type="1">
+<li>Simple and cost effective</li>
+<li>Efficient for sporadic or irregular data</li>
+<li>Easy to implement</li>
+</ol>
+<h4 id="disadvantages-of-asynchronous-transmission">Disadvantages of
+Asynchronous Transmission</h4>
+<ol type="1">
+<li>Extra bits reduce efficiency</li>
+<li>Slower for continuous, large data transfer</li>
+<li>Has less precise timing</li>
+</ol>
+<h4 id="applications">Applications</h4>
+<p>Serial ports (RS-232), keyboard/mouse communication, early dial-up
+modems.</p>
+<blockquote>
+<p><strong>Real-life example:</strong> Sending short text messages.</p>
+</blockquote>
+<h3 id="synchronous-transmission">Synchronous Transmission</h3>
+<p>Data transfer in form of <strong>blocks (or frames)</strong> without
+start or stop bits. Sender and receiver synchronized by a clock or
+special signals.</p>
+<p><strong>Frame structure:</strong></p>
+<pre><code>← [Sync | Sync | Data | Data | Data | Data | Data | Data]   (data flow direction)</code></pre>
+<p>Structure: continuous stream of data. Synchronization achieved
+through preambles, clock signals, or special characters. Error detection
+handled with <strong>checksum</strong> or <strong>CRC</strong>.</p>
+<h4 id="advantages-of-synchronous-transmission">Advantages of
+Synchronous Transmission</h4>
+<ol type="1">
+<li>High efficiency (no start and stop overhead)</li>
+<li>Faster transmission rate</li>
+<li>Suitable for bulk, continuous data transfer</li>
+</ol>
+<h4 id="disadvantages-of-synchronous-transmission">Disadvantages of
+Synchronous Transmission</h4>
+<ol type="1">
+<li>More complex and costly</li>
+<li>Requires precise synchronization</li>
+<li>If there are errors, can affect large blocks of data</li>
+</ol>
+<h4 id="applications-1">Applications</h4>
+<p>Ethernet networks, broadband communication, digital telephony and
+satellite/wireless systems.</p>
+<blockquote>
+<p><strong>Real-life examples:</strong> Phone calls, video calls.</p>
+</blockquote>
+<hr />
+<h2 id="computer-network">Computer Network</h2>
+<p><em>(Notes dated: 24/1/2026)</em></p>
+<p>A <strong>computer network</strong> is a collection of interconnected
+devices (computers, servers, switches, etc.) that communicate and share
+resources. Computer networks range from small local setups to global
+infrastructures.</p>
+<h3 id="types-of-computer-networks">Types of Computer Networks</h3>
+<h4 id="based-on-scope">Based on Scope</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Full Name</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LAN</strong></td>
+<td>Local Area Network</td>
+<td>Small area (e.g. office, home)</td>
+</tr>
+<tr>
+<td><strong>MAN</strong></td>
+<td>Metropolitan Area Network</td>
+<td>A city or large campus (e.g. bus/metro area)</td>
+</tr>
+<tr>
+<td><strong>WAN</strong></td>
+<td>Wide Area Network</td>
+<td>Large geographical area (e.g. Internet)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="based-on-topology">Based on Topology</h4>
+<ol type="1">
+<li><strong>Bus Topology</strong></li>
+<li><strong>Star Topology</strong></li>
+<li><strong>Ring Topology</strong></li>
+<li><strong>Mesh Topology</strong></li>
+</ol>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

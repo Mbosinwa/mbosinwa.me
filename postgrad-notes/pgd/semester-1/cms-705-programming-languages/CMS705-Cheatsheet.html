@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMS 705 — Programming Languages Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d2e;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --text: #f0f0f5;
+    --muted: #9b9bb4;
+    --border: #2e3150;
+    --code-bg: #0d1117;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  /* ── SLIDE ── */
+  .slide {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 14mm 12mm;
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* top accent bar */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent4));
+  }
+
+  /* bottom badge */
+  .slide-num {
+    position: absolute;
+    bottom: 10mm; right: 14mm;
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .course-badge {
+    position: absolute;
+    bottom: 10mm; left: 14mm;
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(135deg, #0f1117 0%, #1a1d2e 50%, #0f1117 100%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .cover .glow {
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.35) 0%, transparent 70%);
+    margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 90px;
+  }
+  .cover h1 {
+    font-size: 52px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .cover .subtitle {
+    font-size: 26px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .cover .meta {
+    font-size: 20px;
+    color: var(--muted);
+    margin-top: 24px;
+    line-height: 2;
+  }
+  .cover .meta span { color: var(--accent2); font-weight: 700; }
+  .divider {
+    width: 80px; height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    margin: 18px auto;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .section-title .num {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 900;
+    flex-shrink: 0;
+    color: white;
+  }
+  .section-title h2 {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .section-title h2 em {
+    font-style: normal;
+    color: var(--accent2);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+  th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: rgba(108,99,255,0.06); }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: var(--accent4); }
+  td em { color: var(--accent2); font-style: normal; }
+
+  /* ── CODE ── */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow: hidden;
+    margin-bottom: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .comment { color: #6a9955; }
+  .keyword { color: #569cd6; font-weight: 700; }
+  .type { color: #4ec9b0; }
+  .string { color: #ce9178; }
+  .num-lit { color: #b5cea8; }
+  .func { color: #dcdcaa; }
+
+  /* ── PILL TAGS ── */
+  .tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 4px 4px 4px 0;
+  }
+  .tag-purple { background: rgba(108,99,255,0.25); color: #a89fff; border: 1px solid rgba(108,99,255,0.4); }
+  .tag-green  { background: rgba(0,212,170,0.18); color: #00d4aa; border: 1px solid rgba(0,212,170,0.4); }
+  .tag-red    { background: rgba(255,107,107,0.18); color: #ff8080; border: 1px solid rgba(255,107,107,0.4); }
+  .tag-yellow { background: rgba(255,217,61,0.18); color: #ffd93d; border: 1px solid rgba(255,217,61,0.4); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout-purple { background: rgba(108,99,255,0.15); border-left: 4px solid var(--accent); }
+  .callout-green  { background: rgba(0,212,170,0.12); border-left: 4px solid var(--accent2); }
+  .callout-yellow { background: rgba(255,217,61,0.12); border-left: 4px solid var(--accent4); }
+  .callout-red    { background: rgba(255,107,107,0.12); border-left: 4px solid var(--accent3); }
+  .callout-icon   { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+
+  /* ── 2-COL GRID ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+
+  /* ── COMPARE BOX ── */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .compare-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .compare-box.left { border-top: 3px solid var(--accent); }
+  .compare-box.right { border-top: 3px solid var(--accent2); }
+  .compare-title { font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .compare-box.left .compare-title { color: var(--accent); }
+  .compare-box.right .compare-title { color: var(--accent2); }
+  .compare-box ul { list-style: none; padding: 0; }
+  .compare-box ul li { font-size: 18px; padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .compare-box ul li:last-child { border-bottom: none; }
+  .compare-box ul li::before { content: '▸ '; color: var(--muted); }
+
+  /* ── BIG STAT ── */
+  .stat-row { display: flex; gap: 10px; margin-bottom: 14px; }
+  .stat {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .stat-val { font-size: 36px; font-weight: 900; color: var(--accent2); }
+  .stat-label { font-size: 17px; color: var(--muted); margin-top: 4px; }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 14px 0;
+  }
+  .flow-box {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-size: 19px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text);
+    min-width: 80px;
+  }
+  .flow-arrow {
+    font-size: 26px;
+    color: var(--accent2);
+    padding: 0 6px;
+    font-weight: 900;
+  }
+
+  /* ── MEMORY DIAGRAM ── */
+  .mem-stack {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    font-size: 19px;
+  }
+  .mem-row {
+    padding: 11px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .mem-row:last-child { border-bottom: none; }
+  .mem-label {
+    font-weight: 700;
+    font-size: 18px;
+    min-width: 130px;
+  }
+  .mem-desc { color: var(--muted); font-size: 17px; }
+  .mem-stack { .stack-row { background: rgba(108,99,255,0.1); } }
+
+  /* pipeline */
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+  .pipe-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 20px;
+  }
+  .pipe-step:first-child { border-radius: 12px 12px 0 0; }
+  .pipe-step:last-child { border-radius: 0 0 12px 12px; border-top: none; }
+  .pipe-step:not(:first-child):not(:last-child) { border-top: none; }
+  .pipe-icon { font-size: 26px; width: 38px; text-align: center; flex-shrink: 0; }
+  .pipe-name { font-weight: 800; color: var(--accent4); min-width: 180px; }
+  .pipe-desc { color: var(--muted); font-size: 18px; }
+
+  /* list */
+  .nice-list { list-style: none; padding: 0; margin-bottom: 14px; }
+  .nice-list li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 21px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nice-list li:last-child { border-bottom: none; }
+  .nice-list li::before { content: '▸'; position: absolute; left: 6px; color: var(--accent2); font-weight: 900; }
+
+  p { font-size: 21px; margin-bottom: 12px; color: var(--muted); }
+  p strong { color: var(--text); }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .slide { page-break-after: always; break-after: page; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════ COVER ════════════════════════════ -->
+<div class="slide cover">
+  <div class="glow">📚</div>
+  <h1>CMS 705<br>Programming Languages</h1>
+  <div class="divider"></div>
+  <p class="subtitle">Complete Exam Cheat Sheet</p>
+  <div class="meta">
+    <span>Rivers State University</span><br>
+    Lecturer: the lecturer &nbsp;|&nbsp; Session: 2024/2025<br><br>
+    <span style="font-size:18px;color:#6a6a8a;">Topics Covered</span><br>
+    Language Structure · Data Types · Data Structures<br>
+    Control Structures · Data Flow · Runtime<br>
+    Interpretive Languages · Lexical Analysis &amp; Parsing
+  </div>
+</div>
+
+<!-- ════════════════════════════ SLIDE 1 — LANGUAGE STRUCTURE ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">1</div>
+    <h2>Language <em>Structure</em></h2>
+  </div>
+  <div class="callout callout-purple">
+    <span class="callout-icon">💡</span>
+    A language is a <strong>formal system of symbols and rules</strong> to communicate with a computer. Every instruction must have a <strong>precise, single meaning</strong>.
+  </div>
+  <table>
+    <tr><th>Component</th><th>What it studies</th><th>CS / C++ analogy</th></tr>
+    <tr><td><strong>Phonology</strong></td><td>Sound patterns — smallest units (phonemes)</td><td><code>int</code>, <code>&lt;&lt;</code>, <code>age</code> — tokens</td></tr>
+    <tr><td><strong>Morphology</strong></td><td>How words/tokens are formed</td><td><code>Walk + ed</code> → <code>Walked</code>; identifiers</td></tr>
+    <tr><td><strong>Syntax</strong></td><td>Rules for arranging words → sentences</td><td><code>for(int i=0;i&lt;10;i++){}</code></td></tr>
+    <tr><td><strong>Semantics</strong></td><td>Meaning of words / sentences</td><td>What the code actually <em>does</em></td></tr>
+    <tr><td><strong>Pragmatics</strong></td><td>Language in social / usage context</td><td>Readability, writability, reliability</td></tr>
+  </table>
+  <div class="callout callout-green">
+    <span class="callout-icon">🎯</span>
+    <strong>3 Key Questions a Language Must Answer:</strong><br>
+    1. What programs <em>look like</em> → <strong>Syntax</strong><br>
+    2. What programs <em>mean</em> → <strong>Semantics</strong><br>
+    3. How programs are <em>used in practice</em> → <strong>Pragmatics</strong>
+  </div>
+  <div class="span class-num">CMS 705</div>
+  <span class="slide-num">1 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 2 — SEMANTICS ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">2</div>
+    <h2>Static vs <em>Dynamic</em> Semantics</h2>
+  </div>
+  <div class="compare">
+    <div class="compare-box left">
+      <div class="compare-title">⚙️ Static Semantics</div>
+      <ul>
+        <li>Checked at <strong>compile time</strong></li>
+        <li>Type compatibility</li>
+        <li>Variable declared before use</li>
+        <li>Prevents execution errors</li>
+      </ul>
+    </div>
+    <div class="compare-box right">
+      <div class="compare-title">▶️ Dynamic Semantics</div>
+      <ul>
+        <li>Checked at <strong>runtime</strong></li>
+        <li>How expressions are evaluated</li>
+        <li>How values change during execution</li>
+        <li>What actually happens when code runs</li>
+      </ul>
+    </div>
+  </div>
+<pre><span class="comment">// STATIC SEMANTICS — compile-time error</span>
+<span class="type">int</span> x;
+x = <span class="string">"hello"</span>; <span class="comment">// ❌ Compile error: can't assign string to int</span>
+
+<span class="comment">// DYNAMIC SEMANTICS — runtime behaviour</span>
+<span class="type">int</span> c = <span class="num-lit">0</span>;
+<span class="keyword">if</span> (flag) c = <span class="num-lit">1</span>;   <span class="comment">// value changes at runtime</span>
+cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
+  <div class="callout callout-yellow">
+    <span class="callout-icon">⚠️</span>
+    <strong>Exam tip:</strong> Static = compile time (type errors, undeclared vars). Dynamic = runtime (actual behaviour, value changes).
+  </div>
+  <span class="slide-num">2 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 3 — TYPES OF LANGUAGE ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">3</div>
+    <h2>Types of Language — <em>Levels of Abstraction</em></h2>
+  </div>
+  <table>
+    <tr><th>Level</th><th>Type</th><th>Example</th><th>Notes</th></tr>
+    <tr>
+      <td><strong>Lowest</strong></td>
+      <td>Machine Language</td>
+      <td><code>01001010</code></td>
+      <td>Binary; CPU executes directly; no translation; machine-dependent</td>
+    </tr>
+    <tr>
+      <td><strong>Low</strong></td>
+      <td>Assembly Language</td>
+      <td><code>MOV A, B</code></td>
+      <td>Mnemonics; needs assembler; full hardware control</td>
+    </tr>
+    <tr>
+      <td><strong>Middle</strong></td>
+      <td>C Language</td>
+      <td><code>int sum = a+b;</code></td>
+      <td>Hardware access + structured; used in OS, compilers</td>
+    </tr>
+    <tr>
+      <td><strong>High</strong></td>
+      <td>Python, Java, C++</td>
+      <td>English-like syntax</td>
+      <td>Needs compiler/interpreter; machine-independent; easy to use</td>
+    </tr>
+  </table>
+  <div class="compare">
+    <div class="compare-box left">
+      <div class="compare-title">Middle-level (C)</div>
+      <ul>
+        <li>Moderate portability</li>
+        <li>Faster execution</li>
+        <li>Manual memory management</li>
+        <li>Systems / embedded use</li>
+      </ul>
+    </div>
+    <div class="compare-box right">
+      <div class="compare-title">High-level (C++, Python)</div>
+      <ul>
+        <li>High portability</li>
+        <li>Slower (compilation overhead)</li>
+        <li>Automatic memory</li>
+        <li>Application / end-user focus</li>
+      </ul>
+    </div>
+  </div>
+  <span class="slide-num">3 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 4 — IMPLEMENTATION METHODS ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">4</div>
+    <h2>Implementation <em>Methods</em></h2>
+  </div>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <span class="pipe-icon">🔧</span>
+      <span class="pipe-name">Assembly</span>
+      <span class="pipe-desc">Translates assembly language → machine code via assembler</span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">📦</span>
+      <span class="pipe-name">Compilation</span>
+      <span class="pipe-desc">Entire program translated at once → <code>.exe</code> (C, C++)</span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">▶️</span>
+      <span class="pipe-name">Interpretation</span>
+      <span class="pipe-desc">Code translated &amp; executed <strong>line by line</strong> at runtime (Python, JS)</span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">⚡</span>
+      <span class="pipe-name">JIT (Just-in-Time)</span>
+      <span class="pipe-desc">Bytecode compiled to machine code <strong>on demand at runtime</strong> — Java / JVM</span>
+    </div>
+  </div>
+  <table>
+    <tr><th></th><th>Compiled</th><th>Interpreted</th><th>JIT</th></tr>
+    <tr><td><strong>Speed</strong></td><td><em>Fast</em></td><td>Slower</td><td>Near-compiled</td></tr>
+    <tr><td><strong>Output</strong></td><td><em>.exe</em></td><td>None</td><td>Native (runtime)</td></tr>
+    <tr><td><strong>Errors found</strong></td><td>Before run</td><td>During run</td><td>Mix</td></tr>
+    <tr><td><strong>Examples</strong></td><td>C, C++</td><td>Python, JS</td><td>Java (JVM)</td></tr>
+  </table>
+  <span class="slide-num">4 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 5 — PRIMITIVE DATA TYPES ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">5</div>
+    <h2>Primitive <em>Data Types</em></h2>
+  </div>
+  <div class="callout callout-purple">
+    <span class="callout-icon">📌</span>
+    Built-in, <strong>fixed size</strong>, stored directly in memory (CPU-level). Cannot be null. No built-in functions.
+  </div>
+  <table>
+    <tr><th>Type</th><th>Size</th><th>Example</th><th>Use</th></tr>
+    <tr><td><strong>int</strong></td><td>4 bytes</td><td><code>int count = 10;</code></td><td>Counting, indexing, loops</td></tr>
+    <tr><td><strong>short int</strong></td><td>2 bytes</td><td><code>short x = 5;</code></td><td>Smaller integers</td></tr>
+    <tr><td><strong>long int</strong></td><td>4–8 bytes</td><td><code>long big = 99999;</code></td><td>Large integers</td></tr>
+    <tr><td><strong>unsigned int</strong></td><td>4 bytes</td><td><code>unsigned int u = 10;</code></td><td>Non-negative only</td></tr>
+    <tr><td><strong>float</strong></td><td>4 bytes</td><td><code>float t = 36.5;</code></td><td>Single precision (7 digits)</td></tr>
+    <tr><td><strong>double</strong></td><td>8 bytes</td><td><code>double pi = 3.14159;</code></td><td>Double precision (15–16 digits)</td></tr>
+    <tr><td><strong>char</strong></td><td>1 byte</td><td><code>char g = 'A';</code></td><td>Single character (ASCII)</td></tr>
+    <tr><td><strong>bool</strong></td><td>1 byte</td><td><code>bool ok = true;</code></td><td>Decision / conditions</td></tr>
+    <tr><td><strong>void</strong></td><td>—</td><td><code>void display(){}</code></td><td>Functions with no return value</td></tr>
+  </table>
+  <div class="callout callout-yellow">
+    <span class="callout-icon">🧠</span>
+    <strong>int</strong> range: −2,147,483,648 to 2,147,483,647 &nbsp;|&nbsp; <strong>char</strong> uses single quotes <code>'A'</code> &nbsp;|&nbsp; <strong>string</strong> uses double quotes <code>"Alex"</code>
+  </div>
+  <span class="slide-num">5 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 6 — NON-PRIMITIVE DATA TYPES ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">6</div>
+    <h2>Non-Primitive <em>Data Types</em></h2>
+  </div>
+  <div class="callout callout-green">
+    <span class="callout-icon">📌</span>
+    Also called <strong>reference / derived types</strong>. Complex, dynamic size, have built-in functions. Built from primitive types.
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">String</div>
+      <pre style="margin:0;font-size:15px;"><span class="type">string</span> name = <span class="string">"Alex Johnson"</span>;
+cout &lt;&lt; name.<span class="func">length</span>();  <span class="comment">// 12</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title">Array</div>
+      <pre style="margin:0;font-size:15px;"><span class="type">int</span> nums[] = {<span class="num-lit">10</span>,<span class="num-lit">20</span>,<span class="num-lit">30</span>,<span class="num-lit">40</span>};
+cout &lt;&lt; nums[<span class="num-lit">0</span>];  <span class="comment">// 10</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title">Struct</div>
+      <pre style="margin:0;font-size:15px;"><span class="keyword">struct</span> Student {
+  <span class="type">string</span> name; <span class="type">int</span> age;
+};</pre>
+    </div>
+    <div class="card">
+      <div class="card-title">Pointer</div>
+      <pre style="margin:0;font-size:15px;"><span class="type">int</span> c = <span class="num-lit">10</span>;
+<span class="type">int</span>* ptr = &amp;c;
+<span class="comment">// ptr stores address of c</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title">Enum</div>
+      <pre style="margin:0;font-size:15px;"><span class="keyword">enum</span> Day {Mon,Tue,Wed,Thu};
+Day today = Wed;
+cout &lt;&lt; today; <span class="comment">// 2</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title">Class (OOP)</div>
+      <pre style="margin:0;font-size:15px;"><span class="keyword">class</span> Car {
+<span class="keyword">public</span>:
+  <span class="type">string</span> model; <span class="type">int</span> year;
+  <span class="type">void</span> <span class="func">display</span>();
+};</pre>
+    </div>
+  </div>
+  <table>
+    <tr><th></th><th>Primitive</th><th>Non-Primitive</th></tr>
+    <tr><td><strong>Created by</strong></td><td>Language itself</td><td>Programmer / library</td></tr>
+    <tr><td><strong>Size</strong></td><td>Fixed</td><td>Dynamic</td></tr>
+    <tr><td><strong>Functions</strong></td><td>None</td><td>Many built-in</td></tr>
+  </table>
+  <span class="slide-num">6 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 7 — DATA STRUCTURES ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">7</div>
+    <h2>Data <em>Structures</em> — Overview</h2>
+  </div>
+  <div class="callout callout-purple">
+    <span class="callout-icon">💡</span>
+    A method of <strong>organising, storing, and managing data</strong> in a computer so it can be accessed and manipulated efficiently.
+  </div>
+  <div class="compare">
+    <div class="compare-box left">
+      <div class="compare-title">Linear</div>
+      <ul>
+        <li>Sequential arrangement</li>
+        <li>Single level</li>
+        <li>Simple to traverse</li>
+        <li>Array, Linked List, Stack, Queue</li>
+      </ul>
+    </div>
+    <div class="compare-box right">
+      <div class="compare-title">Non-Linear</div>
+      <ul>
+        <li>Hierarchical / graph-like</li>
+        <li>Multiple levels</li>
+        <li>Complex to traverse</li>
+        <li>Tree, Graph, Heap, Hash Table, Trie</li>
+      </ul>
+    </div>
+  </div>
+  <table>
+    <tr><th>Operation</th><th>Description</th></tr>
+    <tr><td><strong>Insertion</strong></td><td>Add element (beginning, end, or position)</td></tr>
+    <tr><td><strong>Deletion</strong></td><td>Remove element + free memory</td></tr>
+    <tr><td><strong>Traversal</strong></td><td>Visit ALL elements once — "go through everything"</td></tr>
+    <tr><td><strong>Searching</strong></td><td>Find specific element — "stop when found" (Linear or Binary)</td></tr>
+    <tr><td><strong>Updating</strong></td><td>Change value of existing element</td></tr>
+    <tr><td><strong>Sorting</strong></td><td>Arrange ascending/descending (Bubble, Selection, Insertion)</td></tr>
+    <tr><td><strong>Merging</strong></td><td>Combine two data structures into one</td></tr>
+  </table>
+  <div class="callout callout-yellow">
+    <span class="callout-icon">⚠️</span>
+    <strong>Traversal vs Searching:</strong> Traversal visits every element. Searching stops as soon as it finds the target.
+  </div>
+  <span class="slide-num">7 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 8 — LINEAR + NON-LINEAR + CODE ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">8</div>
+    <h2>Linear &amp; Non-Linear <em>Structures</em></h2>
+  </div>
+  <div class="grid2">
+    <div>
+      <div class="card">
+        <div class="card-title">Stack — LIFO</div>
+        Push (insert) &nbsp;|&nbsp; Pop (remove)<br>
+        <span class="tag tag-purple">Function calls</span><span class="tag tag-purple">Undo/redo</span><span class="tag tag-purple">Browser back</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Queue — FIFO</div>
+        Enqueue (rear) &nbsp;|&nbsp; Dequeue (front)<br>
+        <span class="tag tag-green">Printer queue</span><span class="tag tag-green">CPU scheduling</span>
+      </div>
+      <div class="card">
+        <div class="card-title">Array</div>
+        Contiguous memory, fixed size, O(1) access by index
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-title">Binary Tree</div>
+        Each node ≤ 2 children. Left &lt; Parent &lt; Right (BST)
+      </div>
+      <div class="card">
+        <div class="card-title">Hash Table</div>
+        key → hash function → index. O(1) avg. lookup/insert/delete
+      </div>
+      <div class="card">
+        <div class="card-title">Heap</div>
+        <strong>Max Heap:</strong> Parent ≥ Children<br>
+        <strong>Min Heap:</strong> Parent ≤ Children
+      </div>
+    </div>
+  </div>
+<pre><span class="comment">// Singly Linked List — key exam implementation</span>
+<span class="keyword">struct</span> Node { <span class="type">int</span> data; Node* next; };
+Node* head = <span class="keyword">NULL</span>;
+<span class="type">void</span> <span class="func">insertEnd</span>(<span class="type">int</span> value) {
+  Node* newNode = <span class="keyword">new</span> Node();
+  newNode-&gt;data = value;  newNode-&gt;next = <span class="keyword">NULL</span>;
+  <span class="keyword">if</span> (head == <span class="keyword">NULL</span>) { head = newNode; <span class="keyword">return</span>; }
+  Node* temp = head;
+  <span class="keyword">while</span> (temp-&gt;next != <span class="keyword">NULL</span>) temp = temp-&gt;next;
+  temp-&gt;next = newNode;
+}</pre>
+  <span class="slide-num">8 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 9 — CONTROL STRUCTURES ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">9</div>
+    <h2>Control <em>Structures</em></h2>
+  </div>
+  <div class="callout callout-purple">
+    <span class="callout-icon">💡</span>
+    Determine the <strong>order of execution</strong> — which statement runs, when, and how many times.
+  </div>
+  <table>
+    <tr><th>#</th><th>Type</th><th>Purpose</th><th>Keywords</th></tr>
+    <tr><td><strong>1</strong></td><td>Sequential</td><td>Default top-to-bottom</td><td>(none — default)</td></tr>
+    <tr><td><strong>2</strong></td><td>Selection</td><td>Branch on condition</td><td><code>if</code>, <code>else</code>, <code>else if</code>, <code>switch</code></td></tr>
+    <tr><td><strong>3</strong></td><td>Iteration</td><td>Repeat a block</td><td><code>for</code>, <code>while</code>, <code>do-while</code>, <code>for-each</code></td></tr>
+    <tr><td><strong>4</strong></td><td>Jump</td><td>Transfer control unconditionally</td><td><code>break</code>, <code>continue</code>, <code>return</code>, <code>goto</code></td></tr>
+  </table>
+  <div class="grid2">
+    <pre><span class="comment">// For loop (known iterations)</span>
+<span class="keyword">for</span> (<span class="type">int</span> i=<span class="num-lit">1</span>; i&lt;=<span class="num-lit">5</span>; i++)
+  cout &lt;&lt; i;
+
+<span class="comment">// While (condition-based)</span>
+<span class="type">int</span> i = <span class="num-lit">1</span>;
+<span class="keyword">while</span> (i &lt;= <span class="num-lit">5</span>) { cout &lt;&lt; i; i++; }
+
+<span class="comment">// Do-While (runs at least ONCE)</span>
+<span class="keyword">do</span> { cout &lt;&lt; i; i++; }
+<span class="keyword">while</span> (i &lt;= <span class="num-lit">5</span>);</pre>
+    <pre><span class="comment">// For-each</span>
+<span class="type">int</span> nums[] = {<span class="num-lit">1</span>,<span class="num-lit">2</span>,<span class="num-lit">3</span>,<span class="num-lit">4</span>,<span class="num-lit">5</span>};
+<span class="keyword">for</span> (<span class="type">int</span> n : nums) cout &lt;&lt; n;
+
+<span class="comment">// Break vs Continue</span>
+<span class="keyword">if</span> (i==<span class="num-lit">5</span>) <span class="keyword">break</span>;    <span class="comment">// EXIT loop</span>
+<span class="keyword">if</span> (i==<span class="num-lit">6</span>) <span class="keyword">continue</span>; <span class="comment">// SKIP iteration</span>
+
+<span class="comment">// Switch</span>
+<span class="keyword">switch</span>(day){
+  <span class="keyword">case</span> <span class="num-lit">1</span>: cout&lt;&lt;<span class="string">"Mon"</span>; <span class="keyword">break</span>;
+  <span class="keyword">default</span>: cout&lt;&lt;<span class="string">"Other"</span>;
+}</pre>
+  </div>
+  <span class="slide-num">9 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 10 — DATA FLOW ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>Data <em>Flow</em></h2>
+  </div>
+  <div class="callout callout-green">
+    <span class="callout-icon">💡</span>
+    The <strong>movement, transformation, and usage of data</strong> within a program: Input → Storage → Processing → Output
+  </div>
+  <div class="flow" style="margin-bottom:14px;">
+    <div class="flow-box">Input</div><div class="flow-arrow">→</div>
+    <div class="flow-box">Storage</div><div class="flow-arrow">→</div>
+    <div class="flow-box">Processing</div><div class="flow-arrow">→</div>
+    <div class="flow-box">Output</div>
+  </div>
+  <table>
+    <tr><th colspan="2">By Program Execution</th></tr>
+    <tr><td><strong>Sequential</strong></td><td>Line by line: A→B→C→D</td></tr>
+    <tr><td><strong>Conditional</strong></td><td>Branches on condition (if/else)</td></tr>
+    <tr><td><strong>Iterative</strong></td><td>Data flows repeatedly through loops</td></tr>
+    <tr><td><strong>Procedural</strong></td><td>Data moves between functions via parameters/return</td></tr>
+  </table>
+  <div class="compare">
+    <div class="compare-box left">
+      <div class="compare-title">Explicit Flow</div>
+      <ul>
+        <li>Clearly written in code</li>
+        <li>Passed as parameters</li>
+        <li>Returned from functions</li>
+        <li>Easy to trace &amp; debug</li>
+      </ul>
+    </div>
+    <div class="compare-box right">
+      <div class="compare-title">Implicit Flow</div>
+      <ul>
+        <li>Through global variables</li>
+        <li>Hidden / indirect</li>
+        <li>Harder to trace</li>
+        <li>Can cause side effects</li>
+      </ul>
+    </div>
+  </div>
+  <span class="slide-num">10 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 11 — RUNTIME ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>Runtime <em>Considerations</em></h2>
+  </div>
+  <div class="callout callout-purple">
+    <span class="callout-icon">💡</span>
+    <strong>Runtime</strong> = the phase when a compiled/interpreted program is <strong>actually executing</strong> on the CPU.
+  </div>
+  <div class="mem-stack">
+    <div class="mem-row" style="background:rgba(108,99,255,0.12);">
+      <div class="mem-label" style="color:var(--accent);">📦 Stack</div>
+      <div>Local variables, function calls &nbsp;|&nbsp; <strong>LIFO</strong>, auto-freed when function ends</div>
+    </div>
+    <div class="mem-row" style="background:rgba(0,212,170,0.08);">
+      <div class="mem-label" style="color:var(--accent2);">🌐 Heap</div>
+      <div>Dynamic allocations via <code>new</code> &nbsp;|&nbsp; Must manually free with <code>delete</code></div>
+    </div>
+    <div class="mem-row" style="background:rgba(255,217,61,0.08);">
+      <div class="mem-label" style="color:var(--accent4);">🌍 Global</div>
+      <div>Global / static variables &nbsp;|&nbsp; Lives for entire program lifetime</div>
+    </div>
+    <div class="mem-row">
+      <div class="mem-label" style="color:var(--muted);">📜 Code</div>
+      <div>Compiled instructions (text segment) — read-only</div>
+    </div>
+  </div>
+<pre><span class="type">int</span> globalCounter = <span class="num-lit">100</span>;    <span class="comment">// Global area</span>
+<span class="type">int</span> <span class="func">processData</span>(<span class="type">int</span> value) {
+  <span class="type">int</span> localVar = value * <span class="num-lit">2</span>;   <span class="comment">// Stack — auto freed</span>
+  <span class="type">int</span>* heapVar = <span class="keyword">new</span> <span class="type">int</span>(<span class="num-lit">5</span>);  <span class="comment">// Heap — must free!</span>
+  <span class="type">int</span> result = *heapVar;
+  <span class="keyword">delete</span> heapVar;              <span class="comment">// Free heap memory</span>
+  <span class="keyword">return</span> result;
+}</pre>
+  <table>
+    <tr><th></th><th>Compile Time</th><th>Runtime</th></tr>
+    <tr><td><strong>When</strong></td><td>Before execution</td><td>During execution</td></tr>
+    <tr><td><strong>Errors</strong></td><td>Syntax, type errors</td><td>Logic, null pointer, division by zero</td></tr>
+    <tr><td><strong>Semantics</strong></td><td>Static</td><td>Dynamic</td></tr>
+  </table>
+  <span class="slide-num">11 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 12 — INTERPRETIVE LANGUAGES ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>Interpretive <em>Languages</em></h2>
+  </div>
+  <table>
+    <tr><th></th><th>Compiled</th><th>Interpreted</th><th>JIT</th></tr>
+    <tr><td><strong>Translation</strong></td><td>Whole program at once</td><td>Line by line at runtime</td><td>Bytecode → machine code on demand</td></tr>
+    <tr><td><strong>Output file</strong></td><td><em>.exe</em> produced</td><td>No output file</td><td>Native code at runtime</td></tr>
+    <tr><td><strong>Speed</strong></td><td>Fast (pre-translated)</td><td>Slower</td><td>Near-compiled</td></tr>
+    <tr><td><strong>Portability</strong></td><td>Lower (platform-specific)</td><td>High</td><td>High (via JVM)</td></tr>
+    <tr><td><strong>Examples</strong></td><td>C, C++</td><td>Python, JavaScript</td><td>Java (JVM)</td></tr>
+  </table>
+  <div class="grid2" style="margin-top:6px;">
+    <div class="card">
+      <div class="card-title">How Interpretation Works</div>
+      <div class="flow" style="flex-direction:column;gap:4px;align-items:flex-start;">
+        <div style="font-size:18px;">📄 Source Code (.py)</div>
+        <div style="font-size:22px;color:var(--accent2);padding-left:16px;">↓</div>
+        <div style="font-size:18px;">🔍 Read line 1 → Translate → Execute</div>
+        <div style="font-size:22px;color:var(--accent2);padding-left:16px;">↓</div>
+        <div style="font-size:18px;">🔍 Read line 2 → Translate → Execute</div>
+        <div style="font-size:22px;color:var(--accent2);padding-left:16px;">↓</div>
+        <div style="font-size:18px;">❌ Error on line 3 → Stop</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">How JIT Works (Java)</div>
+      <div class="flow" style="flex-direction:column;gap:4px;align-items:flex-start;">
+        <div style="font-size:18px;">📄 Java Source (.java)</div>
+        <div style="font-size:22px;color:var(--accent2);padding-left:16px;">↓ <span style="color:var(--muted);font-size:16px;">javac compiler</span></div>
+        <div style="font-size:18px;">⚙️ Bytecode (.class)</div>
+        <div style="font-size:22px;color:var(--accent2);padding-left:16px;">↓ <span style="color:var(--muted);font-size:16px;">JVM</span></div>
+        <div style="font-size:18px;">⚡ JIT → Machine Code</div>
+        <div style="font-size:22px;color:var(--accent2);padding-left:16px;">↓</div>
+        <div style="font-size:18px;">🚀 Fast Execution</div>
+      </div>
+    </div>
+  </div>
+  <div class="callout callout-yellow">
+    <span class="callout-icon">⚠️</span>
+    Interpreter <strong>never produces</strong> a saved executable. JIT produces machine code but only at runtime — not saved to disk.
+  </div>
+  <span class="slide-num">12 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ SLIDE 13 — LEXICAL ANALYSIS ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>Lexical Analysis <em>&amp; Parsing</em></h2>
+  </div>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <span class="pipe-icon">📖</span>
+      <span class="pipe-name">Source Code</span>
+      <span class="pipe-desc">Raw text written by programmer</span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">🔡</span>
+      <span class="pipe-name">Lexical Analysis</span>
+      <span class="pipe-desc">Groups characters → <strong>TOKENS</strong> (keywords, identifiers, operators, literals)</span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">🌳</span>
+      <span class="pipe-name">Parsing</span>
+      <span class="pipe-desc">Checks grammar rules → builds <strong>Parse Tree / AST</strong></span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">🧠</span>
+      <span class="pipe-name">Semantic Analysis</span>
+      <span class="pipe-desc">Checks meaning — types, declarations, compatibility</span>
+    </div>
+    <div class="pipe-step">
+      <span class="pipe-icon">⚙️</span>
+      <span class="pipe-name">Code Generation</span>
+      <span class="pipe-desc">Produces machine code / bytecode</span>
+    </div>
+  </div>
+  <pre><span class="comment">// Source: int age = 20;</span>
+<span class="comment">// Tokens: [KEYWORD:int] [IDENT:age] [OP:=] [LIT:20] [DELIM:;]</span>
+
+<span class="comment">// Lexical Error (invalid token):</span>
+<span class="type">int</span> @age = <span class="num-lit">5</span>;    <span class="comment">// ❌ '@' not valid token</span>
+<span class="comment">// Syntax Error (valid tokens, wrong grammar):</span>
+<span class="type">int</span> = age <span class="num-lit">5</span>;     <span class="comment">// ❌ wrong arrangement</span>
+<span class="comment">// Semantic Error (valid syntax, wrong meaning):</span>
+<span class="type">int</span> age = <span class="string">"hello"</span>; <span class="comment">// ❌ type mismatch</span></pre>
+  <table>
+    <tr><th>Linguistics</th><th>Programming Language</th><th>Compiler Stage</th></tr>
+    <tr><td>Phonology</td><td>Characters, symbols</td><td>Character scanning</td></tr>
+    <tr><td>Morphology</td><td>Tokens — keywords, identifiers</td><td>Lexical Analysis</td></tr>
+    <tr><td>Syntax</td><td>Valid statements &amp; expressions</td><td>Parsing</td></tr>
+    <tr><td>Semantics</td><td>Meaning of code</td><td>Semantic Analysis</td></tr>
+  </table>
+  <span class="slide-num">13 / 13</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+<!-- ════════════════════════════ QUICK REFERENCE ════════════════════════════ -->
+<div class="slide">
+  <div class="section-title">
+    <div class="num">✦</div>
+    <h2>Quick <em>Reference</em></h2>
+  </div>
+  <div class="grid2">
+    <div>
+      <table>
+        <tr><th colspan="2">Key Definitions</th></tr>
+        <tr><td><strong>Syntax</strong></td><td>Rules for valid code structure</td></tr>
+        <tr><td><strong>Semantics</strong></td><td>What the code means</td></tr>
+        <tr><td><strong>Pragmatics</strong></td><td>Readability, writability, reliability</td></tr>
+        <tr><td><strong>Data Type</strong></td><td>What a variable holds + ops allowed</td></tr>
+        <tr><td><strong>Parameter</strong></td><td>Variable declared in function definition</td></tr>
+        <tr><td><strong>Argument</strong></td><td>Value passed when calling a function</td></tr>
+        <tr><td><strong>Stack</strong></td><td>LIFO — local vars, auto-freed</td></tr>
+        <tr><td><strong>Heap</strong></td><td>Dynamic alloc, manual <code>delete</code></td></tr>
+        <tr><td><strong>Traversal</strong></td><td>Visit every element once</td></tr>
+        <tr><td><strong>Searching</strong></td><td>Stop when element found</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="callout callout-red" style="margin-bottom:10px;">
+        <span class="callout-icon">🎯</span>
+        <div><strong>Exam Tips</strong><br>
+        • Know Singly Linked List C++ code<br>
+        • Know Binary Tree C++ code<br>
+        • Know Grade Calculator (procedural data flow)<br>
+        • break = exits loop; continue = skips iteration<br>
+        • Static = compile time; Dynamic = runtime<br>
+        • do-while runs at least ONCE<br>
+        • JIT: bytecode → machine code at runtime<br>
+        • Phonology→Morphology→Syntax = Lexer→Parser</div>
+      </div>
+      <div class="callout callout-green">
+        <span class="callout-icon">📋</span>
+        <div><strong>5 Course Topics</strong><br>
+        1. Language Definition Structure<br>
+        2. Data Types &amp; Structures<br>
+        3. Runtime Considerations<br>
+        4. Interpretive Languages<br>
+        5. Lexical Analysis &amp; Parsing</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:16px;">
+    <div style="font-size:17px;color:var(--muted);">Rivers State University &nbsp;|&nbsp; CMS 705 — Programming Languages &nbsp;|&nbsp; the lecturer &nbsp;|&nbsp; 2024/2025</div>
+  </div>
+  <span class="slide-num">✦</span>
+  <span class="course-badge">CMS 705</span>
+</div>
+
+</body>
+</html>

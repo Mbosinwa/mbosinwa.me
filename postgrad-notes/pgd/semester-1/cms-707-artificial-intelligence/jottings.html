@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 707 Class Jottings — Problem Solving — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 707 Artificial Intelligence: In-class jottings on problem solving and state space search.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/jottings.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/">CMS 707 Artificial Intelligence</a> / Class Jottings — Problem Solving</p>
+        <article class="doc">
+<h1
+id="cms-707--class-jottings-problem-solving--state-space-representation">CMS
+707 — Class Jottings: Problem Solving &amp; State Space
+Representation</h1>
+<p><em>(Partial class jottings — superseded by full class notes: <a
+href="notes.html">the full class notes</a>)</em></p>
+<h2 id="key-concepts-introduced">Key Concepts Introduced</h2>
+<ul>
+<li>Artificial Intelligence</li>
+<li>Problem Solving</li>
+<li>State Space Representation</li>
+<li>AI Agent, Rational Agent</li>
+</ul>
+<hr />
+<h2 id="classic-ai-problems">Classic AI Problems</h2>
+<h3 id="1-water-jug-problem">1. Water Jug Problem</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>Given two jugs: a 4-gallon jug and a 3-gallon jug</li>
+<li>Neither jug has measuring markers</li>
+<li>A tap is available to fill jugs with water</li>
+</ul>
+<p><strong>Goal:</strong> Get exactly 2 gallons of water into the
+4-gallon jug</p>
+<h3 id="2-farmer-lion-goat-and-yam-problem">2. Farmer, Lion, Goat, and
+Yam Problem</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>A farmer has 3 items: Lion, Goat, and Yam</li>
+<li>The farmer needs to cross a river using a boat</li>
+<li>Constraints:
+<ul>
+<li>If the farmer leaves the Lion and Goat alone → Lion eats the
+Goat</li>
+<li>If the farmer leaves the Goat and Yam alone → Goat eats the Yam</li>
+</ul></li>
+</ul>
+<p><strong>Goal:</strong> Get all items safely across the river</p>
+<p><strong>State Space Representation:</strong></p>
+<ul>
+<li>Letters: F = Farmer, L = Lion, G = Goat, Y = Yam</li>
+<li>Bar <code>|</code> represents the river</li>
+<li>Initial state: <code>FLGY|</code> (all on one bank)</li>
+<li>Goal state: <code>|FLGY</code> (all on the other bank)</li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

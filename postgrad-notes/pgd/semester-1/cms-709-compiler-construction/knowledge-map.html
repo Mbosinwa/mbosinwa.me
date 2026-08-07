@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 709 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 709 Compiler Construction: Topic and concept map of the whole course, with relationships and entry points.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/knowledge-map.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/">CMS 709 Compiler Construction</a> / Knowledge Map</p>
+        <article class="doc">
+<h1 id="knowledge-map-compiler-construction">Knowledge Map: Compiler
+Construction</h1>
+<blockquote>
+<p>Generated: 2026-04-02 | Topics: 8 | Concepts: 17 | Relationships:
+19</p>
+</blockquote>
+<hr />
+<h2 id="course-overview">Course Overview</h2>
+<p>Compiler Construction (CMS709) covers the theory and practice of
+building a compiler — a program that translates source code into
+executable form. The course begins with <strong>Lexical
+Analysis</strong>, the first compiler phase, which converts raw
+character streams into structured tokens using formal language theory,
+finite automata, and transition diagrams. It establishes the
+foundational concepts of tokens, patterns, lexemes, regular expressions,
+and the formal Chomsky language hierarchy that underpin all subsequent
+compiler phases.</p>
+<hr />
+<h2 id="concept-hierarchy">Concept Hierarchy</h2>
+<pre><code>Compiler Construction (CMS709)
+├── 1. Lexical Analysis                              [6 concepts]
+│   ├── Role: first phase of compiler
+│   │   ├── Key Concepts: Token, Lexeme, Pattern, Symbol Table
+│   │   └── Central: TOKEN ★
+│   ├── LA ↔ Parser interaction (subroutine model)
+│   │   └── Key Concepts: Lexical Analyser, Parser
+│   └── Secondary tasks: comment removal, error line tracking
+│
+├── 2. Tokens, Patterns and Lexemes                 [5 concepts]
+│   ├── Token — terminal symbol of grammar
+│   │   └── Key Concepts: Keywords, Operators, Identifiers, Constants
+│   ├── Pattern — regular expression rule
+│   │   └── Key Concepts: Regular Expression ★
+│   ├── Lexeme — actual matched character sequence
+│   └── Token attributes → Symbol Table pointer ★
+│
+├── 3. Difficulties and Errors in LA                [2 concepts]
+│   ├── Context-dependent keywords (FORTRAN examples)
+│   ├── Lookahead requirements
+│   └── Localized error detection (illegal symbols only)
+│
+├── 4. Specification and Recognition of Tokens      [4 concepts]
+│   ├── Regular Definitions → LEX / FLEX ★
+│   │   └── Key Concepts: Regular Expression, LEX/FLEX
+│   ├── Transition Diagrams ★
+│   │   └── Key Concepts: FSA, TD
+│   └── Token Priority Rules
+│       ├── Longest Match Rule ★
+│       └── First-Listed Pattern Rule
+│
+├── 5. Formal Language Theory                       [3 concepts]
+│   ├── Chomsky Hierarchy: Type 0–3
+│   │   ├── Type 3: Regular Language (Finite Automaton)
+│   │   ├── Type 2: Context-Free Language (Pushdown Automaton)
+│   │   └── Type 1: Context-Sensitive Language
+│   └── Alphabet (Σ), Σ*, language as subset of Σ*
+│
+├── 6. FSA and Transition Diagrams                  [5 concepts]
+│   ├── FSA: accepts/rejects strings
+│   ├── TD: reads until token found, returns it
+│   │   ├── Dead State ★
+│   │   └── Retraction (*)
+│   ├── Scanner (FSA-based stage) ★
+│   └── Evaluator (produces token value) ★
+│
+├── 7. Input Buffering                              [2 concepts]
+│   ├── Two-half buffer, N-character reads
+│   ├── Forward Pointer ★
+│   └── Beginning Pointer
+│
+└── 8. Implementation of Lexical Analyser           [3 concepts]
+    ├── Automatic: LEX/FLEX (easier, less efficient)
+    ├── HLL by hand (more efficient)
+    └── Low-level language (most efficient, hardest)</code></pre>
+<hr />
+<h2 id="key-relationships">Key Relationships</h2>
+<h3 id="hierarchical-is-a--part-of">Hierarchical (Is-a / Part-of)</h3>
+<ul>
+<li><strong>Transition Diagram</strong> is a variant of
+<strong>FSA</strong></li>
+<li><strong>Scanner</strong> is based on <strong>FSA</strong></li>
+<li><strong>Lexical Analyser</strong> is a subroutine of
+<strong>Parser</strong></li>
+<li><strong>Context-Free Language</strong> is a superset of
+<strong>Regular Language</strong></li>
+<li><strong>Context-Sensitive Language</strong> is a superset of
+<strong>Context-Free Language</strong></li>
+<li><strong>Lexeme</strong> is an instance of a
+<strong>Token</strong></li>
+</ul>
+<h3 id="causal--enables">Causal / Enables</h3>
+<ul>
+<li><strong>Regular Expression</strong> enables <strong>Pattern</strong>
+specification</li>
+<li><strong>Pattern</strong> describes/classifies a
+<strong>Token</strong></li>
+<li><strong>Scanner</strong> feeds lexeme to
+<strong>Evaluator</strong></li>
+<li><strong>Evaluator</strong> produces a <strong>Token</strong> (type +
+value)</li>
+<li><strong>LEX/FLEX</strong> generates a <strong>Lexical
+Analyser</strong></li>
+<li><strong>Dead State</strong> triggers token acceptance at last valid
+state</li>
+<li><strong>Forward Pointer</strong> enables
+<strong>Retraction</strong></li>
+</ul>
+<h3 id="dependency-requires--reads-writes">Dependency (Requires /
+Reads-Writes)</h3>
+<ul>
+<li><strong>Lexical Analyser</strong> reads from / writes to
+<strong>Symbol Table</strong></li>
+<li><strong>Token</strong> attribute depends on <strong>Symbol
+Table</strong> pointer</li>
+<li><strong>Lexical Analyser</strong> depends on <strong>Regular
+Expression</strong> for specification</li>
+<li>Prerequisite chain: <strong>Regular Expression → Pattern → Token →
+Symbol Table</strong></li>
+<li>Prerequisite chain: <strong>FSA → Scanner → Evaluator →
+Token</strong></li>
+</ul>
+<h3 id="priority--contrast">Priority / Contrast</h3>
+<ul>
+<li><strong>Longest Match Rule</strong> takes priority over
+<strong>First-Listed Pattern Rule</strong></li>
+<li><strong>FSA</strong> (accepts/rejects) contrasts with
+<strong>TD</strong> (reads until token found)</li>
+<li><strong>Automatic LA</strong> (LEX/FLEX) contrasts with
+<strong>Hand-written LA</strong> (efficiency vs ease)</li>
+</ul>
+<hr />
+<h2 id="central-concepts">Central Concepts</h2>
+<p>These are the most connected concepts — master these first:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Connections</th>
+<th>Why Central</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Token</strong></td>
+<td>4</td>
+<td>The fundamental output unit of LA; everything else produces,
+classifies, or attributes a token</td>
+</tr>
+<tr>
+<td><strong>Lexical Analyser</strong></td>
+<td>4</td>
+<td>Orchestrates the entire first compiler phase; connects to parser,
+symbol table, and all sub-stages</td>
+</tr>
+<tr>
+<td><strong>Regular Expression</strong></td>
+<td>3</td>
+<td>The formal language for specifying patterns; underpins both LEX
+tools and manual TD construction</td>
+</tr>
+<tr>
+<td><strong>FSA / Transition Diagram</strong></td>
+<td>3</td>
+<td>The computational model that drives recognition; FSA is theory, TD
+is its practical implementation</td>
+</tr>
+<tr>
+<td><strong>Symbol Table</strong></td>
+<td>3</td>
+<td>The shared data structure linking LA to the rest of the compiler;
+stores all token information</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prerequisite-learning-path">Prerequisite Learning Path</h2>
+<p>Recommended study order based on dependencies:</p>
+<ol type="1">
+<li><strong>Formal Language Theory</strong> — understand alphabets, Σ*,
+and the Chomsky hierarchy (what kinds of languages exist)</li>
+<li><strong>Regular Expressions</strong> — the notation used to describe
+token patterns (Type 3 / Regular Languages)</li>
+<li><strong>Tokens, Patterns, Lexemes</strong> — the three core
+abstractions of lexical analysis</li>
+<li><strong>FSA (Finite State Automata)</strong> — the mathematical
+model for recognising regular languages</li>
+<li><strong>Transition Diagrams</strong> — practical FSA variant used to
+build lexers by hand</li>
+<li><strong>Input Buffering</strong> — how the lexer reads characters
+efficiently (forward pointer, retraction)</li>
+<li><strong>Lexical Analysis</strong> — the full LA phase combining all
+above into a working analyser</li>
+<li><strong>Specification and Recognition of Tokens</strong> — regular
+definitions, TD construction, keyword recognition, priority rules</li>
+<li><strong>Implementation</strong> — LEX/FLEX generators vs
+hand-written approaches</li>
+</ol>
+<hr />
+<h2 id="definitions-quick-reference">Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition (brief)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lexical Analysis</td>
+<td>First compiler phase; converts character stream to token
+sequence</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>A categorised unit (keyword, identifier, operator, etc.); terminal
+grammar symbol</td>
+</tr>
+<tr>
+<td>Pattern</td>
+<td>A regular expression rule describing all strings that form a
+particular token</td>
+</tr>
+<tr>
+<td>Lexeme</td>
+<td>The actual character sequence that matches a pattern — a concrete
+token instance</td>
+</tr>
+<tr>
+<td>Symbol Table</td>
+<td>Compiler data structure storing token info (lexeme, line number,
+type)</td>
+</tr>
+<tr>
+<td>FSA</td>
+<td>Finite State Automaton — mathematical model that accepts or rejects
+a string</td>
+</tr>
+<tr>
+<td>Transition Diagram</td>
+<td>FSA variant used for lexers; reads characters until it finds and
+returns a token</td>
+</tr>
+<tr>
+<td>Dead State</td>
+<td>Non-accepting state with no valid transitions; signals end of
+recognition</td>
+</tr>
+<tr>
+<td>Retraction</td>
+<td>Rolling back the forward pointer after scanning past the valid
+lexeme</td>
+</tr>
+<tr>
+<td>Scanner</td>
+<td>FSA-based LA stage that identifies token type and length</td>
+</tr>
+<tr>
+<td>Evaluator</td>
+<td>LA stage that processes lexeme characters to produce a token
+value</td>
+</tr>
+<tr>
+<td>LEX / FLEX</td>
+<td>Automatic lexical analyser generators from regular expression
+specifications</td>
+</tr>
+<tr>
+<td>Regular Language</td>
+<td>Language recognisable by FSA; described by regular expressions
+(Chomsky Type 3)</td>
+</tr>
+<tr>
+<td>Context-Free Language</td>
+<td>Language recognised by pushdown automaton; not regular (Chomsky Type
+2)</td>
+</tr>
+<tr>
+<td>Longest Match Rule</td>
+<td>When multiple patterns match, take the longest lexeme</td>
+</tr>
+<tr>
+<td>First-Listed Pattern Rule</td>
+<td>When length is equal, the pattern listed first in specification
+wins</td>
+</tr>
+<tr>
+<td>Chomsky Hierarchy</td>
+<td>Type 0–3 classification of formal languages by generative power</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tutor-reference-notes">Tutor Reference Notes</h2>
+<p><em>For use during learning sessions on Compiler
+Construction:</em></p>
+<ul>
+<li><strong>Best entry point for Socratic sessions:</strong> Start with
+<em>"What problem is Lexical Analysis solving, and why can't the parser
+do it itself?"</em> — this opens up the LA/parser separation rationale
+and naturally leads into tokens.</li>
+<li><strong>Most common misconceptions:</strong>
+<ul>
+<li>Students confuse <strong>token</strong> (the category) with
+<strong>lexeme</strong> (the actual string) — always use a concrete
+example (e.g., <code>pi</code> is the lexeme; <code>identifier</code> is
+the token)</li>
+<li>Students confuse <strong>FSA</strong> (theory: accepts/rejects) with
+<strong>TD</strong> (practice: finds and returns token) — the key
+difference is what happens at accepting states</li>
+<li>Students think ALL errors are caught by LA — reinforce that LA has a
+very localized view and cannot detect semantic errors</li>
+</ul></li>
+<li><strong>Concepts students typically conflate:</strong>
+<ul>
+<li>Token vs Lexeme vs Pattern (the holy trinity — needs repeated
+examples)</li>
+<li>FSA vs Transition Diagram (same structure, different behavior at
+accepting states)</li>
+<li>Scanner vs Evaluator (both stages of LA, but distinct roles)</li>
+<li>LEX/FLEX vs hand-written LA (trade-off: development speed vs runtime
+efficiency)</li>
+</ul></li>
+<li><strong>Mbosinwa context:</strong> Strong software engineering
+background — relate FSA/TD to state machines in software design
+patterns; relate Symbol Table to hash maps/dictionaries; relate LEX to
+parser generator tools like ANTLR he may have encountered.</li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

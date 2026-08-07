@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 701 Notes II — Processes, PCB & Schedulers — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 701 Operating Systems: Process states, the process control block, and long/short/medium-term schedulers.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-2.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes II — Processes, PCB & Schedulers</p>
+        <article class="doc">
+<h1 id="cms-701--operating-systems-lecture-notes">CMS 701 — Operating
+Systems Lecture Notes</h1>
+<h2 id="process-state-process-control-block--schedulers">Process State,
+Process Control Block &amp; Schedulers</h2>
+<hr />
+<h2 id="process-state-in-operating-systems">Process State in Operating
+Systems</h2>
+<p>A process in an operating system passes through multiple states as it
+begins execution, waits for resources, gets scheduled, runs, and
+eventually finishes.</p>
+<hr />
+<h2 id="the-two-state-model">The Two-State Model</h2>
+<p>A process is either actively using the CPU or waiting until it gets a
+chance to run.</p>
+<h3 id="states">States</h3>
+<ul>
+<li><strong>Running:</strong> The process is currently using the
+CPU.</li>
+<li><strong>Not Running:</strong> The process is not using the CPU —
+waiting for input, resources, or simply paused.</li>
+</ul>
+<h3 id="how-it-works">How It Works</h3>
+<ol type="1">
+<li>A newly created process starts in the <strong>Not Running</strong>
+state.</li>
+<li>The <strong>dispatcher</strong> checks if the CPU is free.</li>
+<li>If available, the dispatcher loads the process onto the CPU
+(<strong>Running</strong> state).</li>
+<li>The <strong>scheduler</strong> selects which process runs next.</li>
+</ol>
+<hr />
+<h2 id="the-five-state-model">The Five-State Model</h2>
+<p>Expands the two-state model by separating processes waiting for CPU
+time from those waiting for an external event.</p>
+<h3 id="the-five-states">The Five States</h3>
+<ul>
+<li><strong>New:</strong> Process just created; PCB is prepared.</li>
+<li><strong>Ready:</strong> Loaded into memory; waiting for CPU.</li>
+<li><strong>Running:</strong> CPU is currently executing this process
+(only one at a time on single-CPU).</li>
+<li><strong>Blocked/Waiting:</strong> Cannot continue; waiting for I/O
+or data input.</li>
+<li><strong>Exit/Terminate:</strong> Completed or stopped; OS removes it
+from memory.</li>
+</ul>
+<h3 id="transitions">Transitions</h3>
+<pre><code>[New] → Admit → [Ready] → Dispatch → [Running]
+[Running] → Time-out → [Ready]
+[Running] → Event Wait → [Blocked]
+[Blocked] → Event Occurs → [Ready]
+[Running] → Release → [Exit]</code></pre>
+<hr />
+<h2 id="the-seven-state-model">The Seven-State Model</h2>
+<h3 id="the-seven-states">The Seven States</h3>
+<ul>
+<li><strong>New:</strong> Program in secondary memory; OS prepares PCB
+before loading into main memory.</li>
+<li><strong>Ready:</strong> Loaded into main memory; waiting in the
+ready queue.</li>
+<li><strong>Running:</strong> CPU executing the process's
+instructions.</li>
+<li><strong>Blocked/Waiting:</strong> Waiting for I/O, user input, or
+locked resource.</li>
+<li><strong>Terminated:</strong> Completed; OS deletes PCB and frees
+resources.</li>
+<li><strong>Suspend Ready:</strong> Ready process swapped out to
+secondary storage due to memory shortage.</li>
+<li><strong>Suspend Blocked:</strong> Blocked process swapped out to
+secondary storage.</li>
+</ul>
+<h3 id="additional-transitions">Additional Transitions</h3>
+<pre><code>[Ready] → Suspend → [Suspend Ready] → Activate → [Ready]
+[Blocked] → Suspend → [Suspend Blocked]
+[Suspend Blocked] → Event Occurs → [Suspend Ready]
+[Suspend Blocked] → Activate → [Blocked]</code></pre>
+<hr />
+<h2 id="movement-of-a-process-from-one-state-to-another">Movement of a
+Process From One State to Another</h2>
+<table>
+<thead>
+<tr>
+<th>Transition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New → Ready</strong></td>
+<td>Process created, resources allocated, loaded into main memory.</td>
+</tr>
+<tr>
+<td><strong>Ready → Running</strong></td>
+<td>Scheduler assigns CPU to the process.</td>
+</tr>
+<tr>
+<td><strong>Running → Blocked</strong></td>
+<td>Process waits for I/O, user input, or system call.</td>
+</tr>
+<tr>
+<td><strong>Blocked → Ready</strong></td>
+<td>Event completes or resource becomes available.</td>
+</tr>
+<tr>
+<td><strong>Running → Ready</strong></td>
+<td>OS preempts the process (higher-priority process arrives).</td>
+</tr>
+<tr>
+<td><strong>Running → Terminated</strong></td>
+<td>Process completes or is forcefully stopped.</td>
+</tr>
+<tr>
+<td><strong>Blocked → Terminated</strong></td>
+<td>Process waiting for event is aborted or killed.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="process-scheduler-in-operating-systems">Process Scheduler in
+Operating Systems</h2>
+<p>A <strong>process scheduler</strong> is the part of the OS
+responsible for deciding which process in the ready queue should execute
+on the CPU next.</p>
+<p>The process scheduler ensures:</p>
+<ul>
+<li>Fair CPU allocation</li>
+<li>Efficient system performance</li>
+<li>Reduced waiting time</li>
+<li>Smooth multitasking</li>
+</ul>
+<hr />
+<h2 id="types-of-schedulers">Types of Schedulers</h2>
+<h3 id="long-term-scheduler">Long-Term Scheduler</h3>
+<p>Decides which new processes enter the ready state; controls the
+<strong>degree of multiprogramming</strong>.</p>
+<blockquote>
+<p><strong>Scenario:</strong> When you double-click a game icon, this
+scheduler decides if the system has enough memory to start the
+process.</p>
+</blockquote>
+<h3 id="short-term-scheduler">Short-Term Scheduler</h3>
+<p>Selects the next process from the ready queue to run on the CPU;
+works very frequently.</p>
+<blockquote>
+<p><strong>Scenario:</strong> While typing, this scheduler flicks the
+CPU back and forth between your keyboard, music player, and Wi-Fi.</p>
+</blockquote>
+<h3 id="medium-term-scheduler">Medium-Term Scheduler</h3>
+<p>Handles <strong>swapping</strong> — suspends processes and moves them
+between main memory and secondary storage.</p>
+<blockquote>
+<p><strong>Scenario:</strong> A browser not used in three hours gets
+"frozen" and moved to disk to free memory for an active game.</p>
+</blockquote>
+<hr />
+<h2 id="scheduling-algorithms-summary">Scheduling Algorithms
+(Summary)</h2>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>How It Works</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>First-Come, First-Served (FCFS)</strong></td>
+<td>First process to arrive gets CPU until done.</td>
+<td>Grocery store checkout line.</td>
+</tr>
+<tr>
+<td><strong>Shortest Job First (SJF)</strong></td>
+<td>CPU picks the shortest task first.</td>
+<td>Doing 2-minute homework before a 2-hour essay.</td>
+</tr>
+<tr>
+<td><strong>Round Robin (RR)</strong></td>
+<td>Each process gets a time slice; if not done, goes to back of
+queue.</td>
+<td>Teacher giving each student 1 minute per question.</td>
+</tr>
+<tr>
+<td><strong>Priority Scheduling</strong></td>
+<td>High-priority tasks run first.</td>
+<td>Ambulance getting through traffic before regular cars.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="preemptive-vs-non-preemptive-scheduling">Preemptive vs.
+Non-Preemptive Scheduling</h3>
+<ul>
+<li><strong>Non-Preemptive:</strong> Once a process gets the CPU, it
+keeps it until finished or waiting for I/O.</li>
+<li><strong>Preemptive:</strong> OS can interrupt a running process for
+a higher-priority one. (Windows, Linux, macOS are preemptive.)</li>
+</ul>
+<hr />
+<h2 id="process-control-block-pcb">Process Control Block (PCB)</h2>
+<p>A <strong>Process Control Block (PCB)</strong> is a data structure
+maintained by the OS containing all information needed to manage a
+process.</p>
+<blockquote>
+<p>The PCB acts as the OS's <strong>record file or identity
+card</strong> for each process. Without it, the OS cannot track,
+schedule, or manage a process.</p>
+</blockquote>
+<hr />
+<h2 id="anatomy-of-the-pcb">Anatomy of the PCB</h2>
+<h3 id="1-process-identification-information">1. Process Identification
+Information</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Process ID (PID)</strong></td>
+<td>Unique number assigned to each process.</td>
+</tr>
+<tr>
+<td><strong>Parent Process ID (PPID)</strong></td>
+<td>Identifies the process that created it.</td>
+</tr>
+<tr>
+<td><strong>User ID</strong></td>
+<td>Identifies the user who started the process.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-process-state-information">2. Process State Information</h3>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New</strong></td>
+<td>Process is being created</td>
+</tr>
+<tr>
+<td><strong>Ready</strong></td>
+<td>Waiting for CPU</td>
+</tr>
+<tr>
+<td><strong>Running</strong></td>
+<td>Currently executing</td>
+</tr>
+<tr>
+<td><strong>Waiting/Blocked</strong></td>
+<td>Waiting for I/O</td>
+</tr>
+<tr>
+<td><strong>Terminated</strong></td>
+<td>Execution completed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-program-counter-pc">3. Program Counter (PC)</h3>
+<p>Contains the address of the <strong>next instruction to be
+executed</strong>.</p>
+<blockquote>
+<p><strong>Scenario:</strong> If on line 50 when the OS pauses you, the
+PCB saves "Line 51." When the process returns, the CPU knows exactly
+where to resume.</p>
+</blockquote>
+<h3 id="4-cpu-registers">4. CPU Registers</h3>
+<p>Temporary data needed by the CPU: Accumulator, Index registers, Stack
+pointer, Program status word.</p>
+<ul>
+<li><strong>Storage:</strong> During Context Switch, physical register
+values are copied into the PCB.</li>
+<li><strong>Restore:</strong> When process runs again, values are copied
+back from PCB to CPU hardware.</li>
+</ul>
+<h3 id="5-memory-management-information">5. Memory Management
+Information</h3>
+<ul>
+<li><strong>Page Tables / Segment Tables:</strong> Map virtual addresses
+to physical addresses.</li>
+<li><strong>Base and Limit Registers:</strong> Starting memory address
+and length of allocated memory block.</li>
+</ul>
+<h3 id="6-process-scheduling-information">6. Process Scheduling
+Information</h3>
+<ul>
+<li><strong>Process State:</strong> Current state (Running, Ready,
+Waiting).</li>
+<li><strong>Priority:</strong> Numerical value — higher priority
+processes get more CPU time.</li>
+<li><strong>Accounting Information:</strong> CPU time used, waiting
+time, nice value (Unix/Linux).</li>
+</ul>
+<h3 id="7-io-and-file-information">7. I/O and File Information</h3>
+<ul>
+<li><strong>List of Open Files:</strong> Table of pointers to open file
+table entries.</li>
+<li><strong>List of Open Devices:</strong> Hardware devices the process
+is currently using.</li>
+</ul>
+<hr />
+<h2 id="real-world-pcb-examples">Real-World PCB Examples</h2>
+<p>Each Chrome tab is a separate process. If Tab A plays YouTube, its
+PCB tracks the network and sound card connections. The PCB keeps track
+of buffered video seconds even when the tab is deprioritized.</p>
+<p>When a program finishes but its PCB isn't deleted (parent didn't
+check child exit status), the child's PCB stays in memory. This is a
+<strong>Zombie Process</strong> — no CPU usage, but occupies a slot in
+the OS process table.</p>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

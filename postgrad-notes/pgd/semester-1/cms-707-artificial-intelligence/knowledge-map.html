@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 707 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 707 Artificial Intelligence: Topic and concept map of the whole course, with relationships and entry points.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/knowledge-map.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/">CMS 707 Artificial Intelligence</a> / Knowledge Map</p>
+        <article class="doc">
+<h1 id="knowledge-map-artificial-intelligence-cms707">Knowledge Map:
+Artificial Intelligence (CMS707)</h1>
+<blockquote>
+<p>Generated: 2026-04-02 | Topics: 13 | Concepts: 34 | Relationships:
+31</p>
+</blockquote>
+<hr />
+<h2 id="course-overview">Course Overview</h2>
+<p>CMS707 covers the theory and practice of Artificial Intelligence —
+from the foundational question of what intelligence is, through
+problem-solving via state space search, to knowledge representation
+using predicate logic and probabilistic reasoning. The course then
+extends to advanced application areas including machine learning, NLP,
+expert systems, fuzzy logic, and genetic algorithms. It is grounded in
+the AIMA (Russell &amp; Norvig) framework and closely follows the
+lecturer's lecture series.</p>
+<hr />
+<h2 id="concept-hierarchy">Concept Hierarchy</h2>
+<pre><code>Artificial Intelligence (CMS707)
+│
+├── PART I: Problem-Solving and Search
+│   │
+│   ├── 1. Introduction to AI                          [5 concepts]
+│   │   ├── Key Concepts: Intelligence, Artificial Intelligence, Mundane Tasks, Formal Tasks, Turing Test
+│   │   ├── Central: Artificial Intelligence
+│   │   └── Note: Mundane tasks (perception, speech) are harder to compute than formal tasks (chess, logic)
+│   │
+│   ├── 2. AI Agents and Rational Agents               [6 concepts]
+│   │   ├── Key Concepts: Agent, Rational Agent, Percept Sequence, Agent Function, Agent Program, Performance Measure
+│   │   ├── Central: Rational Agent
+│   │   └── Note: Agent Function (abstract math) → implemented by → Agent Program (concrete code)
+│   │
+│   ├── 3. Problem-Solving and Search                  [10 concepts]
+│   │   ├── Key Concepts: State Space Representation, BFS, DFS, Iterative Deepening Search,
+│   │   │                 Best-First Search, A* Search, Heuristic, Water Jug Problem, Farmer Problem
+│   │   ├── Central: State Space Search, BFS/DFS
+│   │   └── 4-step method: Define → Analyse → Isolate/Represent → Choose technique
+│   │
+│   └── 4. Heuristic Search Techniques                 [3 concepts]
+│       ├── Key Concepts: Heuristic, Informed Search, Uninformed Search
+│       └── Best-First = hybrid of BFS completeness + DFS memory efficiency
+│
+├── PART II: Knowledge Representation and Reasoning
+│   │
+│   ├── 5. Knowledge Representation                    [5 concepts]
+│   │   ├── Key Concepts: Natural Language KR, Simple Relational KR, Inferential KR,
+│   │   │                 Hallucination, Facts vs Representations
+│   │   └── Central: Inferential KR (supports inheritance + logical inference)
+│   │
+│   ├── 6. Predicate Logic                             [6 concepts]
+│   │   ├── Key Concepts: Predicate Logic, Quantifiers (∀/∃), Constants/Variables/Predicates,
+│   │   │                 Inference Rules, Resolution, Forward/Backward Chaining
+│   │   ├── Central: Predicate Logic
+│   │   └── Example: Marcus/Caesar — 8 axioms → logical inference chain
+│   │
+│   ├── 7. Probabilistic Reasoning                     [3 concepts]
+│   │   ├── Key Concepts: Uncertainty, Bayesian Reasoning, Bayesian Networks
+│   │   └── Requires: Predicate Logic as prerequisite
+│   │
+│   └── 8. Semantic Nets                               [3 concepts]
+│       └── Key Concepts: Semantic Networks, Frames, Scripts
+│
+└── PART III: Advanced Topics and Application Areas
+    │
+    ├── 9. Learning                                     [6 concepts]
+    │   └── Supervised Learning, Unsupervised Learning, Reinforcement Learning,
+    │       Decision Trees, Neural Networks, Deep Learning
+    │
+    ├── 10. Natural Language Processing                 [4 concepts]
+    │   └── Speech Recognition, Machine Translation, Question Answering (Watson), Language Models
+    │
+    ├── 11. Expert Systems                              [2 concepts]
+    │   └── Knowledge-Based Systems, Inference Engines
+    │
+    ├── 12. Fuzzy Logic Systems                         [2 concepts]
+    │   └── Fuzzy Sets, Fuzzy Inference
+    │
+    └── 13. Genetic Algorithms                          [2 concepts]
+        └── Selection, Crossover, Mutation</code></pre>
+<hr />
+<h2 id="key-relationships">Key Relationships</h2>
+<h3 id="hierarchical-is-a--part-of">Hierarchical (Is-a / Part-of)</h3>
+<ul>
+<li>Deep Learning is a type of Machine Learning</li>
+<li>Reinforcement Learning is a type of Machine Learning</li>
+<li>Supervised Learning is a type of Machine Learning</li>
+<li>Bayesian Reasoning is a type of Probabilistic Reasoning</li>
+<li>Semantic Nets is a type of Knowledge Representation</li>
+<li>Genetic Algorithm is a type of Evolutionary / Optimisation
+technique</li>
+<li>Agent Program is the concrete implementation of Agent Function</li>
+</ul>
+<h3 id="causal--enables">Causal / Enables</h3>
+<ul>
+<li>Percept Sequence determines Agent behaviour</li>
+<li>Performance Measure evaluates Rational Agent</li>
+<li>Understanding State Space Representation enables Problem-Solving and
+Search</li>
+<li>Predicate Logic enables Knowledge Representation</li>
+<li>Predicate Logic is used in Inference (resolution, chaining)</li>
+<li>Predicate Logic is used to express Inferential Knowledge</li>
+<li>Neural Networks are the basis of Deep Learning</li>
+<li>Perception enables Action in Robotics</li>
+<li>Natural Language maps to Internal Representation (via KR)</li>
+<li>NLP is an application of Knowledge Representation + Learning</li>
+</ul>
+<h3 id="dependency--prerequisite">Dependency / Prerequisite</h3>
+<ul>
+<li>Agent Function is implemented by Agent Program</li>
+<li>A* Search uses Heuristic + path cost</li>
+<li>Expert Systems depend on Knowledge Representation + Inference</li>
+<li>Heuristic Search is an improvement of Uninformed Search</li>
+</ul>
+<h3 id="contrast-contrasts-with">Contrast (Contrasts-with)</h3>
+<ul>
+<li>Fuzzy Logic contrasts with Classical Boolean Logic</li>
+<li>DFS uses less memory than BFS (but risks getting trapped)</li>
+<li>Mundane Tasks are harder to represent than Formal Tasks</li>
+<li>Simple Relational KR has weaker inference than Inferential KR</li>
+</ul>
+<h3 id="combines--synthesises">Combines / Synthesises</h3>
+<ul>
+<li>Iterative Deepening Search combines advantages of BFS + DFS</li>
+<li>Best-First Search combines advantages of BFS + DFS</li>
+<li>Rational Agent is defined by Maximally achieving predefined
+goals</li>
+</ul>
+<h3 id="solves">Solves</h3>
+<ul>
+<li>State Space Search solves Water Jug Problem</li>
+<li>Constraint-based State Space Search solves Farmer Problem</li>
+<li>Minimax is used in Adversarial Search / Game Playing</li>
+<li>Alpha-Beta Pruning optimises Minimax Search</li>
+</ul>
+<hr />
+<h2 id="central-concepts">Central Concepts</h2>
+<p>These are the most connected concepts in the course — master these
+first:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Connections</th>
+<th>Why Central</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predicate Logic</td>
+<td>4</td>
+<td>Enables KR, used in inference, expresses inferential KR, bridges
+natural language and reasoning</td>
+</tr>
+<tr>
+<td>Rational Agent</td>
+<td>4</td>
+<td>Defined by goal maximisation, evaluated by performance measure, acts
+on percept sequence, foundation of all AI system design</td>
+</tr>
+<tr>
+<td>State Space Search</td>
+<td>4</td>
+<td>Foundation of problem-solving, solves classic problems, prerequisite
+for BFS/DFS/A*, underpins all search algorithms</td>
+</tr>
+<tr>
+<td>BFS / DFS</td>
+<td>5</td>
+<td>Combined by Iterative Deepening and Best-First, contrasted by
+memory/completeness trade-offs, basis of all uninformed search</td>
+</tr>
+<tr>
+<td>Machine Learning</td>
+<td>3</td>
+<td>Basis of Deep Learning, Reinforcement Learning, and Supervised
+Learning — connects to NLP, Robotics, Expert Systems</td>
+</tr>
+<tr>
+<td>Knowledge Representation</td>
+<td>5</td>
+<td>Subsumes Natural Language, Relational, Inferential KR; enables
+Expert Systems; tied to NLP and Predicate Logic</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prerequisite-learning-path">Prerequisite Learning Path</h2>
+<p>Recommended study order based on concept dependencies:</p>
+<ol type="1">
+<li><strong>Intelligence &amp; AI</strong> — What is AI? What counts as
+intelligent behaviour?</li>
+<li><strong>Mundane vs Formal Tasks</strong> — Why mundane tasks are
+computationally harder</li>
+<li><strong>Agents &amp; Rational Agents</strong> — Percept Sequence,
+Agent Function, Performance Measure</li>
+<li><strong>State Space Representation</strong> — Foundation of all
+problem-solving</li>
+<li><strong>Uninformed Search (BFS, DFS)</strong> — How to navigate
+state spaces</li>
+<li><em><em>Informed Search (Heuristic, Best-First, A</em>)</em>* —
+Smarter navigation</li>
+<li><strong>Iterative Deepening</strong> — Combining BFS completeness +
+DFS memory</li>
+<li><strong>Knowledge Representation (Natural Language → Relational →
+Inferential)</strong> — Moving from data to reasoning</li>
+<li><strong>Predicate Logic</strong> — Formal language for inference;
+Marcus/Caesar worked example</li>
+<li><strong>Probabilistic Reasoning &amp; Bayesian Networks</strong> —
+Handling uncertainty</li>
+<li><strong>Semantic Nets</strong> — Graph-based KR</li>
+<li><strong>Machine Learning</strong> (Supervised → Unsupervised →
+Reinforcement → Neural Networks → Deep Learning)</li>
+<li><strong>Application Areas</strong> (NLP, Expert Systems, Fuzzy
+Logic, Genetic Algorithms, Robotics)</li>
+</ol>
+<hr />
+<h2 id="definitions-quick-reference">Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition (brief)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intelligence</td>
+<td>Capacity to think and comprehend the world — involving knowledge,
+experience and understanding</td>
+</tr>
+<tr>
+<td>Artificial Intelligence</td>
+<td>Field of building systems that act rationally to maximally achieve
+predefined goals</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>Entity that perceives its environment via sensors and acts via
+actuators; persists and adapts</td>
+</tr>
+<tr>
+<td>Rational Agent</td>
+<td>Agent that acts to achieve the best/expected outcome, judged by a
+performance measure</td>
+</tr>
+<tr>
+<td>Percept Sequence</td>
+<td>Complete history of everything an agent has ever perceived</td>
+</tr>
+<tr>
+<td>Agent Function</td>
+<td>Abstract mapping from percept sequence to action</td>
+</tr>
+<tr>
+<td>Agent Program</td>
+<td>Concrete implementation of the agent function</td>
+</tr>
+<tr>
+<td>Performance Measure</td>
+<td>Criterion capturing best/expected outcome for a rational agent</td>
+</tr>
+<tr>
+<td>State Space</td>
+<td>Set of all possible states in a problem, connected by operators</td>
+</tr>
+<tr>
+<td>BFS</td>
+<td>Breadth-First Search — FIFO queue, explores level by level, complete
+and optimal</td>
+</tr>
+<tr>
+<td>DFS</td>
+<td>Depth-First Search — LIFO stack, memory efficient, may get
+trapped</td>
+</tr>
+<tr>
+<td>Iterative Deepening</td>
+<td>DFS with increasing depth limit; BFS completeness + DFS memory</td>
+</tr>
+<tr>
+<td>Best-First Search</td>
+<td>Heuristic-guided search combining BFS and DFS advantages</td>
+</tr>
+<tr>
+<td>A* Search</td>
+<td>Informed search using f(n) = g(n) + h(n); optimal if heuristic
+admissible</td>
+</tr>
+<tr>
+<td>Heuristic</td>
+<td>Problem-specific knowledge estimating cost/distance to goal</td>
+</tr>
+<tr>
+<td>Knowledge Representation</td>
+<td>Mapping of real-world facts into a formalism that can be
+manipulated</td>
+</tr>
+<tr>
+<td>Predicate Logic</td>
+<td>Formal system with quantifiers (∀, ∃), predicates, constants,
+variables</td>
+</tr>
+<tr>
+<td>Hallucination (AI)</td>
+<td>Representation of facts that may not exist; absence of self-aware
+grounding</td>
+</tr>
+<tr>
+<td>Bayesian Reasoning</td>
+<td>Probabilistic inference using prior knowledge and conditional
+probabilities</td>
+</tr>
+<tr>
+<td>Fuzzy Logic</td>
+<td>Truth values between 0 and 1; handles vagueness and degrees of
+truth</td>
+</tr>
+<tr>
+<td>Genetic Algorithm</td>
+<td>Evolutionary optimisation via selection, crossover, and
+mutation</td>
+</tr>
+<tr>
+<td>Turing Test</td>
+<td>Benchmark: can a machine converse indistinguishably from a
+human?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tutor-reference-notes">Tutor Reference Notes</h2>
+<p><em>For use by the tutor agent during learning sessions with
+Mbosinwa:</em></p>
+<ul>
+<li><strong>Best Socratic entry point:</strong> Start with "What makes a
+task difficult for a computer?" — bridges Mundane vs Formal Tasks and
+leads naturally into State Space Search</li>
+<li><strong>Most common misconceptions:</strong>
+<ul>
+<li>Conflating <em>Agent Function</em> (abstract) with <em>Agent
+Program</em> (concrete)</li>
+<li>Thinking BFS is always better than DFS — each has specific
+advantages</li>
+<li>Believing Rational Agent = "smart agent" rather than
+"goal-maximising agent"</li>
+<li>Confusing Iterative Deepening with repeated BFS</li>
+<li>Thinking Predicate Logic is just maths — it's a KR tool for
+real-world facts</li>
+</ul></li>
+<li><strong>Concepts students typically conflate:</strong>
+<ul>
+<li>BFS (Breadth-First) vs Best-First Search — different algorithms,
+confusingly named</li>
+<li>Agent Function vs Agent Program</li>
+<li>Percept vs Percept Sequence</li>
+<li>Inferential KR vs Predicate Logic (the latter is a <em>form</em> of
+the former)</li>
+<li>Supervised vs Reinforcement Learning</li>
+</ul></li>
+<li><strong>Mbosinwa context:</strong> Strong engineering background,
+rusty on theory. Use real-world analogies. Over-explain — he will say
+when to stop.</li>
+<li><strong>Exercises available:</strong> Session 1 (5 questions on AI
+theory/philosophy) and Session 2 (2 problem formulation tasks including
+Missionaries &amp; Cannibals)</li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

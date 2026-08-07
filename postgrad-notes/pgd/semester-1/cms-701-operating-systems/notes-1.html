@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 701 Notes I — OS Types, Kernels & System Calls — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 701 Operating Systems: What an operating system is, OS types, kernel architectures and system calls.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-1.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes I — OS Types, Kernels & System Calls</p>
+        <article class="doc">
+<h1 id="cms-701--operating-systems-lecture-notes">CMS 701 — Operating
+Systems Lecture Notes</h1>
+<h2 id="os-types-kernels--system-calls">OS Types, Kernels &amp; System
+Calls</h2>
+<hr />
+<h2 id="what-is-an-operating-system">What is an Operating System?</h2>
+<p>An <strong>operating system</strong> is the main software that makes
+the computer or mobile device work. It acts as a bridge between the user
+and the computer hardware. However, it is also the interface between the
+computer hardware and the user. E.g. Windows, Linux, Unix, Mac OS and
+Android.</p>
+<hr />
+<h2 id="types-of-operating-systems">Types of Operating Systems</h2>
+<h3 id="batch-operating-system">Batch Operating System</h3>
+<p>It is designed to handle large groups of similar jobs efficiently.
+The user doesn't interact with the computer directly; instead, jobs are
+grouped by an operator. The jobs are queued and executed one after the
+other without user instruction during the process.</p>
+<p><strong>Advantages</strong></p>
+<ol type="1">
+<li>There is minimal idle time.</li>
+<li>The system has the ability to handle repetitive or similar tasks
+efficiently.</li>
+<li>It can handle high volumes of jobs at once.</li>
+</ol>
+<p><strong>Disadvantages</strong></p>
+<ol type="1">
+<li>Inefficient CPU utilization.</li>
+<li>Time between the job submission and the output can be high as all
+jobs are processed sequentially.</li>
+<li>There is an increase in response time.</li>
+<li>There is no realtime feedback.</li>
+</ol>
+<hr />
+<h3 id="multiprogramming-operating-system">Multiprogramming Operating
+System</h3>
+<p>Programs run in the memory at the same time. The CPU switches between
+programs, utilizing its resources more effectively and improving overall
+system performance.</p>
+<p><strong>Advantages</strong></p>
+<ol type="1">
+<li>There is better CPU utilization.</li>
+<li>It reduces the CPU idle time and improves the system
+efficiency.</li>
+</ol>
+<p><strong>Disadvantages</strong></p>
+<ol type="1">
+<li>Complex memory management.</li>
+<li>There is a risk of deadlock.</li>
+<li>There is no guaranteed fast user response.</li>
+</ol>
+<hr />
+<h3 id="time-sharing-multi-user-operating-system">Time Sharing
+(Multi-User) Operating System</h3>
+<p>In time sharing, the system allows multiple people at different
+terminals to use a single CPU at the same time. The OS switches between
+users so rapidly that each user feels like they have the entire machine
+to themselves.</p>
+<p><strong>Advantages</strong></p>
+<ol type="1">
+<li>Multiple users interact with the system at the same time.</li>
+<li>It maximizes resource utilization by allowing multiple users to
+share resources.</li>
+<li>It reduces response time.</li>
+</ol>
+<p><strong>Disadvantages</strong></p>
+<ol type="1">
+<li>There is a security issue.</li>
+<li>Resource competition.</li>
+</ol>
+<hr />
+<h3 id="network-operating-system">Network Operating System</h3>
+<p>It provides necessary services to manage networked computers,
+allowing them to communicate and share resources.</p>
+<p><strong>Advantages</strong></p>
+<ol type="1">
+<li>Users can manage resources from a central server.</li>
+<li>Sharing of files and devices across the network is easy.</li>
+<li>Various devices can connect and work together seamlessly.</li>
+</ol>
+<p><strong>Disadvantages</strong></p>
+<ol type="1">
+<li>It is dependent on network.</li>
+<li>There is an increase in security threats.</li>
+<li>Managing network and resources can be resource intensive.</li>
+</ol>
+<hr />
+<h3 id="real-time-operating-system">Real-Time Operating System</h3>
+<p>It is designed for systems that require rapid response time and high
+reliability, often used in embedded systems.</p>
+<p><strong>Advantages</strong></p>
+<ol type="1">
+<li>Optimized for specific task with minimal overhead.</li>
+<li>It guarantees minimal response time for principal tasks.</li>
+<li>Efficiency, optimized for performance and resource use.</li>
+</ol>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Debugging challenges — timing issues can be tricky to deal
+with.</li>
+<li>May require specialized hardware and resource constraints.</li>
+<li>Limited flexibility — tailored for specific applications.</li>
+</ul>
+<hr />
+<h2 id="kernels-in-operating-system">Kernels in Operating System</h2>
+<p>A <strong>kernel</strong> is the core part of an Operating System. It
+acts as a bridge between software applications and the hardware of a
+computer.</p>
+<p>The kernel manages system resources, such as the CPU, memory and
+devices, ensuring everything works together smoothly and
+efficiently.</p>
+<p>It handles tasks like running programs, accessing files, and
+connecting to devices like printers and keyboards.</p>
+<p>An operating system includes the kernel as its core but also provides
+a user interface, file system management, network services, and various
+utility applications that enable the user to interact with the
+system:</p>
+<ul>
+<li>It facilitates communication between hardware and user
+applications.</li>
+<li>Ensures efficient and secure multitasking.</li>
+<li>Manages system stability and prevents unauthorized resource
+access.</li>
+</ul>
+<hr />
+<h2 id="types-of-kernels">Types of Kernels</h2>
+<h3 id="1-monolithic-kernel">1. Monolithic Kernel</h3>
+<p>A monolithic kernel is a single large program that contains all the
+core functions of the operating system, including device drivers, file
+system management, and system calls.</p>
+<blockquote>
+<p><strong>Scenario (Technical):</strong> Imagine a server running a
+Linux distribution with a monolithic kernel. When an application needs
+to read a file from disk, the system calls are processed directly within
+the kernel space. This allows for high performance as data flows quickly
+between hardware and software without the overhead of switching
+contexts.</p>
+</blockquote>
+<blockquote>
+<p><strong>Analogy — Small Startup Company:</strong> Everyone sits in
+one big room. If the CEO needs a file, they just shout across the room.
+Communication is instant and fast because there are no walls.
+<strong>The Problem:</strong> If one employee gets the flu (a bug in a
+driver), they are so close to everyone else that they might infect the
+whole office, causing the entire company to stop working.</p>
+</blockquote>
+<p><strong>Advantages</strong></p>
+<ul>
+<li><strong>High Performance:</strong> Direct access to hardware reduces
+overhead.</li>
+<li><strong>Rich Functionality:</strong> Supports a wide range of
+features and device drivers directly.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li><strong>Complexity in Development:</strong> Difficult to maintain
+and debug due to its size and complexity.</li>
+<li><strong>Crash Vulnerability:</strong> A single bug in the kernel can
+crash the whole OS, affecting stability.</li>
+</ul>
+<hr />
+<h3 id="2-microkernel">2. Microkernel</h3>
+<p>A microkernel takes the opposite approach. It keeps only the absolute
+essentials in the kernel space (like basic process scheduling).
+Everything else — drivers, file systems — is moved to the <strong>User
+Space</strong>.</p>
+<blockquote>
+<p><strong>Scenario (Technical):</strong> Consider a real-time operating
+system (RTOS) for embedded devices, such as a smart thermostat. The
+microkernel only handles basic tasks like process scheduling and
+inter-process communication. When the thermostat needs to adjust the
+temperature based on user inputs, the application running in user space
+communicates with the microkernel, ensuring the system remains
+responsive and stable.</p>
+</blockquote>
+<blockquote>
+<p><strong>Analogy — Large Government Agency:</strong> Every department
+is in a separate building. If you want to move a file from one
+department to another, you have to send a formal letter (called
+<strong>Inter-Process Communication or IPC</strong>). <strong>The
+Benefit:</strong> If the "Department of Parks" burns down (a driver
+crashes), the rest of the government keeps running perfectly fine.
+<strong>The Downside:</strong> Sending letters between buildings takes a
+lot of time compared to shouting across a room.</p>
+</blockquote>
+<p><strong>Advantages</strong></p>
+<ul>
+<li><strong>Stability:</strong> Fewer components in the kernel reduce
+the risk of system crashes.</li>
+<li><strong>Modularity:</strong> Easier to update or replace services
+without affecting the core kernel.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li><strong>Performance Overhead:</strong> Communication between user
+space and kernel space can introduce latency.</li>
+<li><strong>Limited Functionality:</strong> May require additional
+components to be loaded in user space, potentially affecting
+performance.</li>
+</ul>
+<hr />
+<h3 id="3-hybrid-kernel">3. Hybrid Kernel</h3>
+<p>A hybrid kernel is a "best of both worlds" approach. It looks like a
+microkernel (modular) but runs most things in kernel space to keep the
+speed of a monolithic kernel. Hybrid kernels combine aspects of both
+monolithic and microkernel architectures, containing essential services
+in the kernel along with some user-space services.</p>
+<blockquote>
+<p><strong>Analogy — Modern Open-Plan Office with Glass
+Cubicles:</strong> Employees have their own protected spaces (modular),
+but the walls are made of glass so they can still talk to each other
+very quickly without leaving the room.</p>
+</blockquote>
+<blockquote>
+<p><strong>Scenario (Technical):</strong> An OS like Windows uses a
+hybrid kernel. When you run software that requires network
+communication, the networking functions are included in the kernel for
+efficient data handling. However, components like file systems are
+managed in user space, providing flexibility and modularity.</p>
+</blockquote>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Good balance of speed and modularity.</li>
+<li><strong>Balanced Performance and Stability:</strong> Offers the
+efficiency of monolithic kernels while retaining the modularity of
+microkernels.</li>
+<li><strong>Flexibility:</strong> Can customize various components based
+on user needs or specific hardware.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Still carries some of the risks of a monolithic kernel (if a core
+component fails, the system might still go down).</li>
+<li><strong>Complex Architecture:</strong> Can inherit the complexities
+of both kernel types, making development and debugging more
+challenging.</li>
+<li><strong>Potential Maintenance Overhead:</strong> Increased number of
+components can complicate updates and maintenance.</li>
+</ul>
+<hr />
+<h3 id="4-exokernel">4. Exokernel</h3>
+<p>Exokernels are unique because they don't try to manage resources for
+you. Instead, they give the application <strong>direct access to the
+hardware</strong> and let the application decide how to use it.</p>
+<blockquote>
+<p><strong>Analogy — Self-Service Warehouse:</strong> Instead of asking
+a clerk (the kernel) to go find a box for you, the warehouse gives you
+the keys and a map. You go get exactly what you need, how you want
+it.</p>
+</blockquote>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Maximum efficiency for specialized apps.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Each application has to be much more complex because it has to
+manage its own hardware.</li>
+</ul>
+<hr />
+<h3 id="5-nanokernel">5. Nanokernel</h3>
+<p>A nanokernel is an extreme version of a microkernel. It is incredibly
+tiny — essentially just enough code to handle hardware interrupts and
+nothing else.</p>
+<blockquote>
+<p><strong>Analogy — Remote Control:</strong> It doesn't need to manage
+files, users, or complex networking. It just needs to know: "Did the
+user press a button? Okay, send a signal."</p>
+</blockquote>
+<blockquote>
+<p><strong>Scenario (Technical):</strong> Consider an IoT device like a
+smart light bulb. A nanokernel might handle only the absolute
+necessities, like scheduling tasks and managing interrupts. All other
+functionalities, such as communication protocols or application logic,
+would run as user-space applications. This simplicity helps in reducing
+power consumption, crucial for battery-operated devices.</p>
+</blockquote>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Tiny memory footprint; perfect for embedded systems.</li>
+<li><strong>Efficiency in Resource Use:</strong> Extremely lightweight,
+consuming minimal resources.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Too simple for general-purpose computers like laptops.</li>
+<li><strong>Lack of Functionality:</strong> Requires many user-space
+services, which can complicate development.</li>
+<li><strong>Performance Trade-offs:</strong> Potentially slower
+communication between user space and kernel.</li>
+</ul>
+<hr />
+<h2 id="system-calls">System Calls</h2>
+<p>A <strong>system call</strong> is a request made by a program to the
+kernel of the operating system to perform a task that the program cannot
+perform directly.</p>
+<blockquote>
+<p><strong>Note:</strong> Programs run in <strong>user mode</strong>.
+The kernel runs in <strong>kernel mode</strong>. A system call is the
+bridge between user mode and kernel mode.</p>
+</blockquote>
+<p>System calls are a fundamental mechanism that allows programs to
+request services from the OS's kernel. They serve as the bridge between
+user applications and the hardware, enabling programs to perform
+low-level operations without needing direct access to hardware
+resources.</p>
+<h3 id="how-a-system-call-works">How a System Call Works</h3>
+<pre><code>Application (User Mode)
+  → Makes a system call request
+  → Transfers control to kernel
+Kernel (Kernel Mode)
+  → Verifies permissions &amp; validates request
+  → Accesses hardware resource
+  → Returns result to application
+Back in User Mode</code></pre>
+<blockquote>
+<p><strong>Bank Teller Analogy:</strong></p>
+<ul>
+<li><strong>The Application (You):</strong> You walk into a bank (The
+OS). You want to withdraw money (access the hard drive).</li>
+<li><strong>The Restriction:</strong> You aren't allowed to walk behind
+the counter and grab cash from the vault yourself.</li>
+<li><strong>The System Call:</strong> You fill out a withdrawal slip
+(the system call) and hand it to the teller (the kernel).</li>
+<li><strong>The Execution:</strong> The teller checks your ID, verifies
+your balance, walks to the vault, grabs the cash, and brings it back to
+you.</li>
+<li><strong>The Return:</strong> The teller hands you the money. You are
+now back in "User Mode."</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="types-of-system-calls">Types of System Calls</h2>
+<h3 id="1-process-control">1. Process Control</h3>
+<p>These calls handle starting, stopping, and managing programs.</p>
+<p><strong>Common calls:</strong> <code>fork()</code> (create a new
+process), <code>wait()</code>, <code>exit()</code></p>
+<h3 id="2-file-management">2. File Management</h3>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open()</code></td>
+<td>Opens a file for reading or writing</td>
+</tr>
+<tr>
+<td><code>read()</code></td>
+<td>Reads data from a file</td>
+</tr>
+<tr>
+<td><code>write()</code></td>
+<td>Writes data to a file</td>
+</tr>
+<tr>
+<td><code>close()</code></td>
+<td>Closes a previously opened file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-device-management">3. Device Management</h3>
+<p><strong>Common calls:</strong> <code>ioctl()</code>,
+<code>request()</code>, <code>release()</code>, <code>read()</code>,
+<code>write()</code></p>
+<h3 id="4-information-maintenance">4. Information Maintenance</h3>
+<p><strong>Common calls:</strong> <code>get_time()</code>,
+<code>set_time()</code>, <code>get_process_attributes()</code></p>
+<h3 id="5-communication">5. Communication</h3>
+<p><strong>Common calls:</strong> <code>pipe()</code>,
+<code>socket()</code>, <code>send()</code>, <code>recv()</code></p>
+<h3 id="6-memory-management">6. Memory Management</h3>
+<p><strong>Common calls:</strong> <code>mmap()</code>,
+<code>brk()</code>, <code>malloc()</code></p>
+<h3 id="advantages-of-system-calls">Advantages of System Calls</h3>
+<ol type="1">
+<li><strong>Abstraction:</strong> Simplified interface for complex
+operations.</li>
+<li><strong>Security:</strong> Controlled access to hardware; prevents
+unauthorized operations.</li>
+<li><strong>Portability:</strong> Applications can run on various
+platforms.</li>
+</ol>
+<hr />
+<h2 id="basic-concepts-in-operating-systems">Basic Concepts in Operating
+Systems</h2>
+<h3 id="process">Process</h3>
+<p>A <strong>process</strong> is a program in execution, including the
+program code, current activity and state information.</p>
+<h3 id="attributes--components-of-a-process">Attributes / Components of
+a Process</h3>
+<ol type="1">
+<li><strong>Process ID (PID):</strong> Unique identifier for each
+process.</li>
+<li><strong>Process States:</strong> Current state — running, waiting,
+or ready.</li>
+<li><strong>Priority and CPU Scheduling Information:</strong> Helps OS
+decide which process runs next.</li>
+<li><strong>File Descriptor:</strong> Information about open files and
+network connections.</li>
+<li><strong>I/O Information:</strong> Input/output devices the process
+is using.</li>
+<li><strong>Accounting Information:</strong> CPU time used and other
+resource usage data.</li>
+<li><strong>Memory Management Information:</strong> Details about the
+memory space allocated to the process.</li>
+</ol>
+<hr />
+<h2 id="context-switch-in-operating-system">Context Switch in Operating
+System</h2>
+<p><strong>Context switching</strong> is the process by which the OS
+saves the state of a running process and loads the state of another
+process so that multiple processes can share the CPU effectively.</p>
+<h3 id="context-switching-triggers">Context Switching Triggers</h3>
+<ol type="1">
+<li><strong>Multitasking (Time Quantum Expiration):</strong> The OS
+assigns each process a tiny slice of time (Time Quantum). When it
+expires, a context switch occurs.</li>
+<li><strong>Interrupt Handling (Hardware Trigger):</strong> An interrupt
+is a signal that requires immediate OS attention.</li>
+<li><strong>Kernel / User Mode Switch:</strong> When the OS switches
+between kernel mode and user mode.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Overhead — if triggers happen too frequently,
+the system spends more time switching than running.</p>
+</blockquote>
+<hr />
+<h2 id="process-creation">Process Creation</h2>
+<p><strong>Process creation</strong> is the mechanism by which the OS
+builds a new process.</p>
+<ul>
+<li>The creating process is called the <strong>Parent
+process</strong>.</li>
+<li>The newly created processes are called the <strong>Child
+processes</strong>.</li>
+<li>Each process is identified by a <strong>unique process identifier
+(PID)</strong>.</li>
+</ul>
+<h3 id="resource-allocation-models">Resource Allocation Models</h3>
+<ol type="1">
+<li><strong>Direct Allocation:</strong> Child obtains resources directly
+from the OS.</li>
+<li><strong>Resource Sharing:</strong> Child shares resources with the
+parent.</li>
+</ol>
+<h3 id="execution-models">Execution Models</h3>
+<ol type="1">
+<li><strong>Concurrent Execution:</strong> Parent continues executing
+along with the child.</li>
+<li><strong>Wait for Child:</strong> Parent waits until children
+terminate.</li>
+</ol>
+<h3 id="address-space-models">Address Space Models</h3>
+<ol type="1">
+<li><strong>Duplicate Process:</strong> Child is an exact copy of the
+parent.</li>
+<li><strong>New Program:</strong> Child has a completely new
+program.</li>
+</ol>
+<hr />
+<h2 id="thread-management">Thread Management</h2>
+<p>A <strong>thread</strong> is the smallest unit of execution within a
+process. A thread (also called a <strong>lightweight process</strong>)
+is a unit of CPU utilization. It has a <strong>program counter</strong>,
+<strong>registers</strong>, and a <strong>stack</strong>.</p>
+<h3 id="characteristics-of-thread">Characteristics of Thread</h3>
+<ol type="1">
+<li>Threads within the same process share memory space.</li>
+<li>They can communicate directly with each other.</li>
+<li>They have their own stack and register state.</li>
+<li>They are lightweight compared to a full process.</li>
+</ol>
+<h3 id="components-of-thread">Components of Thread</h3>
+<ol type="1">
+<li><strong>Stack Space:</strong> Stores local variables, functions, and
+return addresses.</li>
+<li><strong>The Register:</strong> Holds temporary data and intermediate
+results.</li>
+<li><strong>Program Counter:</strong> Tracks the current instruction
+being executed.</li>
+</ol>
+<hr />
+<h2 id="types-of-thread">Types of Thread</h2>
+<h3 id="user-level-thread">User Level Thread</h3>
+<p>Managed by user level libraries, not directly by the OS.</p>
+<p><strong>Advantages:</strong> Fast to create; can run on any OS;
+application-specific scheduling. <strong>Disadvantages:</strong> Most
+system calls are blocking; cannot take advantage of multiprocessing.</p>
+<h3 id="kernel-level-thread">Kernel Level Thread</h3>
+<p>Managed directly by the OS kernel.</p>
+<p><strong>Advantages:</strong> Can schedule multiple threads on
+multiple processors; if one thread blocks, others can run.
+<strong>Disadvantages:</strong> Slower to create; mode switch required
+for control transfer.</p>
+<h3 id="advantages-of-threads">Advantages of Threads</h3>
+<ol type="1">
+<li>Minimizes switching time.</li>
+<li>Provides concurrency within a process.</li>
+<li>Efficient communication.</li>
+<li>More economical to create than processes.</li>
+</ol>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

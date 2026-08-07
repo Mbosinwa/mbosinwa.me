@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 711 System Design & Interface Design — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 711 System Analysis & Design: Design of systems and user interfaces.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/interface-design-notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/">CMS 711 System Analysis & Design</a> / System Design & Interface Design</p>
+        <article class="doc">
+<h1 id="introduction-to-system-design-and-interface-design">Introduction
+to System Design and Interface Design</h1>
+<hr />
+<h2 id="part-1-introduction-to-system-design">Part 1: Introduction to
+System Design</h2>
+<h3 id="learning-outcomes">Learning Outcomes</h3>
+<p>At the end of this topic, students should be able to:</p>
+<ul>
+<li>Describe System Design (SD)</li>
+<li>Describe the approaches in the Design Phase</li>
+</ul>
+<hr />
+<h3 id="what-is-system-design">What is System Design?</h3>
+<p><strong>System Design (SD)</strong> is the process of planning a new
+system or replacing or complementing an existing or legacy system. The
+system design phase introduces/defines the system outputs, inputs,
+interface, dialogue and data requirements. After the analysis and design
+phases, the proposed system enters the implementation and maintenance
+phase.</p>
+<blockquote>
+<p>The purpose of <strong>analysis</strong> is to figure out
+<em>what</em> the business needs are. The purpose of
+<strong>design</strong> is to decide <em>how</em> to build the system.
+The goal of design is to create a <strong>blueprint</strong> for the
+system that can be implemented.</p>
+</blockquote>
+<hr />
+<h3 id="what-vs-how">What vs. How</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Focus</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Analysis</strong></td>
+<td><em>What</em> the business needs — functional requirements</td>
+<td>Logical Model</td>
+</tr>
+<tr>
+<td><strong>Design</strong></td>
+<td><em>How</em> to build the system — non-functional requirements</td>
+<td>Physical Model</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analysis Phase Deliverables:</strong></p>
+<ul>
+<li>Product Requirement Document</li>
+<li>Architectural Diagrams (high-level composition)
+<ul>
+<li>Data Flow Diagram (DFD)</li>
+<li>Database Design (DD)</li>
+<li>Entity Relationship Diagram (ERD)</li>
+<li>Flowcharts</li>
+<li>Process Flow Diagrams</li>
+</ul></li>
+</ul>
+<p><strong>Design Phase Deliverables:</strong></p>
+<ul>
+<li>Output, Input, File Design</li>
+<li>Process Flow Diagrams</li>
+<li>Architectural Diagrams (high-level representation)</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    A[Analysis\nWhat?] --&gt;|Logical Model| B[Design\nHow?]
+    B --&gt;|Physical Model| C[Implementation\nBuild]
+    C --&gt; D[Maintenance]</code></pre>
+<p>The design phase is a <strong>transition from a user-oriented
+document to a programmer-oriented document</strong>.</p>
+<p><strong>Major considerations during design:</strong></p>
+<ol type="1">
+<li>How will the existing system be integrated?</li>
+<li>What are the processes of converting data from <strong>legacy
+systems</strong> (outdated computing systems including hardware,
+software, file formats, and programming language)?</li>
+<li>Leveraging skills that exist in-house or outsourcing skills.</li>
+</ol>
+<p>Design involves the user interface, system input, system outputs, and
+processes — which can be organized centralized to a location,
+distributed, or both.</p>
+<hr />
+<h3 id="tools-and-techniques-for-system-design">Tools and Techniques for
+System Design</h3>
+<ul>
+<li>Flowcharts</li>
+<li>Data Flow Diagram (DFD)</li>
+<li>Database Design</li>
+<li>Architectural Diagrams</li>
+<li>Input-Process-Output Specifications</li>
+</ul>
+<hr />
+<h3 id="approaches-in-the-design-phase">Approaches in the Design
+Phase</h3>
+<p>There are two approaches: the <strong>general/preliminary
+approach</strong> and the <strong>structured/detailed
+approach</strong>.</p>
+<h4 id="general-approach">General Approach</h4>
+<p>The features of the new system are specified, and the cost of
+implementing these features and the benefits to be derived are
+estimated.</p>
+<h4 id="structured-or-detailed-approach">Structured or Detailed
+Approach</h4>
+<p>A blueprint of a computer system solution to a given problem, having
+the same components and inter-relationships as the original problem. It
+specifies:</p>
+<ul>
+<li>Input</li>
+<li>Output</li>
+<li>Database</li>
+<li>Forms</li>
+<li>Codes</li>
+<li>Processing</li>
+</ul>
+<hr />
+<h3 id="general-guidelines-for-systems-design">General Guidelines for
+Systems Design</h3>
+<p><strong>Goal of Systems Design — build a system that is:</strong></p>
+<ul>
+<li><strong>Effective</strong> — satisfies defined requirements</li>
+<li><strong>Reliable</strong> — handles errors optimally</li>
+<li><strong>Maintainable</strong> — well designed, flexible, and
+considers future modifications</li>
+</ul>
+<p><strong>In the design approach, consider in this order:</strong></p>
+<ol type="1">
+<li><strong>Users</strong></li>
+<li><strong>Data</strong></li>
+<li><strong>Processing</strong></li>
+</ol>
+<hr />
+<h2 id="part-2-interface-input-and-output-design">Part 2: Interface,
+Input and Output Design</h2>
+<h3 id="learning-outcomes-1">Learning Outcomes</h3>
+<p>At the end of this topic, students should be able to:</p>
+<ul>
+<li>Understand the process of user interface design</li>
+<li>Understand how to design the user interface structure and
+standards</li>
+<li>Be able to design a user interface</li>
+</ul>
+<hr />
+<h3 id="what-is-a-user-interface">What is a User Interface?</h3>
+<p>A <strong>user interface</strong> is the part of the system users
+interact with. The interface includes:</p>
+<ul>
+<li>Screen displays</li>
+<li>Forms for capturing data</li>
+<li>Reports (output) that the system produces</li>
+</ul>
+<blockquote>
+<p>To the user of the system, <strong>the interface is the
+system</strong>.</p>
+</blockquote>
+<p>The <strong>interface design</strong> is the process of defining how
+a system will interact with external entities (customer, supplier, and
+other systems). The analyst should design the human element such that
+end users find the system friendly to work with.</p>
+<p><strong>User Interface Design is the 4th step in the
+SDLC.</strong></p>
+<hr />
+<h3 id="significant-criteria-for-dialogue-type-evaluation">Significant
+Criteria for Dialogue Type Evaluation</h3>
+<ul>
+<li><strong>Easy to Use</strong> — easy even for inexperienced
+users</li>
+<li><strong>Easy to Learn</strong> — easy for users to remember</li>
+<li><strong>Processing and responding speed</strong></li>
+<li><strong>Easy to develop</strong></li>
+</ul>
+<hr />
+<h3 id="parts-of-a-design-interface">Parts of a Design Interface</h3>
+<p>Most design interfaces comprise the following parts:</p>
+<h4 id="i-navigation-mechanism">i. Navigation Mechanism</h4>
+<p>Enables the user to interact with the system and tells it what to do
+(e.g., buttons, menus).</p>
+<h4 id="ii-input-mechanism">ii. Input Mechanism</h4>
+<p>The way in which the system captures information (e.g., using forms
+for adding or updating information).</p>
+<h4 id="iii-output-mechanism">iii. Output Mechanism</h4>
+<p>The way in which the system provides information to the user or other
+external systems (e.g., reports, webpages).</p>
+<blockquote>
+<p>Navigation design, input design, and output design are
+<strong>tightly coupled</strong> and must be performed in an
+<strong>incremental and iterative</strong> manner, especially in
+GUI-based displays.</p>
+</blockquote>
+<hr />
+<h3 id="principles-of-user-interface-design">Principles of User
+Interface Design</h3>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Layout</strong></td>
+<td>Use a consistent format for menu, command input, and data display
+(e.g., top area for commands/navigation, middle for input/output, bottom
+for status)</td>
+</tr>
+<tr>
+<td><strong>Content Awareness</strong></td>
+<td>Users should always be aware of where they are in the system and
+what information is being displayed</td>
+</tr>
+<tr>
+<td><strong>Aesthetics</strong></td>
+<td>Maintain consistency between information display and data input;
+careful use of space, colours, and fonts</td>
+</tr>
+<tr>
+<td><strong>User Experience</strong></td>
+<td>Ease of use and ease of learning should be the central goal; fit the
+interface to the person, not the person to the interface</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Enables users to predict what will happen before they perform a
+function; critical for ease of learning, use, and aesthetics</td>
+</tr>
+<tr>
+<td><strong>Minimal User Effort</strong></td>
+<td>Interface should be simple; provide undo/reversal functions; no more
+than three mouse clicks from the starting menu to task completion</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="essential-instructions-in-dialogue-design">Essential
+Instructions in Dialogue Design</h3>
+<ul>
+<li><strong>Feedback information</strong> — provide users with
+information on what is being done</li>
+<li><strong>Status</strong> — keep users informed of the system's parts
+they are using</li>
+<li><strong>Escape</strong> — allow users to exit from a
+manipulation</li>
+<li><strong>Minimum tasks</strong> — avoid users making too many
+manipulations</li>
+<li><strong>Default</strong> — set the frequently used parameter</li>
+<li><strong>Support</strong> — provide users with necessary supporting
+information</li>
+<li><strong>Cancel</strong> — users can cancel and resume</li>
+<li><strong>Consistency</strong> — implementation of commands must be
+consistent via the interface</li>
+</ul>
+<hr />
+<h3 id="screen-design">Screen Design</h3>
+<p>The most important thing is that displayed information, commands, and
+notices of system status go in line with each other, arranged in
+priority order and comfortable to users.</p>
+<p><strong>3 Main Types of Display:</strong></p>
+<ol type="1">
+<li><strong>Menu Display</strong> — helps users in fast connecting and
+easy access to system's functions</li>
+<li><strong>Dialogue Display</strong> — consists of notices/dialogues
+between users and the system</li>
+<li><strong>Data Entry Display</strong> — organizes data in groups of
+information classified by changeability, frequency of use, and
+importance. Designers decide whether to use simple or master-detail data
+entry display.</li>
+</ol>
+<hr />
+<h3 id="ui-design--evolution">UI Design — Evolution</h3>
+<pre class="mermaid"><code>flowchart LR
+    A[CLI\nCommand Line Interface] --&gt; B[PCUI\nProcess Control UI]
+    B --&gt; C[HCI\nHuman-Computer Interaction]
+    C --&gt; D[GUI\nGraphical User Interface]</code></pre>
+<ul>
+<li><strong>CLI (Command Line Interface)</strong> — typing commands at a
+prompt</li>
+<li><strong>PCUI (Process Control User Interface)</strong> — early form
+of process control</li>
+<li><strong>HCI (Human-Computer Interaction)</strong> — user-centred
+systems</li>
+<li><strong>GUI (Graphical User Interface)</strong> — responsive, easy
+to use and learn</li>
+</ul>
+<hr />
+<h3 id="steps-for-designing-an-interface">Steps for Designing an
+Interface</h3>
+<h4 id="1-design-a-transparent-interface">1. Design a Transparent
+Interface</h4>
+<ul>
+<li>Must meet design objectives</li>
+<li>Must improve user efficiency and productivity</li>
+<li>Use standard commands that are easy to remember (e.g., Open, Save,
+Save As)</li>
+</ul>
+<h4 id="2-create-an-interface-that-is-easy-to-learn-and-use">2. Create
+an Interface That is Easy to Learn and Use</h4>
+<ul>
+<li>Clearly label all controls, buttons, and icons</li>
+<li>Show commands as a list of menus (e.g., Home, File, Insert, Draw,
+Design)</li>
+<li>Provide on-screen instructions that are logical and clear</li>
+<li>Make it easy to navigate</li>
+</ul>
+<h4 id="3-enhance-user-productivity">3. Enhance User Productivity</h4>
+<ul>
+<li>Ensure a <strong>Help menu</strong> is always available for online
+and offline help</li>
+<li>Provide <strong>shortcuts</strong> for experienced users (keyboard
+or text shortcuts)</li>
+<li>Organise tasks and functions by grouping them based on business
+operations</li>
+</ul>
+<h4 id="4-minimize-input-data-problems">4. Minimize Input Data
+Problems</h4>
+<ul>
+<li>Create <strong>input masks</strong> (e.g., date format:
+<code>dd/mm/yy</code>)</li>
+<li>Build rules to enforce <strong>data integrity</strong> via data
+validation</li>
+<li>Inform users if tasks were completed successfully</li>
+<li>Provide progress indicators (e.g., "Step 1 of 4" or a progress
+bar)</li>
+</ul>
+<hr />
+<h3 id="data-validation-techniques">Data Validation Techniques</h3>
+<p>When data is captured and entered, it should be
+<strong>valid</strong>. The following validation checks must be in
+place:</p>
+<table>
+<thead>
+<tr>
+<th>Validation Check</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Presence Check</strong></td>
+<td>Is the data present in the field?</td>
+</tr>
+<tr>
+<td><strong>Range Check</strong></td>
+<td>Is the data within a set range? (e.g., months: 1–12)</td>
+</tr>
+<tr>
+<td><strong>Length Check</strong></td>
+<td>Is the text too short or too long?</td>
+</tr>
+<tr>
+<td><strong>Type Check</strong></td>
+<td>Is the data in the correct data type? (e.g., numeric fields must not
+accept text)</td>
+</tr>
+<tr>
+<td><strong>Format Check</strong></td>
+<td>Is the data in the correct format? (e.g., date as
+<code>dd/mm/yy</code>)</td>
+</tr>
+<tr>
+<td><strong>Consistency Check</strong></td>
+<td>Ensure combinations of data are valid</td>
+</tr>
+<tr>
+<td><strong>Database Check</strong></td>
+<td>Compare data against a database/file to ensure correctness</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[Figure 1 — Example data validation check form]</strong>
+<em>UI screenshot saved at
+<code>IntroSystemDesign-pages/pages/page-07.png</code>.</em></p>
+</blockquote>
+<hr />
+<h3 id="data-verification-techniques">Data Verification Techniques</h3>
+<p>Data validation only checks whether data is <strong>sensible</strong>
+— it does not confirm it is the <strong>correct</strong> value.</p>
+<ul>
+<li>Correct date of birth: <code>12/11/1982</code></li>
+<li>Date entered: <code>12/11/1928</code> → passes validation (valid
+date), but is wrong</li>
+</ul>
+<p>There are <strong>two methods</strong> of data verification:</p>
+<h4 id="1-proof-reading">1. Proof Reading</h4>
+<p>After data has been entered, it is compared against the original
+source. Quick and simple but doesn't catch every mistake.</p>
+<h4 id="2-double-entry">2. Double-Entry</h4>
+<p>Data is entered twice (preferably by two different users). The
+computer compares both entries — if they do not match, an error is
+generated.</p>
+<ul>
+<li>Takes more time and effort but catches almost every mistake</li>
+<li>Common example: typing a new password twice for confirmation</li>
+</ul>
+<blockquote>
+<p><strong>[Figure 2 — Double data entry verification check]</strong>
+<em>UI screenshot saved at
+<code>IntroSystemDesign-pages/pages/page-08.png</code>.</em></p>
+</blockquote>
+<hr />
+<h3 id="control-functions">Control Functions</h3>
+<p>On-screen forms have a variety of <strong>controls</strong> that
+guide how each data item is linked to an input field.</p>
+<h4 id="types-of-controls">Types of Controls</h4>
+<p><strong>Text Box</strong> — for normal text input. Labels placed to
+the left; supports standard GUI functions (cut, copy, paste).</p>
+<p><strong>Number Box</strong> — for entering numbers, including date
+data. Avoid if a selection box can be used instead.</p>
+<p><strong>Selection Box</strong> — enables the user to select a value
+from a predefined list. Items arranged in meaningful order (alphabetical
+or most-used). Can be initialized as unselected.</p>
+<p><strong>Buttons</strong> — perform actions (e.g., Save, Submit,
+Cancel).</p>
+<h4 id="types-of-selection-boxesbuttons">Types of Selection
+Boxes/Buttons</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Check Box</strong></td>
+<td>Used when several items can be selected from a list; square box in
+front of each option</td>
+</tr>
+<tr>
+<td><strong>Radio Buttons</strong></td>
+<td>Used to select one option from a mutually exclusive list; circle in
+front of each option</td>
+</tr>
+<tr>
+<td><strong>Drop Down List Box</strong></td>
+<td>Used when there is insufficient room to display all choices</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="output-design">Output Design</h2>
+<p>One of the major reasons for building an information system is the
+<strong>output</strong> — the visible part of the system. Results of
+processing can be viewed on screen, on paper, or via the Web.</p>
+<h3 id="considerations-in-output-design">Considerations in Output
+Design</h3>
+<ul>
+<li>What is the <strong>purpose</strong> of the output?</li>
+<li>Are there <strong>specific pieces of information</strong> that
+should be included?</li>
+<li>In what ways will the output be <strong>presented</strong>?
+(On-screen or printed)</li>
+<li>Are there <strong>security or confidentiality</strong> issues?</li>
+</ul>
+<h3 id="output-design-principles-hci">Output Design Principles
+(HCI)</h3>
+<ul>
+<li>Notes, headings, and output formats should be
+<strong>standardized</strong> whenever possible — format consistency is
+an attribute of user-friendly output</li>
+<li>The arrangement of information should be <strong>logical</strong> —
+present in digestible "chunks" in easy-to-understand language</li>
+<li><strong>Avoid acronyms and abbreviations</strong> especially for
+novice users; define unfamiliar words</li>
+<li><strong>Algorithms and assumptions</strong> on which calculations
+are based should be available to users — ensures correct
+interpretation</li>
+<li>Users should be able to <strong>locate needed data quickly</strong>
+without searching through all data</li>
+</ul>
+<hr />
+<h3 id="designing-system-outputs">Designing System Outputs</h3>
+<p>There are two basic output types:</p>
+<h4 id="1-on-screen-reports">1. On-Screen Reports</h4>
+<p>Like designing an on-screen form. Types include:</p>
+<ul>
+<li>Detail reports</li>
+<li>Summary reports</li>
+<li>Exception reports</li>
+<li>Turnaround documents</li>
+<li>Graphs</li>
+</ul>
+<p><strong>Design considerations:</strong></p>
+<ul>
+<li>Show all necessary fields</li>
+<li>Have fields that are the right size for the data</li>
+<li>Provide easy-to-understand instructions (if needed)</li>
+<li>Make good use of colours and fonts to make data clear</li>
+<li>Make good use of the available screen area</li>
+</ul>
+<blockquote>
+<p>Most organizations have moved toward electronic reports (e.g.,
+<strong>PDF format</strong> stored on file/web servers for easy
+access).</p>
+</blockquote>
+<h4 id="2-printed-reports">2. Printed Reports</h4>
+<p>Like designing an on-screen report, but must fit a piece of printer
+paper. Includes:</p>
+<ul>
+<li>Page numbers</li>
+<li>Headers/footers</li>
+</ul>
+<hr />
+<h2 id="review-questions">Review Questions</h2>
+<p>i. What are the key tasks in input design? ii. How is data entered
+into a computer system? iii. On-screen forms can have a variety of
+controls. Name and briefly discuss any <strong>four</strong> of them.
+iv. Name and explain any <strong>two data verification</strong> and
+<strong>two data validation</strong> techniques. v. What factors should
+be considered while designing the output of a system? vi. What is the
+relationship between user interface design and requirements
+determination?</p>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 711 System Development Life Cycle — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 711 System Analysis & Design: SDLC phases, models and deliverables.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/sdlc-notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/">CMS 711 System Analysis & Design</a> / System Development Life Cycle</p>
+        <article class="doc">
+<h1 id="system-development-life-cycle">System Development Life
+Cycle</h1>
+<hr />
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>At the end of this topic, students should be able to:</p>
+<ul>
+<li>Understand the System Development Life Cycle</li>
+<li>Describe the steps in SDLC</li>
+<li>Understand system development methodologies</li>
+</ul>
+<hr />
+<h2 id="introduction-to-sdlc">Introduction to SDLC</h2>
+<p>The <strong>Systems Development Life Cycle (SDLC)</strong> is like a
+house project or building a home where the first step is to come up with
+an idea (or the information system), then the idea is transformed into a
+drawing that is shown to the customer or owner of the project. This
+drawing or building plan undergoes several modifications or improvements
+till the customer agrees to the plan.</p>
+<p>SDLC is the process of understanding how an <strong>Information
+System (IS)</strong> can support business needs by designing a system,
+building it, and delivering it to users. The key person in the SDLC is
+the <strong>systems analyst</strong>, who analyses the business
+situation, identifies opportunities for improvements, and designs an
+information system to implement them.</p>
+<p>The SDLC has a similar set of <strong>four fundamental
+phases</strong>: planning, analysis, design, and implementation.
+However, different projects might adopt and emphasize different parts of
+the SDLC or approach the phases in different ways, but all projects have
+elements of these four phases.</p>
+<p>Each phase is itself composed of a series of steps, which rely upon
+techniques that produce <strong>deliverables</strong> (specific
+documents and files that provide understanding about the project).</p>
+<h3 id="two-key-points-about-sdlc">Two Key Points About SDLC</h3>
+<p>i. The phases and steps through which IS projects move, and some of
+the techniques that produce certain deliverables. ii. The SDLC is a
+process of <strong>gradual refinement</strong>.</p>
+<blockquote>
+<p>The deliverables produced in the analysis phase provide an insight to
+the shape of the new system. These deliverables are used as input to the
+design phase, which refines them to produce a set of deliverables
+describing in much more detailed terms exactly how the system will be
+built. These, in turn, are used in the implementation phase to produce
+the actual system.</p>
+</blockquote>
+<p>System life cycle is an organizational process of developing and
+maintaining systems. It is a <strong>step-by-step approach to solving
+business problems</strong>. It helps in establishing a system project
+plan, because it gives an overall list of processes and sub-processes
+required for developing a system.</p>
+<hr />
+<h2 id="phases-and-steps-of-sdlc">Phases and Steps of SDLC</h2>
+<p>The stages of SDLC suggest a <strong>four-phase and
+seven-steps</strong> logical path of any project from start to finish.
+Project teams may move through the steps consecutively, incrementally,
+iteratively, or in other patterns.</p>
+<p><strong>Four Phases:</strong> Planning, Analysis, Design,
+Implementation</p>
+<p><strong>Seven Steps:</strong></p>
+<ol type="1">
+<li>Project Planning</li>
+<li>Requirements &amp; Analysis</li>
+<li>Design</li>
+<li>Coding &amp; Implementation</li>
+<li>Testing</li>
+<li>Deployment</li>
+<li>Maintenance</li>
+</ol>
+<pre class="mermaid"><code>flowchart TD
+    A[1. Project Planning] --&gt; B[2. Requirements &amp; Analysis]
+    B --&gt; C[3. Design]
+    C --&gt; D[4. Coding &amp; Implementation]
+    D --&gt; E[5. Testing]
+    E --&gt; F[6. Deployment]
+    F --&gt; G[7. Maintenance]</code></pre>
+<hr />
+<h2 id="phases-of-the-sdlc--summary-table">Phases of the SDLC — Summary
+Table</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Purpose</th>
+<th>Activities</th>
+<th>Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Planning</strong></td>
+<td>Define scope, objectives, and feasibility</td>
+<td>Project Initiation, Feasibility Analysis, Project Scheduling &amp;
+resource allocation</td>
+<td>Project Charter, Feasibility Study Report, Project Plan</td>
+</tr>
+<tr>
+<td><strong>Requirements &amp; Analysis</strong></td>
+<td>Gather detailed requirements and analyze business needs</td>
+<td>Requirements Gathering (interviews, surveys, document analysis),
+Requirement analysis &amp; documentation</td>
+<td>System Requirements Specification (SRS), Use Cases, Process
+Diagrams</td>
+</tr>
+<tr>
+<td><strong>Design</strong></td>
+<td>Create detailed system designs based on requirements</td>
+<td>System Architecture Design, Database Design, Interface Design</td>
+<td>Design Documents, Data Models, UI/UX Prototypes</td>
+</tr>
+<tr>
+<td><strong>Implementation (Development)</strong></td>
+<td>Build and develop the system based on design specification</td>
+<td>Coding, integration of system components, development of databases,
+creation of system interface</td>
+<td>Source code, database schema, developed system modules</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Ensure the system works as intended and is free of defects</td>
+<td>Unit testing, Integration testing, System testing, User Acceptance
+Testing (UAT)</td>
+<td>Test Plans, Test Cases, Test Scripts, Defect Reports</td>
+</tr>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Deliver the system to users and make it operational</td>
+<td>System Installation, Data Migration, User Training, Deployment
+Testing</td>
+<td>Deployed System, User Training, Deployment Planning</td>
+</tr>
+<tr>
+<td><strong>Maintenance</strong></td>
+<td>Monitor, support and enhance the system post-deployment</td>
+<td>Bug Fixing, System Updates, Performance Tuning, New Feature
+Integration</td>
+<td>Maintenance Reports, System Updates, Enhancement Specifications</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="system-development-methodologies">System Development
+Methodologies</h2>
+<p>A <strong>methodology</strong> is a formalized approach to
+implementing the SDLC — it includes a list of steps and
+deliverables.</p>
+<h3 id="categories-of-system-methodologies">Categories of System
+Methodologies</h3>
+<h4 id="process-centred-methodology">Process-Centred Methodology</h4>
+<p>Emphasizes <strong>process models</strong> as the core of the system
+concept. It focuses on business processes or the data that support the
+business.</p>
+<ul>
+<li>Example: Would focus first on defining the processes (e.g., assemble
+sandwich ingredients).</li>
+</ul>
+<h4 id="data-centred-methodology">Data-Centred Methodology</h4>
+<p>Emphasizes <strong>data models</strong> as the core of the system
+concept. Would focus first on defining the contents of the storage areas
+(e.g., refrigerator) and how the contents were organized.</p>
+<h4 id="object-oriented-methodology">Object-Oriented Methodology</h4>
+<p>Attempts to balance the focus between process and data by
+incorporating both into one model. Would focus first on defining the
+major elements of the system (e.g., sandwiches, lunches) and look at the
+processes and data involved with each element.</p>
+<hr />
+<h2 id="structured-design">Structured Design</h2>
+<p>Structured design methodologies adopt a <strong>formal step-by-step
+approach</strong> to the SDLC that moves logically from one phase to the
+next.</p>
+<p>Popular methods include:</p>
+<ul>
+<li><strong>Structured Analysis</strong> — traditional method</li>
+<li><strong>Object-Oriented Analysis and Design</strong> — widely used
+newer strategy</li>
+</ul>
+<hr />
+<h2 id="sdlc-models">SDLC Models</h2>
+<h3 id="waterfall-model">Waterfall Model</h3>
+<p>The waterfall model is a <strong>linear and sequential</strong>
+design process in which progress is seen as flowing steadily downwards
+(like a waterfall).</p>
+<ul>
+<li>Each phase must be <strong>completed before the next one
+begins</strong></li>
+<li>Possible to go backward (e.g., design → analysis), but extremely
+difficult</li>
+</ul>
+<p><strong>Strengths:</strong> Simple, easy to understand, well-suited
+for projects with clear requirements.</p>
+<p><strong>Weaknesses:</strong> Inflexible, difficult to accommodate
+changes, high risk if initial requirements are not well-understood.</p>
+<p><strong>Best for:</strong> Projects with well-defined requirements
+and low uncertainty.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Planning] --&gt; B[Requirements &amp; Analysis]
+    B --&gt; C[Design]
+    C --&gt; D[Development / Implementation]
+    D --&gt; E[Testing]
+    E --&gt; F[Deployment]
+    F --&gt; G[Maintenance]</code></pre>
+<hr />
+<h3 id="validation-and-verification-model-v-model">Validation and
+Verification Model (V-Model)</h3>
+<p>A <strong>V-Model</strong> is an extension of the Waterfall model
+that includes corresponding <strong>testing phases for each development
+stage</strong>.</p>
+<ul>
+<li>Emphasizes <strong>verification and validation</strong></li>
+<li>Ensures <strong>early detection of defects</strong></li>
+<li>Like Waterfall, can be rigid and challenging to handle changes</li>
+</ul>
+<p><strong>Best for:</strong> Projects where quality and reliability are
+critical.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Requirements] --&gt; B[System Design]
+    B --&gt; C[Architecture Design]
+    C --&gt; D[Module Design]
+    D --&gt; E[Coding]
+    E --&gt; F[Unit Testing]
+    F --&gt; G[Integration Testing]
+    G --&gt; H[System Testing]
+    H --&gt; I[Acceptance Testing]
+    A -.-&gt;|validates| I
+    B -.-&gt;|validates| H
+    C -.-&gt;|validates| G
+    D -.-&gt;|validates| F</code></pre>
+<hr />
+<h3 id="rapid-application-development-rad">Rapid Application Development
+(RAD)</h3>
+<p><strong>RAD</strong> is a software development methodology which
+favours <strong>iterative development</strong> and the <strong>rapid
+construction of prototypes</strong> instead of large amounts of up-front
+planning. It emerged in the 1990s.</p>
+<ul>
+<li>Planning is interleaved with writing the software itself</li>
+<li>Lack of extensive pre-planning allows software to be written much
+faster</li>
+<li>Makes it easier to change requirements</li>
+</ul>
+<p><strong>Process:</strong></p>
+<ol type="1">
+<li>Develop preliminary data models and business process models using
+structured techniques</li>
+<li>Verify requirements using prototyping to refine data and process
+models</li>
+<li>Repeat iteratively until a "combined business requirements and
+technical design statement" is produced for constructing new
+systems</li>
+</ol>
+<pre class="mermaid"><code>flowchart LR
+    A[Business\nModelling] --&gt; B[Data\nModelling]
+    B --&gt; C[Process\nModelling]
+    C --&gt; D[Application\nGeneration]
+    D --&gt; E[Testing &amp;\nTurnover]
+    E --&gt; A</code></pre>
+<hr />
+<h3 id="iterative-model">Iterative Model</h3>
+<p>This model develops the system through <strong>repeated cycles
+(iterations)</strong>, allowing refinement through each iteration.</p>
+<p><strong>Strengths:</strong> Flexible, allows for changes and
+refinements, reduces risk through early iterations.</p>
+<p><strong>Weaknesses:</strong> Can lead to scope creep, requires
+careful project management.</p>
+<p><strong>Best for:</strong> Complex projects where requirements may
+evolve over time.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Requirements] --&gt; B[Analysis]
+    B --&gt; C[Design]
+    C --&gt; D[Implementation]
+    D --&gt; E[Testing]
+    E --&gt; F{Complete?}
+    F --&gt;|No - next iteration| A
+    F --&gt;|Yes| G[Review &amp; Release]</code></pre>
+<hr />
+<h3 id="spiral-model">Spiral Model</h3>
+<p>The <strong>Spiral Model</strong> combines <strong>iterative
+development with risk assessment</strong>. Each iteration involves
+planning, risk analysis, engineering, and evaluation.</p>
+<p>Based on the unique risk patterns of a given project, the spiral
+model guides a team to adopt elements of one or more process models
+(incremental, waterfall, or evolutionary prototyping).</p>
+<p><strong>Strengths:</strong> Focuses on risk management, iterative
+refinement, and client feedback.</p>
+<p><strong>Weaknesses:</strong> Inability to manage complex projects
+simply, requires significant risk assessment expertise.</p>
+<p><strong>Best for:</strong> Large, high-risk projects where risk
+management is a priority.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Plan] --&gt; B[Risk Analysis]
+    B --&gt; C[Engineering / Build]
+    C --&gt; D[Evaluate]
+    D --&gt; A</code></pre>
+<blockquote>
+<p><strong>[Full spiral diagram — see page 6]</strong> <em>Original
+spiral image saved at <code>SDLC-pages/pages/page-6.png</code>.</em></p>
+</blockquote>
+<hr />
+<h3 id="agile-model">Agile Model</h3>
+<p><strong>Agile methodology</strong> emphasizes flexibility,
+collaboration, and customer feedback. Uses iterative cycles called
+<strong>sprints</strong> to develop system increments.</p>
+<p><strong>Strengths:</strong> Highly flexible, adaptive to changes,
+focuses on customer satisfaction.</p>
+<p><strong>Weaknesses:</strong> Requires strong team collaboration, can
+be challenging in fixed-budget projects.</p>
+<p><strong>Best for:</strong> Dynamic projects where requirements are
+expected to change frequently.</p>
+<hr />
+<h3 id="other-methodologies">Other Methodologies</h3>
+<ul>
+<li>Prototyping</li>
+<li>Extreme Prototyping</li>
+<li>DevOps</li>
+<li>Scrum</li>
+</ul>
+<hr />
+<h2 id="system-analyst">System Analyst</h2>
+<p>A <strong>system analyst</strong> is a professional who specializes
+in analyzing, designing, and implementing information systems. They act
+as a <strong>bridge between business problems and technology
+solutions</strong>, ensuring that business needs are met with
+appropriate technical solutions.</p>
+<p>System analysts work to:</p>
+<ul>
+<li>Improve system efficiency</li>
+<li>Integrate new technologies</li>
+<li>Enhance business processes through effective use of information
+systems</li>
+</ul>
+<hr />
+<h2 id="homework">Homework</h2>
+<p>Write on the <strong>Roles and Responsibilities, Skills, and
+Types</strong> of a System Analyst.</p>
+<hr />
+<h2 id="review-questions">Review Questions</h2>
+<p>i. Describe the major phases in SDLC. What are the deliverables of
+each phase? ii. In what ways are the phases related? iii. What major
+roles does the project manager and system analyst play in building an
+information system? iv. What are the major roles played by the system
+analyst on a project team?</p>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

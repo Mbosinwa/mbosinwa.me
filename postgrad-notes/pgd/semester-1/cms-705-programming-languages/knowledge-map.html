@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 705 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 705 Programming Languages: Topic and concept map of the whole course, with relationships and entry points.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-705-programming-languages/knowledge-map.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/">CMS 705 Programming Languages</a> / Knowledge Map</p>
+        <article class="doc">
+<h1 id="knowledge-map-programming-languages-cms705">Knowledge Map:
+Programming Languages (CMS705)</h1>
+<blockquote>
+<p>Generated: 2026-04-01 | Topics: 5 | Concepts: 45+ | Relationships:
+28</p>
+</blockquote>
+<hr />
+<h2 id="course-overview">Course Overview</h2>
+<p>CMS705 Programming Languages examines how programming languages are
+designed, defined, and implemented — from the linguistic foundations
+that describe their structure, to the runtime mechanisms that execute
+them. The course spans language theory (syntax, semantics, pragmatics),
+data representation (types and data structures), program control
+(control structures and data flow), and language processing (lexical
+analysis, parsing, interpretation, and compilation). It provides the
+theoretical grounding behind every programming language a software
+engineer uses in practice.</p>
+<hr />
+<h2 id="concept-hierarchy">Concept Hierarchy</h2>
+<pre><code>Programming Languages (CMS705)
+│
+├── 1. Language Definition Structure                          [12 concepts]
+│   ├── What is a Language?
+│   │   ├── Key Concepts: Language, Formal System, Phoneme
+│   │   └── Central: Language (root of everything)
+│   ├── Language Structure (system of systems)
+│   │   ├── Phonology      → study of sound/token patterns
+│   │   ├── Morphology     → how tokens/words are formed
+│   │   ├── Syntax         → rules for arrangement ★ CENTRAL
+│   │   ├── Semantics      → meaning of programs
+│   │   └── Pragmatics     → context and practical usage
+│   ├── Language Definition Semantics
+│   │   ├── Static Semantics  → compile-time rules ★ CENTRAL
+│   │   └── Dynamic Semantics → runtime behaviour ★ CENTRAL
+│   └── Types of Language (Levels of Abstraction)
+│       ├── Machine Language    → binary, CPU-direct
+│       ├── Assembly Language   → mnemonics, assembler-translated
+│       ├── Middle-level Language → C; hardware + structure
+│       └── High-level Language → Python, Java, C++; human-readable
+│
+├── 2. Data Types and Structure                               [18 concepts]
+│   ├── Primitive Data Types
+│   │   ├── Key Concepts: int, float, char, bool, void
+│   │   └── Note: fixed size, stored directly in memory (stack)
+│   ├── Non-Primitive Data Types
+│   │   ├── Key Concepts: String, Array, Struct, Class, Pointer, Enum
+│   │   └── Note: dynamic size, reference-based, heap-allocated
+│   ├── Memory Model
+│   │   ├── Stack Memory  → LIFO; local variables; automatic
+│   │   └── Heap Memory   → dynamic allocation; new/delete
+│   ├── Linear Data Structures
+│   │   ├── Array         → contiguous, fixed-size, same type
+│   │   ├── Linked List   → nodes + pointers; dynamic; singly/doubly/circular
+│   │   ├── Stack         → LIFO; push/pop
+│   │   └── Queue         → FIFO; enqueue/dequeue
+│   ├── Non-linear Data Structures
+│   │   ├── Tree          → hierarchical; root/parent/child/leaf
+│   │   │   ├── Binary Tree, BST, AVL Tree, B-Tree
+│   │   ├── Graph         → vertices + edges; directed/undirected
+│   │   ├── Heap          → max-heap / min-heap
+│   │   ├── Hash Table    → key-value; fast lookup
+│   │   └── Trie          → string tree; autocomplete/spellcheck
+│   └── Control Structures                                    ★ CENTRAL
+│       ├── Sequential    → top-to-bottom; default
+│       ├── Selection     → if, if-else, else-if, switch
+│       ├── Iteration     → for, while, do-while, for-each
+│       └── Jump          → break, continue, return, goto
+│
+├── 3. Runtime Considerations                                 [8 concepts]
+│   ├── Implementation Methods
+│   │   ├── Assembly      → assembly → machine code
+│   │   ├── Compilation   → whole program → executable ★ CENTRAL
+│   │   ├── Interpretation → line-by-line at runtime ★ CENTRAL
+│   │   └── JIT           → bytecode → machine code on demand ★ CENTRAL
+│   ├── Data Flow in Memory
+│   │   ├── Stack         → local/primary; function call data
+│   │   └── Heap          → global/dynamic; new/delete
+│   └── Core Structural Elements
+│       ├── Variables     → named memory locations
+│       ├── Functions     → reusable blocks; parameters + return values
+│       └── Comments      → non-executable; human-readable
+│
+├── 4. Interpretative Language                                [5 concepts]
+│   ├── Interpretation    → translate + execute line by line (Python, JS)
+│   ├── Compiler          → translates entire source; faster execution
+│   ├── Interpreter       → no pre-compilation; portable; slower
+│   ├── JIT Compilation   → hybrid; compile on demand at runtime
+│   └── JVM / Bytecode    → Java&#39;s intermediate representation
+│
+└── 5. Lexical Analysis and Parsing                           [8 concepts]
+    ├── Phonology         → token-level; smallest units (keywords, identifiers)
+    ├── Morphology        → token formation rules (how identifiers are built)
+    ├── Syntax / Parsing  → grammar rules; well-formed programs
+    ├── Tokens            → atomic units of a program (keywords, operators, literals)
+    ├── Identifiers       → programmer-named elements (variables, functions, classes)
+    ├── Readability       → clarity of syntax design
+    ├── Writability       → ease of writing correct code
+    └── Reliability       → syntax&#39;s ability to prevent errors</code></pre>
+<hr />
+<h2 id="key-relationships">Key Relationships</h2>
+<h3 id="hierarchical-is-a--part-of">Hierarchical (Is-a / Part-of)</h3>
+<ul>
+<li>Phonology, Morphology, Syntax, Semantics, Pragmatics are all
+<strong>components of</strong> Language Structure</li>
+<li>Static Semantics and Dynamic Semantics are <strong>components
+of</strong> Language Definition Semantics</li>
+<li>Machine Language &lt; Assembly Language &lt; Middle-level Language
+&lt; High-level Language <em>(abstraction hierarchy)</em></li>
+<li>Sequential, Conditional, Iterative, Procedural Data Flow are
+<strong>types of</strong> Data Flow (by execution)</li>
+<li>Explicit and Implicit Data Flow are <strong>types of</strong> Data
+Flow (by visibility)</li>
+<li>Linear Data Structures include: Array, Linked List, Stack,
+Queue</li>
+<li>Non-linear Data Structures include: Tree, Graph, Heap, Hash Table,
+Trie</li>
+</ul>
+<h3 id="causal--enables">Causal / Enables</h3>
+<ul>
+<li>Understanding <strong>Phonology → Morphology → Syntax</strong>
+enables full Lexical Analysis and Parsing</li>
+<li>Understanding <strong>Language Definition</strong> enables
+understanding <strong>Implementation Methods</strong></li>
+<li>Understanding <strong>Primitive Types</strong> enables understanding
+<strong>Non-Primitive Types</strong></li>
+<li><strong>Control Structures</strong> determine the direction and
+behaviour of <strong>Data Flow</strong></li>
+<li><strong>Compilation / Interpretation / JIT</strong> enable programs
+to run on hardware</li>
+</ul>
+<h3 id="dependency-requires">Dependency (Requires)</h3>
+<ul>
+<li><strong>Prerequisite Chain 1:</strong> Phonology → Morphology →
+Syntax → Semantics <em>(understand tokens before grammar, grammar before
+meaning)</em></li>
+<li><strong>Prerequisite Chain 2:</strong> Primitive Data Types →
+Non-Primitive Data Types <em>(primitives are the building blocks of
+complex types)</em></li>
+<li><strong>Prerequisite Chain 3:</strong> Language Definition Structure
+→ Implementation Methods → Runtime Behaviour <em>(theory of languages
+before how they are run)</em></li>
+</ul>
+<h3 id="contrast-contrasts-with">Contrast (Contrasts-with)</h3>
+<ul>
+<li><strong>Compilation</strong> vs <strong>Interpretation</strong>:
+Compilation translates the whole program up-front; Interpretation
+translates and executes line by line at runtime</li>
+<li><strong>Static Semantics</strong> vs <strong>Dynamic
+Semantics</strong>: Static = compile-time checks; Dynamic = runtime
+behaviour</li>
+<li><strong>Explicit Data Flow</strong> vs <strong>Implicit Data
+Flow</strong>: Explicit = visible in code via parameters/returns;
+Implicit = hidden through global/shared variables</li>
+<li><strong>Stack Memory</strong> vs <strong>Heap Memory</strong>: Stack
+= automatic, LIFO, local; Heap = manual, dynamic, global</li>
+<li><strong>Linear</strong> vs <strong>Non-linear</strong> Data
+Structures: Linear = single-level, sequential; Non-linear = multi-level,
+hierarchical</li>
+</ul>
+<hr />
+<h2 id="central-concepts">Central Concepts</h2>
+<p>These are the most connected concepts in the course — master these
+first:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Connections</th>
+<th>Why Central</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Syntax</strong></td>
+<td>5</td>
+<td>Core of language structure, lexical analysis, parsing,
+readability/writability — appears in every topic</td>
+</tr>
+<tr>
+<td><strong>Data Flow</strong></td>
+<td>6</td>
+<td>Ties together control structures, memory, functions, runtime —
+underpins all of computer science</td>
+</tr>
+<tr>
+<td><strong>Control Structures</strong></td>
+<td>5</td>
+<td>Directly determines how data flows; connects selection, iteration,
+jump, and sequential logic</td>
+</tr>
+<tr>
+<td><strong>Compilation vs Interpretation</strong></td>
+<td>5</td>
+<td>Core of runtime considerations and interpretative language topics;
+determines execution model</td>
+</tr>
+<tr>
+<td><strong>Static vs Dynamic Semantics</strong></td>
+<td>4</td>
+<td>Bridges language definition theory with runtime behaviour; essential
+for understanding type systems</td>
+</tr>
+<tr>
+<td><strong>Primitive vs Non-Primitive Types</strong></td>
+<td>4</td>
+<td>Foundation of all data representation; prerequisite for data
+structures</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prerequisite-learning-path">Prerequisite Learning Path</h2>
+<p>Recommended study order based on dependencies:</p>
+<ol type="1">
+<li><strong>What is a Language?</strong> — establish the conceptual
+foundation</li>
+<li><strong>Language Structure</strong> (Phonology, Morphology, Syntax,
+Semantics, Pragmatics) — understand the components</li>
+<li><strong>Static vs Dynamic Semantics</strong> — understand how
+languages are precisely defined</li>
+<li><strong>Types of Language</strong> (Machine → Assembly → Middle →
+High-level) — understand abstraction levels</li>
+<li><strong>Lexical Analysis and Parsing</strong> — apply Phonology,
+Morphology, Syntax to language processing</li>
+<li><strong>Primitive Data Types</strong> — foundation of all data
+representation</li>
+<li><strong>Non-Primitive Data Types</strong> — built from primitives;
+adds complexity</li>
+<li><strong>Stack and Heap Memory</strong> — understand how data is
+stored at runtime</li>
+<li><strong>Linear Data Structures</strong> (Array, Linked List, Stack,
+Queue) — sequential organisation</li>
+<li><strong>Non-linear Data Structures</strong> (Tree, Graph, Heap) —
+hierarchical and complex organisation</li>
+<li><strong>Control Structures</strong> — how programs direct execution
+flow</li>
+<li><strong>Data Flow</strong> (Sequential, Conditional, Iterative,
+Procedural) — how data moves through programs</li>
+<li><strong>Explicit vs Implicit Data Flow</strong> — visibility and
+traceability of data movement</li>
+<li><strong>Implementation Methods</strong> (Assembly, Compilation,
+Interpretation) — translating programs to machine code</li>
+<li><strong>JIT Compilation and Interpretative Languages</strong> —
+hybrid execution models; Java/JVM</li>
+</ol>
+<hr />
+<h2 id="definitions-quick-reference">Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition (brief)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language</td>
+<td>Formal system of symbols and rules for communicating instructions to
+a computer</td>
+</tr>
+<tr>
+<td>Phonology</td>
+<td>Study of smallest units (tokens/phonemes) in a language</td>
+</tr>
+<tr>
+<td>Morphology</td>
+<td>Study of how tokens/words are formed from root elements</td>
+</tr>
+<tr>
+<td>Syntax</td>
+<td>Rules governing how tokens are arranged into valid programs</td>
+</tr>
+<tr>
+<td>Semantics</td>
+<td>The meaning of programs — what they actually do</td>
+</tr>
+<tr>
+<td>Pragmatics</td>
+<td>Practical usage of a language; readability, writability,
+efficiency</td>
+</tr>
+<tr>
+<td>Static Semantics</td>
+<td>Compile-time checks — type compatibility, variable declarations</td>
+</tr>
+<tr>
+<td>Dynamic Semantics</td>
+<td>Runtime behaviour — how values are computed and change during
+execution</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>Classification of what kind of data a variable holds and what
+operations are allowed</td>
+</tr>
+<tr>
+<td>Primitive Type</td>
+<td>Built-in, fixed-size type (int, float, char, bool, void)</td>
+</tr>
+<tr>
+<td>Non-Primitive Type</td>
+<td>Complex, reference-based type built from primitives (String, Array,
+Class)</td>
+</tr>
+<tr>
+<td>Stack Memory</td>
+<td>LIFO region of RAM; stores local variables and function call
+data</td>
+</tr>
+<tr>
+<td>Heap Memory</td>
+<td>Dynamic memory region; used for runtime allocation (new/delete)</td>
+</tr>
+<tr>
+<td>Data Structure</td>
+<td>A method of organising data for efficient access and
+manipulation</td>
+</tr>
+<tr>
+<td>Control Structure</td>
+<td>Mechanism that determines the order of statement execution</td>
+</tr>
+<tr>
+<td>Data Flow</td>
+<td>Movement, transformation, and usage of data within a program during
+execution</td>
+</tr>
+<tr>
+<td>Explicit Data Flow</td>
+<td>Data movement clearly visible in code via parameters and
+returns</td>
+</tr>
+<tr>
+<td>Implicit Data Flow</td>
+<td>Data movement through global/shared variables; hidden and hard to
+trace</td>
+</tr>
+<tr>
+<td>Compilation</td>
+<td>Whole-program translation to machine code by a compiler</td>
+</tr>
+<tr>
+<td>Interpretation</td>
+<td>Line-by-line translation and execution by an interpreter at
+runtime</td>
+</tr>
+<tr>
+<td>JIT Compilation</td>
+<td>Hybrid: bytecode compiled to machine code on-demand at runtime (e.g.
+Java/JVM)</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Atomic unit of a program (keyword, identifier, operator,
+literal)</td>
+</tr>
+<tr>
+<td>Identifier</td>
+<td>Programmer-defined name for a variable, function, class, or
+module</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tutor-reference-notes">Tutor Reference Notes</h2>
+<ul>
+<li><strong>Best entry-point concept:</strong> Start with <em>Language
+Structure</em> (Phonology → Morphology → Syntax) — it unifies
+linguistics and programming language theory and is the backbone of
+topics 1 and 5</li>
+<li><strong>Most common misconceptions:</strong>
+<ul>
+<li>Confusing <em>Syntax errors</em> (Static Semantics) with <em>Logic
+errors</em> (Dynamic Semantics)</li>
+<li>Thinking <em>Interpretation</em> is always slower than
+<em>Compilation</em> — JIT narrows this gap significantly</li>
+<li>Conflating <em>Stack (data structure)</em> with <em>Stack
+Memory</em> — same LIFO principle, different contexts</li>
+<li>Assuming <em>Non-primitive types</em> are always on the Heap —
+compiler/language dependent</li>
+</ul></li>
+<li><strong>Concepts students typically conflate:</strong>
+<ul>
+<li>Static Semantics ↔︎ Dynamic Semantics</li>
+<li>Stack (data structure) ↔︎ Stack Memory</li>
+<li>Compilation ↔︎ JIT Compilation</li>
+<li>Explicit Data Flow ↔︎ Implicit Data Flow</li>
+<li>Middle-level Language ↔︎ Low-level Language</li>
+</ul></li>
+<li><strong>Mbosinwa's context:</strong> Strong software engineering
+background — connect theoretical concepts to practical tools he already
+uses (e.g. JIT → JVM in Java, Heap →
+<code>new</code>/<code>delete</code> in C++, Syntax → compiler errors
+he's seen). Over-explain by default; he will say if he needs less
+detail.</li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

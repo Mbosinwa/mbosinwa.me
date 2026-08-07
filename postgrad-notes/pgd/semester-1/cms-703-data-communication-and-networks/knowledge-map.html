@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 703 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 703 Data Communication & Networks: Topic and concept map of the whole course, with relationships and entry points.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-703-data-communication-and-networks/knowledge-map.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-703-data-communication-and-networks/">CMS 703 Data Communication & Networks</a> / Knowledge Map</p>
+        <article class="doc">
+<h1
+id="knowledge-map-cms-703--data-communication-and-networks">Knowledge
+Map: CMS 703 — Data Communication and Networks</h1>
+<blockquote>
+<p>Generated: 2026-03-30 | Topics: 24 | Concepts: 54 | Relationships:
+67</p>
+</blockquote>
+<hr />
+<h2 id="course-overview">Course Overview</h2>
+<p>This course covers the foundational principles of data communication
+and computer networking — from the five basic components of a
+communication system, through signal representation and Fourier
+analysis, to physical and wireless transmission media, network types and
+topologies, switching and routing techniques, and the OSI reference
+model. It also covers how data is encoded as bit patterns, how serial
+and parallel transmission work in practice, and how Fourier mathematics
+powers real-world technologies like OFDM in 5G and LTE.</p>
+<hr />
+<h2 id="concept-hierarchy">Concept Hierarchy</h2>
+<pre><code>CMS 703: Data Communication and Networks
+│
+├── 1. Introduction to Data Communication                    [8 concepts]
+│   ├── Definition &amp; Core Components
+│   │   ├── Key Concepts: Message, Sender, Receiver, Transmission Medium, Protocol
+│   │   └── Central: Protocol (required for all communication to function)
+│   ├── Data Representation Forms
+│   │   ├── Text: bit patterns, Unicode (32-bit), ASCII (127 chars = Basic Latin)
+│   │   ├── Images: pixel matrix, RGB and YCM colour models
+│   │   ├── Audio: continuous signal → sampling → quantization → encoding
+│   │   └── Video: analog or digital, encoding process
+│   └── Fundamental Principles
+│       └── Key Concepts: Delivery, Accuracy, Timeliness
+│
+├── 2. Fourier Analysis                                      [12 concepts]
+│   ├── Fourier Series (Periodic Signals)
+│   │   ├── Key Concepts: Periodic Signal, Fundamental Frequency (Ω), Harmonics
+│   │   ├── Key Concepts: Dirichlet Conditions, Orthogonality, Period, Amplitude
+│   │   ├── Formula: f(x) = a₀/2 + Σ[aₙcos(nπx/L) + bₙsin(nπx/L)]
+│   │   ├── Worked: Square wave → only odd harmonics survive (even cancel out)
+│   │   └── Central: bridges time domain ↔ frequency domain for periodic signals
+│   ├── Fourier Transform (Non-periodic Signals)
+│   │   ├── Forward: F(ω) = ∫f(t)e^{-iωt}dt
+│   │   ├── Inverse: f(t) = (1/2π)∫F(ω)e^{iωt}dω
+│   │   ├── Square Pulse: F(ω) = T·sinc(ωT/2) — wider pulse = narrower freq spread
+│   │   ├── Worked: f(t)=e^{-at}u(t) → F(ω) = 1/(a+iω), a&gt;0
+│   │   └── Real-world: OFDM in 5G/LTE uses Fourier Transform for spectrum allocation
+│   └── Related Transforms
+│       ├── Laplace Transform — design tool for continuous-time systems
+│       └── Z Transform — discrete-time equivalent of Laplace
+│
+├── 3. Data Transmission Modes                               [3 concepts]
+│   ├── Simplex — unidirectional only (keyboard→PC, TV broadcast)
+│   ├── Half-Duplex — bidirectional, one direction at a time (walkie-talkie, WiFi)
+│   └── Full-Duplex — simultaneous bidirectional (telephone, live chat)
+│
+├── 4. Data Transmission Forms                               [2 concepts]
+│   ├── Analog — continuous waveform
+│   └── Digital — discrete 0/1 states
+│
+├── 5. Data Transmission Speed                               [2 concepts]
+│   ├── Bandwidth — data transfer capacity per unit time
+│   └── BPS (Bits Per Second) — rate of bit transmission
+│
+├── 6. Transmission Media                                    [9 concepts]
+│   ├── Guided Media (physical path)
+│   │   ├── Twisted Pair Wire — copper conductors twisted; STP and UTP types
+│   │   │   └── Used in: telephone, 10Base-T and 100Base-T LANs
+│   │   ├── Coaxial Cable — central copper core + insulated sheath + outer shield
+│   │   │   └── Used in: cable TV, satellite, CCTV, analog/digital telephony
+│   │   └── Fibre-Optic Cable — transmits light through glass/plastic core + cladding
+│   │       ├── Advantages: high bandwidth, low attenuation (50km vs 5km repeaters),
+│   │       │   immune to EM interference, corrosion-resistant, lightweight, hard to tap
+│   │       ├── Disadvantages: expensive, fragile, requires expert installation
+│   │       └── Used in: backbone networks, 100Base-FX, 1000Base-X, hybrid cable TV
+│   └── Unguided Media (wireless)
+│       ├── Radio Waves — 3 KHz to 1 GHz; omnidirectional; AM/FM radio, TV, paging
+│       ├── Microwaves — 1 to 300 GHz; unidirectional (parabolic dish/horn antenna)
+│       │   └── Line-of-sight; towers needed; restricted bands require regulatory approval
+│       └── Infrared — 300 GHz to 400 THz; short-distance; cannot penetrate walls
+│           └── Used in: remote controls, night vision, missile guidance, gas detectors
+│
+├── 7. Computer Networks                                     [7 concepts]
+│   ├── Network Types (by scope)
+│   │   ├── LAN — Local Area Network (office, home)
+│   │   ├── MAN — Metropolitan Area Network (city, large campus)
+│   │   └── WAN — Wide Area Network (global, e.g. Internet)
+│   └── Network Topologies
+│       ├── Bus — all nodes share single backbone cable
+│       ├── Star — all nodes connect to central hub/switch; most common
+│       ├── Ring — closed loop; sequential transmission
+│       └── Mesh — every node interconnected; most redundant
+│
+├── 8. Switching Techniques                                  [2 concepts]
+│   ├── Circuit Switching — dedicated physical path for full connection duration
+│   │   └── Example: PTCL telephone network; reliable but wastes idle bandwidth
+│   └── Packet Switching — data split into independently routed packets
+│       └── Example: Internet; efficient; Central concept for modern networking
+│
+├── 9. Routing Techniques                                    [2 concepts]
+│   ├── Source Routing — full path specified by source node
+│   └── Hop-by-Hop Routing — each node forwards to the next
+│
+├── 10. Communication Protocols &amp; OSI Model                  [10 concepts]
+│    ├── Protocol Functions
+│    │   └── Packet size, numbering, error control, security, routing
+│    ├── Standards Organisations (ISO, IEEE, etc.)
+│    └── OSI Model — 7 layers (ISO, 1984)           ← CENTRAL
+│        ├── Layer 1: Physical — bit stream, hardware, NIC
+│        ├── Layer 2: Data Link — frames, physical addressing
+│        ├── Layer 3: Network — routing, logical addressing
+│        ├── Layer 4: Transport — end-to-end delivery, flow control  ← Central
+│        ├── Layer 5: Session — dialogue/session management
+│        ├── Layer 6: Presentation — encryption, compression, syntax
+│        └── Layer 7: Application — user interface and network services
+│
+├── 11. Modulation, Multiplexing &amp; Channel Topics            [5 concepts]
+│    ├── Modulation / Demodulation — encoding info onto a carrier signal
+│    ├── TDM — Time Division Multiplexing
+│    ├── FDM — Frequency Division Multiplexing
+│    ├── FCM — Frequency Code Multiplexing
+│    └── Noise, Distortion, Channel Characteristics
+│
+├── 12. Serial vs Parallel Data Transmission                 [6 concepts]
+│    ├── Serial Transmission
+│    │   ├── One bit at a time, single channel; reliable over long distances
+│    │   ├── Less signal distortion; widely used in USB, Ethernet, RS-232
+│    │   └── Embedded/SCADA: RS-232, RS-485, SPI, DNP3
+│    └── Parallel Transmission
+│        ├── Multiple bits simultaneously, multiple channels; fast but short-distance
+│        └── Used in: CPU data bus, internal memory transfer, printer connections
+│
+├── 13. Asynchronous vs Synchronous Transmission             [6 concepts]
+│    ├── Asynchronous
+│    │   ├── Character-framed with Start + Stop bits; optional Parity bit
+│    │   ├── No shared clock; synchronization per character
+│    │   ├── Frame: [Start | D0 D1 D2 D3 D4 D5 D6 D7 | Parity | Stop]
+│    │   └── Apps: RS-232, keyboard/mouse, dial-up modems
+│    └── Synchronous
+│        ├── Block/frame-based; clock-synchronized; no Start/Stop overhead
+│        ├── Error detection: CRC or checksum
+│        ├── Frame: [Sync | Sync | Data Data Data Data Data Data]
+│        └── Apps: Ethernet, broadband, digital telephony, satellite
+│
+└── 14. Bandwidth Allocation &amp; Real-World Applications       [3 concepts]
+     ├── Signal Modelling — represent digital data as square pulses
+     ├── Fourier Transform of Square Pulse → Sinc spectrum
+     │   └── Identifies dominant frequencies, bandwidth needed, interference zones
+     └── OFDM (Orthogonal Frequency Division Multiplexing)
+         └── Core technology in 5G and LTE — allocates frequency bands per FT principles</code></pre>
+<hr />
+<h2 id="key-relationships">Key Relationships</h2>
+<h3 id="hierarchical-is-a--part-of">Hierarchical (Is-a / Part-of)</h3>
+<ul>
+<li><code>Protocol</code> is a required component of every
+<code>Data Communication System</code></li>
+<li><code>Guided Media</code> and <code>Unguided Media</code> are types
+of <code>Transmission Media</code></li>
+<li><code>Twisted Pair</code>, <code>Coaxial Cable</code>,
+<code>Fibre-Optic</code> are types of <code>Guided Media</code></li>
+<li><code>Radio Waves</code>, <code>Microwaves</code>,
+<code>Infrared</code> are types of <code>Unguided Media</code></li>
+<li><code>LAN</code>, <code>MAN</code>, <code>WAN</code> are types of
+<code>Computer Network</code></li>
+<li><code>Bus</code>, <code>Star</code>, <code>Ring</code>,
+<code>Mesh</code> are types of <code>Network Topology</code></li>
+<li><code>OSI Model</code> consists of 7 layers (Physical →
+Application)</li>
+<li><code>Circuit Switching</code> and <code>Packet Switching</code> are
+types of <code>Switching Technique</code></li>
+<li><code>Serial Transmission</code> and
+<code>Parallel Transmission</code> are types of
+<code>Data Transmission</code></li>
+<li><code>Asynchronous</code> and <code>Synchronous</code> are types of
+<code>Transmission Mode (timing)</code></li>
+<li><code>Unicode</code> contains <code>ASCII</code> as a subset (Basic
+Latin, 127 characters)</li>
+<li><code>RGB</code> and <code>YCM</code> are methods for
+<code>representing colour images as bit patterns</code></li>
+<li><code>Pixel</code> is the unit element of
+<code>digital image representation</code></li>
+<li><code>OFDM</code> is an application of
+<code>Fourier Transform</code> in wireless networks</li>
+</ul>
+<h3 id="causal-causes--enables">Causal (Causes / Enables)</h3>
+<ul>
+<li><code>Full-Duplex</code> enables simultaneous bidirectional
+communication</li>
+<li><code>Packet Switching</code> enables Internet-scale networking</li>
+<li><code>Fibre-Optic Cable</code> enables high-capacity, long-distance,
+interference-immune transmission</li>
+<li><code>Fourier Transform</code> enables
+<code>Bandwidth Allocation</code> and <code>OFDM</code> design</li>
+<li><code>Protocol</code> enables devices to communicate meaningfully
+even when connected</li>
+<li><code>Quantization + Encoding</code> enables continuous audio/video
+to be transmitted digitally</li>
+<li><code>Odd harmonics</code> (only) survive Fourier Series
+decomposition of a square wave</li>
+</ul>
+<h3 id="dependency-requires">Dependency (Requires)</h3>
+<ul>
+<li><code>Fourier Transform</code> requires understanding of
+<code>Fourier Series</code> first</li>
+<li><code>OFDM</code> requires understanding of
+<code>Fourier Transform</code> and <code>Bandwidth</code> first</li>
+<li><code>Asynchronous/Synchronous Transmission</code> requires
+understanding of <code>Serial Transmission</code> first</li>
+<li><code>OSI Model layers</code> require understanding of lower layers
+first (bottom-up learning)</li>
+<li><code>Routing</code> requires <code>Switching</code> as conceptual
+prerequisite</li>
+<li><code>Multiplexing</code> requires understanding of
+<code>Transmission Modes</code> and <code>Bandwidth</code></li>
+</ul>
+<p><strong>Prerequisite Chains:</strong></p>
+<ol type="1">
+<li><code>Data Communication Basics</code> →
+<code>Transmission Modes</code> → <code>Transmission Media</code> →
+<code>Network Types</code></li>
+<li><code>Data Representation</code> → <code>Periodic Signals</code> →
+<code>Fourier Series</code> → <code>Fourier Transform</code> →
+<code>Bandwidth Allocation</code> → <code>OFDM/5G</code></li>
+<li><code>Network Types</code> → <code>Topologies</code> →
+<code>Switching</code> → <code>Routing</code> → <code>Protocols</code> →
+<code>OSI Model</code></li>
+<li><code>Serial vs Parallel Transmission</code> →
+<code>Asynchronous vs Synchronous Transmission</code></li>
+<li><code>OSI Layer 1 (Physical)</code> → <code>Layer 2</code> →
+<code>Layer 3</code> → ... → <code>Layer 7 (Application)</code></li>
+</ol>
+<h3 id="contrast-contrasts-with">Contrast (Contrasts-with)</h3>
+<ul>
+<li><code>Simplex</code> vs <code>Half-Duplex</code> vs
+<code>Full-Duplex</code> — direction and simultaneity of data flow</li>
+<li><code>Analog</code> vs <code>Digital</code> — continuous waveform vs
+discrete 0/1 states</li>
+<li><code>Circuit Switching</code> vs <code>Packet Switching</code> —
+dedicated path vs independent packets</li>
+<li><code>Guided Media</code> vs <code>Unguided Media</code> — physical
+cable vs wireless broadcast</li>
+<li><code>Fourier Series</code> vs <code>Fourier Transform</code> —
+periodic vs non-periodic signal analysis</li>
+<li><code>Source Routing</code> vs <code>Hop-by-Hop Routing</code> —
+full path known upfront vs incremental forwarding</li>
+<li><code>Serial Transmission</code> vs
+<code>Parallel Transmission</code> — one-bit-at-a-time vs multi-bit
+simultaneous</li>
+<li><code>Asynchronous</code> vs <code>Synchronous Transmission</code> —
+character-framed vs block-framed, no clock vs shared clock</li>
+<li><code>STP</code> vs <code>UTP</code> — shielded vs unshielded
+twisted pair</li>
+<li><code>Radio Waves</code> vs <code>Microwaves</code> vs
+<code>Infrared</code> — frequency range and directionality
+differences</li>
+</ul>
+<hr />
+<h2 id="central-concepts">Central Concepts</h2>
+<p>These are the most connected concepts — master these first:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Connections</th>
+<th>Why Central</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>7</td>
+<td>Governs ALL communication; required by every network layer and
+device</td>
+</tr>
+<tr>
+<td><strong>OSI Model</strong></td>
+<td>9</td>
+<td>Organises entire network architecture into 7 functional layers</td>
+</tr>
+<tr>
+<td><strong>Transmission Media</strong></td>
+<td>7</td>
+<td>Parent of all physical and wireless communication channels</td>
+</tr>
+<tr>
+<td><strong>Fourier Transform</strong></td>
+<td>6</td>
+<td>Bridges signal analysis (periodic + non-periodic) to real-world
+applications (OFDM)</td>
+</tr>
+<tr>
+<td><strong>Packet Switching</strong></td>
+<td>5</td>
+<td>Foundation of the Internet and all modern data networks</td>
+</tr>
+<tr>
+<td><strong>Serial Transmission</strong></td>
+<td>5</td>
+<td>Underpins long-distance comms, SCADA systems, USB, Ethernet,
+4G/5G</td>
+</tr>
+<tr>
+<td><strong>Transport Layer (L4)</strong></td>
+<td>4</td>
+<td>Bridges the network and application worlds; handles end-to-end
+delivery</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prerequisite-learning-path">Prerequisite Learning Path</h2>
+<p>Recommended study order based on dependencies:</p>
+<ol type="1">
+<li><strong>Introduction to Data Communication</strong> — 5 components,
+data representation (text/image/audio/video), principles</li>
+<li><strong>Data Transmission Modes</strong> — simplex, half-duplex,
+full-duplex</li>
+<li><strong>Data Transmission Forms</strong> — analog vs digital</li>
+<li><strong>Transmission Media</strong> — guided (twisted pair, coaxial,
+fibre-optic) and unguided (radio, microwave, infrared)</li>
+<li><strong>Serial vs Parallel Transmission</strong> — how bits actually
+travel; advantages and trade-offs</li>
+<li><strong>Asynchronous vs Synchronous Transmission</strong> — timing
+and framing at character/block level</li>
+<li><strong>Fourier Analysis</strong> — signal representation; Fourier
+Series for periodic signals, Fourier Transform for non-periodic</li>
+<li><strong>Bandwidth &amp; Data Transmission Speed</strong> — capacity,
+BPS, signal spectrum</li>
+<li><strong>Bandwidth Allocation &amp; OFDM</strong> — real-world
+application of Fourier in 5G/LTE</li>
+<li><strong>Computer Networks</strong> — LAN/MAN/WAN, topologies
+(bus/star/ring/mesh)</li>
+<li><strong>Switching Techniques</strong> — circuit switching vs packet
+switching</li>
+<li><strong>Routing Techniques</strong> — source routing, hop-by-hop
+routing</li>
+<li><strong>Communication Protocols &amp; OSI Model</strong> — 7 layers,
+functions per layer</li>
+<li><strong>Modulation &amp; Multiplexing</strong> — encoding and
+combining signals (TDM, FDM)</li>
+</ol>
+<hr />
+<h2 id="definitions-quick-reference">Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Communication</td>
+<td>Sharing information locally or remotely via a system of 5
+components</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>The information to be transmitted (text, image, audio, video,
+numbers)</td>
+</tr>
+<tr>
+<td>Sender</td>
+<td>The originating device that sends the data</td>
+</tr>
+<tr>
+<td>Receiver</td>
+<td>The destination device that receives the message</td>
+</tr>
+<tr>
+<td>Transmission Medium</td>
+<td>The physical path a message travels from sender to receiver</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>A set of rules governing data communication; enables
+synchronization</td>
+</tr>
+<tr>
+<td>Simplex</td>
+<td>Unidirectional data flow only</td>
+</tr>
+<tr>
+<td>Half-Duplex</td>
+<td>Bidirectional but not simultaneous (walkie-talkie)</td>
+</tr>
+<tr>
+<td>Full-Duplex</td>
+<td>Simultaneous bidirectional communication (telephone)</td>
+</tr>
+<tr>
+<td>Analog</td>
+<td>Continuous waveform signal representation</td>
+</tr>
+<tr>
+<td>Digital</td>
+<td>Discrete 0/1 electrical state representation</td>
+</tr>
+<tr>
+<td>Unicode</td>
+<td>32-bit global character encoding system; ASCII (127 chars) is a
+subset</td>
+</tr>
+<tr>
+<td>Pixel</td>
+<td>Smallest unit of a digital image; assigned a bit pattern</td>
+</tr>
+<tr>
+<td>RGB / YCM</td>
+<td>Methods for representing colour images as bit patterns</td>
+</tr>
+<tr>
+<td>Quantization</td>
+<td>Approximating sampled analog values with finite set → encoding as
+bit patterns</td>
+</tr>
+<tr>
+<td>Twisted Pair</td>
+<td>Copper conductors twisted together; STP (shielded) and UTP
+(unshielded)</td>
+</tr>
+<tr>
+<td>Coaxial Cable</td>
+<td>Central copper core + insulation + outer shielding; used in cable
+TV, CCTV</td>
+</tr>
+<tr>
+<td>Fibre-Optic</td>
+<td>Glass/plastic fibre transmitting data as light; high bandwidth, low
+attenuation</td>
+</tr>
+<tr>
+<td>Radio Waves</td>
+<td>3 KHz–1 GHz; omnidirectional; AM/FM, TV, maritime radio</td>
+</tr>
+<tr>
+<td>Microwaves</td>
+<td>1–300 GHz; unidirectional; line-of-sight; terrestrial and satellite
+links</td>
+</tr>
+<tr>
+<td>Infrared</td>
+<td>300 GHz–400 THz; short-distance; cannot penetrate walls; remote
+controls</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>Measure of data transfer capacity over a network per unit time</td>
+</tr>
+<tr>
+<td>LAN</td>
+<td>Local Area Network — limited geographic area (office, home)</td>
+</tr>
+<tr>
+<td>MAN</td>
+<td>Metropolitan Area Network — city or large campus</td>
+</tr>
+<tr>
+<td>WAN</td>
+<td>Wide Area Network — global interconnection</td>
+</tr>
+<tr>
+<td>Star Topology</td>
+<td>All nodes connect to a central hub/switch</td>
+</tr>
+<tr>
+<td>Ring Topology</td>
+<td>Nodes connected in a closed loop</td>
+</tr>
+<tr>
+<td>Bus Topology</td>
+<td>All nodes share a single backbone cable</td>
+</tr>
+<tr>
+<td>Mesh Topology</td>
+<td>Every node interconnected with every other</td>
+</tr>
+<tr>
+<td>Circuit Switching</td>
+<td>Dedicated physical path held for full connection duration</td>
+</tr>
+<tr>
+<td>Packet Switching</td>
+<td>Data split into independently routed packets; basis of Internet</td>
+</tr>
+<tr>
+<td>Source Routing</td>
+<td>Full path from source to destination specified by source node</td>
+</tr>
+<tr>
+<td>Hop-by-Hop Routing</td>
+<td>Each node passes data to the next along the path</td>
+</tr>
+<tr>
+<td>OSI Model</td>
+<td>7-layer network reference model released by ISO in 1984</td>
+</tr>
+<tr>
+<td>Physical Layer</td>
+<td>Layer 1 — hardware, bit stream transmission, NIC</td>
+</tr>
+<tr>
+<td>Data Link Layer</td>
+<td>Layer 2 — frames, physical addressing</td>
+</tr>
+<tr>
+<td>Network Layer</td>
+<td>Layer 3 — routing, logical addressing</td>
+</tr>
+<tr>
+<td>Transport Layer</td>
+<td>Layer 4 — end-to-end delivery, error control, flow control</td>
+</tr>
+<tr>
+<td>Session Layer</td>
+<td>Layer 5 — session and dialogue management</td>
+</tr>
+<tr>
+<td>Presentation Layer</td>
+<td>Layer 6 — encryption, compression, syntax translation</td>
+</tr>
+<tr>
+<td>Application Layer</td>
+<td>Layer 7 — user-facing network services</td>
+</tr>
+<tr>
+<td>NIC</td>
+<td>Network Interface Card — hardware connecting a device to a
+network</td>
+</tr>
+<tr>
+<td>Serial Transmission</td>
+<td>Data sent one bit at a time over a single channel; reliable
+long-distance</td>
+</tr>
+<tr>
+<td>Parallel Transmission</td>
+<td>Multiple bits sent simultaneously over multiple channels; fast,
+short-distance</td>
+</tr>
+<tr>
+<td>Asynchronous Transmission</td>
+<td>Character-framed with Start/Stop bits; no shared clock</td>
+</tr>
+<tr>
+<td>Synchronous Transmission</td>
+<td>Block/frame-based; clock-synchronized; CRC/checksum error
+detection</td>
+</tr>
+<tr>
+<td>Fourier Series</td>
+<td>Represents periodic signals as a sum of sinusoidal harmonics</td>
+</tr>
+<tr>
+<td>Fourier Transform</td>
+<td>Decomposes non-periodic signals from time domain to frequency
+domain</td>
+</tr>
+<tr>
+<td>Harmonic</td>
+<td>Frequency component at an integral multiple of the fundamental
+frequency</td>
+</tr>
+<tr>
+<td>Dirichlet Conditions</td>
+<td>Three conditions a periodic signal must meet for Fourier Series to
+exist</td>
+</tr>
+<tr>
+<td>Orthogonality</td>
+<td>Property of harmonics — each is independent of the others</td>
+</tr>
+<tr>
+<td>OFDM</td>
+<td>Orthogonal Frequency Division Multiplexing — core 5G/LTE technology
+using Fourier Transform</td>
+</tr>
+<tr>
+<td>Modulation</td>
+<td>Encoding information onto a carrier signal</td>
+</tr>
+<tr>
+<td>Multiplexing</td>
+<td>Combining multiple signals over a shared medium (TDM, FDM, FCM)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tutor-reference-notes">Tutor Reference Notes</h2>
+<ul>
+<li><p><strong>Best entry-point concept:</strong> Start with the 5
+components of a data communication system (Message, Sender, Receiver,
+Transmission Medium, Protocol) — every other topic in this course builds
+from here.</p></li>
+<li><p><strong>Most common misconceptions:</strong></p>
+<ul>
+<li>Confusing <em>half-duplex</em> with <em>simplex</em> — half-duplex
+CAN go both ways, just not simultaneously</li>
+<li>Thinking <em>digital</em> is always better than <em>analog</em> —
+depends entirely on context and medium</li>
+<li>Believing OSI layers are strict physical hardware boundaries — they
+are logical abstractions</li>
+<li>Confusing <em>routing</em> with <em>switching</em> — switching
+connects within a network; routing connects networks</li>
+<li>Thinking <em>serial</em> is always slower than <em>parallel</em> —
+not true over long distances (parallel suffers skew)</li>
+<li>Confusing <em>asynchronous</em> with <em>half-duplex</em> — they
+describe different aspects (timing vs direction)</li>
+<li>Thinking only even harmonics cancel in a square wave — it's the even
+harmonics that cancel, odd survive</li>
+</ul></li>
+<li><p><strong>Concepts students typically conflate:</strong></p>
+<ul>
+<li><code>Circuit Switching</code> ↔︎ <code>Packet Switching</code>
+(dedicated path vs shared packets)</li>
+<li><code>Fourier Series</code> ↔︎ <code>Fourier Transform</code>
+(periodic vs non-periodic signals)</li>
+<li><code>Serial Transmission</code> ↔︎
+<code>Asynchronous Transmission</code> (physical method vs
+timing/framing method)</li>
+<li><code>Parallel Transmission</code> ↔︎ <code>Full-Duplex</code>
+(multi-wire vs simultaneous bidirectional)</li>
+<li><code>STP</code> ↔︎ <code>UTP</code> (shielded vs unshielded twisted
+pair)</li>
+<li><code>Half-Duplex</code> ↔︎ <code>Full-Duplex</code> (sequential vs
+simultaneous)</li>
+<li><code>LAN</code> ↔︎ <code>MAN</code> ↔︎ <code>WAN</code> (geographic
+scope differences)</li>
+<li><code>Source Routing</code> ↔︎ <code>Hop-by-Hop Routing</code> (who
+decides the path)</li>
+<li><code>Radio Waves</code> ↔︎ <code>Microwaves</code> (directionality:
+omni vs uni; frequency range)</li>
+<li><code>Asynchronous</code> ↔︎ <code>Synchronous</code> Transmission
+(character-framed vs block-framed)</li>
+</ul></li>
+<li><p><strong>Mbosinwa-specific notes:</strong></p>
+<ul>
+<li>Has strong software/systems engineering background — use analogies
+to protocols (HTTP, TCP), buses (USB, SPI), and embedded systems
+(RS-232, RS-485) when explaining networking concepts</li>
+<li>Over-explain by default; he will signal if something needs less
+detail</li>
+<li>Fourier mathematics may need extra scaffolding — connect abstract
+formulas to concrete examples (square wave, OFDM, 5G) to build
+intuition</li>
+</ul></li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

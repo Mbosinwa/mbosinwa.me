@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 709 Lexical Analysis — Lecture Notes — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 709 Compiler Construction: Tokens, patterns and lexemes, finite automata and scanner design.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/">CMS 709 Compiler Construction</a> / Lexical Analysis — Lecture Notes</p>
+        <article class="doc">
+<h1 id="compiler-construction">Compiler Construction</h1>
+<p><strong>Institution:</strong> Rivers State University,
+Nkpolu-Oroworukwo, Port Harcourt <strong>Course Code:</strong> CMS 709
+<strong>Course Title:</strong> Compiler Construction
+<strong>Session:</strong> 2024/2025 <strong>Topic:</strong> Lexical
+Analysis <strong>Date:</strong> 15/02/16</p>
+<hr />
+<h2 id="lexical-analysis">Lexical Analysis</h2>
+<p>This is the first phase of a compiler.</p>
+<p><strong>Lexical Analysis:</strong> The process of taking an input
+string of characters (such as source code of a computer program) and
+producing a sequence of symbols called "lexical tokens" or just
+"tokens".</p>
+<p>The lexical analyzer reads the source text and thus, it may perform
+certain secondary tasks:</p>
+<ul>
+<li><strong>(i)</strong> Eliminate comments and delete spaces in the
+form of blanks, tabs and newline characters.</li>
+<li><strong>(ii)</strong> Correlate error messages from the compiler
+with the source program (e.g. keep track of no. of lines).</li>
+</ul>
+<p>The interaction with the parser is usually done by making the lexical
+analyzer be a sub-routine of the parser.</p>
+<pre class="mermaid"><code>flowchart LR
+    LA[Lexical Analyser] --&gt;|Token| P[Parser]
+    P --&gt;|get next token| LA
+    LA --- ST[Symbol Table]
+    P --&gt; output[--&gt;]</code></pre>
+<blockquote>
+<p><strong>Fig (a):</strong> Interaction of Lexical Analyser with the
+Parser</p>
+</blockquote>
+<hr />
+<h2 id="why-separate-la-from-syntax-analysis">Why Separate LA from
+Syntax Analysis?</h2>
+<ul>
+<li><strong>(i)</strong> Simplification of design — software engineering
+reasons.</li>
+<li><strong>(ii)</strong> I/O issues are limited in LA alone.</li>
+<li><strong>(iii)</strong> More compact and faster parser — slimming the
+grammar (by eliminating comments, blanks, etc.) makes the parser
+faster.</li>
+<li><strong>(iv)</strong> LA based on Finite Automata are more efficient
+to implement than "pushdown" automata used for parsing (due to
+stack).</li>
+</ul>
+<hr />
+<h2 id="tokens-patterns-and-lexemes">Tokens, Patterns and Lexemes</h2>
+<h3 id="token">Token</h3>
+<p>Also called "word". Is:</p>
+<ul>
+<li><strong>(i)</strong> A string of characters which logically belong
+together — float, identifier, equal, minus, operators, constants,
+etc.</li>
+<li>Tokens are treated as terminal symbols of grammars specifying the
+source language.</li>
+</ul>
+<h3 id="pattern">Pattern</h3>
+<p>The set of strings for which the "same" token is produced. Or:</p>
+<p>A rule that describes the set of strings associated to a token.
+Expressed as a "regular expression" and describing how a particular
+token can be formed. e.g.:</p>
+<pre><code>[A-Za-z]  [A-Za-z_0-9]*</code></pre>
+<p>The pattern "matches" each string in the set. e.g.:
+<code>float</code>, <code>(l+d+)</code>, <code>=</code>, <code>-</code>,
+<code>d+</code>, <code>;</code></p>
+<h3 id="lexeme">Lexeme</h3>
+<p>The sequence (actual) of characters forming a specific instance of a
+token. e.g.: <code>"num"</code> or <code>"float"</code>,
+<code>"abs_zero_kelvin"</code>, <code>"e_yn_m"</code>, <code>273</code>,
+<code>"."</code>, etc.</p>
+<hr />
+<h2 id="example--tokens-lexemes-and-patterns">Example — Tokens, Lexemes
+and Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Sample Lexeme</th>
+<th>Description of Pattern (informal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>const</td>
+<td>const</td>
+<td>const</td>
+</tr>
+<tr>
+<td>if</td>
+<td>if</td>
+<td>if</td>
+</tr>
+<tr>
+<td>relation</td>
+<td><code>&lt;, &lt;=, =, &gt;=, &gt;, !=</code></td>
+<td>`&lt;</td>
+</tr>
+<tr>
+<td>id</td>
+<td>pi, count, D, a</td>
+<td>letter · (letter | digit)*</td>
+</tr>
+<tr>
+<td>num</td>
+<td>3.1426, 0, 6, 6.22</td>
+<td>any numeric constant</td>
+</tr>
+<tr>
+<td>literal</td>
+<td>"core dumped"</td>
+<td>any x b/w <code>"</code> and <code>"</code> except
+<code>"</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> In Pascal statement
+<code>const pi = 3.1426</code>, the substring "pi" is a lexeme for the
+token "identifier".</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> When more than one pattern matches a lexeme,
+the lexical analyzer must provide additional info about the particular
+lexeme. e.g.: Pattern "num" matches <code>'0'</code> and
+<code>'1'</code>. It is essential for code generation to know which
+string was actually matched. The lexical analyzer collects info about
+tokens into their associated attributes.</p>
+</blockquote>
+<hr />
+<h2 id="tokens-in-practice-attributes">Tokens in Practice
+(Attributes)</h2>
+<p>In practice, a token has only a single attribute — a pointer to the
+symbol table entry in which the info about the token is kept such
+as:</p>
+<ul>
+<li>The lexeme, the line no. on which it was first seen, etc.</li>
+</ul>
+<p><strong>e.g. FORTRAN Statement:</strong></p>
+<pre><code>E = M * C ** 2</code></pre>
+<p>Tokens and associated attributes:</p>
+<ul>
+<li><code>&lt;id, pointer to Symbol table for E&gt;</code></li>
+<li><code>&lt;assignOp&gt;</code></li>
+<li><code>&lt;id, pointer to Symbol-table for M&gt;</code></li>
+<li><code>&lt;multiOp&gt;</code></li>
+<li><code>&lt;id, pointer to Symbol-table for C&gt;</code></li>
+<li><code>&lt;multiOp&gt; ---</code></li>
+</ul>
+<hr />
+<h2 id="tokens-in-programming-languages">Tokens in Programming
+Languages</h2>
+<ul>
+<li>Keywords, operators, identifiers (names), constants, literal
+strings, punctuation symbols such as parentheses, brackets, commas,
+semicolons, and colons, etc.</li>
+<li>A unique integer representing the token is passed by LA to the
+parser.</li>
+<li>Attributes for tokens (apart from the integer representing the
+token):
+<ul>
+<li><strong>identifier:</strong> the lexeme of the token, or a pointer
+into the symbol table where the lexeme is stored by the LA</li>
+<li><strong>intnum:</strong> the value of the integer (similar for
+floatnum, etc.)</li>
+<li><strong>string:</strong> the string itself</li>
+</ul></li>
+<li>The exact set of attributes are dependent on the compiler
+design.</li>
+</ul>
+<hr />
+<h2 id="difficulties-in-la">Difficulties in LA</h2>
+<ul>
+<li>Certain languages do not have any reserved words. e.g.: while, do,
+if, else, etc. in C/C++, but not in PL/1.</li>
+<li>In FORTRAN, some keywords are context-dependent. e.g.:
+<ul>
+<li><code>DO100I = 100,2</code> — <code>DO100I</code> is an identifier,
+and <code>DO</code> is not a keyword; but</li>
+<li><code>DO 100 = 10,2</code> — <code>DO</code> is a keyword.</li>
+<li>Such features require substantial lookahead for resolution.</li>
+</ul></li>
+<li>In FORTRAN, blanks are not significant and can appear in the midst
+of identifiers, but not in C/C++.</li>
+</ul>
+<hr />
+<h2 id="errors-in-la">Errors in LA</h2>
+<p>LA cannot catch any significant errors, except for simple errors such
+as illegal symbols, etc. In such cases, LA skips xtrs in the input until
+a well-formed token is found.</p>
+<ul>
+<li>LA has a very localized view of the source text.</li>
+<li>It cannot tell whether a string "fi" is a misspelling of a keyword
+"if" or an identifier.</li>
+<li>The LA can detect characters that are not in the alphabet or strings
+that have no pattern.</li>
+<li>In general, when an error is found, the lexical analyzer stops (but
+other actions are also possible).</li>
+</ul>
+<hr />
+<h2 id="specification-and-recognition-of-tokens">Specification and
+Recognition of Tokens</h2>
+<h3 id="i-regular-definitions">(i) Regular Definitions</h3>
+<p>A mechanism based on "regular expressions" and very popular for
+specification of tokens. It has been implemented in the lexical analyzer
+generator tool, LEX. We study regular expressions first, and then token
+specification using LEX.</p>
+<h3 id="ii-transition-diagrams">(ii) Transition Diagrams</h3>
+<p>Transition Diagrams (TD) are usually used to model LA by translating
+them to programs by hand.</p>
+<hr />
+<h2 id="type-0--type-3-languages">Type 0 — Type 3 Languages</h2>
+<p>Type 0 — Type 3 languages are finite representations of respective
+languages.</p>
+<h3 id="examples-of-languages">Examples of Languages</h3>
+<p>Let <strong>Σ = {a, b, c}</strong></p>
+<ul>
+<li><strong>(i)</strong> L1 = {aᵐbⁿ | m, n &gt; 0} is
+<strong>regular</strong></li>
+<li><strong>(ii)</strong> L2 = {aⁿbⁿ | n &gt; 0} is <strong>context
+free</strong> but not regular</li>
+<li><strong>(iii)</strong> L3 = {aⁿbⁿcⁿ | n ≥ 0} is <strong>context
+sensitive</strong> but neither regular nor context free</li>
+<li><strong>(iv)</strong> Showing a lang that is Type-0, but none of
+CSL, CFL, or RL is very intricate, therefore omitted.</li>
+</ul>
+<hr />
+<h2 id="language-representations">Language Representations</h2>
+<ul>
+<li><strong>(i)</strong> If Σ is an alphabet, Σ* is a set of all strings
+over Σ. Each subset of Σ* is a <strong>language</strong> (a lang. is a
+set of strings of symbols from some alphabet).</li>
+<li><strong>(ii)</strong> Transition Diagrams (TD), a variant of Finite
+State Automata (FSA), are used to implement regular definitions and to
+recognize tokens.
+<ul>
+<li>TDs are usually used to model LA by translating them to programs by
+hand.</li>
+</ul></li>
+<li><strong>(iii)</strong> Each language must have a finite
+representation:
+<ul>
+<li>A finite representation can be encoded by a finite string.</li>
+<li>Thus, each string of Σ* can be thought of as representing some
+language over the alphabet Σ.</li>
+<li>Σ* is countably finite.</li>
+<li>Hence, there are more langs. than representations.</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="input-buffering--general-idea">Input Buffering — General
+Idea</h2>
+<ul>
+<li>We use a buffer divided into 2-N character halves.</li>
+<li>We read N input xtrs into each half of the buffer with one system
+command rather than invoking a read command for each input xter.</li>
+<li>If fewer than N xtrs remain in the input, then a special xter "eof"
+is read.</li>
+<li>Two pointers to the input buffer is maintained.</li>
+<li>The string of xtrs b/w the two pointers is the current lexeme.</li>
+<li>Initially both pointers point to the first xter of the lexeme to be
+found.</li>
+</ul>
+<blockquote>
+<p>Some tokens such as parentheses do not really have values, and so the
+evaluator function for these can return nothing. The evaluator for
+integers, identifiers, and strings can be considerably more complex.
+Sometimes evaluators can suppress a lexeme entirely, concealing it from
+the parser, which is useful for white space and comments.</p>
+</blockquote>
+<hr />
+<h2 id="stages-of-lexical-analyzer">Stages of Lexical Analyzer</h2>
+<h3 id="a-scanner">(a) Scanner</h3>
+<p>This is based on a finite state machine. If it lands on an accepting
+state, it takes note of the type and position of the acceptance, and
+continues. Sometimes it lands on a "dead state", which is a
+non-accepting state. When the LA lands on a dead state, it is
+<strong>done</strong>. The last accepting state is the one that
+represents the type and length of the longest valid lexeme. The "extra"
+non-valid character should be "returned" to the input buffer.</p>
+<h3 id="b-evaluator">(b) Evaluator</h3>
+<p>This goes over the characters of the lexeme to produce a value. The
+lexeme's type combined with its value is what properly constitutes a
+"token", which can be given to a parser.</p>
+<hr />
+<h2 id="differences-bw-td-and-fsa">Differences b/w TD and FSA</h2>
+<ul>
+<li><strong>(i)</strong> FSA accepts or rejects a string. TD reads xtrs
+until finding a token, returns the read token and prepares the input
+buffer for the next.</li>
+<li><strong>(ii)</strong> In a TD, there is no out-transition from
+accepting states (for some authors).</li>
+<li><strong>(iii)</strong> Transitions labelled "other" (or not
+labelled) should be taken on any character except those labelling
+transitions out of a given state.</li>
+<li><strong>(iv)</strong> States can be marked with a <code>*</code>:
+this indicates states on which a "retraction" must take place.</li>
+</ul>
+<p>To consider different kinds of lexeme, we usually build separate DFAs
+(or TDs) corresponding to the regular expressions for each kind of
+lexeme, then merge them into a single combined DFA (or TD).</p>
+<hr />
+<h2 id="input-buffer-pointers">Input Buffer Pointers</h2>
+<ul>
+<li>One called the <strong>"forward pointer"</strong> scans ahead until
+a match for a pattern is found.</li>
+<li>Once the next lexeme is determined, the forward pointer is set to
+the first character of it.</li>
+<li>After the lexeme is processed, both pointers are set to the
+character immediately past the lexeme.</li>
+<li>With this schema, comments and white spaces can be treated as
+patterns that yield no token.</li>
+</ul>
+<hr />
+<h2 id="lexical-analyzer-specification">Lexical Analyzer
+Specification</h2>
+<p>To specify a lexical analyzer we need a "state machine", sometimes
+called Transition Diagram (TD), which is similar to FSA (Finite State
+Automata).</p>
+<p>TDs depict the actions that take place when the lexer is called by
+the parser to get the next token.</p>
+<hr />
+<h2 id="example--fsa-vs-td-diagrams">Example — FSA vs TD Diagrams</h2>
+<h3 id="fig-a--fsa-for-digits">Fig (a) — FSA for digits</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    direction LR
+    [*] --&gt; 0
+    0 --&gt; 1 : [0-9]
+    1 --&gt; 1 : [0-9]
+    1 --&gt; [*]</code></pre>
+<h3 id="fig-b--td-for-digits-with-retraction">Fig (b) — TD for digits
+with retraction</h3>
+<pre class="mermaid"><code>stateDiagram-v2
+    direction LR
+    [*] --&gt; 0
+    0 --&gt; 1 : [0-9]
+    1 --&gt; 1 : [0-9]
+    1 --&gt; 2 : other *</code></pre>
+<blockquote>
+<p>State 2 is the accepting state; <code>*</code> on transition from
+state 1 to 2 means retraction (input pointer must be retracted).</p>
+</blockquote>
+<hr />
+<h2 id="recognizing-keywords">Recognizing Keywords</h2>
+<p>Keywords have the same pattern as identifiers but do not correspond
+to the token "identifier".</p>
+<p>Two solutions are possible:</p>
+<h3 id="a-keywords-as-identifiers">(A) Keywords as Identifiers</h3>
+<p>This technique for separating identifiers from keywords consists in
+initializing appropriately the symbol in which information about
+identifiers is saved. For instance, we enter the strings "if", "then"
+and "else" into the symbol table before any characters in the input
+stream are seen.</p>
+<ul>
+<li>When a string is recognized by the TD:
+<ul>
+<li><strong>(a)</strong> The symbol table is examined</li>
+<li><strong>(b)</strong> If the lexeme is found there, it is marked as
+Keyword:
+<ul>
+<li>Then the string is a Keyword</li>
+<li>Otherwise the string is an Identifier</li>
+</ul></li>
+</ul></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>do</td>
+<td>Keyword</td>
+</tr>
+<tr>
+<td>end</td>
+<td>Keyword</td>
+</tr>
+<tr>
+<td>for</td>
+<td>Keyword</td>
+</tr>
+<tr>
+<td>while</td>
+<td>Keyword</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>cont</td>
+<td>Identifier</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-regular-expressions-for-all-keywords">(B) Regular Expressions
+for All Keywords</h3>
+<ul>
+<li>Keywords can be prefixes of identifiers (ex: <code>do</code> and
+<code>done</code>).</li>
+<li>The lexer that results from this technique is much more complex but
+they are necessary when we use lexical analyzer generators from some
+specification.</li>
+<li>The specification is made by regular expressions.</li>
+</ul>
+<hr />
+<h2
+id="td-example-1--combined-td-for-identifiers-keywords-and-numbers">TD
+Example 1 — Combined TD for Identifiers, Keywords and Numbers</h2>
+<pre class="mermaid"><code>flowchart LR
+    0 --&gt;|letter| 1
+    0 --&gt;|digit| 3
+    0 --&gt;|d| 5
+    1 --&gt;|letter/digit| 1
+    1 --&gt;|other *| 2([IDENTIFIER])
+    3 --&gt;|digit| 3
+    3 --&gt;|other *| 4([INTEGER])
+    5 --&gt;|other *| 6
+    5 --&gt;|o| 7
+    7 --&gt;|other *| 8
+    7 --&gt;|n| 9
+    9 --&gt;|e| 10([one])
+    9 --&gt;|other *| 11</code></pre>
+<hr />
+<h2
+id="td-example-2--unsignedsigned-integers-addition--and-increment-">TD
+Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
+(++)</h2>
+<pre class="mermaid"><code>flowchart LR
+    0 --&gt;|digit| 6
+    0 --&gt;|+| 1
+    1 --&gt;|other *| 2([ADD])
+    1 --&gt;|+| 3
+    3 --&gt;|other *| 4([ADD])
+    3 --&gt;|+| 5([INC R])
+    6 --&gt;|digit| 6
+    6 --&gt;|other *| 7([INTEGER])
+    6 --&gt;|+| 8
+    8 --&gt;|digit| 6</code></pre>
+<hr />
+<h2 id="transition-table--td-example-2">Transition Table — TD Example
+2</h2>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>+</th>
+<th>−</th>
+<th>D</th>
+<th>Token</th>
+<th>Retraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>8</td>
+<td>6</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>ADD</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>ADD</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>INCR</td>
+<td>2 (or 0)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7</td>
+<td>6</td>
+<td>6</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>INTEGER</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>error</td>
+<td>error</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="implementation-of-lexical-analyzer">Implementation of Lexical
+Analyzer</h2>
+<p>Different ways of creating a lexical analyzer:</p>
+<h3 id="i-automatic-generator-eg-lex-or-flex">(i) Automatic Generator
+(e.g. LEX or FLEX)</h3>
+<ul>
+<li><strong>(a) Advantages:</strong> Easier and faster development.</li>
+<li><strong>(b) Disadvantages:</strong> LA is not very efficient and
+difficult maintenance.</li>
+</ul>
+<h3 id="ii-write-la-by-hand-using-hll">(ii) Write LA by Hand Using
+HLL</h3>
+<ul>
+<li><strong>(a) Advantages:</strong> More efficient and compact.</li>
+<li><strong>(b) Disadvantages:</strong> Done by hand.</li>
+</ul>
+<h3 id="iii-write-la-using-low-level-language">(iii) Write LA Using
+Low-Level Language</h3>
+<ul>
+<li><strong>(a) Advantage:</strong> Very efficient and compact.</li>
+<li><strong>(b) Disadvantage:</strong> Development is complicated.</li>
+</ul>
+<h4 id="automatic-tool-input-specification">Automatic Tool Input
+Specification:</h4>
+<ul>
+<li><p><strong>(a)</strong> Regular expressions representing the
+patterns</p></li>
+<li><p><strong>(b)</strong> Actions to take according to the detected
+tokens</p></li>
+<li><p><strong>(iv)</strong> Each regular expression is associated with
+a phrase in a programming language which will evaluate the lexemes that
+match the regular expression.</p></li>
+<li><p><strong>(v)</strong> The tool then constructs a state table for
+the appropriate finite state machine and creates program code which
+contains a table, the evaluation phrases, and a routine which uses them
+appropriately.</p></li>
+</ul>
+<hr />
+<h2 id="priority-of-tokens">Priority of Tokens</h2>
+<h3 id="a-longest-lexeme">(A) Longest Lexeme</h3>
+<ul>
+<li><code>DO</code> and <code>DOT</code> → (DOT is taken)</li>
+<li><code>&gt;</code> and <code>&gt;=</code> → (<code>&gt;=</code> is
+taken)</li>
+</ul>
+<h3 id="b-first-listed-matching-pattern">(B) First-listed Matching
+Pattern</h3>
+<p>The following regular expressions appear in lexical
+specification:</p>
+<ul>
+<li><p><code>w.h.i.l.e</code> : Keyword <code>'while'</code></p></li>
+<li><p><code>letter.(letter|digit)*</code> : identifier</p></li>
+<li><p><strong>(a)</strong> In the input we read
+<code>while</code></p></li>
+<li><p><strong>(b)</strong> The lexer considers it as Keyword</p></li>
+<li><p><strong>(c)</strong> If we change the order of specification,
+then we will never detect a keyword "while" (it would be recognized as
+an identifier instead).</p></li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

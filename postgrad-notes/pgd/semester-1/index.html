@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Semester — PGD Computer Science — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="First Semester study materials from my PGD Computer Science at Rivers State University: lecture notes, cheatsheets, practice questions and exam study guides.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / First Semester</p>
+        <header class="page-header">
+            <span class="kicker">PGD Computer Science · First Semester · 2025/26</span>
+            <h1>First Semester — Study Materials</h1>
+            <p class="lede">Lecture notes, cheatsheets, study aids and exam-prep materials for the first semester of my PGD Computer Science. All self-authored, all free to use.</p>
+        </header>
+        <div class="card-grid">
+            <a class="course-card" href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">
+                <span class="code">CMS 701</span>
+                <h2>Operating Systems</h2>
+                <p>Operating system fundamentals — OS types, kernels and system calls, processes and schedulers, multithreading, CPU scheduling and synchronization.</p>
+                <span class="count">5 materials →</span>
+            </a>
+            <a class="course-card" href="/postgrad-notes/pgd/semester-1/cms-703-data-communication-and-networks/">
+                <span class="code">CMS 703</span>
+                <h2>Data Communication & Networks</h2>
+                <p>Data transmission fundamentals, communication system components, networking and the OSI model.</p>
+                <span class="count">4 materials →</span>
+            </a>
+            <a class="course-card" href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/">
+                <span class="code">CMS 705</span>
+                <h2>Programming Languages</h2>
+                <p>Programming language concepts — language structure, paradigms, syntax and semantics, translators and language design.</p>
+                <span class="count">5 materials →</span>
+            </a>
+            <a class="course-card" href="/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/">
+                <span class="code">CMS 707</span>
+                <h2>Artificial Intelligence</h2>
+                <p>Problem-solving and search, knowledge representation, probabilistic reasoning, machine learning, NLP, expert systems, fuzzy logic and genetic algorithms.</p>
+                <span class="count">6 materials →</span>
+            </a>
+            <a class="course-card" href="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/">
+                <span class="code">CMS 709</span>
+                <h2>Compiler Construction</h2>
+                <p>Compiler phases with a deep dive into lexical analysis — tokens, patterns, finite automata and scanner design.</p>
+                <span class="count">2 materials →</span>
+            </a>
+            <a class="course-card" href="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/">
+                <span class="code">CMS 711</span>
+                <h2>System Analysis & Design</h2>
+                <p>The system development life cycle, system analysis, and interface design.</p>
+                <span class="count">5 materials →</span>
+            </a>
+        </div>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

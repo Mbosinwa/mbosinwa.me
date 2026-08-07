@@ -218,6 +218,7 @@ class TerminalResume {
       "calculate",
       "pdf",
       "linkedin-cover",
+      "postgrad-notes",
     ];
 
     // Find matching commands
@@ -494,6 +495,9 @@ class TerminalResume {
       case "linkedin-cover":
         this.generateLinkedInCover(outputElement);
         break;
+      case "postgrad-notes":
+        this.showPostgradNotes(outputElement);
+        break;
       case "exit-game":
         this.endGame();
         this.printToOutput(outputElement, "Game exited.", "info");
@@ -613,7 +617,10 @@ class TerminalResume {
       this.wrapWithColor("Download resume as PDF\n", "#ffffff") +
       this.wrapWithColor("• linkedin-cover", "#98fb98") +
       " " +
-      this.wrapWithColor("Generate LinkedIn cover image\n", "#ffffff");
+      this.wrapWithColor("Generate LinkedIn cover image\n", "#ffffff") +
+      this.wrapWithColor("• postgrad-notes", "#98fb98") +
+      " " +
+      this.wrapWithColor("Open my postgraduate study notes\n", "#ffffff");
 
     const shortcuts =
       "\n" +
@@ -645,6 +652,25 @@ class TerminalResume {
     helpDiv.innerHTML = help;
     outputElement.appendChild(helpDiv);
     this.scrollToBottom(outputElement.closest(".terminal-content"));
+  }
+
+  showPostgradNotes(outputElement = this.output) {
+    const notes =
+      this.wrapWithColor("🎓 Postgrad Notes\n\n", "#ffff00") +
+      this.wrapWithColor(
+        "Study notes, guides and cheatsheets from my postgraduate programme.\n\n",
+        "#ffffff"
+      ) +
+      this.wrapWithColor("➜ ", "#98fb98") +
+      '<a href="/postgrad-notes/" target="_blank" style="color: #00ffff; text-decoration: underline;">mbosinwa.me/postgrad-notes</a>\n\n' +
+      this.wrapWithColor("Opening in a new tab...", "#666666");
+
+    const notesDiv = document.createElement("div");
+    notesDiv.innerHTML = notes;
+    outputElement.appendChild(notesDiv);
+    this.scrollToBottom(outputElement.closest(".terminal-content"));
+
+    window.open("/postgrad-notes/", "_blank");
   }
 
   showAbout(outputElement = this.output) {

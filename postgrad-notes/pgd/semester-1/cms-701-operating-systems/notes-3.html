@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 701 Notes III — Multithreading, CPU Scheduling & Synchronization — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 701 Operating Systems: Threads, CPU scheduling algorithms and process synchronization.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-3.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes III — Multithreading, CPU Scheduling & Synchronization</p>
+        <article class="doc">
+<h1 id="cms-701--operating-systems-lecture-notes">CMS 701 — Operating
+Systems Lecture Notes</h1>
+<h2
+id="multithreading-cpu-scheduling-algorithms--process-synchronization">Multithreading,
+CPU Scheduling Algorithms &amp; Process Synchronization</h2>
+<hr />
+<h2 id="what-is-multithreading">What is Multithreading?</h2>
+<p><strong>Multithreading</strong> is a technique where a process is
+divided into smaller execution units called <strong>threads</strong>
+that run concurrently. It allows a single process to have multiple
+threads running simultaneously — different parts of a program can run at
+the same time, improving efficiency and responsiveness.</p>
+<hr />
+<h2 id="application-examples">Application Examples</h2>
+<ul>
+<li><strong>Web Browser:</strong> Each tab can be a separate
+thread.</li>
+<li><strong>MS Word:</strong> One thread for formatting text, another
+for keyboard inputs.</li>
+<li><strong>VLC Media Player:</strong> One thread for opening the
+player, one for playing, another for playlist management.</li>
+<li><strong>Banking System:</strong> Multiple users perform transfers,
+payments, deposits simultaneously without waiting for each other.</li>
+</ul>
+<hr />
+<h2
+id="multithreading-vs-multitasking-vs-multiprocessing">Multithreading
+vs. Multitasking vs. Multiprocessing</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Multithreading</th>
+<th>Multitasking</th>
+<th>Multiprocessing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>Multiple threads within a single process, sharing memory.</td>
+<td>Multiple tasks/processes on a single CPU.</td>
+<td>Multiple processes on multiple CPUs/cores.</td>
+</tr>
+<tr>
+<td><strong>Communication</strong></td>
+<td>Threads share data easily.</td>
+<td>Processes use IPC mechanisms.</td>
+<td>Processes on separate CPUs; minimal direct communication.</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Best for tasks sharing data within same memory space.</td>
+<td>Suitable for loosely related tasks.</td>
+<td>Ideal for compute-intensive tasks.</td>
+</tr>
+<tr>
+<td><strong>Weight</strong></td>
+<td>Most lightweight (shared memory).</td>
+<td>Slightly heavier (separate process memory).</td>
+<td>Heaviest (requires more hardware).</td>
+</tr>
+<tr>
+<td><strong>Vulnerabilities</strong></td>
+<td>Race conditions, deadlocks.</td>
+<td>Synchronization issues.</td>
+<td>Better isolation; fewer data sharing issues.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="multithreading-models-in-os">Multithreading Models in OS</h2>
+<p>Defines how <strong>User Threads</strong> (managed by application
+libraries) map to <strong>Kernel Threads</strong> (managed by OS
+kernel).</p>
+<h3 id="1-many-to-many-model">1. Many-to-Many Model</h3>
+<p>Multiple user threads multiplex to same or fewer kernel threads.</p>
+<ul>
+<li>If a user thread is blocked, other user threads can be scheduled to
+another kernel thread.</li>
+<li>Considered the best multithreading model.</li>
+</ul>
+<pre><code>User Threads: UT1, UT2, UT3, UT4, UT5
+Kernel Threads: KT1, KT2, KT3
+UT1, UT2 → KT1 | UT3, UT4 → KT2 | UT5 → KT3</code></pre>
+<blockquote>
+<p><strong>Scenario:</strong> 100 user threads handle server requests;
+OS maps them to 10 kernel threads. Some run in parallel, others wait
+without blocking the system.</p>
+</blockquote>
+<h3 id="2-many-to-one-model">2. Many-to-One Model</h3>
+<p>Many user threads mapped to <strong>one</strong> kernel thread.
+Thread management in user space.</p>
+<ul>
+<li>When any thread makes a blocking system call, the <strong>entire
+process blocks</strong>.</li>
+<li>Only one thread can access the kernel at a time; no true parallelism
+on multiprocessors.</li>
+</ul>
+<blockquote>
+<p>Thread management is done at user level, so it is efficient — but no
+multiprocessor advantage.</p>
+</blockquote>
+<h3 id="3-one-to-one-model">3. One-to-One Model</h3>
+<p>One user thread maps to one kernel thread.</p>
+<ul>
+<li>More concurrency than Many-to-One.</li>
+<li>Another thread can run when one blocks.</li>
+<li>Supports true parallel execution on multiprocessors.</li>
+<li><strong>Disadvantage:</strong> Creating a user thread requires
+creating a kernel thread (heavier).</li>
+<li><strong>Examples:</strong> OS/2, Windows NT, Windows 2000.</li>
+</ul>
+<hr />
+<h2 id="summary-user-level-vs-kernel-level-threads">Summary: User-Level
+vs. Kernel-Level Threads</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>User-Level Threads</th>
+<th>Kernel-Level Threads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Faster to create and manage</td>
+<td>Slower to create and manage</td>
+</tr>
+<tr>
+<td><strong>Implementation</strong></td>
+<td>Thread library at user level</td>
+<td>OS kernel support</td>
+</tr>
+<tr>
+<td><strong>Portability</strong></td>
+<td>Generic; runs on any OS</td>
+<td>Specific to the OS</td>
+</tr>
+<tr>
+<td><strong>Multiprocessing</strong></td>
+<td>Cannot exploit multiprocessors</td>
+<td>Can run on multiple processors</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-process-vs-thread">Summary: Process vs. Thread</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Process</th>
+<th>Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Weight</strong></td>
+<td>Heavyweight</td>
+<td>Lightweight</td>
+</tr>
+<tr>
+<td><strong>Switching</strong></td>
+<td>Requires OS interface</td>
+<td>No kernel interrupt needed</td>
+</tr>
+<tr>
+<td><strong>Resources</strong></td>
+<td>Own memory and file resources</td>
+<td>Shares open files and child processes</td>
+</tr>
+<tr>
+<td><strong>Blocking</strong></td>
+<td>If blocked, no other process runs</td>
+<td>If one thread blocks, others can run</td>
+</tr>
+<tr>
+<td><strong>Resource Usage</strong></td>
+<td>More resources</td>
+<td>Fewer resources</td>
+</tr>
+<tr>
+<td><strong>Isolation</strong></td>
+<td>Independent</td>
+<td>Threads can modify each other's stack</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="common-issues-in-multithreading">Common Issues in
+Multithreading</h2>
+<ol type="1">
+<li><strong>Race Conditions:</strong> Multiple threads accessing shared
+data simultaneously → unpredictable results.</li>
+<li><strong>Deadlocks:</strong> Two or more threads waiting forever for
+each other's resources.</li>
+<li><strong>Starvation:</strong> A thread never gets CPU time due to
+scheduling priorities.</li>
+</ol>
+<p><strong>Solutions:</strong> Mutexes, semaphores, condition variables;
+careful design to avoid circular waits.</p>
+<hr />
+<h2 id="cpu-scheduling">CPU Scheduling</h2>
+<p><strong>CPU scheduling</strong> is the OS activity of deciding which
+ready process or thread should run on the CPU next. The CPU can only
+handle one task at a time, but many tasks need processing.</p>
+<blockquote>
+<p><strong>Analogy:</strong> The scheduler is a traffic controller at a
+busy intersection, deciding which "car" gets the green light.</p>
+</blockquote>
+<h3 id="importance">Importance</h3>
+<ol type="1">
+<li>Ensures efficient CPU utilization.</li>
+<li>Improves system performance.</li>
+<li>Provides fairness among processes.</li>
+<li>Reduces waiting and response time.</li>
+</ol>
+<hr />
+<h2 id="preemptive-vs-non-preemptive-scheduling">Preemptive vs.
+Non-Preemptive Scheduling</h2>
+<h3 id="non-preemptive">Non-Preemptive</h3>
+<p>Once a process starts, it holds the CPU until it finishes or
+voluntarily waits for I/O.</p>
+<p><strong>Advantages:</strong> Simple; no context switch overhead;
+predictable. <strong>Disadvantages:</strong> Poor response time; long
+waiting times; not suitable for interactive systems.</p>
+<h3 id="preemptive">Preemptive</h3>
+<p>OS can interrupt a running process to give CPU to a higher-priority
+task. Standard for modern multitasking.</p>
+<p><strong>Advantages:</strong> Better responsiveness; suitable for
+interactive systems; ensures fairness. <strong>Disadvantages:</strong>
+More overhead (frequent context switching); complex to implement.</p>
+<hr />
+<h2 id="cpu-scheduling-terminologies">CPU Scheduling Terminologies</h2>
+<ol type="1">
+<li><strong>Arrival Time:</strong> When the process arrives in the ready
+queue.</li>
+<li><strong>Completion Time:</strong> When the process completes
+execution.</li>
+<li><strong>Burst Time:</strong> Time required by a process for CPU
+execution.</li>
+<li><strong>Turnaround Time:</strong>
+<code>Completion Time − Arrival Time</code></li>
+<li><strong>Waiting Time:</strong>
+<code>Turnaround Time − Burst Time</code></li>
+</ol>
+<hr />
+<h2 id="scheduling-algorithms">Scheduling Algorithms</h2>
+<h3 id="1-first-come-first-served-fcfs">1. First-Come, First-Served
+(FCFS)</h3>
+<p>FIFO queue; the first process to arrive gets CPU first.</p>
+<blockquote>
+<p><strong>Scenario:</strong> Students lining up to use a printer.</p>
+</blockquote>
+<p><strong>Advantages:</strong> Simple; easy to implement.
+<strong>Disadvantages:</strong> Long waiting time; <strong>"Convoy
+Effect"</strong> — short jobs wait behind long ones.</p>
+<hr />
+<h3 id="2-shortest-job-first-sjf">2. Shortest Job First (SJF)</h3>
+<p>Process with the shortest burst time is selected first.</p>
+<blockquote>
+<p><strong>Scenario:</strong> At a café, customers with small orders are
+served before large orders.</p>
+</blockquote>
+<p><strong>Advantages:</strong> Minimum average waiting time.
+<strong>Disadvantages:</strong> Hard to predict burst time; long jobs
+may suffer <strong>Starvation</strong>.</p>
+<hr />
+<h3 id="3-priority-scheduling">3. Priority Scheduling</h3>
+<p>Each process has a priority number; highest priority gets CPU
+first.</p>
+<blockquote>
+<p><strong>Scenario:</strong> Hospital emergency patients treated before
+regular patients.</p>
+</blockquote>
+<p><strong>Advantages:</strong> Important tasks handled quickly.
+<strong>Disadvantages:</strong> Low-priority processes may starve.
+<strong>Fix:</strong> <strong>Aging</strong> — gradually increasing
+priority of long-waiting processes.</p>
+<hr />
+<h3 id="4-round-robin-rr">4. Round Robin (RR)</h3>
+<p>Each process gets a <strong>Time Quantum</strong> (10–100ms); if not
+done, goes to back of queue. Designed for time-sharing systems.</p>
+<blockquote>
+<p><strong>Scenario:</strong> Students taking turns on a shared computer
+— 5 minutes each.</p>
+</blockquote>
+<p><strong>Advantages:</strong> Fair; good for time-sharing.
+<strong>Disadvantages:</strong> Too many context switches; performance
+depends on time quantum size.</p>
+<blockquote>
+<p>If quantum too large → becomes FCFS. If too small → context switch
+overhead dominates.</p>
+</blockquote>
+<hr />
+<h3 id="5-multilevel-queue-scheduling">5. Multilevel Queue
+Scheduling</h3>
+<p>Ready queue partitioned into separate queues by process type (e.g.,
+Foreground vs. Background). Each queue has its own scheduling
+algorithm.</p>
+<blockquote>
+<p><strong>Scenario:</strong> In school — teachers, senior students, and
+juniors have different service queues.</p>
+</blockquote>
+<p><strong>Advantages:</strong> Organized process handling.
+<strong>Disadvantages:</strong> Rigid structure; possible
+starvation.</p>
+<hr />
+<h3 id="6-multilevel-feedback-queue-scheduling">6. Multilevel Feedback
+Queue Scheduling</h3>
+<p>Like Multilevel Queue but processes can <strong>move between
+queues</strong> based on behavior.</p>
+<blockquote>
+<p><strong>Scenario:</strong> A student who takes too long in the fast
+service queue is moved to a slower queue.</p>
+</blockquote>
+<p><strong>Advantages:</strong> Flexible; prevents starvation.
+<strong>Disadvantages:</strong> Complex to implement.</p>
+<hr />
+<h2 id="process-synchronization">Process Synchronization</h2>
+<p><strong>Process synchronization</strong> is the coordination of
+multiple cooperating processes to ensure controlled access to shared
+resources, preventing race conditions and other problems.</p>
+<blockquote>
+<p><strong>Race Condition:</strong> Occurs when two or more processes
+access and modify the same shared data simultaneously, and the final
+outcome depends on execution order.</p>
+</blockquote>
+<hr />
+<h2 id="critical-section">Critical Section</h2>
+<p>The <strong>Critical Section</strong> is a segment of code where a
+process accesses shared resources. Only one process should be allowed in
+the critical section at a time.</p>
+<h3 id="requirements-for-a-synchronization-solution">Requirements for a
+Synchronization Solution</h3>
+<ol type="1">
+<li><strong>Mutual Exclusion:</strong> If Process A is in critical
+section, no other process can enter.</li>
+<li><strong>Progress:</strong> If no process is in the critical section,
+the decision of who goes next cannot be postponed indefinitely.</li>
+<li><strong>Bounded Waiting:</strong> A limit on how many times others
+can "cut in line" before a waiting process is granted access.</li>
+</ol>
+<h3 id="bank-account-scenario-race-condition">Bank Account Scenario
+(Race Condition)</h3>
+<blockquote>
+<p>Balance = ₦10,000 | Process A withdraws ₦7,000 | Process B withdraws
+₦5,000</p>
+<p><strong>Without sync:</strong> Both read ₦10,000 → A updates → ₦3,000
+→ B updates → ₦5,000. <strong>Incorrect result.</strong></p>
+<p><strong>With sync:</strong> A enters critical section → updates to
+₦3,000 → B waits → B executes → insufficient funds. <strong>Correct
+result.</strong></p>
+</blockquote>
+<hr />
+<h2 id="process-synchronization-problems">Process Synchronization
+Problems</h2>
+<ol type="1">
+<li><strong>Race Condition:</strong> Multiple processes in critical
+section differ in execution order → incorrect results.</li>
+<li><strong>Deadlocks:</strong> Processes stuck waiting for each other's
+resources (circular dependency).
+<blockquote>
+<p>Process A holds Resource 1, waits for Resource 2. Process B holds
+Resource 2, waits for Resource 1. Both stuck forever.</p>
+</blockquote></li>
+<li><strong>Starvation:</strong> A process is denied access indefinitely
+due to consistent priority of others.</li>
+<li><strong>Data Inconsistencies:</strong> Multiple processes
+simultaneously updating shared data → corrupted state.</li>
+</ol>
+<hr />
+<h2 id="synchronization-mechanisms">Synchronization Mechanisms</h2>
+<h3 id="1-mutual-exclusion">1. Mutual Exclusion</h3>
+<p>Locks, semaphores, and similar primitives ensure only one process
+accesses a shared resource at a time.</p>
+<h3 id="2-semaphores">2. Semaphores</h3>
+<p>Synchronization objects maintaining a count; allow or restrict
+resource access.</p>
+<ul>
+<li><strong>Binary semaphore:</strong> 0 or 1 (like a lock).</li>
+<li><strong>Counting semaphore:</strong> Allows multiple accesses up to
+a limit.</li>
+</ul>
+<blockquote>
+<p><strong>Scenario:</strong> Only 3 computers available — semaphore
+ensures only 3 users access them at once.</p>
+</blockquote>
+<h3 id="3-monitors">3. Monitors</h3>
+<p>Higher-level constructs encapsulating shared data and procedures.
+Ensure only one process executes within the monitor at a time.</p>
+<h3 id="4-condition-variables">4. Condition Variables</h3>
+<p>Primitives used with locks/monitors. Processes wait on a condition
+variable until another process signals that the condition is met.</p>
+<hr />
+<h2
+id="advantages-and-disadvantages-of-process-synchronization">Advantages
+and Disadvantages of Process Synchronization</h2>
+<p><strong>Advantages</strong></p>
+<ul>
+<li>Prevents data inconsistency.</li>
+<li>Avoids race conditions.</li>
+<li>Ensures system reliability.</li>
+<li>Supports safe multitasking.</li>
+</ul>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Adds complexity.</li>
+<li>May cause deadlock or starvation if poorly implemented.</li>
+<li>Slight performance overhead.</li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

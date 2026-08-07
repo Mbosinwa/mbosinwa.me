@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 707 Full Class Notes — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 707 Artificial Intelligence: Complete lecture notes for the course.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-707-artificial-intelligence/">CMS 707 Artificial Intelligence</a> / Full Class Notes</p>
+        <article class="doc">
+<h1 id="artificial-intelligence--lecture-notes">Artificial Intelligence
+— Lecture Notes</h1>
+<h3 id="what-is-intelligence">What is Intelligence?</h3>
+<blockquote>
+<p><strong>Intelligence</strong> is defined as "the capacity to think
+and comprehend the world in an elaborate way, involving knowledge,
+experience and understanding."</p>
+</blockquote>
+<ul>
+<li>Machines are better than humans in some tasks such as computation,
+addition and subtraction etc., but struggle with creative tasks that
+humans do normally.</li>
+<li>AI is concerned with understanding human cognition and building
+entities that have at least human-level cognition — in other words, to
+do the creative things that humans do but <strong>FASTER</strong>.</li>
+</ul>
+<h3 id="limits-of-computational-power">Limits of Computational
+Power</h3>
+<p>For humans performing a task requires learning in a natural
+order:</p>
+<ul>
+<li><strong>First</strong> — Perception, linguistics, Common Sense</li>
+<li><strong>Later</strong> — Engineering, medicine, finance etc.</li>
+</ul>
+<p>The individual (formal) task requires much less knowledge to
+represent in a computer system than the mundane tasks.</p>
+<h3 id="mundane-vs-formal-tasks">Mundane vs Formal Tasks</h3>
+<table>
+<thead>
+<tr>
+<th>Mundane Task</th>
+<th>Formal Task</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perception</td>
+<td>Games</td>
+</tr>
+<tr>
+<td>Vision</td>
+<td>Chess</td>
+</tr>
+<tr>
+<td>Speech</td>
+<td>Backgammon</td>
+</tr>
+<tr>
+<td>Natural Language</td>
+<td>Checkers</td>
+</tr>
+<tr>
+<td>Understanding</td>
+<td>Mathematics</td>
+</tr>
+<tr>
+<td>Generation</td>
+<td>Generation</td>
+</tr>
+<tr>
+<td>Translation</td>
+<td>Logic</td>
+</tr>
+<tr>
+<td>Common Sense Reasoning</td>
+<td>Calculus</td>
+</tr>
+<tr>
+<td>Robot Control</td>
+<td>Proof</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-water-jug-problem">The Water Jug Problem</h2>
+<p>You are given two jugs: a <strong>4-gallon</strong> one and a
+<strong>3-gallon</strong> one. Neither has any measuring markers. There
+is a tap that can be used to fill the jugs with water. How can you get
+exactly <strong>2 gallons</strong> of water into the 4-gallon jug?</p>
+<blockquote>
+<p>NB: This is a <strong>state space problem</strong>.</p>
+</blockquote>
+<h3 id="solution">Solution</h3>
+<p>The state space (SS) for this problem can be described as the set of
+ordered pairs of integers <strong>(x, y)</strong> such that:</p>
+<ul>
+<li><code>x = 0, 1, 2, 3, or 4</code></li>
+<li><code>y = 0, 1, 2, or 3</code></li>
+</ul>
+<p>Where <code>x</code> represents the number of gallons of water in the
+4-gallon jug and <code>y</code> represents the quantity of water in the
+3-gallon jug.</p>
+<ul>
+<li><strong>Start State:</strong> (0, 0)</li>
+<li><strong>Goal State:</strong> (2, 3)</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    A[&quot;(0,0)&quot;] --&gt; B[&quot;(4,0)&quot;]
+    A --&gt; C[&quot;(0,3)&quot;]
+    B --&gt; D[&quot;(4,3)&quot;]
+    B --&gt; E[&quot;(0,0)&quot;]
+    B --&gt; F[&quot;(3,0) [pour to 3gal]&quot;]
+    C --&gt; G[&quot;(4,3) [fill 4gal]&quot;]
+    C --&gt; H[&quot;(3,0) [pour to 4gal]&quot;]
+    F --&gt; I[&quot;(3,3)&quot;]
+    I --&gt; J[&quot;(4,2)&quot;]
+    J --&gt; K[&quot;(2,0) [pour to 3gal goal]&quot;]
+    K --&gt; L[&quot;(2,3) ✓ GOAL&quot;]</code></pre>
+<hr />
+<h2 id="the-farmers-problem">The Farmer's Problem</h2>
+<p>A farmer needs to transport a <strong>Lion</strong>,
+<strong>Goat</strong>, and <strong>Yam</strong> across a river. The
+farmer can take only one item across at a time.</p>
+<h3 id="solution-1">Solution</h3>
+<p>The state space for the farmer problem is represented with letters
+<strong>F, L, G, Y</strong> (Farmer, Lion, Goat, Yam).</p>
+<p>A bar <code>|</code> represents the river. The initial state where
+farmer, lion, goat and yam are all on one bank is represented as
+<code>FLGY|</code>, and <code>|FLGY</code> for the other side.</p>
+<p><strong>State Transition Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>State (Left)</th>
+<th>State (Right)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FLGY</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>FLY</code></td>
+<td><code>G</code></td>
+</tr>
+<tr>
+<td><code>FLY</code> | <code>G</code> → cross goat back</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>FLGY</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>[Diagram placeholder — see page 6]</strong> <em>Full
+state-space tree for the farmer problem is in
+<code>AI-pages/page-06.png</code>.</em></p>
+</blockquote>
+<hr />
+<h2 id="agent">Agent</h2>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>An <strong>agent</strong> is something that operates automatically,
+perceives its environment, persists over a prolonged time period, adapts
+to changes and creates and pursues goals.</p>
+</blockquote>
+<blockquote>
+<p>A <strong>rational agent</strong> is one that acts so as to achieve
+the best outcome or expected outcome when there is uncertainty.</p>
+</blockquote>
+<p>In concrete terms, an agent is anything that can be viewed as
+<strong>perceiving its environment through sensors</strong> and
+<strong>acting upon the environment through actuators</strong>.</p>
+<pre class="mermaid"><code>graph LR
+    subgraph Agent
+        S[Sensors]
+        P[&quot;?&quot;]
+        A[Actuators]
+    end
+    Env[Environment] --&gt;|Percepts| S
+    S --&gt; P
+    P --&gt; A
+    A --&gt;|Actions| Env</code></pre>
+<p><em>Fig 1: An agent intercepts with environment through Sensors and
+actuators.</em></p>
+<h3 id="percept-sequence">Percept Sequence</h3>
+<ul>
+<li>An agent's <strong>percept sequence</strong> is the complete history
+of everything the agent has ever perceived.</li>
+<li>An agent's choice of actions at any given instant can depend on the
+built-in knowledge and on the <strong>entire percept sequence</strong>
+observed to date, but not on anything it has not perceived.</li>
+<li>An agent's behaviour is described by the <strong>agent
+function</strong> that maps any given percept sequence to an
+action.</li>
+<li>An agent function is implemented by an <strong>agent
+program</strong>.
+<ul>
+<li><strong>Agent function</strong> — abstract mathematical
+description</li>
+<li><strong>Agent program</strong> — concrete implementation</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="rational-agent">Rational Agent</h2>
+<p>A rational agent is one that does the <strong>right thing</strong>.
+What does it mean to do the right thing?</p>
+<h3 id="performance-measure">Performance Measure</h3>
+<blockquote>
+<p>A rational agent is one that acts so as to achieve the best outcome
+or expected outcome when there is uncertainty. The notion of best or
+expected outcome is captured by a <strong>performance
+measure</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="state-space-search">State Space Search</h2>
+<p>To build a system to solve a particular problem, we need to do
+<strong>4 things</strong>:</p>
+<ol type="1">
+<li><p><strong>Define the Problem Precisely.</strong> The definition
+must include precise specification of what initial situation(s) will be
+used as well as what the final structure constitutes an acceptable
+solution to the problem.</p>
+<ul>
+<li>Example: <code>FLGY → ?? → FLGY</code></li>
+<li>State: <code>initial (Si) → goal (Sg)</code></li>
+</ul></li>
+<li><p><strong>Analyse the problem.</strong> A few very important
+features can have an immense impact on the appropriateness of various
+possible techniques for solving the problem.</p></li>
+<li><p><strong>Isolate and represent</strong> the task's knowledge that
+is necessary to solve the problem.</p></li>
+<li><p><strong>Choose the best problem-solving technique</strong> and
+apply it (them) to the particular problem.</p></li>
+</ol>
+<blockquote>
+<p>Some problems can be defined as a <strong>STATE SPACE
+SEARCH</strong>.</p>
+</blockquote>
+<p>Search is a very important process in the solution of hard problems
+for which no more direct techniques are available.</p>
+<hr />
+<h2 id="types-of-search">Types of Search</h2>
+<p>To search a space there are 2 basic kinds:</p>
+<ol type="1">
+<li><strong>Breadth-First Search (BFS)</strong></li>
+<li><strong>Depth-First Search (DFS)</strong></li>
+<li><strong>Best-First Search (BFS/Heuristic)</strong></li>
+</ol>
+<p>Others are derived from BFS and DFS.</p>
+<h3 id="bfs-tree-example">BFS Tree Example</h3>
+<pre class="mermaid"><code>graph TD
+    A --&gt; B
+    A --&gt; C
+    B --&gt; D
+    B --&gt; E
+    B --&gt; F
+    C --&gt; G</code></pre>
+<hr />
+<h2 id="function-breadth-first-search">FUNCTION BREADTH-FIRST
+SEARCH</h2>
+<pre><code>Returns a solution node or failure
+
+node ← NODE(Problem.INITIAL)
+if Problem.IS-GOAL(node.STATE):
+    return node
+frontier ← a FIFO queue, with node as an element
+reached ← {Problem.INITIAL}
+
+while not IS-EMPTY(frontier) do
+    node ← pop(frontier)
+    for each child in EXPAND(Problem, node) do
+        s ← child.STATE
+        if Problem.IS-GOAL(s): return child
+        if s is not in reached then
+            add s to reached
+            add child to frontier
+return failure</code></pre>
+<hr />
+<h2 id="function-depth-first-search-iterative-deepening">FUNCTION
+DEPTH-FIRST SEARCH (Iterative Deepening)</h2>
+<pre><code>1. Function ITERATIVE-DEEPENING SEARCH (Problem):
+   Returns a solution node or failure
+   for depth = 0 to ∞ do
+       result ← DEPTH-LIMITED-SEARCH
+       if result ≠ cut off: return result
+
+2. Function DEPTH-LIMITED SEARCH (Problem):
+   Returns a node or failure (or cut off)
+   frontier ← a LIFO queue (STACK) with
+               NODE(Problem.INITIAL) as an element
+   result ← failure
+   while not IS-EMPTY(frontier) do
+       node ← pop(frontier)
+       if Problem.IS-GOAL(node.STATE) then:
+           return node
+       if DEPTH(node) ≥ L then:
+           result ← cut off
+       else if not IS-CYCLE(node) do:
+           for each child in EXPAND(problem, node) do:
+               add child to frontier
+   return result</code></pre>
+<hr />
+<h2 id="best-first-search-heuristic">Best-First Search (Heuristic)</h2>
+<ul>
+<li><strong>BFS is good</strong> because it allows a solution to be
+found without all competing branches having to be expanded.</li>
+<li><strong>BFS is good</strong> because it does not get trapped on dead
+end paths.</li>
+<li><strong>Best-First</strong> combined the best of both BFS and
+DFS.</li>
+</ul>
+<hr />
+<h2 id="advantages-of-dfs">Advantages of DFS</h2>
+<ol type="1">
+<li><p>DFS requires <strong>less memory</strong> since only the nodes of
+the current path are stored. This contrasts with BFS, where all of the
+tree that has so far been generated must be stored.</p></li>
+<li><p>By chance, if DFS is not taken as exploring the alternative
+successor states, DFS may find a solution without examining much of the
+search space at all. This contrasts with BFS in which all parts of the
+tree must be examined to level n-1 before any nodes on level n+1 can be
+examined.</p>
+<ul>
+<li>This is particularly significant if many acceptable solutions
+exist.</li>
+<li>DFS can stop when one of them is found.</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><strong>Disadvantages of BFS</strong> — Next class</p>
+</blockquote>
+<blockquote>
+<p>Apart from BFS and DFS, what other search algorithms are there?</p>
+</blockquote>
+<hr />
+<h2 id="knowledge-representation-kr">Knowledge Representation (KR)</h2>
+<pre class="mermaid"><code>graph TD
+    F[Facts] --&gt; IR[Internal Representation]
+    IR --&gt; RP[Reasoning Program]
+    EU[English Understanding] --&gt; ER[English Representation]
+    ER --&gt; EG[English Generation]
+    IR --&gt; ER
+    ER --&gt; IR</code></pre>
+<h3 id="mapping-between-facts-and-representations">Mapping Between Facts
+and Representations</h3>
+<ul>
+<li><strong>Hallucination</strong> — Facts that may not be there. Humans
+have consciousness and self-awareness.</li>
+</ul>
+<p><strong>Two Entities:</strong></p>
+<ul>
+<li><strong>Fact</strong> — Truth in some relevant world. Things we want
+to represent.</li>
+<li><strong>Representation</strong> of facts in some chosen formalism.
+This we actually manipulate.</li>
+</ul>
+<hr />
+<h2 id="forms-of-knowledge-representation">Forms of Knowledge
+Representation</h2>
+<h3 id="1-natural-language-representation">1. Natural Language
+Representation</h3>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>English</td>
+<td>Socrates is a man</td>
+</tr>
+<tr>
+<td>Internal</td>
+<td>Man(Socrates)</td>
+</tr>
+<tr>
+<td>Logical</td>
+<td><code>∀x: man(x) → mortal(x)</code></td>
+</tr>
+<tr>
+<td>Inferred</td>
+<td>then mortal(Socrates)</td>
+</tr>
+<tr>
+<td>English</td>
+<td>Socrates is a mortal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-simple-relational-knowledge">2. Simple Relational
+Knowledge</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Height</th>
+<th>Weight</th>
+<th>Position</th>
+<th>Feet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ronaldinho</td>
+<td>5-7</td>
+<td>56</td>
+<td>Midfield</td>
+<td>Right</td>
+</tr>
+<tr>
+<td>Jay-Matthew</td>
+<td>5-11</td>
+<td>75</td>
+<td>Midfield</td>
+<td>Right</td>
+</tr>
+<tr>
+<td>Lionel Messi</td>
+<td>5-5</td>
+<td>76</td>
+<td>Attack-Left</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ture Ingerami</td>
+<td>5-6</td>
+<td>78</td>
+<td>Defence-Right</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Database Systems use this type of KR.</li>
+<li>It provides <strong>weak inferential capabilities</strong>.</li>
+<li>Example question: <em>Who is the heaviest player?</em></li>
+<li>If a procedure to find the heaviest player is given, then these
+facts will enable a procedure to compute and answer.</li>
+</ul>
+<h3 id="3-inheritance--inferential-relationships">3. Inheritance /
+Inferential Relationships</h3>
+<blockquote>
+<p><strong>[Diagram placeholder — see page 16]</strong> <em>Inheritance
+relationship diagram saved at
+<code>AI-pages/page-16.png</code>.</em></p>
+</blockquote>
+<p><strong>Class hierarchy:</strong></p>
+<ul>
+<li><code>Person</code> → footed → Right</li>
+<li><code>Athletic Male</code> → height: 5-11</li>
+<li><code>Football Player</code> → height: 6-2, goals: +75
+<ul>
+<li><code>Midfielder</code> → instance: Botton, Bkacha</li>
+<li><code>Attacker</code> → age: 85 → instance: Messi, Etisn, B.C.,
+Bruena</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="inferential-knowledge-ai">Inferential Knowledge (AI)</h2>
+<ol type="1">
+<li><p><code>∀x: Ball(x) ∧ AfterKickoff(x) ∧ Infield(x) ∧ (InMotion(x) ∨ IsStationary(x)) ∧ IsStillSomeone(x) → InPlay(x)</code></p></li>
+<li><p><code>∀x: Ball(x) ∧ AfterKickoff(x) ∧ Infield(x) ∧ TwilightGrove(x) → InPlay(x)</code></p></li>
+<li><p><code>∀x,y: Ball(x) ∧ Kicked(x,y) ∧ player(y) ∧ ¬Infield(x) → Out(x)</code></p></li>
+</ol>
+<hr />
+<h2 id="predicate-logic">Predicate Logic</h2>
+<h3 id="example-marcus-and-caesar">Example: Marcus and Caesar</h3>
+<ol type="1">
+<li>Marcus was a man: <code>Man(Marcus)</code></li>
+<li>Man was a Pompeian: <code>Pompeian(Marcus)</code></li>
+<li>All Pompeians were Romans:
+<code>∀x Pompeian(x) → Roman(x)</code></li>
+<li>Caesar was a Ruler: <code>Ruler(Caesar)</code></li>
+<li>All Romans were either loyal to Caesar or hated him:
+<code>∀x Roman(x) → [loyal(x, Caesar) ∨ hate(x, Caesar)] ∧ ¬(loyal_to(x, Caesar) ∧ hate(x, Caesar))</code></li>
+<li>Everyone is loyal to someone:
+<code>∀x ∃y: loyal_to(x, y)</code></li>
+<li>People try to assassinate rulers they are not loyal to:
+<code>∀x ∀y: person(x) ∧ ruler(y) ∧ try_assassinate(x, y) → loyal_to(x, y)</code></li>
+<li>Marcus tried to assassinate Caesar:
+<code>try_assassinate(Marcus, Caesar)</code></li>
+</ol>
+<hr />
+<h2 id="symbols-and-interpretation-predicate-logic">Symbols and
+Interpretation (Predicate Logic)</h2>
+<pre><code>Sentence → Atomic Sentence | Complex Sentence
+
+Atomic Sentence → Predicate | Predicate(Term) | Term = Term
+
+Complex Sentence →
+    ¬ Sentence
+    | Sentence ∧ Sentence
+    | Sentence ∨ Sentence
+    | Sentence ⇒ Sentence
+    | Sentence ⟺ Sentence
+    | Quantifier Variable, ... Sentence
+
+Term → Function(Term, ...) | Constant | Variable
+
+Quantifiers → ∀ | ∃
+Constants   → A | X | 1 | John
+Variables   → a | x | s | ...
+Predicates  → True | False | After | Loves | Raining
+Function    → Mother | Little</code></pre>
+<hr />
+<h2 id="task--assignment">Task / Assignment</h2>
+<h2 id="session-1-introduction">Session 1: Introduction</h2>
+<h3 id="exercises">Exercises</h3>
+<p><strong>1.</strong> How could introspection — reporting on one's
+inner thoughts — be accurate? Could I be wrong about what I'm thinking?
+Discuss.</p>
+<p><strong>2.</strong> "Surely computers cannot be intelligent — they
+can only do what their programmers tell them." Is the latter statement
+true, and does it imply the former?</p>
+<p><strong>3.</strong> "Surely animals cannot be intelligent — they can
+do only what their genes tell them." Is the latter statement true and
+does it imply the former?</p>
+<p><strong>4.</strong> Examine the AI world to find whether the
+following tasks can currently be solved by computers:</p>
+<ul>
+<li>a) Playing a decent game of table tennis</li>
+<li>b) Driving in the centre of Port Harcourt</li>
+<li>c) Writing an intentional funny story</li>
+<li>d) Giving competent legal advice in a specialized area of law</li>
+<li>e) Translating spoken English into spoken French in real time</li>
+<li>f) Performing a complex surgical operation</li>
+</ul>
+<p>For the currently infeasible tasks, what is the difficulty?</p>
+<p><strong>5.</strong> Imagine that you had been to an aquarium and seen
+a shark and octopus. Describe these to a child who has never seen one.
+What resources and mechanisms does the child use to comprehend the
+nature of these marine animals?</p>
+<hr />
+<h2 id="session-2-problem-solving-and-search">Session 2: Problem Solving
+and Search</h2>
+<h3 id="exercises-1">Exercises</h3>
+<p><strong>1.</strong> Give a complete problem formulation for each of
+the following. Choose a formulation that is precise enough to be
+implemented:</p>
+<ul>
+<li>a) Using only four colors, you have to colour a planar map in such a
+way that no two adjacent regions have the same color.</li>
+<li>b) A 3-foot tall monkey is in a room where some bananas are
+suspended from the 8-foot ceiling. He would like to get the bananas. The
+room also contains a chair which the monkey can move.</li>
+<li>c) You have a program that outputs the message "Illegal input
+record" even for a certain file of input records. You think that
+(perhaps) each record is independent of the other records. You want to
+discover what message is illegal.</li>
+<li>d) You have 3 jugs measuring 12 gallons and 8 gallons and a 1-gallon
+jug. You can fill the jugs up or empty them out from one to another or
+onto the ground. You need to measure out exactly one gallon.</li>
+</ul>
+<p><strong>2.</strong> The missionaries and cannibals problem is usually
+stated as follows: Three missionaries and three cannibals are on one
+side of a river, along with a boat that can hold one or two people. Find
+a way to get everyone to the other side without ever having a group of
+missionaries on one side outnumbered by the cannibals in that place.</p>
+<ul>
+<li>a) Formulate the problem precisely, making only those distinctions
+necessary to ensure a valid solution. Draw the diagram of the complete
+state space.</li>
+<li>b) Implement and solve the problem optimally using an appropriate
+search algorithm. Is it a good idea to check for repeated states?</li>
+</ul>
+<hr />
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

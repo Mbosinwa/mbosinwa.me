@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 701 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 701 Operating Systems: Topic and concept map of the whole course, with relationships and entry points.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/knowledge-map.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Knowledge Map</p>
+        <article class="doc">
+<h1 id="knowledge-map-operating-systems-cms701">Knowledge Map: Operating
+Systems (CMS701)</h1>
+<blockquote>
+<p>Generated: 2026-04-02 | Topics: 7 | Concepts: 45+ | Relationships:
+39</p>
+</blockquote>
+<hr />
+<h2 id="course-overview">Course Overview</h2>
+<p>Operating Systems (CMS701) covers the fundamental principles of how
+an OS manages hardware and software resources. The course progresses
+from OS architecture (kernels, system calls) through process and thread
+management, CPU scheduling algorithms, multithreading models, and
+concludes with process synchronization — the mechanisms that keep
+concurrent processes safe and consistent. Two topics from the outline
+(Spooling, Mechanisms &amp; Policies) are not yet covered in available
+lecture notes.</p>
+<hr />
+<h2 id="concept-hierarchy">Concept Hierarchy</h2>
+<pre><code>Operating Systems (CMS701)
+│
+├── 1. Introduction to Operating Systems          [7 concepts]
+│   ├── Definition &amp; Role
+│   │   ├── Key Concepts: Operating System, OS-as-bridge (user ↔ hardware)
+│   │   └── Central: Operating System
+│   └── Types of Operating Systems
+│       ├── Key Concepts: Batch OS, Multiprogramming OS, Time-Sharing OS
+│       │                  Network OS, Real-Time OS
+│       └── Central: Time-Sharing OS (most relevant to modern systems)
+│
+├── 2. OS Structures                              [12 concepts]
+│   ├── Kernel Architecture
+│   │   ├── Key Concepts: Kernel, Monolithic Kernel, Microkernel,
+│   │   │                  Hybrid Kernel, Exokernel, Nanokernel
+│   │   └── Central: Kernel ★
+│   ├── System Calls
+│   │   ├── Key Concepts: System Call, Process Control (fork/wait/exit),
+│   │   │                  File Management (open/read/write/close),
+│   │   │                  Device Management (ioctl), Information Maintenance,
+│   │   │                  Communication (pipe/socket), Memory Management (mmap)
+│   │   └── Central: System Call ★
+│   └── ⚠ Pending Topics
+│       └── Spooling, System Programs, Mechanisms &amp; Policies
+│
+├── 3. Process Management                         [15 concepts]
+│   ├── Process Definition &amp; Attributes
+│   │   ├── Key Concepts: Process, PID, Process Attributes (7 components)
+│   │   └── Central: Process ★
+│   ├── Process Creation
+│   │   ├── Key Concepts: Parent Process, Child Process, fork(),
+│   │   │                  Resource Allocation (Direct/Shared),
+│   │   │                  Execution Models (Concurrent/Wait)
+│   │   └── Central: fork()
+│   ├── Context Switching
+│   │   ├── Key Concepts: Context Switch, Dispatcher, Time Quantum, Overhead
+│   │   └── Central: Context Switch ★
+│   ├── Process State Models
+│   │   ├── Key Concepts: Two-State Model, Five-State Model, Seven-State Model
+│   │   │                  Running, Ready, Blocked/Waiting, New, Terminated,
+│   │   │                  Suspend Ready, Suspend Blocked
+│   │   └── Central: Five-State Model (most commonly examined)
+│   └── Process Control Block (PCB)
+│       ├── Key Concepts: PCB, PID, PPID, Program Counter, CPU Registers,
+│       │                  Memory Management Info, Scheduling Info,
+│       │                  I/O &amp; File Info, Zombie Process
+│       └── Central: PCB ★
+│
+├── 4. CPU Scheduling                             [12 concepts]
+│   ├── Schedulers
+│   │   ├── Key Concepts: Long-Term Scheduler (degree of multiprogramming),
+│   │   │                  Short-Term Scheduler (ready queue),
+│   │   │                  Medium-Term Scheduler (swapping)
+│   │   └── Central: Short-Term Scheduler
+│   ├── Preemptive vs. Non-Preemptive
+│   │   ├── Key Concepts: Preemptive Scheduling, Non-Preemptive Scheduling
+│   │   └── Central: Preemptive Scheduling
+│   ├── Scheduling Terminologies
+│   │   └── Key Concepts: Arrival Time, Burst Time, Completion Time,
+│   │                      Turnaround Time, Waiting Time
+│   └── Scheduling Algorithms
+│       ├── Key Concepts: FCFS (Convoy Effect), SJF (Starvation risk),
+│       │                  Priority Scheduling (Aging fix), Round Robin (Time Quantum),
+│       │                  Multilevel Queue, Multilevel Feedback Queue
+│       └── Central: Round Robin (dominant in modern OS)
+│
+├── 5. Thread Management                          [8 concepts]
+│   ├── Thread Definition
+│   │   ├── Key Concepts: Thread, Lightweight Process
+│   │   └── Central: Thread ★
+│   ├── Thread Components
+│   │   └── Key Concepts: Stack Space, Register Set, Program Counter
+│   └── Types of Threads
+│       ├── Key Concepts: User-Level Thread, Kernel-Level Thread
+│       └── Central: Kernel-Level Thread (more powerful; OS-managed)
+│
+├── 6. Multithreading                             [8 concepts]
+│   ├── Multithreading Models
+│   │   ├── Key Concepts: Many-to-Many Model ★ (best),
+│   │   │                  Many-to-One Model, One-to-One Model
+│   │   └── Central: Many-to-Many Model
+│   ├── Multithreading vs. Multitasking vs. Multiprocessing
+│   │   └── Key Concepts: Multithreading, Multitasking, Multiprocessing
+│   └── Common Issues
+│       └── Key Concepts: Race Condition, Deadlock, Starvation
+│
+└── 7. Process Synchronization                   [9 concepts]
+    ├── Critical Section Problem
+    │   ├── Key Concepts: Critical Section, Race Condition
+    │   └── Central: Critical Section ★
+    ├── Synchronization Requirements
+    │   └── Key Concepts: Mutual Exclusion, Progress, Bounded Waiting
+    ├── Synchronization Mechanisms
+    │   ├── Key Concepts: Semaphore (Binary/Counting), Monitor,
+    │   │                  Condition Variable, Mutex
+    │   └── Central: Semaphore ★
+    └── Synchronization Problems
+        └── Key Concepts: Deadlock, Starvation, Data Inconsistency</code></pre>
+<hr />
+<h2 id="key-relationships">Key Relationships</h2>
+<h3 id="hierarchical-is-a--part-of">Hierarchical (Is-a / Part-of)</h3>
+<ul>
+<li><strong>Kernel</strong> is the core component of <strong>Operating
+System</strong></li>
+<li><strong>Thread</strong> is a lightweight version of
+<strong>Process</strong></li>
+<li><strong>Monolithic Kernel</strong> is a type of
+<strong>Kernel</strong> (all-in-one, fast, fragile)</li>
+<li><strong>Microkernel</strong> is a type of <strong>Kernel</strong>
+(minimal, stable, slower IPC)</li>
+<li><strong>Hybrid Kernel</strong> is a type of <strong>Kernel</strong>
+(balances both)</li>
+<li><strong>Exokernel / Nanokernel</strong> are extreme minimal types of
+<strong>Kernel</strong></li>
+<li><strong>User-Level Thread</strong> is a type of
+<strong>Thread</strong> (app-managed)</li>
+<li><strong>Kernel-Level Thread</strong> is a type of
+<strong>Thread</strong> (OS-managed)</li>
+<li><strong>Semaphore</strong> is a type of <strong>Synchronization
+Mechanism</strong></li>
+<li><strong>Monitor</strong> is a type of <strong>Synchronization
+Mechanism</strong></li>
+<li><strong>PCB</strong> is a data structure that is part of
+<strong>Process Management</strong></li>
+<li><strong>Program Counter</strong> is a field of
+<strong>PCB</strong></li>
+<li><strong>CPU Registers</strong> are fields of
+<strong>PCB</strong></li>
+<li><strong>PID</strong> is an identifier field of
+<strong>PCB</strong></li>
+</ul>
+<h3 id="causal-causes--enables">Causal (Causes / Enables)</h3>
+<ul>
+<li><strong>Race Condition</strong> causes <strong>Data
+Inconsistency</strong></li>
+<li><strong>Circular Resource Wait</strong> causes
+<strong>Deadlock</strong></li>
+<li><strong>Priority bias</strong> causes
+<strong>Starvation</strong></li>
+<li><strong>FCFS with long jobs first</strong> causes <strong>Convoy
+Effect</strong></li>
+<li><strong>SJF with continuous short arrivals</strong> causes
+<strong>Starvation</strong> for long jobs</li>
+<li><strong>Mutual Exclusion</strong> enables safe <strong>Critical
+Section</strong> access</li>
+<li><strong>Semaphore</strong> enables <strong>Mutual
+Exclusion</strong></li>
+<li><strong>Aging</strong> enables prevention of
+<strong>Starvation</strong></li>
+<li><strong>Context Switch</strong> enables
+<strong>Multitasking</strong> (CPU sharing)</li>
+<li><strong>Process Scheduling</strong> enables
+<strong>Multiprogramming</strong></li>
+</ul>
+<h3 id="dependency-requires--prerequisite">Dependency (Requires /
+Prerequisite)</h3>
+<ul>
+<li><strong>System Call</strong> requires <strong>Kernel</strong> to
+execute</li>
+<li><strong>Context Switch</strong> requires <strong>PCB</strong> to
+save/restore state</li>
+<li><strong>CPU Scheduling</strong> requires understanding of
+<strong>Process States</strong> (Ready Queue)</li>
+<li><strong>Round Robin</strong> performance depends on <strong>Time
+Quantum</strong> size</li>
+<li><strong>Multithreading Models</strong> depend on understanding
+<strong>Thread Types</strong></li>
+<li><strong>Synchronization Mechanisms</strong> depend on understanding
+<strong>Race Conditions</strong></li>
+</ul>
+<h3 id="contrast-contrasts-with">Contrast (Contrasts-with)</h3>
+<ul>
+<li><strong>Monolithic Kernel</strong> vs <strong>Microkernel</strong> —
+performance vs. stability/modularity</li>
+<li><strong>Preemptive</strong> vs <strong>Non-Preemptive</strong>
+Scheduling — OS control vs. process control</li>
+<li><strong>User-Level Thread</strong> vs <strong>Kernel-Level
+Thread</strong> — speed vs. multiprocessor power</li>
+<li><strong>Many-to-One</strong> vs <strong>One-to-One</strong> Model —
+efficiency vs. true parallelism</li>
+<li><strong>Process</strong> vs <strong>Thread</strong> —
+heavyweight/isolated vs. lightweight/shared</li>
+</ul>
+<hr />
+<h2 id="central-concepts">Central Concepts</h2>
+<p>These are the most connected concepts in the course — master these
+first:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Connections</th>
+<th>Why Central</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Process</strong></td>
+<td>8</td>
+<td>Foundation of all process management, scheduling, synchronization,
+and threading</td>
+</tr>
+<tr>
+<td><strong>Kernel</strong></td>
+<td>7</td>
+<td>Core OS component; all system calls, thread management, and hardware
+access pass through it</td>
+</tr>
+<tr>
+<td><strong>PCB (Process Control Block)</strong></td>
+<td>6</td>
+<td>The OS's complete record of a process; essential for context
+switching and scheduling</td>
+</tr>
+<tr>
+<td><strong>Context Switch</strong></td>
+<td>6</td>
+<td>The mechanism that makes multitasking possible; connects PCB,
+schedulers, and CPU</td>
+</tr>
+<tr>
+<td><strong>CPU Scheduling</strong></td>
+<td>6</td>
+<td>Governs all 6 scheduling algorithms and 3 scheduler types; directly
+affects performance</td>
+</tr>
+<tr>
+<td><strong>Thread</strong></td>
+<td>5</td>
+<td>Lightweight execution unit; central to multithreading models and
+synchronization issues</td>
+</tr>
+<tr>
+<td><strong>Deadlock</strong></td>
+<td>4</td>
+<td>Connects synchronization failures, resource management, and
+starvation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prerequisite-learning-path">Prerequisite Learning Path</h2>
+<p>Recommended study order based on concept dependencies:</p>
+<pre><code>1. Operating System Basics (definition, types)
+        ↓
+2. Kernel Architecture (monolithic → microkernel → hybrid)
+        ↓
+3. System Calls (how user mode requests kernel services)
+        ↓
+4. Process Fundamentals (definition, attributes, creation)
+        ↓
+5. Process State Models (2-state → 5-state → 7-state)
+        ↓
+6. Process Control Block — PCB (what data the OS tracks)
+        ↓
+7. Context Switching (how the OS switches between processes)
+        ↓
+8. Process Schedulers (Long-Term, Short-Term, Medium-Term)
+        ↓
+9. CPU Scheduling Algorithms (FCFS → SJF → Priority → RR → Multilevel)
+        ↓
+10. Thread Management (what threads are, types, components)
+        ↓
+11. Multithreading &amp; Models (Many-to-Many, Many-to-One, One-to-One)
+        ↓
+12. Race Conditions &amp; Critical Section (why synchronization is needed)
+        ↓
+13. Process Synchronization Mechanisms (semaphores, monitors, mutexes)</code></pre>
+<hr />
+<h2 id="definitions-quick-reference">Definitions Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition (brief)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Operating System</strong></td>
+<td>Software bridge between user and hardware; manages all
+resources</td>
+</tr>
+<tr>
+<td><strong>Kernel</strong></td>
+<td>Core OS component bridging applications and hardware</td>
+</tr>
+<tr>
+<td><strong>Monolithic Kernel</strong></td>
+<td>Single large program with all OS functions; fast but fragile</td>
+</tr>
+<tr>
+<td><strong>Microkernel</strong></td>
+<td>Minimal kernel; drivers/services in user space; stable but
+slower</td>
+</tr>
+<tr>
+<td><strong>Hybrid Kernel</strong></td>
+<td>Combines monolithic speed with microkernel modularity (e.g., Windows
+NT)</td>
+</tr>
+<tr>
+<td><strong>System Call</strong></td>
+<td>Program's request to kernel for privileged operations; bridges
+user/kernel mode</td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td>A program in execution with its own code, state, and resources</td>
+</tr>
+<tr>
+<td><strong>PID</strong></td>
+<td>Unique numeric identifier assigned to each process by the OS</td>
+</tr>
+<tr>
+<td><strong>PCB</strong></td>
+<td>OS data structure holding all info to manage a process</td>
+</tr>
+<tr>
+<td><strong>Context Switch</strong></td>
+<td>OS saving one process's state and loading another's to share
+CPU</td>
+</tr>
+<tr>
+<td><strong>Program Counter</strong></td>
+<td>Register holding address of the next instruction to execute</td>
+</tr>
+<tr>
+<td><strong>Thread</strong></td>
+<td>Smallest execution unit within a process; shares memory with
+siblings</td>
+</tr>
+<tr>
+<td><strong>User-Level Thread</strong></td>
+<td>Thread managed by app library; fast but no multiprocessor
+advantage</td>
+</tr>
+<tr>
+<td><strong>Kernel-Level Thread</strong></td>
+<td>Thread managed by OS; slower but true parallelism on
+multiprocessors</td>
+</tr>
+<tr>
+<td><strong>Multithreading</strong></td>
+<td>Single process running multiple concurrent threads</td>
+</tr>
+<tr>
+<td><strong>Many-to-Many Model</strong></td>
+<td>Multiple user threads mapped to equal or fewer kernel threads (best
+model)</td>
+</tr>
+<tr>
+<td><strong>One-to-One Model</strong></td>
+<td>Each user thread mapped to its own kernel thread; true
+parallelism</td>
+</tr>
+<tr>
+<td><strong>CPU Scheduling</strong></td>
+<td>OS mechanism deciding which process/thread runs on CPU next</td>
+</tr>
+<tr>
+<td><strong>Preemptive Scheduling</strong></td>
+<td>OS can interrupt a running process for a higher-priority one</td>
+</tr>
+<tr>
+<td><strong>Time Quantum</strong></td>
+<td>Fixed CPU time slice per process in Round Robin scheduling</td>
+</tr>
+<tr>
+<td><strong>Turnaround Time</strong></td>
+<td>Completion Time − Arrival Time</td>
+</tr>
+<tr>
+<td><strong>Waiting Time</strong></td>
+<td>Turnaround Time − Burst Time</td>
+</tr>
+<tr>
+<td><strong>FCFS</strong></td>
+<td>First-Come, First-Served; simple but causes convoy effect</td>
+</tr>
+<tr>
+<td><strong>SJF</strong></td>
+<td>Shortest Job First; optimal avg wait time but risks starvation</td>
+</tr>
+<tr>
+<td><strong>Round Robin</strong></td>
+<td>Fair time-slice scheduling; performance depends on quantum size</td>
+</tr>
+<tr>
+<td><strong>Aging</strong></td>
+<td>Gradually increasing waiting process priority to prevent
+starvation</td>
+</tr>
+<tr>
+<td><strong>Critical Section</strong></td>
+<td>Code segment accessing shared resources; one process at a time
+only</td>
+</tr>
+<tr>
+<td><strong>Race Condition</strong></td>
+<td>Simultaneous shared-data access leading to unpredictable
+results</td>
+</tr>
+<tr>
+<td><strong>Mutual Exclusion</strong></td>
+<td>Guarantee only one process is in the critical section at a time</td>
+</tr>
+<tr>
+<td><strong>Deadlock</strong></td>
+<td>Two+ processes in circular wait for each other's resources; all
+stuck</td>
+</tr>
+<tr>
+<td><strong>Starvation</strong></td>
+<td>Process perpetually denied resource/CPU due to others' priority</td>
+</tr>
+<tr>
+<td><strong>Semaphore</strong></td>
+<td>Sync object using count to allow/block resource access</td>
+</tr>
+<tr>
+<td><strong>Monitor</strong></td>
+<td>High-level construct ensuring only one process executes shared code
+at a time</td>
+</tr>
+<tr>
+<td><strong>Zombie Process</strong></td>
+<td>Finished process whose PCB still exists (parent hasn't read exit
+status)</td>
+</tr>
+<tr>
+<td><strong>Convoy Effect</strong></td>
+<td>FCFS problem: short processes stuck behind a long one</td>
+</tr>
+<tr>
+<td><strong>Spooling</strong></td>
+<td>⚠ Pending — not yet covered in available lecture notes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tutor-reference-notes">Tutor Reference Notes</h2>
+<p><em>For use during learning sessions:</em></p>
+<ul>
+<li><p><strong>Best entry-point concept:</strong> Start with
+<em>Process</em> — it anchors topics 3 through 7 and gives Mbosinwa (a
+software engineer) an immediately relatable mental model (every app he
+has built runs as processes).</p></li>
+<li><p><strong>Most common misconceptions in this course:</strong></p>
+<ol type="1">
+<li>Confusing <em>context switch</em> with <em>process switch</em> — a
+context switch is the mechanism; a process switch is the event that
+triggers it.</li>
+<li>Thinking <em>multithreading</em> = <em>multiprocessing</em> —
+threads share memory; processes do not.</li>
+<li>Assuming <em>Shortest Job First</em> is always best — it causes
+starvation in practice.</li>
+<li>Thinking <em>deadlock</em> and <em>starvation</em> are the same —
+deadlock is a circular wait (no one proceeds); starvation is unfair
+scheduling (one never proceeds).</li>
+</ol></li>
+<li><p><strong>Concepts students typically conflate:</strong></p>
+<ul>
+<li><strong>Deadlock</strong> vs <strong>Starvation</strong> — both mean
+a process never runs, but deadlock is a circular dependency; starvation
+is a scheduling fairness failure.</li>
+<li><strong>Preemptive</strong> vs <strong>Non-Preemptive</strong> —
+easy to mix up which is "interruptible."</li>
+<li><strong>User-Level Thread</strong> vs <strong>Kernel-Level
+Thread</strong> — both are threads; difference is <em>who manages
+them</em>.</li>
+<li><strong>Many-to-One</strong> vs <strong>One-to-One</strong> — the
+naming is intuitive but the trade-offs (efficiency vs. parallelism) are
+what matter.</li>
+<li><strong>PCB</strong> vs <strong>Process</strong> — PCB is the
+<em>record</em> of a process, not the process itself.</li>
+<li><strong>Short-Term Scheduler</strong> vs <strong>Dispatcher</strong>
+— scheduler <em>decides</em>; dispatcher <em>executes</em> the
+switch.</li>
+</ul></li>
+<li><p><strong>⚠ Coverage gaps to flag during tutoring:</strong></p>
+<ul>
+<li>Spooling, System Programs, Mechanisms &amp; Policies not yet in
+lecture notes — flag if exam questions arise on these.</li>
+</ul></li>
+</ul>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

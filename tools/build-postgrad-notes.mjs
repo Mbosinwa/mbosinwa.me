@@ -48,12 +48,22 @@ const THEME_SCRIPT = `<script>
     </script>`;
 
 const LECTURER_NAMES = [
+  // semester 2
   'Dr. S. T. Whyte', 'Dr. Whyte',
   'Dr. G. Oraye', 'Dr. Oraye',
   'Dr. C. M. Abiye-Suku', 'Dr. Abiye-Suku',
   'Dr. I. Oriji', 'Dr. Oriji',
   'Dr. G. O. Jaja', 'Dr. Jaja',
   'Prof. D. Matthias', 'Prof. Matthias',
+  // semester 1
+  'Dr. I.B. Cookey', 'Dr. Cookey',
+  'Dr. H. Okwu', 'Dr. Okwu',
+  'Dr. Friday Orji', 'Dr. Orji',
+  'Dr. Fortune Deedam', 'Dr. Deedam',
+  'Dr. E.O Bennett', 'Dr. Bennett',
+  'Dr. E.E Omaegbu', 'Dr. Omaegbu',
+  'Dr. Saturday', // full word "Saturday" alone is a weekday — never bare-replace
+  // NOTE: "Dr. Sarah Joe" is the tutor app's AI persona, not a lecturer — handled separately in sanitize()
 ];
 
 const PROGRAMMES = [
@@ -63,6 +73,101 @@ const PROGRAMMES = [
     school: 'Rivers State University',
     blurb: 'Postgraduate Diploma in Computer Science at Rivers State University, Port Harcourt.',
     semesters: [
+      {
+        slug: 'semester-1',
+        name: 'First Semester',
+        year: '2025/26',
+        srcDir: '/Users/mbosinwa/bmad-uni/apps/xaraunitutor/_bmad-output/_university-tutor-courses',
+        courses: [
+          {
+            slug: 'cms-701-operating-systems',
+            code: 'CMS 701',
+            dir: 'operating-systems',
+            title: 'Operating Systems',
+            blurb: 'Operating system fundamentals — OS types, kernels and system calls, processes and schedulers, multithreading, CPU scheduling and synchronization.',
+            pages: [
+              { src: 'materials/01-course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
+              { src: 'materials/02-lecture-notes-os-types-kernels-system-calls.md', out: 'notes-1.html', title: 'Notes I — OS Types, Kernels & System Calls', group: 'Notes', desc: 'What an operating system is, OS types, kernel architectures and system calls.' },
+              { src: 'materials/03-lecture-notes-process-state-pcb-schedulers.md', out: 'notes-2.html', title: 'Notes II — Processes, PCB & Schedulers', group: 'Notes', desc: 'Process states, the process control block, and long/short/medium-term schedulers.' },
+              { src: 'materials/04-lecture-notes-multithreading-cpu-scheduling-synchronization.md', out: 'notes-3.html', title: 'Notes III — Multithreading, CPU Scheduling & Synchronization', group: 'Notes', desc: 'Threads, CPU scheduling algorithms and process synchronization.' },
+              { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
+            ],
+          },
+          {
+            slug: 'cms-703-data-communication-and-networks',
+            code: 'CMS 703',
+            dir: 'data-communication-and-networks',
+            title: 'Data Communication & Networks',
+            blurb: 'Data transmission fundamentals, communication system components, networking and the OSI model.',
+            pages: [
+              { src: 'materials/cms703-course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
+              { src: 'materials/cms703-lecture-notes-dr-saturday.md', out: 'notes.html', title: 'Lecture Notes', group: 'Notes', desc: 'Full class notes — data communication components, transmission, networking and the OSI model.' },
+              { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
+            ],
+            downloads: [
+              { base: 'CMS703-Cheat-Sheet', title: 'Cheat Sheet', desc: 'One-look revision sheet for the whole course.', srcHtml: 'cms703-cheatsheet-slides.html' },
+            ],
+          },
+          {
+            slug: 'cms-705-programming-languages',
+            code: 'CMS 705',
+            dir: 'programming-languages',
+            title: 'Programming Languages',
+            blurb: 'Programming language concepts — language structure, paradigms, syntax and semantics, translators and language design.',
+            pages: [
+              { src: 'materials/course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
+              { src: 'materials/programming_lang.md', out: 'notes-1.html', title: 'Lecture Notes — Part I', group: 'Notes', desc: 'First part of the class notes.' },
+              { src: 'materials/programming_lang2.md', out: 'notes-2.html', title: 'Lecture Notes — Part II', group: 'Notes', desc: 'Second part of the class notes.' },
+              { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
+            ],
+            downloads: [
+              { base: 'CMS705-Cheatsheet', title: 'Cheat Sheet', desc: 'One-look revision sheet for the whole course.', srcHtml: 'cms705-cheatsheet.html' },
+            ],
+          },
+          {
+            slug: 'cms-707-artificial-intelligence',
+            code: 'CMS 707',
+            dir: 'artificial-intelligence',
+            title: 'Artificial Intelligence',
+            blurb: 'Problem-solving and search, knowledge representation, probabilistic reasoning, machine learning, NLP, expert systems, fuzzy logic and genetic algorithms.',
+            pages: [
+              { src: 'materials/cms707-ai-course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
+              { src: 'materials/cms707-full-class-notes-dr-friday-orji.md', out: 'notes.html', title: 'Full Class Notes', group: 'Notes', desc: 'Complete lecture notes for the course.' },
+              { src: 'materials/cms707-class-jottings-problem-solving.md', out: 'jottings.html', title: 'Class Jottings — Problem Solving', group: 'Notes', desc: 'In-class jottings on problem solving and state space search.' },
+              { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
+              { src: 'links.md', out: 'resources.html', title: 'Further Resources', group: 'Study Aids', desc: 'Curated external links for going deeper.' },
+            ],
+            downloads: [
+              { base: 'CMS707-Exam-Practice-Questions', title: 'Exam Practice Questions', desc: 'Practice questions in exam format.', srcPdf: 'cms707_exam_practice_questions.pdf' },
+            ],
+          },
+          {
+            slug: 'cms-709-compiler-construction',
+            code: 'CMS 709',
+            dir: 'compiler-construction',
+            title: 'Compiler Construction',
+            blurb: 'Compiler phases with a deep dive into lexical analysis — tokens, patterns, finite automata and scanner design.',
+            pages: [
+              { src: 'materials/lexical-analysis-lecture-notes.md', out: 'notes.html', title: 'Lexical Analysis — Lecture Notes', group: 'Notes', desc: 'Tokens, patterns and lexemes, finite automata and scanner design.' },
+              { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
+            ],
+          },
+          {
+            slug: 'cms-711-system-analysis-and-design',
+            code: 'CMS 711',
+            dir: 'system-analysis-and-design',
+            title: 'System Analysis & Design',
+            blurb: 'The system development life cycle, system analysis, and interface design.',
+            pages: [
+              { src: 'materials/course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
+              { src: 'materials/SDLC_Lecture_Notes.md', out: 'sdlc-notes.html', title: 'System Development Life Cycle', group: 'Notes', desc: 'SDLC phases, models and deliverables.' },
+              { src: 'materials/SYSTEM_ANALYSIS.md', out: 'system-analysis-notes.html', title: 'System Analysis', group: 'Notes', desc: 'System analysis concepts and techniques.' },
+              { src: 'materials/System_Design_Interface_Design.md', out: 'interface-design-notes.html', title: 'System Design & Interface Design', group: 'Notes', desc: 'Design of systems and user interfaces.' },
+              { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
+            ],
+          },
+        ],
+      },
       {
         slug: 'semester-2',
         name: 'Second Semester',
@@ -162,6 +267,9 @@ const PROGRAMMES = [
 // --- sanitization -----------------------------------------------------------
 
 function sanitize(md, course) {
+  // strip YAML frontmatter
+  md = md.replace(/^---\n[\s\S]*?\n---\n/, '');
+
   let lines = md.split('\n');
 
   lines = lines.filter((line) => {
@@ -172,6 +280,8 @@ function sanitize(md, course) {
     if (/^\*\*Exam:?/.test(t)) return false;
     if (/SC 28-30/.test(t)) return false;
     if (/Invigilator/.test(t)) return false;
+    if (/^>?\s*\*?\*?Lecturers?\b.*:/.test(t) && /(Dr\.|Prof\.)/.test(t)) return false;
+    if (/For use by Dr\. Sarah Joe/.test(t)) return false;
     // blockquote lines pointing at unpublished scans/sources or capture-order maps
     if (/^>.*(scans?\/|scans\b|Capture order|capture order|extra-\d\d|source\/)/.test(t)) return false;
     if (/^>.*(→p\.\d)/.test(t)) return false;
@@ -179,6 +289,9 @@ function sanitize(md, course) {
   });
 
   let text = lines.join('\n');
+
+  // staff emails
+  text = text.replace(/\s*\(?[\w.+-]+@ust\.edu\.ng\)?/g, '');
 
   // lecturer names -> neutral
   for (const name of LECTURER_NAMES) {
@@ -202,6 +315,11 @@ function sanitize(md, course) {
       [/`(\.\.\/)?(exam-prep\/)?02-syllabus-gaps\.md`/g, '[the syllabus gap notes](syllabus-gaps.html)'],
       [/`(\.\.\/)?(exam-prep\/)?01-cheatsheet\.md`/g, '[the cheatsheet](cheatsheet.html)'],
     ],
+    'cms-707-artificial-intelligence': [
+      [/`?cms707-full-class-notes-dr-friday-orji\.md`?/g, '[the full class notes](notes.html)'],
+      [/`?cms707-class-jottings-problem-solving\.md`?/g, '[the class jottings](jottings.html)'],
+      [/`?cms707-ai-course-outline\.md`?/g, '[the course outline](course-outline.html)'],
+    ],
     'cms-704-computer-architecture': [
       [/`(\.\.\/)?(notes\/)?CMS-704-extra-notes\.md`/g, '[the extra notes](extra-notes.html)'],
       [/`(\.\.\/)?(notes\/)?CMS-704-lecture-notes\.md`/g, '[the lecture notes](notes.html)'],
@@ -224,10 +342,11 @@ function sanitizeVolumeHtml(html) {
   t = t.replace(/\s*·\s*exam [A-Z][a-z]+day \d{1,2} [A-Za-z]+ \d{4}[^·<]*/g, '');
   t = t.replace(/\s*·\s*SC 28-30/g, '');
   t = t.replace(/SC 28-30/g, 'the exam hall');
-  // prose mentions
+  // prose mentions ("Saturday" deliberately absent from the bare-surname list — it's a weekday)
+  t = t.replace(/\s*\(?[\w.+-]+@ust\.edu\.ng\)?/g, '');
   for (const name of LECTURER_NAMES) t = t.split(name).join('the lecturer');
-  t = t.replace(/\b(Whyte|Oraye|Abiye-Suku|Oriji|Jaja|Matthias)'s/g, "the lecturer's");
-  t = t.replace(/\b(Whyte|Oraye|Abiye-Suku|Oriji|Jaja|Matthias)\b/g, 'the lecturer');
+  t = t.replace(/\b(Whyte|Oraye|Abiye-Suku|Oriji|Jaja|Matthias|Cookey|Okwu|Orji|Deedam|Bennett|Omaegbu)'s/g, "the lecturer's");
+  t = t.replace(/\b(Whyte|Oraye|Abiye-Suku|Oriji|Jaja|Matthias|Cookey|Okwu|Orji|Deedam|Bennett|Omaegbu)\b/g, 'the lecturer');
   t = t.replace(/the lecturer (&amp;|&) the lecturer/g, 'the lecturers');
   t = t.replace(/Invigilator\s*/g, '');
   return t;
@@ -319,7 +438,8 @@ ${pages.map((p) => `                <div class="material-item">
         </section>`;
   }
 
-  sections += `
+  if (course.volumes?.length) {
+    sections += `
         <section class="material-group">
             <h2>Study Guides (PDF)</h2>
             <div class="material-list">
@@ -330,6 +450,21 @@ ${course.volumes.map((v) => `                <div class="material-item">
                 </div>`).join('\n')}
             </div>
         </section>`;
+  }
+
+  if (course.downloads?.length) {
+    sections += `
+        <section class="material-group">
+            <h2>Downloads</h2>
+            <div class="material-list">
+${course.downloads.map((d) => `                <div class="material-item">
+                    <h3>${d.title}</h3>
+                    <p>${d.desc}</p>
+                    <div class="material-links"><a class="pdf" href="${base}/${d.base}.pdf">PDF</a>${d.srcHtml ? `<a href="${base}/${d.base}.html">HTML</a>` : ''}</div>
+                </div>`).join('\n')}
+            </div>
+        </section>`;
+  }
 
   return page({
     title: `${course.code} — ${course.title} — Postgrad Notes — Mbosinwa Awunor`,
@@ -346,7 +481,7 @@ ${course.volumes.map((v) => `                <div class="material-item">
 
 function semesterPage(prog, sem) {
   const cards = sem.courses.map((c) => {
-    const count = c.pages.length + c.volumes.length;
+    const count = c.pages.length + (c.volumes?.length || 0) + (c.downloads?.length || 0);
     return `            <a class="course-card" href="/postgrad-notes/${prog.slug}/${sem.slug}/${c.slug}/">
                 <span class="code">${c.code}</span>
                 <h2>${c.title}</h2>
@@ -363,7 +498,7 @@ function semesterPage(prog, sem) {
         <header class="page-header">
             <span class="kicker">${prog.name} · ${sem.name} · ${sem.year}</span>
             <h1>${sem.name} — Study Materials</h1>
-            <p class="lede">Transcribed lecture notes, cheatsheets, practice questions and multi-volume exam study guides for the ${sem.name.toLowerCase()} of my ${prog.name}. All self-authored, all free to use.</p>
+            <p class="lede">Lecture notes, cheatsheets, study aids and exam-prep materials for the ${sem.name.toLowerCase()} of my ${prog.name}. All self-authored, all free to use.</p>
         </header>
         <div class="card-grid">
 ${cards}
@@ -441,7 +576,24 @@ for (const prog of PROGRAMMES) {
         console.log(`built ${prog.slug}/${sem.slug}/${course.slug}/${pg.out}`);
       }
 
-      for (const v of course.volumes) {
+      for (const d of course.downloads || []) {
+        if (d.srcHtml) {
+          const raw = readFileSync(join(sem.srcDir, course.dir, d.srcHtml), 'utf8');
+          const outHtml = join(dir, `${d.base}.html`);
+          writeFileSync(outHtml, sanitizeVolumeHtml(raw));
+          execFileSync(CHROME, [
+            '--headless=new', '--disable-gpu', '--no-pdf-header-footer',
+            `--print-to-pdf=${join(dir, `${d.base}.pdf`)}`, outHtml,
+          ], { stdio: 'pipe' });
+          console.log(`sanitized + rendered ${prog.slug}/${sem.slug}/${course.slug}/${d.base}.{html,pdf}`);
+        } else if (d.srcPdf) {
+          // pre-verified clean of lecturer names — copied as-is
+          writeFileSync(join(dir, `${d.base}.pdf`), readFileSync(join(sem.srcDir, course.dir, d.srcPdf)));
+          console.log(`copied ${prog.slug}/${sem.slug}/${course.slug}/${d.base}.pdf`);
+        }
+      }
+
+      for (const v of course.volumes || []) {
         const raw = readFileSync(join(sem.srcDir, course.dir, 'exam-prep', `${v.base}.html`), 'utf8');
         const outHtml = join(dir, `${v.base}.html`);
         writeFileSync(outHtml, sanitizeVolumeHtml(raw));
