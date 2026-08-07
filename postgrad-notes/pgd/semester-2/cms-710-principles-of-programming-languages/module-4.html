@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 710 Module 4 — Control Structure and Data Flow — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 710 Principles of Programming Languages: Control structures, data flow, and evaluation.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-2/cms-710-principles-of-programming-languages/module-4.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-2/">Second Semester</a> / <a href="/postgrad-notes/pgd/semester-2/cms-710-principles-of-programming-languages/">CMS 710 Principles of Programming Languages</a> / Module 4 — Control Structure and Data Flow</p>
+        <article class="doc">
+<h1 id="cms-710-principles-of-programming-languages">CMS 710: Principles
+of Programming Languages</h1>
+<h2 id="module-4-control-structure-and-data-flow">Module 4: Control
+Structure and Data Flow</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>At the end of this module, students should be able to:</p>
+<ol type="1">
+<li>Explain the concept of control structures in programming
+languages.</li>
+<li>Differentiate between sequential, selection, iteration, and
+recursive control structures.</li>
+<li>Describe scope rules and their significance in program
+execution.</li>
+<li>Explain different parameter-passing mechanisms used by programming
+languages.</li>
+<li>Analyze how data flows through a program during execution.</li>
+<li>Compare control flow constructs in Python, JavaScript, and C++.</li>
+<li>Evaluate how control structures influence readability,
+maintainability, and program reliability.</li>
+<li>Discuss the differences between imperative and functional approaches
+to program control.</li>
+</ol>
+<h3 id="41-introduction">4.1 Introduction</h3>
+<p>Programs do not simply consist of data and operations; they also
+require mechanisms that determine the order in which operations are
+executed. These mechanisms are known as control structures. Control
+structures are fundamental elements of programming languages because
+they govern the flow of execution and determine how decisions are made,
+how repetition occurs, and how functions interact within a program.
+Without control structures, programs would execute instructions strictly
+in the order they appear, making it impossible to implement
+decision-making processes, loops, or complex algorithms. The design of
+control structures significantly influences:</p>
+<ul>
+<li>Program readability</li>
+<li>Software reliability</li>
+<li>Maintainability</li>
+<li>Execution efficiency</li>
+</ul>
+<p>Different programming languages provide different abstractions for
+controlling program execution.</p>
+<h3 id="42-what-is-control-flow">4.2 What is Control Flow?</h3>
+<p>Control flow refers to the order in which statements, instructions,
+or function calls are executed in a program. Control flow
+determines:</p>
+<ul>
+<li>Which instruction executes next.</li>
+<li>Under what conditions execution changes direction.</li>
+<li>How repetition occurs.</li>
+<li>How data moves through program components. Control flow is often
+represented using flowcharts, control-flow graphs, or execution
+traces.</li>
+</ul>
+<h3 id="43-principles-of-control-structures">4.3 Principles of Control
+Structures</h3>
+<p>Several fundamental principles guide the design of control
+structures.</p>
+<p>Principle 1: Program Behaviour is Determined by Control Structures
+Control structures define the logical behaviour of a program. The same
+data and operations may produce different results depending on the
+sequence and conditions under which they execute.</p>
+<p>Principle 2: Simplicity Improves Readability Simple control
+structures are generally easier to understand and maintain. Languages
+such as Python emphasize readability through simplified control
+constructs.</p>
+<p>Principle 3: Abstraction Reduces Complexity Programming languages
+provide higher-level abstractions that hide low-level control
+details.</p>
+<p>Examples include:</p>
+<ul>
+<li>foreach loops</li>
+<li>iterators</li>
+<li>generators</li>
+<li>recursive functions</li>
+</ul>
+<h3 id="44-sequential-execution">4.4 Sequential Execution</h3>
+<p>Sequential execution is the simplest form of control flow. Statements
+are executed one after another in the order they appear.</p>
+<h3 id="example">Example</h3>
+<p>Python ```python id=“7a2b4c” x = 10 y = 20 z = x + y print(z)</p>
+<p>Execution order:</p>
+<pre class="text"><code>1. x = 10
+2. y = 20
+3. z = x + y
+4. print(z)
+
+Characteristics
+- Simple
+- Predictable
+- Easy to understand
+However, sequential execution alone cannot support decision-making or repetition.
+
+
+### 4.5 Selection Structures
+Selection structures allow a program to choose among alternative execution paths based on specified conditions. This enables decision making.
+
+Types of Selection Single Selection Execute a statement if a condition is true.
+
+Double Selection Choose between two alternatives.
+
+Multiple Selection Choose among several alternatives.
+
+Python Example ```python id=“p3q8t2” score = 65 if score &gt;= 50: print(“Pass”)
+
+---
+
+
+## JavaScript Example
+
+```javascript id=&quot;m7x5k9&quot; if(score &gt;= 50){ console.log(&quot;Pass&quot;); }
+
+C++ Example cpp id=&quot;n6c1y8&quot; if(score &gt;= 50){              cout &lt;&lt; &quot;Pass&quot;; }
+
+If-Else Structure Python python id=&quot;b5j2f7&quot; if score &gt;= 50:       print(&quot;Pass&quot;) else:   print(&quot;Fail&quot;)
+
+Switch Statement JavaScript ```javascript id=“h9d4e6” switch(day){ case 1: console.log(&quot;Monday&quot;); break;
+
+case 2: console.log(&quot;Tuesday&quot;); break;
+
+default: console.log(&quot;Invalid Day&quot;);
+
+}
+
+---
+
+
+## Advantages
+
+- Supports decision making
+- Improves flexibility
+- Enhances program intelligence
+
+---
+
+
+# 4.6 Iteration Structures
+
+Iteration allows a set of instructions to execute repeatedly until a specified condition is satisfied.
+
+Iteration is commonly referred to as looping.
+
+---
+
+
+## Types of Loops
+
+
+### For Loop
+
+Used when the number of repetitions is known.
+
+
+### While Loop
+
+Used when repetitions depend on a condition.
+
+
+### Do-While Loop
+
+Executes at least once before testing the condition.
+
+---
+
+
+# For Loop Example
+
+Python
+
+```python id=&quot;d8t1r5&quot; for i in range(5): print(i)
+
+JavaScript ```javascript id=“v7u2m4” for(let i = 0; i &lt; 5; i++){ console.log(i);
+
+}
+
+---
+
+C++
+
+```cpp id=&quot;r4n8w6&quot; for(int i = 0; i &lt; 5; i++){
+
+cout &lt;&lt; i;
+
+}
+
+While Loop Example Python ```python id=“k5s9f2” count = 1 while count &lt;= 5: print(count) count += 1
+
+---
+
+
+## Advantages of Iteration
+
+- Reduces code duplication
+- Improves efficiency
+- Simplifies repetitive tasks
+
+---
+
+
+# 4.7 Recursion
+
+Recursion is a control mechanism in which a function calls itself to solve a problem.
+
+A recursive solution typically consists of:
+
+
+### Base Case
+
+Terminates recursion.
+
+
+### Recursive Case
+
+Calls itself with a smaller problem.
+
+---
+
+
+## Example: Factorial
+
+Mathematically:
+
+```text id=&quot;y8x6q1&quot; n! = n × (n−1)!
+
+Python Example ```python id=“g2c4m9” def factorial(n):
+
+if n == 1: return 1
+
+return n * factorial(n - 1)
+
+---
+
+
+## JavaScript Example
+
+```javascript id=&quot;u4f7j2&quot; function factorial(n){
+
+if(n === 1){ return 1; }
+
+return n * factorial(n - 1); }
+
+C++ Example ```cpp id=“c3k8r1” int factorial(int n){ if(n == 1) return 1;
+
+return n * factorial(n - 1);
+
+}
+
+---
+
+
+## Advantages
+
+- Elegant solutions
+- Natural representation of hierarchical structures
+- Useful for trees and graphs
+
+---
+
+
+## Disadvantages
+
+- Higher memory consumption
+- Risk of stack overflow
+- Often slower than iteration
+
+---
+
+
+# 4.8 Scope Rules
+
+Scope determines where a variable can be accessed within a program.
+
+Scope is a fundamental concept because it controls variable visibility and lifetime.
+
+---
+
+
+# Types of Scope
+
+
+## Global Scope
+
+Accessible throughout the program.
+
+Python
+
+```python id=&quot;a4n7p8&quot; x = 10
+
+Local Scope Accessible only within a function or block. Python ```python id=“e9v3t1” def test(): y = 20
+
+print(y)
+
+---
+
+
+## Block Scope
+
+Variables exist only inside specific blocks.
+
+JavaScript
+
+```javascript id=&quot;w2s6m5&quot; if(true){
+
+let age = 20;
+
+}
+
+Outside the block: javascript id=&quot;t7y4r9&quot; console.log(age);
+
+Produces an error.
+
+Importance of Scope
+- Prevents naming conflicts
+- Enhances security
+- Improves maintainability
+- Supports modular design
+
+
+### 4.9 Variable Lifetime
+Variable lifetime refers to the period during which a variable exists in memory. A variable’s lifetime depends on:
+
+- Scope
+- Storage allocation method
+- Program execution state
+Examples:
+
+- Global variables typically exist throughout execution.
+- Local variables exist only while functions execute.
+
+
+### 4.10 Parameter Passing Mechanisms
+Functions often require data from other parts of a program. Programming languages provide mechanisms for passing arguments to functions.
+
+Pass-by-Value A copy of the argument is passed. Changes inside the function do not affect the original variable.
+
+C++ Example ```cpp id=“l5r7u3” void increment(int x){ x++;
+
+}
+
+---
+
+
+# Pass-by-Reference
+
+The function receives a reference to the original variable.
+
+Changes affect the original variable.
+
+---
+
+
+## C++ Example
+
+```cpp id=&quot;z8d1f4&quot; void increment(int &amp;x){
+
+x++;
+
+}
+
+Python Parameter Passing Python uses an approach often described as:
+
+Pass-by-Object-Reference Objects are passed by reference to object values.
+
+
+### Example
+```python id=“n2v6c8” def modify(lst): lst.append(100)
+
+The original list is modified.
+
+---
+
+
+# 4.11 Data Flow Mechanisms
+
+Data flow refers to how information moves through a program.
+
+Data can flow:
+
+- Between variables
+- Between functions
+- Between modules
+- Between program components
+
+---
+
+
+# Input Process Output Model
+
+Most programs follow:
+
+```text id=&quot;b8q2f5&quot; Input → Processing → Output
+
+
+### Example
+```python id=“x1m9w4” number = int(input()) square = number * number print(square)
+
+Data flows from:
+
+```text id=&quot;s4j8r2&quot; User Input ↓
+
+Variable ↓ Processing ↓ Output
+
+
+### 4.12 Functional and Imperative Control Flow
+Programming languages often support different control philosophies.
+
+Imperative Control Flow Focuses on describing how tasks should be performed. Examples:
+
+- C++
+- JavaScript
+- Python
+
+
+### Example
+```python id=“h7u4w9” total = 0 for number in numbers: total += number
+
+---
+
+
+# Functional Control Flow
+
+Focuses on describing what should be computed.
+
+---
+
+
+## Example
+
+Python
+
+```python id=&quot;m8c3t6&quot; total = sum(numbers)
+
+The implementation details are hidden.
+
+Advantages
+- Simpler code
+- Improved abstraction
+- Reduced side effects
+
+
+### 4.13 Structured Programming
+Structured programming is a programming paradigm that emphasizes:
+
+- Sequence
+- Selection
+- Iteration
+while avoiding uncontrolled jumps such as excessive use of GOTO statements.
+
+Benefits Improved Readability Programs become easier to understand.
+
+Improved Reliability Errors become easier to identify.
+
+Easier Maintenance Program modifications become simpler.
+
+
+### 4.14 Comparative Study of Python, JavaScript, and C++
+Feature                             Python      JavaScript C++ Readability                         Very High   High      Moderate
+
+Feature                         Python       JavaScript C++ Block Structure                 Indentation Braces       Braces Recursion Support               Excellent    Excellent   Excellent Functional Features             Moderate     High        Moderate Performance                     Moderate     Moderate    High Parameter Passing Complexity Low             Moderate    High
+
+
+### 4.15 Language Design Perspective
+Control structures reveal many differences in language philosophy. Python emphasizes:
+
+- Simplicity
+- Readability
+- Reduced syntax
+JavaScript emphasizes:
+
+- Flexibility
+- Event-driven programming
+- Functional constructs
+C++ emphasizes:
+
+- Performance
+- Explicit control
+- System-level programming
+These differences demonstrate how language designers balance readability, abstraction, flexibility, and efficiency.
+
+
+### Summary
+This module examined the mechanisms that control program execution and data movement within software systems. The discussion covered sequential execution, selection, iteration, recursion, scope rules, parameter-passing mechanisms, and data flow. The module also explored structured programming and compared imperative and functional control approaches. Python, JavaScript, and C++ were used to demonstrate
+
+how different programming languages implement control abstractions while pursuing different design goals.
+</code></pre>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

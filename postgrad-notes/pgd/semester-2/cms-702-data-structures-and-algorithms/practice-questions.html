@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 702 Practice Questions — Postgrad Notes — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 702 Data Structures & Algorithms: 35 questions with answers, in exam format.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/pgd/semester-2/cms-702-data-structures-and-algorithms/practice-questions.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-2/">Second Semester</a> / <a href="/postgrad-notes/pgd/semester-2/cms-702-data-structures-and-algorithms/">CMS 702 Data Structures & Algorithms</a> / Practice Questions</p>
+        <article class="doc">
+<h1 id="cms-702--practice-questions">CMS 702 — Practice Questions</h1>
+<p>Built from the emphasis in the lecturer's notes (worked examples
+repeated in class are the likeliest exam questions). Try each before
+reading the answer.</p>
+<hr />
+<h2 id="section-a--definitions-short-answer">Section A — Definitions
+(short answer)</h2>
+<ol type="1">
+<li>Define an algorithm and list any <strong>five</strong> types of
+algorithms.</li>
+<li>What is asymptotic analysis? State the three cases it
+considers.</li>
+<li>Differentiate between Big O, Θ and Ω notation.</li>
+<li>Define hashing. List the three components of hashing.</li>
+<li>What is a collision in hashing, and state two methods of handling
+it.</li>
+<li>Define a load factor.</li>
+<li>Differentiate between a stack and a queue.</li>
+<li>Define a tree. State three properties of a tree.</li>
+<li>Differentiate between the height and the depth of a node.</li>
+<li>State the binary search tree property.</li>
+</ol>
+<details><summary>Answers</summary>
+
+<ol type="1">
+<li>A step-by-step procedure / set of commands to solve a specific
+problem. Any five of: brute force, recursive, encryption, backtracking,
+search, sort, divide and conquer, greedy, dynamic programming,
+randomized.</li>
+<li>Computing the running time of a piece of code in a mathematical unit
+of computation, expressed as f(n) — describing limiting behaviour.
+Cases: worst, best, average.</li>
+<li>Big O = upper bound (worst case); Θ = tight bound, both upper and
+lower; Ω = lower bound (best case).</li>
+<li>Hashing means lookup — the most widely used technique to find
+aggregate data by key or id. Components: key, hash function, hash
+table.</li>
+<li>A collision occurs when h(x) = h(y) — two different keys map to the
+same hash value. Handled by separate chaining or open addressing.</li>
+<li>Number of items the hash table contains ÷ size of the hash
+table.</li>
+<li>A stack is open at one end only and follows LIFO (PUSH/POP); a queue
+is open at both ends and follows FIFO (Enqueue/Dequeue).</li>
+<li>A non-linear hierarchical data structure of nodes connected by
+edges. Properties: one root node with no parent; each node has one
+parent but may have many children; each node connects to its children
+via an edge.</li>
+<li>Depth = number of edges from the root down to the node. Height =
+number of edges from the node down to its deepest leaf.</li>
+<li>The value of the left node is less than its parent; the value of the
+right node is greater than its parent.</li>
+</ol>
+</details>
+
+<hr />
+<h2 id="section-b--complexity">Section B — Complexity</h2>
+<ol start="11" type="1">
+<li>List the five complexity classes covered in class, with an example
+of each.</li>
+<li>Arrange in increasing order of growth: O(n²), O(1), O(2ⁿ), O(log n),
+O(n).</li>
+<li>What is the time complexity of binary search, and what condition
+must the data satisfy?</li>
+<li>A nested loop over n elements has what complexity? Justify.</li>
+</ol>
+<details><summary>Answers</summary>
+
+<ol start="11" type="1">
+<li>O(1) constant — fixed time regardless of data volume; O(log n)
+logarithmic — halves the problem each step, e.g. binary search; O(n)
+linear — time proportional to input size; O(n²) quadratic — nested
+loops; O(2ⁿ) exponential — grows rapidly with input size, e.g. naïve
+recursion.</li>
+<li>O(1) &lt; O(log n) &lt; O(n) &lt; O(n²) &lt; O(2ⁿ).</li>
+<li>O(log n); the dataset must be <strong>sorted</strong>.</li>
+<li>O(n²) — the inner loop runs n times for each of the n outer
+iterations, giving n × n operations.</li>
+</ol>
+</details>
+
+<hr />
+<h2 id="section-c--hashing-worked-example-style">Section C — Hashing
+(worked-example style)</h2>
+<ol start="15" type="1">
+<li>Given the strings <code>{"ab", "cd", "efg"}</code> with a=1, b=2 …
+g=7, compute the hash index of each in a table of size 7 and show the
+resulting table.</li>
+<li>State four properties of a good hash function.</li>
+<li>A hash table of size 10 holds 7 items. Compute the load factor.</li>
+</ol>
+<details><summary>Answers</summary>
+
+<ol start="15" type="1">
+<li>ab = 1+2 = 3 → 3 mod 7 = index 3; cd = 3+4 = 7 → 7 mod 7 = index 0;
+efg = 5+6+7 = 18 → 18 mod 7 = index 4.
+<pre><code>index: 0    1  2  3    4    5  6
+      [cd] [ ][ ][ab] [efg][ ][ ]</code></pre></li>
+<li>Efficiently computable; uniformly distributes the keys; minimizes
+collision; low load factor.</li>
+<li>7 / 10 = <strong>0.7</strong>.</li>
+</ol>
+</details>
+
+<hr />
+<h2 id="section-d--trees--bst-highest-yield-section">Section D — Trees
+&amp; BST (highest-yield section)</h2>
+<ol start="18" type="1">
+<li>For the tree below, state the depth and height of nodes 10, 5, 2 and
+1.</li>
+</ol>
+<pre><code>            10
+           /  \
+          5    8
+         / \  / \
+        2   3 7  9
+       /
+      1</code></pre>
+<ol start="19" type="1">
+<li>Construct a BST from the values <strong>37, 21, 13, 40, 36,
+50</strong>.</li>
+<li>Give the in-order, pre-order and post-order traversal of the BST you
+built in Q19.</li>
+<li>For the tree below, find the in-order successor of 8 and the
+in-order predecessor of 14.</li>
+</ol>
+<pre><code>          20
+         /  \
+        8    22
+       / \
+      4   12
+         /  \
+       10    14</code></pre>
+<ol start="22" type="1">
+<li>What is returned when the in-order successor does not exist?</li>
+<li>Construct a binary tree from
+<code>Pre-order = 1, 2, 4, 8, 9, 10, 11, 5, 3, 6, 7</code> and
+<code>In-order = 8, 4, 10, 9, 11, 2, 5, 1, 6, 3, 7</code>.</li>
+<li>Differentiate between a full, a perfect and a complete binary
+tree.</li>
+<li>A perfect binary tree has height 3. How many leaf nodes and how many
+total nodes does it have?</li>
+</ol>
+<details><summary>Answers</summary>
+
+<ol start="18" type="1">
+<li>10: d=0, h=3 · 5: d=1, h=2 · 2: d=2, h=1 · 1: d=3, h=0.</li>
+<li><pre><code>          37
+         /  \
+       21    40
+      /     /  \
+    13    36    50</code></pre></li>
+<li>In-order: 13, 21, 36, 37, 40, 50 (sorted — always true for a BST).
+Pre-order: 37, 21, 13, 40, 36, 50. Post-order: 13, 21, 36, 50, 40,
+37.</li>
+<li>In-order traversal = 4, 8, 10, 12, 14, 20, 22. Successor of 8 =
+<strong>10</strong>; predecessor of 14 = <strong>12</strong>.</li>
+<li><strong>−1</strong> is returned. (The in-order predecessor of the
+first node is <strong>null</strong>.)</li>
+<li><pre><code>              1
+            /   \
+           2      3
+          / \    / \
+         4   5  6   7
+        / \
+       8   9
+          /  \
+        10    11</code></pre></li>
+<li>Full — every node has 0 or 2 children. Perfect — every internal node
+has exactly 2 children <strong>and</strong> all leaves are on the same
+level. Complete — every level completely filled, leaves lean left, and
+the last leaf may lack a right sibling.</li>
+<li>l = 2^h = 2³ = <strong>8 leaves</strong>; n = 2^(h+1) − 1 = 2⁴ − 1 =
+<strong>15 nodes</strong>.</li>
+</ol>
+</details>
+
+<hr />
+<h2 id="section-e--data-structures-generally">Section E — Data
+structures generally</h2>
+<ol start="26" type="1">
+<li>Define a data structure and state the three categories of data
+types.</li>
+<li>List six basic operations performed on data structures.</li>
+<li>List the three types of linked list.</li>
+<li>Explain, with a diagram, how a node is deleted from a singly linked
+list.</li>
+<li>Differentiate between a fixed-size array and a dynamic array.</li>
+</ol>
+<details><summary>Answers</summary>
+
+<ol start="26" type="1">
+<li>A data organization, management and storage format enabling
+efficient access and modification — a collection of data values, the
+relationships among them, and the operations applicable to them.
+Categories: inbuilt/primitive (integer, float, boolean); derived (stack,
+queue, list, array); complex (linked list, tree, graph).</li>
+<li>Traversal, searching, sorting, merging, insertion, deletion.</li>
+<li>Simple (singly), complex (doubly), circular.</li>
+<li>Locate the target node, then set the previous node's pointer to the
+target's next node, bypassing it:
+<code>Head → [A|•] → [TARGET|•] → [C|•]</code> becomes
+<code>Head → [A|•] ──────────────→ [C|•]</code>.</li>
+<li>Fixed-size arrays cannot be altered and have numbered indexes;
+dynamic arrays can be altered/resized and may be one-, two- or
+three-dimensional.</li>
+</ol>
+</details>
+
+<hr />
+<h2
+id="section-f--likely-gap-questions-from-the-outline-not-the-notes--see-the-syllabus-gap-notes">Section
+F — Likely "gap" questions (from the outline, not the notes — see <a
+href="syllabus-gaps.html">the syllabus gap notes</a>)</h2>
+<ol start="31" type="1">
+<li>Define a graph and describe its two standard representations.</li>
+<li>Compare BFS and DFS, naming the data structure each uses.</li>
+<li>Compare merge sort and quick sort in terms of method and worst-case
+complexity.</li>
+<li>Explain the time–space tradeoff with one example.</li>
+<li>Differentiate between stack allocation and heap allocation.</li>
+</ol>
+<details><summary>Answers — see [the syllabus gap notes](syllabus-gaps.html) for full detail</summary>
+
+<ol start="31" type="1">
+<li>G = (V, E): a set of vertices and a set of edges connecting them.
+Adjacency matrix — V×V, O(V²) space, O(1) edge check, best for dense
+graphs. Adjacency list — array of neighbour lists, O(V + E) space, best
+for sparse graphs.</li>
+<li>BFS uses a <strong>queue</strong> (FIFO) and visits level by level;
+DFS uses a <strong>stack</strong> (LIFO) or recursion and goes as deep
+as possible first. Both O(V + E).</li>
+<li>Merge sort divides in half, sorts each half and merges; guaranteed
+O(n log n), needs O(n) extra space. Quick sort partitions around a pivot
+and recurses; O(n log n) average but <strong>O(n²) worst case</strong>
+when the pivot is always the smallest/largest element.</li>
+<li>More memory can buy speed, and vice versa — e.g. a hash table spends
+O(n) extra space to make search O(1) instead of O(n).</li>
+<li>Stack: automatic, LIFO, fast, holds local variables and call frames,
+fixed small size, fails by overflow. Heap: manual/dynamic, any order,
+slower, holds dynamically allocated objects, large, fails by leak or
+fragmentation.</li>
+</ol>
+</details>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

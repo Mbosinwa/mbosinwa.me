@@ -1,4 +1,6 @@
-# Schoolwork Section — Design Spec
+# Postgrad Notes Section — Design Spec
+
+> Renamed 2026-08-07: section is public as **Postgrad Notes** at `/postgrad-notes/` ("Schoolwork" read like homework — wrong register for PGD/MSc/PhD content).
 
 **Date:** 2026-08-07
 **Goal:** Publish semester-2 PGD Computer Science study materials on mbosinwa.dev as a styled, public-facing section.
@@ -23,12 +25,12 @@ Source: `~/Downloads/schoolwork/semester-2/` (5 courses: CMS 702, 704, 706, 708,
 
 ## Architecture
 
-Static HTML. The generator `tools/build-schoolwork.mjs` (committed) converts markdown via pandoc and wraps output in a template matching the site's neo-brutalist style. URLs are hierarchical to accommodate future programmes (MSc) and semesters without ever moving existing pages:
+Static HTML. The generator `tools/build-postgrad-notes.mjs` (committed) converts markdown via pandoc and wraps output in a template matching the site's neo-brutalist style. URLs are hierarchical to accommodate future programmes (MSc) and semesters without ever moving existing pages:
 
 ```
-schoolwork/
+postgrad-notes/
 ├── index.html                     landing: programme cards
-├── schoolwork.css
+├── postgrad-notes.css
 └── <programme>/                   e.g. pgd/, later msc/
     ├── index.html                 programme page: semester cards
     └── <semester>/                e.g. semester-2/
@@ -42,9 +44,9 @@ schoolwork/
 All links and asset references are absolute paths (relative paths break when a directory URL is served without a trailing slash on local dev servers). Adding a semester = add metadata + srcDir to `PROGRAMMES` in the generator, run it.
 
 ## Site integration
-- "Schoolwork" nav link added to `index.html`
+- "Postgrad Notes" nav link added to `index.html`
 - `sitemap.xml` gains entries for the index and 5 course pages
-- Canonical URLs under `https://mbosinwa.dev/schoolwork/`
+- Canonical URLs under `https://mbosinwa.dev/postgrad-notes/`
 
 ## Error handling / edge cases
 - Markdown with raw HTML or tables: pandoc GFM mode

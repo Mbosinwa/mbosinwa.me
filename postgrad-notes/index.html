@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postgrad Notes — Postgraduate Study Materials — Mbosinwa Awunor</title>
+    <meta name="description" content="Free study materials from my postgraduate studies in Computer Science at Rivers State University: transcribed lecture notes, cheatsheets, practice questions and exam study guides.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/postgrad-notes/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/postgrad-notes/postgrad-notes.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <header class="page-header">
+            <span class="kicker">Study Materials</span>
+            <h1>Postgrad Notes</h1>
+            <p class="lede">Notes and study materials from my postgraduate journey in Computer Science — PGD, then MSc, then PhD. Transcribed lecture notes, cheatsheets, practice questions and multi-volume exam study guides, organised by programme and semester. All self-authored, all free to use.</p>
+        </header>
+        <div class="card-grid">
+            <a class="course-card" href="/postgrad-notes/pgd/">
+                <span class="code">Rivers State University</span>
+                <h2>PGD Computer Science</h2>
+                <p>Postgraduate Diploma in Computer Science at Rivers State University, Port Harcourt.</p>
+                <span class="count">1 semester · 5 courses →</span>
+            </a>
+        </div>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>
