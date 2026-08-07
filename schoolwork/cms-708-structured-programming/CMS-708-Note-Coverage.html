@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 708 — What the Course Document Leaves Out (Volume III)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume III · the gaps · algorithms, arrays, errors and the program library</div>
+  <h1>CMS 708 — What the Course Document Leaves Out</h1>
+  <div class="sub">The four modules cover control structures and functions well, but a structured-programming paper reaches wider: pseudocode and flowcharts, the structured programming theorem, arrays, the three error types, storage classes, and the dozen standard programs every such exam draws from. All of it is here, worked.</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Monday 10 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturer:</b> the lecturer</span>
+  </div>
+</div>
+
+<div class="box warn">
+<h4>How to read this volume</h4>
+Sections <b>§1–§3</b> are <b>theory the course document alludes to but never states</b> — the three constructs, algorithm design, the error types. They are cheap marks and are asked in almost every structured-programming paper. Sections <b>§4–§6</b> are <b>C++ features the exercises silently require</b> — <code>static</code> is set as exercise 21 but never taught, and arrays underpin most "write a program" questions. Section <b>§7</b> is a <b>library of standard programs</b>. Learn §1–§3 first; they are the fastest marks in the volume.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>The structured programming theorem</h2>
+
+<div class="grid2">
+<div>
+<p>The course document says structured programming uses "clear control structures" but never states the underlying result. It is worth quoting because it explains <b>why</b> <code>goto</code> can simply be banned:</p>
+<div class="box star">
+<b>The structured programming theorem</b> (Böhm and Jacopini, 1966): <b>any computable function can be written using only three control structures</b> — <b>sequence, selection and iteration</b>. No <code>goto</code> is ever necessary.
+</div>
+<table class="tight">
+<thead><tr><th style="width:20%">Construct</th><th>Meaning</th><th style="width:28%">In C++</th></tr></thead>
+<tbody>
+<tr><td><b>Sequence</b></td><td>Statements executed <b>one after another</b> in the order written</td><td>Ordinary statements, one per line</td></tr>
+<tr><td><b>Selection</b></td><td>A <b>choice</b> between two or more alternative paths</td><td><code>if</code> · <code>if-else</code> · <code>switch</code></td></tr>
+<tr><td><b>Iteration</b></td><td><b>Repetition</b> of a block while a condition holds</td><td><code>for</code> · <code>while</code> · <code>do-while</code></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt">Each construct has <b>one entry point and one exit point</b> — that single-entry / single-exit property is what makes structured programs traceable, and what <code>goto</code> destroys.</p>
+</div>
+<div>
+<h4>Cohesion and coupling — the measure of good modules</h4>
+<p style="font-size:9.1pt">Modularity is examinable, and these two words are how its quality is judged:</p>
+<table class="tight">
+<thead><tr><th style="width:22%">Term</th><th>Definition</th><th style="width:20%">You want</th></tr></thead>
+<tbody>
+<tr><td><b>Cohesion</b></td><td>How <b>strongly the tasks inside one module belong together</b>. A function that does exactly one job is highly cohesive</td><td><b>High</b></td></tr>
+<tr><td><b>Coupling</b></td><td>How <b>dependent modules are on one another</b>. Functions that communicate only through parameters and return values are loosely coupled</td><td><b>Low</b></td></tr>
+</tbody>
+</table>
+<div class="box" style="padding:5pt 7pt"><b>The rule to quote:</b> good modular design aims for <b>high cohesion and low coupling</b> — each module does one thing well and depends on the others as little as possible. Global variables are the classic cause of <b>tight coupling</b>, which is one more reason to prefer parameters.</div>
+<h4>Advantages of functions — a likely list question</h4>
+<ol style="font-size:9.1pt">
+<li><b>Reusability</b> — write once, call many times</li>
+<li><b>Reduces code length</b> and eliminates repetition</li>
+<li><b>Easier debugging</b> — faults are isolated to one function</li>
+<li><b>Divides labour</b> — different programmers take different functions</li>
+<li><b>Improves readability</b> — <code>main()</code> reads like a summary of the program</li>
+<li><b>Easier maintenance</b> — a change is made in one place only</li>
+</ol>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">2</span>Algorithm design — pseudocode and flowcharts</h2>
+
+<p>Before code comes the <b>algorithm</b>: a <b>finite, ordered sequence of unambiguous steps that solves a problem</b>. Papers on this course routinely ask you to <b>write an algorithm or draw a flowchart</b> before, or instead of, the program. Its properties: <b>finiteness</b> (it terminates), <b>definiteness</b> (each step is unambiguous), <b>input</b>, <b>output</b> and <b>effectiveness</b>.</p>
+
+<div class="grid2">
+<div>
+<h4>The flowchart symbols you must be able to draw</h4>
+<figure>
+<svg viewBox="0 0 320 158" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#1a1c22" stroke-width="1.1">
+    <rect x="10" y="12" width="82" height="22" rx="11"/>
+    <path d="M124,34 l12,-22 l64,0 l-12,22 z"/>
+    <rect x="228" y="12" width="82" height="22"/>
+    <path d="M52,72 l34,15 l-34,15 l-34,-15 z"/>
+    <rect x="130" y="76" width="76" height="22"/>
+    <path d="M138,76 L138,98 M198,76 L198,98"/>
+    <circle cx="269" cy="87" r="12"/>
+    <path d="M20,132 L86,132"/>
+    <path d="M86,132 l-7,-3.5 l0,7 z" fill="#1a1c22"/>
+  </g>
+  <g class="svgtxt" style="font-size:6.6px" fill="#17324f">
+    <text x="24" y="26">START / STOP</text>
+    <text x="137" y="26">INPUT/OUTPUT</text>
+    <text x="244" y="26">PROCESS</text>
+    <text x="32" y="90">DECISION</text>
+    <text x="143" y="90">PREDEFINED</text>
+    <text x="96" y="135">FLOW LINE</text>
+  </g>
+  <g class="svgtxt sm" style="font-size:5.8px" fill="#b4531b">
+    <text x="10" y="46">terminal — rounded</text>
+    <text x="120" y="46">parallelogram</text>
+    <text x="228" y="46">rectangle — an action</text>
+    <text x="10" y="112">diamond — yes / no branch</text>
+    <text x="126" y="112">a called function</text>
+    <text x="238" y="112">CONNECTOR — joins parts</text>
+    <text x="96" y="144">arrow — direction of flow</text>
+  </g>
+</svg>
+<figcaption>Six symbols cover every flowchart this paper can ask for.</figcaption>
+</figure>
+<h4>Pseudocode conventions</h4>
+<pre>BEGIN
+    READ  number
+    IF number MOD 2 = 0 THEN
+        PRINT "Even"
+    ELSE
+        PRINT "Odd"
+    ENDIF
+END</pre>
+<p style="font-size:9.1pt">Use <b>BEGIN/END</b>, <b>READ</b> and <b>PRINT</b>, <b>IF…THEN…ELSE…ENDIF</b>, <b>WHILE…ENDWHILE</b>, <b>FOR…ENDFOR</b>, and <b>indent every nested block</b>. Pseudocode is language-independent: <b>no semicolons, no <code>cout</code></b>.</p>
+</div>
+<div>
+<h4>The same problem three ways — largest of two numbers</h4>
+<pre><b>ALGORITHM (numbered steps)</b>
+Step 1: Start
+Step 2: Read A and B
+Step 3: If A &gt; B then print A
+Step 4: Else print B
+Step 5: Stop</pre>
+<pre><b>PSEUDOCODE</b>
+BEGIN
+    READ A, B
+    IF A &gt; B THEN
+        PRINT A
+    ELSE
+        PRINT B
+    ENDIF
+END</pre>
+<pre><b>C++</b>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a, b;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin  &gt;&gt; a &gt;&gt; b;
+
+    if (a &gt; b) cout &lt;&lt; a &lt;&lt; " is larger" &lt;&lt; endl;
+    else       cout &lt;&lt; b &lt;&lt; " is larger" &lt;&lt; endl;
+    return 0;
+}</pre>
+<div class="box" style="padding:5pt 7pt"><b>If a question says "write an algorithm", numbered steps or pseudocode are both acceptable — but do not write C++.</b> Conversely if it says "write a program", pseudocode scores nothing. Read which one is asked.</div>
+</div>
+</div>
+
+<h3>The program development life cycle</h3>
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:22%">Stage</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><b>Problem definition</b></td><td>State exactly what the program must do — the inputs, the outputs and the constraints</td></tr>
+<tr><td class="c">2</td><td><b>Problem analysis</b></td><td>Identify the data needed, the processing required and the results expected</td></tr>
+<tr><td class="c">3</td><td><b>Algorithm design</b></td><td>Work out the logic as an algorithm, pseudocode or flowchart — <b>before</b> any code is written</td></tr>
+<tr><td class="c">4</td><td><b>Coding</b></td><td>Translate the algorithm into a programming language such as C++</td></tr>
+<tr><td class="c">5</td><td><b>Testing and debugging</b></td><td>Run with test data, find and remove errors</td></tr>
+<tr><td class="c">6</td><td><b>Documentation</b></td><td>Comments, user guides and technical notes so others can maintain it</td></tr>
+<tr><td class="c">7</td><td><b>Maintenance</b></td><td>Correct faults and adapt the program as requirements change over its life</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2><span class="n">3</span>Errors, testing and debugging</h2>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:20%">Error type</th><th>What it is</th><th style="width:30%">Example</th></tr></thead>
+<tbody>
+<tr><td><b>Syntax error</b></td><td>Breaks the <b>rules of the language</b>. Caught by the <b>compiler</b>, so the program will not run at all</td><td>Missing semicolon · <code>cin &lt;&lt; x;</code> · undeclared variable</td></tr>
+<tr><td><b>Logic error</b></td><td>The program <b>compiles and runs</b> but produces the <b>wrong result</b>. Nothing warns you</td><td><code>if (x = 5)</code> · using <code>+</code> where <code>*</code> was meant · summing all integers and calling it a sum of primes</td></tr>
+<tr><td><b>Runtime error</b></td><td>Compiles, but <b>fails during execution</b></td><td>Division by zero · infinite recursion · reading past the end of an array</td></tr>
+</tbody>
+</table>
+<div class="box warn" style="padding:5pt 7pt"><b>The sentence examiners want:</b> <b>logic errors are the most dangerous</b>, because the compiler cannot detect them and the program appears to work — only testing against known correct results exposes them.</div>
+<h4>Debugging techniques</h4>
+<ul style="font-size:9.1pt">
+<li><b>Desk checking / dry running</b> — trace the code by hand with sample values, in a table of variables</li>
+<li><b>Print statements</b> — insert temporary <code>cout</code> lines to reveal intermediate values</li>
+<li><b>Breakpoints and single-stepping</b> in a debugger</li>
+<li><b>Divide and conquer</b> — comment out parts until the fault region is isolated</li>
+<li><b>Rubber-duck explanation</b> — read the code aloud line by line; the mismatch usually announces itself</li>
+</ul>
+</div>
+<div>
+<h4>Test data — three kinds, and you must name all three</h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Kind</th><th>Purpose</th><th style="width:26%">For "age ≥ 18"</th></tr></thead>
+<tbody>
+<tr><td><b>Normal / valid</b></td><td>Typical values the program should accept</td><td>25, 40</td></tr>
+<tr><td><b>Boundary / extreme</b></td><td>Values <b>at the edge</b> of acceptability, where off-by-one errors live</td><td><b>17, 18, 19</b></td></tr>
+<tr><td><b>Invalid / erroneous</b></td><td>Values that must be <b>rejected gracefully</b></td><td>−5, "abc", 0</td></tr>
+</tbody>
+</table>
+<h4>A dry-run table — the format to use</h4>
+<pre>for (int i = 1; i &lt;= 4; i++) { sum += i; }
+
+ i │ sum before │ sum after │ i &lt;= 4 ?
+───┼────────────┼───────────┼──────────
+ 1 │     0      │     1     │  true
+ 2 │     1      │     3     │  true
+ 3 │     3      │     6     │  true
+ 4 │     6      │    10     │  true
+ 5 │    10      │    10     │  FALSE → exit
+
+Final: sum = 10, i = 5</pre>
+<p style="font-size:9.1pt"><b>Draw this table whenever a question says "trace", "dry run" or "what is the output".</b> One column per variable, one row per iteration, and a final line stating the values on exit. It is worth marks even if the final number is wrong.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">4</span>Function features the exercises assume</h2>
+
+<div class="grid2">
+<div>
+<h4>Function prototypes — declaring before defining</h4>
+<pre>#include &lt;iostream&gt;
+using namespace std;
+
+int add(int a, int b);        // PROTOTYPE — ends with ;
+
+int main() {
+    cout &lt;&lt; add(3, 4) &lt;&lt; endl;    // legal: compiler knows it
+    return 0;
+}
+
+int add(int a, int b) {       // DEFINITION, after main()
+    return a + b;
+}</pre>
+<p style="font-size:9.1pt">C++ reads a file top to bottom, so a function must be <b>known before it is called</b>. Either define it above <code>main()</code>, or declare a <b>prototype</b> above and define it below. The prototype gives the <b>return type, name and parameter types</b>, and <b>ends with a semicolon</b>.</p>
+
+<h4>Default arguments</h4>
+<pre>double power(double base, int exp = 2) {   // default
+    double result = 1;
+    for (int i = 0; i &lt; exp; i++) result *= base;
+    return result;
+}
+
+power(5);       // 25   — uses exp = 2
+power(5, 3);    // 125  — supplied value wins</pre>
+
+<h4>Function overloading</h4>
+<pre>int    maxOf(int a, int b)       { return a &gt; b ? a : b; }
+double maxOf(double a, double b) { return a &gt; b ? a : b; }
+
+maxOf(3, 7);      // calls the int version
+maxOf(3.5, 7.1);  // calls the double version</pre>
+<p style="font-size:9.1pt"><b>Overloading</b> = several functions sharing <b>one name</b> but differing in the <b>number or types of their parameters</b>. The compiler picks by matching the arguments. Note the <b>conditional operator</b> <code>a &gt; b ? a : b</code> — a compact <code>if-else</code> that returns a value.</p>
+</div>
+<div>
+<h4>The third way to pass a parameter — by pointer</h4>
+<p style="font-size:9.1pt">The notes give <b>by value</b> and <b>by reference</b>. C++ has a third method that older exam questions still ask for:</p>
+<pre>void incrementByPointer(int *p) {   // takes an ADDRESS
+    (*p)++;                        // * dereferences it
+}
+
+int main() {
+    int num = 10;
+    incrementByPointer(&amp;num);      // &amp; takes the address
+    cout &lt;&lt; num &lt;&lt; endl;           // 11 — original changed
+    return 0;
+}</pre>
+<table class="tight">
+<thead><tr><th style="width:24%">Method</th><th>Syntax</th><th>Original changed?</th></tr></thead>
+<tbody>
+<tr><td><b>By value</b></td><td><code>f(int x)</code> · <code>f(a)</code></td><td>No</td></tr>
+<tr><td><b>By reference</b></td><td><code>f(int &amp;x)</code> · <code>f(a)</code></td><td><b>Yes</b></td></tr>
+<tr><td><b>By pointer</b></td><td><code>f(int *x)</code> · <code>f(&amp;a)</code></td><td><b>Yes</b></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Remember the two symbols:</b> <code>&amp;a</code> means "the <b>address of</b> a"; <code>*p</code> means "the <b>value at</b> the address p".</p>
+
+<h4>Storage classes — where <code>static</code> comes from</h4>
+<table class="tight">
+<thead><tr><th style="width:18%">Class</th><th>Scope</th><th>Lifetime</th></tr></thead>
+<tbody>
+<tr><td><code>auto</code></td><td>Local to its block (the default for locals)</td><td>While the block runs</td></tr>
+<tr><td><b><code>static</code></b></td><td><b>Local</b> — visible only inside the function</td><td><b>Whole program</b> — keeps its value between calls</td></tr>
+<tr><td><code>extern</code></td><td>Global, and visible in <b>other files</b> too</td><td>Whole program</td></tr>
+<tr><td><code>register</code></td><td>Local; a hint to keep it in a CPU register</td><td>While the block runs</td></tr>
+</tbody>
+</table>
+<div class="box star" style="padding:5pt 7pt"><b>This is the answer to exercise 21</b>, which the course document sets but never teaches. A <b>static local variable</b> has the <b>scope of a local and the lifetime of a global</b> — which is exactly what a call-counter needs.</div>
+</div>
+</div>
+
+<h3>Recursion vs iteration — a standard comparison question</h3>
+<table class="tight">
+<thead><tr><th style="width:18%">Basis</th><th>Recursion</th><th>Iteration</th></tr></thead>
+<tbody>
+<tr><td>Definition</td><td>A function <b>calls itself</b> on a smaller sub-problem</td><td>A <b>loop</b> repeats a block</td></tr>
+<tr><td>Termination</td><td>A <b>base case</b></td><td>A condition that eventually fails</td></tr>
+<tr><td>Memory</td><td><b>Higher</b> — every call adds a stack frame</td><td><b>Lower</b> — one set of variables</td></tr>
+<tr><td>Speed</td><td>Slower — call overhead</td><td>Faster</td></tr>
+<tr><td>Code length</td><td><b>Shorter and closer to the mathematical definition</b></td><td>Longer but more explicit</td></tr>
+<tr><td>Failure mode</td><td><b>Stack overflow</b> if the base case is missing</td><td><b>Infinite loop</b> if the condition never fails</td></tr>
+<tr><td>Best for</td><td>Trees, factorial, Fibonacci, divide-and-conquer</td><td>Simple counted repetition</td></tr>
+</tbody>
+</table>
+<pre>FACTORIAL, both ways
+
+int factRec(int n) {                    int factIter(int n) {
+    if (n == 0) return 1;                   int result = 1;
+    return n * factRec(n - 1);              for (int i = 1; i &lt;= n; i++)
+}                                               result *= i;
+                                            return result;
+                                        }</pre>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">5</span>Arrays and strings</h2>
+
+<p>Arrays are absent from the course document but appear in almost every structured-programming paper, because they are what makes a loop worth writing. An <b>array</b> is a <b>collection of elements of the same data type stored in contiguous memory locations and accessed by an index</b>.</p>
+
+<div class="grid2">
+<div>
+<h4>Declaring, filling and reading</h4>
+<pre>int scores[5];                       // 5 ints, indices 0..4
+int marks[5] = {70, 65, 80, 45, 90}; // declare + initialise
+
+cout &lt;&lt; marks[0];    // 70  — FIRST element is index 0
+cout &lt;&lt; marks[4];    // 90  — LAST is size − 1</pre>
+<div class="box warn" style="padding:5pt 7pt"><b>Indices start at 0.</b> An array of size <i>n</i> has indices <b>0 to n−1</b>; <code>marks[5]</code> above is <b>out of bounds</b> and is a runtime error waiting to happen. This off-by-one is the single most examined array trap.</div>
+<h4>Reading values into an array</h4>
+<pre>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n = 5, marks[5];
+
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; "Enter mark " &lt;&lt; i + 1 &lt;&lt; ": ";
+        cin  &gt;&gt; marks[i];
+    }
+
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; "Mark " &lt;&lt; i + 1 &lt;&lt; " = " &lt;&lt; marks[i] &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+<h4>Two-dimensional arrays</h4>
+<pre>int table[3][4];              // 3 rows, 4 columns
+
+for (int r = 0; r &lt; 3; r++)
+    for (int c = 0; c &lt; 4; c++)
+        table[r][c] = (r + 1) * (c + 1);
+
+cout &lt;&lt; table[2][3];          // row 2, column 3 → 12</pre>
+<p style="font-size:9.1pt"><b>A 2-D array always needs nested loops</b> — outer for rows, inner for columns. This is where the nested-loop material of Module 3 pays off.</p>
+</div>
+<div>
+<h4>Passing an array to a function</h4>
+<pre>#include &lt;iostream&gt;
+using namespace std;
+
+double average(int arr[], int size) {   // note: [] and a size
+    int total = 0;
+    for (int i = 0; i &lt; size; i++) total += arr[i];
+    return (double)total / size;        // cast! else truncates
+}
+
+int main() {
+    int marks[5] = {70, 65, 80, 45, 90};
+    cout &lt;&lt; "Average: " &lt;&lt; average(marks, 5) &lt;&lt; endl;  // 70
+    return 0;
+}</pre>
+<div class="box" style="padding:5pt 7pt"><b>An array is always passed by reference in effect</b> — what is really passed is the address of its first element, so the function <b>can modify the caller's array</b>, and its size must be passed separately because that information is lost.</div>
+<h4>Strings — the operations worth knowing</h4>
+<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string first = "Ada", last = "Okon";
+
+    string full = first + " " + last;   // concatenation
+    cout &lt;&lt; full            &lt;&lt; endl;    // Ada Okon
+    cout &lt;&lt; full.length()   &lt;&lt; endl;    // 8
+    cout &lt;&lt; full.substr(0,3)&lt;&lt; endl;    // Ada
+    cout &lt;&lt; full[0]         &lt;&lt; endl;    // A
+
+    string line;
+    getline(cin, line);     // reads a WHOLE line incl. spaces
+    return 0;
+}</pre>
+<div class="box warn" style="padding:5pt 7pt"><b>The <code>cin &gt;&gt; name</code> trap.</b> <code>cin &gt;&gt;</code> stops at the first <b>space</b>, so "Ada Okon" reads as just "Ada". To read a full name use <b><code>getline(cin, name);</code></b>. Several exercises in Volume II would misbehave with a two-word answer for exactly this reason — worth one sentence if a question asks about input.</p>
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">6</span><code>break</code>, <code>continue</code>, and compiling a multi-file program</h2>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:20%">Keyword</th><th>Effect</th><th style="width:30%">Example</th></tr></thead>
+<tbody>
+<tr><td><b><code>break</code></b></td><td><b>Exits the loop or <code>switch</code> immediately</b></td><td>Leaving a login loop once the password is right</td></tr>
+<tr><td><b><code>continue</code></b></td><td><b>Skips the rest of this iteration</b> and jumps to the next one</td><td>Skipping negative numbers while summing</td></tr>
+<tr><td><code>return</code></td><td>Exits the <b>whole function</b> at once</td><td>Returning early from a validation function</td></tr>
+</tbody>
+</table>
+<pre>for (int i = 1; i &lt;= 10; i++) {
+    if (i == 5) continue;   // skip only 5
+    if (i == 8) break;      // stop entirely at 8
+    cout &lt;&lt; i &lt;&lt; " ";
+}
+// prints: 1 2 3 4 6 7</pre>
+<p style="font-size:9.1pt">Note that both are <b>disciplined single-exit jumps</b>, unlike <code>goto</code> — they leave only the construct they are in, so the flow stays traceable.</p>
+</div>
+<div>
+<h4>What happens when you compile</h4>
+<pre>source.cpp
+    │  1. PREPROCESSING   handles #include and #define
+    ▼
+expanded source
+    │  2. COMPILATION     C++ → assembly, syntax checked here
+    ▼
+assembly
+    │  3. ASSEMBLY        assembly → object code (.o)
+    ▼
+object file
+    │  4. LINKING         joins your object files + libraries
+    ▼
+executable</pre>
+<p style="font-size:9.1pt"><b>Where errors surface:</b> a missing semicolon is caught at <b>compilation</b>; a function you declared but never defined is caught at <b>linking</b>; division by zero survives all four stages and appears only at <b>run time</b>. That mapping is a neat one-mark answer.</p>
+<h4>Modularisation across files</h4>
+<pre>// maths.h — the interface (prototypes only)
+double add(double a, double b);
+double multiply(double a, double b);
+
+// maths.cpp — the implementation
+#include "maths.h"
+double add(double a, double b)      { return a + b; }
+double multiply(double a, double b) { return a * b; }
+
+// main.cpp — the user
+#include &lt;iostream&gt;
+#include "maths.h"
+using namespace std;
+int main() { cout &lt;&lt; add(2, 3); return 0; }</pre>
+<p style="font-size:9.1pt">This is <b>modularisation taken to its conclusion</b>: the header declares <b>what</b> a module offers, the .cpp file holds <b>how</b> it does it, and users include only the header. <b>Angle brackets <code>&lt; &gt;</code> for system libraries, double quotes <code>" "</code> for your own files.</b></p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">7</span>The standard program library</h2>
+
+<p style="font-size:9.1pt">Almost every "write a program that…" question on a structured-programming paper is one of these twelve, or a light disguise of one. Each is given in the shortest correct form; assume <code>#include &lt;iostream&gt;</code> and <code>using namespace std;</code> above every one.</p>
+
+<div class="grid2">
+<div>
+<h4>1 · Largest of three numbers</h4>
+<pre>int a, b, c;
+cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+
+if (a &gt;= b &amp;&amp; a &gt;= c)      cout &lt;&lt; a;
+else if (b &gt;= a &amp;&amp; b &gt;= c) cout &lt;&lt; b;
+else                       cout &lt;&lt; c;</pre>
+
+<h4>2 · Sum and average of n numbers</h4>
+<pre>int n, x, sum = 0;
+cout &lt;&lt; "How many numbers? ";  cin &gt;&gt; n;
+
+for (int i = 0; i &lt; n; i++) { cin &gt;&gt; x; sum += x; }
+
+cout &lt;&lt; "Sum: "     &lt;&lt; sum &lt;&lt; endl;
+cout &lt;&lt; "Average: " &lt;&lt; (double)sum / n &lt;&lt; endl;</pre>
+
+<h4>3 · Factorial, iteratively</h4>
+<pre>int n, fact = 1;
+cin &gt;&gt; n;
+for (int i = 1; i &lt;= n; i++) fact *= i;
+cout &lt;&lt; n &lt;&lt; "! = " &lt;&lt; fact &lt;&lt; endl;</pre>
+
+<h4>4 · Prime check</h4>
+<pre>int n;  bool prime = true;
+cin &gt;&gt; n;
+
+if (n &lt; 2) prime = false;
+for (int i = 2; i * i &lt;= n; i++) {
+    if (n % i == 0) { prime = false; break; }
+}
+cout &lt;&lt; (prime ? "Prime" : "Not prime") &lt;&lt; endl;</pre>
+
+<h4>5 · Reverse a number</h4>
+<pre>int n, reversed = 0;
+cin &gt;&gt; n;
+
+while (n &gt; 0) {
+    reversed = reversed * 10 + n % 10;  // take last digit
+    n = n / 10;                         // drop last digit
+}
+cout &lt;&lt; "Reversed: " &lt;&lt; reversed &lt;&lt; endl;</pre>
+<p style="font-size:9.1pt"><b>The two-line idiom</b> — <code>n % 10</code> gives the last digit, <code>n / 10</code> removes it — also answers "sum of digits", "count digits" and "palindrome number".</p>
+
+<h4>6 · Multiplication table for one number</h4>
+<pre>int n;
+cin &gt;&gt; n;
+for (int i = 1; i &lt;= 12; i++)
+    cout &lt;&lt; n &lt;&lt; " x " &lt;&lt; i &lt;&lt; " = " &lt;&lt; n * i &lt;&lt; endl;</pre>
+</div>
+<div>
+<h4>7 · Largest element in an array</h4>
+<pre>int arr[5] = {23, 78, 12, 90, 45};
+int largest = arr[0];              // assume the first
+
+for (int i = 1; i &lt; 5; i++)
+    if (arr[i] &gt; largest) largest = arr[i];
+
+cout &lt;&lt; "Largest: " &lt;&lt; largest &lt;&lt; endl;   // 90</pre>
+
+<h4>8 · Linear search</h4>
+<pre>int arr[5] = {23, 78, 12, 90, 45}, target, pos = -1;
+cin &gt;&gt; target;
+
+for (int i = 0; i &lt; 5; i++)
+    if (arr[i] == target) { pos = i; break; }
+
+if (pos != -1) cout &lt;&lt; "Found at index " &lt;&lt; pos &lt;&lt; endl;
+else           cout &lt;&lt; "Not found" &lt;&lt; endl;</pre>
+
+<h4>9 · Bubble sort</h4>
+<pre>int a[5] = {5, 2, 9, 1, 7}, n = 5;
+
+for (int i = 0; i &lt; n - 1; i++)
+    for (int j = 0; j &lt; n - 1 - i; j++)
+        if (a[j] &gt; a[j + 1]) {
+            int t = a[j];  a[j] = a[j + 1];  a[j + 1] = t;
+        }
+
+for (int i = 0; i &lt; n; i++) cout &lt;&lt; a[i] &lt;&lt; " ";  // 1 2 5 7 9</pre>
+
+<h4>10 · Count vowels in a string</h4>
+<pre>string s;  int count = 0;
+getline(cin, s);
+
+for (int i = 0; i &lt; s.length(); i++) {
+    char c = tolower(s[i]);
+    if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u') count++;
+}
+cout &lt;&lt; "Vowels: " &lt;&lt; count &lt;&lt; endl;</pre>
+
+<h4>11 · Star patterns</h4>
+<pre>for (int i = 1; i &lt;= 5; i++) {        *
+    for (int j = 1; j &lt;= i; j++)      **
+        cout &lt;&lt; "*";                  ***
+    cout &lt;&lt; endl;                     ****
+}                                     *****</pre>
+
+<h4>12 · Simple calculator with <code>switch</code></h4>
+<pre>double a, b;  char op;
+cin &gt;&gt; a &gt;&gt; op &gt;&gt; b;
+
+switch (op) {
+    case '+': cout &lt;&lt; a + b; break;
+    case '-': cout &lt;&lt; a - b; break;
+    case '*': cout &lt;&lt; a * b; break;
+    case '/':
+        if (b != 0) cout &lt;&lt; a / b;
+        else cout &lt;&lt; "Division by zero";
+        break;
+    default: cout &lt;&lt; "Invalid operator";
+}</pre>
+</div>
+</div>
+
+<div class="box star">
+<h4>The three patterns behind all twelve</h4>
+<b>1. The accumulator</b> — declare a total at 0 (or a product at 1) <b>before</b> the loop, update it inside, print it after. Programs 2, 3, 5, 10.<br>
+<b>2. The champion</b> — assume the first element is the answer, then loop through the rest replacing it whenever you find better. Programs 1, 7.<br>
+<b>3. The flag</b> — declare a <code>bool</code>, set it to its default, flip it if the exceptional case is found, then decide after the loop. Programs 4, 8, and the login system in Volume II.<br>
+<b>Recognise which of the three a question wants and the code writes itself.</b>
+</div>
+
+<div class="footer-note">
+CMS 708 · Structured Programming · Volume III the gaps<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>

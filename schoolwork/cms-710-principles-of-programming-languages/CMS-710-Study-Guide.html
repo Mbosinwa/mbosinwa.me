@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 710 — Principles of Programming Languages — Exam Study Guide (Volume I)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume I · exam cheatsheet · study guide · all four modules</div>
+  <h1>CMS 710 — Principles of Programming Languages</h1>
+  <div class="sub">PGD Computer Science, Rivers State University, Nkpolu-Oroworukwo, Port Harcourt · built from the four class modules of the lecturer and the lecturer, with the comparison tables and code examples reconstructed from the source PDFs</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Wednesday 12 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturers:</b> the lecturers</span>
+  </div>
+</div>
+
+<div class="box star">
+  <h4>What the test questions tell you</h4>
+  Four questions set by <b>the lecturer</b> are on file, and <b>all four come from Module 4 alone</b>:
+  <ol style="margin-bottom:4pt">
+    <li>Define <b>control flow</b>; explain the difference between <b>sequence and iteration</b></li>
+    <li>What is <b>recursion</b> and how does it differ from <b>iteration</b>, with an example</li>
+    <li>Differentiate <b>global and local scope</b>, and use that to explain <b>variable lifetime</b></li>
+    <li>Compare <b>pass by value and pass by reference</b>, with an example</li>
+  </ol>
+  That is a strong signal. <b>Module 4 is the highest-yield module on the course</b> — learn §5 of this volume first. All four are answered in full in Volume II.
+  <hr class="thin">
+  <b>Two more things the questions reveal.</b> Every one says <b>"differentiate", "compare" or "with an example"</b> — so <b>answer in a table and always append a code example</b>, in any of Python, JavaScript or C++. And each is a <b>pair</b> of concepts: this examiner tests boundaries between things, not isolated definitions.
+  <hr class="thin">
+  <b>Good news on workload:</b> Module 3 (arrays, lists, stacks, queues, trees) is the same ground as <b>CMS 702</b>, and Module 4 overlaps heavily with <b>CMS 708</b>. Two exams you have already prepared for cover half of this one.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>Definitions to write word-for-word</h2>
+
+<table>
+<thead><tr><th style="width:21%">Term</th><th>Definition</th></tr></thead>
+<tbody>
+<tr><td><b>Programming language</b></td><td>A <b>formal language consisting of a set of symbols, keywords, syntax rules and semantic rules</b> used to communicate instructions to a computer; the means through which programmers express algorithms that can be translated into machine-executable instructions.</td></tr>
+<tr><td><b>Syntax</b></td><td>The <b>grammatical rules governing how program statements are written</b> — it specifies the <b>legal structure</b> of programs.</td></tr>
+<tr><td><b>Semantics</b></td><td>The <b>meaning associated with syntactically correct statements</b>. <b>Syntax determines structure; semantics determines meaning.</b></td></tr>
+<tr><td><b>Language specification</b></td><td>A <b>formal document describing all aspects of a programming language</b> — syntax, semantics, data types, operators, control structures, libraries and runtime behaviour. It is the authoritative reference for implementation and usage.</td></tr>
+<tr><td><b>Grammar / BNF</b></td><td>A formal description of <b>how valid program constructs can be formed</b>. The most common notation is <b>Backus–Naur Form</b>, e.g. <code>&lt;assignment&gt; ::= &lt;identifier&gt; = &lt;expression&gt;</code>.</td></tr>
+<tr><td><b>Data type</b></td><td>A <b>classification specifying the kind of values that can be stored, the operations permitted on them, the memory required, and the interpretation of the stored data</b>. It defines <b>a set of values and a set of permissible operations</b>.</td></tr>
+<tr><td><b>Type system</b></td><td>A <b>set of rules governing how data types are defined, checked and used</b> in a language, determining what values variables may contain, what operations are permitted and how errors are detected.</td></tr>
+<tr><td><b>Static typing</b></td><td>Type checking performed <b>during compilation</b>.</td></tr>
+<tr><td><b>Dynamic typing</b></td><td>Type checking performed <b>during program execution</b>.</td></tr>
+<tr><td><b>Type safety</b></td><td>The <b>extent to which a language prevents invalid operations</b>.</td></tr>
+<tr><td><b>Data abstraction</b></td><td>The process of <b>hiding implementation details while exposing only essential features</b>, so programmers focus on <b>what</b> something does rather than <b>how</b> it is implemented.</td></tr>
+<tr><td><b>Data structure</b></td><td>A <b>method of organizing and storing data in a computer so that it can be accessed and modified efficiently</b>.</td></tr>
+<tr><td><b>Abstract Data Type</b></td><td>A <b>logical description of a data structure specifying the data it stores and the operations that can be performed, without specifying implementation details</b> — what the structure does, not how it is implemented.</td></tr>
+<tr><td><b>Parse tree</b></td><td>A tree that <b>represents the grammatical structure of a program according to the language grammar</b>; generated during <b>syntax analysis</b>.</td></tr>
+<tr><td><b>Abstract Syntax Tree</b></td><td>A <b>simplified version of a parse tree</b> that <b>removes unnecessary grammar details while preserving program meaning</b>.</td></tr>
+<tr><td><b>Control structures</b></td><td>The <b>mechanisms that determine the order in which operations are executed</b>; they govern flow of execution, decision-making, repetition and how functions interact.</td></tr>
+<tr><td><b>Control flow</b></td><td>The <b>order in which statements, instructions or function calls are executed</b> in a program.</td></tr>
+<tr><td><b>Recursion</b></td><td>A <b>control mechanism in which a function calls itself to solve a problem</b>, consisting of a <b>base case</b> that terminates it and a <b>recursive case</b> that calls itself with a smaller problem.</td></tr>
+<tr><td><b>Scope</b></td><td><b>Where a variable can be accessed within a program</b> — it controls variable <b>visibility and lifetime</b>.</td></tr>
+<tr><td><b>Variable lifetime</b></td><td>The <b>period during which a variable exists in memory</b>. It depends on <b>scope, storage allocation method and program execution state</b>.</td></tr>
+<tr><td><b>Data flow</b></td><td><b>How information moves through a program</b> — between variables, functions, modules and program components.</td></tr>
+<tr><td><b>Structured programming</b></td><td>A paradigm emphasizing <b>sequence, selection and iteration</b> while <b>avoiding uncontrolled jumps</b> such as excessive use of <code>GOTO</code>.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">2</span>Module 1 — language definition structure</h2>
+
+<div class="grid2">
+<div>
+<h4>Three perspectives on a programming language</h4>
+<ol style="font-size:9.1pt">
+<li><b>Communication perspective</b> — a medium between the programmer and the computer</li>
+<li><b>Problem-solving perspective</b> — tools and constructs for solving computational problems</li>
+<li><b>Formal system perspective</b> — a mathematically defined system governed by precise syntactic and semantic rules</li>
+</ol>
+<h4>Evolution — the four generations</h4>
+<table class="tight">
+<thead><tr><th class="c" style="width:12%">Gen</th><th style="width:22%">Type</th><th style="width:24%">Example</th><th>Characteristics</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>1GL</b></td><td>Machine language</td><td><code>10110000 01100001</code></td><td>Machine dependent · difficult to understand · <b>fast execution</b></td></tr>
+<tr><td class="c"><b>2GL</b></td><td>Assembly language</td><td><code>MOV AX, 5</code><br><code>ADD AX, 2</code></td><td>Symbolic instructions · <b>requires an assembler</b> · hardware dependent</td></tr>
+<tr><td class="c"><b>3GL</b></td><td>High-level</td><td>C++, Java, Python, JavaScript</td><td><b>High-level abstraction</b> · portable · easier development</td></tr>
+<tr><td class="c"><b>4GL</b></td><td>Logic / AI-oriented</td><td>Prolog</td><td>Logic-based · knowledge representation · AI applications</td></tr>
+</tbody>
+</table>
+<h4>Syntax vs semantics — the classic pair</h4>
+<pre>SYNTAX  — is it legally written?
+   Correct:    x = 10
+   Incorrect:  = x 10        ← violates the rules
+
+SEMANTICS — what does it mean?
+   x = 10 + 20
+   Syntax says: correctly written.
+   Semantics says: add 10 and 20, store in x.</pre>
+<div class="box" style="padding:5pt 7pt"><b>The one-liner:</b> <b>syntax determines structure, semantics determines meaning.</b> A statement can be syntactically perfect and semantically meaningless.</div>
+</div>
+<div>
+<h4>The five goals of language design</h4>
+<table class="tight">
+<thead><tr><th style="width:20%">Goal</th><th>Definition</th><th style="width:26%">Achieved through</th></tr></thead>
+<tbody>
+<tr><td><b>Readability</b></td><td>The ease with which programs can be <b>understood</b>, including code written by others</td><td>Simplicity · consistency · clear syntax · meaningful keywords</td></tr>
+<tr><td><b>Writability</b></td><td>The ease with which programmers can <b>create</b> programs</td><td>Powerful constructs that reduce development effort</td></tr>
+<tr><td><b>Reliability</b></td><td>The ability of a program to <b>perform according to its specification</b> under various conditions</td><td>Strong type checking · exception handling · restricted operations</td></tr>
+<tr><td><b>Maintainability</b></td><td>The ease with which software can be <b>modified, corrected or extended</b></td><td>Modular design · clear documentation · consistent coding standards</td></tr>
+<tr><td><b>Efficiency</b></td><td>The effective <b>utilization of system resources</b></td><td>CPU time · memory · storage — why C++ suits performance-critical work</td></tr>
+</tbody>
+</table>
+<h4>The three principles of language definition</h4>
+<ol style="font-size:9.1pt">
+<li><b>Formal rules govern every language.</b> Languages are not arbitrary collections of symbols; without precisely defined rules for syntax, semantics and execution, compilers and interpreters could not process programs consistently.</li>
+<li><b>Simplicity versus expressiveness.</b> Simple languages give easier learning and better readability but limited abstraction; expressive languages give powerful constructs and less code but increased complexity.</li>
+<li><b>Efficiency versus safety.</b> C++ emphasizes performance; Python emphasizes productivity and safety. This trade-off drives adoption in different domains.</li>
+</ol>
+<h4>BNF — the notation to reproduce</h4>
+<div class="formula">&lt;assignment&gt; ::= &lt;identifier&gt; = &lt;expression&gt;</div>
+<p style="font-size:9.1pt">Meaning: an assignment statement consists of <b>an identifier, an assignment operator and an expression</b>. The statement <code>x = y + z</code> satisfies this rule.</p>
+</div>
+</div>
+
+<h3>The same program in three languages <span class="tag">MODULE 1 EXAMPLE</span></h3>
+<div class="grid3">
+<div><pre><b>PYTHON</b>
+age = 20
+
+if age &gt;= 18:
+    print("Adult")</pre></div>
+<div><pre><b>JAVASCRIPT</b>
+let age = 20;
+
+if (age &gt;= 18) {
+    console.log("Adult");
+}</pre></div>
+<div><pre><b>C++</b>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int age = 20;
+    if (age &gt;= 18) {
+        cout &lt;&lt; "Adult";
+    }
+    return 0;
+}</pre></div>
+</div>
+<p style="font-size:9.1pt"><b>The observation to write:</b> all three implement the <b>same logic</b>, but differ in <b>syntax, type systems, block structures and execution models</b> — and those differences <b>reflect distinct language design philosophies</b>.</p>
+
+<table class="tight">
+<thead><tr><th style="width:24%">Principle</th><th class="c">Python</th><th class="c">JavaScript</th><th class="c">C++</th></tr></thead>
+<tbody>
+<tr><td><b>Block structure</b></td><td class="c"><b>Indentation</b></td><td class="c">Braces</td><td class="c">Braces</td></tr>
+<tr><td><b>Typing style</b></td><td class="c">Dynamic</td><td class="c">Dynamic</td><td class="c"><b>Static</b></td></tr>
+<tr><td><b>Compilation model</b></td><td class="c">Interpreted</td><td class="c">JIT / interpreted</td><td class="c"><b>Compiled</b></td></tr>
+<tr><td><b>Complexity</b></td><td class="c">Low</td><td class="c">Medium</td><td class="c">High</td></tr>
+<tr><td><b>Memory control</b></td><td class="c">Automatic</td><td class="c">Automatic</td><td class="c">Manual / automatic</td></tr>
+<tr><td><b>Readability</b></td><td class="c"><b>Very high</b></td><td class="c">High</td><td class="c">Moderate</td></tr>
+<tr><td><b>Runtime speed</b></td><td class="c">Moderate</td><td class="c">Moderate</td><td class="c"><b>High</b></td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">3</span>Module 2 — data types and type systems</h2>
+
+<div class="grid2">
+<div>
+<h4>What a data type specifies — four things</h4>
+<ol style="font-size:9.1pt">
+<li>The <b>kind of values</b> that can be stored</li>
+<li>The <b>operations</b> that can be performed on them</li>
+<li>The <b>amount of memory</b> required for storage</li>
+<li>The <b>interpretation</b> of the stored data</li>
+</ol>
+<p style="font-size:9.1pt">Formally, a data type defines <b>a set of values and a set of permissible operations</b>.</p>
+<h4>Importance of data types — four points</h4>
+<ol style="font-size:9.1pt">
+<li><b>Improve program correctness</b> — they prevent invalid operations</li>
+<li><b>Improve reliability</b> — type checking detects errors before execution</li>
+<li><b>Improve efficiency</b> — the compiler can optimize memory allocation when types are known</li>
+<li><b>Enhance readability</b> — proper use makes programs easier to understand</li>
+</ol>
+<h4>The three categories of data type</h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Category</th><th>Definition</th><th style="width:30%">Examples</th></tr></thead>
+<tbody>
+<tr><td><b>Primitive</b></td><td>The <b>basic building blocks provided directly by the language</b>; they <b>cannot be decomposed</b> into simpler types</td><td>Integer · floating-point · character · boolean · string</td></tr>
+<tr><td><b>Composite</b></td><td><b>Combine multiple primitive values into a single structure</b></td><td>Arrays · lists · tuples · dictionaries · structures · objects</td></tr>
+<tr><td><b>User-defined</b></td><td>Types <b>created by the programmer</b></td><td>Structures · classes · enumerations · records</td></tr>
+</tbody>
+</table>
+<pre><b>USER-DEFINED TYPES IN THREE LANGUAGES</b>
+
+C++       struct Student {
+              string name;
+              int    age;
+          };
+
+Python    class Student:
+              def __init__(self, name, age):
+                  self.name = name
+                  self.age  = age
+
+JavaScript class Student {
+               constructor(name, age) {
+                   this.name = name;
+                   this.age  = age;
+               }
+           }</pre>
+</div>
+<div>
+<h4>Static vs dynamic typing <span class="tag">LIKELY QUESTION</span></h4>
+<table class="tight">
+<thead><tr><th style="width:20%">Basis</th><th>Static typing</th><th>Dynamic typing</th></tr></thead>
+<tbody>
+<tr><td>When checked</td><td>During <b>compilation</b></td><td>During <b>execution</b></td></tr>
+<tr><td>Languages</td><td>C++</td><td>Python, JavaScript</td></tr>
+<tr><td>Advantages</td><td>Early error detection · improved reliability · better performance · compiler optimization</td><td>Greater flexibility · faster development · less code</td></tr>
+<tr><td>Disadvantages</td><td>Reduced flexibility · more verbose code</td><td><b>Runtime errors</b> · reduced type safety</td></tr>
+</tbody>
+</table>
+<pre>C++    int x = 10;
+       x = "CMS710";     ← COMPILATION ERROR
+
+Python x = 10
+       x = "CMS710"      ← perfectly legal</pre>
+<h4>Strong vs weak typing — a different axis</h4>
+<table class="tight">
+<thead><tr><th style="width:20%">Basis</th><th>Strong typing</th><th>Weak typing</th></tr></thead>
+<tbody>
+<tr><td>Rule</td><td><b>Prevents inappropriate type conversions</b></td><td><b>Allows implicit type conversions</b></td></tr>
+<tr><td>Example</td><td>Python: <code>age + "years"</code> → <b>error</b></td><td>JavaScript: <code>"5" + 2</code> → <b><code>"52"</code></b>, the number is converted to a string</td></tr>
+</tbody>
+</table>
+<div class="box warn" style="padding:5pt 7pt"><b>Do not confuse the two axes.</b> <b>Static/dynamic</b> is about <b>when</b> types are checked; <b>strong/weak</b> is about <b>how strictly</b> conversions are enforced. Python is <b>dynamic but strong</b>; JavaScript is <b>dynamic and weak</b>; C++ is <b>static and strong</b>. That single sentence answers most of a question on this topic.</div>
+<h4>Data abstraction</h4>
+<p style="font-size:9.1pt"><b>Definition:</b> hiding implementation details while exposing only essential features, so programmers focus on <b>what</b> an object does rather than <b>how</b> it is implemented.</p>
+<p style="font-size:9.1pt"><b>The car analogy from the notes:</b> a driver uses the <b>steering wheel, accelerator and brake</b> without needing to understand the internal engine mechanisms. Similarly, programmers interact with data structures through <b>well-defined interfaces</b>.</p>
+<p style="font-size:9.1pt"><b>Four benefits:</b> <b>simplicity</b> (reduces complexity) · <b>reusability</b> (abstract components can be reused) · <b>maintainability</b> (changes to implementation do not affect users) · <b>security</b> (internal details remain hidden).</p>
+</div>
+</div>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:24%">Feature</th><th class="c">Python</th><th class="c">JavaScript</th><th class="c">C++</th></tr></thead>
+<tbody>
+<tr><td><b>Typing style</b></td><td class="c">Dynamic</td><td class="c">Dynamic</td><td class="c"><b>Static</b></td></tr>
+<tr><td><b>Type safety</b></td><td class="c"><b>Strong</b></td><td class="c">Weak / moderate</td><td class="c"><b>Strong</b></td></tr>
+<tr><td><b>Compilation</b></td><td class="c">Interpreted</td><td class="c">JIT / interpreted</td><td class="c">Compiled</td></tr>
+<tr><td><b>Memory control</b></td><td class="c">Automatic</td><td class="c">Automatic</td><td class="c">Manual / automatic</td></tr>
+<tr><td><b>Flexibility</b></td><td class="c"><b>Very high</b></td><td class="c">High</td><td class="c">Moderate</td></tr>
+<tr><td><b>Runtime speed</b></td><td class="c">Moderate</td><td class="c">Moderate</td><td class="c"><b>High</b></td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<div class="box star" style="padding:6pt 8pt">
+<h4>Flexibility versus reliability — the central trade-off</h4>
+<b>Dynamic languages:</b> rapid development and easier experimentation, at the cost of <b>increased runtime errors</b>.<br>
+<b>Static languages:</b> strong verification and improved reliability, at the cost of <b>more development effort</b>.<br>
+<b>Performance follows the same line:</b> static typing enables compile-time optimization, efficient memory allocation and faster execution, while dynamic typing introduces runtime type checking and additional overhead — <b>which is why C++ often outperforms Python and JavaScript in computationally intensive applications</b>.
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">4</span>Module 3 — data structures, lists and trees</h2>
+
+<div class="box" style="padding:6pt 8pt">
+<b>Overlap alert.</b> Arrays, lists, stacks, queues and trees are the same material as <b>CMS 702</b>. What is <b>new here</b> and specific to this course is <b>§3.12–§3.14: parse trees, abstract syntax trees, and the role of trees in language processing</b>. If time is short, revise those and treat the rest as recall.
+</div>
+
+<div class="grid2">
+<div>
+<h4>The three principles of data structures</h4>
+<ol style="font-size:9.1pt">
+<li><b>Efficient organization of data</b> — searching an unsorted array may require scanning every element, while a binary search tree may require far fewer comparisons.</li>
+<li><b>Abstraction of complexity</b> — a programmer may use a stack without understanding its internal memory allocation.</li>
+<li><b>Trade-off between time and space</b> — improving speed often requires more memory; reducing memory may increase processing time.</li>
+</ol>
+<h4>Abstract Data Types</h4>
+<p style="font-size:9.1pt">An <b>ADT</b> specifies <b>the data it stores and the operations that can be performed, without specifying implementation</b>. The <b>Stack ADT</b> declares <code>Push()</code>, <code>Pop()</code>, <code>Peek()</code> and <code>IsEmpty()</code> — and <b>does not specify</b> whether the stack is built from arrays, linked lists or dynamic memory.</p>
+<p style="font-size:9.1pt"><b>Four advantages of ADTs:</b> <b>abstraction</b> (reduces complexity) · <b>reusability</b> (can be implemented in multiple ways) · <b>maintainability</b> (implementation can change without affecting users) · <b>modularity</b> (encourages separation of concerns).</p>
+<h4>The four linear structures</h4>
+<table class="tight">
+<thead><tr><th style="width:16%">Structure</th><th>Definition and rule</th><th style="width:26%">Real-life uses</th></tr></thead>
+<tbody>
+<tr><td><b>Array</b></td><td>Elements in <b>contiguous memory</b>, accessed by <b>index</b>. Fixed size, indexed access, efficient retrieval, homogeneous data</td><td>Student records</td></tr>
+<tr><td><b>List</b></td><td>An <b>ordered collection</b> that, unlike an array, can <b>grow and shrink dynamically</b></td><td>Any changing collection</td></tr>
+<tr><td><b>Stack</b></td><td><b>LIFO</b> — the last element inserted is the first removed. <code>Push</code>, <code>Pop</code>, <code>Peek</code>, <code>IsEmpty</code></td><td>Browser history · undo · <b>function calls</b> · expression evaluation</td></tr>
+<tr><td><b>Queue</b></td><td><b>FIFO</b> — the first element inserted is the first removed. <code>Enqueue</code>, <code>Dequeue</code>, <code>Front</code>, <code>IsEmpty</code></td><td>Bank customers · print queues · OS scheduling · network packets</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Arrays:</b> fast access and simple implementation, but <b>fixed size and costly insertion/deletion</b>. <b>Lists:</b> dynamic and flexible, but <b>extra memory overhead and slower than arrays</b> for some operations.</p>
+</div>
+<div>
+<h4>Each structure in three languages</h4>
+<pre><b>ARRAY / LIST</b>
+Python      scores = [70, 80, 90, 85, 95]
+JavaScript  let scores = [70, 80, 90, 85, 95];
+C++         int scores[5] = {70, 80, 90, 85, 95};
+            vector&lt;string&gt; students;    // dynamic
+
+<b>STACK</b>
+Python      stack = []
+            stack.append(10); stack.pop()
+JavaScript  let stack = [];
+            stack.push(10); stack.pop();
+C++         #include &lt;stack&gt;
+            stack&lt;int&gt; s;
+            s.push(10); s.pop();
+
+<b>QUEUE</b>
+Python      from collections import deque
+            queue = deque()
+            queue.append(10); queue.popleft()
+JavaScript  let queue = [];
+            queue.push(10); queue.shift();
+C++         #include &lt;queue&gt;
+            queue&lt;int&gt; q;
+            q.push(10); q.pop();</pre>
+<pre><b>BINARY TREE NODE</b>
+Python      class Node:
+                def __init__(self, value):
+                    self.value = value
+                    self.left  = None
+                    self.right = None
+            root = Node(50)
+
+C++         class Node {
+            public:
+                int   value;
+                Node* left;
+                Node* right;
+                Node(int v) { value = v;
+                              left = nullptr;
+                              right = nullptr; }
+            };
+            Node* root = new Node(50);</pre>
+<p style="font-size:9.1pt"><b>A tree</b> is a <b>hierarchical structure of nodes connected by edges</b> — root, parent, child, leaf. A <b>binary tree</b> has <b>at most two children</b> per node. Applications: searching, sorting, expression evaluation, database indexing.</p>
+</div>
+</div>
+
+<h3>Parse trees, ASTs and language processing <span class="tag">THE COURSE-SPECIFIC PART</span></h3>
+<div class="grid2">
+<div>
+<pre><b>PARSE TREE</b> for the expression  a + b * c
+
+            +
+           / \
+          a   *
+             / \
+            b   c
+
+The parse tree shows that MULTIPLICATION
+is evaluated BEFORE addition.</pre>
+<pre><b>ABSTRACT SYNTAX TREE</b>
+
+        Assignment
+        ├── Variable(a)
+        └── Addition
+            ├── b
+            └── c</pre>
+<p style="font-size:9.1pt">A <b>parse tree</b> represents the <b>grammatical structure of a program according to the language grammar</b> and is generated during <b>syntax analysis</b>. An <b>AST</b> is a <b>simplified parse tree</b> that <b>removes unnecessary grammar details while preserving meaning</b>. ASTs are used in <b>compilers, interpreters, static analysis tools, code optimization systems and modern AI code assistants</b>.</p>
+</div>
+<div>
+<h4>Where trees sit in the translation pipeline</h4>
+<table class="tight">
+<thead><tr><th style="width:32%">Phase</th><th>Produces</th></tr></thead>
+<tbody>
+<tr><td><b>Lexical analysis</b></td><td><b>Tokens</b></td></tr>
+<tr><td><b>Parsing</b> (syntax analysis)</td><td><b>Parse trees</b></td></tr>
+<tr><td><b>Semantic analysis</b></td><td><b>Abstract syntax trees</b></td></tr>
+<tr><td><b>Code generation</b></td><td>Executable instructions, <b>from the AST</b></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>The conclusion the module draws:</b> <b>trees are central to compiler and interpreter design.</b> If a question asks why trees matter in a <i>programming languages</i> course rather than a data structures one, this table is the answer.</p>
+<table class="tight">
+<thead><tr><th style="width:30%">Feature</th><th class="c">Python</th><th class="c">JavaScript</th><th class="c">C++</th></tr></thead>
+<tbody>
+<tr><td><b>Built-in list support</b></td><td class="c">Excellent</td><td class="c">Excellent</td><td class="c">Vector library</td></tr>
+<tr><td><b>Dynamic resizing</b></td><td class="c">Yes</td><td class="c">Yes</td><td class="c">Yes</td></tr>
+<tr><td><b>Memory management</b></td><td class="c">Automatic</td><td class="c">Automatic</td><td class="c">Manual / automatic</td></tr>
+<tr><td><b>Tree implementation complexity</b></td><td class="c"><b>Low</b></td><td class="c">Moderate</td><td class="c">High</td></tr>
+<tr><td><b>Runtime performance</b></td><td class="c">Moderate</td><td class="c">Moderate</td><td class="c"><b>High</b></td></tr>
+<tr><td><b>Ease of use</b></td><td class="c"><b>Very high</b></td><td class="c">High</td><td class="c">Moderate</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">5</span>Module 4 — control structure and data flow <span class="tag">ALL FOUR TEST QUESTIONS</span></h2>
+
+<div class="grid2">
+<div>
+<h4>Control flow — the definition to memorise</h4>
+<p style="font-size:9.3pt"><b>Control flow</b> refers to <b>the order in which statements, instructions or function calls are executed in a program</b>. It determines:</p>
+<ul style="font-size:9.1pt">
+<li>Which instruction <b>executes next</b></li>
+<li>Under what conditions execution <b>changes direction</b></li>
+<li>How <b>repetition</b> occurs</li>
+<li>How <b>data moves</b> through program components</li>
+</ul>
+<p style="font-size:9.1pt">It is commonly represented using <b>flowcharts, control-flow graphs or execution traces</b>. <b>Control structures</b> are the mechanisms that govern it, and their design significantly influences <b>program readability, software reliability, maintainability and execution efficiency</b>.</p>
+<h4>The three principles of control structures</h4>
+<ol style="font-size:9.1pt">
+<li><b>Program behaviour is determined by control structures</b> — the same data and operations may produce different results depending on the sequence and conditions under which they execute.</li>
+<li><b>Simplicity improves readability</b> — Python emphasizes readability through simplified control constructs.</li>
+<li><b>Abstraction reduces complexity</b> — higher-level abstractions hide low-level control details: <b>foreach loops, iterators, generators, recursive functions</b>.</li>
+</ol>
+<h4>The four kinds of control flow</h4>
+<table class="tight">
+<thead><tr><th style="width:20%">Kind</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><b>Sequential</b></td><td>The <b>simplest form</b> — statements executed <b>one after another in the order they appear</b>. Simple, predictable, easy to understand, but <b>cannot support decision-making or repetition</b></td></tr>
+<tr><td><b>Selection</b></td><td>Choose among <b>alternative execution paths based on conditions</b> — this enables <b>decision making</b></td></tr>
+<tr><td><b>Iteration</b></td><td>Execute a set of instructions <b>repeatedly until a condition is satisfied</b> — commonly called <b>looping</b></td></tr>
+<tr><td><b>Recursion</b></td><td>A function <b>calls itself</b> to solve a problem</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Selection has three types:</b> <b>single</b> (execute a statement if a condition is true) · <b>double</b> (choose between two alternatives) · <b>multiple</b> (choose among several — the <code>switch</code>).<br>
+<b>Advantages of selection:</b> supports decision making · improves flexibility · enhances program intelligence.<br>
+<b>Advantages of iteration:</b> reduces code duplication · improves efficiency · simplifies repetitive tasks.</p>
+</div>
+<div>
+<h4>Sequence vs iteration <span class="tag">TEST Q1</span></h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Basis</th><th>Sequence</th><th>Iteration</th></tr></thead>
+<tbody>
+<tr><td>Definition</td><td>Statements executed <b>once each, in written order</b></td><td>A block executed <b>repeatedly</b> until a condition is satisfied</td></tr>
+<tr><td>Repetition</td><td><b>None</b></td><td><b>Yes</b> — that is its purpose</td></tr>
+<tr><td>Condition</td><td>No condition involved</td><td><b>Controlled by a condition</b></td></tr>
+<tr><td>Order</td><td>Strictly top to bottom</td><td>Returns to the start of the block</td></tr>
+<tr><td>Constructs</td><td>Ordinary statements</td><td><code>for</code> · <code>while</code> · <code>do-while</code></td></tr>
+<tr><td>Purpose</td><td>Perform steps in order</td><td>Avoid rewriting the same code</td></tr>
+</tbody>
+</table>
+<pre><b>SEQUENCE</b>              <b>ITERATION</b>
+x = 10                for i in range(5):
+y = 20                    print(i)
+z = x + y
+print(z)              prints 0 1 2 3 4
+                      — one statement, five executions
+Executes 4 statements,
+each exactly once.</pre>
+<h4>The three loops</h4>
+<table class="tight">
+<thead><tr><th style="width:24%">Loop</th><th>Used when</th></tr></thead>
+<tbody>
+<tr><td><b><code>for</code></b></td><td>The <b>number of repetitions is known</b></td></tr>
+<tr><td><b><code>while</code></b></td><td>Repetitions <b>depend on a condition</b></td></tr>
+<tr><td><b><code>do-while</code></b></td><td><b>Executes at least once</b> before testing the condition</td></tr>
+</tbody>
+</table>
+<pre>Python      for i in range(5):
+                print(i)
+
+JavaScript  for (let i = 0; i &lt; 5; i++) {
+                console.log(i);
+            }
+
+C++         for (int i = 0; i &lt; 5; i++) {
+                cout &lt;&lt; i;
+            }
+
+Python      count = 1
+            while count &lt;= 5:
+                print(count)
+                count += 1</pre>
+</div>
+</div>
+
+<h3>Recursion <span class="tag">TEST Q2</span></h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.3pt"><b>Recursion</b> is a control mechanism in which <b>a function calls itself</b> to solve a problem. A recursive solution consists of a <b>base case</b>, which terminates the recursion, and a <b>recursive case</b>, which calls itself with a smaller problem.</p>
+<div class="formula">n! = n × (n − 1)!</div>
+<pre>Python      def factorial(n):
+                if n == 1:
+                    return 1
+                return n * factorial(n - 1)
+
+JavaScript  function factorial(n) {
+                if (n === 1) { return 1; }
+                return n * factorial(n - 1);
+            }
+
+C++         int factorial(int n) {
+                if (n == 1) return 1;
+                return n * factorial(n - 1);
+            }</pre>
+</div>
+<div>
+<table class="tight">
+<thead><tr><th class="c" style="width:50%">Advantages</th><th class="c">Disadvantages</th></tr></thead>
+<tbody>
+<tr><td>Elegant solutions</td><td><b>Higher memory consumption</b></td></tr>
+<tr><td>Natural representation of hierarchical structures</td><td><b>Risk of stack overflow</b></td></tr>
+<tr><td>Useful for trees and graphs</td><td><b>Often slower than iteration</b></td></tr>
+</tbody>
+</table>
+<div class="box star" style="padding:6pt 8pt">
+<b>The sentence that earns the comparison mark:</b> recursion and iteration can solve the same problems, but <b>iteration repeats a block within one function call using a loop</b>, while <b>recursion repeats by making new function calls, each adding a stack frame</b>. That difference is why recursion costs more memory and risks stack overflow, and why it reads more naturally for <b>trees and hierarchical data</b>. Full comparison table in Volume II.
+</div>
+</div>
+</div>
+
+<h3>Scope and lifetime <span class="tag">TEST Q3</span></h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.3pt"><b>Scope determines where a variable can be accessed within a program.</b> It is fundamental because it <b>controls variable visibility and lifetime</b>.</p>
+<table class="tight">
+<thead><tr><th style="width:20%">Type of scope</th><th>Accessible</th><th style="width:30%">Example</th></tr></thead>
+<tbody>
+<tr><td><b>Global scope</b></td><td><b>Throughout the program</b></td><td>Python: <code>x = 10</code> at module level</td></tr>
+<tr><td><b>Local scope</b></td><td><b>Only within a function or block</b></td><td>Python: <code>y = 20</code> inside <code>def test():</code></td></tr>
+<tr><td><b>Block scope</b></td><td>Only <b>inside a specific block</b></td><td>JavaScript: <code>let age = 20;</code> inside <code>if (true) { }</code> — reading <code>age</code> outside <b>produces an error</b></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Importance of scope — four points:</b> prevents naming conflicts · enhances security · improves maintainability · supports modular design.</p>
+</div>
+<div>
+<p style="font-size:9.3pt"><b>Variable lifetime</b> refers to <b>the period during which a variable exists in memory</b>. A variable's lifetime depends on <b>scope, storage allocation method and program execution state</b>.</p>
+<ul style="font-size:9.1pt">
+<li><b>Global variables</b> typically exist <b>throughout execution</b>.</li>
+<li><b>Local variables</b> exist <b>only while their function executes</b>.</li>
+</ul>
+<div class="box" style="padding:5pt 7pt"><b>How the two questions link — this is exactly what test Q3 asks.</b> Scope is about <b>where</b> a variable is visible; lifetime is about <b>when</b> it exists. They are connected because <b>the scope a variable is declared in determines how long it lives</b>: a variable in global scope lives for the whole program, while one in local scope is created when the function is entered and destroyed when it returns. <b>Scope is spatial, lifetime is temporal.</b></div>
+</div>
+</div>
+
+<h3>Parameter passing and data flow <span class="tag">TEST Q4</span></h3>
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:22%">Mechanism</th><th>How it works</th></tr></thead>
+<tbody>
+<tr><td><b>Pass-by-value</b></td><td>A <b>copy</b> of the argument is passed. <b>Changes inside the function do not affect the original variable</b></td></tr>
+<tr><td><b>Pass-by-reference</b></td><td>The function receives a <b>reference to the original variable</b>. <b>Changes affect the original</b></td></tr>
+<tr><td><b>Pass-by-object-reference</b></td><td>Python's approach — <b>objects are passed by reference to object values</b>, so appending to a list inside a function <b>modifies the original list</b></td></tr>
+</tbody>
+</table>
+<pre>C++ pass-by-value        C++ pass-by-reference
+void increment(int x) {  void increment(int &amp;x) {
+    x++;                     x++;
+}                        }
+original unchanged       original modified
+
+Python pass-by-object-reference
+def modify(lst):
+    lst.append(100)      ← the original list IS modified</pre>
+</div>
+<div>
+<h4>Data flow</h4>
+<p style="font-size:9.1pt"><b>Data flow</b> refers to <b>how information moves through a program</b> — between <b>variables, functions, modules and program components</b>. Most programs follow the <b>Input → Processing → Output</b> model:</p>
+<pre>number = int(input())
+square = number * number
+print(square)
+
+    User Input
+        ↓
+     Variable
+        ↓
+    Processing
+        ↓
+      Output</pre>
+<h4>Imperative vs functional control flow</h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Basis</th><th>Imperative</th><th>Functional</th></tr></thead>
+<tbody>
+<tr><td>Focus</td><td><b>How</b> tasks should be performed</td><td><b>What</b> should be computed</td></tr>
+<tr><td>Example</td><td><code>total = 0</code><br><code>for n in numbers:</code><br><code>&nbsp;&nbsp;&nbsp;&nbsp;total += n</code></td><td><code>total = sum(numbers)</code></td></tr>
+<tr><td>Detail</td><td>Every step is written out</td><td>Implementation details are <b>hidden</b></td></tr>
+<tr><td>Languages</td><td>C++, JavaScript, Python</td><td>Python and JavaScript support functional style</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Advantages of the functional approach:</b> simpler code · improved abstraction · <b>reduced side effects</b>.</p>
+</div>
+</div>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:32%">Feature</th><th class="c">Python</th><th class="c">JavaScript</th><th class="c">C++</th></tr></thead>
+<tbody>
+<tr><td><b>Readability</b></td><td class="c"><b>Very high</b></td><td class="c">High</td><td class="c">Moderate</td></tr>
+<tr><td><b>Block structure</b></td><td class="c">Indentation</td><td class="c">Braces</td><td class="c">Braces</td></tr>
+<tr><td><b>Recursion support</b></td><td class="c">Excellent</td><td class="c">Excellent</td><td class="c">Excellent</td></tr>
+<tr><td><b>Functional features</b></td><td class="c">Moderate</td><td class="c"><b>High</b></td><td class="c">Moderate</td></tr>
+<tr><td><b>Performance</b></td><td class="c">Moderate</td><td class="c">Moderate</td><td class="c"><b>High</b></td></tr>
+<tr><td><b>Parameter passing complexity</b></td><td class="c"><b>Low</b></td><td class="c">Moderate</td><td class="c">High</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<div class="box star" style="padding:6pt 8pt">
+<h4>Language design perspective — a ready-made closing paragraph</h4>
+Control structures reveal differences in language philosophy. <b>Python</b> emphasizes <b>simplicity, readability and reduced syntax</b>; <b>JavaScript</b> emphasizes <b>flexibility, event-driven programming and functional constructs</b>; <b>C++</b> emphasizes <b>performance, explicit control and system-level programming</b>. These differences demonstrate how language designers <b>balance readability, abstraction, flexibility and efficiency</b>.
+</div>
+<p style="font-size:9.1pt"><b>Structured programming</b>, in this module's words, emphasizes <b>sequence, selection and iteration</b> while <b>avoiding uncontrolled jumps such as excessive use of GOTO</b>. Its benefits: <b>improved readability</b> (programs easier to understand) · <b>improved reliability</b> (errors easier to identify) · <b>easier maintenance</b> (modifications simpler).</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">6</span>Things you can lose easy marks on</h2>
+
+<div class="grid2">
+<div>
+<ol style="font-size:9.3pt">
+<li>Defining syntax and semantics with the same words. <b>Syntax = structure, semantics = meaning.</b></li>
+<li>Confusing the two typing axes. <b>Static/dynamic = when checked; strong/weak = how strictly enforced.</b> Python is dynamic <i>and</i> strong.</li>
+<li>Saying a parse tree and an AST are the same. The <b>AST is the simplified one</b>, with grammar details removed.</li>
+<li>Calling C++ interpreted or Python compiled. C++ is <b>compiled</b>, Python <b>interpreted</b>, JavaScript <b>JIT/interpreted</b>.</li>
+<li>Giving stacks FIFO or queues LIFO. <b>Stack = LIFO, queue = FIFO.</b></li>
+<li>Describing a data type as only "a kind of value" — it is <b>a set of values <i>and</i> a set of permissible operations</b>.</li>
+</ol>
+</div>
+<div>
+<ol start="7" style="font-size:9.3pt">
+<li>Answering "differentiate" in prose. <b>This examiner's questions all say compare or differentiate — use a table.</b></li>
+<li>Omitting the example when the question says "with an example". Q2 and Q4 both demand one.</li>
+<li>Treating scope and lifetime as the same thing. <b>Scope is spatial (where), lifetime is temporal (when).</b></li>
+<li>Saying recursion is always better. It is <b>elegant but costs memory, risks stack overflow and is often slower</b>.</li>
+<li>Forgetting that a recursive function needs a <b>base case</b> — without it, infinite recursion.</li>
+<li>Writing only C++. The course compares <b>Python, JavaScript and C++</b> throughout; a comparison answer that names all three scores higher.</li>
+</ol>
+</div>
+</div>
+
+<div class="box star">
+<h4>Timing plan for a 3-hour paper</h4>
+Read everything first. Because every question on this course is a <b>comparison or definition</b>, the fastest marks come from <b>drawing the table first and filling it in</b> — a table with six bases of comparison is worth more than three paragraphs and takes half the time. Budget <b>30 minutes per question</b>, and for each one: <b>define both terms (2 sentences) → table → one code example → one closing sentence on why the difference matters</b>. That four-part shape fits every question this examiner has set. Leave the code examples until the table is done, so that if time runs out you have lost the cheapest part rather than the dearest.
+</div>
+
+<div class="footer-note">
+CMS 710 · Principles of Programming Languages · Volume I study guide<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>

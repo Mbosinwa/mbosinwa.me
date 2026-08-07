@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 706 — Practice, Model Answers &amp; Final Recall (Volume II)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume II · drill pack · the real past paper · walk-in cheatsheet</div>
+  <h1>CMS 706 — Practice, Model Answers &amp; Final Recall</h1>
+  <div class="sub">The companion to Volumes I and III. Rather than invent a mock paper, this volume drills <b>the lecturer's own paper of 14/07/2026</b> question by question, then works every SQL question from the older CMS 445 paper, then hardens the definitions with recall and trap drills.</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Friday 07 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturer:</b> the lecturer</span>
+  </div>
+</div>
+
+<div class="box star">
+  <h4>How to use this pack</h4>
+  <table class="tight" style="margin:4pt 0 0">
+  <thead><tr><th style="width:16%">Time you have</th><th>Do this</th></tr></thead>
+  <tbody>
+  <tr><td><b>3 hours</b></td><td>Sit the real paper (§1) closed-book, choosing five questions exactly as you will on the day → mark yourself against §2 and Volume III → re-read whatever you could not attempt → §5 traps → sleep.</td></tr>
+  <tr><td><b>90 minutes</b></td><td>§1 questions 1–3 written out in full → the SQL drills (§3) → the ER drill (§2 Q4) → §5 traps.</td></tr>
+  <tr><td><b>45 minutes</b></td><td>Answer plans in §2 read as a checklist → rapid-fire recall (§4) → §5 traps → §6 walk-in sheet.</td></tr>
+  <tr><td><b>10 minutes at the door</b></td><td>§6 only.</td></tr>
+  </tbody>
+  </table>
+  <p style="margin:5pt 0 0"><b>The single most valuable habit for this paper:</b> every scenario question gets <b>two paragraphs</b> — the first defines the concept in the notes' own words, the second applies it to the hospital, supermarket, bank or ride-sharing firm you were given. Students who write only the first get half marks; students who write only the second get less.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>The real paper — sit this closed-book</h2>
+
+<div class="box">
+<p style="margin:0"><b>RIVERS STATE UNIVERSITY · FACULTY OF SCIENCE · DEPARTMENT OF COMPUTER SCIENCE</b><br>
+<b>DTS 304: Data Management I · 2025/2026 session · 14/07/2026 · Time allowed: 3 hours</b><br>
+<b>Instructions — attempt any FIVE (5) questions</b> · Lecturers: Dr. Igiri Chima and <b>the lecturer Ominini M.</b></p>
+</div>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:5%">Q</th><th>Question</th><th class="c" style="width:9%">Marks</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>1</b></td><td><b>(a)</b> A hospital replaces its paper records with a DBMS. i. Identify the required hardware and software. ii. Explain benefits. iii. Discuss implementation challenges. <b>(b)</b> i. Explain how adding new database fields affects logical independence. ii. Describe the importance of data as a database component. iii. Why is user consent important when collecting customer data?</td><td class="c">8 + 6</td></tr>
+<tr><td class="c"><b>2</b></td><td><b>(a)</b> i. Explain the relationship between databases and data science. ii. Describe how data masking protects sensitive information. iii. A supermarket chain records millions of customer transactions daily — explain the difference between <b>data</b> and <b>information</b> using this scenario. <b>(b)</b> A healthcare company stores patient records for ten years before deletion. Outline and discuss the stages of the data lifecycle involved.</td><td class="c">6 + 8</td></tr>
+<tr><td class="c"><b>3</b></td><td><b>(a)</b> As a data scientist you received a dataset from three different countries with varying languages, currencies and date formats. Outline a comprehensive data cleaning plan. <b>(b)</b> i. A bank database contains over 20 million customer records — explain how indexing improves query performance. ii. A ride-sharing company collects GPS locations every second — explain how this data supports business decision-making. iii. A social media platform stores videos, images and comments, XML documents, audio recordings, emails, a customer database and a JSON file — classify each under the data formats you have studied.</td><td class="c">8 + 6</td></tr>
+<tr><td class="c"><b>4</b></td><td>Design an <b>ER diagram</b> for a bank storing customers, accounts, branches and employees. <i>Customer</i> identified by SSN, with name, multiple phone numbers and occupation. <i>Account</i> identified by account number and its branch, with balance and type. An account belongs to one or more customers; a customer may have any number of accounts; an account belongs to exactly one branch; branches may have multiple accounts but are not required to have any. <i>Branch</i> identified by branch code, with location and number of employees. <i>Employee</i> identified by SSN, with name and salary; works for exactly one branch; branches have one or more employees; an employee is contact for zero or more customers; every customer has at most one employee as contact.</td><td class="c">14</td></tr>
+<tr><td class="c"><b>5</b></td><td><b>(a)</b> Given <code>professor(<u>profname</u>, deptname)</code>, <code>department(<u>deptname, building</u>)</code>, <code>committee(<u>profname, commname</u>)</code>: i. professors in any one of Smith's committees; ii. professors in at least all of Smith's committees; iii. professors in exactly Smith's committees; iv. professors with an office in the ICICS building. <b>(b)</b> Describe <b>complexity, failed attempts and expired passwords</b> in a password policy and explain how each protects the database.</td><td class="c">9 + 5</td></tr>
+<tr><td class="c"><b>6</b></td><td><b>(a)</b> With the aid of a good diagram describe the <b>phases of query processing</b> in a DBMS, stating the function of each stage. <b>(b)</b> State what is wrong with each query and give a solution: i. <code>select d_no from BusDriver where d_no = 07;</code> on <code>BusDriver(bdno varchar2(5), bdname varchar2(50), …)</code>. ii. <code>select bdno, bdname from BusDriver, Depot where bdsalary &gt; 5000 and dname = 'Hornsey' and BusDriver.dno = Depot.dno and bdsalary &lt; 2000;</code></td><td class="c">8 + 6</td></tr>
+<tr><td class="c"><b>7</b></td><td><b>(a)</b> As leader of the data design team for an inventory tracking system, bring a work plan identifying the <b>phases of data design</b>, giving for each: a description, the inputs, the outputs and a key issue addressed. <b>(b)</b> What is meant by <b>concurrent execution</b> of database transactions in a multiuser system, and why is concurrency control needed? <b>(c)</b> Explain the meaning of <b>"transaction"</b> in the context of database interactions.</td><td class="c">8 + 4 + 2</td></tr>
+</tbody>
+</table>
+
+<div class="box warn">
+<b>Choose your five before you write a word.</b> Questions <b>1, 2 and 3</b> come straight out of the class notes — take all three. That leaves <b>two</b> to find among 4–7. Judge them on what you can actually produce: <b>Q7</b> is the cheapest of the four if you have the data-design table memorised (and 7(b) and 7(c) are pure notes material); <b>Q6</b> is next if you can draw the three-stage diagram; <b>Q4</b> is worth 14 marks on one diagram, which is high reward but all-or-nothing; <b>Q5</b> is the hardest unless the division idiom is solid.
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">2</span>Answer plans, question by question</h2>
+
+<h3>Q1 — the hospital DBMS</h3>
+<p style="font-size:9.1pt"><b>(a)</b> Split into <b>hardware</b> (server, storage/RAID, backup, workstations, network, UPS, scanners) and <b>software</b> (DBMS, EHR application, OS, security software, backup software, reporting tools) — a list each, not a paragraph. <b>Benefits</b>: give the five DBMS advantages from Volume I §5 <i>plus</i> the healthcare benefits — improved patient care, faster diagnosis, reduced errors. <b>Challenges</b>: cost, data migration of paper records, staff training and resistance, privacy and compliance, integration with lab and imaging systems, downtime, and the need for a DBA. <span class="tag">FULL TEXT IN VOL III §8</span></p>
+<p style="font-size:9.1pt"><b>(b)</b> Three short answers: <b>logical independence</b> — adding a field changes the conceptual schema but the external schema and applications are unaffected, which is precisely what logical data independence means, and it fails only where an application depends on schema shape (e.g. <code>SELECT *</code>) · <b>data as a component</b> — of the four components, data is the substance; relationships, constraints and schema exist only to organize and protect it · <b>consent</b> — the first principle of information privacy, protects against identity theft and misuse, is a legal requirement under GDPR/HIPAA/Nigerian law, and builds the trust that keeps customers sharing data.</p>
+
+<h3>Q2 — data science, masking, data vs information, lifecycle</h3>
+<p style="font-size:9.1pt"><b>(a)</b> <b>Databases and data science</b> — supply and consumption: the database is the organized store, data science extracts insight from it; step 1 of the data science process is "collect from databases"; without data, analysis is impossible. <b>Masking</b> — hides part of a sensitive value (<code>xxx 1234</code>) so the record stays usable but the sensitive digits are never shown, protecting against exposure to staff, testers and attackers. <b>Data vs information</b> — the table from Volume I §2, then the supermarket applied: raw till records vs "bread sales rose 18% in June".</p>
+<p style="font-size:9.1pt"><b>(b)</b> The eight lifecycle stages walked through a patient record, with the <b>ten-year retention</b> called out at the <b>archiving</b> stage as a legal requirement and <b>deletion</b> justified by data minimization. <b>8 marks means eight stages — write all eight.</b></p>
+
+<h3>Q3 — cleaning, indexing, GPS, formats</h3>
+<p style="font-size:9.1pt"><b>(a)</b> The eight-step cleaning plan (Vol III §8): profile → standardize dates to ISO → normalize currency at a stated rate → fix language and encoding → deduplicate → handle missing values → correct types and units → validate and document. <b>Name the problem each step fixes</b> — that is where the marks are.</p>
+<p style="font-size:9.1pt"><b>(b)</b> <b>Indexing</b> — without it a linear search checks all 20 million rows; the index (a B-tree) is searched instead, the pointer located and only the matching row retrieved; the <code>WHERE</code> clause benefits; the cost is extra storage and slower writes. <b>GPS</b> — the six DDDM steps applied: route optimization, demand forecasting, dynamic pricing, driver safety monitoring, accurate ETAs, expansion planning. <b>Formats</b> — unstructured: videos, images, comments, audio; semi-structured: XML, emails, JSON; structured: the customer database.</p>
+
+<div class="grid2">
+<div>
+<h3>Q4 — the ER diagram</h3>
+<p style="font-size:9.1pt">Work in this order and you cannot go wrong: <b>1.</b> four rectangles — Customer, Account, Branch, Employee. <b>2.</b> key attributes underlined, then the rest; <b>phone as a double ellipse</b>. <b>3.</b> four diamonds — has, held at, works for, contact. <b>4.</b> cardinalities: M:N, N:1, N:1, 1:N. <b>5.</b> double lines where participation is total. <b>6.</b> a one-line note under the diagram justifying each cardinality by quoting the requirement it came from — that sentence is what separates 14 from 9. <span class="tag">DRAWN IN VOL III §1</span></p>
+</div>
+<div>
+<h3>Q5, Q6, Q7</h3>
+<p style="font-size:9.1pt"><b>Q5(a)</b> — recognise which of the three shapes you have: "any one of" → <code>IN</code>; "at least all" → division (double <code>NOT EXISTS</code> or <code>HAVING COUNT</code>); "exactly" → division plus a count equality. (iv) is a plain join through <code>department</code>. <b>Q5(b)</b> — three features, each with <i>what it is</i> and <i>what attack it stops</i>.<br>
+<b>Q6(a)</b> — draw parser → optimizer → evaluation engine, with catalog/statistics feeding the optimizer and data feeding the engine; name the output of each stage. <b>Q6(b)</b> — (i) the column does not exist, so it fails at parsing; (ii) the predicate is self-contradictory, so it always returns empty.<br>
+<b>Q7(a)</b> — the five-phase table. <b>Q7(b)</b> — define interleaved execution, give the reason (throughput, reduced waiting), then the four problems it causes. <b>Q7(c)</b> — two marks, one sentence: a sequence of actions representing a logical unit of work.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">3</span>SQL drills — every query from the older paper, worked</h2>
+
+<p style="font-size:9.1pt">Paper A question 1 gives <code>EMP(empno, deptno, ename, salary, Designation, joiningdate, DOB, city)</code>. These five are the most likely shape of any SQL asked of you.</p>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:34%">Required</th><th>Query</th></tr></thead>
+<tbody>
+<tr><td class="c">i</td><td>Employee name and number in increasing order of salary</td><td><pre style="margin:0">SELECT ename, empno FROM EMP ORDER BY salary ASC;</pre></td></tr>
+<tr><td class="c">ii</td><td>Employee name and number, department-wise</td><td><pre style="margin:0">SELECT deptno, ename, empno FROM EMP ORDER BY deptno, ename;</pre></td></tr>
+<tr><td class="c">iii</td><td>Total salary of all employees</td><td><pre style="margin:0">SELECT SUM(salary) AS total_salary FROM EMP;</pre></td></tr>
+<tr><td class="c">iv</td><td>Employees whose name starts with "S" and who work in deptno 1002</td><td><pre style="margin:0">SELECT ename FROM EMP
+WHERE  ename LIKE 'S%' AND deptno = 1002;</pre></td></tr>
+<tr><td class="c">v</td><td>Increase salary by 20% for employees who joined after 1/1/2005</td><td><pre style="margin:0">UPDATE EMP
+SET    salary = salary * 1.20
+WHERE  joiningdate &gt; '2005-01-01';</pre></td></tr>
+</tbody>
+</table>
+
+<div class="grid2">
+<div>
+<h4>Further drills on the class <code>StudentDB</code> table</h4>
+<table class="tight">
+<thead><tr><th style="width:44%">Required</th><th>Query</th></tr></thead>
+<tbody>
+<tr><td>Names of students aged 30 or over</td><td><code>SELECT Name FROM StudentDB WHERE Age &gt;= 30;</code></td></tr>
+<tr><td>All female students</td><td><code>SELECT * FROM StudentDB WHERE Sex = 'F';</code></td></tr>
+<tr><td>How many students there are</td><td><code>SELECT COUNT(*) FROM StudentDB;</code></td></tr>
+<tr><td>Average age per department</td><td><code>SELECT Dept, AVG(Age) FROM StudentDB GROUP BY Dept;</code></td></tr>
+<tr><td>Departments with more than one student</td><td><code>SELECT Dept FROM StudentDB GROUP BY Dept HAVING COUNT(*) &gt; 1;</code></td></tr>
+<tr><td>The three oldest students</td><td><code>SELECT Name, Age FROM StudentDB ORDER BY Age DESC LIMIT 3;</code></td></tr>
+<tr><td>Students joined to their state and LGA</td><td><code>SELECT s.Name, s.Dept, t.State, t.LGA FROM StudentDB s JOIN Table2 t ON s.MatNo = t.MatNo;</code></td></tr>
+<tr><td>Add a new student</td><td><code>INSERT INTO StudentDB (Name, MatNo, Age, Dept, Sex) VALUES ('Uche','2025/PGD/006',27,'Law','F');</code></td></tr>
+<tr><td>Correct a department</td><td><code>UPDATE StudentDB SET Dept = 'Maths' WHERE MatNo = '2025/PGD/003';</code></td></tr>
+<tr><td>Remove a withdrawn student</td><td><code>DELETE FROM StudentDB WHERE MatNo = '2025/PGD/005';</code></td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<h4>The five mistakes that cost SQL marks</h4>
+<ol style="font-size:9.1pt">
+<li><b>Clause order.</b> It is always <code>SELECT … FROM … WHERE … GROUP BY … HAVING … ORDER BY … LIMIT</code>. Nothing else parses.</li>
+<li><b>WHERE vs HAVING.</b> <code>WHERE</code> filters <b>rows before grouping</b>; <code>HAVING</code> filters <b>groups after</b>. You cannot put <code>COUNT(*)</code> in a <code>WHERE</code>.</li>
+<li><b>Quoting.</b> Text and dates take single quotes; numbers do not. <code>deptno = 1002</code> but <code>ename LIKE 'S%'</code>.</li>
+<li><b>Forgetting the join condition</b> in a two-table query — without it you get a cartesian product, every row against every row.</li>
+<li><b>Missing semicolon</b>, or writing <code>SELECT *</code> when the question named the columns it wants.</li>
+</ol>
+<div class="box" style="padding:5pt 7pt"><b>The <code>LIKE</code> patterns worth memorising:</b> <code>'S%'</code> starts with S · <code>'%s'</code> ends with s · <code>'%an%'</code> contains "an" · <code>'_a%'</code> has "a" as the second character. <code>%</code> is any run of characters, <code>_</code> is exactly one.</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">4</span>Rapid-fire recall — cover the right column</h2>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:50%">Prompt</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td>Data, in one line</td><td>Raw, unprocessed facts, figures or symbols with no meaning on their own</td></tr>
+<tr><td>Information, in one line</td><td>Processed and organized data that is meaningful, useful and supports decisions</td></tr>
+<tr><td>Data by nature</td><td>Quantitative (measured) · qualitative (descriptive)</td></tr>
+<tr><td>Six core components of information management</td><td>Collection · storage · organization · processing · retrieval · security</td></tr>
+<tr><td>Eight stages of the data lifecycle</td><td>Creation · collection · storage · processing · analysis · distribution · archiving · deletion</td></tr>
+<tr><td>Data science, in one line</td><td>A multi-disciplinary field using data, algorithms and scientific methods to extract insight and knowledge</td></tr>
+<tr><td>Five steps of using data in data science</td><td>Collect · clean · analyse · build models · decide</td></tr>
+<tr><td>Six steps of DDDM</td><td>Collection · processing · analysis · interpretation · decision · prediction</td></tr>
+<tr><td>Metadata</td><td>Data about data — describes, explains and locates an information resource</td></tr>
+<tr><td>Three data collection techniques</td><td>Manual · sensor-based · API-based</td></tr>
+<tr><td>Three data formats</td><td>Structured · semi-structured · unstructured</td></tr>
+<tr><td>Where JSON, XML and email sit</td><td>Semi-structured</td></tr>
+<tr><td>File-based storage's five weaknesses</td><td>Redundancy · inconsistency · difficult sharing · poor security · no relationships</td></tr>
+<tr><td>Five DBMS advantages</td><td>Reduced redundancy · integrity · security · easy retrieval · multi-user access</td></tr>
+<tr><td>Five components of an IRS</td><td>Data collection · indexing system · query processor · search engine · user interface</td></tr>
+<tr><td>Four types of index</td><td>Primary · secondary · clustered · non-clustered</td></tr>
+<tr><td>Two costs of indexing</td><td>Extra storage · slower updates</td></tr>
+<tr><td>B-tree vs hashing</td><td>B-tree is balanced, sorted and <b>supports range queries</b>; hashing is very fast look-up but <b>collides</b> and cannot do ranges</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<table class="tight">
+<thead><tr><th style="width:50%">Prompt</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td>Six techniques for efficient queries</td><td>Use an index · avoid <code>SELECT *</code> · use <code>WHERE</code> properly · use <code>JOIN</code> efficiently · limit results · use aggregation carefully</td></tr>
+<tr><td>What the query optimizer does</td><td>Chooses the best execution plan by reducing disk access, reducing CPU usage and using indexes and statistics</td></tr>
+<tr><td>Five principles of privacy</td><td>Consent · purpose limitation · data minimization · transparency · accountability</td></tr>
+<tr><td>Three privacy regulations</td><td>GDPR (Europe) · HIPAA (healthcare) · local data protection laws (Nigeria)</td></tr>
+<tr><td>Five data protection techniques</td><td>Encryption · access control · backup and recovery · data masking · firewalls and antivirus</td></tr>
+<tr><td>Five security threats</td><td>Malware · phishing · unauthorized access · SQL injection · data breaches</td></tr>
+<tr><td>Six security controls</td><td>Authentication · authorization · encryption · firewalls · monitoring and auditing · update and patching</td></tr>
+<tr><td>Four components of a database</td><td>Data · relationship · constraints · schema</td></tr>
+<tr><td>Definition of a database</td><td>A collection of interrelated data stored with controlled redundancy to serve one or more applications in an optimal fashion</td></tr>
+<tr><td>Seven services of the DBMS</td><td>Transaction · concurrency · recovery · security · language interface · storage · data catalog management</td></tr>
+<tr><td>Three limitations of the file-based system</td><td>Segregation and isolation · duplication · data dependency</td></tr>
+<tr><td>Four database models (plus two)</td><td>Hierarchical · network · relational · object oriented; also object-relational and deductive</td></tr>
+<tr><td>What makes the network model different</td><td>Many-to-many (n-n) — records may have more than one parent</td></tr>
+<tr><td>Three levels of the ANSI/SPARC architecture</td><td>External/view · conceptual/logical · internal/physical</td></tr>
+<tr><td>Two types of database architecture</td><td>Client–server · three-tier</td></tr>
+<tr><td>Logical vs physical independence</td><td>Change the logical schema without touching applications · change the storage without touching the logical schema</td></tr>
+<tr><td>The four SQL sub-languages</td><td>DQL <code>SELECT</code> · DML <code>INSERT/UPDATE/DELETE</code> · DDL <code>CREATE/ALTER/DROP</code> · DCL/TCL <code>GRANT/REVOKE/COMMIT/ROLLBACK</code></td></tr>
+<tr><td>Transaction, ACID and its delimiters</td><td>A logical unit of work · atomicity, consistency, isolation, durability · <code>BEGIN … COMMIT / ROLLBACK</code></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">5</span>Spot the error — every statement is wrong except four</h2>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:36%">Statement</th><th class="c" style="width:7%">T / F</th><th>Correction</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>Data and information mean the same thing in a database context.</td><td class="c"><b>F</b></td><td>Data is <b>raw and meaningless on its own</b>; information is <b>processed, organized and useful for decisions</b>.</td></tr>
+<tr><td class="c">2</td><td>An email is unstructured data.</td><td class="c"><b>F</b></td><td>Email is <b>semi-structured</b> — it has headers and fields, so it has some structure without being a table.</td></tr>
+<tr><td class="c">3</td><td>Indexing makes every database operation faster.</td><td class="c"><b>F</b></td><td>It speeds <b>reads</b> but costs extra storage and <b>slows inserts and updates</b>, which must maintain the index.</td></tr>
+<tr><td class="c">4</td><td>Hashing is the best choice for range queries.</td><td class="c"><b>F</b></td><td>Hashing is <b>not suitable for range queries</b> — that is the <b>B-tree's</b> strength.</td></tr>
+<tr><td class="c">5</td><td>All leaf nodes of a B-tree are at the same level.</td><td class="c"><b>T</b></td><td>Correct — that is what "balanced" means, and it is why performance is consistent.</td></tr>
+<tr><td class="c">6</td><td>The hierarchical model supports many-to-many relationships.</td><td class="c"><b>F</b></td><td>It does not — a child has <b>one parent</b>. The <b>network</b> model introduced n-n.</td></tr>
+<tr><td class="c">7</td><td>The DBA works at the external level of the ANSI/SPARC architecture.</td><td class="c"><b>F</b></td><td>The DBA works at the <b>conceptual/logical</b> level. The external level is what <b>users</b> see.</td></tr>
+<tr><td class="c">8</td><td>Physical data independence means applications survive a change to the logical schema.</td><td class="c"><b>F</b></td><td>That is <b>logical</b> independence. Physical independence is surviving a change to <b>storage</b> — e.g. HDD to SSD.</td></tr>
+<tr><td class="c">9</td><td><code>DELETE</code> is a DDL command.</td><td class="c"><b>F</b></td><td><code>DELETE</code> removes <b>rows</b> and is <b>DML</b>. <code>DROP</code> removes the <b>table</b> and is DDL.</td></tr>
+<tr><td class="c">10</td><td><code>COMMIT</code> makes a transaction's changes permanent.</td><td class="c"><b>T</b></td><td>Correct — and <code>ROLLBACK</code> returns the transaction to its original state.</td></tr>
+<tr><td class="c">11</td><td>Concurrency control exists to make transactions run faster.</td><td class="c"><b>F</b></td><td>Concurrency exists for speed; <b>concurrency control</b> exists to <b>preserve consistency</b> while allowing it.</td></tr>
+<tr><td class="c">12</td><td>A cache of one transaction reading another's uncommitted data is called a dirty read.</td><td class="c"><b>T</b></td><td>Correct — and if that transaction then aborts, the reader used data that never existed.</td></tr>
+<tr><td class="c">13</td><td>Encryption and data masking are the same technique.</td><td class="c"><b>F</b></td><td>Encryption <b>converts data into an unreadable format</b> that can be decrypted; masking <b>hides part of a value</b> and is not reversed for the viewer.</td></tr>
+<tr><td class="c">14</td><td>A weak entity is drawn as a double rectangle.</td><td class="c"><b>T</b></td><td>Correct — and a multivalued attribute is a double ellipse, total participation a double line.</td></tr>
+<tr><td class="c">15</td><td>An M:N relationship maps to a foreign key in one of the two tables.</td><td class="c"><b>F</b></td><td>M:N needs <b>a new table</b> holding both keys. Only <b>1:N</b> maps to a posted foreign key.</td></tr>
+<tr><td class="c">16</td><td>Fragmentation means keeping copies of the same data at several sites.</td><td class="c"><b>F</b></td><td>That is <b>replication</b>. <b>Fragmentation</b> is <b>dividing</b> a relation into pieces stored at different sites.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2><span class="n">6</span>Walk-in sheet — the last ten minutes</h2>
+
+<div class="box star" style="padding:9pt 12pt">
+<div class="grid2">
+<div>
+<h4>The ten facts most likely to be tested</h4>
+<ol style="margin-bottom:4pt">
+<li><b>Data</b> = raw, meaningless · <b>information</b> = processed, meaningful, supports decisions</li>
+<li><b>Lifecycle (8):</b> creation · collection · storage · processing · analysis · distribution · archiving · deletion</li>
+<li><b>Formats:</b> structured = tables · semi-structured = JSON, XML, email · unstructured = video, image, audio, comments</li>
+<li><b>Indexing</b> speeds reads via a B-tree; costs storage and slows writes. <b>Hashing</b> = fast look-up, no ranges</li>
+<li><b>Database</b> = interrelated data with <b>controlled redundancy</b> · components: data, relationship, constraints, schema</li>
+<li><b>7 DBMS services:</b> transaction · concurrency · recovery · security · language interface · storage · data catalog</li>
+<li><b>ANSI/SPARC:</b> external (users) · conceptual (DBA) · internal (storage). <b>Logical</b> vs <b>physical</b> independence</li>
+<li><b>SQL:</b> DQL <code>SELECT</code> · DML <code>INSERT/UPDATE/DELETE</code> · DDL <code>CREATE/ALTER/DROP</code> · DCL/TCL <code>GRANT/COMMIT/ROLLBACK</code></li>
+<li><b>ER:</b> rectangle = entity · ellipse = attribute · diamond = relationship · <b>double line = total participation</b></li>
+<li><b>Query processing:</b> parse and translate → optimize → evaluate. <b>Transaction</b> = a logical unit of work; <b>ACID</b></li>
+</ol>
+</div>
+<div>
+<h4>The five privacy principles, in order</h4>
+<p style="margin-bottom:4pt"><b>Consent · purpose limitation · data minimization · transparency · accountability.</b> Every privacy or consent question is answered by naming these and applying two or three.</p>
+<h4>Three moves in the first five minutes</h4>
+<ol style="margin-bottom:4pt">
+<li>Read all seven questions. Take the three built on the class notes, then pick the <b>two</b> of the remainder you can actually finish.</li>
+<li>For every scenario question write the <b>definition first</b>, then the application. Never one without the other.</li>
+<li>Count the marks and count your points: an <b>8-mark part wants eight things</b>, not three.</li>
+</ol>
+<h4>If your mind goes blank</h4>
+<p style="margin-bottom:0">Write the <b>definition</b>, then the <b>numbered list</b> that belongs to it, then <b>one example</b>, then <b>apply it to the scenario in the question</b>. Every answer on this paper is built from those four moves, and each scores on its own.</p>
+</div>
+</div>
+</div>
+
+<div class="footer-note">
+CMS 706 · Database Systems · Volume II drill pack<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>

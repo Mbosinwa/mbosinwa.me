@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 710 Module 3 — Basic Data Types, Lists and Trees — Schoolwork — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 710 Principles of Programming Languages: Review of basic data types including lists and trees.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/schoolwork/cms-710-principles-of-programming-languages/module-3.html">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../schoolwork.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/schoolwork/" class="nav-link">Schoolwork</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/schoolwork/">Schoolwork</a> / <a href="index.html">CMS 710 Principles of Programming Languages</a> / Module 3 — Basic Data Types, Lists and Trees</p>
+        <article class="doc">
+<h1 id="cms-710-principles-of-programming-languages">CMS 710: Principles
+of Programming Languages</h1>
+<h2 id="module-3-review-of-basic-data-types-including-lists-and">Module
+3: Review of Basic Data Types, Including Lists and</h2>
+<p>Trees</p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>At the end of this module, students should be able to:</p>
+<ol type="1">
+<li>Explain the role of data structures in programming languages.</li>
+<li>Differentiate between arrays, lists, stacks, queues, and trees.</li>
+<li>Describe the concept of Abstract Data Types (ADT).</li>
+<li>Analyze how programming languages implement common data
+structures.</li>
+<li>Compare the representation of lists and trees in Python, JavaScript,
+and C++.</li>
+<li>Explain the relationship between data structures and algorithm
+efficiency.</li>
+<li>Construct and manipulate binary trees in different programming
+languages.</li>
+<li>Relate parse trees and Abstract Syntax Trees (ASTs) to programming
+language processing.</li>
+</ol>
+<h3 id="31-introduction">3.1 Introduction</h3>
+<p>Data structures are fundamental components of programming languages
+and software systems. While data types define the nature of data that
+can be stored, data structures determine how data is organized, managed,
+and accessed. Efficient data organization is critical because the choice
+of data structure directly affects:</p>
+<ul>
+<li>Program performance</li>
+<li>Memory utilization</li>
+<li>Execution speed</li>
+<li>Scalability</li>
+<li>Maintainability Programming languages provide various mechanisms for
+representing and manipulating collections of data. Some languages offer
+built-in support for certain structures, while others require
+programmers to implement them manually. Understanding data structures is
+essential for understanding how programming languages support problem
+solving and computational efficiency.</li>
+</ul>
+<h3 id="32-what-is-a-data-structure">3.2 What is a Data Structure?</h3>
+<p>A data structure is a method of organizing and storing data in a
+computer so that it can be accessed and modified efficiently. A data
+structure defines:</p>
+<ul>
+<li><p>How data is arranged</p></li>
+<li><p>How data is accessed</p></li>
+<li><p>How data is updated</p></li>
+<li><p>How data is removed Examples include:</p></li>
+<li><p>Arrays</p></li>
+<li><p>Lists</p></li>
+<li><p>Stacks</p></li>
+<li><p>Queues</p></li>
+<li><p>Trees</p></li>
+<li><p>Graphs Different problems require different data structures. For
+example:</p></li>
+<li><p>Student records may be stored in arrays or lists.</p></li>
+<li><p>Browser history is commonly implemented using stacks.</p></li>
+<li><p>Printer scheduling often uses queues.</p></li>
+<li><p>Programming language parsers utilize trees.</p></li>
+</ul>
+<h3 id="33-principles-of-data-structures">3.3 Principles of Data
+Structures</h3>
+<p>Several important principles govern the use of data structures.</p>
+<p>Principle 1: Efficient Organization of Data Data structures provide
+mechanisms for organizing data in ways that support efficient
+operations. Example:</p>
+<p>Searching for a value in:</p>
+<ul>
+<li>An unsorted array may require scanning every element.</li>
+<li>A binary search tree may require significantly fewer
+comparisons.</li>
+</ul>
+<p>Principle 2: Abstraction of Complexity Data structures hide
+implementation details and provide simplified interfaces for interacting
+with data. For example: A programmer may use a stack without
+understanding its internal memory allocation mechanism.</p>
+<p>Principle 3: Trade-Off Between Time and Space Improving execution
+speed often requires additional memory. Reducing memory usage may
+increase processing time. Programming language designers and software
+developers continually balance these competing requirements.</p>
+<h3 id="34-abstract-data-types-adt">3.4 Abstract Data Types (ADT)</h3>
+<p>An Abstract Data Type (ADT) is a logical description of a data
+structure that specifies:</p>
+<ul>
+<li>The data it stores</li>
+<li>The operations that can be performed without specifying
+implementation details. An ADT focuses on:</li>
+</ul>
+<p>What the structure does rather than</p>
+<p>How the structure is implemented</p>
+<p>Example: Stack ADT Operations:</p>
+<ul>
+<li><p>Push()</p></li>
+<li><p>Pop()</p></li>
+<li><p>Peek()</p></li>
+<li><p>IsEmpty() The stack ADT does not specify whether the stack is
+implemented using:</p></li>
+<li><p>Arrays</p></li>
+<li><p>Linked lists</p></li>
+<li><p>Dynamic memory Those implementation details are hidden.</p></li>
+</ul>
+<p>Advantages of ADTs Abstraction Reduces complexity.</p>
+<p>Reusability Can be implemented in multiple ways.</p>
+<p>Maintainability Implementation can change without affecting
+users.</p>
+<p>Modularity Encourages separation of concerns.</p>
+<h3 id="35-arrays">3.5 Arrays</h3>
+<p>An array is a collection of elements stored in contiguous memory
+locations. Each element is accessed using an index.</p>
+<p>Characteristics of Arrays</p>
+<ul>
+<li>Fixed size</li>
+<li>Indexed access</li>
+<li>Efficient retrieval</li>
+<li>Homogeneous data</li>
+</ul>
+<p>Python Example scores = [70, 80, 90, 85, 95]</p>
+<p>JavaScript Example let scores = [70, 80, 90, 85, 95];</p>
+<p>C++ Example int scores[5] = {70, 80, 90, 85, 95};</p>
+<p>Advantages</p>
+<ul>
+<li>Fast access</li>
+<li>Simple implementation</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Fixed size</li>
+<li>Costly insertion and deletion</li>
+</ul>
+<h3 id="36-lists">3.6 Lists</h3>
+<p>A list is an ordered collection of elements. Unlike arrays, lists can
+grow and shrink dynamically.</p>
+<p>Python Example students = ["John", "Mary", "Paul"]</p>
+<p>JavaScript Example let students = ["John", "Mary", "Paul"];</p>
+<p>C++ Example #include <vector></p>
+<p>vector<string> students;</p>
+<p>Common Operations</p>
+<ul>
+<li>Insert</li>
+<li>Delete</li>
+<li>Update</li>
+<li>Search</li>
+<li>Traverse</li>
+</ul>
+<p>Advantages</p>
+<ul>
+<li>Dynamic size</li>
+<li>Flexible</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Additional memory overhead</li>
+<li>Slower than arrays for some operations</li>
+</ul>
+<h3 id="37-stacks">3.7 Stacks</h3>
+<p>A stack is a linear data structure that follows the principle of:</p>
+<p>Last-In, First-Out (LIFO) The last element inserted is the first
+element removed.</p>
+<p>Real-Life Examples</p>
+<ul>
+<li>Browser history</li>
+<li>Undo operations</li>
+<li>Function calls</li>
+<li>Expression evaluation</li>
+</ul>
+<p>Stack Operations Push Add an element.</p>
+<p>Pop Remove an element.</p>
+<p>Peek View the top element.</p>
+<p>IsEmpty Check whether the stack contains elements.</p>
+<p>Stack Illustration Top │ │ 40 │ 30 │ 20 │ 10 └────────</p>
+<p>Python Example stack = []</p>
+<p>stack.append(10) stack.append(20)</p>
+<p>stack.pop()</p>
+<p>JavaScript Example let stack = [];</p>
+<p>stack.push(10); stack.push(20);</p>
+<p>stack.pop();</p>
+<p>C++ Example #include <stack></p>
+<p>stack<int> s;</p>
+<p>s.push(10); s.push(20);</p>
+<p>s.pop();</p>
+<h3 id="38-queues">3.8 Queues</h3>
+<p>A queue is a linear data structure that follows:</p>
+<p>First-In, First-Out (FIFO) The first element inserted is the first
+element removed.</p>
+<p>Real-Life Examples</p>
+<ul>
+<li>Bank customers</li>
+<li>Print queues</li>
+<li>Operating system scheduling</li>
+<li>Network packet processing</li>
+</ul>
+<p>Queue Operations Enqueue Insert an element.</p>
+<p>Dequeue Remove an element.</p>
+<p>Front View the first element.</p>
+<p>IsEmpty Check whether the queue is empty.</p>
+<p>Queue Illustration Front Rear</p>
+<p>10 → 20 → 30 → 40</p>
+<p>Python Example from collections import deque</p>
+<p>queue = deque()</p>
+<p>queue.append(10) queue.append(20)</p>
+<p>queue.popleft()</p>
+<p>JavaScript Example let queue = [];</p>
+<p>queue.push(10); queue.push(20);</p>
+<p>queue.shift();</p>
+<p>C++ Example #include <queue></p>
+<p>queue<int> q;</p>
+<p>q.push(10); q.push(20);</p>
+<p>q.pop();</p>
+<h3 id="39-trees">3.9 Trees</h3>
+<p>A tree is a hierarchical data structure consisting of nodes connected
+by edges. Trees are widely used in:</p>
+<ul>
+<li>Databases</li>
+<li>Operating systems</li>
+<li>Artificial intelligence</li>
+<li>Compiler design</li>
+<li>File systems</li>
+</ul>
+<p>Components of a Tree Root Node The topmost node.</p>
+<p>Parent Node A node that has children.</p>
+<p>Child Node A node connected below another node.</p>
+<p>Leaf Node A node with no children.</p>
+<h3 id="example">Example</h3>
+<p>A / \ B C / \ D E</p>
+<p>Root Node: A Leaf Nodes: D, E, C</p>
+<h3 id="310-binary-trees">3.10 Binary Trees</h3>
+<p>A binary tree is a tree in which each node has at most two children.
+These are commonly referred to as:</p>
+<ul>
+<li>Left child</li>
+<li>Right child</li>
+</ul>
+<h3 id="example-1">Example</h3>
+<p>50 / \ 30 70 / \ / \ 20 40 60 80</p>
+<p>Applications</p>
+<ul>
+<li>Searching</li>
+<li>Sorting</li>
+<li>Expression evaluation</li>
+<li>Database indexing</li>
+</ul>
+<h3 id="311-binary-tree-implementation">3.11 Binary Tree
+Implementation</h3>
+<p>Python class Node:</p>
+<p>def <strong>init</strong>(self, value): self.value = value self.left
+= None</p>
+<p>self.right = None</p>
+<p>root = Node(50)</p>
+<p>JavaScript class Node {</p>
+<p>constructor(value){ this.value = value; this.left = null; this.right
+= null; } }</p>
+<p>let root = new Node(50);</p>
+<p>C++ class Node {</p>
+<p>public:</p>
+<p>int value; Node* left; Node* right;</p>
+<p>Node(int v){ value = v; left = nullptr; right = nullptr; } };</p>
+<p>Node* root = new Node(50);</p>
+<h3 id="312-parse-trees">3.12 Parse Trees</h3>
+<p>A parse tree represents the grammatical structure of a program
+according to the language grammar. Parse trees are generated during
+syntax analysis.</p>
+<p>Example Expression a + b * c</p>
+<p>Parse Tree + / \ a * / \ b c</p>
+<p>The parse tree shows that multiplication is evaluated before
+addition.</p>
+<h3 id="313-abstract-syntax-trees-ast">3.13 Abstract Syntax Trees
+(AST)</h3>
+<p>An Abstract Syntax Tree (AST) is a simplified version of a parse
+tree. ASTs remove unnecessary grammar details while preserving program
+meaning.</p>
+<p>Why ASTs are Important ASTs are used in:</p>
+<ul>
+<li>Compilers</li>
+<li>Interpreters</li>
+<li>Static analysis tools</li>
+<li>Code optimization systems</li>
+<li>Modern AI code assistants</li>
+</ul>
+<p>Example AST Assignment │ ├── Variable(a) │ └── Addition ├── b └──
+c</p>
+<h3 id="314-trees-in-programming-language-processing">3.14 Trees in
+Programming Language Processing</h3>
+<p>Programming language translators use trees extensively. Examples:</p>
+<p>Lexical Analysis Produces tokens.</p>
+<p>Parsing Produces parse trees.</p>
+<p>Semantic Analysis Produces ASTs.</p>
+<p>Code Generation Uses ASTs to generate executable instructions. Thus,
+trees are central to compiler and interpreter design.</p>
+<h3 id="315-comparative-study-of-python-javascript-and-c">3.15
+Comparative Study of Python, JavaScript, and C++</h3>
+<p>Feature Python JavaScript C++ Built-in List Support Excellent
+Excellent Vector Library Dynamic Resizing Yes Yes Yes Memory Management
+Automatic Automatic Manual/Automatic Tree Implementation Complexity Low
+Moderate High Runtime Performance Moderate Moderate High Ease of Use
+Very High High Moderate</p>
+<h3 id="316-complexity-and-readability-considerations">3.16 Complexity
+and Readability Considerations</h3>
+<p>When implementing data structures: Python generally provides:</p>
+<ul>
+<li><p>Greater readability</p></li>
+<li><p>Shorter code</p></li>
+<li><p>Faster development JavaScript provides:</p></li>
+<li><p>Flexibility</p></li>
+<li><p>Dynamic structures</p></li>
+<li><p>Web integration C++ provides:</p></li>
+<li><p>Better performance</p></li>
+<li><p>Greater memory control</p></li>
+<li><p>More efficient execution The choice depends on application
+requirements.</p></li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>This module examined fundamental data structures used in programming
+languages, including arrays, lists, stacks, queues, and trees. The
+concept of Abstract Data Types was introduced to demonstrate how data
+structures can be specified independently of implementation details.
+Binary trees, parse trees, and Abstract Syntax Trees were discussed to
+illustrate the importance of hierarchical structures in programming
+language processing. Python, JavaScript, and C++ were used as
+comparative examples to demonstrate different approaches to data
+representation and manipulation.</p>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials on this page were written by <a href="/">Mbosinwa Awunor</a> while studying for a PGD in Computer Science at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

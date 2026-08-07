@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 706 — Database Systems — Exam Study Guide (Volume I)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume I · exam cheatsheet · study guide</div>
+  <h1>CMS 706 — Database Systems</h1>
+  <div class="sub">PGD Computer Science, Rivers State University, Nkpolu-Oroworukwo, Port Harcourt · built from the lecturer's 29 pages of class notes and the two past papers on file, one of them set by this same lecturer three weeks before this exam</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Friday 07 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturer:</b> the lecturer</span>
+  </div>
+</div>
+
+<div class="box star">
+  <h4>How this examiner sets a paper — evidence from the past papers</h4>
+  Two papers are on file. <b>DTS 304 Data Management I, dated 14/07/2026, was set by the lecturer</b> — the CMS 706 lecturer — and its content is almost exactly these notes. The older <b>CMS 445</b> paper is by different lecturers but covers the database half.
+  <ol>
+    <li><b>Scenario questions, not bare definitions.</b> "A hospital replaces its paper records with a DBMS…", "A supermarket chain records millions of transactions daily — explain the difference between data and information <i>using this scenario</i>." Name the concept, then <b>apply it explicitly to the scenario given</b>. An answer that never mentions the hospital or the supermarket loses the application marks.</li>
+    <li><b>SQL appears on every paper.</b> Write complete statements, uppercase keywords, ending in a semicolon.</li>
+    <li><b>Both papers say "attempt any FIVE".</b> You get to leave one or two questions out — read everything first and choose deliberately.</li>
+    <li><b>Lists earn marks per item.</b> Almost every concept in these notes came with a numbered list of advantages, disadvantages, benefits or challenges. Learn the lists, not just the definitions.</li>
+  </ol>
+  <hr class="thin">
+  <b>The lecturer's own paper of 14/07/2026, in full — seven questions:</b> <b>Q1</b> hospital DBMS hardware/software, benefits, implementation challenges · logical independence · data as a database component · user consent. <b>Q2</b> databases and data science · data masking · <b>data vs information</b> (supermarket) · <b>the data lifecycle</b> (healthcare, ten-year retention). <b>Q3</b> a data cleaning plan · <b>indexing</b> on 20 million records · GPS data for decision-making · <b>classifying data formats</b>. <b>Q4</b> <b>design an ER diagram for a bank</b> (14 marks). <b>Q5</b> committee/professor queries · password policy. <b>Q6</b> <b>the phases of query processing</b> · debugging two broken SQL queries. <b>Q7</b> <b>the phases of data design</b> · concurrency control · define "transaction".
+  <hr class="thin">
+  <b>Read this carefully:</b> questions 1, 2 and 3 are answerable almost entirely from these notes — <b>they are your five-question paper's safest three</b>. Questions 4 to 7 draw on material the class never reached: <b>ER diagrams, query-processing phases, data-design phases and division-style queries are all in Volume III</b>, and you need at least two of them to make up five answers. Learn this volume first, then Volume III §2–§6.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>Definitions to write word-for-word</h2>
+
+<table>
+<thead><tr><th style="width:20%">Term</th><th>Definition</th></tr></thead>
+<tbody>
+<tr><td><b>Data</b></td><td><b>Raw facts, figures or symbols</b> about people, things, events or processes that can be collected, measured and analysed. It is raw and unprocessed and <b>has no meaning on its own</b> — e.g. 25°C, or a person's age = 25.</td></tr>
+<tr><td><b>Information</b></td><td><b>Processed and organized data that is meaningful and useful</b> and helps in decision making — e.g. "Mary scored 25 marks in January." It is structured, organized and active.</td></tr>
+<tr><td><b>Information management</b></td><td>The process of <b>collecting, storing, organizing and managing information efficiently</b>.</td></tr>
+<tr><td><b>Data science</b></td><td>A <b>multi-disciplinary field that uses data, algorithms and scientific methods to extract insight and knowledge</b> from structured, semi-structured and unstructured datasets, combining computer science, statistics and machine learning to collect, clean, analyse and visualize data.</td></tr>
+<tr><td><b>Data lifecycle</b></td><td>The <b>stages data goes through from creation to deletion</b>.</td></tr>
+<tr><td><b>Metadata</b></td><td><b>Data about data</b> — structured information that describes, explains, locates or otherwise makes it easier to retrieve, use or manage an information resource.</td></tr>
+<tr><td><b>Information retrieval system</b></td><td>A system that <b>searches and retrieves relevant information from stored data</b> — e.g. search engines, library catalogue systems, e-commerce search.</td></tr>
+<tr><td><b>Indexing</b></td><td>A technique used to <b>speed up data retrieval by creating a reference (index) to data</b>, like the index in a book. Also: the process of creating a data structure that improves search speed.</td></tr>
+<tr><td><b>DDDM</b></td><td><b>Data-driven decision making</b> — the process of making decisions <b>based on data analysis rather than intuition</b>.</td></tr>
+<tr><td><b>Information privacy</b></td><td>The <b>right of individuals or organizations to control how their data is collected, used and shared</b>.</td></tr>
+<tr><td><b>Encryption</b></td><td>The process of <b>converting data into an unreadable format</b> — e.g. plain text "Hello" → "x592@H".</td></tr>
+<tr><td><b>Data masking</b></td><td><b>Hiding sensitive data</b> — e.g. showing a card number as <code>xxx 1234</code>.</td></tr>
+<tr><td><b>Database</b></td><td>A <b>collection of interrelated data stored together with controlled redundancy to serve one or more applications in an optimal fashion</b>, organized so that a computer program can quickly select desired pieces of information. Also: an <b>integrated, self-describing collection of related data</b>.</td></tr>
+<tr><td><b>DBMS</b></td><td>A <b>collection of related data and software programs used to define, construct, maintain and manipulate data in a database</b> — it enables you to store, modify and extract data. E.g. SQL Server, Access, Oracle.</td></tr>
+<tr><td><b>Transaction</b></td><td>A <b>sequence of actions that represent a logical unit of work</b>, transforming the database from one state to another.</td></tr>
+<tr><td><b>Database model</b></td><td>An <b>organizing principle that specifies a particular mechanism for data storage and retrieval</b>.</td></tr>
+<tr><td><b>Database architecture</b></td><td>How the database is <b>structured</b> — how data flows between its parts; the <b>blueprint for storing, managing and accessing data efficiently</b>.</td></tr>
+<tr><td><b>Logical data independence</b></td><td>The ability to <b>change the conceptual (logical) schema without changing the external schema or application program</b>.</td></tr>
+<tr><td><b>Physical data independence</b></td><td>The ability to <b>change the physical storage scheme without changing the conceptual/logical schema</b>.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2><span class="n">2</span>Data vs information <span class="tag">PAST Q — SCENARIO</span></h2>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:20%">Basis</th><th>Data</th><th>Information</th></tr></thead>
+<tbody>
+<tr><td>What it is</td><td>Raw, unprocessed facts, figures or symbols</td><td>Processed and organized data</td></tr>
+<tr><td>Meaning</td><td><b>Has no meaning on its own</b></td><td><b>Meaningful and useful</b></td></tr>
+<tr><td>Purpose</td><td>The raw material, awaiting meaning</td><td>Supports <b>decision making</b></td></tr>
+<tr><td>Form</td><td>Binary digital encoded (0, 1), measured in bits, bytes, gigabytes</td><td>Structured, organized and active</td></tr>
+<tr><td>Dependency</td><td>Independent — exists on its own</td><td><b>Depends on data</b> — cannot exist without it</td></tr>
+<tr><td>Example</td><td>25, 28, 30 — bare marks</td><td>"Mary scored 25 marks in January"</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Data by nature:</b> <b>quantitative</b> — numeric information that can be measured (weight, height, sales figures, temperature) · <b>qualitative</b> — descriptive information expressing characteristics or attributes (customer feedback, colour of a car, satisfaction level).</p>
+</div>
+<div>
+<div class="box star" style="padding:6pt 8pt">
+<h4>Answering the supermarket scenario</h4>
+<i>"A supermarket chain records millions of customer transactions daily. Explain the difference between data and information using this scenario."</i>
+<hr class="thin">
+<b>The data</b> is the raw transaction records themselves — every individual line: item purchased, price, quantity, till number, date and time. On their own these millions of rows mean nothing; no manager can look at them and decide anything.
+<br><br>
+<b>The information</b> is what emerges once those records are processed and organized — "bread sales rose 18% in Port Harcourt branches in June", "Saturday afternoon is the busiest trading period", "customers who buy nappies also buy milk". Each of these is <b>meaningful, useful and directly supports a decision</b>: what to restock, when to roster more staff, which products to shelve together.
+<br><br>
+<b>The one-line summary:</b> the supermarket <i>collects</i> data but <i>manages the business with</i> information — the transactions are the raw material, and processing them into sales trends is what turns them into information.
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">3</span>Information management and the data lifecycle <span class="tag">PAST Q</span></h2>
+
+<div class="grid2">
+<div>
+<h4>Core components of information management (6)</h4>
+<ol style="font-size:9.1pt">
+<li><b>Data collection</b> — gathering raw data from sources (forms, sensors, logs)</li>
+<li><b>Data storage</b> — saving data in databases, cloud or files</li>
+<li><b>Data organization</b> — structuring data into tables, categories or format</li>
+<li><b>Data processing</b> — converting raw data into useful information</li>
+<li><b>Data retrieval</b> — accessing stored data when needed</li>
+<li><b>Data security</b> — protecting stored data from unauthorized access</li>
+</ol>
+<h4>Objectives of information management (4)</h4>
+<p style="font-size:9.1pt">Improved decision making · ensure data accuracy and consistency · enhance efficiency · support business operation.</p>
+<h4>Real-world examples (3)</h4>
+<p style="font-size:9.1pt">Banking systems managing transactions · hospital systems managing patient records · e-commerce platforms tracking orders.</p>
+</div>
+<div>
+<h4>The eight stages of the data lifecycle</h4>
+<table class="tight">
+<thead><tr><th class="c" style="width:8%">#</th><th style="width:32%">Stage</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><b>Data creation</b></td><td>Generation from sources — users or systems</td></tr>
+<tr><td class="c">2</td><td><b>Data collection</b></td><td>Gathering the data</td></tr>
+<tr><td class="c">3</td><td><b>Data storage</b></td><td>Saving it in databases or the cloud</td></tr>
+<tr><td class="c">4</td><td><b>Data processing</b></td><td>Cleaning and transforming</td></tr>
+<tr><td class="c">5</td><td><b>Data analysis</b></td><td>Finding patterns and trends</td></tr>
+<tr><td class="c">6</td><td><b>Data distribution</b></td><td>Sharing results with those who need them</td></tr>
+<tr><td class="c">7</td><td><b>Data archiving</b></td><td>Moving inactive data to long-term storage</td></tr>
+<tr><td class="c">8</td><td><b>Data deletion</b></td><td>Secure disposal at end of life</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Importance of the data lifecycle:</b> ensures data quality · improves data quality and usefulness · supports <b>compliance and security</b>.</p>
+<div class="box" style="padding:5pt 7pt"><b>Key insight to quote:</b> <i>better data leads to better decisions.</i></div>
+</div>
+</div>
+
+<div class="box star">
+<h4>Answering the healthcare-records scenario <span class="tag">PAST Q · 8 MARKS</span></h4>
+<i>"A healthcare company stores patient records for ten years before deletion. Outline and discuss the stages of the data lifecycle involved."</i> — walk the eight stages <b>through that specific story</b>:
+<b>1. Creation</b> — the record is generated at the point of care: consultation notes, test results, vital signs. <b>2. Collection</b> — gathered into the hospital's system from wards, labs and monitoring devices. <b>3. Storage</b> — saved in the EHR database, with backups. <b>4. Processing</b> — cleaned, coded and transformed into a standard format so records from different departments agree. <b>5. Analysis</b> — used for diagnosis, treatment planning and disease prediction. <b>6. Distribution</b> — shared with authorized clinicians, and with insurers or regulators under consent. <b>7. Archiving</b> — after the patient becomes inactive, records move to long-term storage but must remain retrievable for the full <b>ten-year retention period</b>, which is a legal and compliance requirement, not a technical one. <b>8. Deletion</b> — at the end of the ten years the records are securely destroyed, because keeping personal health data longer than its purpose requires violates <b>data minimization</b> and privacy regulation such as HIPAA.
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">4</span>Data science, DDDM and data collection</h2>
+
+<div class="grid2">
+<div>
+<h4>How data is used in data science (5 steps)</h4>
+<ol style="font-size:9.1pt">
+<li><b>Data is collected</b> — from databases, APIs, sensors</li>
+<li><b>Data cleaning</b> — removing errors, duplicates, spaces</li>
+<li><b>Data analysis</b> — finding patterns and trends</li>
+<li><b>Model building</b> — predictive models, e.g. machine learning</li>
+<li><b>Decision making</b> — business insights and strategies</li>
+</ol>
+<p style="font-size:9.1pt"><b>Examples:</b> Netflix recommending movies · TikTok · banks detecting fraud · hospitals predicting disease.<br>
+<b>Importance of data:</b> data is the <b>foundation</b> of data science — <b>without data, analysis is impossible</b>.</p>
+<h4>Data-driven decision making — 6 steps</h4>
+<p style="font-size:9.1pt">Data collection → data processing → data analysis → interpretation → decision making → prediction.<br>
+<b>Example:</b> sales data shows declining product demand → decision: reduce production or improve marketing.</p>
+<table class="tight">
+<thead><tr><th>Advantages of DDDM</th><th>Challenges of DDDM</th></tr></thead>
+<tbody>
+<tr><td>More accurate decisions</td><td>Poor data quality</td></tr>
+<tr><td>Reduced risks</td><td>Lack of skills</td></tr>
+<tr><td>Better performance</td><td>Data overload</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<h4>The three data collection techniques</h4>
+<table class="tight">
+<thead><tr><th style="width:18%">Technique</th><th>What it is · examples</th><th style="width:22%">Advantages</th><th style="width:22%">Disadvantages</th></tr></thead>
+<tbody>
+<tr><td><b>Manual</b></td><td>Collected by humans without automation — surveys, questionnaires, paper forms, interviews, observation</td><td>Low cost and simple · flexible</td><td>Time consuming · prone to human error · difficult to scale</td></tr>
+<tr><td><b>Sensor-based</b></td><td>Collected automatically by devices — thermometers, temperature sensors, biometric scanners, IoT, GPS</td><td>Real-time data · high accuracy · automation</td><td>Expensive · requires maintenance · may produce large data volumes</td></tr>
+<tr><td><b>API-based</b></td><td>Collected from external systems via <b>Application Program Interfaces</b> — weather API, social media API, payment gateways</td><td>Fast and automated · access to large datasets · real-time updates</td><td>Requires programming knowledge · API limits/restrictions · depends on external systems</td></tr>
+</tbody>
+</table>
+<h4>Use cases of data science, by sector</h4>
+<p style="font-size:9.1pt"><b>Healthcare</b> — patient records, disease prediction · <b>Banking</b> — fraud detection, transaction tracking · <b>E-commerce</b> — product recommendation, customer behaviour analysis · <b>Education</b> — student performance prediction, learning analytics · <b>Transportation</b> — traffic prediction, ride sharing.</p>
+</div>
+</div>
+
+<h3>Data formats — the classification question <span class="tag">PAST Q</span></h3>
+<table class="tight">
+<thead><tr><th style="width:16%">Format</th><th style="width:30%">Definition</th><th style="width:26%">Characteristics</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td><b>Structured</b></td><td>Data organized in a <b>fixed format</b>, usually in tables</td><td>Rows and columns · easy to store and query · highly organized</td><td>Student records · <b>SQL tables and a customer database</b> · Excel spreadsheets</td></tr>
+<tr><td><b>Semi-structured</b></td><td>Data that <b>does not follow strict tables but has some structure</b></td><td>Flexible structure · uses tags or key-value pairs</td><td><b>JSON files · XML documents · emails</b></td></tr>
+<tr><td><b>Unstructured</b></td><td>Data with <b>no predefined format or structure</b></td><td>Difficult to analyse · large in volume · requires advanced tools (AI, NLP)</td><td><b>Videos · images · comments · audio recordings</b> · social media posts</td></tr>
+</tbody>
+</table>
+<div class="box" style="padding:6pt 8pt">
+<b>The past-paper classification, answered.</b> <i>"A social media platform stores videos, images and comments, XML documents, audio recordings, emails, a customer database and a JSON file — classify each."</i><br>
+<b>Unstructured:</b> videos · images · comments · audio recordings. <b>Semi-structured:</b> XML documents · emails · the JSON file. <b>Structured:</b> the customer database.<br>
+<span style="font-size:8.6pt">A JSON example to quote: <code>{ "Name": "John", "Age": 20 }</code> — it has keys and values, so it has <i>some</i> structure, but no fixed table.</span>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">5</span>Storage, retrieval, indexing and search</h2>
+
+<div class="grid2">
+<div>
+<h4>The two storage methods compared</h4>
+<table class="tight">
+<thead><tr><th style="width:18%">Basis</th><th>File-based storage</th><th>Database system (DBMS)</th></tr></thead>
+<tbody>
+<tr><td>What it is</td><td>Data stored in <b>separate files</b> — text files, spreadsheets</td><td>A <b>structured system</b> where data is stored in tables and managed by a DBMS</td></tr>
+<tr><td>Characteristics</td><td>Flat files (.txt, .csv) · each file independent · <b>no central control</b></td><td><b>Centralized</b> storage · tables of rows and columns · supports relationships (keys)</td></tr>
+<tr><td>Advantages</td><td>Simple to use · low cost · suitable for small systems</td><td>Reduces redundancy · better data integrity · improved security · easy data retrieval · <b>multi-user access</b></td></tr>
+<tr><td>Disadvantages</td><td><b>Data redundancy</b> · data inconsistency · difficult data sharing · poor security · <b>no relationship between data</b></td><td>Very expensive · requires an expert or administrator · complex to manage</td></tr>
+</tbody>
+</table>
+<h4>Information retrieval system</h4>
+<p style="font-size:9.1pt"><b>Components (5):</b> data collection · indexing system · query processor · search engine · user interface.<br>
+<b>Retrieval process (4):</b> user enters query → system searches indexed data → matches result → returns relevant information.<br>
+<b>Types of retrieval:</b> <b>exact match</b> (database query) · <b>best match</b> (search engines).</p>
+</div>
+<div>
+<h4>The four types of index</h4>
+<table class="tight">
+<thead><tr><th style="width:26%">Index</th><th>Based on</th></tr></thead>
+<tbody>
+<tr><td><b>Primary index</b></td><td>The <b>primary key</b> — unique values</td></tr>
+<tr><td><b>Secondary index</b></td><td><b>Non-key attributes</b> — may have duplicates</td></tr>
+<tr><td><b>Clustered index</b></td><td>Data <b>stored in order</b></td></tr>
+<tr><td><b>Non-clustered index</b></td><td>A <b>separate structure pointing to</b> the data</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Benefits of indexing:</b> faster search · improved query performance.<br>
+<b>Limitations of indexing:</b> takes extra storage · <b>slows down data updates</b> (every insert or update must maintain the index too).</p>
+<div class="box star" style="padding:6pt 8pt">
+<h4>The 20-million-record bank scenario <span class="tag">PAST Q</span></h4>
+Without an index, a query must perform a <b>linear search</b> — checking all 20 million records one after another until the target is found, which is slow and grows worse as the bank adds customers. An <b>index</b> is a separate reference structure, typically a <b>B-tree</b>, holding the indexed values in sorted order with pointers to the actual rows. The query engine <b>searches the index, locates the pointer and retrieves only the matching record</b>, so it never scans the table. The <b>WHERE</b> condition is what benefits, and the effect grows with table size — which is exactly why it matters at 20 million rows and not at 20. The price is <b>extra storage</b> and <b>slower inserts and updates</b>, because every write must also update the index.
+</div>
+</div>
+</div>
+
+<h3>The two search techniques and the two index structures</h3>
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:18%">Technique</th><th>How it works</th><th style="width:22%">Advantages</th><th style="width:22%">Disadvantages</th></tr></thead>
+<tbody>
+<tr><td><b>Linear (sequential) search</b></td><td>All elements are checked one after another until the target is found: start at the first record, compare each value, stop when found or when the end is reached</td><td>Simple to implement · works on <b>unsorted</b> data</td><td>Slow for large datasets · poor time complexity</td></tr>
+<tr><td><b>Index search</b></td><td>Uses an index to locate data <b>without scanning all records</b>: search the index, locate the pointer, retrieve the actual data</td><td>Much faster · efficient for large data</td><td>Requires extra storage · index maintenance overhead</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Worked example from class:</b> search for 25 in <code>{10, 15, 25, 30}</code> — linear search checks 10, then 15, then 25 and stops. An index search would go straight to it.</p>
+</div>
+<div>
+<table class="tight">
+<thead><tr><th style="width:18%">Structure</th><th>How it works</th><th style="width:22%">Advantages</th><th style="width:22%">Disadvantages</th></tr></thead>
+<tbody>
+<tr><td><b>B-tree indexing</b></td><td>A <b>balanced tree structure</b> storing <b>sorted</b> data. Nodes contain multiple keys; <b>all leaf nodes are at the same level</b>. Search by traversing tree levels</td><td>Efficient for large datasets · balanced structure gives <b>consistent performance</b> · <b>supports range queries</b></td><td>Complex structure · requires maintenance</td></tr>
+<tr><td><b>Hashing</b></td><td>Uses a <b>hash function to map a key to a specific location</b> in memory — <code>Hash(25) → Address 5</code></td><td><b>Very fast look-up</b> · good time complexity</td><td><b>Collision</b> — two keys map to the same location · <b>not suitable for range queries</b></td></tr>
+</tbody>
+</table>
+<pre>B-tree:      [20]
+            /    \
+        [10]   [30, 40]      all leaves on one level</pre>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">6</span>Querying data efficiently and SQL</h2>
+
+<div class="grid2">
+<div>
+<h4>The class table — <code>StudentDB</code></h4>
+<table class="tight">
+<thead><tr><th class="c">S/N</th><th>Name</th><th>MatNo</th><th class="c">Age</th><th>Dept</th><th class="c">Sex</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>John</td><td>2025/PGD/001</td><td class="c">22</td><td>Agric Sc</td><td class="c">M</td></tr>
+<tr><td class="c">2</td><td>Ada</td><td>2025/PGD/002</td><td class="c">24</td><td>Economics</td><td class="c">F</td></tr>
+<tr><td class="c">3</td><td><b>Rueben</b></td><td>2025/PGD/003</td><td class="c"><b>30</b></td><td>Maths</td><td class="c">M</td></tr>
+<tr><td class="c">4</td><td><b>Eze</b></td><td>2025/PGD/004</td><td class="c"><b>32</b></td><td>Computer Sc</td><td class="c">M</td></tr>
+<tr><td class="c">5</td><td>Obuchi</td><td>2025/PGD/005</td><td class="c">21</td><td>Law</td><td class="c">F</td></tr>
+</tbody>
+</table>
+<pre>SELECT Name FROM StudentDB WHERE Age >= 30;
+
+Result:  Rueben
+         Eze</pre>
+<h4>Six techniques for efficient queries</h4>
+<ol style="font-size:9.1pt">
+<li><b>Use an index</b> — speeds up the <code>WHERE</code> condition</li>
+<li><b>Avoid <code>SELECT *</code></b> — retrieve only the needed columns</li>
+<li><b>Use <code>WHERE</code> properly</b> — filter the data at the source</li>
+<li><b>Use <code>JOIN</code> efficiently</b> — join Table 1 <code>(Name, MatNo, Age, Dept, Sex)</code> to Table 2 <code>(State, LGA)</code> to get the combined row</li>
+<li><b>Limit results</b> — return only the rows you need</li>
+<li><b>Use aggregation carefully</b> — e.g. <code>SELECT COUNT(*) FROM Table1</code></li>
+</ol>
+<p style="font-size:9.1pt"><b>Query optimization concept:</b> the <b>query optimizer chooses the best execution plan</b> — by reducing disk access, by reducing CPU usage, and by using indexes and statistics.</p>
+</div>
+<div>
+<h4>The four sub-languages of SQL <span class="tag">LEARN THE TABLE</span></h4>
+<table class="tight">
+<thead><tr><th class="c" style="width:12%">Category</th><th style="width:32%">Full name</th><th style="width:22%">What you do</th><th>Keywords</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>DQL</b></td><td>Data Query Language</td><td><b>Read</b> data</td><td><code>SELECT</code></td></tr>
+<tr><td class="c"><b>DML</b></td><td>Data Manipulation Language</td><td><b>Change</b> data</td><td><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></td></tr>
+<tr><td class="c"><b>DDL</b></td><td>Data Definition Language</td><td><b>Define</b> structure</td><td><code>CREATE</code>, <code>ALTER</code>, <code>DROP</code></td></tr>
+<tr><td class="c"><b>DCL / TCL</b></td><td>Data Control / Transaction Control Language</td><td><b>Permission and transaction</b></td><td><code>GRANT</code>, <code>REVOKE</code>, <code>COMMIT</code>, <code>ROLLBACK</code></td></tr>
+</tbody>
+</table>
+<h4>The core statements, as written in class</h4>
+<pre>SELECT Name, Price
+FROM Products
+WHERE Category = 'iphones'
+ORDER BY Price DESC
+LIMIT 10;
+
+INSERT INTO Users (Name, Email)
+VALUES ('Ada', 'ada@gmail.com');
+
+UPDATE Products
+SET Price = Price * 1.1
+WHERE Category = 'iphone';</pre>
+<div class="box" style="padding:5pt 7pt"><b>Clause order never changes:</b> <code>SELECT … FROM … WHERE … GROUP BY … HAVING … ORDER BY … LIMIT</code>. Writing <code>WHERE</code> after <code>ORDER BY</code> is a syntax error and an easy lost mark.</div>
+<p style="font-size:9.1pt"><b>Real-world applications:</b> e-commerce — fast product search using indices · banking — quick transaction retrieval · social media — searching users.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">7</span>Privacy, integrity and security <span class="tag">PAST Q</span></h2>
+
+<div class="grid2">
+<div>
+<h4>The five key principles of privacy</h4>
+<ol style="font-size:9.1pt">
+<li><b>Consent</b> — data should be collected with user permission</li>
+<li><b>Purpose limitation</b> — data used only for its intended purpose</li>
+<li><b>Data minimization</b> — collect only necessary data</li>
+<li><b>Transparency</b> — inform users how data is used</li>
+<li><b>Accountability</b> — organizations are responsible for data protection</li>
+</ol>
+<div class="box star" style="padding:6pt 8pt">
+<h4>Why user consent matters <span class="tag">PAST Q</span></h4>
+Consent is the <b>first principle of information privacy</b> — the right of individuals to <b>control how their data is collected, used and shared</b>. Without it, collection is <b>unauthorized access</b> and exposes the customer to <b>identity theft and data misuse</b>. It is also a <b>legal requirement</b> under GDPR, HIPAA and Nigeria's data protection laws, so collecting without it risks penalties. And it is commercial: consent builds the <b>trust and transparency</b> that keep customers willing to share data at all. Consent also bounds the other principles — it is what defines the "intended purpose" that <b>purpose limitation</b> then restricts you to.
+</div>
+<p style="font-size:9.1pt"><b>Types of data:</b> personal (name, age) · financial (bank details) · health records · biometric · academic.<br>
+<b>Privacy risks:</b> identity theft · data misuse · unauthorized access.<br>
+<b>Regulations:</b> <b>GDPR</b> (Europe) · <b>HIPAA</b> (healthcare) · <b>local data protection laws</b> (Nigeria).</p>
+</div>
+<div>
+<h4>Five data protection techniques</h4>
+<table class="tight">
+<thead><tr><th style="width:26%">Technique</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><b>Encryption</b></td><td>Converts data into an unreadable format — "Hello" → "x592@H". Two types: <b>symmetric</b> and <b>asymmetric</b></td></tr>
+<tr><td><b>Access control</b></td><td>Restricts who can view or modify data — <b>role-based access control</b> and <b>user authentication</b> (password / biometrics)</td></tr>
+<tr><td><b>Backup and recovery</b></td><td>Regular backups prevent data loss; recovery systems restore data after failure</td></tr>
+<tr><td><b>Data masking</b></td><td><b>Hiding sensitive data</b> — e.g. a card shown as <code>xxx 1234</code></td></tr>
+<tr><td><b>Firewalls and antivirus</b></td><td>Protect against unauthorized access and malware</td></tr>
+</tbody>
+</table>
+<h4>Threats and the controls that answer them</h4>
+<table class="tight">
+<thead><tr><th style="width:34%">Threat</th><th>Control</th></tr></thead>
+<tbody>
+<tr><td><b>Malware</b> — viruses, worms, ransomware</td><td><b>Firewalls</b> — block unauthorized network access</td></tr>
+<tr><td><b>Phishing</b> — fake emails to steal information</td><td><b>Authentication</b> — verify user identity</td></tr>
+<tr><td><b>Unauthorized access</b> — hackers accessing systems</td><td><b>Authorization</b> — define what users can access</td></tr>
+<tr><td><b>SQL injection</b> — malicious SQL commands</td><td><b>Update and patching</b> — fix system vulnerabilities</td></tr>
+<tr><td><b>Data breaches</b> — exposure of sensitive data</td><td><b>Encryption</b> · <b>monitoring and auditing</b> — track system activities</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>How data masking protects sensitive information:</b> it <b>replaces or hides part of a sensitive value</b> while leaving the record usable — a card number displayed as <code>xxx 1234</code> still identifies the card to its owner but is <b>useless to anyone who sees it</b>, whether a call-centre agent, a developer testing on real data, or an attacker who obtains the screen. Unlike encryption it is not reversed for the viewer — the hidden digits are simply never shown.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">8</span>Databases, the DBMS and its services</h2>
+
+<div class="grid2">
+<div>
+<h4>The four components of a database</h4>
+<table class="tight">
+<thead><tr><th style="width:24%">Component</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><b>1. Data</b></td><td>Any computer representation of a stored logical entity — discrete pieces of information usually formatted in a special way</td></tr>
+<tr><td><b>2. Relationship</b></td><td>Represents a <b>correspondence between various elements</b></td></tr>
+<tr><td><b>3. Constraints</b></td><td><b>Predicates that define the correct state</b> of the database</td></tr>
+<tr><td><b>4. Schema</b></td><td>Describes the <b>organization of and relationships between</b> the database — the design of the database</td></tr>
+</tbody>
+</table>
+<h4>Why several tables? — the class explanation</h4>
+<p style="font-size:9.1pt">Given Table 1 <code>(Age, Name, MatNo)</code>, Table 2 <code>(LGA, State)</code>, Table 3 <code>(Religion, Country)</code>, Table 4 <code>(PA, Sex, Height)</code> — the schema separates the data into tables that are <b>related because common attributes exist in a selected pair of the tables</b>. Because of those common attributes we can <b>combine two or more tables to get the complete data of each student</b>. That is exactly what a <code>JOIN</code> does.</p>
+<h4>The DBMS</h4>
+<p style="font-size:9.1pt">The DBMS is made up of <b>(a) the database, (b) the DBMS itself, (c) the application program</b> — what the user interacts with. Its <b>primary goal is to provide a mechanism where data can be stored and information retrieved</b> from the database.</p>
+<pre>  User
+    ↓
+┌───────────────────────────────┐
+│  Application Process          │
+│ ┌───────────────────────────┐ │      ┌──────────┐
+│ │ Transaction Processing    │─┼─────▶│ DB       │
+│ │ Data Management           │ │      │ metadata │
+│ └───────────────────────────┘ │      └──────────┘
+└───────────────────────────────┘  DBS</pre>
+</div>
+<div>
+<h4>The seven services of the DBMS</h4>
+<table class="tight">
+<thead><tr><th style="width:24%">Service</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><b>1. Transaction management</b></td><td>A <b>transaction is a sequence of actions representing a logical unit of work</b>, transforming the database from one state to another. On <b><code>COMMIT</code></b> the changes are made <b>permanent</b>; on <b><code>ROLLBACK</code></b> the transaction returns to its original state.</td></tr>
+<tr><td><b>2. Concurrency control</b></td><td>Coordinates <b>database manipulation processes that operate concurrently</b>, access shared data and can potentially interfere with one another. Its goal is to <b>allow concurrency while maintaining consistency</b> of the shared data.</td></tr>
+<tr><td><b>3. Recovery management</b></td><td>Ensures that an <b>aborted or failed transaction does not adversely affect</b> the database or other transactions — the database is <b>returned to a consistent state</b> after a failure.</td></tr>
+<tr><td><b>4. Security management</b></td><td>The <b>protection of data against unauthorized access</b> — only authorized users or administrators may reach the database.</td></tr>
+<tr><td><b>5. Language interface</b></td><td>Provides the languages for the <b>definition and manipulation</b> of data — structures created with the <b>DDL</b>, manipulation done with <b>DML</b> commands.</td></tr>
+<tr><td><b>6. Storage management</b></td><td>Manages the <b>permanent storage</b> of data. The <b>internal schema</b> defines how data is stored, and the storage manager <b>interfaces with the operating system</b> to reach physical storage.</td></tr>
+<tr><td><b>7. Data catalog management</b></td><td>The <b>data catalog</b> is a system database holding <b>metadata</b> — information about data, relationships, constraints and the entire schema — organized into a unified database that <b>can itself be queried</b> to learn the structure of the database.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<h3>Why the DBMS replaced the file-based system</h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.1pt">The <b>file-based system was developed in response to industry's need for more efficient data access</b>, but it has <b>three named limitations</b> — this is a standard exam question:</p>
+<ol style="font-size:9.1pt">
+<li><b>Segregation and isolation of data</b> — when data is isolated in separate files it is more difficult to access data that should be available; the difficulty is compounded when data is required from more than two files.</li>
+<li><b>Duplication of data</b> — because each department takes a <b>decentralized</b> approach, the FBS encourages <b>uncontrolled duplication</b>, and duplication is wasteful.</li>
+<li><b>Data dependency</b> — the <b>physical structure and storage</b> of files and records are <b>defined in the application code</b>, so changes to an existing structure are difficult to make.</li>
+</ol>
+</div>
+<div>
+<p style="font-size:9.1pt"><b>Applications of a database (7):</b> purchasing from the supermarket · using credit cards · booking a vacation with a travel agent · a computerized library system · using the internet · taking out insurance · renting a video.</p>
+<div class="box" style="padding:5pt 7pt"><b>Note the symmetry worth writing:</b> each FBS limitation is answered by a DBMS advantage — <b>isolation</b> is answered by <b>centralized storage and relationships</b>, <b>duplication</b> by <b>controlled redundancy</b>, and <b>data dependency</b> by <b>data independence</b> (§10). Structuring the answer that way turns a list into an argument.</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">9</span>Database models</h2>
+
+<p>A <b>database model is an organizing principle that specifies a particular mechanism for data storage and retrieval</b>. The primary difference between models lies in <b>the methods of expressing relationships and constraints among the data elements</b>. The <b>relational model is the current favoured model</b>, while object-oriented and structured models are emerging.</p>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:14%">Model</th><th style="width:30%">How it organizes data</th><th style="width:26%">Advantages</th><th>Disadvantages</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><b>Hierarchical</b></td><td>Organizes data elements as <b>tabular rows, one per instance of an entity</b>, in a <b>tree</b>: parent → child. E.g. a company's GM above departmental managers</td><td>Simple · has data security and integrity · efficient (not complicated) · fast access</td><td>Implementation complexity · database management problems · <b>lack of structural independence</b> · programming complexity · implementation limitation · <b>rigid, difficult to modify</b></td></tr>
+<tr><td class="c">2</td><td><b>Network</b></td><td><b>Replaces the hierarchical tree with a graph</b>, allowing more general connections among nodes. Its defining difference is the <b>many-to-many (n-n)</b> relationship — records may have <b>more than one parent</b></td><td>Conceptual simplicity · handles more relationship types · ease of data access · data integrity and independence · database standards</td><td>System complexity · absence of structural independence</td></tr>
+<tr><td class="c">3</td><td><b>Relational</b></td><td><b>Stores data in tables.</b> Powerful because it requires <b>few assumptions</b> about how data is related or extracted, so the <b>same database can be viewed in different ways</b> and a single database can be <b>spread across several tables</b>. Each table corresponds to an entity, each row to an instance</td><td>Simple and widely used · easy querying with SQL · flexible views</td><td>Less flexible for very complex data</td></tr>
+<tr><td class="c">4</td><td><b>Object oriented</b></td><td>Data stored as <b>objects</b>, as in programming</td><td>Handles complex data</td><td>Complex implementation</td></tr>
+<tr><td class="c">5</td><td><b>Semi-structured</b></td><td>A flexible model using formats like <b>JSON and XML</b></td><td>Adaptable · used in modern web systems</td><td>Weaker guarantees than a fixed schema</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Also named in the notes:</b> the <b>object-relational model</b> and the <b>deductive model</b>.</p>
+
+<div class="grid2">
+<div>
+<h4>The Book / Distributor relationship example</h4>
+<pre>Book ──── 1:1 ──── Distributor
+   given a book, its distributor is determined
+
+Book ──── n:1 ──── Distributor
+   what books does this distributor supply?
+
+Book ──── n:n ──── Distributor
+   combines both; readable from either side</pre>
+<p style="font-size:9.1pt">The notes use this to make one point: <b>the same real-world relationship can be depicted in several ways, and the model you choose decides which questions are cheap to answer.</b></p>
+</div>
+<div>
+<h4>The hierarchical example from class</h4>
+<pre>                General Manager
+        ┌───────────┬────────────┬──────────┐
+      Sales     Treasury      Supply    Accounts
+      Manager    Manager     Manager    Manager
+        └───────────┴────────────┴──────────┘
+                   Departments</pre>
+<p style="font-size:9.1pt">Note the sentence the notes give for why the hierarchical model fell out of use: <b>many of its limitations result from its overly restrictive view of relationships</b> — a child may have only one parent, which real data often violates. That is precisely the gap the <b>network model's n-n relationship</b> was invented to fill.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">10</span>Database architecture and independence</h2>
+
+<div class="grid2">
+<div>
+<h4>The ANSI/SPARC three-level architecture</h4>
+<p style="font-size:9.1pt">Used in most RDBMS — Postgres, MySQL, Oracle. <b>Database architecture is how the database is structured — how data flows between its parts; the blueprint for storing, managing and accessing data efficiently.</b></p>
+<table class="tight">
+<thead><tr><th style="width:24%">Level</th><th>What it holds</th></tr></thead>
+<tbody>
+<tr><td><b>1. External / View</b></td><td>The <b>area or angle the users see</b> — views, reports, app interfaces. The user <b>cannot see the whole database</b>; complexity is hidden and security is added</td></tr>
+<tr><td><b>2. Conceptual / Logical</b></td><td><b>DBMS independent</b>; where the <b>DBA works</b>. It holds the <b>"what"</b> — tables, relationships, constraints and schemas</td></tr>
+<tr><td><b>3. Internal / Physical</b></td><td><b>How data is stored</b> — files, indices, data blocks, partitions, on disk or SSD</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Types of database architecture:</b> <b>client–server</b> · <b>three-tier</b>.</p>
+<pre>┌──────────────────────────────┐
+│ EXTERNAL   views · reports   │ ← what users see
+├──────────────────────────────┤
+│ CONCEPTUAL tables · relations│ ← what the DBA designs
+├──────────────────────────────┤
+│ INTERNAL   files · indices   │ ← how it is stored
+└──────────────────────────────┘</pre>
+</div>
+<div>
+<h4>The two independences — and why the levels exist</h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Independence</th><th>Definition</th><th>Class example</th></tr></thead>
+<tbody>
+<tr><td><b>Logical data independence</b></td><td>The ability to <b>change the conceptual (logical) schema without changing the external schema or application program</b></td><td>You add a new column <code>Middle-Name</code> to the <code>Customers</code> table. If the application, running <code>SELECT First-Name, Middle-Name FROM Customers_Table</code>, keeps working, the database is <b>logically independent</b></td></tr>
+<tr><td><b>Physical data independence</b></td><td>The ability to <b>change the physical storage scheme without changing the conceptual/logical schema</b></td><td>You move <code>Customers_Table</code> from <b>HDD to SSD</b>. If the application keeps working, you have <b>physical independence</b></td></tr>
+</tbody>
+</table>
+<div class="box star" style="padding:6pt 8pt">
+<h4>"How does adding new database fields affect logical independence?" <span class="tag">PAST Q</span></h4>
+Adding a field changes the <b>conceptual/logical schema</b>. Logical data independence is precisely the property that this change <b>does not force a change to the external schema or the application programs</b> — existing views and queries that never mention the new column continue to run unchanged, because each external view exposes only the subset of the schema it was defined over.
+<br><br>
+So a well-designed three-level architecture <b>absorbs</b> the addition: the DBA adds <code>Middle-Name</code> at the conceptual level, and programs using <code>SELECT First-Name FROM Customers_Table</code> are unaffected. Independence <b>fails</b> only where an application depends on the schema's shape rather than on named columns — the classic case being <code>SELECT *</code>, which silently starts returning an extra column, or code that reads fields by position. <b>That is the strongest single argument for avoiding <code>SELECT *</code> in application code</b>, and it ties this question straight back to the efficient-query techniques in §6.
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">11</span>Sector applications — the table to memorise</h2>
+
+<table class="tight">
+<thead><tr><th style="width:12%">Sector</th><th style="width:24%">Data collected</th><th style="width:26%">Applications used</th><th style="width:20%">Benefits</th><th>Challenges</th></tr></thead>
+<tbody>
+<tr><td><b>Healthcare</b></td><td>Patient records (name, age, history) · medical images (X-ray, MRI) · lab results · vital signs (heart rate, blood pressure)</td><td><b>EHR</b> — centralized patient data storage · <b>CDSS</b> — clinical decision support helping doctors diagnose · telemedicine — remote consultation · health monitoring systems — wearables</td><td>Improved patient care · faster diagnosis · reduced errors</td><td>Data privacy concerns · high system cost · integration issues</td></tr>
+<tr><td><b>Finance</b></td><td>Transaction records · customer profiles · credit history · market data (stock monitoring)</td><td>Online banking systems · fraud detection systems · risk management systems · automated trading systems</td><td>Secure transactions · real-time processing · better financial decisions</td><td>Cyber security, threats and regulatory compliance</td></tr>
+<tr><td><b>Logistics</b></td><td>Shipment details · inventory levels · delivery routes · GPS tracking</td><td>Supply chain management · inventory management · route optimization · warehouse management</td><td>Efficient delivery · reduced cost · real-time tracking</td><td>Data integration · system complexity</td></tr>
+<tr><td><b>Social media</b></td><td>User profiles (text, likes, comments) · behavioural data · multimedia content</td><td>Recommendation systems · targeted advertising · content moderation · trend analysis</td><td>Personalized user experience · increased engagement · business insight</td><td>Privacy issues · misinformation · data overload</td></tr>
+</tbody>
+</table>
+
+<div class="box star">
+<h4>The ride-sharing GPS scenario <span class="tag">PAST Q</span></h4>
+<i>"A ride-sharing company collects GPS locations every second. Explain how this data supports business decision-making."</i> — this is a <b>DDDM question wearing a logistics costume</b>. Walk the six DDDM steps through it: the GPS stream is <b>collected</b> by sensor-based collection, <b>processed</b> and cleaned, <b>analysed</b> for patterns, <b>interpreted</b>, then used for <b>decisions</b> and <b>prediction</b>. Concretely, the company gains: <b>route optimization</b> — the shortest actual route given live traffic, cutting fuel cost and trip time · <b>demand forecasting</b> — which areas generate rides at which hours, so drivers are positioned before demand appears · <b>dynamic pricing</b> — surge where demand exceeds supply · <b>driver performance and safety monitoring</b> — speeding, harsh braking, idle time · <b>accurate ETAs</b>, which drive customer satisfaction and retention · and <b>expansion planning</b> — which new areas are underserved. Close with the DDDM definition itself: every one of these is a decision made <b>from data analysis rather than intuition</b>.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">12</span>Things you can lose easy marks on</h2>
+
+<div class="grid2">
+<div>
+<ol style="font-size:9.3pt">
+<li>Defining data and information in the same words. <b>Data has no meaning on its own; information is processed, meaningful and supports a decision.</b></li>
+<li>Answering a scenario question with pure theory. <b>Name the concept, then apply it to the hospital, supermarket or bank you were given.</b></li>
+<li>Calling email or XML unstructured. They are <b>semi-structured</b> — they have tags or key–value pairs.</li>
+<li>Saying indexing has no cost. It <b>takes extra storage and slows down updates.</b></li>
+<li>Claiming hashing is good for range queries. It is <b>not</b> — that is B-tree's advantage.</li>
+<li>Confusing the two independences. <b>Logical</b> = change the logical schema, applications survive; <b>physical</b> = change the storage, the logical schema survives.</li>
+</ol>
+</div>
+<div>
+<ol start="7" style="font-size:9.3pt">
+<li>Mixing up the DBMS services. <b>Concurrency</b> control coordinates simultaneous transactions; <b>recovery</b> management handles failed ones.</li>
+<li>Saying <code>COMMIT</code> can be undone. <b><code>COMMIT</code> makes changes permanent; <code>ROLLBACK</code> is what returns the transaction to its original state.</b></li>
+<li>Putting <code>DELETE</code> under DDL. <code>DELETE</code> removes <b>rows</b> and is <b>DML</b>; <code>DROP</code> removes the <b>table</b> and is DDL.</li>
+<li>Writing SQL clauses out of order or without a semicolon.</li>
+<li>Giving the hierarchical model's n-n relationship. Many-to-many is the <b>network</b> model — hierarchical allows only one parent.</li>
+<li>Listing three points where the question is worth 8 marks. <b>Marks are per point</b> — write the whole list.</li>
+</ol>
+</div>
+</div>
+
+<div class="box star">
+<h4>Timing plan for a 3-hour paper</h4>
+Both past papers say <b>"attempt any FIVE"</b>, so the first five minutes are spent <b>reading all the questions and choosing</b> — pick the five whose lists you know cold, and be willing to skip the one heaviest on unfamiliar material. Budget roughly <b>30 minutes per question</b>. For a scenario question, spend the first minute writing the <b>concept name and its definition</b>, then the rest applying it — that guarantees the definition marks before you risk anything on the application. For a question with parts (a), (b), (c), <b>split the time by the marks shown</b>, not evenly: a 3-mark part deserves a third of what an 8-mark part gets.
+</div>
+
+<div class="footer-note">
+CMS 706 · Database Systems · Volume I study guide<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>

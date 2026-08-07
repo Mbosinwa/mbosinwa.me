@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 710 Module 2 — Data Types and Structures — Schoolwork — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 710 Principles of Programming Languages: Primitive and composite types, user-defined types, type systems and data abstraction.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/schoolwork/cms-710-principles-of-programming-languages/module-2.html">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../schoolwork.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/schoolwork/" class="nav-link">Schoolwork</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/schoolwork/">Schoolwork</a> / <a href="index.html">CMS 710 Principles of Programming Languages</a> / Module 2 — Data Types and Structures</p>
+        <article class="doc">
+<h1 id="cms-710-principles-of-programming-languages">CMS 710: Principles
+of Programming Languages</h1>
+<h2 id="module-2-data-types-and-structures">Module 2: Data Types and
+Structures</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>At the end of this module, students should be able to:</p>
+<ol type="1">
+<li>Define data types and explain their importance in programming
+languages.</li>
+<li>Differentiate between primitive and composite data types.</li>
+<li>Explain the concept of user-defined data types.</li>
+<li>Describe type systems and their role in programming language
+design.</li>
+<li>Explain data abstraction and its significance in software
+development.</li>
+<li>Compare static and dynamic typing in Python, JavaScript, and
+C++.</li>
+<li>Evaluate the impact of type systems on software reliability,
+flexibility, and performance.</li>
+</ol>
+<h3 id="21-introduction">2.1 Introduction</h3>
+<p>Data is the fundamental building block of every computer program.
+Programming languages provide mechanisms for representing, storing,
+manipulating, and organizing data through various data types and
+structures. A programming language must define how data is represented
+internally, what operations can be performed on data, and how different
+data elements can interact within a program. The study of data types is
+one of the most important aspects of programming language design because
+it directly affects:</p>
+<ul>
+<li>Program correctness</li>
+<li>Software reliability</li>
+<li>Runtime efficiency</li>
+<li>Memory utilization</li>
+<li>Program maintainability Understanding data types and structures
+enables programmers to choose appropriate representations for solving
+computational problems efficiently.</li>
+</ul>
+<h3 id="22-what-is-a-data-type">2.2 What is a Data Type?</h3>
+<p>A data type is a classification that specifies:</p>
+<ul>
+<li>The kind of values that can be stored.</li>
+<li>The operations that can be performed on those values.</li>
+<li>The amount of memory required for storage.</li>
+<li>The interpretation of stored data. For example: age = 25</li>
+</ul>
+<p>The variable age contains an integer value. The data type determines
+that arithmetic operations such as addition and subtraction can be
+performed on the variable. Thus, a data type defines both:</p>
+<ol type="1">
+<li>A set of values.</li>
+<li>A set of permissible operations.</li>
+</ol>
+<h3 id="23-importance-of-data-types">2.3 Importance of Data Types</h3>
+<p>Data types play a critical role in programming language design
+because they:</p>
+<ol type="1">
+<li>Improve Program Correctness Data types help prevent invalid
+operations. Example: int age = 25;</li>
+</ol>
+<p>Attempting to assign text to the variable will generate an error.</p>
+<ol start="2" type="1">
+<li><p>Improve Reliability Type checking helps detect errors before
+program execution.</p></li>
+<li><p>Improve Efficiency The compiler or interpreter can optimize
+memory allocation when data types are known.</p></li>
+<li><p>Enhance Readability Proper use of data types makes programs
+easier to understand.</p></li>
+</ol>
+<h3 id="24-primitive-data-types">2.4 Primitive Data Types</h3>
+<p>Primitive data types are the basic building blocks provided directly
+by a programming language. They cannot be decomposed into simpler data
+types. Common primitive data types include:</p>
+<ul>
+<li>Integer</li>
+<li>Floating-point number</li>
+<li>Character</li>
+<li>Boolean</li>
+<li>String (primitive in some languages)</li>
+</ul>
+<p>Integer Type Represents whole numbers. Examples: Python age = 25</p>
+<p>JavaScript let age = 25;</p>
+<p>C++ int age = 25;</p>
+<p>Floating-Point Type Represents real numbers containing decimal
+values. Examples:</p>
+<p>Python salary = 25000.50</p>
+<p>JavaScript let salary = 25000.50;</p>
+<p>C++ float salary = 25000.50;</p>
+<p>Character Type Represents a single character. C++ char grade =
+'A';</p>
+<p>In Python and JavaScript, characters are represented using strings of
+length one. Python grade = "A"</p>
+<p>JavaScript let grade = "A";</p>
+<p>Boolean Type Represents logical values. Possible values:</p>
+<ul>
+<li>True</li>
+<li>False Python passed = True</li>
+</ul>
+<p>JavaScript let passed = true;</p>
+<p>C++</p>
+<p>bool passed = true;</p>
+<h3 id="25-composite-data-types">2.5 Composite Data Types</h3>
+<p>Composite data types combine multiple primitive values into a single
+structure. Examples include:</p>
+<ul>
+<li>Arrays</li>
+<li>Lists</li>
+<li>Tuples</li>
+<li>Dictionaries</li>
+<li>Structures</li>
+<li>Objects</li>
+</ul>
+<p>Arrays An array stores multiple values of the same type. C++ int
+scores[5] = {70, 80, 90, 85, 95};</p>
+<p>Lists Lists are dynamic collections that can grow or shrink during
+execution. Python scores = [70, 80, 90, 85, 95]</p>
+<p>Objects Objects combine data and behavior into a single entity.
+JavaScript let student = { name: "John", age: 20 };</p>
+<p>Dictionaries Dictionaries store data as key-value pairs. Python
+student = { "name": "John", "age": 20 }</p>
+<h3 id="26-user-defined-data-types">2.6 User-Defined Data Types</h3>
+<p>Programming languages allow programmers to create their own data
+types. These are called user-defined data types. Examples include:</p>
+<ul>
+<li>Structures</li>
+<li>Classes</li>
+<li>Enumerations</li>
+<li>Records</li>
+</ul>
+<p>Structures in C++ struct Student { string name; int age; };</p>
+<p>Classes in Python class Student: def <strong>init</strong>(self,
+name, age): self.name = name self.age = age</p>
+<p>Classes in JavaScript class Student { constructor(name, age){
+this.name = name; this.age = age; } }</p>
+<h3 id="27-type-systems">2.7 Type Systems</h3>
+<p>A type system is a set of rules governing how data types are defined,
+checked, and used in a programming language. Type systems help ensure
+that programs behave correctly. A type system determines:</p>
+<ul>
+<li>What values variables may contain.</li>
+<li>What operations are permitted.</li>
+<li>How errors are detected.</li>
+</ul>
+<h3 id="28-static-and-dynamic-typing">2.8 Static and Dynamic Typing</h3>
+<p>One of the most important classifications of type systems is based on
+when type checking occurs.</p>
+<p>Static Typing Static typing performs type checking during
+compilation. Example: C++ int x = 10;</p>
+<p>Attempting: x = "CMS710";</p>
+<p>produces a compilation error.</p>
+<p>Advantages</p>
+<ul>
+<li>Early error detection</li>
+<li>Improved reliability</li>
+<li>Better performance</li>
+<li>Compiler optimization</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Reduced flexibility</li>
+<li>More verbose code</li>
+</ul>
+<p>Dynamic Typing Dynamic typing performs type checking during program
+execution. Python x = 10 x = "CMS710"</p>
+<p>JavaScript let x = 10; x = "CMS710";</p>
+<p>Advantages</p>
+<ul>
+<li>Greater flexibility</li>
+<li>Faster development</li>
+<li>Less code</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Runtime errors</li>
+<li>Reduced type safety</li>
+</ul>
+<h3 id="29-strong-and-weak-typing">2.9 Strong and Weak Typing</h3>
+<p>Type systems can also be classified based on enforcement
+strictness.</p>
+<p>Strong Typing Strongly typed languages prevent inappropriate type
+conversions.</p>
+<p>Example: Python age = 20</p>
+<h1 id="age--years">age + "years"</h1>
+<p>Produces an error.</p>
+<p>Weak Typing Weakly typed languages allow implicit type conversions.
+JavaScript console.log("5" + 2);</p>
+<p>Output: 52</p>
+<p>The number is automatically converted to a string.</p>
+<h3 id="210-data-abstraction">2.10 Data Abstraction</h3>
+<p>Data abstraction is the process of hiding implementation details
+while exposing only essential features. It allows programmers to focus
+on what an object does rather than how it is implemented.</p>
+<h3 id="example">Example</h3>
+<p>Consider a car. A driver uses:</p>
+<ul>
+<li>Steering wheel</li>
+<li>Accelerator</li>
+<li>Brake The driver does not need to understand the internal engine
+mechanisms. Similarly, programmers interact with data structures through
+well-defined interfaces.</li>
+</ul>
+<p>Benefits of Data Abstraction Simplicity Reduces complexity.</p>
+<p>Reusability Abstract components can be reused.</p>
+<p>Maintainability Changes to implementation do not affect users.</p>
+<p>Security Internal details remain hidden.</p>
+<h3 id="211-comparative-study-of-python-javascript-and-c">2.11
+Comparative Study of Python, JavaScript, and C++</h3>
+<p>Feature Python JavaScript C++ Typing Style Dynamic Dynamic Static
+Type Safety Strong Weak/Moderate Strong Compilation Interpreted
+JIT/Interpreted Compiled Memory Control Automatic Automatic
+Manual/Automatic Flexibility Very High High Moderate Runtime Speed
+Moderate Moderate High</p>
+<h3 id="212-type-safety-and-reliability">2.12 Type Safety and
+Reliability</h3>
+<p>Type safety refers to the extent to which a language prevents invalid
+operations. Example: int age = 25;</p>
+<p>Attempting: age = "Twenty Five";</p>
+<p>produces an error.</p>
+<p>Such restrictions improve software reliability. Languages with
+stronger type systems generally produce fewer runtime errors.</p>
+<h3 id="213-flexibility-versus-reliability">2.13 Flexibility versus
+Reliability</h3>
+<p>Programming language designers often balance flexibility against
+reliability. Dynamic languages: Advantages:</p>
+<ul>
+<li><p>Rapid development</p></li>
+<li><p>Easier experimentation Disadvantages:</p></li>
+<li><p>Increased runtime errors Static languages: Advantages:</p></li>
+<li><p>Strong verification</p></li>
+<li><p>Improved reliability Disadvantages:</p></li>
+<li><p>More development effort This trade-off is a central principle in
+programming language design.</p></li>
+</ul>
+<h3 id="214-performance-implications-of-type-systems">2.14 Performance
+Implications of Type Systems</h3>
+<p>Type systems also influence program performance. Static typing
+enables:</p>
+<ul>
+<li><p>Compile-time optimization</p></li>
+<li><p>Efficient memory allocation</p></li>
+<li><p>Faster execution Dynamic typing introduces:</p></li>
+<li><p>Runtime type checking</p></li>
+<li><p>Additional overhead Consequently, C++ often outperforms Python
+and JavaScript in computationally intensive applications.</p></li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>This module examined the concept of data types and structures as
+fundamental elements of programming languages. The discussion covered
+primitive, composite, and user-defined data types, type systems, static
+and dynamic typing, strong and weak typing, and data abstraction.
+Python, JavaScript, and C++ were used to illustrate how different
+programming languages implement these concepts. The module demonstrated
+that type systems significantly influence software reliability,
+flexibility, maintainability, and performance.</p>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials on this page were written by <a href="/">Mbosinwa Awunor</a> while studying for a PGD in Computer Science at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>

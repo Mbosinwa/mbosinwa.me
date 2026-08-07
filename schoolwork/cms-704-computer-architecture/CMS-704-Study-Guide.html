@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 704 — Computer Architecture — Exam Study Guide (Volume I)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume I · exam cheatsheet · study guide</div>
+  <h1>CMS 704 — Computer Architecture</h1>
+  <div class="sub">PGD Computer Science, Rivers State University, Nkpolu-Oroworukwo, Port Harcourt · built from the lecturer's 14 pages of class notes, the lecturer's extra notes on memory and performance, and the official course outline</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Wednesday 05 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturer:</b> the lecturer</span>
+    <span><b>Units:</b> 3</span>
+  </div>
+</div>
+
+<div class="box star">
+  <h4>Read this first — how this paper differs from CMS 702</h4>
+  <b>There is no past paper on file for CMS 704</b>, so priorities come from what the lecturer actually spent board time on. Two things follow.
+  <ol>
+    <li><b>This paper has calculation in it.</b> Number-base conversion, boolean minimization, K-maps, signed-number representation and the CPU performance equation are all <b>workable</b> questions with a right answer. Unlike a pure bookwork paper, these are where marks are won and lost — practise the method until it is automatic, and <b>always show the working line by line</b>, because method marks survive an arithmetic slip.</li>
+    <li><b>The definitions still matter.</b> Architecture vs organization, cache, locality, RTL and performance were dictated almost word-for-word — those are the bookwork half.</li>
+  </ol>
+  <hr class="thin">
+  <b>The seven topics most likely to carry the paper:</b> architecture vs organization (§2) · logic gates and truth tables (§3) · boolean minimization and K-maps (§5–§6) · RTL and micro-operations (§7) · number-base conversion (§8) · signed number representation (§9) · memory hierarchy, cache and locality (§10). Performance and the Iron Law (§11) is the newest material — freshly issued notes are a common source of exam questions.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>Definitions to write word-for-word</h2>
+
+<table>
+<thead><tr><th style="width:21%">Term</th><th>Definition</th></tr></thead>
+<tbody>
+<tr><td><b>Computer architecture</b></td><td>Also known as the <b>Instruction Set Architecture (ISA)</b>. The set of rules, methods and procedures that define the <b>functionality, organization and implementation</b> of a computer system as seen by the machine-language programmer or compiler writer. It is the <b>contract between software and hardware</b> — a specification that remains constant across implementations.</td></tr>
+<tr><td><b>Computer organization</b></td><td>The <b>actual implementation</b> of a computer architecture: how the functional units are constructed, interconnected and controlled to realize the specified architecture, and the engineering decisions affecting cost/performance, power consumption and physical size.</td></tr>
+<tr><td><b>Logic gate</b></td><td>The fundamental building block of digital circuits — a device that performs a <b>boolean function</b>, a logical operation on one or more binary inputs producing a <b>single binary output</b>.</td></tr>
+<tr><td><b>Logic expression minimization</b></td><td>Simplifying boolean equations to <b>reduce the hardware required</b> for a digital circuit; it cuts production cost, minimizes heat generation and improves speed.</td></tr>
+<tr><td><b>Karnaugh map</b></td><td>A <b>visual, graphical matrix method</b> used to simplify boolean expressions of up to 4–6 variables, in which groupings are made in <b>powers of 2ⁿ</b> to find the minimal sum of products.</td></tr>
+<tr><td><b>Majority vote circuit</b></td><td>A digital circuit in which the <b>majority of the inputs determines the output</b>.</td></tr>
+<tr><td><b>RTL</b></td><td><b>Register Transfer Language</b> — a symbolic notation used to describe the internal organization, data flow and execution of <b>micro-operations between hardware registers</b>. It bridges high-level architectural design and concrete logic-gate implementation.</td></tr>
+<tr><td><b>Micro-operation</b></td><td>An <b>elementary operation performed on data in CPU registers during a clock pulse</b> — arithmetic, logic or shift.</td></tr>
+<tr><td><b>Control function</b></td><td>A <b>boolean condition that dictates when a transfer occurs</b>; written before a colon, e.g. <code>P: R2 ← R1</code>.</td></tr>
+<tr><td><b>Memory hierarchy</b></td><td>An <b>organizational pyramid that categorizes data storage by speed, cost and capacity</b>, so the processor can access frequently used data at very high speed without sacrificing the massive capacity needed for a user's whole library of files.</td></tr>
+<tr><td><b>Cache memory</b></td><td>A <b>high-speed, volatile hardware component situated between the CPU and main memory (RAM)</b>, storing temporary copies of frequently accessed data and instructions so the processor retrieves them instantly, reducing latency and improving performance.</td></tr>
+<tr><td><b>Cache hit / miss</b></td><td><b>Hit</b> — the CPU checks the cache first and the data is found, so it is retrieved almost instantly (nanoseconds). <b>Miss</b> — the data is not in the cache, so the CPU must fetch it from the slower RAM, and it is then copied into the cache for future use.</td></tr>
+<tr><td><b>Locality of reference</b></td><td>A program's <b>tendency to repeatedly access the same memory locations, or nearby ones, over a short period</b>. It is the foundation of cache memory design.</td></tr>
+<tr><td><b>Performance</b></td><td>A measure of <b>how quickly and efficiently a computer system executes a given workload</b>, defined by <b>speed</b> (how fast a task completes) and <b>throughput</b> (how much work is done in a given time). Mathematically the <b>reciprocal of execution time</b>.</td></tr>
+<tr><td><b>Sign bit</b></td><td>The bit used to represent whether a number is positive or negative, since a digital circuit has only 0s and 1s and no "−" symbol. It is the <b>MSB</b>: 1 = negative, 0 = positive.</td></tr>
+<tr><td><b>Unsigned number</b></td><td>A binary number that <b>does not allow negative values</b>; an n-bit unsigned number has <b>2ⁿ unique codes</b> and a range of <b>0 to 2ⁿ − 1</b>.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2><span class="n">2</span>Architecture vs Organization — the guaranteed question</h2>
+
+<p>Both lists were dictated in full. A question asking you to <b>differentiate architecture from organization</b> is answered by defining both, giving the table, then quoting a few items from each list.</p>
+
+<table class="tight">
+<thead><tr><th style="width:16%">Basis</th><th>Computer architecture (ISA)</th><th>Computer organization</th></tr></thead>
+<tbody>
+<tr><td>What it answers</td><td><b>What</b> the machine does — its behaviour as seen by a program</td><td><b>How</b> the machine does it — how the units are built and wired</td></tr>
+<tr><td>Level</td><td>Abstract <b>specification</b> / interface</td><td>Concrete <b>implementation</b></td></tr>
+<tr><td>Visible to</td><td>The machine-language programmer and the compiler writer</td><td>The hardware designer / engineer</td></tr>
+<tr><td>Stability</td><td><b>Constant</b> across different implementations of the same architecture</td><td><b>Varies</b> between models that share one architecture</td></tr>
+<tr><td>Driven by</td><td>Functional requirements — the software contract</td><td>Engineering trade-offs: cost/performance, power, physical size</td></tr>
+<tr><td>Example</td><td>x86-64 — software compiled for it runs on <b>any</b> processor implementing it</td><td>Two x86-64 chips with different cache sizes, pipeline depths and clock speeds</td></tr>
+</tbody>
+</table>
+
+<div class="grid2">
+<div>
+<h4>Architecture specifies (7)</h4>
+<ol style="font-size:9.1pt">
+<li><b>The instruction set</b> — the operations the processor can execute (ADD, SUB, LOAD …).</li>
+<li><b>Data types and size</b> — 8-bit byte, 16-bit word, 32-bit double word.</li>
+<li><b>Register set</b> — the number, names and functions of programmer-visible registers.</li>
+<li><b>Addressing modes</b> — how instructions specify addresses: immediate, direct, indirect, indexed.</li>
+<li><b>Memory addressing model</b> — byte addressable or word addressable.</li>
+<li><b>Interrupt and exception handling</b> — how the processor responds to external events or internal faults.</li>
+<li><b>Input/output model</b> — memory-mapped I/O or special I/O instructions.</li>
+</ol>
+</div>
+<div>
+<h4>Organization specifies (7)</h4>
+<ol style="font-size:9.1pt">
+<li><b>Data path design</b> — layout and width of buses, number of ALUs, register file ports.</li>
+<li><b>Control unit implementation</b> — hard-wired vs micro-programmed control.</li>
+<li><b>Pipelining structure</b> — number of stages, hazard handling.</li>
+<li><b>Memory hierarchy implementation</b> — cache size (L1, L2, L3), associativity, replacement policy, TLB size.</li>
+<li><b>Clock frequency and voltage scaling</b> — how fast the circuit runs, at what power cost.</li>
+<li><b>Parallelism mechanisms</b> — superscalar issue width, out-of-order execution, simultaneous multi-threading (SMT).</li>
+<li><b>Physical implementation</b> — transistor technology, chip area, thermal design power (TDP).</li>
+</ol>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">3</span>Logic gates — the seven you must be able to draw</h2>
+
+<figure>
+<svg viewBox="0 0 566 96" xmlns="http://www.w3.org/2000/svg">
+  <g class="gates" fill="none" stroke="#1a1c22" stroke-width="1.4">
+  <!-- AND -->
+  <g transform="translate(6,14)">
+    <path d="M14,6 L34,6 A17,17 0 0 1 34,40 L14,40 Z"/>
+    <path d="M2,14 L14,14 M2,32 L14,32 M51,23 L64,23"/>
+    <text class="svgtxt" x="14" y="58" stroke="none" fill="#17324f" style="font-weight:700">AND</text>
+    <text class="svgtxt sm" x="10" y="70" stroke="none">A·B</text>
+  </g>
+  <!-- OR -->
+  <g transform="translate(86,14)">
+    <path d="M10,6 Q30,6 50,23 Q30,40 10,40 Q20,23 10,6 Z"/>
+    <path d="M2,14 L15,14 M2,32 L15,32 M50,23 L64,23"/>
+    <text class="svgtxt" x="18" y="58" stroke="none" fill="#17324f" style="font-weight:700">OR</text>
+    <text class="svgtxt sm" x="10" y="70" stroke="none">A+B</text>
+  </g>
+  <!-- NOT -->
+  <g transform="translate(166,14)">
+    <path d="M12,7 L42,23 L12,39 Z"/>
+    <circle cx="46" cy="23" r="4"/>
+    <path d="M2,23 L12,23 M50,23 L64,23"/>
+    <text class="svgtxt" x="12" y="58" stroke="none" fill="#17324f" style="font-weight:700">NOT</text>
+    <text class="svgtxt sm" x="14" y="70" stroke="none">A'</text>
+  </g>
+  <!-- NAND -->
+  <g transform="translate(246,14)">
+    <path d="M14,6 L34,6 A17,17 0 0 1 34,40 L14,40 Z"/>
+    <circle cx="55" cy="23" r="4"/>
+    <path d="M2,14 L14,14 M2,32 L14,32 M59,23 L68,23"/>
+    <text class="svgtxt" x="10" y="58" stroke="none" fill="#17324f" style="font-weight:700">NAND</text>
+    <text class="svgtxt sm" x="6" y="70" stroke="none">(A·B)'</text>
+  </g>
+  <!-- NOR -->
+  <g transform="translate(326,14)">
+    <path d="M10,6 Q30,6 50,23 Q30,40 10,40 Q20,23 10,6 Z"/>
+    <circle cx="54" cy="23" r="4"/>
+    <path d="M2,14 L15,14 M2,32 L15,32 M58,23 L68,23"/>
+    <text class="svgtxt" x="14" y="58" stroke="none" fill="#17324f" style="font-weight:700">NOR</text>
+    <text class="svgtxt sm" x="6" y="70" stroke="none">(A+B)'</text>
+  </g>
+  <!-- XOR -->
+  <g transform="translate(406,14)">
+    <path d="M14,6 Q34,6 54,23 Q34,40 14,40 Q24,23 14,6 Z"/>
+    <path d="M6,6 Q16,23 6,40"/>
+    <path d="M2,14 L11,14 M2,32 L11,32 M54,23 L68,23"/>
+    <text class="svgtxt" x="16" y="58" stroke="none" fill="#17324f" style="font-weight:700">XOR</text>
+    <text class="svgtxt sm" x="0" y="70" stroke="none">A'B + AB'</text>
+  </g>
+  <!-- XNOR -->
+  <g transform="translate(486,14)">
+    <path d="M14,6 Q34,6 54,23 Q34,40 14,40 Q24,23 14,6 Z"/>
+    <path d="M6,6 Q16,23 6,40"/>
+    <circle cx="58" cy="23" r="4"/>
+    <path d="M2,14 L11,14 M2,32 L11,32 M62,23 L72,23"/>
+    <text class="svgtxt" x="12" y="58" stroke="none" fill="#17324f" style="font-weight:700">XNOR</text>
+    <text class="svgtxt sm" x="10" y="70" stroke="none">(A⊕B)'</text>
+  </g>
+  </g>
+</svg>
+<figcaption>The bubble (small circle) on the output is what turns AND into NAND, OR into NOR and XOR into XNOR — it <i>is</i> the NOT.</figcaption>
+</figure>
+
+<div class="grid2">
+<div>
+<h4>The master truth table — memorise this block</h4>
+<table class="tight">
+<thead><tr><th class="c">A</th><th class="c">B</th><th class="c">A·B<br>AND</th><th class="c">A+B<br>OR</th><th class="c">(A·B)'<br>NAND</th><th class="c">(A+B)'<br>NOR</th><th class="c">A⊕B<br>XOR</th><th class="c">(A⊕B)'<br>XNOR</th></tr></thead>
+<tbody>
+<tr><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c">1</td></tr>
+<tr><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c">1</td><td class="c">0</td></tr>
+<tr><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c">1</td><td class="c">0</td></tr>
+<tr><td class="c">1</td><td class="c">1</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">1</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt">The NOT gate has its own two-row table: <code>0 → 1</code>, <code>1 → 0</code>.</p>
+</div>
+<div>
+<h4>The one-line rule for each gate</h4>
+<ul style="font-size:9.1pt">
+<li><b>AND</b> — output is 1 <b>if and only if both inputs are 1</b>, else 0.</li>
+<li><b>OR</b> — output is 0 <b>if both inputs are 0</b>, else 1.</li>
+<li><b>NOT</b> — gives the <b>opposite</b> of the input.</li>
+<li><b>NAND</b> — Not AND: <code>C = (A·B)'</code>.</li>
+<li><b>NOR</b> — Not OR: <code>C = (A+B)'</code>.</li>
+<li><b>XOR</b> — output 1 <b>where the inputs are different</b>.</li>
+<li><b>XNOR</b> — output 1 <b>only when the inputs are the same</b>.</li>
+</ul>
+<h4>Number of rows in a truth table</h4>
+<div class="formula">rows = 2ⁿ, where n = number of inputs</div>
+<p style="font-size:9.1pt">1 input → 2 rows · 2 inputs → 4 rows · <b>3 inputs → 8 rows</b>. Fill the input columns by counting up in binary — 000, 001, 010, 011, 100, 101, 110, 111 — so no combination is missed.</p>
+</div>
+</div>
+
+<h3>XOR built from the primary gates <span class="tag">DRAWN IN CLASS</span></h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.1pt">The exclusive-OR is not primitive — it is assembled from two NOTs, two ANDs and one OR, which is exactly what its sum-of-products expression says:</p>
+<div class="formula">Y = A'B + AB'</div>
+<p style="font-size:9.1pt">Read the expression straight off the truth table: take every row where the output is 1, write the product of the inputs (complemented where the input is 0), and OR those products together. That procedure is the <b>sum of products (SOP)</b>, and it works for any truth table.</p>
+</div>
+<div>
+<pre>            ┌─────┐
+ A ─┬──────►│ AND ├──┐   (A·B')
+    │  ┌───►│     │  │
+    │  │    └─────┘  │  ┌────┐
+    │  │  ┌──o B'    ├─►│ OR ├──► Y
+    │  └──┤              └────┘
+ B ─┴─────┼──o A'    │
+       ┌─────┐       │
+       │ AND ├───────┘   (A'·B)
+       └─────┘</pre>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">4</span>Boolean algebra — the seven laws</h2>
+
+<table class="tight">
+<thead><tr><th style="width:16%">Law</th><th style="width:30%">AND form</th><th style="width:30%">OR form</th><th>What it does for you</th></tr></thead>
+<tbody>
+<tr><td><b>Identity</b></td><td><code>A·1 = A</code></td><td><code>A+0 = A</code></td><td>Removes a redundant constant</td></tr>
+<tr><td><b>Null</b></td><td><code>A·0 = 0</code></td><td><code>A+1 = 1</code></td><td>Collapses a whole term to a constant</td></tr>
+<tr><td><b>Idempotent</b></td><td><code>A·A = A</code></td><td><code>A+A = A</code></td><td>Deletes a duplicated literal</td></tr>
+<tr><td><b>Complement</b></td><td><code>A·A' = 0</code></td><td><code>A+A' = 1</code></td><td><b>The workhorse of minimization</b> — this is what makes grouping work</td></tr>
+<tr><td><b>Absorption</b></td><td><code>A·(A+B) = A</code></td><td><code>A + A·B = A</code></td><td>Swallows the longer term entirely</td></tr>
+<tr><td><b>Distributive</b></td><td><code>A·(B+C) = A·B + A·C</code></td><td><code>A + B·C = (A+B)(A+C)</code></td><td>Factors a common variable out of two terms</td></tr>
+<tr><td><b>De Morgan</b></td><td><code>(A·B)' = A' + B'</code></td><td><code>(A+B)' = A'·B'</code></td><td>Pushes a bar through a bracket — <b>break the bar, change the sign</b></td></tr>
+</tbody>
+</table>
+
+<div class="box">
+<b>The proof technique the notes insist on:</b> to prove an identity such as <code>A·1 = A</code>, <b>build the truth table</b>. Anywhere a <b>1</b> appears as a column head it is 1 (true) all the way down that column, and a <b>0</b> is 0 (false) all the way down. Then compare the result column with the column for <code>A</code>: if they are identical, the identity holds.
+<pre style="margin:4pt 0 0">A │ 1 │ A·1 │ 0 │ A+0        A·1 matches A   ✓
+──┼───┼─────┼───┼─────       A+0 matches A   ✓
+0 │ 1 │  0  │ 0 │  0
+1 │ 1 │  1  │ 0 │  1</pre>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">5</span>Logic expression minimization</h2>
+
+<div class="grid2">
+<div>
+<h4>Why minimize — three marks, three points</h4>
+<ol style="font-size:9.1pt">
+<li><b>Hardware efficiency</b> — uses fewer logic gates and interconnections.</li>
+<li><b>Improved performance</b> — minimizes propagation delay, giving faster circuit operation.</li>
+<li><b>Cost and power</b> — lower power consumption and a smaller silicon chip footprint.</li>
+</ol>
+<p style="font-size:9.1pt">Opening sentence: <i>minimization simplifies boolean equations to reduce the hardware required for digital circuits; it cuts production cost, minimizes heat generation and improves speed.</i></p>
+</div>
+<div>
+<h4>The three techniques</h4>
+<ol style="font-size:9.1pt">
+<li><b>Boolean algebra</b> — applying the mathematical laws to factor out and eliminate terms algebraically.</li>
+<li><b>Karnaugh map (K-map)</b> — a visual, graphical matrix method for up to 4–6 variables; groupings in powers of 2ⁿ give the minimal sum of products.</li>
+<li><b>Quine–McCluskey algorithm</b> — a tabular algorithmic method for a large number of variables, or for computer-aided design.</li>
+</ol>
+</div>
+</div>
+
+<h3>Worked example — the majority vote circuit <span class="tag">DONE IN CLASS</span></h3>
+
+<div class="grid2">
+<div>
+<p style="font-size:9.1pt">A <b>majority vote circuit</b> outputs 1 when the majority of its inputs are 1. With three inputs, that means any two or more.</p>
+<table class="tight">
+<thead><tr><th class="c">#</th><th class="c">A</th><th class="c">B</th><th class="c">C</th><th class="c">F</th><th>Minterm</th></tr></thead>
+<tbody>
+<tr><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td></td></tr>
+<tr><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td></td></tr>
+<tr><td class="c">2</td><td class="c">0</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td></td></tr>
+<tr><td class="c">3</td><td class="c">0</td><td class="c">1</td><td class="c">1</td><td class="c"><b>1</b></td><td><code>A'BC</code> ①</td></tr>
+<tr><td class="c">4</td><td class="c">1</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td></td></tr>
+<tr><td class="c">5</td><td class="c">1</td><td class="c">0</td><td class="c">1</td><td class="c"><b>1</b></td><td><code>AB'C</code> ②</td></tr>
+<tr><td class="c">6</td><td class="c">1</td><td class="c">1</td><td class="c">0</td><td class="c"><b>1</b></td><td><code>ABC'</code> ③</td></tr>
+<tr><td class="c">7</td><td class="c">1</td><td class="c">1</td><td class="c">1</td><td class="c"><b>1</b></td><td><code>ABC</code> ④</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<pre>F = A'BC + AB'C + ABC' + ABC
+
+Groupings — pair terms differing in ONE variable:
+
+① and ④  ⇒  A'BC + ABC  ⇒  BC(A'+A) = BC
+③ and ④  ⇒  ABC' + ABC  ⇒  AB(C'+C) = AB
+② and ④  ⇒  AB'C + ABC  ⇒  AC(B'+B) = AC
+
+∴  F = BC + AB + AC</pre>
+<div class="box" style="padding:5pt 7pt">
+<b>Why this is legal:</b> every grouping uses the complement law <code>X + X' = 1</code> together with the identity law <code>Y·1 = Y</code>. Note that minterm ④ is reused in all three groupings — <b>a minterm may belong to more than one group</b>, because <code>X + X = X</code> (idempotent). Four 3-input AND gates and one OR gate become three 2-input AND gates and one OR gate.
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">6</span>Karnaugh maps — the method that saves time</h2>
+
+<div class="grid2">
+<div>
+<h4>How to build and read a 3-variable K-map</h4>
+<ol style="font-size:9.1pt">
+<li>Put <b>A</b> down the side and <b>BC</b> across the top.</li>
+<li>Label the columns <b>00, 01, 11, 10</b> — <b>not</b> 00, 01, 10, 11. Adjacent columns must differ in exactly one bit (Gray code); this is the whole point of the map.</li>
+<li>Write the output of each truth-table row into its cell.</li>
+<li>Circle the 1s in <b>groups whose size is a power of 2</b> — 1, 2, 4, 8. Groups may overlap and may wrap around the edges.</li>
+<li>For each group, <b>cancel the variable that changes</b> inside it and keep the ones that stay constant. That product is one term of the answer.</li>
+<li>OR the terms together — that is the minimal sum of products.</li>
+</ol>
+<div class="box" style="padding:5pt 7pt"><b>The rule in one line, as written in the notes:</b> <i>cancel the changing parameter.</i> A group of 2 kills one variable, a group of 4 kills two, a group of 8 kills three.</div>
+</div>
+<div>
+<h4>The cell layout</h4>
+<pre>        BC
+   A \  00   01   11   10
+    ───┼────┼────┼────┼────
+     0 │  0 │  1 │  3 │  2 │   ← decimal row numbers
+    ───┼────┼────┼────┼────
+     1 │  4 │  5 │  7 │  6 │
+    ───┴────┴────┴────┴────
+
+Class result:   F = AB' + BC'</pre>
+<h4>Group size → what survives</h4>
+<table class="tight">
+<thead><tr><th class="c">Group size</th><th class="c">Variables cancelled</th><th>Term length (3-variable map)</th></tr></thead>
+<tbody>
+<tr><td class="c">1 cell</td><td class="c">0</td><td>3 literals, e.g. <code>A'BC</code></td></tr>
+<tr><td class="c">2 cells</td><td class="c">1</td><td>2 literals, e.g. <code>BC</code></td></tr>
+<tr><td class="c">4 cells</td><td class="c">2</td><td>1 literal, e.g. <code>A</code></td></tr>
+<tr><td class="c">8 cells</td><td class="c">3</td><td>The function is simply <code>1</code></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Always make the groups as large as legally possible</b> — a bigger group means a shorter term and fewer gates. Then check every 1 is covered by at least one group.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">7</span>Register Transfer Language</h2>
+
+<p><b>RTL</b> is a symbolic notation used in computer architecture to describe the <b>internal organization, data flow and execution of micro-operations between hardware registers</b>. It bridges the gap between high-level architectural design and concrete logic-gate implementation, allowing engineers to concisely map out how data moves through a CPU during each clock cycle.</p>
+
+<div class="grid2">
+<div>
+<h4>Syntax and symbols</h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Symbol</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><b>Capital letters</b></td><td>Denote specific hardware registers — <code>R1</code>, <code>R2</code>, <code>PC</code>, <code>MAR</code></td></tr>
+<tr><td><b>Arrow ←</b></td><td>A <b>unidirectional transfer</b> from the source on the right to the destination on the left</td></tr>
+<tr><td><b>Parenthesis ( )</b></td><td>A distinct sub-part or individual bits of a register — <code>R1(0-7)</code> is the lower 8 bits</td></tr>
+<tr><td><b>Colon :</b></td><td>Terminates a <b>control function</b> — the operation executes only if the preceding condition is true</td></tr>
+<tr><td><b>Comma ,</b></td><td>Separates micro-operations that execute <b>simultaneously</b> in a single clock cycle</td></tr>
+</tbody>
+</table>
+<h4>Bus notation</h4>
+<pre>Bus ← R1     R1 drives the system bus
+R2  ← Bus    R2 latches data from the bus</pre>
+</div>
+<div>
+<h4>The four types of micro-operation</h4>
+<table class="tight">
+<thead><tr><th style="width:26%">Type</th><th>What it does</th><th style="width:22%">Example</th></tr></thead>
+<tbody>
+<tr><td><b>Register transfer</b></td><td>Moves binary data from one processor register to another <b>without modifying</b> it</td><td><code>R2 ← R1</code></td></tr>
+<tr><td><b>Arithmetic</b></td><td>Numeric operations — addition, subtraction, increment — on data inside the registers</td><td><code>R3 ← R1 + R2</code></td></tr>
+<tr><td><b>Logic</b></td><td><b>Bitwise</b> operations (AND, OR, XOR, NOT) manipulating bits independently within the register</td><td><code>R ← R1 ∧ R2</code></td></tr>
+<tr><td><b>Control function</b></td><td>Boolean conditions dictating <b>when</b> a transfer occurs</td><td><code>P: R2 ← R1</code></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Micro-operations</b> are elementary operations performed on data in CPU registers during a clock pulse — arithmetic, logic and shift.</p>
+</div>
+</div>
+
+<h3>Translating English into RTL — the exam skill</h3>
+<table class="tight">
+<thead><tr><th style="width:44%">Statement</th><th>RTL</th></tr></thead>
+<tbody>
+<tr><td>If <code>K = 1</code> then transfer R1 into R2</td><td><code>K: R2 ← R1</code></td></tr>
+<tr><td>If <code>K = 1</code> then <code>R2 ← R1</code>, otherwise <code>R2 ← R4</code></td><td><code>K: R2 ← R1</code> &nbsp;·&nbsp; <code>K': R2 ← R4</code> &nbsp;— the else branch uses the <b>complement</b> of the control signal</td></tr>
+<tr><td>If <code>Z = 1</code> AND <code>C = 0</code> then increment the program counter</td><td><code>Z·C': PC ← PC + 1</code> &nbsp;— AND of conditions is written as a <b>product</b></td></tr>
+<tr><td>Transfer R1 to R2 and R3 to R4 in the same clock cycle</td><td><code>R2 ← R1, R4 ← R3</code> &nbsp;— the comma means <b>simultaneously</b></td></tr>
+<tr><td>Load the lower 8 bits of R1 into R2</td><td><code>R2 ← R1(0-7)</code></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>The PC</b> keeps track of the next instruction to be fetched by the CPU from memory. The <b>fetch/execute cycle</b> is: <b>Fetch</b> (PC supplies the address) → <b>Decode</b> (the control unit interprets the instruction) → <b>Execute</b>.</p>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">8</span>Number systems and conversion</h2>
+
+<div class="grid2">
+<div>
+<h4>The positional system</h4>
+<table class="tight">
+<thead><tr><th class="c">Base</th><th>Name</th><th>Digits</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>10</b></td><td>Decimal / denary</td><td>0 1 2 3 4 5 6 7 8 9</td></tr>
+<tr><td class="c"><b>8</b></td><td>Octal</td><td>0 1 2 3 4 5 6 7</td></tr>
+<tr><td class="c"><b>2</b></td><td>Binary</td><td>0 1</td></tr>
+<tr><td class="c"><b>16</b></td><td>Hexadecimal</td><td>0–9 then A B C D E F (A = 10 … F = 15)</td></tr>
+</tbody>
+</table>
+<pre>4832₁₀   = 4×10³ + 8×10² + 3×10¹ + 2×10⁰
+21673₈   = 2×8⁴ + 1×8³ + 6×8² + 7×8¹ + 3×8⁰
+10111001₂= 1×2⁷ + 1×2⁵ + 1×2⁴ + 1×2³ + 1×2⁰
+</pre>
+<p style="font-size:9.1pt"><b>Every base works the same way:</b> the digit is multiplied by the base raised to its position, counting from <b>0</b> at the right-hand end. Fractions continue with negative powers: 8⁻¹, 8⁻², 8⁻³ …</p>
+</div>
+<div>
+<h4>Base 10 → any base: successive division</h4>
+<pre>4832 to base 8              4832 to base 16
+ 8│4832                     16│4832
+ 8│ 604 — 0                 16│ 302 — 0
+ 8│  75 — 4                 16│  18 — 14 (E)
+ 8│   9 — 3                 16│   1 —  2
+ 8│   1 — 1                     │   0 —  1
+   │   0 — 1
+                            read UP: 12E0₁₆
+read UP: 11340₈</pre>
+<p style="font-size:9.1pt">Divide by the target base, write the <b>remainder</b> beside each line, stop at 0, then <b>read the remainders upwards</b>. For hexadecimal, convert remainders 10–15 into A–F before writing them down.</p>
+</div>
+</div>
+
+<h3>The four conversions of 4832 — learn this one number</h3>
+<table class="tight">
+<thead><tr><th class="c" style="width:14%">Base</th><th class="c" style="width:26%">4832 becomes</th><th>Check by expanding it back to base 10</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>2</b></td><td class="c"><code>1001011100000₂</code></td><td>2¹² + 2⁹ + 2⁷ + 2⁶ + 2⁵ = 4096 + 512 + 128 + 64 + 32 = <b>4832</b> ✓</td></tr>
+<tr><td class="c"><b>8</b></td><td class="c"><code>11340₈</code></td><td>1×4096 + 1×512 + 3×64 + 4×8 + 0 = <b>4832</b> ✓</td></tr>
+<tr><td class="c"><b>16</b></td><td class="c"><code>12E0₁₆</code></td><td>1×4096 + 2×256 + 14×16 + 0 = 4096 + 512 + 224 = <b>4832</b> ✓</td></tr>
+<tr><td class="c">fraction</td><td class="c"><code>11340.0012₈</code></td><td>= 4832.00244140625₁₀ — see the fraction method below</td></tr>
+</tbody>
+</table>
+
+<div class="grid2">
+<div>
+<h4>Fractions: repeated multiplication by the base</h4>
+<pre>Convert 0.00244140625 to base 8
+
+0.00244140625 × 8 = 0.01953125  → 0
+0.01953125    × 8 = 0.15625     → 0
+0.15625       × 8 = 1.25        → 1
+0.25          × 8 = 2.0         → 2   stop
+
+∴ 0.00244140625₁₀ = 0.0012₈</pre>
+<p style="font-size:9.1pt">Multiply the fraction by the base, take the <b>integer part</b> as the next digit, carry the fractional remainder forward, and read the digits <b>downwards</b> — the opposite direction to the whole-number method.</p>
+</div>
+<div>
+<h4>The shortcut conversions — never divide for these</h4>
+<div class="formula">8 = 2³ → 3 : 1 &nbsp;&nbsp;·&nbsp;&nbsp; 16 = 2⁴ → 4 : 1</div>
+<pre>Octal ↔ binary — group in THREES from the right
+4362₈  =  100 011 110 010  =  100011110010₂
+
+1001011100000₂ → 1 001 011 100 000 → 11340₈
+
+Hex ↔ binary — group in FOURS from the right
+1001011100000₂ → 0001 0010 1110 0000
+                    1    2    E    0  → 12E0₁₆</pre>
+<p style="font-size:9.1pt">Pad the leftmost group with leading zeros. Octal and hexadecimal exist precisely because they are <b>compact shorthands for binary</b> — this is why the conversion is pure grouping and needs no arithmetic.</p>
+</div>
+</div>
+
+<h3>Binary and octal arithmetic</h3>
+<div class="grid3">
+<div>
+<h4>Binary addition rules</h4>
+<pre>0 + 0     = 0
+0 + 1     = 1
+1 + 0     = 1
+1 + 1     = 10   (0 carry 1)
+1 + 1 + 1 = 11   (1 carry 1)
+
+    10111₂   (23)
+  + 11101₂   (29)
+  ────────
+   110100₂   (52) ✓</pre>
+</div>
+<div>
+<h4>Octal subtraction</h4>
+<pre>    246₈      (166)
+  − 127₈      ( 87)
+  ───────
+    117₈      ( 79) ✓</pre>
+<p style="font-size:9.1pt">When you borrow in base 8 you borrow <b>8</b>, not 10. Check the answer by converting all three numbers to decimal.</p>
+</div>
+<div>
+<h4>Octal multiplication</h4>
+<pre>     336₈        (222)
+   × 227₈        (151)
+   ────────
+    3022        336₈ × 7₈
+    674         336₈ × 2₈  ←shift
+ + 674          336₈ × 2₈  ←shift
+   ────────
+  101362₈       (33522) ✓</pre>
+<p style="font-size:9.1pt"><b>In base 8, carry whenever a column reaches 8</b> — divide by 8, write the remainder, carry the quotient.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">9</span>Signed and unsigned numbers</h2>
+
+<p>In a real digital circuit there is <b>no "−" symbol</b> — the hardware only has 0s and 1s. So one bit, the <b>most significant bit (MSB)</b>, is used to carry the sign. A number that never goes negative is <b>unsigned</b>; one that may go negative is <b>signed</b>. The same bit pattern means different values under different schemes, so you must always state which scheme is in use.</p>
+
+<div class="grid2">
+<div>
+<h4>Unsigned numbers</h4>
+<div class="formula">unique codes = 2ⁿ &nbsp;·&nbsp; range = 0 … 2ⁿ − 1</div>
+<table class="tight">
+<thead><tr><th class="c">n</th><th class="c">Unique codes</th><th class="c">Range</th></tr></thead>
+<tbody>
+<tr><td class="c">4</td><td class="c">16</td><td class="c">0 … 15</td></tr>
+<tr><td class="c">8</td><td class="c">256</td><td class="c">0 … 255</td></tr>
+<tr><td class="c">16</td><td class="c">65 536</td><td class="c">0 … 65 535</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt">A 4-bit number has 16 codes but its largest value is <b>15</b> — because one code is spent on <b>0</b>. That is exactly why the maximum is <code>2ⁿ − 1</code> and not <code>2ⁿ</code>. It is the single most common slip on this topic.</p>
+</div>
+<div>
+<h4>The three signed representations at a glance (4-bit)</h4>
+<table class="tight">
+<thead><tr><th class="c">Value</th><th class="c">Signed magnitude</th><th class="c">One's complement</th><th class="c">Two's complement</th></tr></thead>
+<tbody>
+<tr><td class="c">+3</td><td class="c">0011</td><td class="c">0011</td><td class="c">0011</td></tr>
+<tr><td class="c"><b>−3</b></td><td class="c"><b>1011</b></td><td class="c"><b>1100</b></td><td class="c"><b>1101</b></td></tr>
+<tr><td class="c">+7</td><td class="c">0111</td><td class="c">0111</td><td class="c">0111</td></tr>
+<tr><td class="c"><b>−7</b></td><td class="c"><b>1111</b></td><td class="c"><b>1000</b></td><td class="c"><b>1001</b></td></tr>
+<tr><td class="c">+0</td><td class="c">0000</td><td class="c">0000</td><td class="c">0000</td></tr>
+<tr><td class="c"><b>−0</b></td><td class="c"><b>1000</b></td><td class="c"><b>1111</b></td><td class="c"><b>0000</b></td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt">Positive numbers are <b>identical</b> in all three schemes. Note the last row: signed magnitude and one's complement both have <b>two representations of zero</b>; two's complement has only one — which is the main reason real hardware uses it.</p>
+</div>
+</div>
+
+<table class="tight">
+<thead><tr><th style="width:17%">Scheme</th><th style="width:34%">Rule for a negative number</th><th>Worked: −56 (56₁₀ = 0111000₂)</th></tr></thead>
+<tbody>
+<tr><td><b>Signed magnitude</b></td><td>Write the magnitude in binary, then <b>set the MSB to 1</b>. The remaining n−1 bits are preserved and hold the magnitude.</td><td><code>0111000</code> → change the first digit 0 to 1 → <b><code>1111000₂</code></b></td></tr>
+<tr><td><b>One's complement</b></td><td>The MSB represents the sign; <b>invert every bit</b> of the positive form (negative numbers only).</td><td><code>0111000</code> → negate → <b><code>1000111₂</code></b></td></tr>
+<tr><td><b>Two's complement</b></td><td><b>Invert every bit, then add 1.</b> The MSB is the sign bit.</td><td><code>0111000</code> → <code>1000111</code> → +1 → <b><code>1001000₂</code></b></td></tr>
+</tbody>
+</table>
+
+<div class="box">
+<h4>The second worked example from the notes — −127 (127₁₀ = 01111111₂)</h4>
+<b>Signed magnitude:</b> <code>11111111₂</code> · <b>One's complement:</b> <code>10000000₂</code> · <b>Two's complement:</b> <code>10000001₂</code> (invert to <code>10000000</code>, then add 1).
+<hr class="thin">
+<b>Encoding schemes to name if asked:</b> <b>BCD</b> (Binary Coded Decimal) · <b>EBCDIC</b> (Extended Binary Coded Decimal Interchange Code) · <b>ASCII</b>.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">10</span>Memory hierarchy, cache and locality</h2>
+
+<div class="grid2">
+<div>
+<figure>
+<svg viewBox="0 0 392 176" xmlns="http://www.w3.org/2000/svg">
+  <!-- pyramid -->
+  <g stroke="#1a1c22" stroke-width="1" fill="none">
+    <path d="M140,8 L226,150 L54,150 Z"/>
+    <path d="M126,32 L154,32 M112,56 L168,56 M97,80 L183,80 M83,104 L197,104 M68,127 L212,127"/>
+  </g>
+  <text class="svgtxt" x="122" y="26" style="font-size:6.4px">Level 0</text>
+  <text class="svgtxt" x="115" y="50" style="font-size:6.4px">Level 1</text>
+  <text class="svgtxt" x="108" y="74" style="font-size:6.4px">Level 2</text>
+  <text class="svgtxt" x="102" y="98" style="font-size:6.4px">Level 3</text>
+  <text class="svgtxt" x="96" y="121" style="font-size:6.4px">Level 4</text>
+  <text class="svgtxt" x="90" y="145" style="font-size:6.4px">Level 5</text>
+  <g class="svgtxt" style="font-size:7px" fill="#17324f">
+    <text x="232" y="26">CPU registers</text>
+    <text x="232" y="50">Cache memory (SRAMs)</text>
+    <text x="232" y="74">Main memory (DRAMs)</text>
+    <text x="232" y="98">Magnetic disk</text>
+    <text x="232" y="121">Optical disk</text>
+    <text x="232" y="145">Magnetic tape</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="#b4531b" stroke-width="1.1" fill="none">
+    <path d="M22,150 L22,14"/><path d="M22,10 l-3,6 l6,0 z" fill="#b4531b"/>
+    <path d="M40,14 L40,146"/><path d="M40,150 l-3,-6 l6,0 z" fill="#b4531b"/>
+  </g>
+  <text class="svgtxt sm" transform="rotate(-90 16,120)" x="16" y="120" fill="#b4531b">cost per bit ↑</text>
+  <text class="svgtxt sm" transform="rotate(-90 50,132)" x="50" y="132" fill="#b4531b">capacity &amp; access time ↑</text>
+</svg>
+<figcaption>Up the pyramid: higher cost per bit, faster access, smaller capacity. Down: cheaper per bit, slower, far larger.</figcaption>
+</figure>
+<div class="box" style="padding:5pt 7pt">
+<b>The sentence that earns the top mark:</b> the goal of the hierarchy is to <b>create the illusion that the entire massive storage pool is as fast as the topmost level</b>, bridging the gap between ultra-fast, expensive, limited CPU registers and the slow, cheap, massive capacity of hard drives.
+</div>
+</div>
+<div>
+<table class="tight">
+<thead><tr><th style="width:20%">Level</th><th class="c" style="width:16%">Speed</th><th class="c" style="width:20%">Capacity</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><b>CPU registers</b></td><td class="c">Extremely fast (sub-nanosecond)</td><td class="c">Tiny (bytes; 16–64 bits)</td><td>Built inside the CPU core to hold the exact data being executed in the current cycle</td></tr>
+<tr><td><b>Cache (L1/L2/L3)</b></td><td class="c">Very fast (SRAM)</td><td class="c">Small–moderate (KB–MB)</td><td>Buffer between registers and system RAM; uses locality to preload frequently and recently used data</td></tr>
+<tr><td><b>Main memory (RAM)</b></td><td class="c">Moderate</td><td class="c">Moderate–large (16–64 GB)</td><td>Primary working memory for the OS and running applications</td></tr>
+<tr><td><b>Secondary storage</b></td><td class="c">Slow (milliseconds)</td><td class="c">Massive (terabytes)</td><td><b>Non-volatile</b> SSDs and HDDs; retains data when powered down; long-term repository</td></tr>
+<tr><td><b>Tertiary storage</b></td><td class="c">Very slow</td><td class="c">Infinite (scalable)</td><td>Offline, archival and backup data — tape libraries, optical disks</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<h3>Cache memory</h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.1pt"><b>Cache memory</b> is a high-speed, volatile hardware component <b>situated between the CPU and main memory (RAM)</b>. It stores temporary copies of frequently accessed data and instructions so the processor can retrieve them instantly, significantly <b>reducing processing latency and improving system performance</b>. It works because of <b>locality of reference</b>.</p>
+<table class="tight">
+<thead><tr><th style="width:18%">Level</th><th style="width:32%">Location</th><th class="c" style="width:22%">Size</th><th>Speed</th></tr></thead>
+<tbody>
+<tr><td><b>L1</b></td><td>Directly on the CPU core</td><td class="c">2 KB – 64 KB per core</td><td><b>Fastest</b>, smallest</td></tr>
+<tr><td><b>L2</b></td><td>Inside or immediately outside the core</td><td class="c">256 KB – 512 KB</td><td>Bridge for the L1 cache</td></tr>
+<tr><td><b>L3</b></td><td>Shared among all cores</td><td class="c">1 MB – 8 MB or higher</td><td><b>Largest but slowest</b>; feeds into L2</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Cache hit</b> — the CPU checks the cache first and finds the data, retrieving it in nanoseconds. <b>Cache miss</b> — the data is absent, so the CPU fetches from slower RAM and the block is then copied into the cache for future use.<br>
+<b>Other caching:</b> <b>disk/file cache</b> (the OS holds recently read files in RAM) and <b>browser cache</b> (images, scripts and page data kept in local storage).</p>
+</div>
+<div>
+<h4>Cache memory mapping — three configurations</h4>
+<table class="tight">
+<thead><tr><th style="width:26%">Mapping</th><th>How a memory block is placed</th></tr></thead>
+<tbody>
+<tr><td><b>Direct mapped</b></td><td>Each block is mapped to <b>exactly one</b> cache location.</td></tr>
+<tr><td><b>Fully associative</b></td><td>Similar in structure, but a memory block may be mapped to <b>any</b> cache location rather than a pre-specified one.</td></tr>
+<tr><td><b>Set associative</b></td><td>A <b>compromise</b> between the two: each block maps to a <b>subset</b> of cache locations. Also called <b>N-way set associative</b> — a main-memory location may be cached to any of N locations in the L1 cache.</td></tr>
+</tbody>
+</table>
+<h4>Data writing policies</h4>
+<table class="tight">
+<thead><tr><th style="width:24%">Policy</th><th>Mechanism</th><th style="width:34%">Consequence</th></tr></thead>
+<tbody>
+<tr><td><b>Write-through</b></td><td>Data written to <b>both</b> the cache and main memory at the same time</td><td>More writing, so <b>latency upfront</b>, but memory stays consistent</td></tr>
+<tr><td><b>Write-back</b></td><td>Data written to the <b>cache only</b> at first; it may reach main memory later, but need not, and this does not inhibit the interaction</td><td><b>More efficient</b>, but data may be <b>inconsistent</b> between cache and main memory</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<h3>Locality of reference</h3>
+<p><b>Locality of reference</b> (the <b>principle of locality</b>) describes a program's tendency to <b>repeatedly access the same memory locations, or nearby ones, over a short period</b>. It is the foundation for cache memory design, allowing CPUs to fetch frequently used data ahead of time and dramatically increasing system speed.</p>
+<div class="grid2">
+<div class="box">
+<h4>1. Temporal locality — locality in time</h4>
+If a specific memory location is accessed, it is <b>highly likely to be accessed again in the near future</b>.<br>
+<b>Example:</b> a <b>loop or a counter</b> — the CPU continuously accesses the same variables and instructions within that short time frame.
+</div>
+<div class="box">
+<h4>2. Spatial locality — locality in space</h4>
+If a specific memory location is accessed, <b>nearby locations are also likely to be accessed soon</b>.<br>
+<b>Example:</b> <b>arrays or sequential data structures</b> — the processor brings in a <b>block of adjacent data</b> in anticipation of the next request.
+</div>
+</div>
+<p style="font-size:9.1pt"><b>Other forms of locality:</b> sequential locality · branch locality.</p>
+
+<!-- ============================================================ -->
+<h2><span class="n">11</span>Performance and the Iron Law</h2>
+
+<p>In computer architecture, <b>performance measures how quickly and efficiently a computer system executes a given workload or program</b>. It is primarily defined by <b>speed</b> — how fast a task completes — and <b>throughput</b> — how much work is done in a given time.</p>
+
+<div class="grid2">
+<div>
+<h4>The two core metrics</h4>
+<ol style="font-size:9.1pt">
+<li><b>Response time (execution time)</b> — the total time required to complete a <b>single task</b> from start to finish.</li>
+<li><b>Throughput (bandwidth)</b> — the total amount of work completed <b>per unit of time</b>, e.g. instructions or programs executed per second.</li>
+</ol>
+<h4>The Iron Law of Processor Performance</h4>
+<div class="formula">CPU Time = Instruction Count × CPI × Clock Cycle Time</div>
+<table class="tight">
+<thead><tr><th style="width:28%">Factor</th><th>Definition</th><th style="width:26%">Determined by</th></tr></thead>
+<tbody>
+<tr><td><b>Instruction Count (IC)</b></td><td>Total number of instructions executed in a program</td><td>The software <b>compiler</b> and the <b>ISA</b></td></tr>
+<tr><td><b>Cycles Per Instruction (CPI)</b></td><td>Average number of clock cycles to execute one instruction</td><td><b>Hardware design</b> and pipeline efficiency</td></tr>
+<tr><td><b>Clock Cycle Time</b></td><td>Duration of a single clock tick — the <b>inverse of clock frequency</b> (e.g. 3.0 GHz)</td><td><b>Semiconductor technology</b> and hardware engineering</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt">The law is "iron" because <b>all three factors multiply</b> — improving one while worsening another may leave performance unchanged. A compiler that halves IC but doubles CPI wins nothing.</p>
+</div>
+<div>
+<h4>Quantitative measurement</h4>
+<div class="formula">Performance = 1 / Execution Time</div>
+<div class="formula" style="font-size:8.8pt">Relative Performance = Perf A / Perf B = Exec Time B / Exec Time A</div>
+<div class="box" style="padding:6pt 8pt">
+<b>Worked example 1 — CPU time.</b> A program executes <b>2 × 10⁹ instructions</b> with <b>CPI = 1.5</b> on a <b>3.0 GHz</b> processor.
+<pre style="margin:3pt 0">Clock cycle time = 1 / 3.0×10⁹ = 0.333 ns
+
+CPU Time = 2×10⁹ × 1.5 × 0.333×10⁻⁹ s
+         = 1.0 second</pre>
+<b>Worked example 2 — relative performance.</b> Machine A runs a program in <b>10 s</b>, Machine B in <b>15 s</b>.
+<pre style="margin:3pt 0">Relative Performance = Exec B / Exec A
+                     = 15 / 10 = 1.5
+
+∴ Machine A is 1.5 times faster than Machine B</pre>
+<b>Worked example 3 — MIPS.</b> Same program as example 1:
+<pre style="margin:3pt 0">MIPS = IC / (Execution Time × 10⁶)
+     = 2×10⁹ / (1.0 × 10⁶)
+     = 2000 MIPS</pre>
+</div>
+<p style="font-size:9.1pt"><b>Other performance indicators:</b> <b>MIPS</b> — Million Instructions Per Second · <b>FLOPS</b> — Floating Point Operations Per Second.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">12</span>Things you can lose easy marks on</h2>
+
+<div class="grid2">
+<div>
+<ol style="font-size:9.3pt">
+<li>Labelling K-map columns <b>00, 01, 10, 11</b>. They must be <b>00, 01, 11, 10</b> — adjacent cells differ in one bit only.</li>
+<li>Saying an n-bit unsigned number reaches <b>2ⁿ</b>. It reaches <b>2ⁿ − 1</b>; one code is spent on zero.</li>
+<li>Mixing up architecture and organization. Architecture = <b>what/specification</b>; organization = <b>how/implementation</b>.</li>
+<li>Writing <code>R2 → R1</code> when you mean <code>R2 ← R1</code>. The arrow points <b>to the destination</b>.</li>
+<li>Forgetting the <b>complement</b> in an RTL else-branch: it is <code>K': R2 ← R4</code>, not <code>K</code>.</li>
+<li>Grouping octal into <b>fours</b> — octal is <b>threes</b> (8 = 2³); fours are for hexadecimal (16 = 2⁴).</li>
+</ol>
+</div>
+<div>
+<ol start="7" style="font-size:9.3pt">
+<li>Reading division remainders <b>downwards</b>. Read them <b>upwards</b>; fractions are the ones read downwards.</li>
+<li>Confusing one's and two's complement. Two's complement is one's complement <b>plus 1</b>.</li>
+<li>Saying L3 is the fastest cache. L1 is <b>fastest and smallest</b>; L3 is <b>largest and slowest</b>.</li>
+<li>Swapping temporal and spatial locality. <b>Temporal = time = same location again</b> (a loop); <b>spatial = space = nearby locations</b> (an array).</li>
+<li>Writing throughput where response time is asked. <b>Response time = one task end to end</b>; <b>throughput = work per unit time</b>.</li>
+<li>Quoting the Iron Law with a division. It is a <b>product</b> of all three factors.</li>
+</ol>
+</div>
+</div>
+
+<div class="box star">
+<h4>Timing plan for a 3-hour paper</h4>
+Spend the first 5 minutes reading everything and marking which questions are <b>calculations</b> — do those first, while your arithmetic is sharp and before fatigue causes slips. Budget roughly <b>30 minutes per question</b>, and inside a calculation always write the <b>formula first</b>, then substitute, then evaluate: a wrong final number with the right formula and substitution still collects most of the marks, while a bare answer collects none. For minimization questions, <b>draw the truth table even when it is not asked for</b> — it is the only reliable way to catch a missed minterm, and it doubles as working.
+</div>
+
+<div class="footer-note">
+CMS 704 · Computer Architecture · Volume I study guide<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 704 — Practice, Worked Drills &amp; Final Recall (Volume II)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume II · drill pack · mock paper · walk-in cheatsheet</div>
+  <h1>CMS 704 — Practice, Worked Drills &amp; Final Recall</h1>
+  <div class="sub">The companion to the Volume I study guide. This paper contains real calculation, so this volume is built around it: a full mock paper with model answers, then every calculable topic drilled with the arithmetic shown and independently checked.</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Wednesday 05 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturer:</b> the lecturer</span>
+    <span><b>Units:</b> 3</span>
+  </div>
+</div>
+
+<div class="box star">
+  <h4>How to use this pack</h4>
+  <table class="tight" style="margin:4pt 0 0">
+  <thead><tr><th style="width:16%">Time you have</th><th>Do this</th></tr></thead>
+  <tbody>
+  <tr><td><b>3 hours</b></td><td>Sit the mock paper (§1) closed-book → mark against §2 → re-drill only what you lost marks on (§3–§7) → §9 traps → sleep.</td></tr>
+  <tr><td><b>90 minutes</b></td><td>Conversion and signed-number drills (§3, §4) → minimization and K-map drills (§5) → RTL drills (§6) → Iron Law drills (§7) → §9 traps.</td></tr>
+  <tr><td><b>45 minutes</b></td><td>Rapid-fire recall (§8) covering the answer column → §9 traps → §10 walk-in sheet.</td></tr>
+  <tr><td><b>10 minutes at the door</b></td><td>§10 only.</td></tr>
+  </tbody>
+  </table>
+  <p style="margin:5pt 0 0"><b>Rule for a calculation paper:</b> write the <b>formula</b>, then the <b>substitution</b>, then the <b>answer</b> — three lines, every time. A slip in the last line still leaves two lines of method marks standing. A bare answer with no working earns nothing even when it is right.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>Mock paper — sit this closed-book</h2>
+
+<div class="box">
+<p style="margin:0"><b>RIVERS STATE UNIVERSITY · PGD COMPUTER SCIENCE · CMS 704 — COMPUTER ARCHITECTURE</b><br>
+<span style="font-size:8.9pt">Mock examination · Time allowed: 3 hours · <b>Answer any FIVE questions</b> · Each question carries 20 marks · All working must be shown</span></p>
+</div>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:5%">Q</th><th>Question</th><th class="c" style="width:9%">Marks</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>1</b></td><td><b>(a)</b> Define computer architecture and computer organization. <b>(b)</b> Using a table, state <b>five</b> differences between them. <b>(c)</b> State any <b>four</b> things each of them specifies.</td><td class="c">4 + 10 + 6</td></tr>
+<tr><td class="c"><b>2</b></td><td><b>(a)</b> What is a logic gate? <b>(b)</b> Draw the symbol and write the boolean expression for the AND, OR, NOT, NAND, NOR, XOR and XNOR gates. <b>(c)</b> Given two inputs A and B, construct a truth table showing <code>A·B</code>, <code>A+B</code>, <code>(A·B)'</code> and <code>(A+B)'</code>. <b>(d)</b> How many rows does a truth table with <b>n</b> inputs have? Hence give the number of rows for three inputs.</td><td class="c">3 + 7 + 6 + 4</td></tr>
+<tr><td class="c"><b>3</b></td><td><b>(a)</b> What is logic expression minimization, and why is it important? Give three reasons. <b>(b)</b> State the seven laws of boolean algebra in both their AND and OR forms. <b>(c)</b> A majority vote circuit takes inputs A, B and C. Construct its truth table, write the sum-of-products expression and minimize it algebraically. <b>(d)</b> Using a Karnaugh map, minimize <code>F(A,B,C) = Σm(1,3,5,7)</code>.</td><td class="c">5 + 5 + 6 + 4</td></tr>
+<tr><td class="c"><b>4</b></td><td><b>(a)</b> Define Register Transfer Language and explain any four of its symbols. <b>(b)</b> State and explain the four types of micro-operation, giving one example of each. <b>(c)</b> Write RTL statements for: (i) if K = 1 transfer R1 to R2, otherwise transfer R4 to R2; (ii) if Z = 1 and C = 0, increment the program counter; (iii) transfer R1 into R2 and R3 into R4 in the same clock cycle.</td><td class="c">7 + 8 + 5</td></tr>
+<tr><td class="c"><b>5</b></td><td><b>(a)</b> Convert <b>2025₁₀</b> to base 2, base 8 and base 16, showing your working. <b>(b)</b> Convert <b>754₈</b> to base 10 and to base 2. <b>(c)</b> State the relationship between base 8 and base 2, and between base 16 and base 2, and use it to convert <code>1101101₂</code> to octal and hexadecimal. <b>(d)</b> Represent <b>−45</b> as an 8-bit number in signed magnitude, one's complement and two's complement. <b>(e)</b> State the range of an 8-bit unsigned number.</td><td class="c">6 + 3 + 4 + 5 + 2</td></tr>
+<tr><td class="c"><b>6</b></td><td><b>(a)</b> With the aid of a diagram, describe the memory hierarchy and state the speed, capacity and purpose of each level. <b>(b)</b> Define cache memory and distinguish between a cache hit and a cache miss. <b>(c)</b> What is locality of reference? Explain its two main types with an example each. <b>(d)</b> State the CPU performance equation and use it to find the CPU time of a program of 5 × 10⁸ instructions with a CPI of 2 running on a 2.5 GHz processor.</td><td class="c">6 + 4 + 5 + 5</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2><span class="n">2</span>Model answers — the marks-earning shape</h2>
+
+<h3>Q1 · architecture vs organization</h3>
+<p style="font-size:9.1pt">Open with both definitions (Volume I §1), then the table with a <b>basis of comparison</b> column: what it answers (what vs how) · level (specification vs implementation) · visible to (programmer/compiler vs hardware engineer) · stability (constant across implementations vs varies between models) · driven by (functional requirements vs cost, power and size trade-offs). Close with the x86-64 example: <i>software compiled for x86-64 runs on any processor implementing that architecture, regardless of internal implementation.</i> For (c) quote any four from each seven-item list.</p>
+
+<h3>Q2 · gates and truth tables</h3>
+<p style="font-size:9.1pt">A <b>logic gate</b> is the fundamental building block of digital circuits — a device that performs a boolean function on one or more binary inputs and produces a single binary output. Draw all seven symbols with their expressions, then the four-row table (Volume I §3). Rows = <b>2ⁿ</b>, so three inputs give <b>2³ = 8 rows</b>. Two marks are usually reserved for saying the bubble on an output <b>is</b> the NOT — it converts AND→NAND, OR→NOR, XOR→XNOR.</p>
+
+<h3>Q3 · minimization <span class="tag">CALCULATION</span></h3>
+<pre>(c)  A B C │ F        F = A'BC + AB'C + ABC' + ABC
+     0 0 0 │ 0
+     0 0 1 │ 0        A'BC + ABC ⇒ BC(A'+A) = BC
+     0 1 0 │ 0        ABC' + ABC ⇒ AB(C'+C) = AB
+     0 1 1 │ 1 ①      AB'C + ABC ⇒ AC(B'+B) = AC
+     1 0 0 │ 0
+     1 0 1 │ 1 ②      ∴ F = BC + AB + AC
+     1 1 0 │ 1 ③
+     1 1 1 │ 1 ④
+
+(d)  Σm(1,3,5,7) — minterms 1,3,5,7 are exactly the rows where C = 1
+
+           BC
+      A \  00  01  11  10
+        0 │ 0 │ 1 │ 1 │ 0 │      the four 1s form one group of 4
+        1 │ 0 │ 1 │ 1 │ 0 │      A changes, B changes, C stays 1
+
+     ∴ F = C</pre>
+
+<h3>Q4 · RTL</h3>
+<pre>(c)(i)   K:  R2 ← R1          (ii)  Z·C': PC ← PC + 1     (iii)  R2 ← R1, R4 ← R3
+         K': R2 ← R4</pre>
+<p style="font-size:9.1pt">Say why in each case: the <b>else branch takes the complement</b> of the control signal; <b>AND of conditions is written as a product</b>; the <b>comma means the transfers happen simultaneously in one clock cycle</b>.</p>
+
+<h3>Q5 · number systems <span class="tag">CALCULATION</span></h3>
+<div class="grid2">
+<div>
+<pre>(a) 2025₁₀
+
+ 2│2025          8│2025         16│2025
+ 2│1012 — 1      8│ 253 — 1     16│ 126 — 9
+ 2│ 506 — 0      8│  31 — 5     16│   7 — 14 (E)
+ 2│ 253 — 0      8│   3 — 7        │   0 —  7
+ 2│ 126 — 1      8│   0 — 3
+ 2│  63 — 0
+ 2│  31 — 1     = 3751₈         = 7E9₁₆
+ 2│  15 — 1
+ 2│   7 — 1     Check: 3×512 + 7×64 + 5×8 + 1 = 2025 ✓
+ 2│   3 — 1            7×256 + 14×16 + 9      = 2025 ✓
+ 2│   1 — 1
+   │   0 — 1
+
+= 11111101001₂   Check: 1024+512+256+128+64+32+8+1 = 2025 ✓</pre>
+</div>
+<div>
+<pre>(b) 754₈ → base 10 and base 2
+    7×8² + 5×8¹ + 4×8⁰ = 448 + 40 + 4 = 492₁₀
+    7 = 111, 5 = 101, 4 = 100  →  111101100₂
+
+(c) 8 = 2³ → 3 : 1        16 = 2⁴ → 4 : 1
+
+    1101101₂ → 1 101 101 → 155₈    (64+40+5 = 109 ✓)
+    1101101₂ → 0110 1101 → 6D₁₆    (96+13   = 109 ✓)
+
+(d) −45 as an 8-bit number:   45₁₀ = 00101101₂
+
+    Signed magnitude : 1 0101101  →  10101101₂
+    One's complement : invert all →  11010010₂
+    Two's complement : invert +1  →  11010011₂
+
+(e) 8-bit unsigned range = 0 … 2⁸ − 1 = 0 … 255</pre>
+</div>
+</div>
+
+<h3>Q6 · memory and performance</h3>
+<pre>(d)  CPU Time = Instruction Count × CPI × Clock Cycle Time
+     Clock cycle time = 1 / 2.5×10⁹ = 0.4 ns
+     CPU Time = 5×10⁸ × 2 × 0.4×10⁻⁹ = 0.4 seconds</pre>
+<p style="font-size:9.1pt">For (a) draw the pyramid with all five levels labelled and the two arrows (cost per bit rising upward; capacity and access time rising downward), then the table. For (b) and (c) use the Volume I §10 wording — cache hit retrieves in nanoseconds, cache miss forces a fetch from slower RAM and the block is copied in for future use; temporal locality is the loop or counter, spatial locality is the array.</p>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">3</span>Conversion drills — every answer double-checked</h2>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:22%">Convert</th><th style="width:32%">Answer</th><th>Check</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><b>2025₁₀</b> → base 2</td><td><code>11111101001₂</code></td><td>1024+512+256+128+64+32+8+1 = 2025 ✓</td></tr>
+<tr><td class="c">2</td><td><b>2025₁₀</b> → base 8</td><td><code>3751₈</code></td><td>3×512 + 7×64 + 5×8 + 1 = 2025 ✓ — or group the binary in 3s: <code>11 111 101 001</code></td></tr>
+<tr><td class="c">3</td><td><b>2025₁₀</b> → base 16</td><td><code>7E9₁₆</code></td><td>7×256 + 14×16 + 9 = 2025 ✓ — or group the binary in 4s: <code>0111 1110 1001</code></td></tr>
+<tr><td class="c">4</td><td><b>1101101₂</b> → 10, 8, 16</td><td><code>109₁₀</code> · <code>155₈</code> · <code>6D₁₆</code></td><td>64+32+8+4+1 = 109 · 64+40+5 = 109 · 96+13 = 109 ✓</td></tr>
+<tr><td class="c">5</td><td><b>3F5₁₆</b> → 10, 2, 8</td><td><code>1013₁₀</code> · <code>1111110101₂</code> · <code>1765₈</code></td><td>3×256 + 15×16 + 5 = 1013 · 512+448+48+5 = 1013 ✓</td></tr>
+<tr><td class="c">6</td><td><b>754₈</b> → 10, 2, 16</td><td><code>492₁₀</code> · <code>111101100₂</code> · <code>1EC₁₆</code></td><td>448+40+4 = 492 · 256+224+12 = 492 ✓</td></tr>
+<tr><td class="c">7</td><td><b>0.6875₁₀</b> → base 2</td><td><code>0.1011₂</code></td><td>×2 → 1.375 (1) · 0.75 (0) · 1.5 (1) · 1.0 (1). Back: ½ + ⅛ + 1/16 = 0.6875 ✓</td></tr>
+<tr><td class="c">8</td><td><b>4832₁₀</b> → 2, 8, 16 <span class="tag">CLASS</span></td><td><code>1001011100000₂</code> · <code>11340₈</code> · <code>12E0₁₆</code></td><td>4096+512+128+64+32 = 4832 ✓</td></tr>
+</tbody>
+</table>
+
+<div class="box">
+<h4>The four-step routine that never fails</h4>
+<b>1.</b> Decimal → any base: <b>divide repeatedly, read the remainders upwards</b>. <b>2.</b> Any base → decimal: <b>expand positionally</b>, base^position, counting from 0 at the right. <b>3.</b> Between 2, 8 and 16: <b>never divide</b> — go through binary and group in <b>3s for octal</b>, <b>4s for hexadecimal</b>, padding the left group with zeros. <b>4.</b> Fractions: <b>multiply repeatedly by the base and read the integer parts downwards</b>.
+</div>
+
+<h3>Arithmetic drills</h3>
+<div class="grid3">
+<div>
+<h4>Binary</h4>
+<pre>   101101₂  (45)
+ +  11011₂  (27)
+ ──────────
+  1001000₂  (72) ✓
+
+     1101₂  (13)
+   ×  101₂  ( 5)
+ ──────────
+     1101
+    0000
+ + 1101
+ ──────────
+  1000001₂  (65) ✓</pre>
+</div>
+<div>
+<h4>Octal addition</h4>
+<pre>    507₈   (327)
+  + 264₈   (180)
+  ───────
+    773₈   (507) ✓
+
+Column by column:
+7+4 = 11 → 11−8 = 3, carry 1
+0+6+1 = 7
+5+2 = 7</pre>
+<p style="font-size:9.1pt">Carry whenever a column reaches <b>8</b>, not 10.</p>
+</div>
+<div>
+<h4>Octal subtraction</h4>
+<pre>    642₈   (418)
+  − 375₈   (253)
+  ───────
+    245₈   (165) ✓
+
+    246₈   (166)   ← class example
+  − 127₈   ( 87)
+  ───────
+    117₈   ( 79) ✓</pre>
+<p style="font-size:9.1pt">When you borrow, you borrow <b>8</b>.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">4</span>Signed-number drills</h2>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:8%">Value</th><th class="c" style="width:20%">Magnitude in binary (8-bit)</th><th class="c">Signed magnitude</th><th class="c">One's complement</th><th class="c">Two's complement</th></tr></thead>
+<tbody>
+<tr><td class="c"><b>−45</b></td><td class="c"><code>00101101</code></td><td class="c"><code>10101101</code></td><td class="c"><code>11010010</code></td><td class="c"><code>11010011</code></td></tr>
+<tr><td class="c"><b>−100</b></td><td class="c"><code>01100100</code></td><td class="c"><code>11100100</code></td><td class="c"><code>10011011</code></td><td class="c"><code>10011100</code></td></tr>
+<tr><td class="c"><b>−56</b> <span class="tag">CLASS</span></td><td class="c"><code>0111000</code> (7-bit)</td><td class="c"><code>1111000</code></td><td class="c"><code>1000111</code></td><td class="c"><code>1001000</code></td></tr>
+<tr><td class="c"><b>−127</b> <span class="tag">CLASS</span></td><td class="c"><code>01111111</code></td><td class="c"><code>11111111</code></td><td class="c"><code>10000000</code></td><td class="c"><code>10000001</code></td></tr>
+<tr><td class="c"><b>−1</b></td><td class="c"><code>00000001</code></td><td class="c"><code>10000001</code></td><td class="c"><code>11111110</code></td><td class="c"><code>11111111</code></td></tr>
+</tbody>
+</table>
+
+<div class="grid2">
+<div>
+<div class="box" style="padding:5pt 7pt">
+<b>The three-step routine.</b> <b>1.</b> Convert the magnitude to binary and pad to the stated width. <b>2.</b> <b>Signed magnitude</b> — flip the MSB to 1, leave the rest. <b>3.</b> <b>One's complement</b> — invert every bit. <b>4.</b> <b>Two's complement</b> — invert every bit, then add 1. Positive numbers are identical in all three.
+</div>
+<pre>−45 step by step
+
+45   = 00101101
+SM   = 1 0101101       ← MSB only
+1's  = 11010010        ← invert all 8 bits
+2's  = 11010010 + 1
+     = 11010011</pre>
+</div>
+<div>
+<h4>Ranges to quote</h4>
+<table class="tight">
+<thead><tr><th>Scheme (n bits)</th><th class="c">Range</th><th class="c">n = 8</th></tr></thead>
+<tbody>
+<tr><td><b>Unsigned</b></td><td class="c">0 … 2ⁿ − 1</td><td class="c">0 … 255</td></tr>
+<tr><td><b>Signed magnitude</b></td><td class="c">−(2ⁿ⁻¹ − 1) … +(2ⁿ⁻¹ − 1)</td><td class="c">−127 … +127</td></tr>
+<tr><td><b>One's complement</b></td><td class="c">−(2ⁿ⁻¹ − 1) … +(2ⁿ⁻¹ − 1)</td><td class="c">−127 … +127</td></tr>
+<tr><td><b>Two's complement</b></td><td class="c">−2ⁿ⁻¹ … +2ⁿ⁻¹ − 1</td><td class="c">−128 … +127</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>Why two's complement wins in real hardware:</b> it has only <b>one</b> representation of zero, so it gains one extra negative value, and ordinary binary addition works on it unchanged — no separate subtract circuit is needed. Signed magnitude and one's complement both waste a code on <b>−0</b>.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">5</span>Minimization and K-map drills</h2>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:32%">Simplify</th><th class="c" style="width:12%">Answer</th><th>Working</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td><code>A'B'C + A'BC + AB'C + ABC</code></td><td class="c"><b>C</b></td><td>Factor C: <code>C(A'B' + A'B + AB' + AB)</code>. The bracket covers every combination of A and B, so it equals 1, and <code>C·1 = C</code>.</td></tr>
+<tr><td class="c">2</td><td><code>A'BC' + A'BC + ABC' + ABC</code></td><td class="c"><b>B</b></td><td><code>A'B(C'+C) = A'B</code> and <code>AB(C'+C) = AB</code>; then <code>A'B + AB = B(A'+A) = B</code>.</td></tr>
+<tr><td class="c">3</td><td><code>AB + A(B+C) + B(B+C)</code></td><td class="c"><b>B + AC</b></td><td>Expand: <code>AB + AB + AC + B + BC</code>. Idempotent kills the repeat; absorption gives <code>B + BC = B</code> and <code>B + AB = B</code>. Left with <code>B + AC</code>.</td></tr>
+<tr><td class="c">4</td><td><code>(A + B'C)'</code></td><td class="c"><b>A'B + A'C'</b></td><td>De Morgan: <code>A'·(B'C)' = A'·(B + C')</code>, then distribute → <code>A'B + A'C'</code>.</td></tr>
+<tr><td class="c">5</td><td><code>A + A'B</code></td><td class="c"><b>A + B</b></td><td>Distributive: <code>(A+A')(A+B) = 1·(A+B) = A+B</code>. A standard identity worth memorising.</td></tr>
+<tr><td class="c">6</td><td><code>AB + AB' </code></td><td class="c"><b>A</b></td><td><code>A(B+B') = A·1 = A</code> — the complement law, which is what every K-map grouping is doing underneath.</td></tr>
+</tbody>
+</table>
+
+<div class="grid3">
+<div>
+<h4>K-map drill 1 — Σm(0,1,4,5)</h4>
+<pre>       BC
+  A \  00  01  11  10
+    0 │ 1 │ 1 │ 0 │ 0 │
+    1 │ 1 │ 1 │ 0 │ 0 │
+
+Group of 4 (the two left columns).
+A changes, C changes, B stays 0.
+
+∴ F = B'</pre>
+</div>
+<div>
+<h4>K-map drill 2 — Σm(2,3,6,7)</h4>
+<pre>       BC
+  A \  00  01  11  10
+    0 │ 0 │ 0 │ 1 │ 1 │
+    1 │ 0 │ 0 │ 1 │ 1 │
+
+Group of 4 (the two right columns).
+A changes, C changes, B stays 1.
+
+∴ F = B</pre>
+</div>
+<div>
+<h4>K-map drill 3 — Σm(1,3,5,7)</h4>
+<pre>       BC
+  A \  00  01  11  10
+    0 │ 0 │ 1 │ 1 │ 0 │
+    1 │ 0 │ 1 │ 1 │ 0 │
+
+Group of 4 (the two middle columns).
+A changes, B changes, C stays 1.
+
+∴ F = C</pre>
+</div>
+</div>
+
+<div class="box warn">
+<b>Column order is a mark on its own.</b> The top of a 3-variable map reads <b>00 · 01 · 11 · 10</b>. If you write 00 · 01 · 10 · 11 the adjacent cells no longer differ by one bit, your groups become invalid, and the whole answer collapses even though the arithmetic inside it is fine. The same applies to a 4-variable map on both axes.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">6</span>RTL drills — both directions</h2>
+
+<div class="grid2">
+<div>
+<h4>English → RTL</h4>
+<table class="tight">
+<thead><tr><th style="width:52%">Statement</th><th>RTL</th></tr></thead>
+<tbody>
+<tr><td>Transfer the contents of R3 into R1</td><td><code>R1 ← R3</code></td></tr>
+<tr><td>Add R1 and R2, result into R3</td><td><code>R3 ← R1 + R2</code></td></tr>
+<tr><td>Bitwise AND of R1 and R2 into R1</td><td><code>R1 ← R1 ∧ R2</code></td></tr>
+<tr><td>If P = 1, move R1 into R2</td><td><code>P: R2 ← R1</code></td></tr>
+<tr><td>If K = 1 move R1 into R2, else move R4</td><td><code>K: R2 ← R1</code><br><code>K': R2 ← R4</code></td></tr>
+<tr><td>If Z = 1 and C = 0, increment the PC</td><td><code>Z·C': PC ← PC + 1</code></td></tr>
+<tr><td>Move R1 to R2 and R3 to R4 together</td><td><code>R2 ← R1, R4 ← R3</code></td></tr>
+<tr><td>Load the low 8 bits of R1 into R2</td><td><code>R2 ← R1(0-7)</code></td></tr>
+<tr><td>R1 drives the bus; R2 latches from it</td><td><code>Bus ← R1</code> then <code>R2 ← Bus</code></td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<h4>RTL → English (the reverse question)</h4>
+<table class="tight">
+<thead><tr><th style="width:34%">RTL</th><th>What it says</th></tr></thead>
+<tbody>
+<tr><td><code>T₀: MAR ← PC</code></td><td>At time step T₀, the address in the program counter is copied into the memory address register — the start of the fetch.</td></tr>
+<tr><td><code>R2 ← R2 + 1</code></td><td>An arithmetic micro-operation incrementing R2 by one.</td></tr>
+<tr><td><code>X'Y: R3 ← R1 ⊕ R2</code></td><td>A logic micro-operation: only when X = 0 and Y = 1, R3 receives the bitwise XOR of R1 and R2.</td></tr>
+<tr><td><code>R1 ← R2, R2 ← R1</code></td><td>The two registers <b>exchange</b> contents — legal only because the comma means both happen simultaneously in one clock cycle.</td></tr>
+</tbody>
+</table>
+<div class="box" style="padding:5pt 7pt">
+<b>Marking hints.</b> The arrow always points <b>at the destination</b>. The condition goes <b>before</b> the colon, the operation after. An "else" is written with the <b>complemented</b> control signal on a second line, never as the word "else".
+</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">7</span>Performance drills</h2>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:38%">Problem</th><th class="c" style="width:14%">Answer</th><th>Working</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>IC = 5 × 10⁸, CPI = 2, clock = 2.5 GHz. Find the CPU time.</td><td class="c"><b>0.4 s</b></td><td>Cycle time = 1/2.5×10⁹ = 0.4 ns. CPU time = 5×10⁸ × 2 × 0.4×10⁻⁹ = 0.4 s</td></tr>
+<tr><td class="c">2</td><td>Same program — find the MIPS rating.</td><td class="c"><b>1250 MIPS</b></td><td>MIPS = IC / (exec time × 10⁶) = 5×10⁸ / (0.4 × 10⁶) = 1250</td></tr>
+<tr><td class="c">3</td><td>IC = 2 × 10⁹, CPI = 1.5, clock = 3.0 GHz. Find the CPU time.</td><td class="c"><b>1.0 s</b></td><td>Cycle = 0.333 ns; 2×10⁹ × 1.5 × 0.333×10⁻⁹ = 1.0 s</td></tr>
+<tr><td class="c">4</td><td>A program of 10⁹ instructions runs in 0.75 s on a 3 GHz machine. Find the CPI.</td><td class="c"><b>2.25</b></td><td>Rearrange: CPI = (CPU time × frequency) / IC = (0.75 × 3×10⁹) / 10⁹ = 2.25</td></tr>
+<tr><td class="c">5</td><td>Machine A runs a task in 8 s, Machine B in 12 s. Which is faster and by how much?</td><td class="c"><b>A, by 1.5×</b></td><td>Relative performance = Exec B / Exec A = 12/8 = 1.5</td></tr>
+<tr><td class="c">6</td><td>An optimisation cuts CPI from 2.0 to 1.6 with IC and clock unchanged. Find the speedup.</td><td class="c"><b>1.25×</b></td><td>CPU time ∝ CPI, so speedup = 2.0/1.6 = 1.25</td></tr>
+<tr><td class="c">7</td><td>A compiler halves the instruction count but doubles the CPI. What happens to performance?</td><td class="c"><b>Unchanged</b></td><td>CPU time = IC × CPI × cycle time; ½ × 2 = 1. The classic Iron Law trap.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">8</span>Rapid-fire recall — cover the right column</h2>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:52%">Prompt</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td>Other name for computer architecture</td><td>Instruction Set Architecture (ISA)</td></tr>
+<tr><td>Architecture in three words</td><td>The hardware–software contract</td></tr>
+<tr><td>Organization in three words</td><td>The actual implementation</td></tr>
+<tr><td>Four addressing modes</td><td>Immediate, direct, indirect, indexed</td></tr>
+<tr><td>Two control-unit implementations</td><td>Hard-wired · micro-programmed</td></tr>
+<tr><td>Definition of a logic gate</td><td>A device performing a boolean function on binary inputs, giving one binary output</td></tr>
+<tr><td>AND rule / OR rule</td><td>1 only if both are 1 · 0 only if both are 0</td></tr>
+<tr><td>XOR rule / XNOR rule</td><td>1 when the inputs differ · 1 when they are the same</td></tr>
+<tr><td>Rows in a truth table</td><td>2ⁿ — three inputs give 8</td></tr>
+<tr><td>XOR as a sum of products</td><td>Y = A'B + AB'</td></tr>
+<tr><td>De Morgan, both forms</td><td>(A·B)' = A'+B' · (A+B)' = A'·B'</td></tr>
+<tr><td>The law that powers minimization</td><td>Complement: A + A' = 1</td></tr>
+<tr><td>Three minimization techniques</td><td>Boolean algebra · K-map · Quine–McCluskey</td></tr>
+<tr><td>Three reasons to minimize</td><td>Hardware efficiency · improved performance (less propagation delay) · lower cost and power</td></tr>
+<tr><td>K-map column order</td><td>00, 01, 11, 10</td></tr>
+<tr><td>K-map group sizes</td><td>Powers of 2 — 1, 2, 4, 8</td></tr>
+<tr><td>Majority vote circuit, minimized</td><td>F = AB + BC + AC</td></tr>
+<tr><td>SOP stands for</td><td>Sum of Products</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<table class="tight">
+<thead><tr><th style="width:52%">Prompt</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td>What RTL stands for and does</td><td>Register Transfer Language — describes micro-operations between hardware registers</td></tr>
+<tr><td>Meaning of the colon in RTL</td><td>Terminates a control function — the operation runs only if the condition is true</td></tr>
+<tr><td>Meaning of the comma in RTL</td><td>Micro-operations execute simultaneously in one clock cycle</td></tr>
+<tr><td>Four types of micro-operation</td><td>Register transfer · arithmetic · logic · control function</td></tr>
+<tr><td>Definition of a micro-operation</td><td>An elementary operation on register data during a clock pulse</td></tr>
+<tr><td>What the PC does</td><td>Keeps track of the next instruction to be fetched from memory</td></tr>
+<tr><td>Base 8 ↔ base 2 ratio</td><td>3 : 1 (8 = 2³)</td></tr>
+<tr><td>Base 16 ↔ base 2 ratio</td><td>4 : 1 (16 = 2⁴)</td></tr>
+<tr><td>Decimal → other base method</td><td>Successive division; read remainders upwards</td></tr>
+<tr><td>Fraction conversion method</td><td>Repeated multiplication; read integer parts downwards</td></tr>
+<tr><td>Unsigned range for n bits</td><td>0 … 2ⁿ − 1 (256 codes for n = 8, max 255)</td></tr>
+<tr><td>Two's complement from a positive</td><td>Invert every bit, then add 1</td></tr>
+<tr><td>Scheme with two zeros</td><td>Signed magnitude and one's complement (+0 and −0)</td></tr>
+<tr><td>Three encoding schemes</td><td>BCD · EBCDIC · ASCII</td></tr>
+<tr><td>Five memory-hierarchy levels</td><td>Registers · cache · main memory · secondary · tertiary</td></tr>
+<tr><td>Fastest and slowest cache level</td><td>L1 fastest and smallest · L3 largest and slowest</td></tr>
+<tr><td>Three cache mappings</td><td>Direct · fully associative · set associative (N-way)</td></tr>
+<tr><td>Two write policies</td><td>Write-through · write-back</td></tr>
+<tr><td>Two types of locality</td><td>Temporal (a loop) · spatial (an array)</td></tr>
+<tr><td>The Iron Law</td><td>CPU Time = IC × CPI × Clock Cycle Time</td></tr>
+<tr><td>Performance formula</td><td>Performance = 1 / Execution Time</td></tr>
+<tr><td>MIPS and FLOPS</td><td>Million Instructions Per Second · Floating Point Operations Per Second</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">9</span>Spot the error — every statement is wrong except four</h2>
+
+<table class="tight">
+<thead><tr><th class="c" style="width:4%">#</th><th style="width:36%">Statement</th><th class="c" style="width:7%">T / F</th><th>Correction</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td>Computer organization defines the instruction set.</td><td class="c"><b>F</b></td><td>The <b>architecture</b> defines the instruction set. Organization is the implementation — data paths, cache sizes, pipelines.</td></tr>
+<tr><td class="c">2</td><td>An 8-bit unsigned number can represent up to 256.</td><td class="c"><b>F</b></td><td>It has 256 <b>codes</b> but its maximum value is <b>255</b> — one code is spent on zero.</td></tr>
+<tr><td class="c">3</td><td>A K-map's columns are labelled 00, 01, 10, 11.</td><td class="c"><b>F</b></td><td>They are <b>00, 01, 11, 10</b> — adjacent cells must differ in exactly one bit.</td></tr>
+<tr><td class="c">4</td><td>The bubble on a gate output means NOT.</td><td class="c"><b>T</b></td><td>Correct — it is what turns AND into NAND, OR into NOR, XOR into XNOR.</td></tr>
+<tr><td class="c">5</td><td>Two's complement is formed by inverting all the bits.</td><td class="c"><b>F</b></td><td>That is <b>one's</b> complement. Two's complement is invert <b>then add 1</b>.</td></tr>
+<tr><td class="c">6</td><td>L3 cache is the fastest because it is the largest.</td><td class="c"><b>F</b></td><td>L3 is the <b>largest but slowest</b>; L1 sits on the core and is the fastest and smallest.</td></tr>
+<tr><td class="c">7</td><td>Write-back keeps cache and main memory consistent at all times.</td><td class="c"><b>F</b></td><td>That is <b>write-through</b>. Write-back is more efficient but data may be <b>inconsistent</b> between cache and main memory.</td></tr>
+<tr><td class="c">8</td><td>Spatial locality is a loop accessing the same counter.</td><td class="c"><b>F</b></td><td>That is <b>temporal</b> locality. Spatial locality is <b>nearby</b> addresses — an array or sequential structure.</td></tr>
+<tr><td class="c">9</td><td>Cache memory is non-volatile.</td><td class="c"><b>F</b></td><td>Cache is <b>volatile</b>. Secondary storage (SSD, HDD) is the non-volatile level.</td></tr>
+<tr><td class="c">10</td><td>CPU Time = Instruction Count ÷ CPI ÷ Clock Cycle Time.</td><td class="c"><b>F</b></td><td>It is a <b>product</b>: IC × CPI × clock cycle time.</td></tr>
+<tr><td class="c">11</td><td>Clock cycle time is the inverse of clock frequency.</td><td class="c"><b>T</b></td><td>Correct — 3.0 GHz gives a cycle time of 1/3.0×10⁹ ≈ 0.333 ns.</td></tr>
+<tr><td class="c">12</td><td>Octal digits are grouped in fours when converting to binary.</td><td class="c"><b>F</b></td><td><b>Threes</b> for octal (8 = 2³); fours are for hexadecimal (16 = 2⁴).</td></tr>
+<tr><td class="c">13</td><td>Throughput is the time to complete one task from start to finish.</td><td class="c"><b>F</b></td><td>That is <b>response time</b>. Throughput is the work completed <b>per unit time</b>.</td></tr>
+<tr><td class="c">14</td><td>A minterm may be used in more than one K-map group.</td><td class="c"><b>T</b></td><td>Correct — overlapping is allowed and often gives a smaller expression, because <code>X + X = X</code>.</td></tr>
+<tr><td class="c">15</td><td>Positive numbers differ between signed magnitude, one's and two's complement.</td><td class="c"><b>F</b></td><td>Positives are <b>identical</b> in all three schemes; only the negatives differ.</td></tr>
+<tr><td class="c">16</td><td>Locality of reference is the foundation of cache memory design.</td><td class="c"><b>T</b></td><td>Correct — it is why pre-fetching a block into cache pays off.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">10</span>Walk-in sheet — the last ten minutes</h2>
+
+<div class="box star" style="padding:9pt 12pt">
+<div class="grid2">
+<div>
+<h4>The ten facts most likely to be tested</h4>
+<ol style="margin-bottom:4pt">
+<li><b>Architecture = what/specification/ISA</b> · <b>organization = how/implementation</b></li>
+<li>Gates: AND 1 only if both 1 · OR 0 only if both 0 · <b>XOR 1 when different</b> · XNOR 1 when same · bubble = NOT</li>
+<li><b>rows = 2ⁿ</b> · XOR = <code>A'B + AB'</code> · SOP = sum of products</li>
+<li>Minimization rests on <b>A + A' = 1</b>; K-map columns <b>00 01 11 10</b>; groups in powers of 2; <b>cancel the changing variable</b></li>
+<li>Majority vote → <b>F = AB + BC + AC</b></li>
+<li>RTL: <b>← is the destination</b> · colon = control function · comma = same clock cycle · else = <b>complemented</b> signal</li>
+<li>Micro-operations: <b>register transfer · arithmetic · logic · control function</b></li>
+<li>Bases: divide up, expand back · <b>3s for octal, 4s for hex</b> · fractions multiply downwards</li>
+<li>Unsigned <b>0 … 2ⁿ − 1</b> · <b>two's = one's + 1</b> · two's complement has one zero</li>
+<li><b>CPU Time = IC × CPI × Clock Cycle Time</b> · Performance = 1/Execution Time</li>
+</ol>
+</div>
+<div>
+<h4>Numbers worth walking in with</h4>
+<ul style="margin-bottom:4pt">
+<li><b>4832₁₀</b> = <code>1001011100000₂</code> = <code>11340₈</code> = <code>12E0₁₆</code></li>
+<li><b>2025₁₀</b> = <code>11111101001₂</code> = <code>3751₈</code> = <code>7E9₁₆</code></li>
+<li><b>−56</b>: SM <code>1111000</code> · 1's <code>1000111</code> · 2's <code>1001000</code></li>
+<li><b>8-bit ranges:</b> unsigned 0…255 · two's complement −128…+127</li>
+<li><b>Cache:</b> L1 2–64 KB · L2 256–512 KB · L3 1–8 MB</li>
+</ul>
+<h4>Three moves in the first five minutes</h4>
+<ol style="margin-bottom:0">
+<li>Read all six questions and pick the five you will answer — leave out the one with the most unfamiliar calculation.</li>
+<li>Do the calculation questions <b>first</b>, while your arithmetic is sharp.</li>
+<li>Every calculation gets three lines: <b>formula → substitution → answer</b>, and every conversion gets a <b>check line</b> converting back.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div class="footer-note">
+CMS 704 · Computer Architecture · Volume II drill pack<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>

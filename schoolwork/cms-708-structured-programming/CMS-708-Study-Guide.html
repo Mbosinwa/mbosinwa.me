@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMS 708 — Structured Programming — Exam Study Guide (Volume I)</title>
+<style>
+@page { size: A4; margin: 13mm 12mm; }
+
+* { box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1c22;
+  --ink-soft: #4d5765;
+  --rule:     #d3d9e0;
+  --rule-mid: #a8b2bf;
+  --navy:     #17324f;
+  --navy-pale:#eef3f8;
+  --accent:   #b4531b;
+  --accent-pale:#fdf3ea;
+  --warn:     #9d2235;
+  --warn-pale:#fdf1f2;
+  --paper:    #fafbfc;
+}
+
+html { font-size: 11pt; }
+
+body {
+  font-family: "Charter", "Palatino Linotype", "Palatino", Georgia, serif;
+  line-height: 1.42;
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, th, .tag, figcaption, .masthead .facts, .masthead .byline {
+  font-family: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  border-top: 3pt solid var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding: 8pt 0 7pt;
+  margin-bottom: 10pt;
+}
+.masthead .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8pt; letter-spacing: 1.4pt; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 3pt;
+}
+.masthead h1 { font-size: 19pt; letter-spacing: -0.35pt; color: var(--navy); line-height: 1.12; }
+.masthead .sub { font-size: 9.4pt; color: var(--ink-soft); margin-top: 3pt; max-width: 86%; }
+.masthead .facts {
+  margin-top: 7pt; padding-top: 5pt; border-top: 0.5pt solid var(--rule);
+  font-size: 9pt; display: flex; gap: 16pt; flex-wrap: wrap; color: var(--ink);
+}
+.masthead .facts b { color: var(--navy); }
+.masthead .byline {
+  font-size: 8.8pt; margin-top: 5pt; letter-spacing: 0.2pt; color: var(--ink-soft);
+}
+.masthead .byline b { color: var(--navy); }
+.masthead .byline .url { color: var(--accent); }
+
+/* ---------- section headings ---------- */
+h2 {
+  font-size: 12pt;
+  letter-spacing: -0.1pt;
+  color: #fff;
+  background: var(--navy);
+  padding: 4pt 8pt 4pt 0;
+  margin: 13pt 0 6pt;
+  display: flex; align-items: baseline; gap: 8pt;
+  break-after: avoid;
+}
+h2 .n {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4pt 7pt;
+  margin-right: 2pt;
+  font-size: 11pt;
+  font-weight: 700;
+  align-self: stretch;
+  min-width: 22pt;
+  text-align: center;
+}
+h3 {
+  font-size: 10.8pt;
+  margin: 9pt 0 4pt;
+  color: var(--navy);
+  border-bottom: 0.75pt solid var(--rule-mid);
+  padding-bottom: 2pt;
+  break-after: avoid;
+}
+h4 {
+  font-size: 9.4pt; margin: 7pt 0 3pt; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.5pt; break-after: avoid;
+}
+
+p { margin: 0 0 5pt; }
+ul, ol { margin: 3pt 0 6pt; padding-left: 15pt; }
+li { margin-bottom: 3pt; }
+li::marker { color: var(--accent); font-weight: 700; }
+b, strong { color: #0f1116; }
+
+/* ---------- tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.2pt;
+  line-height: 1.34;
+  margin: 5pt 0 8pt;
+}
+tr { break-inside: avoid; }
+thead { display: table-header-group; }
+th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 3.5pt 5pt;
+  border: none;
+}
+td {
+  padding: 3.5pt 5pt;
+  border-bottom: 0.5pt solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: var(--paper); }
+tbody tr:last-child td { border-bottom: 0.75pt solid var(--rule-mid); }
+table.tight { font-size: 8.8pt; }
+td.c, th.c { text-align: center; }
+td:first-child { border-left: none; }
+
+/* ---------- callouts ---------- */
+.box {
+  border: 0.5pt solid var(--rule-mid);
+  border-left: 3pt solid var(--navy);
+  background: #fff;
+  padding: 6pt 9pt;
+  margin: 6pt 0 8pt;
+  font-size: 9.4pt;
+  break-inside: avoid;
+}
+.box.star { border-left-color: var(--accent); background: var(--accent-pale); border-color: #e8d6c5; }
+.box.warn { border-left-color: var(--warn); background: var(--warn-pale); border-color: #eccfd3; }
+.box h4 { margin-top: 0; color: var(--navy); }
+.box.warn h4 { color: var(--warn); }
+.box ol, .box ul { margin-bottom: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11pt; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt; }
+
+/* ---------- code / ascii art ---------- */
+pre {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.3pt;
+  line-height: 1.32;
+  background: var(--navy-pale);
+  border: none;
+  border-left: 2pt solid var(--rule-mid);
+  padding: 5pt 7pt;
+  margin: 4pt 0 6pt;
+  white-space: pre;
+  overflow-x: auto;
+  break-inside: avoid;
+  color: #16202b;
+}
+code {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 8.8pt;
+  background: var(--navy-pale);
+  padding: 0.5pt 2.5pt;
+  border-radius: 2pt;
+  color: var(--navy);
+}
+td code, th code { background: none; padding: 0; color: inherit; }
+
+.formula {
+  font-family: "Menlo", "SF Mono", "DejaVu Sans Mono", monospace;
+  font-size: 9.2pt;
+  text-align: center;
+  background: #fff;
+  border: 0.75pt solid var(--accent);
+  color: var(--accent);
+  padding: 4pt 6pt;
+  margin: 5pt 0;
+}
+
+/* ---------- svg figures ---------- */
+figure { margin: 5pt 0 7pt; break-inside: avoid; }
+figcaption {
+  font-size: 8.1pt; color: var(--ink-soft); text-align: center; margin-top: 3pt;
+  font-style: normal;
+}
+svg { display: block; width: 100%; height: auto; }
+.svgtxt { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.8px; fill: var(--navy); }
+.svgtxt.sm { font-size: 6.8px; fill: var(--ink-soft); }
+.axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+.curve { fill: none; stroke: var(--accent); stroke-width: 1.7; }
+.bound { fill: none; stroke: var(--navy); stroke-width: 1; stroke-dasharray: 3 2; }
+
+.tag {
+  font-size: 7.2pt; background: var(--accent); color: #fff; padding: 1.2pt 4pt;
+  letter-spacing: 0.6pt; vertical-align: 2.5pt; font-weight: 600;
+  text-transform: uppercase;
+}
+h2 .tag { background: rgba(255,255,255,0.18); }
+.pagebreak { break-before: page; }
+.avoid { break-inside: avoid; }
+hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
+.footer-note {
+  font-size: 8.3pt; color: var(--ink-soft); text-align: center;
+  margin-top: 14pt; border-top: 2pt solid var(--navy); padding-top: 5pt;
+}
+.footer-note b { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">Volume I · exam cheatsheet · study guide</div>
+  <h1>CMS 708 — Structured Programming</h1>
+  <div class="sub">PGD Computer Science, Rivers State University, Nkpolu-Oroworukwo, Port Harcourt · built from the lecturer's four-module course document, with every C++ listing re-indented so it can actually be read and copied</div>
+  <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
+  <div class="facts">
+    <span><b>Exam:</b> Monday 10 Aug 2026</span>
+    <span><b>Time:</b> 11:00 – 14:00</span>
+    <span><b>Venue:</b> the exam hall</span>
+    <span><b>Lecturer:</b> the lecturer</span>
+  </div>
+</div>
+
+<div class="box star">
+  <h4>What this paper will ask you to do</h4>
+  There is <b>no past paper on file</b> for CMS 708, so priorities come from the shape of the course document itself. Two facts about it decide everything.
+  <ol>
+    <li><b>Every module ends with practice exercises — 23 of them in total.</b> They are the only assessment-shaped material the lecturer wrote, and they are overwhelmingly of the form <i>"write a program that…"</i>. Expect the paper to be dominated by <b>write-the-code</b> questions, backed by short theory parts.</li>
+    <li><b>The theory is thin but very quotable</b> — structured vs unstructured, modularity and readability, by value vs by reference, scope and lifetime, top-down vs bottom-up. Each comes with a real-world analogy in the notes (traffic, wedding, house, car). <b>Reproduce the analogy</b> — it is the lecturer's own and it costs one sentence.</li>
+  </ol>
+  <hr class="thin">
+  <b>Where the marks are:</b> writing correct, complete, compilable C++ · tracing code to predict output · explaining a concept then illustrating it with a short program. <b>All 23 exercises are solved in Volume II.</b>
+</div>
+
+<div class="box warn">
+<h4>Write code the way it is marked</h4>
+The C++ in the course document lost its indentation when it was converted from Word. <b>Do not copy that style into your answer booklet.</b> Every listing in this guide has been re-indented. In the exam, always: <b>1.</b> include the headers, <b>2.</b> open with <code>int main() {</code> and close with <code>return 0;</code>, <b>3.</b> indent one level per brace, <b>4.</b> end every statement with a semicolon, <b>5.</b> add a one-line comment on anything non-obvious. Marks are lost for missing headers and missing <code>return 0;</code> far more often than for wrong logic.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">1</span>Definitions to write word-for-word</h2>
+
+<table>
+<thead><tr><th style="width:22%">Term</th><th>Definition</th></tr></thead>
+<tbody>
+<tr><td><b>Structured programming</b></td><td>A programming approach that emphasizes the use of <b>clear control structures</b> — sequence, selection and iteration — and <b>modular design</b> instead of arbitrary jumps, so that programs are easier to understand, test and extend. Its philosophy: <b>break a complex problem into smaller, manageable parts and solve each part systematically</b>.</td></tr>
+<tr><td><b>Unstructured programming</b></td><td>An early approach, associated with languages like BASIC and assembly, relying heavily on <b><code>goto</code> statements</b> and sequential execution. It allowed quick development but produced <b>"spaghetti code"</b>.</td></tr>
+<tr><td><b>Spaghetti code</b></td><td>Programs that are <b>tangled, difficult to read and even harder to maintain</b>, in which the flow of control jumps unpredictably, making debugging and modification a nightmare.</td></tr>
+<tr><td><b>Modularity</b></td><td>Dividing a program into <b>independent units or modules</b>, such as functions or procedures, each performing a specific task and able to be <b>developed, tested and reused independently</b>.</td></tr>
+<tr><td><b>Readability</b></td><td>Ensuring code is <b>understandable not only to the original author but also to others</b> who may maintain or extend it, through meaningful variable names, consistent indentation and clear documentation.</td></tr>
+<tr><td><b>Variable</b></td><td>A <b>named storage location in memory that holds data</b>. It must be declared with a data type, which specifies the kind of values it can store.</td></tr>
+<tr><td><b>Strongly typed</b></td><td>A language in which <b>variables must be declared before use</b> and <b>type mismatches result in errors</b> — C++ is strongly typed.</td></tr>
+<tr><td><b>Operator</b></td><td>A <b>symbol that performs an operation</b> on variables and values. An <b>expression</b> combines variables, constants and operators to produce a result.</td></tr>
+<tr><td><b>Function</b></td><td>A <b>block of code designed to perform a specific task</b>. Functions break complex problems into smaller, manageable parts and must be defined with a <b>return type, a name and parameters</b> (if any); once defined they can be <b>invoked (called)</b> from <code>main()</code> or another function.</td></tr>
+<tr><td><b>Pass by value</b></td><td>A <b>copy</b> of the variable is passed; changes inside the function <b>do not affect</b> the original variable.</td></tr>
+<tr><td><b>Pass by reference</b></td><td>The <b>actual variable</b> is passed, using <code>&amp;</code>; changes inside the function <b>do affect</b> the original variable.</td></tr>
+<tr><td><b>Scope</b></td><td><b>Where in a program a variable can be accessed.</b> <b>Local</b> variables are declared inside a function and are accessible only within it; <b>global</b> variables are declared outside all functions and are accessible throughout the program.</td></tr>
+<tr><td><b>Lifetime</b></td><td><b>How long a variable exists in memory.</b> Local variables exist only while the function runs; global variables exist for the entire program execution.</td></tr>
+<tr><td><b>Recursion</b></td><td>Occurs when a <b>function calls itself</b> to solve a problem. It suits problems that break down into smaller, similar sub-problems, such as factorial or Fibonacci.</td></tr>
+<tr><td><b>Modularisation</b></td><td>The process of <b>breaking a large program into smaller, independent units called modules</b>, each performing a specific task and able to be developed, tested and maintained separately.</td></tr>
+<tr><td><b>Top-down design</b></td><td>Starts with the <b>big picture</b> and progressively breaks it into smaller details: define the overall problem, divide into sub-problems, implement each as a module. It emphasizes <b>stepwise refinement</b>.</td></tr>
+<tr><td><b>Bottom-up design</b></td><td>Starts with the <b>smallest building blocks</b> and gradually integrates them into larger systems. It emphasizes <b>reusability</b>.</td></tr>
+</tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2><span class="n">2</span>Structured vs unstructured programming <span class="tag">CERTAIN QUESTION</span></h2>
+
+<div class="grid2">
+<div>
+<table class="tight">
+<thead><tr><th style="width:20%">Basis</th><th>Unstructured</th><th>Structured</th></tr></thead>
+<tbody>
+<tr><td>Control flow</td><td><b><code>goto</code></b> statements and sequential execution; the flow <b>jumps unpredictably</b></td><td><b>Clear control structures</b> — sequence, selection, iteration</td></tr>
+<tr><td>Design</td><td>Everything in one block</td><td><b>Modular</b> — divided into functions</td></tr>
+<tr><td>Readability</td><td>Poor — <b>"spaghetti code"</b></td><td>High — logical flow mirrors human reasoning</td></tr>
+<tr><td>Debugging</td><td>A <b>nightmare</b>; errors are hard to isolate</td><td>Easy — errors are isolated within modules</td></tr>
+<tr><td>Maintenance</td><td>Very difficult to modify or extend</td><td>Easy to test and extend</td></tr>
+<tr><td>Scale</td><td>Workable for small tasks; <b>unmanageable for larger projects</b></td><td>Suits large projects and team work</td></tr>
+<tr><td>Associated with</td><td>Early BASIC, assembly</td><td>C, C++, Pascal</td></tr>
+</tbody>
+</table>
+<div class="box star" style="padding:6pt 8pt">
+<b>The lecturer's analogy — quote it.</b> <i>"Imagine a traffic system where cars could suddenly teleport to random roads without rules — that's what unstructured programming feels like."</i> And the closing line of the section: <b>structured programming replaces chaos with order</b>, ensuring programs are not only functional but maintainable in the long run.
+</div>
+</div>
+<div>
+<h4>The same task, both ways — the exam's favourite pairing</h4>
+<pre><b>UNSTRUCTURED — using goto</b>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int x = 0;
+start:
+    cout &lt;&lt; "Enter a number (0 to quit): ";
+    cin &gt;&gt; x;
+    if (x != 0) {
+        cout &lt;&lt; "You entered: " &lt;&lt; x &lt;&lt; endl;
+        goto start;          // jumps back to start
+    }
+    cout &lt;&lt; "Program ended." &lt;&lt; endl;
+    return 0;
+}</pre>
+<pre><b>STRUCTURED — using a do-while loop</b>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int x;
+    do {
+        cout &lt;&lt; "Enter a number (0 to quit): ";
+        cin &gt;&gt; x;
+        if (x != 0) {
+            cout &lt;&lt; "You entered: " &lt;&lt; x &lt;&lt; endl;
+        }
+    } while (x != 0);
+    cout &lt;&lt; "Program ended." &lt;&lt; endl;
+    return 0;
+}</pre>
+<p style="font-size:9.1pt"><b>The sentence that earns the mark:</b> both programs do the same thing, but <b>the <code>goto</code> version makes the flow harder to follow, and as the program grows debugging becomes chaotic</b>, while <b>the do-while gives a clear, predictable structure that is easier to read, maintain and extend</b>.</p>
+</div>
+</div>
+
+<h3>Modularity and readability — the two pillars</h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.1pt"><b>Modularity</b> divides a program into independent units, each performing a specific task, developed, tested and reused independently. This <b>reduces redundancy and enhances collaboration</b>, since different programmers can work on separate modules without interfering with each other.</p>
+<p style="font-size:9.1pt"><b>Readability</b> ensures code is understandable to others, through <b>meaningful variable names, consistent indentation and clear documentation</b>. It avoids unnecessary complexity and follows logical patterns that mirror human reasoning.</p>
+<p style="font-size:9.1pt"><b>Together</b> they make programming <b>a disciplined activity rather than a chaotic one</b>, transforming code into a form of communication — <b>not just between the programmer and the computer, but between programmers themselves</b>.</p>
+<p style="font-size:9.1pt"><b>Why it matters in practice:</b> teams work on large projects like banking systems, hospital management software or video games. Without modularity the codebase becomes overwhelming.</p>
+</div>
+<div>
+<pre><b>WITHOUT modularity — everything crammed into main()</b>
+int main() {
+    int a, b;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin  &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; "Sum: "        &lt;&lt; a + b &lt;&lt; endl;
+    cout &lt;&lt; "Difference: " &lt;&lt; a - b &lt;&lt; endl;
+    cout &lt;&lt; "Product: "    &lt;&lt; a * b &lt;&lt; endl;
+    cout &lt;&lt; "Quotient: "   &lt;&lt; a / b &lt;&lt; endl;
+    return 0;
+}   // to reuse these operations we must rewrite them</pre>
+<pre><b>WITH modularity — one function per operation</b>
+int    add(int x, int y)      { return x + y; }
+int    subtract(int x, int y) { return x - y; }
+int    multiply(int x, int y) { return x * y; }
+double divide(int x, int y)   { return (double)x / y; }
+
+int main() {
+    int a, b;
+    cout &lt;&lt; "Enter two numbers: ";
+    cin  &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; "Sum: "        &lt;&lt; add(a, b)      &lt;&lt; endl;
+    cout &lt;&lt; "Difference: " &lt;&lt; subtract(a, b) &lt;&lt; endl;
+    cout &lt;&lt; "Product: "    &lt;&lt; multiply(a, b) &lt;&lt; endl;
+    cout &lt;&lt; "Quotient: "   &lt;&lt; divide(a, b)   &lt;&lt; endl;
+    return 0;
+}</pre>
+<p style="font-size:9.1pt"><b>Note the cast</b> in <code>divide</code>: <code>(double)x / y</code>. Without it, <code>10 / 3</code> is integer division and gives <b>3</b>, not 3.333. This is a classic exam trap.</p>
+</div>
+</div>
+
+<h3>Why C++ counts as a structured language</h3>
+<p>C++ is a <b>multi-paradigm</b> language supporting both structured and object-oriented programming, but at its core it provides all the tools needed for structured programming:</p>
+<ul>
+<li><b>Control structures</b> — <code>if</code>, <code>switch</code>, <code>for</code>, <code>while</code> and <code>do-while</code>, which <b>enforce logical flow</b>.</li>
+<li><b>Functions</b> — enabling modular design and code reuse; they can be <b>parameterised, recursive and organised into libraries</b>, making them powerful building blocks.</li>
+<li><b>Strong typing and data abstraction</b> — which help programmers manage complexity and avoid errors.</li>
+</ul>
+<p style="font-size:9.1pt"><b>The closing argument to write:</b> although C++ is known for object-oriented features such as classes and inheritance, <b>its foundation lies in structured programming principles, and mastering them is essential before moving on to more advanced paradigms</b>.</p>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">3</span>C++ fundamentals</h2>
+
+<div class="grid2">
+<div>
+<h4>Syntax — the rules that are always worth a mark</h4>
+<ul style="font-size:9.1pt">
+<li>Every program begins with a <b><code>main()</code> function</b>, which acts as the <b>entry point</b>.</li>
+<li><b>Statements end with semicolons.</b></li>
+<li><b>Blocks are enclosed in curly braces <code>{ }</code>.</b></li>
+<li>Variables <b>must be declared with a data type before use</b> — C++ is strongly typed.</li>
+<li><code>#include</code> brings in a library; <code>using namespace std;</code> lets you write <code>cout</code> instead of <code>std::cout</code>.</li>
+</ul>
+<h4>The six data types in the notes</h4>
+<table class="tight">
+<thead><tr><th style="width:16%">Type</th><th>Holds</th><th style="width:26%">Example literal</th></tr></thead>
+<tbody>
+<tr><td><code>int</code></td><td>Integers (whole numbers)</td><td><code>20</code></td></tr>
+<tr><td><code>float</code></td><td>Single-precision decimals</td><td><code>3.5f</code></td></tr>
+<tr><td><code>double</code></td><td>Double-precision decimals</td><td><code>45000.0</code></td></tr>
+<tr><td><code>char</code></td><td>A single character</td><td><code>'A'</code> — single quotes</td></tr>
+<tr><td><code>bool</code></td><td><code>true</code> / <code>false</code></td><td><code>true</code></td></tr>
+<tr><td><code>string</code></td><td>Text — needs <code>&lt;string&gt;</code></td><td><code>"Ada"</code> — double quotes</td></tr>
+</tbody>
+</table>
+<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    int    age        = 20;        // integer
+    double salary     = 45000;     // floating-point
+    char   grade      = 'A';       // character
+    bool   isEmployed = true;      // boolean
+    string name       = "Ada";     // string
+
+    cout &lt;&lt; "Name: " &lt;&lt; name
+         &lt;&lt; ", Age: " &lt;&lt; age &lt;&lt; endl;
+    return 0;
+}</pre>
+</div>
+<div>
+<h4>Input and output</h4>
+<p style="font-size:9.1pt">The <code>iostream</code> library provides <b><code>cin</code> for input</b> and <b><code>cout</code> for output</b>. These make programs <b>dynamic</b>, letting users supply data in real time instead of hardcoding values.</p>
+<pre>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int number;
+    cout &lt;&lt; "Enter a number: ";      // output prompt
+    cin  &gt;&gt; number;                  // input from user
+    cout &lt;&lt; "You entered: " &lt;&lt; number &lt;&lt; endl;
+    return 0;
+}</pre>
+<p style="font-size:9.1pt"><b>Direction of the arrows:</b> <code>cout &lt;&lt;</code> sends data <b>out to</b> the screen; <code>cin &gt;&gt;</code> brings data <b>in from</b> the keyboard into the variable. Writing them the wrong way round is the single most common syntax error on this paper. <code>endl</code> ends the line.</p>
+<h4>The five operator families</h4>
+<table class="tight">
+<thead><tr><th style="width:26%">Family</th><th>Operators</th></tr></thead>
+<tbody>
+<tr><td><b>Arithmetic</b></td><td><code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></td></tr>
+<tr><td><b>Relational</b></td><td><code>==</code> <code>!=</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code></td></tr>
+<tr><td><b>Logical</b></td><td><code>&amp;&amp;</code> (AND) · <code>||</code> (OR) · <code>!</code> (NOT)</td></tr>
+<tr><td><b>Assignment</b></td><td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code></td></tr>
+<tr><td><b>Increment / decrement</b></td><td><code>++</code> <code>--</code></td></tr>
+</tbody>
+</table>
+<div class="box" style="padding:5pt 7pt">
+<b>Three operator traps.</b> <b>1.</b> <code>=</code> assigns, <code>==</code> compares — <code>if (x = 5)</code> is always true and is a logic bug, not a syntax error. <b>2.</b> <code>%</code> is the <b>modulus</b> — the remainder — and works on integers only; <code>10 % 3</code> is <b>1</b>. It is how you test odd/even and divisibility. <b>3.</b> Integer division truncates: <code>10 / 3</code> is <b>3</b>. Cast one operand to <code>double</code> when you want 3.333.
+</div>
+</div>
+</div>
+
+<h3>The payroll example — everything in one program</h3>
+<div class="grid2">
+<div>
+<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string name;
+    double grossSalary, taxRate, netSalary;
+
+    cout &lt;&lt; "Enter employee name: ";
+    cin  &gt;&gt; name;
+    cout &lt;&lt; "Enter gross salary: ";
+    cin  &gt;&gt; grossSalary;
+    cout &lt;&lt; "Enter tax rate (%): ";
+    cin  &gt;&gt; taxRate;
+
+    netSalary = grossSalary - (grossSalary * taxRate / 100);
+
+    cout &lt;&lt; "\nEmployee: "   &lt;&lt; name      &lt;&lt; endl;
+    cout &lt;&lt; "Net Salary: "   &lt;&lt; netSalary &lt;&lt; endl;
+    return 0;
+}</pre>
+</div>
+<div>
+<p style="font-size:9.1pt">This one program integrates <b>variables, data types, input/output and operators</b> — which is exactly what a "write a program that…" question is testing. Learn its shape and you can adapt it to almost any arithmetic scenario the paper sets:</p>
+<ol style="font-size:9.1pt">
+<li>Headers and <code>using namespace std;</code></li>
+<li>Declare every variable you will need, with the right type</li>
+<li>Prompt, then read, one value at a time</li>
+<li>Do the calculation in a single clearly-written statement</li>
+<li>Print the result with a label</li>
+<li><code>return 0;</code></li>
+</ol>
+<div class="box" style="padding:5pt 7pt"><b>Note the formula:</b> <code>net = gross − (gross × rate / 100)</code>. Percentage questions are common; the <code>/ 100</code> is where marks are lost.</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">4</span>Control structures</h2>
+
+<div class="grid2">
+<div>
+<h4>Selection — <code>if</code> and <code>switch</code></h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Construct</th><th>Use it when</th></tr></thead>
+<tbody>
+<tr><td><b><code>if</code></b></td><td>Executing a block <b>if a condition is true</b></td></tr>
+<tr><td><b><code>if-else</code></b></td><td>You need an <b>alternative block</b> when the condition is false</td></tr>
+<tr><td><b><code>switch</code></b></td><td><b>Multiple possible values of one variable</b> must be checked — menus, choices</td></tr>
+</tbody>
+</table>
+<pre><b>if-else — grading system</b>
+int score;
+cout &lt;&lt; "Enter student score: ";
+cin  &gt;&gt; score;
+
+if      (score &gt;= 70) cout &lt;&lt; "Grade: A" &lt;&lt; endl;
+else if (score &gt;= 60) cout &lt;&lt; "Grade: B" &lt;&lt; endl;
+else if (score &gt;= 50) cout &lt;&lt; "Grade: C" &lt;&lt; endl;
+else                  cout &lt;&lt; "Grade: F" &lt;&lt; endl;</pre>
+<pre><b>switch — menu selection</b>
+int choice;
+cout &lt;&lt; "Menu:\n1. Add\n2. Subtract\n"
+     &lt;&lt; "3. Multiply\n4. Divide\n";
+cout &lt;&lt; "Enter choice: ";
+cin  &gt;&gt; choice;
+
+switch (choice) {
+    case 1: cout &lt;&lt; "You chose Addition."       &lt;&lt; endl; break;
+    case 2: cout &lt;&lt; "You chose Subtraction."    &lt;&lt; endl; break;
+    case 3: cout &lt;&lt; "You chose Multiplication." &lt;&lt; endl; break;
+    case 4: cout &lt;&lt; "You chose Division."       &lt;&lt; endl; break;
+    default: cout &lt;&lt; "Invalid choice."          &lt;&lt; endl;
+}</pre>
+<div class="box warn" style="padding:5pt 7pt">
+<b>Two <code>switch</code> rules that are pure marks.</b> <b>1. Every case needs <code>break;</code></b> — without it execution <b>falls through</b> into the next case and every following case runs. <b>2. Always write a <code>default:</code></b> for invalid input. Also: <code>switch</code> works on integers and characters, <b>not</b> on ranges or strings — a grading question must use <code>if-else</code>, not <code>switch</code>.
+</div>
+</div>
+<div>
+<h4>Iteration — the three loops</h4>
+<table class="tight">
+<thead><tr><th style="width:22%">Loop</th><th>Use it when</th><th>Test happens</th></tr></thead>
+<tbody>
+<tr><td><b><code>for</code></b></td><td>The <b>number of iterations is known</b></td><td>Before</td></tr>
+<tr><td><b><code>while</code></b></td><td>Repeating <b>as long as a condition remains true</b>, count unknown</td><td>Before</td></tr>
+<tr><td><b><code>do-while</code></b></td><td>Same as <code>while</code>, but it <b>guarantees at least one execution</b></td><td><b>After</b></td></tr>
+</tbody>
+</table>
+<pre><b>for — print numbers 1 to 5</b>
+for (int i = 1; i &lt;= 5; i++) {
+    cout &lt;&lt; "Number: " &lt;&lt; i &lt;&lt; endl;
+}</pre>
+<pre><b>while — password check</b>
+string password;
+cout &lt;&lt; "Enter password: ";
+cin  &gt;&gt; password;
+
+while (password != "secret") {
+    cout &lt;&lt; "Wrong password! Try again: ";
+    cin  &gt;&gt; password;
+}
+cout &lt;&lt; "Access granted!" &lt;&lt; endl;</pre>
+<pre><b>do-while — repeated input</b>
+int num;
+do {
+    cout &lt;&lt; "Enter a positive number (0 to quit): ";
+    cin  &gt;&gt; num;
+    if (num &gt; 0) cout &lt;&lt; "You entered: " &lt;&lt; num &lt;&lt; endl;
+} while (num != 0);</pre>
+<p style="font-size:9.1pt"><b>The <code>for</code> header has three parts</b> separated by semicolons: <code>for (initialisation; condition; update)</code>. Leave out the update and the loop never ends.</p>
+<div class="box" style="padding:5pt 7pt"><b>The one-line justification examiners want:</b> use <code>for</code> when you know how many times; <code>while</code> when you do not; <code>do-while</code> when the body <b>must run at least once</b> — which is why menus and "enter a number until 0" use it.</div>
+</div>
+</div>
+
+<h3>Nested control structures</h3>
+<div class="grid2">
+<div>
+<p style="font-size:9.1pt">Control structures can be <b>combined or nested</b> to handle complex logic — a loop may contain an <code>if</code>, or an <code>if</code> may contain another loop.</p>
+<pre><b>Nested for — multiplication table</b>
+for (int i = 1; i &lt;= 3; i++) {
+    for (int j = 1; j &lt;= 3; j++) {
+        cout &lt;&lt; i &lt;&lt; " x " &lt;&lt; j
+             &lt;&lt; " = " &lt;&lt; i * j &lt;&lt; endl;
+    }
+    cout &lt;&lt; endl;      // blank line between tables
+}</pre>
+<p style="font-size:9.1pt"><b>Trace it:</b> the outer loop runs 3 times; for <b>each</b> of those the inner loop runs 3 times, so the body executes <b>3 × 3 = 9</b> times. That multiplication is exactly the reasoning a "how many lines does this print?" question wants.</p>
+</div>
+<div>
+<pre><b>Operators inside a condition — voting eligibility</b>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int  age;
+    bool hasID;
+
+    cout &lt;&lt; "Enter age: ";
+    cin  &gt;&gt; age;
+    cout &lt;&lt; "Do you have an ID? (1 for yes, 0 for no): ";
+    cin  &gt;&gt; hasID;
+
+    if (age &gt;= 18 &amp;&amp; hasID) {
+        cout &lt;&lt; "You are eligible to vote." &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "You are not eligible to vote." &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+<p style="font-size:9.1pt"><b>Relational operators produce a <code>bool</code></b>, so they can be combined with <code>&amp;&amp;</code>, <code>||</code> and <code>!</code>. Note that <code>hasID</code> is already a <code>bool</code>, so <code>&amp;&amp; hasID</code> needs no <code>== true</code>.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="pagebreak"><span class="n">5</span>Functions and modular programming</h2>
+
+<div class="grid2">
+<div>
+<h4>Anatomy of a function</h4>
+<pre>double area(double length, double width) {
+//  ↑        ↑     ↑
+//  return   name  parameter list
+    return length * width;
+}
+
+int main() {
+    double l = 5.0, w = 3.0;
+    cout &lt;&lt; "Area: " &lt;&lt; area(l, w) &lt;&lt; endl;   // invocation
+    return 0;
+}</pre>
+<p style="font-size:9.1pt">A function must be defined with a <b>return type, a name and parameters</b> (if any); once defined it can be <b>invoked from <code>main()</code> or another function</b>. Here <code>area()</code> is <b>defined once and reused</b>, which is modularity in one line.</p>
+<p style="font-size:9.1pt"><b>Use <code>void</code></b> as the return type when the function returns nothing, and then write no <code>return</code> value.</p>
+<h4>Scope and lifetime</h4>
+<pre>#include &lt;iostream&gt;
+using namespace std;
+
+int globalVar = 100;              // global variable
+
+void showLocal() {
+    int localVar = 50;            // local variable
+    cout &lt;&lt; "Local variable: "  &lt;&lt; localVar  &lt;&lt; endl;
+    cout &lt;&lt; "Global variable: " &lt;&lt; globalVar &lt;&lt; endl;
+}
+
+int main() {
+    showLocal();
+    cout &lt;&lt; "Global in main: " &lt;&lt; globalVar &lt;&lt; endl;
+    // cout &lt;&lt; localVar;   // ERROR: not accessible here
+    return 0;
+}</pre>
+<p style="font-size:9.1pt"><b>Scope</b> = where a variable can be accessed. <b>Lifetime</b> = how long it exists in memory. Local variables exist <b>only while the function runs</b>; global variables exist <b>for the entire program execution</b>. The commented-out line is the exam's favourite illustration — say <b>why</b> it fails.</p>
+</div>
+<div>
+<h4>Parameter passing — the guaranteed comparison</h4>
+<pre><b>BY VALUE — a copy is passed</b>
+void incrementByValue(int x) {
+    x++;
+    cout &lt;&lt; "Inside function: " &lt;&lt; x &lt;&lt; endl;
+}
+
+int main() {
+    int num = 10;
+    incrementByValue(num);
+    cout &lt;&lt; "Outside function: " &lt;&lt; num &lt;&lt; endl;
+    return 0;
+}
+
+OUTPUT:   Inside function: 11
+          Outside function: 10   ← original unchanged</pre>
+<pre><b>BY REFERENCE — the actual variable is passed</b>
+void incrementByReference(int &amp;x) {     // note the &amp;
+    x++;
+    cout &lt;&lt; "Inside function: " &lt;&lt; x &lt;&lt; endl;
+}
+
+int main() {
+    int num = 10;
+    incrementByReference(num);
+    cout &lt;&lt; "Outside function: " &lt;&lt; num &lt;&lt; endl;
+    return 0;
+}
+
+OUTPUT:   Inside function: 11
+          Outside function: 11   ← original modified</pre>
+<table class="tight">
+<thead><tr><th style="width:20%">Basis</th><th>By value</th><th>By reference</th></tr></thead>
+<tbody>
+<tr><td>What is passed</td><td>A <b>copy</b></td><td>The <b>actual variable</b></td></tr>
+<tr><td>Syntax</td><td><code>int x</code></td><td><code>int &amp;x</code></td></tr>
+<tr><td>Effect on original</td><td><b>None</b></td><td><b>Modified</b></td></tr>
+<tr><td>Memory</td><td>Extra copy made</td><td>No copy</td></tr>
+<tr><td>Use when</td><td>The function only needs to <b>read</b> the value</td><td>The function must <b>change</b> the caller's variable, e.g. a swap</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<h3>Recursion</h3>
+<div class="grid2">
+<div>
+<pre>#include &lt;iostream&gt;
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0) return 1;                 // base case
+    else        return n * factorial(n - 1);  // recursive call
+}
+
+int main() {
+    int num = 5;
+    cout &lt;&lt; "Factorial of " &lt;&lt; num
+         &lt;&lt; " is " &lt;&lt; factorial(num) &lt;&lt; endl;
+    return 0;
+}</pre>
+<p style="font-size:9.1pt"><b>Recursion</b> occurs when a function <b>calls itself</b>. It suits problems that break into <b>smaller, similar sub-problems</b> — factorial, Fibonacci. <b>Every recursion needs a base case</b> that stops it; the notes warn that recursion <b>must be used carefully to avoid infinite loops or excessive memory usage</b>.</p>
+</div>
+<div>
+<h4>Trace it — <code>factorial(5)</code></h4>
+<pre>factorial(5) = 5 * factorial(4)
+factorial(4) = 4 * factorial(3)
+factorial(3) = 3 * factorial(2)
+factorial(2) = 2 * factorial(1)
+factorial(1) = 1 * factorial(0)
+factorial(0) = 1                ← base case, unwinding starts
+
+  = 1 * 1  = 1
+  = 2 * 1  = 2
+  = 3 * 2  = 6
+  = 4 * 6  = 24
+  = 5 * 24 = 120</pre>
+<p style="font-size:9.1pt"><b>Write the trace out like this in the exam</b> — a "show how the recursion evaluates" question is asking for exactly these two columns: the winding down to the base case and the unwinding back up.</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="n">6</span>Modularisation and program design <span class="tag">LIKELY THEORY QUESTION</span></h2>
+
+<p><b>Modularisation</b> is the process of breaking a large program into smaller, independent units called <b>modules</b>, each performing a specific task and able to be developed, tested and maintained separately. <b>This mirrors how we solve problems in everyday life: instead of tackling everything at once, we divide tasks into manageable parts.</b></p>
+
+<div class="box star">
+<b>The lecturer's wedding analogy — write it.</b> <i>"Imagine planning a wedding. Instead of one person handling everything, responsibilities are divided into modules: catering, decoration, music, photography and guest management. Each team focuses on its module, and when combined, the wedding runs smoothly."</i>
+<hr class="thin">
+<b>In programming, modularisation ensures that:</b> code is <b>reusable</b> (a function written once can be used in many places) · programs are <b>easier to debug</b> (errors are isolated within modules) · teams can <b>collaborate</b> (different programmers work on different modules).
+</div>
+
+<div class="grid2">
+<div>
+<h4>Top-down design</h4>
+<p style="font-size:9.1pt">Starts with the <b>big picture</b> and progressively breaks it down. Define the overall problem, divide it into sub-problems, implement each as a module. It emphasizes <b>stepwise refinement</b>.</p>
+<p style="font-size:9.1pt"><b>Analogy:</b> building a house — the architect first designs the overall structure (rooms, floors, layout), then each part is broken down into plumbing, wiring, roofing and painting. <b>Overall design first, then the details.</b></p>
+<pre>// High-level function
+void manageStudent() {
+    cout &lt;&lt; "Managing student records..." &lt;&lt; endl;
+    // Refined later into smaller tasks
+    cout &lt;&lt; "1. Add student\n"
+         &lt;&lt; "2. Delete student\n"
+         &lt;&lt; "3. View student\n";
+}
+
+int main() {
+    manageStudent();     // start with the big picture
+    return 0;
+}</pre>
+<p style="font-size:9.1pt">The broad task "manage student records" is later refined into <code>addStudent()</code>, <code>deleteStudent()</code> and <code>viewStudent()</code>.</p>
+</div>
+<div>
+<h4>Bottom-up design</h4>
+<p style="font-size:9.1pt">Takes the opposite approach: start with the <b>smallest building blocks</b> and gradually integrate them into larger systems. Implement reusable components first, then combine them. It emphasizes <b>reusability</b>.</p>
+<p style="font-size:9.1pt"><b>Analogy:</b> assembling a car — engineers first design the engine, tyres and seats; once these modules are ready they are integrated into the complete car. <b>Details first, then the overall system.</b></p>
+<pre>// Small building blocks
+double add(double a, double b)      { return a + b; }
+double multiply(double a, double b) { return a * b; }
+
+// Larger system built from those modules
+void calculate() {
+    double x = 4, y = 2;
+    cout &lt;&lt; "Sum: "     &lt;&lt; add(x, y)      &lt;&lt; endl;
+    cout &lt;&lt; "Product: " &lt;&lt; multiply(x, y) &lt;&lt; endl;
+}
+
+int main() {
+    calculate();     // integrates smaller modules
+    return 0;
+}</pre>
+</div>
+</div>
+
+<table class="tight">
+<thead><tr><th style="width:22%">Aspect</th><th>Top-down design</th><th>Bottom-up design</th></tr></thead>
+<tbody>
+<tr><td><b>Starting point</b></td><td>Big picture — the overall problem</td><td>Small modules — the building blocks</td></tr>
+<tr><td><b>Focus</b></td><td><b>Stepwise refinement</b></td><td><b>Reusability</b> of components</td></tr>
+<tr><td><b>Real-life example</b></td><td>An architect designing a house</td><td>An engineer assembling car parts</td></tr>
+<tr><td><b>Programming approach</b></td><td>Define main tasks, then refine</td><td>Build small functions, then integrate</td></tr>
+</tbody>
+</table>
+<p style="font-size:9.1pt"><b>The concluding sentence the notes give — do not omit it:</b> both approaches are valuable, and in practice programmers often use a <b>hybrid approach</b>, combining top-down planning with bottom-up implementation to balance clarity and reusability.</p>
+
+<!-- ============================================================ -->
+<h2><span class="n">7</span>Things you can lose easy marks on</h2>
+
+<div class="grid2">
+<div>
+<ol style="font-size:9.3pt">
+<li>Omitting <code>#include &lt;iostream&gt;</code> or <code>using namespace std;</code>. Write them every single time, and <code>&lt;string&gt;</code> whenever you use <code>string</code>.</li>
+<li>Forgetting <code>return 0;</code> at the end of <code>main()</code>.</li>
+<li>Writing <code>cin &lt;&lt;</code> or <code>cout &gt;&gt;</code>. Output goes <b>out</b> with <code>&lt;&lt;</code>, input comes <b>in</b> with <code>&gt;&gt;</code>.</li>
+<li>Using <code>=</code> where <code>==</code> is meant inside an <code>if</code>.</li>
+<li>Missing <code>break;</code> in a <code>switch</code> — every case falls through to the next.</li>
+<li>Integer division: <code>10 / 3</code> gives <b>3</b>. Cast to <code>double</code> when a decimal is wanted.</li>
+</ol>
+</div>
+<div>
+<ol start="7" style="font-size:9.3pt">
+<li>A loop with no update statement, so it never terminates.</li>
+<li>A recursive function with <b>no base case</b> — infinite recursion and a crash.</li>
+<li>Forgetting the <code>&amp;</code> when the question says "pass by reference" — the function then silently changes nothing.</li>
+<li>Using a local variable outside its function and expecting it to compile.</li>
+<li>Confusing <code>'A'</code> (char, single quotes) with <code>"A"</code> (string, double quotes).</li>
+<li>Writing flat, unindented code. <b>Readability is an examinable topic on this course</b> — losing marks for unreadable code in a structured-programming exam is avoidable.</li>
+</ol>
+</div>
+</div>
+
+<div class="box star">
+<h4>Timing plan for a 3-hour paper</h4>
+Read everything first and <b>start with the coding question you can already picture</b> — code either comes out or it does not, and starting with a solid one banks marks while you are fresh. Budget roughly <b>30 minutes per question</b>. For any "write a program" part, spend the first two minutes writing the <b>skeleton</b> — headers, <code>main()</code>, variable declarations — because that structure scores even if the logic in the middle is imperfect. Then fill in the logic, then <b>trace it once with a sample input</b> before moving on: a two-minute trace catches the missing <code>break;</code> or the off-by-one that would otherwise cost the whole question. Leave the pure theory parts for last — they are the fastest to write under time pressure.
+</div>
+
+<div class="footer-note">
+CMS 708 · Structured Programming · Volume I study guide<br>
+Prepared by <b>Mbosinwa Awunor</b> · www.mbosinwa.dev
+</div>
+
+</body>
+</html>
