@@ -23,16 +23,23 @@ Source: `~/Downloads/schoolwork/semester-2/` (5 courses: CMS 702, 704, 706, 708,
 
 ## Architecture
 
-Static HTML, no build system added to the repo. A one-time generator script (kept in scratchpad, not committed) converts markdown via pandoc and wraps output in a template matching the site's neo-brutalist style (`neo-styles.css`).
+Static HTML. The generator `tools/build-schoolwork.mjs` (committed) converts markdown via pandoc and wraps output in a template matching the site's neo-brutalist style. URLs are hierarchical to accommodate future programmes (MSc) and semesters without ever moving existing pages:
 
 ```
 schoolwork/
-├── index.html                     semester overview, 5 course cards
-└── cms-7XX-<slug>/
-    ├── index.html                 course landing: blurb + material links
-    ├── <notes/prep pages>.html    rendered markdown, site-styled
-    └── CMS-7XX-*.pdf/.html        study guide / drill pack / note coverage
+├── index.html                     landing: programme cards
+├── schoolwork.css
+└── <programme>/                   e.g. pgd/, later msc/
+    ├── index.html                 programme page: semester cards
+    └── <semester>/                e.g. semester-2/
+        ├── index.html             semester page: course cards
+        └── cms-7XX-<slug>/
+            ├── index.html         course landing: blurb + material links
+            ├── <pages>.html       rendered markdown, site-styled
+            └── CMS-7XX-*.pdf/.html  study guide / drill pack / note coverage
 ```
+
+All links and asset references are absolute paths (relative paths break when a directory URL is served without a trailing slash on local dev servers). Adding a semester = add metadata + srcDir to `PROGRAMMES` in the generator, run it.
 
 ## Site integration
 - "Schoolwork" nav link added to `index.html`

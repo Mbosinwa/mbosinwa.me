@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6GF5HF40L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P6GF5HF40L');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 704 Extra Notes — Schoolwork — Mbosinwa Awunor</title>
+    <meta name="description" content="CMS 704 Computer Architecture: Memory hierarchy, cache, locality, performance, and signed number representation.">
+    <meta name="author" content="Mbosinwa Awunor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mbosinwa.dev/schoolwork/pgd/semester-2/cms-704-computer-architecture/extra-notes.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/schoolwork/schoolwork.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">MA</a>
+            <div class="nav-right">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/schoolwork/" class="nav-link">Schoolwork</a>
+                <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <p class="breadcrumb"><a href="/schoolwork/">Schoolwork</a> / <a href="/schoolwork/pgd/">PGD Computer Science</a> / <a href="/schoolwork/pgd/semester-2/">Second Semester</a> / <a href="/schoolwork/pgd/semester-2/cms-704-computer-architecture/">CMS 704 Computer Architecture</a> / Extra Notes</p>
+        <article class="doc">
+<h1 id="cms-704--lecturers-extra-notes">CMS 704 — Lecturer's Extra
+Notes</h1>
+<blockquote>
+<p>Two distinct sets:</p>
+</blockquote>
+<hr />
+<h2 id="1-memory-hierarchy-handwritten-p13">1. Memory hierarchy
+(handwritten p.1–3)</h2>
+<pre><code>        ▲  increase in            ┌──────────┐  Level 0   CPU registers
+        │  cost per bit          ╱ Level 1   ╲            Cache memory (SRAMs)
+        │                       ╱  Level 2    ╲           Main memory (DRAMs)
+        │  increase in         ╱   Level 3     ╲          Magnetic disk (disk storage)
+        ▼  capacity &amp;         ╱    Level 4      ╲         Optical disk
+           access time       ╱     Level 5       ╲        Magnetic tape
+                            └─────────────────────┘</code></pre>
+<p>A computer's <strong>memory hierarchy</strong> is an
+<strong>organizational pyramid that categorizes data storage based on
+speed, cost and capacity</strong>. It ensures the processor can access
+frequently used data at lightning-fast speeds without sacrificing the
+massive storage capacity needed to hold a user's entire library of files
+and applications. The hierarchy <strong>bridges the gap</strong> between
+ultra-fast, expensive and limited CPU registers and the slow, cheap and
+massive capacity of hard drives.</p>
+<h3 id="the-five-levels">The five levels</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Level</th>
+<th>Speed</th>
+<th>Capacity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>CPU registers</strong></td>
+<td>Extremely fast (sub-nanosecond, direct CPU clock cycle)</td>
+<td>Tiny (measured in bytes, e.g. 16 to 64 bits)</td>
+<td>Directly built inside the CPU core to hold the exact data or
+instructions being executed in the current cycle</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Cache memory (L1, L2, L3)</strong></td>
+<td>Very fast (often utilizes static RAM, SRAM)</td>
+<td>Small to moderate (kilobytes to megabytes)</td>
+<td>Acts as a <strong>buffer</strong> between the CPU registers and
+slower system RAM. The CPU relies on the principles of locality (both
+spatial and temporal) to preload frequently and recently accessed data
+into the cache for quicker retrieval</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Main memory (RAM)</strong></td>
+<td>Moderate</td>
+<td>Moderate to large (gigabytes, e.g. 16 GB to 64 GB)</td>
+<td>The primary working memory for the operating system and running
+applications. Data is temporarily housed here for the CPU to fetch and
+process</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Secondary storage</strong> (external / auxiliary
+memory)</td>
+<td>Slow (measured in milliseconds)</td>
+<td>Massive (terabytes)</td>
+<td><strong>Non-volatile</strong> storage — SSDs and HDDs. It retains
+data even when the computer is powered down and acts as a long-term
+repository for files, operating systems and programs</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Tertiary storage</strong> (optical)</td>
+<td>Very slow</td>
+<td>Infinite (scalable)</td>
+<td>Used for offline, archival and backup data, including magnetic tape
+libraries or optical disks</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Moving up the pyramid</strong> results in higher cost per
+bit, faster access times and smaller storage capacity. <strong>Moving
+down the pyramid</strong> results in lower cost per bit, slower access
+times and much larger capacities. <strong>The main goal of this
+architecture is to create the illusion that the entire massive storage
+pool is as fast as the topmost level.</strong></p>
+</blockquote>
+<hr />
+<h2 id="2-cache-memory-handwritten-p34">2. Cache memory (handwritten
+p.3–4)</h2>
+<p><strong>Cache memory</strong> is a <strong>high-speed, volatile
+hardware component situated between the CPU and the main memory
+(RAM)</strong>. Its primary function is to <strong>store temporary
+copies of frequently accessed data and instructions</strong> so the
+processor can retrieve them instantly, significantly <strong>reducing
+processing latency and improving system performance</strong>.</p>
+<p>Cache memory operates on the <strong>principle of locality of
+reference</strong>, assuming that programs will repeatedly access the
+same data or instructions.</p>
+<ol type="1">
+<li><strong>Cache hit</strong> — when the CPU needs data, it checks the
+cache first. If the data is found, it is retrieved almost instantly (in
+nanoseconds).</li>
+<li><strong>Cache miss</strong> — if the requested data isn't in the
+cache, the CPU must fetch it from the slower RAM. The data is then
+copied into the cache for future use.</li>
+</ol>
+<h3 id="levels-of-cache">Levels of cache</h3>
+<p>CPU caches are divided into different levels (L1, L2, L3) based on
+<strong>size, speed and proximity to the processor core</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Location</th>
+<th>Size</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L1 cache</strong></td>
+<td>Directly on the CPU core</td>
+<td>Smallest — typically <strong>2 KB to 64 KB per core</strong></td>
+<td><strong>Fastest</strong></td>
+</tr>
+<tr>
+<td><strong>L2 cache</strong></td>
+<td>Inside or immediately outside the core</td>
+<td><strong>256 KB to 512 KB</strong></td>
+<td>Acts as a bridge for the L1 cache</td>
+</tr>
+<tr>
+<td><strong>L3 cache</strong></td>
+<td>Shared among all cores</td>
+<td><strong>1 MB to 8 MB or higher</strong></td>
+<td>Largest but <strong>slowest</strong> of the CPU caches; feeds into
+the L2 cache</td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-types-of-caching">Other types of caching</h3>
+<p>While cache memory usually refers to physical CPU cache, caching
+technology is used in various other computing forms:</p>
+<ol type="1">
+<li><strong>Disk / file cache</strong> — used by operating systems to
+store recently read files or disk data in system RAM for quicker
+opening.</li>
+<li><strong>Browser cache</strong> — web browsers store images, scripts
+and webpage data on local storage to load pages faster during subsequent
+visits.</li>
+</ol>
+<hr />
+<h2 id="3-cache-memory-mapping-and-write-policies-handwritten-p56">3.
+Cache memory mapping and write policies (handwritten p.5–6)</h2>
+<p><strong>Cache memory mapping</strong> describes the different
+configurations:</p>
+<ol type="1">
+<li><strong>Direct mapped cache</strong> — has each block mapped to
+<strong>exactly one</strong> cache memory location.</li>
+<li><strong>Fully associative cache mapping</strong> — similar to direct
+mapping in structure, but enables a memory block to be mapped to
+<strong>any</strong> cache location rather than to a pre-specified cache
+memory location.</li>
+<li><strong>Set associative cache mapping</strong> — a
+<strong>compromise</strong> between direct mapping and fully associative
+mapping, in which each block is mapped to a <strong>subset</strong> of
+cache locations. It is sometimes called <strong>N-way set associative
+mapping</strong>, which provides for a location in main memory to be
+cached to any of <code>N</code> locations in the L1 cache.</li>
+</ol>
+<h3 id="data-writing-policies">Data writing policies</h3>
+<p>The two main techniques when writing into cache memory are:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>How it works</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Write-through</strong></td>
+<td>Data is written to <strong>both the cache and main memory at the
+same time</strong></td>
+<td>More writing needs to happen, which causes <strong>latency
+upfront</strong>, but memory stays consistent</td>
+</tr>
+<tr>
+<td><strong>Write-back</strong></td>
+<td>Data is only written to the <strong>cache initially</strong>; it may
+then be written to main memory, but this does not need to happen and
+does not inhibit the interaction from taking place</td>
+<td>Operations may be <strong>more efficient</strong>, but data may not
+be consistent between main memory and the cache</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The way data is written to the cache impacts <strong>data consistency
+and efficiency</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="4-locality-of-reference-handwritten-p67">4. Locality of
+reference (handwritten p.6–7)</h2>
+<p><strong>Locality of reference</strong> (or the <strong>principle of
+locality</strong>) is a concept in computer science describing a
+<strong>program's tendency to repeatedly access the same memory
+locations, or nearby ones, over a short period</strong>. It is the
+<strong>foundation for cache memory design</strong>, allowing CPUs to
+fetch frequently used data ahead of time and dramatically increasing
+system speed.</p>
+<h3 id="types-of-locality">Types of locality</h3>
+<ol type="1">
+<li><p><strong>Temporal locality (locality in time)</strong> — if a
+specific memory location is accessed, it is <strong>highly likely to be
+accessed again in the near future</strong>. <em>Example:</em> a loop or
+a counter in programming — the CPU continuously accesses the same
+variables and instructions within that short time frame.</p></li>
+<li><p><strong>Spatial locality (locality in space)</strong> — if a
+specific memory location is accessed, <strong>nearby memory locations
+are also likely to be accessed soon</strong>. <em>Example:</em> arrays
+or sequential data structures — when the processor loads data from main
+memory to the cache, it brings in a <strong>block of adjacent
+data</strong> in anticipation of the next request.</p></li>
+</ol>
+<h3 id="other-forms-of-locality">Other forms of locality</h3>
+<p>i. <strong>Sequential locality</strong> ii. <strong>Branch
+locality</strong></p>
+<hr />
+<h2 id="5-performance-handwritten-p78">5. Performance (handwritten
+p.7–8)</h2>
+<p>In computer architecture, <strong>performance measures how quickly
+and efficiently a computer system executes a given workload or
+program</strong>. It is primarily defined by <strong>speed</strong> (how
+fast a task completes) and <strong>throughput</strong> (how much work is
+done in a given time).</p>
+<h3 id="two-core-metrics">Two core metrics</h3>
+<ol type="1">
+<li><strong>Response time (execution time)</strong> — the total time
+required to complete a <strong>single task</strong> from start to
+finish.</li>
+<li><strong>Throughput (bandwidth)</strong> — the total amount of work
+completed <strong>per unit of time</strong> (e.g. number of instructions
+or programs executed per second).</li>
+</ol>
+<h3 id="the-iron-law-of-processor-performance">The Iron Law of Processor
+Performance</h3>
+<p>CPU performance is governed by the <strong>CPU performance
+equation</strong>, which breaks execution time down into <strong>three
+critical factors</strong>:</p>
+<pre><code>CPU Time  =  Instruction Count  ×  CPI  ×  Clock Cycle Time</code></pre>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Definition</th>
+<th>Determined by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Instruction Count (IC)</strong></td>
+<td>The total number of instructions executed in a program</td>
+<td>The software <strong>compiler</strong> and the <strong>instruction
+set architecture (ISA)</strong></td>
+</tr>
+<tr>
+<td><strong>Cycles Per Instruction (CPI)</strong></td>
+<td>The average number of clock cycles the processor takes to execute
+one instruction</td>
+<td>The <strong>hardware design</strong> and <strong>pipeline
+efficiency</strong></td>
+</tr>
+<tr>
+<td><strong>Clock Cycle Time</strong></td>
+<td>The duration of a single hardware clock tick — the <strong>inverse
+of clock frequency</strong>, like 3.0 GHz</td>
+<td><strong>Semiconductor technology</strong> and hardware
+engineering</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quantitative-measurement">Quantitative measurement</h3>
+<p>Performance is mathematically defined as the <strong>reciprocal of
+execution time</strong>:</p>
+<pre><code>Performance = 1 / Execution Time</code></pre>
+<p>To compare two systems (Machine A and Machine B), the
+<strong>relative performance</strong> is:</p>
+<pre><code>Relative Performance = Performance A / Performance B = Execution Time B / Execution Time A</code></pre>
+<h3 id="other-performance-indicators">Other performance indicators</h3>
+<p>i. <strong>MIPS</strong> — Million Instructions Per Second ii.
+<strong>FLOPS</strong> — Floating Point Operations Per Second</p>
+<hr />
+<h2 id="6-unsigned-and-signed-numbers-textbook-87">6. Unsigned and
+signed numbers (textbook §8.7)</h2>
+<h3 id="87-unsigned-and-signed-numbers">8.7 Unsigned and signed
+numbers</h3>
+<p>All of the number systems presented in the prior sections were
+<strong>positive</strong>. We also need a mechanism to indicate
+<strong>negative</strong> numbers. When looking at negative numbers we
+only focus on the mapping between <strong>decimal and binary</strong>,
+since octal and hexadecimal are just another representation of a binary
+number.</p>
+<p>In decimal we use the negative <strong>sign</strong> in front of a
+number to indicate that it is negative (e.g. <code>-34₁₀</code>). In
+binary this notation works fine on paper (e.g. <code>-1010₂</code>), but
+we need a mechanism that can be implemented in <strong>real
+circuitry</strong>. In a real digital circuit, the circuits can only
+deal with 0s and 1s — <strong>there is no "−" in a digital
+circuit</strong>. Since we only have 0s and 1s in the hardware, we use a
+<strong>bit to represent whether a number is positive or
+negative</strong>. This is referred to as the <strong>sign
+bit</strong>.</p>
+<ul>
+<li>If a binary number is not going to have any negative values, it is
+called an <strong>unsigned number</strong> and can only represent
+positive numbers.</li>
+<li>If a binary number is going to allow negative numbers, it is called
+a <strong>signed number</strong>.</li>
+</ul>
+<blockquote>
+<p>It is important to always keep track of the type of number being
+used, as <strong>the same bit values can represent very different
+numbers</strong> depending on the coding mechanism used.</p>
+</blockquote>
+<h3 id="871-unsigned-numbers">8.7.1 Unsigned numbers</h3>
+<p>An <strong>unsigned number</strong> is one that does not allow
+negative numbers. The number of bits is <strong>fixed and stated up
+front</strong>; we use <code>n</code> for the number of bits. For an
+8-bit number we say "this is an 8-bit unsigned number".</p>
+<pre><code>Number of unique codes in an n-bit unsigned number  =  2ⁿ
+Range of an n-bit UNSIGNED number                   =  0  …  2ⁿ − 1</code></pre>
+<p>For an 8-bit number that is <code>2⁸ = 256</code> unique codes,
+<code>0000 0000₂</code> to <code>1111 1111₂</code>.</p>
+<p>For <code>n = 4</code>, the range runs from <code>+0₁₀ (0000₂)</code>
+to <code>+15₁₀ (1111₂)</code>. Note that while the number has <strong>16
+unique codes</strong>, the <strong>highest decimal value it can
+represent is 15</strong> — because one of the codes represents
+<code>0₁₀</code>. This is why the highest decimal value is given by
+<code>2ⁿ − 1</code>.</p>
+<h3 id="872-signed-binary-number-representation">8.7.2 Signed binary
+number representation</h3>
+<p>In computing, <strong>signed number representations are required to
+encode negative numbers</strong> in binary number systems. In
+mathematics, negative numbers in any base are represented by prefixing
+them with a minus sign; in computer hardware, numbers are represented
+<strong>only as sequences of bits, without extra symbols</strong>.</p>
+<pre><code>0000 0000 0000 0000 0000 0000 0011 1011
+▲                                      ▲
+Most significant bit (MSB)             Least significant bit (LSB)</code></pre>
+<p>The representation of a signed binary number could be done in any of
+the following ways:</p>
+<ol type="1">
+<li><strong>Signed magnitude</strong></li>
+<li><strong>One's complement</strong></li>
+<li><strong>Two's complement</strong></li>
+</ol>
+<h4 id="8721-signed-magnitude">8.7.2.1 Signed magnitude</h4>
+<p>In the sign-magnitude method a number is represented in its binary
+form, and the <strong>MSB (the left-most digit) represents the
+sign</strong>:</p>
+<ul>
+<li>a <strong>"1"</strong> in the MSB position denotes a
+<strong>negative</strong> number</li>
+<li>a <strong>"0"</strong> denotes a <strong>positive</strong>
+number</li>
+</ul>
+<p>The remaining <code>n − 1</code> bits are preserved and represent the
+<strong>magnitude</strong> of the number.</p>
+<pre><code>(+3) = 0011  ⇒  (−3) = 1011
+(+7) = 0111  ⇒  (−7) = 1111
+(+0) = 0000  ⇒  (−0) = 1000</code></pre>
+<pre><code>56₁₀  = 0111000₂
+Change the first digit from 0 to 1:
+−56₁₀ = 1111000₂</code></pre>
+<pre><code>127₁₀  = 01111111₂
+−127₁₀ = 11111111₂</code></pre>
+<h4 id="8722-ones-complement">8.7.2.2 One's complement</h4>
+<p>In the one's-complement form the <strong>MSB represents the
+sign</strong>. The remaining bits are <strong>inverted for negative
+numbers only</strong>; positive numbers are represented the same way as
+in the sign-magnitude method.</p>
+<pre><code>(+3) = 0011  ⇒  (−3) = 1100
+(+7) = 0111  ⇒  (−7) = 1000
+(+0) = 0000  ⇒  (−0) = 1111</code></pre>
+<pre><code>56₁₀  = 0111000₂
+Negate every bit:
+−56₁₀ = 1000111₂</code></pre>
+<pre><code>127₁₀  = 01111111₂
+−127₁₀ = 10000000₂</code></pre>
+<h4 id="8723-twos-complement">8.7.2.3 Two's complement</h4>
+<p>In the two's-complement method the negative numbers are
+<strong>inverted and augmented by one</strong>. The <strong>MSB is the
+sign bit</strong>. Positive numbers are the same as in the
+sign-magnitude method.</p>
+<pre><code>(+3) = 0011  ⇒  (−3) = 1101
+(+7) = 0111  ⇒  (−7) = 1001
+(+0) = 0000  ⇒  (−0) = 0000</code></pre>
+<pre><code>56₁₀ = 0111000₂
+Negate:      1000111
+Add 1:       1000111
+           +       1
+           ─────────
+             1001000
+
+−56₁₀ = 1001000₂</code></pre>
+<hr />
+<p><em>End of extra-notes transcription — 8 handwritten pages + textbook
+§8.7.</em></p>
+
+        </article>
+        <footer class="section-footer">
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+        </footer>
+    </main>
+    <script>
+      (function () {
+        const body = document.body;
+        const saved = localStorage.getItem('theme');
+        body.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+        const btn = document.getElementById('theme-toggle');
+        function icon() { btn.textContent = body.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+        icon();
+        btn.addEventListener('click', function () {
+          const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          body.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          icon();
+        });
+      })();
+    </script>
+</body>
+</html>
