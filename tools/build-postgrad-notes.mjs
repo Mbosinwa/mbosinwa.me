@@ -139,6 +139,10 @@ const PROGRAMMES = [
             ],
             downloads: [
               { base: 'CMS707-Exam-Practice-Questions', title: 'Exam Practice Questions', desc: 'Practice questions in exam format.', srcPdf: 'cms707_exam_practice_questions.pdf' },
+              // The three PDFs below have no editable source; the owner chose to publish them as-is
+              { base: 'CMS707-AI-CheatSheet', title: 'AI Cheat Sheet', desc: 'One-look revision sheet for the whole course.', srcPdf: 'CMS707-AI-CheatSheet-MbosinwaAwunor.pdf' },
+              { base: 'CMS707-Practice-Answers', title: 'Practice Questions — Answers', desc: 'Full model answers to the practice questions.', srcPdf: 'cms707-practice-answers.pdf' },
+              { base: 'CMS707-Session-2-Answers', title: 'Session 2 — Worked Answers', desc: 'Worked answers from the second problem-solving session.', srcPdf: 'cms707-session2-answers.pdf' },
             ],
           },
           {

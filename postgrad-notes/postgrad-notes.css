@@ -1,4 +1,6 @@
 /* Schoolwork section — neo-brutalist styling matching the main site */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
 :root {
   --bg: #ffffff;
   --text: #000000;
@@ -73,19 +75,72 @@ body[data-theme="dark"] {
 
 .nav-right {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .nav-link {
-  color: #000;
+  color: var(--text);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
 .nav-link:hover {
-  text-decoration: underline;
+  color: var(--border);
+  transform: translateY(-3px) rotate(-2deg) scale(1.1);
+  transform-origin: right bottom;
+}
+
+.nav-cta {
+  padding: 0.5rem 1rem;
+  background: var(--cyan);
+  border: var(--border-width) solid var(--border);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 0 var(--border);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.nav-cta:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--border);
+}
+
+.nav-lazyfire {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border: 3px solid var(--border);
+  background: var(--white);
+  box-shadow: 3px 3px 0 var(--border);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.nav-lazyfire:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--border);
+}
+
+.lazyfire-logo {
+  display: block;
+}
+
+.nav-lazyfire-text {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text);
 }
 
 .theme-toggle-nav {
@@ -98,12 +153,95 @@ body[data-theme="dark"] {
   font-size: 1rem;
   font-family: inherit;
   font-weight: 700;
+  color: var(--text);
   transition: all 0.2s ease;
 }
 
 .theme-toggle-nav:hover {
   transform: translate(3px, 3px);
   box-shadow: 0 0 0 var(--border);
+}
+
+body[data-theme="dark"] .navbar {
+  background: #2a2a2a;
+}
+
+body[data-theme="dark"] .nav-lazyfire {
+  background: #3a3a3a;
+}
+
+/* Progress bar with checkpoints (injected by pn-shell.js) */
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: var(--white);
+  border-bottom: 4px solid var(--border);
+  z-index: 10000;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--yellow);
+  transition: width 0.1s ease;
+  border-right: 4px solid var(--border);
+}
+
+.progress-checkpoints {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
+.checkpoint {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+.checkpoint-dot {
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  min-height: 12px;
+  background: var(--white);
+  border: 3px solid var(--border);
+  border-radius: 50%;
+  position: relative;
+  top: 0;
+  transition: all 0.3s ease;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.checkpoint.active .checkpoint-dot {
+  background: var(--yellow);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 3px var(--white);
+}
+
+.checkpoint-label {
+  display: none;
+}
+
+body[data-theme="dark"] .progress-bar-container {
+  background: var(--bg);
+}
+
+body[data-theme="dark"] .checkpoint.active .checkpoint-dot {
+  background: var(--secondary);
 }
 
 /* Layout */
@@ -415,13 +553,28 @@ body[data-theme="dark"] {
   font-weight: 600;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .navbar {
     margin: 10px 10px 0;
     top: 10px;
+    box-shadow: 4px 4px 0 var(--border);
   }
 
   .nav-right {
-    gap: 0.6rem;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .nav-lazyfire {
+    display: none;
+  }
+
+  .nav-cta {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    min-height: 36px;
   }
 }
