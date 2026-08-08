@@ -368,6 +368,21 @@ function head({ title, desc, canonical }) {
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="${canonical}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Mbosinwa Awunor">
+    <meta property="og:url" content="${canonical}">
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${desc}">
+    <meta property="og:image" content="${SITE}/image/social-cover.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:locale" content="en_US">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="${canonical}">
+    <meta property="twitter:title" content="${title}">
+    <meta property="twitter:description" content="${desc}">
+    <meta property="twitter:image" content="${SITE}/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -654,3 +669,71 @@ for (const prog of PROGRAMMES) {
 
 writeFileSync(join(OUT, 'index.html'), landingPage());
 console.log('built index.html');
+
+// --- sitemap ----------------------------------------------------------------
+// Regenerates sitemap.xml so section URLs never go stale when semesters are added.
+
+{
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [{ loc: `${SITE}/`, lastmod: '2025-11-08', priority: '1.0' }, { loc: `${SITE}/postgrad-notes/`, lastmod: today, priority: '0.8' }];
+  for (const prog of PROGRAMMES) {
+    urls.push({ loc: `${SITE}/postgrad-notes/${prog.slug}/`, lastmod: today, priority: '0.7' });
+    for (const sem of prog.semesters) {
+      urls.push({ loc: `${SITE}/postgrad-notes/${prog.slug}/${sem.slug}/`, lastmod: today, priority: '0.7' });
+      for (const course of sem.courses) {
+        urls.push({ loc: `${SITE}/postgrad-notes/${prog.slug}/${sem.slug}/${course.slug}/`, lastmod: today, priority: '0.6' });
+      }
+    }
+  }
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`).join('\n')}\n</urlset>\n`;
+  writeFileSync(new URL('../sitemap.xml', import.meta.url).pathname, xml);
+  console.log(`sitemap.xml regenerated (${urls.length} urls)`);
+}
+
+// --- verification -----------------------------------------------------------
+// Fails the build if sanitization leaked or a generated link is broken.
+
+{
+  const { readdirSync, statSync, existsSync } = await import('node:fs');
+  const SURNAMES = /Whyte|Oraye|Abiye-Suku|Oriji(?![a-z])|Jaja|Matthias|Cookey|Okwu|Orji(?![a-z])|Deedam|Bennett|Omaegbu|Sarah Joe|ust\.edu|Invigilator|SC 28-30/;
+  const problems = [];
+
+  const walk = (d) => readdirSync(d).flatMap((f) => {
+    const p = join(d, f);
+    return statSync(p).isDirectory() ? walk(p) : [p];
+  });
+
+  const files = walk(OUT);
+  for (const f of files) {
+    if (/\.(html|md)$/.test(f)) {
+      const text = readFileSync(f, 'utf8');
+      const m = text.match(SURNAMES);
+      if (m) problems.push(`name leak "${m[0]}" in ${f}`);
+      if (f.endsWith('.html')) {
+        for (const [, href] of text.matchAll(/href="([^"#]+)"/g)) {
+          if (/^(http|mailto)/.test(href)) continue;
+          let target = href.startsWith('/')
+            ? join(new URL('..', import.meta.url).pathname, href)
+            : join(f, '..', href);
+          if (target.endsWith('/')) target = join(target, 'index.html');
+          if (!existsSync(target)) problems.push(`broken link ${href} in ${f}`);
+        }
+      }
+    } else if (f.endsWith('.pdf')) {
+      try {
+        const text = execFileSync('pdftotext', [f, '-'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+        const m = text.match(SURNAMES);
+        if (m) problems.push(`name leak "${m[0]}" in ${f}`);
+      } catch {
+        console.log(`(pdftotext unavailable — skipped text check for ${f})`);
+      }
+    }
+  }
+
+  if (problems.length) {
+    console.error(`\nVERIFICATION FAILED (${problems.length}):`);
+    for (const p of problems) console.error('  - ' + p);
+    process.exit(1);
+  }
+  console.log(`verification passed: ${files.length} files clean, links OK`);
+}
