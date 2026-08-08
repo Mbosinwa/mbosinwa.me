@@ -12,3 +12,6 @@ node_modules/
 .idea/
 .claude/
 .gstack/
+tools/README-postgrad-notes.md
+.gitignore
+tools/build-postgrad-notes.mjs

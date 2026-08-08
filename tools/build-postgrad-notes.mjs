@@ -8,6 +8,9 @@
 // (srcDir pointing at the local source folder), then run:
 //   node tools/build-postgrad-notes.mjs
 //
+// Full how-to (adding MSc materials, page fields, sanitization rules):
+//   tools/README-postgrad-notes.md
+//
 // Publishing rules (do not relax without the owner's say-so):
 //   - self-authored materials only: no scan photos, no lecturers' source
 //     documents, no past exam paper photos or verbatim transcriptions,
