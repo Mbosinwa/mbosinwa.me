@@ -1,4 +1,4 @@
-# CMS 704 — Computer Architecture
+# CMS 704: Computer Architecture
 
 **Programme:** PGD Computer Science, Rivers State University
 **Units:** 3
@@ -10,25 +10,25 @@
 
 ## Course outline (page 1, dated 12/05/2026)
 
-> Fundamental building blocks, logic expression minimization, and design — sum of product terms, register transfer notations, physical considerations. Data representation and number bases, fixed and floating point systems, representation, memory systems organization and architecture. Memory systems, general characteristics of memory operation (technology — magnetic recording, semiconductor memory, complex devices, magnetic bubbles), memory addressing, memory hierarchy, virtual memory. Control systems, hardware control, micro-programmed control, asynchronous control, I/O bus control.
+> Fundamental building blocks, logic expression minimization, and design, sum of product terms, register transfer notations, physical considerations. Data representation and number bases, fixed and floating point systems, representation, memory systems organization and architecture. Memory systems, general characteristics of memory operation (technology, magnetic recording, semiconductor memory, complex devices, magnetic bubbles), memory addressing, memory hierarchy, virtual memory. Control systems, hardware control, micro-programmed control, asynchronous control, I/O bus control.
 
 ---
 
 ## 1. Computer Architecture
 
-**Computer architecture** (also known as **Instruction Set Architecture, ISA**) is the set of rules, methods and procedures that define the **functionality, organization and implementation** of a computer system as seen by the machine-language programmer or compiler writer. It is the **contract between software and hardware** — a specification that remains constant across different implementations of the same architecture.
+**Computer architecture** (also known as **Instruction Set Architecture, ISA**) is the set of rules, methods and procedures that define the **functionality, organization and implementation** of a computer system as seen by the machine-language programmer or compiler writer. It is the **contract between software and hardware**: a specification that remains constant across different implementations of the same architecture.
 
 ### Computer architecture specifies the following
 
-1. **The instruction set** — the collection of operations (ADD, SUB, LOAD, etc.) that the processor can execute.
-2. **Data types and size** — e.g. 8-bit byte, 16-bit word, 32-bit double word, etc.
-3. **Register set** — the number, names and functions of programmer-visible registers.
-4. **Addressing modes** — how instructions specify memory addresses (immediate, direct, indirect, indexed).
-5. **Memory addressing model** — byte addressable or word addressable, etc.
-6. **Interrupt and exception handling** — how the processor responds to external events or internal faults.
-7. **Input/output model** — memory-mapped I/O or special I/O instructions.
+1. **The instruction set**: the collection of operations (ADD, SUB, LOAD, etc.) that the processor can execute.
+2. **Data types and size**: e.g. 8-bit byte, 16-bit word, 32-bit double word, etc.
+3. **Register set**: the number, names and functions of programmer-visible registers.
+4. **Addressing modes**: how instructions specify memory addresses (immediate, direct, indirect, indexed).
+5. **Memory addressing model**: byte addressable or word addressable, etc.
+6. **Interrupt and exception handling**: how the processor responds to external events or internal faults.
+7. **Input/output model**: memory-mapped I/O or special I/O instructions.
 
-A software compiled for a given architecture, e.g. **x86-64**, will run correctly on **any processor that implements that architecture**, regardless of the internal implementation details. Computer architecture therefore defines the **abstract interface between hardware and software** — the machine's behaviour as observed by a program executing on it, independent of the underlying micro-architecture.
+A software compiled for a given architecture, e.g. **x86-64**, will run correctly on **any processor that implements that architecture**, regardless of the internal implementation details. Computer architecture therefore defines the **abstract interface between hardware and software**: the machine's behaviour as observed by a program executing on it, independent of the underlying micro-architecture.
 
 ---
 
@@ -38,23 +38,23 @@ A software compiled for a given architecture, e.g. **x86-64**, will run correctl
 
 ### Organization specifies
 
-1. **Data path design** — the layout and width of buses, the number of ALUs, the register file/write ports.
-2. **Control unit implementation** — hard-wired control vs micro-programmed control; control-signal generator logic.
-3. **Pipelining structure** — number of pipeline stages, hazard handling.
-4. **Memory hierarchy implementation** — cache size (L1, L2, L3), cache associativity, replacement policy, translation lookaside buffer (TLB) size.
-5. **Clock frequency and voltage scaling** — how fast the circuit runs and at what power cost.
-6. **Parallelism mechanisms** — superscalar issue width (e.g. 3 instructions per cycle), out-of-order execution windows, simultaneous multi-threading (SMT).
-7. **Physical implementation** — transistor technology, chip area / thermal design power (TDP).
+1. **Data path design**: the layout and width of buses, the number of ALUs, the register file/write ports.
+2. **Control unit implementation**: hard-wired control vs micro-programmed control; control-signal generator logic.
+3. **Pipelining structure**: number of pipeline stages, hazard handling.
+4. **Memory hierarchy implementation**: cache size (L1, L2, L3), cache associativity, replacement policy, translation lookaside buffer (TLB) size.
+5. **Clock frequency and voltage scaling**: how fast the circuit runs and at what power cost.
+6. **Parallelism mechanisms**: superscalar issue width (e.g. 3 instructions per cycle), out-of-order execution windows, simultaneous multi-threading (SMT).
+7. **Physical implementation**: transistor technology, chip area / thermal design power (TDP).
 
 ---
 
 ## 3. Fundamental building blocks and logic design (pages 2–4)
 
-**Logic gates** are the fundamental building blocks in digital circuits (digital electronics). A logic gate is a **device that performs a boolean function** — a logical operation performed on one or more binary inputs that produces a single binary output.
+**Logic gates** are the fundamental building blocks in digital circuits (digital electronics). A logic gate is a **device that performs a boolean function**: a logical operation performed on one or more binary inputs that produces a single binary output.
 
 ### The three (3) primary gates
 
-**1. AND** — `A·B`. For an AND gate, the output is **1 if and only if both inputs are 1**, else 0.
+**1. AND**: `A·B`. For an AND gate, the output is **1 if and only if both inputs are 1**, else 0.
 
 ```
 A ──┐
@@ -62,9 +62,9 @@ A ──┐
 B ──┘
 ```
 
-**2. OR** — `A+B`. For an OR gate, the output is **0 if both inputs are 0**, else 1.
+**2. OR**: `A+B`. For an OR gate, the output is **0 if both inputs are 0**, else 1.
 
-**3. NOT** — `A → A'`. This gives the **opposite of the input**.
+**3. NOT**: `A → A'`. This gives the **opposite of the input**.
 
 ```
 A ──▷o── A'        A | A'
@@ -90,15 +90,15 @@ A ──▷o── A'        A | A'
 
 *(If only one input, the NOT gate is suitable.)*
 
-**Classwork:** given the inputs A, B and C, draw a truth table for `A·B·C` and `A+B+C` — 8 rows.
+**Classwork:** given the inputs A, B and C, draw a truth table for `A·B·C` and `A+B+C`, 8 rows.
 
 ### The derived gates (page 4)
 
-**4. NAND gate (Not AND)** — `C = (A·B)'`
+**4. NAND gate (Not AND)**: `C = (A·B)'`
 
-**5. NOR gate (Not OR)** — `C = (A+B)'`
+**5. NOR gate (Not OR)**: `C = (A+B)'`
 
-**6. XOR gate (Exclusive OR)** — the exclusive OR gives an **output of 1 where the inputs are different**.
+**6. XOR gate (Exclusive OR)**: the exclusive OR gives an **output of 1 where the inputs are different**.
 
 | A | B | Y |
 |---|---|---|
@@ -111,7 +111,7 @@ A ──▷o── A'        A | A'
 Y = A'B + AB'
 ```
 
-**7. XNOR gate (Exclusive NOR)** — output equal to **1 only when the inputs are the same**.
+**7. XNOR gate (Exclusive NOR)**: output equal to **1 only when the inputs are the same**.
 
 ---
 
@@ -139,15 +139,15 @@ It **simplifies boolean equations to reduce the hardware required** for digital 
 
 ### Key: why minimization matters
 
-1. **Hardware efficiency** — uses fewer logic gates and interconnections.
-2. **Improved performance** — it minimizes propagation delay, resulting in faster circuit operation.
-3. **Cost and power** — lower power consumption and smaller silicon chip footprint.
+1. **Hardware efficiency**: uses fewer logic gates and interconnections.
+2. **Improved performance**: it minimizes propagation delay, resulting in faster circuit operation.
+3. **Cost and power**: lower power consumption and smaller silicon chip footprint.
 
 ### Common minimization techniques (page 6)
 
-1. **Boolean algebra** — applying mathematical laws to factor out and eliminate terms algebraically.
-2. **Karnaugh maps (K-map)** — a visual, graphical matrix method used to simplify expressions with up to 4–6 variables. Groupings are made in **powers of 2ⁿ** (2, 4, 6, 8 …) to find the minimal sum of products.
-3. **Quine–McCluskey algorithm** — a tabular algorithmic method used for expressions with a large number of variables, or for computer-aided design.
+1. **Boolean algebra**: applying mathematical laws to factor out and eliminate terms algebraically.
+2. **Karnaugh maps (K-map)**: a visual, graphical matrix method used to simplify expressions with up to 4–6 variables. Groupings are made in **powers of 2ⁿ** (2, 4, 6, 8 …) to find the minimal sum of products.
+3. **Quine–McCluskey algorithm**: a tabular algorithmic method used for expressions with a large number of variables, or for computer-aided design.
 
 **SOP** = Sum of Products.
 
@@ -208,7 +208,7 @@ Groupings:  1 and 2 ⇒ A'B'(C'+C) = A'B'
 ∴ X = A'B' + A'C + B'C                  [?] the recorded answer reads "AB' + A'C + B'C"
 ```
 
-> [note: both classworks are recorded with faint groupings. The **method** is certain and matches the majority-vote worked example above — pair two minterms that differ in exactly one variable, factor that variable out using `X + X' = 1`. Re-derive from the truth table in the exam rather than relying on these two lines.]
+> [note: both classworks are recorded with faint groupings. The **method** is certain and matches the majority-vote worked example above, pair two minterms that differ in exactly one variable, factor that variable out using `X + X' = 1`. Re-derive from the truth table in the exam rather than relying on these two lines.]
 
 ---
 
@@ -229,7 +229,7 @@ Group the **1s in powers of 2**, then read off the product term each group leave
 ∴ F = AB' + BC'
 ```
 
-> [note: **cancel the changing parameter** — inside a group, the variable that changes across the cells drops out and the variables that stay constant form the product term.]
+> [note: **cancel the changing parameter**: inside a group, the variable that changes across the cells drops out and the variables that stay constant form the product term.]
 
 ---
 
@@ -249,17 +249,17 @@ Group the **1s in powers of 2**, then read off the product term each group leave
 
 ### Micro-operations
 
-**Micro-operations** are elementary operations performed on data in CPU registers during a clock pulse — **arithmetic, logic and shift** operations.
+**Micro-operations** are elementary operations performed on data in CPU registers during a clock pulse, **arithmetic, logic and shift** operations.
 
 ### Types of micro-operations
 
-1. **Register transfer operations** — move binary data from one processor register to another **without modifying** the data.
+1. **Register transfer operations**: move binary data from one processor register to another **without modifying** the data.
    `R2 ← R1` (n = number of bits)
-2. **Arithmetic micro-operations** — perform numeric operations such as addition, subtraction, increment etc. on the data stored inside the registers.
+2. **Arithmetic micro-operations**: perform numeric operations such as addition, subtraction, increment etc. on the data stored inside the registers.
    `R3 ← R1 + R2`
-3. **Logic micro-operations** — execute **bitwise** operations (AND, OR, XOR or NOT) to manipulate bits independently within the register.
+3. **Logic micro-operations**: execute **bitwise** operations (AND, OR, XOR or NOT) to manipulate bits independently within the register.
    `R ← R1 ∧ R2`
-4. **Control function** — boolean conditions that dictate **when** a transfer occurs.
+4. **Control function**: boolean conditions that dictate **when** a transfer occurs.
    `P: R2 ← R1` means if the control signal `P = 1`, the transfer happens.
 
 ### Bus notation
@@ -279,7 +279,7 @@ if (K = 1) then R2 ← R1 else R2 ← R4         →   K:  R2 ← R1
 if (Z = 1 AND C = 0) then PC ← PC + 1        →   Z·C': PC ← PC + 1
 ```
 
-> ★ The **PC keeps track of the next instruction** to be fetched by the CPU from memory — the **fetch/execute cycle**: Fetch → PC, Decode → CU, Execute.
+> ★ The **PC keeps track of the next instruction** to be fetched by the CPU from memory, the **fetch/execute cycle**: Fetch → PC, Decode → CU, Execute.
 
 ---
 
@@ -311,7 +311,7 @@ Base 16:  ABCDEF → e.g. C×16³ + F×16² + E×16¹ + C×16⁰
 
 ## 11. Conversions (pages 11–12)
 
-### Base 10 to other bases — successive division
+### Base 10 to other bases: successive division
 
 ```
 4832 to base 2  →  1001011100000₂
@@ -319,7 +319,7 @@ Base 16:  ABCDEF → e.g. C×16³ + F×16² + E×16¹ + C×16⁰
 4832 to base 16 →  12E0₁₆
 ```
 
-### Other bases to base 10 — positional expansion
+### Other bases to base 10: positional expansion
 
 ```
 1001011100000₂ = 1×2¹² + 1×2⁹ + 1×2⁷ + 1×2⁶ + 1×2⁵
@@ -331,7 +331,7 @@ Base 16:  ABCDEF → e.g. C×16³ + F×16² + E×16¹ + C×16⁰
             = 4832.0024414062 5
 ```
 
-### Fractional conversion — repeated multiplication
+### Fractional conversion: repeated multiplication
 
 ```
 Convert 4832.0024414062 5 to base 8 = 11340.0012₈
@@ -344,7 +344,7 @@ Convert 4832.0024414062 5 to base 8 = 11340.0012₈
 
 ### Interrelated base conversion
 
-**Relationship between base 8 and base 2 — `8 = 2³`, so the ratio is 3 : 1.**
+**Relationship between base 8 and base 2, `8 = 2³`, so the ratio is 3 : 1.**
 
 | Base 8 | Base 2 |
 |---|---|
@@ -362,7 +362,7 @@ Convert 4832.0024414062 5 to base 8 = 11340.0012₈
 1001011100000₂ → group in 3s from the right → 1 001 011 100 000 → 11340₈
 ```
 
-**Relationship between base 2 and base 16 — `16 = 2⁴`, so the ratio is 4 : 1** (page 13).
+**Relationship between base 2 and base 16, `16 = 2⁴`, so the ratio is 4 : 1** (page 13).
 
 | Base 16 | Base 2 | Base 16 | Base 2 |
 |---|---|---|---|
@@ -413,7 +413,7 @@ Worked in class:
   117₈          [note: 166 − 87 = 79 = 117₈ ✓]
 ```
 
-**Addition** — `[?]` the operands are partly illegible; the recorded answer is `514₈`.
+**Addition**: `[?]` the operands are partly illegible; the recorded answer is `514₈`.
 *(If the operands are 265₈ + 227₈ then 181 + 151 = 332 = 514₈ ✓, which fits the recorded answer.)*
 
 **Multiplication**
@@ -433,23 +433,23 @@ Worked in class:
 
 ## 13. Signed and unsigned bits (page 14)
 
-Covered in the lecturer's extra notes — see [the extra notes](extra-notes.html) §5.
+Covered in the lecturer's extra notes, see [the extra notes](extra-notes.html) §5.
 
 **Assignment (page 14):** the relationship between hexadecimal and computer storage, and encoding schemes.
 
 **Types of encoding schemes:**
-1. **BCD** — Binary Coded Decimal
-2. **EBCDIC** — Extended Binary Coded Decimal Interchange Code
+1. **BCD**: Binary Coded Decimal
+2. **EBCDIC**: Extended Binary Coded Decimal Interchange Code
 3. **ASCII**
 
 ---
 
 ## Assignments recorded in these notes
 
-1. **Page 3** — Given the inputs A, B and C, draw a truth table for `A·B·C` and `A+B+C`.
-2. **Page 10** — What is the difference between a **number** and a **digit**?
-3. **Page 14** — The relationship between hexadecimal and computer storage; encoding schemes.
+1. **Page 3**: Given the inputs A, B and C, draw a truth table for `A·B·C` and `A+B+C`.
+2. **Page 10**: What is the difference between a **number** and a **digit**?
+3. **Page 14**: The relationship between hexadecimal and computer storage; encoding schemes.
 
 ---
 
-*End of transcription — 14 pages.*
+*End of transcription, 14 pages.*

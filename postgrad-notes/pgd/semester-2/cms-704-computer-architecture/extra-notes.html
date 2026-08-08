@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 704 Extra Notes — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 704 Extra Notes · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 704 Computer Architecture: Memory hierarchy, cache, locality, performance, and signed number representation.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-2/cms-704-computer-architecture/extra-notes.html">
-    <meta property="og:title" content="CMS 704 Extra Notes — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 704 Extra Notes · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 704 Computer Architecture: Memory hierarchy, cache, locality, performance, and signed number representation.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-2/cms-704-computer-architecture/extra-notes.html">
-    <meta property="twitter:title" content="CMS 704 Extra Notes — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 704 Extra Notes · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 704 Computer Architecture: Memory hierarchy, cache, locality, performance, and signed number representation.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -66,7 +66,7 @@
             <a href="/postgrad-notes/pgd/semester-2/cms-704-computer-architecture/extra-notes.md" download="CMS-704-extra-notes.md">Download .md</a>
         </div>
         <article class="doc">
-<h1 id="cms-704--lecturers-extra-notes">CMS 704 — Lecturer's Extra
+<h1 id="cms-704-lecturers-extra-notes">CMS 704: Lecturer's Extra
 Notes</h1>
 <blockquote>
 <p>Two distinct sets:</p>
@@ -134,7 +134,7 @@ process</td>
 memory)</td>
 <td>Slow (measured in milliseconds)</td>
 <td>Massive (terabytes)</td>
-<td><strong>Non-volatile</strong> storage — SSDs and HDDs. It retains
+<td><strong>Non-volatile</strong> storage, SSDs and HDDs. It retains
 data even when the computer is powered down and acts as a long-term
 repository for files, operating systems and programs</td>
 </tr>
@@ -169,10 +169,10 @@ processing latency and improving system performance</strong>.</p>
 reference</strong>, assuming that programs will repeatedly access the
 same data or instructions.</p>
 <ol type="1">
-<li><strong>Cache hit</strong> — when the CPU needs data, it checks the
+<li><strong>Cache hit</strong>: when the CPU needs data, it checks the
 cache first. If the data is found, it is retrieved almost instantly (in
 nanoseconds).</li>
-<li><strong>Cache miss</strong> — if the requested data isn't in the
+<li><strong>Cache miss</strong>: if the requested data isn't in the
 cache, the CPU must fetch it from the slower RAM. The data is then
 copied into the cache for future use.</li>
 </ol>
@@ -192,7 +192,7 @@ copied into the cache for future use.</li>
 <tr>
 <td><strong>L1 cache</strong></td>
 <td>Directly on the CPU core</td>
-<td>Smallest — typically <strong>2 KB to 64 KB per core</strong></td>
+<td>Smallest, typically <strong>2 KB to 64 KB per core</strong></td>
 <td><strong>Fastest</strong></td>
 </tr>
 <tr>
@@ -214,10 +214,10 @@ the L2 cache</td>
 <p>While cache memory usually refers to physical CPU cache, caching
 technology is used in various other computing forms:</p>
 <ol type="1">
-<li><strong>Disk / file cache</strong> — used by operating systems to
+<li><strong>Disk / file cache</strong>: used by operating systems to
 store recently read files or disk data in system RAM for quicker
 opening.</li>
-<li><strong>Browser cache</strong> — web browsers store images, scripts
+<li><strong>Browser cache</strong>: web browsers store images, scripts
 and webpage data on local storage to load pages faster during subsequent
 visits.</li>
 </ol>
@@ -227,13 +227,13 @@ Cache memory mapping and write policies (handwritten p.5–6)</h2>
 <p><strong>Cache memory mapping</strong> describes the different
 configurations:</p>
 <ol type="1">
-<li><strong>Direct mapped cache</strong> — has each block mapped to
+<li><strong>Direct mapped cache</strong>: has each block mapped to
 <strong>exactly one</strong> cache memory location.</li>
-<li><strong>Fully associative cache mapping</strong> — similar to direct
+<li><strong>Fully associative cache mapping</strong>: similar to direct
 mapping in structure, but enables a memory block to be mapped to
 <strong>any</strong> cache location rather than to a pre-specified cache
 memory location.</li>
-<li><strong>Set associative cache mapping</strong> — a
+<li><strong>Set associative cache mapping</strong>: a
 <strong>compromise</strong> between direct mapping and fully associative
 mapping, in which each block is mapped to a <strong>subset</strong> of
 cache locations. It is sometimes called <strong>N-way set associative
@@ -284,15 +284,15 @@ fetch frequently used data ahead of time and dramatically increasing
 system speed.</p>
 <h3 id="types-of-locality">Types of locality</h3>
 <ol type="1">
-<li><p><strong>Temporal locality (locality in time)</strong> — if a
+<li><p><strong>Temporal locality (locality in time)</strong>: if a
 specific memory location is accessed, it is <strong>highly likely to be
 accessed again in the near future</strong>. <em>Example:</em> a loop or
-a counter in programming — the CPU continuously accesses the same
+a counter in programming, the CPU continuously accesses the same
 variables and instructions within that short time frame.</p></li>
-<li><p><strong>Spatial locality (locality in space)</strong> — if a
+<li><p><strong>Spatial locality (locality in space)</strong>: if a
 specific memory location is accessed, <strong>nearby memory locations
 are also likely to be accessed soon</strong>. <em>Example:</em> arrays
-or sequential data structures — when the processor loads data from main
+or sequential data structures, when the processor loads data from main
 memory to the cache, it brings in a <strong>block of adjacent
 data</strong> in anticipation of the next request.</p></li>
 </ol>
@@ -309,10 +309,10 @@ fast a task completes) and <strong>throughput</strong> (how much work is
 done in a given time).</p>
 <h3 id="two-core-metrics">Two core metrics</h3>
 <ol type="1">
-<li><strong>Response time (execution time)</strong> — the total time
+<li><strong>Response time (execution time)</strong>: the total time
 required to complete a <strong>single task</strong> from start to
 finish.</li>
-<li><strong>Throughput (bandwidth)</strong> — the total amount of work
+<li><strong>Throughput (bandwidth)</strong>: the total amount of work
 completed <strong>per unit of time</strong> (e.g. number of instructions
 or programs executed per second).</li>
 </ol>
@@ -346,8 +346,8 @@ efficiency</strong></td>
 </tr>
 <tr>
 <td><strong>Clock Cycle Time</strong></td>
-<td>The duration of a single hardware clock tick — the <strong>inverse
-of clock frequency</strong>, like 3.0 GHz</td>
+<td>The duration of a single hardware clock tick, the <strong>inverse of
+clock frequency</strong>, like 3.0 GHz</td>
 <td><strong>Semiconductor technology</strong> and hardware
 engineering</td>
 </tr>
@@ -361,8 +361,8 @@ execution time</strong>:</p>
 <strong>relative performance</strong> is:</p>
 <pre><code>Relative Performance = Performance A / Performance B = Execution Time B / Execution Time A</code></pre>
 <h3 id="other-performance-indicators">Other performance indicators</h3>
-<p>i. <strong>MIPS</strong> — Million Instructions Per Second ii.
-<strong>FLOPS</strong> — Floating Point Operations Per Second</p>
+<p>i. <strong>MIPS</strong>: Million Instructions Per Second ii.
+<strong>FLOPS</strong>: Floating Point Operations Per Second</p>
 <hr />
 <h2 id="6-unsigned-and-signed-numbers-textbook-87">6. Unsigned and
 signed numbers (textbook §8.7)</h2>
@@ -379,7 +379,7 @@ number to indicate that it is negative (e.g. <code>-34₁₀</code>). In
 binary this notation works fine on paper (e.g. <code>-1010₂</code>), but
 we need a mechanism that can be implemented in <strong>real
 circuitry</strong>. In a real digital circuit, the circuits can only
-deal with 0s and 1s — <strong>there is no "−" in a digital
+deal with 0s and 1s, <strong>there is no "−" in a digital
 circuit</strong>. Since we only have 0s and 1s in the hardware, we use a
 <strong>bit to represent whether a number is positive or
 negative</strong>. This is referred to as the <strong>sign
@@ -408,7 +408,7 @@ Range of an n-bit UNSIGNED number                   =  0  …  2ⁿ − 1</code>
 <p>For <code>n = 4</code>, the range runs from <code>+0₁₀ (0000₂)</code>
 to <code>+15₁₀ (1111₂)</code>. Note that while the number has <strong>16
 unique codes</strong>, the <strong>highest decimal value it can
-represent is 15</strong> — because one of the codes represents
+represent is 15</strong>: because one of the codes represents
 <code>0₁₀</code>. This is why the highest decimal value is given by
 <code>2ⁿ − 1</code>.</p>
 <h3 id="872-signed-binary-number-representation">8.7.2 Signed binary
@@ -478,7 +478,7 @@ Add 1:       1000111
 
 −56₁₀ = 1001000₂</code></pre>
 <hr />
-<p><em>End of extra-notes transcription — 8 handwritten pages + textbook
+<p><em>End of extra-notes transcription, 8 handwritten pages + textbook
 §8.7.</em></p>
 
         </article>
@@ -491,14 +491,14 @@ Add 1:       1000111
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

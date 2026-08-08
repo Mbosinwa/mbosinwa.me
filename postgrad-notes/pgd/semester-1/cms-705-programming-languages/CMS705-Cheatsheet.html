@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CMS 705 — Programming Languages Cheat Sheet</title>
+<title>CMS 705 · Programming Languages Cheat Sheet</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 
@@ -385,7 +385,7 @@
   </div>
 </div>
 
-<!-- ════════════════════════════ SLIDE 1 — LANGUAGE STRUCTURE ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 1 · LANGUAGE STRUCTURE ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">1</div>
@@ -397,7 +397,7 @@
   </div>
   <table>
     <tr><th>Component</th><th>What it studies</th><th>CS / C++ analogy</th></tr>
-    <tr><td><strong>Phonology</strong></td><td>Sound patterns — smallest units (phonemes)</td><td><code>int</code>, <code>&lt;&lt;</code>, <code>age</code> — tokens</td></tr>
+    <tr><td><strong>Phonology</strong></td><td>Sound patterns · smallest units (phonemes)</td><td><code>int</code>, <code>&lt;&lt;</code>, <code>age</code> · tokens</td></tr>
     <tr><td><strong>Morphology</strong></td><td>How words/tokens are formed</td><td><code>Walk + ed</code> → <code>Walked</code>; identifiers</td></tr>
     <tr><td><strong>Syntax</strong></td><td>Rules for arranging words → sentences</td><td><code>for(int i=0;i&lt;10;i++){}</code></td></tr>
     <tr><td><strong>Semantics</strong></td><td>Meaning of words / sentences</td><td>What the code actually <em>does</em></td></tr>
@@ -415,7 +415,7 @@
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 2 — SEMANTICS ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 2 · SEMANTICS ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">2</div>
@@ -441,11 +441,11 @@
       </ul>
     </div>
   </div>
-<pre><span class="comment">// STATIC SEMANTICS — compile-time error</span>
+<pre><span class="comment">// STATIC SEMANTICS · compile-time error</span>
 <span class="type">int</span> x;
 x = <span class="string">"hello"</span>; <span class="comment">// ❌ Compile error: can't assign string to int</span>
 
-<span class="comment">// DYNAMIC SEMANTICS — runtime behaviour</span>
+<span class="comment">// DYNAMIC SEMANTICS · runtime behaviour</span>
 <span class="type">int</span> c = <span class="num-lit">0</span>;
 <span class="keyword">if</span> (flag) c = <span class="num-lit">1</span>;   <span class="comment">// value changes at runtime</span>
 cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
@@ -457,11 +457,11 @@ cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 3 — TYPES OF LANGUAGE ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 3 · TYPES OF LANGUAGE ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">3</div>
-    <h2>Types of Language — <em>Levels of Abstraction</em></h2>
+    <h2>Types of Language · <em>Levels of Abstraction</em></h2>
   </div>
   <table>
     <tr><th>Level</th><th>Type</th><th>Example</th><th>Notes</th></tr>
@@ -514,7 +514,7 @@ cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 4 — IMPLEMENTATION METHODS ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 4 · IMPLEMENTATION METHODS ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">4</div>
@@ -539,7 +539,7 @@ cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
     <div class="pipe-step">
       <span class="pipe-icon">⚡</span>
       <span class="pipe-name">JIT (Just-in-Time)</span>
-      <span class="pipe-desc">Bytecode compiled to machine code <strong>on demand at runtime</strong> — Java / JVM</span>
+      <span class="pipe-desc">Bytecode compiled to machine code <strong>on demand at runtime</strong> · Java / JVM</span>
     </div>
   </div>
   <table>
@@ -553,7 +553,7 @@ cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 5 — PRIMITIVE DATA TYPES ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 5 · PRIMITIVE DATA TYPES ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">5</div>
@@ -573,7 +573,7 @@ cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
     <tr><td><strong>double</strong></td><td>8 bytes</td><td><code>double pi = 3.14159;</code></td><td>Double precision (15–16 digits)</td></tr>
     <tr><td><strong>char</strong></td><td>1 byte</td><td><code>char g = 'A';</code></td><td>Single character (ASCII)</td></tr>
     <tr><td><strong>bool</strong></td><td>1 byte</td><td><code>bool ok = true;</code></td><td>Decision / conditions</td></tr>
-    <tr><td><strong>void</strong></td><td>—</td><td><code>void display(){}</code></td><td>Functions with no return value</td></tr>
+    <tr><td><strong>void</strong></td><td>-</td><td><code>void display(){}</code></td><td>Functions with no return value</td></tr>
   </table>
   <div class="callout callout-yellow">
     <span class="callout-icon">🧠</span>
@@ -583,7 +583,7 @@ cout &lt;&lt; c;           <span class="comment">// outputs: 1</span></pre>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 6 — NON-PRIMITIVE DATA TYPES ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 6 · NON-PRIMITIVE DATA TYPES ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">6</div>
@@ -641,11 +641,11 @@ cout &lt;&lt; today; <span class="comment">// 2</span></pre>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 7 — DATA STRUCTURES ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 7 · DATA STRUCTURES ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">7</div>
-    <h2>Data <em>Structures</em> — Overview</h2>
+    <h2>Data <em>Structures</em> · Overview</h2>
   </div>
   <div class="callout callout-purple">
     <span class="callout-icon">💡</span>
@@ -675,8 +675,8 @@ cout &lt;&lt; today; <span class="comment">// 2</span></pre>
     <tr><th>Operation</th><th>Description</th></tr>
     <tr><td><strong>Insertion</strong></td><td>Add element (beginning, end, or position)</td></tr>
     <tr><td><strong>Deletion</strong></td><td>Remove element + free memory</td></tr>
-    <tr><td><strong>Traversal</strong></td><td>Visit ALL elements once — "go through everything"</td></tr>
-    <tr><td><strong>Searching</strong></td><td>Find specific element — "stop when found" (Linear or Binary)</td></tr>
+    <tr><td><strong>Traversal</strong></td><td>Visit ALL elements once · "go through everything"</td></tr>
+    <tr><td><strong>Searching</strong></td><td>Find specific element · "stop when found" (Linear or Binary)</td></tr>
     <tr><td><strong>Updating</strong></td><td>Change value of existing element</td></tr>
     <tr><td><strong>Sorting</strong></td><td>Arrange ascending/descending (Bubble, Selection, Insertion)</td></tr>
     <tr><td><strong>Merging</strong></td><td>Combine two data structures into one</td></tr>
@@ -689,7 +689,7 @@ cout &lt;&lt; today; <span class="comment">// 2</span></pre>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 8 — LINEAR + NON-LINEAR + CODE ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 8 · LINEAR + NON-LINEAR + CODE ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">8</div>
@@ -698,12 +698,12 @@ cout &lt;&lt; today; <span class="comment">// 2</span></pre>
   <div class="grid2">
     <div>
       <div class="card">
-        <div class="card-title">Stack — LIFO</div>
+        <div class="card-title">Stack · LIFO</div>
         Push (insert) &nbsp;|&nbsp; Pop (remove)<br>
         <span class="tag tag-purple">Function calls</span><span class="tag tag-purple">Undo/redo</span><span class="tag tag-purple">Browser back</span>
       </div>
       <div class="card">
-        <div class="card-title">Queue — FIFO</div>
+        <div class="card-title">Queue · FIFO</div>
         Enqueue (rear) &nbsp;|&nbsp; Dequeue (front)<br>
         <span class="tag tag-green">Printer queue</span><span class="tag tag-green">CPU scheduling</span>
       </div>
@@ -728,7 +728,7 @@ cout &lt;&lt; today; <span class="comment">// 2</span></pre>
       </div>
     </div>
   </div>
-<pre><span class="comment">// Singly Linked List — key exam implementation</span>
+<pre><span class="comment">// Singly Linked List · key exam implementation</span>
 <span class="keyword">struct</span> Node { <span class="type">int</span> data; Node* next; };
 Node* head = <span class="keyword">NULL</span>;
 <span class="type">void</span> <span class="func">insertEnd</span>(<span class="type">int</span> value) {
@@ -743,7 +743,7 @@ Node* head = <span class="keyword">NULL</span>;
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 9 — CONTROL STRUCTURES ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 9 · CONTROL STRUCTURES ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">9</div>
@@ -751,11 +751,11 @@ Node* head = <span class="keyword">NULL</span>;
   </div>
   <div class="callout callout-purple">
     <span class="callout-icon">💡</span>
-    Determine the <strong>order of execution</strong> — which statement runs, when, and how many times.
+    Determine the <strong>order of execution</strong> · which statement runs, when, and how many times.
   </div>
   <table>
     <tr><th>#</th><th>Type</th><th>Purpose</th><th>Keywords</th></tr>
-    <tr><td><strong>1</strong></td><td>Sequential</td><td>Default top-to-bottom</td><td>(none — default)</td></tr>
+    <tr><td><strong>1</strong></td><td>Sequential</td><td>Default top-to-bottom</td><td>(none · default)</td></tr>
     <tr><td><strong>2</strong></td><td>Selection</td><td>Branch on condition</td><td><code>if</code>, <code>else</code>, <code>else if</code>, <code>switch</code></td></tr>
     <tr><td><strong>3</strong></td><td>Iteration</td><td>Repeat a block</td><td><code>for</code>, <code>while</code>, <code>do-while</code>, <code>for-each</code></td></tr>
     <tr><td><strong>4</strong></td><td>Jump</td><td>Transfer control unconditionally</td><td><code>break</code>, <code>continue</code>, <code>return</code>, <code>goto</code></td></tr>
@@ -790,7 +790,7 @@ Node* head = <span class="keyword">NULL</span>;
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 10 — DATA FLOW ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 10 · DATA FLOW ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">10</div>
@@ -837,7 +837,7 @@ Node* head = <span class="keyword">NULL</span>;
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 11 — RUNTIME ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 11 · RUNTIME ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">11</div>
@@ -862,13 +862,13 @@ Node* head = <span class="keyword">NULL</span>;
     </div>
     <div class="mem-row">
       <div class="mem-label" style="color:var(--muted);">📜 Code</div>
-      <div>Compiled instructions (text segment) — read-only</div>
+      <div>Compiled instructions (text segment) · read-only</div>
     </div>
   </div>
 <pre><span class="type">int</span> globalCounter = <span class="num-lit">100</span>;    <span class="comment">// Global area</span>
 <span class="type">int</span> <span class="func">processData</span>(<span class="type">int</span> value) {
-  <span class="type">int</span> localVar = value * <span class="num-lit">2</span>;   <span class="comment">// Stack — auto freed</span>
-  <span class="type">int</span>* heapVar = <span class="keyword">new</span> <span class="type">int</span>(<span class="num-lit">5</span>);  <span class="comment">// Heap — must free!</span>
+  <span class="type">int</span> localVar = value * <span class="num-lit">2</span>;   <span class="comment">// Stack · auto freed</span>
+  <span class="type">int</span>* heapVar = <span class="keyword">new</span> <span class="type">int</span>(<span class="num-lit">5</span>);  <span class="comment">// Heap · must free!</span>
   <span class="type">int</span> result = *heapVar;
   <span class="keyword">delete</span> heapVar;              <span class="comment">// Free heap memory</span>
   <span class="keyword">return</span> result;
@@ -883,7 +883,7 @@ Node* head = <span class="keyword">NULL</span>;
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 12 — INTERPRETIVE LANGUAGES ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 12 · INTERPRETIVE LANGUAGES ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">12</div>
@@ -925,13 +925,13 @@ Node* head = <span class="keyword">NULL</span>;
   </div>
   <div class="callout callout-yellow">
     <span class="callout-icon">⚠️</span>
-    Interpreter <strong>never produces</strong> a saved executable. JIT produces machine code but only at runtime — not saved to disk.
+    Interpreter <strong>never produces</strong> a saved executable. JIT produces machine code but only at runtime · not saved to disk.
   </div>
   <span class="slide-num">12 / 13</span>
   <span class="course-badge">CMS 705</span>
 </div>
 
-<!-- ════════════════════════════ SLIDE 13 — LEXICAL ANALYSIS ════════════════════════════ -->
+<!-- ════════════════════════════ SLIDE 13 · LEXICAL ANALYSIS ════════════════════════════ -->
 <div class="slide">
   <div class="section-title">
     <div class="num">13</div>
@@ -956,7 +956,7 @@ Node* head = <span class="keyword">NULL</span>;
     <div class="pipe-step">
       <span class="pipe-icon">🧠</span>
       <span class="pipe-name">Semantic Analysis</span>
-      <span class="pipe-desc">Checks meaning — types, declarations, compatibility</span>
+      <span class="pipe-desc">Checks meaning · types, declarations, compatibility</span>
     </div>
     <div class="pipe-step">
       <span class="pipe-icon">⚙️</span>
@@ -976,7 +976,7 @@ Node* head = <span class="keyword">NULL</span>;
   <table>
     <tr><th>Linguistics</th><th>Programming Language</th><th>Compiler Stage</th></tr>
     <tr><td>Phonology</td><td>Characters, symbols</td><td>Character scanning</td></tr>
-    <tr><td>Morphology</td><td>Tokens — keywords, identifiers</td><td>Lexical Analysis</td></tr>
+    <tr><td>Morphology</td><td>Tokens · keywords, identifiers</td><td>Lexical Analysis</td></tr>
     <tr><td>Syntax</td><td>Valid statements &amp; expressions</td><td>Parsing</td></tr>
     <tr><td>Semantics</td><td>Meaning of code</td><td>Semantic Analysis</td></tr>
   </table>
@@ -1000,7 +1000,7 @@ Node* head = <span class="keyword">NULL</span>;
         <tr><td><strong>Data Type</strong></td><td>What a variable holds + ops allowed</td></tr>
         <tr><td><strong>Parameter</strong></td><td>Variable declared in function definition</td></tr>
         <tr><td><strong>Argument</strong></td><td>Value passed when calling a function</td></tr>
-        <tr><td><strong>Stack</strong></td><td>LIFO — local vars, auto-freed</td></tr>
+        <tr><td><strong>Stack</strong></td><td>LIFO · local vars, auto-freed</td></tr>
         <tr><td><strong>Heap</strong></td><td>Dynamic alloc, manual <code>delete</code></td></tr>
         <tr><td><strong>Traversal</strong></td><td>Visit every element once</td></tr>
         <tr><td><strong>Searching</strong></td><td>Stop when element found</td></tr>
@@ -1031,7 +1031,7 @@ Node* head = <span class="keyword">NULL</span>;
     </div>
   </div>
   <div style="text-align:center;margin-top:16px;">
-    <div style="font-size:17px;color:var(--muted);">Rivers State University &nbsp;|&nbsp; CMS 705 — Programming Languages &nbsp;|&nbsp; the lecturer &nbsp;|&nbsp; 2024/2025</div>
+    <div style="font-size:17px;color:var(--muted);">Rivers State University &nbsp;|&nbsp; CMS 705 · Programming Languages &nbsp;|&nbsp; the lecturer &nbsp;|&nbsp; 2024/2025</div>
   </div>
   <span class="slide-num">✦</span>
   <span class="course-badge">CMS 705</span>

@@ -16,9 +16,9 @@
 
 Data flows through:
 1. **Variables**
-2. **Assignments** — giving a value to a variable (`variable = value;`)
-3. **Expressions** — anything that produces a value (e.g. `5 + 8`)
-4. **Functions** — a block of code that performs a task
+2. **Assignments**: giving a value to a variable (`variable = value;`)
+3. **Expressions**: anything that produces a value (e.g. `5 + 8`)
+4. **Functions**: a block of code that performs a task
 
 ```cpp
 return_type function_name() {
@@ -26,8 +26,8 @@ return_type function_name() {
 }
 ```
 
-- **B. Parameter** — a value you give to a function so it can work with it.
-- **C. Return value** — what a function sends back after finishing its work.
+- **B. Parameter**: a value you give to a function so it can work with it.
+- **C. Return value**: what a function sends back after finishing its work.
 - **4. Control Structures**
 - **5. Memory**
 
@@ -225,7 +225,7 @@ int main() {
 
 ## Types of Data Flow Based on Visibility
 
-> A different description from program-execution types — describes **how** data movement is expressed in code. Two types:
+> A different description from program-execution types, describes **how** data movement is expressed in code. Two types:
 
 ### 1. Explicit Data Flow
 
@@ -280,7 +280,7 @@ int main() {
 
 - Data movement happens **indirectly**, often through shared memory or global variables
 - Data flow occurs through control structures and conditions, not directly through assignment
-- **Not clearly visible** — flows "as data-as-value" through decisions or execution paths
+- **Not clearly visible**: flows "as data-as-value" through decisions or execution paths
 
 
 ```cpp

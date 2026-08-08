@@ -27,8 +27,8 @@ At the end of this topic, students should be able to:
 
 | Phase | Focus | Output |
 |---|---|---|
-| **Analysis** | *What* the business needs — functional requirements | Logical Model |
-| **Design** | *How* to build the system — non-functional requirements | Physical Model |
+| **Analysis** | *What* the business needs, functional requirements | Logical Model |
+| **Design** | *How* to build the system, non-functional requirements | Physical Model |
 
 **Analysis Phase Deliverables:**
 - Product Requirement Document
@@ -56,9 +56,9 @@ The design phase is a **transition from a user-oriented document to a programmer
 **Major considerations during design:**
 1. How will the existing system be integrated?
 2. What are the processes of converting data from **legacy systems** (outdated computing systems including hardware, software, file formats, and programming language)?
-3. Leveraging skills that exist in-house or outsourcing skills.
+3. Using skills that exist in-house or outsourcing skills.
 
-Design involves the user interface, system input, system outputs, and processes — which can be organized centralized to a location, distributed, or both.
+Design involves the user interface, system input, system outputs, and processes, which can be organized centralized to a location, distributed, or both.
 
 ---
 
@@ -92,11 +92,11 @@ A blueprint of a computer system solution to a given problem, having the same co
 
 ### General Guidelines for Systems Design
 
-**Goal of Systems Design — build a system that is:**
+**Goal of Systems Design, build a system that is:**
 
-- **Effective** — satisfies defined requirements
-- **Reliable** — handles errors optimally
-- **Maintainable** — well designed, flexible, and considers future modifications
+- **Effective**: satisfies defined requirements
+- **Reliable**: handles errors optimally
+- **Maintainable**: well designed, flexible, and considers future modifications
 
 **In the design approach, consider in this order:**
 1. **Users**
@@ -134,8 +134,8 @@ The **interface design** is the process of defining how a system will interact w
 
 ### Significant Criteria for Dialogue Type Evaluation
 
-- **Easy to Use** — easy even for inexperienced users
-- **Easy to Learn** — easy for users to remember
+- **Easy to Use**: easy even for inexperienced users
+- **Easy to Learn**: easy for users to remember
 - **Processing and responding speed**
 - **Easy to develop**
 
@@ -173,14 +173,14 @@ The way in which the system provides information to the user or other external s
 
 ### Essential Instructions in Dialogue Design
 
-- **Feedback information** — provide users with information on what is being done
-- **Status** — keep users informed of the system's parts they are using
-- **Escape** — allow users to exit from a manipulation
-- **Minimum tasks** — avoid users making too many manipulations
-- **Default** — set the frequently used parameter
-- **Support** — provide users with necessary supporting information
-- **Cancel** — users can cancel and resume
-- **Consistency** — implementation of commands must be consistent via the interface
+- **Feedback information**: provide users with information on what is being done
+- **Status**: keep users informed of the system's parts they are using
+- **Escape**: allow users to exit from a manipulation
+- **Minimum tasks**: avoid users making too many manipulations
+- **Default**: set the frequently used parameter
+- **Support**: provide users with necessary supporting information
+- **Cancel**: users can cancel and resume
+- **Consistency**: implementation of commands must be consistent via the interface
 
 ---
 
@@ -190,13 +190,13 @@ The most important thing is that displayed information, commands, and notices of
 
 **3 Main Types of Display:**
 
-1. **Menu Display** — helps users in fast connecting and easy access to system's functions
-2. **Dialogue Display** — consists of notices/dialogues between users and the system
-3. **Data Entry Display** — organizes data in groups of information classified by changeability, frequency of use, and importance. Designers decide whether to use simple or master-detail data entry display.
+1. **Menu Display**: helps users in fast connecting and easy access to system's functions
+2. **Dialogue Display**: consists of notices/dialogues between users and the system
+3. **Data Entry Display**: organizes data in groups of information classified by changeability, frequency of use, and importance. Designers decide whether to use simple or master-detail data entry display.
 
 ---
 
-### UI Design — Evolution
+### UI Design: Evolution
 
 ```mermaid
 flowchart LR
@@ -205,10 +205,10 @@ flowchart LR
     C --> D[GUI\nGraphical User Interface]
 ```
 
-- **CLI (Command Line Interface)** — typing commands at a prompt
-- **PCUI (Process Control User Interface)** — early form of process control
-- **HCI (Human-Computer Interaction)** — user-centred systems
-- **GUI (Graphical User Interface)** — responsive, easy to use and learn
+- **CLI (Command Line Interface)**: typing commands at a prompt
+- **PCUI (Process Control User Interface)**: early form of process control
+- **HCI (Human-Computer Interaction)**: user-centred systems
+- **GUI (Graphical User Interface)**: responsive, easy to use and learn
 
 ---
 
@@ -252,14 +252,14 @@ When data is captured and entered, it should be **valid**. The following validat
 | **Consistency Check** | Ensure combinations of data are valid |
 | **Database Check** | Compare data against a database/file to ensure correctness |
 
-> **[Figure 1 — Example data validation check form]**
+> **[Figure 1, Example data validation check form]**
 > _UI screenshot saved at `IntroSystemDesign-pages/pages/page-07.png`._
 
 ---
 
 ### Data Verification Techniques
 
-Data validation only checks whether data is **sensible** — it does not confirm it is the **correct** value.
+Data validation only checks whether data is **sensible**: it does not confirm it is the **correct** value.
 
 - Correct date of birth: `12/11/1982`
 - Date entered: `12/11/1928` → passes validation (valid date), but is wrong
@@ -270,11 +270,11 @@ There are **two methods** of data verification:
 After data has been entered, it is compared against the original source. Quick and simple but doesn't catch every mistake.
 
 #### 2. Double-Entry
-Data is entered twice (preferably by two different users). The computer compares both entries — if they do not match, an error is generated.
+Data is entered twice (preferably by two different users). The computer compares both entries, if they do not match, an error is generated.
 - Takes more time and effort but catches almost every mistake
 - Common example: typing a new password twice for confirmation
 
-> **[Figure 2 — Double data entry verification check]**
+> **[Figure 2, Double data entry verification check]**
 > _UI screenshot saved at `IntroSystemDesign-pages/pages/page-08.png`._
 
 ---
@@ -285,13 +285,13 @@ On-screen forms have a variety of **controls** that guide how each data item is 
 
 #### Types of Controls
 
-**Text Box** — for normal text input. Labels placed to the left; supports standard GUI functions (cut, copy, paste).
+**Text Box**: for normal text input. Labels placed to the left; supports standard GUI functions (cut, copy, paste).
 
-**Number Box** — for entering numbers, including date data. Avoid if a selection box can be used instead.
+**Number Box**: for entering numbers, including date data. Avoid if a selection box can be used instead.
 
-**Selection Box** — enables the user to select a value from a predefined list. Items arranged in meaningful order (alphabetical or most-used). Can be initialized as unselected.
+**Selection Box**: enables the user to select a value from a predefined list. Items arranged in meaningful order (alphabetical or most-used). Can be initialized as unselected.
 
-**Buttons** — perform actions (e.g., Save, Submit, Cancel).
+**Buttons**: perform actions (e.g., Save, Submit, Cancel).
 
 #### Types of Selection Boxes/Buttons
 
@@ -305,7 +305,7 @@ On-screen forms have a variety of **controls** that guide how each data item is 
 
 ## Output Design
 
-One of the major reasons for building an information system is the **output** — the visible part of the system. Results of processing can be viewed on screen, on paper, or via the Web.
+One of the major reasons for building an information system is the **output**: the visible part of the system. Results of processing can be viewed on screen, on paper, or via the Web.
 
 ### Considerations in Output Design
 
@@ -316,10 +316,10 @@ One of the major reasons for building an information system is the **output** �
 
 ### Output Design Principles (HCI)
 
-- Notes, headings, and output formats should be **standardized** whenever possible — format consistency is an attribute of user-friendly output
-- The arrangement of information should be **logical** — present in digestible "chunks" in easy-to-understand language
+- Notes, headings, and output formats should be **standardized** whenever possible, format consistency is an attribute of user-friendly output
+- The arrangement of information should be **logical**: present in digestible "chunks" in easy-to-understand language
 - **Avoid acronyms and abbreviations** especially for novice users; define unfamiliar words
-- **Algorithms and assumptions** on which calculations are based should be available to users — ensures correct interpretation
+- **Algorithms and assumptions** on which calculations are based should be available to users, ensures correct interpretation
 - Users should be able to **locate needed data quickly** without searching through all data
 
 ---

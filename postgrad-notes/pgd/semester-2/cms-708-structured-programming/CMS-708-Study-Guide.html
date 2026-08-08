@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CMS 708 — Structured Programming — Exam Study Guide (Volume I)</title>
+<title>CMS 708 · Structured Programming · Exam Study Guide (Volume I)</title>
 <style>
 @page { size: A4; margin: 13mm 12mm; }
 
@@ -224,7 +224,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="masthead">
   <div class="eyebrow">Volume I · exam cheatsheet · study guide</div>
-  <h1>CMS 708 — Structured Programming</h1>
+  <h1>CMS 708 · Structured Programming</h1>
   <div class="sub">PGD Computer Science, Rivers State University, Nkpolu-Oroworukwo, Port Harcourt · built from the lecturer's four-module course document, with every C++ listing re-indented so it can actually be read and copied</div>
   <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
   <div class="facts">
@@ -239,8 +239,8 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
   <h4>What this paper will ask you to do</h4>
   There is <b>no past paper on file</b> for CMS 708, so priorities come from the shape of the course document itself. Two facts about it decide everything.
   <ol>
-    <li><b>Every module ends with practice exercises — 23 of them in total.</b> They are the only assessment-shaped material the lecturer wrote, and they are overwhelmingly of the form <i>"write a program that…"</i>. Expect the paper to be dominated by <b>write-the-code</b> questions, backed by short theory parts.</li>
-    <li><b>The theory is thin but very quotable</b> — structured vs unstructured, modularity and readability, by value vs by reference, scope and lifetime, top-down vs bottom-up. Each comes with a real-world analogy in the notes (traffic, wedding, house, car). <b>Reproduce the analogy</b> — it is the lecturer's own and it costs one sentence.</li>
+    <li><b>Every module ends with practice exercises · 23 of them in total.</b> They are the only assessment-shaped material the lecturer wrote, and they are overwhelmingly of the form <i>"write a program that…"</i>. Expect the paper to be dominated by <b>write-the-code</b> questions, backed by short theory parts.</li>
+    <li><b>The theory is thin but very quotable</b> · structured vs unstructured, modularity and readability, by value vs by reference, scope and lifetime, top-down vs bottom-up. Each comes with a real-world analogy in the notes (traffic, wedding, house, car). <b>Reproduce the analogy</b> · it is the lecturer's own and it costs one sentence.</li>
   </ol>
   <hr class="thin">
   <b>Where the marks are:</b> writing correct, complete, compilable C++ · tracing code to predict output · explaining a concept then illustrating it with a short program. <b>All 23 exercises are solved in Volume II.</b>
@@ -257,13 +257,13 @@ The C++ in the course document lost its indentation when it was converted from W
 <table>
 <thead><tr><th style="width:22%">Term</th><th>Definition</th></tr></thead>
 <tbody>
-<tr><td><b>Structured programming</b></td><td>A programming approach that emphasizes the use of <b>clear control structures</b> — sequence, selection and iteration — and <b>modular design</b> instead of arbitrary jumps, so that programs are easier to understand, test and extend. Its philosophy: <b>break a complex problem into smaller, manageable parts and solve each part systematically</b>.</td></tr>
+<tr><td><b>Structured programming</b></td><td>A programming approach that emphasizes the use of <b>clear control structures</b> · sequence, selection and iteration · and <b>modular design</b> instead of arbitrary jumps, so that programs are easier to understand, test and extend. Its philosophy: <b>break a complex problem into smaller, manageable parts and solve each part systematically</b>.</td></tr>
 <tr><td><b>Unstructured programming</b></td><td>An early approach, associated with languages like BASIC and assembly, relying heavily on <b><code>goto</code> statements</b> and sequential execution. It allowed quick development but produced <b>"spaghetti code"</b>.</td></tr>
 <tr><td><b>Spaghetti code</b></td><td>Programs that are <b>tangled, difficult to read and even harder to maintain</b>, in which the flow of control jumps unpredictably, making debugging and modification a nightmare.</td></tr>
 <tr><td><b>Modularity</b></td><td>Dividing a program into <b>independent units or modules</b>, such as functions or procedures, each performing a specific task and able to be <b>developed, tested and reused independently</b>.</td></tr>
 <tr><td><b>Readability</b></td><td>Ensuring code is <b>understandable not only to the original author but also to others</b> who may maintain or extend it, through meaningful variable names, consistent indentation and clear documentation.</td></tr>
 <tr><td><b>Variable</b></td><td>A <b>named storage location in memory that holds data</b>. It must be declared with a data type, which specifies the kind of values it can store.</td></tr>
-<tr><td><b>Strongly typed</b></td><td>A language in which <b>variables must be declared before use</b> and <b>type mismatches result in errors</b> — C++ is strongly typed.</td></tr>
+<tr><td><b>Strongly typed</b></td><td>A language in which <b>variables must be declared before use</b> and <b>type mismatches result in errors</b> · C++ is strongly typed.</td></tr>
 <tr><td><b>Operator</b></td><td>A <b>symbol that performs an operation</b> on variables and values. An <b>expression</b> combines variables, constants and operators to produce a result.</td></tr>
 <tr><td><b>Function</b></td><td>A <b>block of code designed to perform a specific task</b>. Functions break complex problems into smaller, manageable parts and must be defined with a <b>return type, a name and parameters</b> (if any); once defined they can be <b>invoked (called)</b> from <code>main()</code> or another function.</td></tr>
 <tr><td><b>Pass by value</b></td><td>A <b>copy</b> of the variable is passed; changes inside the function <b>do not affect</b> the original variable.</td></tr>
@@ -285,22 +285,22 @@ The C++ in the course document lost its indentation when it was converted from W
 <table class="tight">
 <thead><tr><th style="width:20%">Basis</th><th>Unstructured</th><th>Structured</th></tr></thead>
 <tbody>
-<tr><td>Control flow</td><td><b><code>goto</code></b> statements and sequential execution; the flow <b>jumps unpredictably</b></td><td><b>Clear control structures</b> — sequence, selection, iteration</td></tr>
-<tr><td>Design</td><td>Everything in one block</td><td><b>Modular</b> — divided into functions</td></tr>
-<tr><td>Readability</td><td>Poor — <b>"spaghetti code"</b></td><td>High — logical flow mirrors human reasoning</td></tr>
-<tr><td>Debugging</td><td>A <b>nightmare</b>; errors are hard to isolate</td><td>Easy — errors are isolated within modules</td></tr>
+<tr><td>Control flow</td><td><b><code>goto</code></b> statements and sequential execution; the flow <b>jumps unpredictably</b></td><td><b>Clear control structures</b> · sequence, selection, iteration</td></tr>
+<tr><td>Design</td><td>Everything in one block</td><td><b>Modular</b> · divided into functions</td></tr>
+<tr><td>Readability</td><td>Poor · <b>"spaghetti code"</b></td><td>High · logical flow mirrors human reasoning</td></tr>
+<tr><td>Debugging</td><td>A <b>nightmare</b>; errors are hard to isolate</td><td>Easy · errors are isolated within modules</td></tr>
 <tr><td>Maintenance</td><td>Very difficult to modify or extend</td><td>Easy to test and extend</td></tr>
 <tr><td>Scale</td><td>Workable for small tasks; <b>unmanageable for larger projects</b></td><td>Suits large projects and team work</td></tr>
 <tr><td>Associated with</td><td>Early BASIC, assembly</td><td>C, C++, Pascal</td></tr>
 </tbody>
 </table>
 <div class="box star" style="padding:6pt 8pt">
-<b>The lecturer's analogy — quote it.</b> <i>"Imagine a traffic system where cars could suddenly teleport to random roads without rules — that's what unstructured programming feels like."</i> And the closing line of the section: <b>structured programming replaces chaos with order</b>, ensuring programs are not only functional but maintainable in the long run.
+<b>The lecturer's analogy · quote it.</b> <i>"Imagine a traffic system where cars could suddenly teleport to random roads without rules · that's what unstructured programming feels like."</i> And the closing line of the section: <b>structured programming replaces chaos with order</b>, ensuring programs are not only functional but maintainable in the long run.
 </div>
 </div>
 <div>
-<h4>The same task, both ways — the exam's favourite pairing</h4>
-<pre><b>UNSTRUCTURED — using goto</b>
+<h4>The same task, both ways · the exam's favourite pairing</h4>
+<pre><b>UNSTRUCTURED · using goto</b>
 #include &lt;iostream&gt;
 using namespace std;
 
@@ -316,7 +316,7 @@ start:
     cout &lt;&lt; "Program ended." &lt;&lt; endl;
     return 0;
 }</pre>
-<pre><b>STRUCTURED — using a do-while loop</b>
+<pre><b>STRUCTURED · using a do-while loop</b>
 #include &lt;iostream&gt;
 using namespace std;
 
@@ -336,16 +336,16 @@ int main() {
 </div>
 </div>
 
-<h3>Modularity and readability — the two pillars</h3>
+<h3>Modularity and readability · the two pillars</h3>
 <div class="grid2">
 <div>
 <p style="font-size:9.1pt"><b>Modularity</b> divides a program into independent units, each performing a specific task, developed, tested and reused independently. This <b>reduces redundancy and enhances collaboration</b>, since different programmers can work on separate modules without interfering with each other.</p>
 <p style="font-size:9.1pt"><b>Readability</b> ensures code is understandable to others, through <b>meaningful variable names, consistent indentation and clear documentation</b>. It avoids unnecessary complexity and follows logical patterns that mirror human reasoning.</p>
-<p style="font-size:9.1pt"><b>Together</b> they make programming <b>a disciplined activity rather than a chaotic one</b>, transforming code into a form of communication — <b>not just between the programmer and the computer, but between programmers themselves</b>.</p>
+<p style="font-size:9.1pt"><b>Together</b> they make programming <b>a disciplined activity rather than a chaotic one</b>, transforming code into a form of communication · <b>not just between the programmer and the computer, but between programmers themselves</b>.</p>
 <p style="font-size:9.1pt"><b>Why it matters in practice:</b> teams work on large projects like banking systems, hospital management software or video games. Without modularity the codebase becomes overwhelming.</p>
 </div>
 <div>
-<pre><b>WITHOUT modularity — everything crammed into main()</b>
+<pre><b>WITHOUT modularity · everything crammed into main()</b>
 int main() {
     int a, b;
     cout &lt;&lt; "Enter two numbers: ";
@@ -356,7 +356,7 @@ int main() {
     cout &lt;&lt; "Quotient: "   &lt;&lt; a / b &lt;&lt; endl;
     return 0;
 }   // to reuse these operations we must rewrite them</pre>
-<pre><b>WITH modularity — one function per operation</b>
+<pre><b>WITH modularity · one function per operation</b>
 int    add(int x, int y)      { return x + y; }
 int    subtract(int x, int y) { return x - y; }
 int    multiply(int x, int y) { return x * y; }
@@ -379,9 +379,9 @@ int main() {
 <h3>Why C++ counts as a structured language</h3>
 <p>C++ is a <b>multi-paradigm</b> language supporting both structured and object-oriented programming, but at its core it provides all the tools needed for structured programming:</p>
 <ul>
-<li><b>Control structures</b> — <code>if</code>, <code>switch</code>, <code>for</code>, <code>while</code> and <code>do-while</code>, which <b>enforce logical flow</b>.</li>
-<li><b>Functions</b> — enabling modular design and code reuse; they can be <b>parameterised, recursive and organised into libraries</b>, making them powerful building blocks.</li>
-<li><b>Strong typing and data abstraction</b> — which help programmers manage complexity and avoid errors.</li>
+<li><b>Control structures</b> · <code>if</code>, <code>switch</code>, <code>for</code>, <code>while</code> and <code>do-while</code>, which <b>enforce logical flow</b>.</li>
+<li><b>Functions</b> · enabling modular design and code reuse; they can be <b>parameterised, recursive and organised into libraries</b>, making them powerful building blocks.</li>
+<li><b>Strong typing and data abstraction</b> · which help programmers manage complexity and avoid errors.</li>
 </ul>
 <p style="font-size:9.1pt"><b>The closing argument to write:</b> although C++ is known for object-oriented features such as classes and inheritance, <b>its foundation lies in structured programming principles, and mastering them is essential before moving on to more advanced paradigms</b>.</p>
 
@@ -390,12 +390,12 @@ int main() {
 
 <div class="grid2">
 <div>
-<h4>Syntax — the rules that are always worth a mark</h4>
+<h4>Syntax · the rules that are always worth a mark</h4>
 <ul style="font-size:9.1pt">
 <li>Every program begins with a <b><code>main()</code> function</b>, which acts as the <b>entry point</b>.</li>
 <li><b>Statements end with semicolons.</b></li>
 <li><b>Blocks are enclosed in curly braces <code>{ }</code>.</b></li>
-<li>Variables <b>must be declared with a data type before use</b> — C++ is strongly typed.</li>
+<li>Variables <b>must be declared with a data type before use</b> · C++ is strongly typed.</li>
 <li><code>#include</code> brings in a library; <code>using namespace std;</code> lets you write <code>cout</code> instead of <code>std::cout</code>.</li>
 </ul>
 <h4>The six data types in the notes</h4>
@@ -405,9 +405,9 @@ int main() {
 <tr><td><code>int</code></td><td>Integers (whole numbers)</td><td><code>20</code></td></tr>
 <tr><td><code>float</code></td><td>Single-precision decimals</td><td><code>3.5f</code></td></tr>
 <tr><td><code>double</code></td><td>Double-precision decimals</td><td><code>45000.0</code></td></tr>
-<tr><td><code>char</code></td><td>A single character</td><td><code>'A'</code> — single quotes</td></tr>
+<tr><td><code>char</code></td><td>A single character</td><td><code>'A'</code> · single quotes</td></tr>
 <tr><td><code>bool</code></td><td><code>true</code> / <code>false</code></td><td><code>true</code></td></tr>
-<tr><td><code>string</code></td><td>Text — needs <code>&lt;string&gt;</code></td><td><code>"Ada"</code> — double quotes</td></tr>
+<tr><td><code>string</code></td><td>Text · needs <code>&lt;string&gt;</code></td><td><code>"Ada"</code> · double quotes</td></tr>
 </tbody>
 </table>
 <pre>#include &lt;iostream&gt;
@@ -452,12 +452,12 @@ int main() {
 </tbody>
 </table>
 <div class="box" style="padding:5pt 7pt">
-<b>Three operator traps.</b> <b>1.</b> <code>=</code> assigns, <code>==</code> compares — <code>if (x = 5)</code> is always true and is a logic bug, not a syntax error. <b>2.</b> <code>%</code> is the <b>modulus</b> — the remainder — and works on integers only; <code>10 % 3</code> is <b>1</b>. It is how you test odd/even and divisibility. <b>3.</b> Integer division truncates: <code>10 / 3</code> is <b>3</b>. Cast one operand to <code>double</code> when you want 3.333.
+<b>Three operator traps.</b> <b>1.</b> <code>=</code> assigns, <code>==</code> compares · <code>if (x = 5)</code> is always true and is a logic bug, not a syntax error. <b>2.</b> <code>%</code> is the <b>modulus</b> · the remainder · and works on integers only; <code>10 % 3</code> is <b>1</b>. It is how you test odd/even and divisibility. <b>3.</b> Integer division truncates: <code>10 / 3</code> is <b>3</b>. Cast one operand to <code>double</code> when you want 3.333.
 </div>
 </div>
 </div>
 
-<h3>The payroll example — everything in one program</h3>
+<h3>The payroll example · everything in one program</h3>
 <div class="grid2">
 <div>
 <pre>#include &lt;iostream&gt;
@@ -483,7 +483,7 @@ int main() {
 }</pre>
 </div>
 <div>
-<p style="font-size:9.1pt">This one program integrates <b>variables, data types, input/output and operators</b> — which is exactly what a "write a program that…" question is testing. Learn its shape and you can adapt it to almost any arithmetic scenario the paper sets:</p>
+<p style="font-size:9.1pt">This one program integrates <b>variables, data types, input/output and operators</b> · which is exactly what a "write a program that…" question is testing. Learn its shape and you can adapt it to almost any arithmetic scenario the paper sets:</p>
 <ol style="font-size:9.1pt">
 <li>Headers and <code>using namespace std;</code></li>
 <li>Declare every variable you will need, with the right type</li>
@@ -501,16 +501,16 @@ int main() {
 
 <div class="grid2">
 <div>
-<h4>Selection — <code>if</code> and <code>switch</code></h4>
+<h4>Selection · <code>if</code> and <code>switch</code></h4>
 <table class="tight">
 <thead><tr><th style="width:22%">Construct</th><th>Use it when</th></tr></thead>
 <tbody>
 <tr><td><b><code>if</code></b></td><td>Executing a block <b>if a condition is true</b></td></tr>
 <tr><td><b><code>if-else</code></b></td><td>You need an <b>alternative block</b> when the condition is false</td></tr>
-<tr><td><b><code>switch</code></b></td><td><b>Multiple possible values of one variable</b> must be checked — menus, choices</td></tr>
+<tr><td><b><code>switch</code></b></td><td><b>Multiple possible values of one variable</b> must be checked · menus, choices</td></tr>
 </tbody>
 </table>
-<pre><b>if-else — grading system</b>
+<pre><b>if-else · grading system</b>
 int score;
 cout &lt;&lt; "Enter student score: ";
 cin  &gt;&gt; score;
@@ -519,7 +519,7 @@ if      (score &gt;= 70) cout &lt;&lt; "Grade: A" &lt;&lt; endl;
 else if (score &gt;= 60) cout &lt;&lt; "Grade: B" &lt;&lt; endl;
 else if (score &gt;= 50) cout &lt;&lt; "Grade: C" &lt;&lt; endl;
 else                  cout &lt;&lt; "Grade: F" &lt;&lt; endl;</pre>
-<pre><b>switch — menu selection</b>
+<pre><b>switch · menu selection</b>
 int choice;
 cout &lt;&lt; "Menu:\n1. Add\n2. Subtract\n"
      &lt;&lt; "3. Multiply\n4. Divide\n";
@@ -534,11 +534,11 @@ switch (choice) {
     default: cout &lt;&lt; "Invalid choice."          &lt;&lt; endl;
 }</pre>
 <div class="box warn" style="padding:5pt 7pt">
-<b>Two <code>switch</code> rules that are pure marks.</b> <b>1. Every case needs <code>break;</code></b> — without it execution <b>falls through</b> into the next case and every following case runs. <b>2. Always write a <code>default:</code></b> for invalid input. Also: <code>switch</code> works on integers and characters, <b>not</b> on ranges or strings — a grading question must use <code>if-else</code>, not <code>switch</code>.
+<b>Two <code>switch</code> rules that are pure marks.</b> <b>1. Every case needs <code>break;</code></b> · without it execution <b>falls through</b> into the next case and every following case runs. <b>2. Always write a <code>default:</code></b> for invalid input. Also: <code>switch</code> works on integers and characters, <b>not</b> on ranges or strings · a grading question must use <code>if-else</code>, not <code>switch</code>.
 </div>
 </div>
 <div>
-<h4>Iteration — the three loops</h4>
+<h4>Iteration · the three loops</h4>
 <table class="tight">
 <thead><tr><th style="width:22%">Loop</th><th>Use it when</th><th>Test happens</th></tr></thead>
 <tbody>
@@ -547,11 +547,11 @@ switch (choice) {
 <tr><td><b><code>do-while</code></b></td><td>Same as <code>while</code>, but it <b>guarantees at least one execution</b></td><td><b>After</b></td></tr>
 </tbody>
 </table>
-<pre><b>for — print numbers 1 to 5</b>
+<pre><b>for · print numbers 1 to 5</b>
 for (int i = 1; i &lt;= 5; i++) {
     cout &lt;&lt; "Number: " &lt;&lt; i &lt;&lt; endl;
 }</pre>
-<pre><b>while — password check</b>
+<pre><b>while · password check</b>
 string password;
 cout &lt;&lt; "Enter password: ";
 cin  &gt;&gt; password;
@@ -561,7 +561,7 @@ while (password != "secret") {
     cin  &gt;&gt; password;
 }
 cout &lt;&lt; "Access granted!" &lt;&lt; endl;</pre>
-<pre><b>do-while — repeated input</b>
+<pre><b>do-while · repeated input</b>
 int num;
 do {
     cout &lt;&lt; "Enter a positive number (0 to quit): ";
@@ -569,15 +569,15 @@ do {
     if (num &gt; 0) cout &lt;&lt; "You entered: " &lt;&lt; num &lt;&lt; endl;
 } while (num != 0);</pre>
 <p style="font-size:9.1pt"><b>The <code>for</code> header has three parts</b> separated by semicolons: <code>for (initialisation; condition; update)</code>. Leave out the update and the loop never ends.</p>
-<div class="box" style="padding:5pt 7pt"><b>The one-line justification examiners want:</b> use <code>for</code> when you know how many times; <code>while</code> when you do not; <code>do-while</code> when the body <b>must run at least once</b> — which is why menus and "enter a number until 0" use it.</div>
+<div class="box" style="padding:5pt 7pt"><b>The one-line justification examiners want:</b> use <code>for</code> when you know how many times; <code>while</code> when you do not; <code>do-while</code> when the body <b>must run at least once</b> · which is why menus and "enter a number until 0" use it.</div>
 </div>
 </div>
 
 <h3>Nested control structures</h3>
 <div class="grid2">
 <div>
-<p style="font-size:9.1pt">Control structures can be <b>combined or nested</b> to handle complex logic — a loop may contain an <code>if</code>, or an <code>if</code> may contain another loop.</p>
-<pre><b>Nested for — multiplication table</b>
+<p style="font-size:9.1pt">Control structures can be <b>combined or nested</b> to handle complex logic · a loop may contain an <code>if</code>, or an <code>if</code> may contain another loop.</p>
+<pre><b>Nested for · multiplication table</b>
 for (int i = 1; i &lt;= 3; i++) {
     for (int j = 1; j &lt;= 3; j++) {
         cout &lt;&lt; i &lt;&lt; " x " &lt;&lt; j
@@ -588,7 +588,7 @@ for (int i = 1; i &lt;= 3; i++) {
 <p style="font-size:9.1pt"><b>Trace it:</b> the outer loop runs 3 times; for <b>each</b> of those the inner loop runs 3 times, so the body executes <b>3 × 3 = 9</b> times. That multiplication is exactly the reasoning a "how many lines does this print?" question wants.</p>
 </div>
 <div>
-<pre><b>Operators inside a condition — voting eligibility</b>
+<pre><b>Operators inside a condition · voting eligibility</b>
 #include &lt;iostream&gt;
 using namespace std;
 
@@ -649,11 +649,11 @@ int main() {
     // cout &lt;&lt; localVar;   // ERROR: not accessible here
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>Scope</b> = where a variable can be accessed. <b>Lifetime</b> = how long it exists in memory. Local variables exist <b>only while the function runs</b>; global variables exist <b>for the entire program execution</b>. The commented-out line is the exam's favourite illustration — say <b>why</b> it fails.</p>
+<p style="font-size:9.1pt"><b>Scope</b> = where a variable can be accessed. <b>Lifetime</b> = how long it exists in memory. Local variables exist <b>only while the function runs</b>; global variables exist <b>for the entire program execution</b>. The commented-out line is the exam's favourite illustration · say <b>why</b> it fails.</p>
 </div>
 <div>
-<h4>Parameter passing — the guaranteed comparison</h4>
-<pre><b>BY VALUE — a copy is passed</b>
+<h4>Parameter passing · the guaranteed comparison</h4>
+<pre><b>BY VALUE · a copy is passed</b>
 void incrementByValue(int x) {
     x++;
     cout &lt;&lt; "Inside function: " &lt;&lt; x &lt;&lt; endl;
@@ -668,7 +668,7 @@ int main() {
 
 OUTPUT:   Inside function: 11
           Outside function: 10   ← original unchanged</pre>
-<pre><b>BY REFERENCE — the actual variable is passed</b>
+<pre><b>BY REFERENCE · the actual variable is passed</b>
 void incrementByReference(int &amp;x) {     // note the &amp;
     x++;
     cout &lt;&lt; "Inside function: " &lt;&lt; x &lt;&lt; endl;
@@ -713,10 +713,10 @@ int main() {
          &lt;&lt; " is " &lt;&lt; factorial(num) &lt;&lt; endl;
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>Recursion</b> occurs when a function <b>calls itself</b>. It suits problems that break into <b>smaller, similar sub-problems</b> — factorial, Fibonacci. <b>Every recursion needs a base case</b> that stops it; the notes warn that recursion <b>must be used carefully to avoid infinite loops or excessive memory usage</b>.</p>
+<p style="font-size:9.1pt"><b>Recursion</b> occurs when a function <b>calls itself</b>. It suits problems that break into <b>smaller, similar sub-problems</b> · factorial, Fibonacci. <b>Every recursion needs a base case</b> that stops it; the notes warn that recursion <b>must be used carefully to avoid infinite loops or excessive memory usage</b>.</p>
 </div>
 <div>
-<h4>Trace it — <code>factorial(5)</code></h4>
+<h4>Trace it · <code>factorial(5)</code></h4>
 <pre>factorial(5) = 5 * factorial(4)
 factorial(4) = 4 * factorial(3)
 factorial(3) = 3 * factorial(2)
@@ -729,7 +729,7 @@ factorial(0) = 1                ← base case, unwinding starts
   = 3 * 2  = 6
   = 4 * 6  = 24
   = 5 * 24 = 120</pre>
-<p style="font-size:9.1pt"><b>Write the trace out like this in the exam</b> — a "show how the recursion evaluates" question is asking for exactly these two columns: the winding down to the base case and the unwinding back up.</p>
+<p style="font-size:9.1pt"><b>Write the trace out like this in the exam</b> · a "show how the recursion evaluates" question is asking for exactly these two columns: the winding down to the base case and the unwinding back up.</p>
 </div>
 </div>
 
@@ -739,7 +739,7 @@ factorial(0) = 1                ← base case, unwinding starts
 <p><b>Modularisation</b> is the process of breaking a large program into smaller, independent units called <b>modules</b>, each performing a specific task and able to be developed, tested and maintained separately. <b>This mirrors how we solve problems in everyday life: instead of tackling everything at once, we divide tasks into manageable parts.</b></p>
 
 <div class="box star">
-<b>The lecturer's wedding analogy — write it.</b> <i>"Imagine planning a wedding. Instead of one person handling everything, responsibilities are divided into modules: catering, decoration, music, photography and guest management. Each team focuses on its module, and when combined, the wedding runs smoothly."</i>
+<b>The lecturer's wedding analogy · write it.</b> <i>"Imagine planning a wedding. Instead of one person handling everything, responsibilities are divided into modules: catering, decoration, music, photography and guest management. Each team focuses on its module, and when combined, the wedding runs smoothly."</i>
 <hr class="thin">
 <b>In programming, modularisation ensures that:</b> code is <b>reusable</b> (a function written once can be used in many places) · programs are <b>easier to debug</b> (errors are isolated within modules) · teams can <b>collaborate</b> (different programmers work on different modules).
 </div>
@@ -748,7 +748,7 @@ factorial(0) = 1                ← base case, unwinding starts
 <div>
 <h4>Top-down design</h4>
 <p style="font-size:9.1pt">Starts with the <b>big picture</b> and progressively breaks it down. Define the overall problem, divide it into sub-problems, implement each as a module. It emphasizes <b>stepwise refinement</b>.</p>
-<p style="font-size:9.1pt"><b>Analogy:</b> building a house — the architect first designs the overall structure (rooms, floors, layout), then each part is broken down into plumbing, wiring, roofing and painting. <b>Overall design first, then the details.</b></p>
+<p style="font-size:9.1pt"><b>Analogy:</b> building a house · the architect first designs the overall structure (rooms, floors, layout), then each part is broken down into plumbing, wiring, roofing and painting. <b>Overall design first, then the details.</b></p>
 <pre>// High-level function
 void manageStudent() {
     cout &lt;&lt; "Managing student records..." &lt;&lt; endl;
@@ -767,7 +767,7 @@ int main() {
 <div>
 <h4>Bottom-up design</h4>
 <p style="font-size:9.1pt">Takes the opposite approach: start with the <b>smallest building blocks</b> and gradually integrate them into larger systems. Implement reusable components first, then combine them. It emphasizes <b>reusability</b>.</p>
-<p style="font-size:9.1pt"><b>Analogy:</b> assembling a car — engineers first design the engine, tyres and seats; once these modules are ready they are integrated into the complete car. <b>Details first, then the overall system.</b></p>
+<p style="font-size:9.1pt"><b>Analogy:</b> assembling a car · engineers first design the engine, tyres and seats; once these modules are ready they are integrated into the complete car. <b>Details first, then the overall system.</b></p>
 <pre>// Small building blocks
 double add(double a, double b)      { return a + b; }
 double multiply(double a, double b) { return a * b; }
@@ -789,13 +789,13 @@ int main() {
 <table class="tight">
 <thead><tr><th style="width:22%">Aspect</th><th>Top-down design</th><th>Bottom-up design</th></tr></thead>
 <tbody>
-<tr><td><b>Starting point</b></td><td>Big picture — the overall problem</td><td>Small modules — the building blocks</td></tr>
+<tr><td><b>Starting point</b></td><td>Big picture · the overall problem</td><td>Small modules · the building blocks</td></tr>
 <tr><td><b>Focus</b></td><td><b>Stepwise refinement</b></td><td><b>Reusability</b> of components</td></tr>
 <tr><td><b>Real-life example</b></td><td>An architect designing a house</td><td>An engineer assembling car parts</td></tr>
 <tr><td><b>Programming approach</b></td><td>Define main tasks, then refine</td><td>Build small functions, then integrate</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>The concluding sentence the notes give — do not omit it:</b> both approaches are valuable, and in practice programmers often use a <b>hybrid approach</b>, combining top-down planning with bottom-up implementation to balance clarity and reusability.</p>
+<p style="font-size:9.1pt"><b>The concluding sentence the notes give · do not omit it:</b> both approaches are valuable, and in practice programmers often use a <b>hybrid approach</b>, combining top-down planning with bottom-up implementation to balance clarity and reusability.</p>
 
 <!-- ============================================================ -->
 <h2><span class="n">7</span>Things you can lose easy marks on</h2>
@@ -807,25 +807,25 @@ int main() {
 <li>Forgetting <code>return 0;</code> at the end of <code>main()</code>.</li>
 <li>Writing <code>cin &lt;&lt;</code> or <code>cout &gt;&gt;</code>. Output goes <b>out</b> with <code>&lt;&lt;</code>, input comes <b>in</b> with <code>&gt;&gt;</code>.</li>
 <li>Using <code>=</code> where <code>==</code> is meant inside an <code>if</code>.</li>
-<li>Missing <code>break;</code> in a <code>switch</code> — every case falls through to the next.</li>
+<li>Missing <code>break;</code> in a <code>switch</code> · every case falls through to the next.</li>
 <li>Integer division: <code>10 / 3</code> gives <b>3</b>. Cast to <code>double</code> when a decimal is wanted.</li>
 </ol>
 </div>
 <div>
 <ol start="7" style="font-size:9.3pt">
 <li>A loop with no update statement, so it never terminates.</li>
-<li>A recursive function with <b>no base case</b> — infinite recursion and a crash.</li>
-<li>Forgetting the <code>&amp;</code> when the question says "pass by reference" — the function then silently changes nothing.</li>
+<li>A recursive function with <b>no base case</b> · infinite recursion and a crash.</li>
+<li>Forgetting the <code>&amp;</code> when the question says "pass by reference" · the function then silently changes nothing.</li>
 <li>Using a local variable outside its function and expecting it to compile.</li>
 <li>Confusing <code>'A'</code> (char, single quotes) with <code>"A"</code> (string, double quotes).</li>
-<li>Writing flat, unindented code. <b>Readability is an examinable topic on this course</b> — losing marks for unreadable code in a structured-programming exam is avoidable.</li>
+<li>Writing flat, unindented code. <b>Readability is an examinable topic on this course</b> · losing marks for unreadable code in a structured-programming exam is avoidable.</li>
 </ol>
 </div>
 </div>
 
 <div class="box star">
 <h4>Timing plan for a 3-hour paper</h4>
-Read everything first and <b>start with the coding question you can already picture</b> — code either comes out or it does not, and starting with a solid one banks marks while you are fresh. Budget roughly <b>30 minutes per question</b>. For any "write a program" part, spend the first two minutes writing the <b>skeleton</b> — headers, <code>main()</code>, variable declarations — because that structure scores even if the logic in the middle is imperfect. Then fill in the logic, then <b>trace it once with a sample input</b> before moving on: a two-minute trace catches the missing <code>break;</code> or the off-by-one that would otherwise cost the whole question. Leave the pure theory parts for last — they are the fastest to write under time pressure.
+Read everything first and <b>start with the coding question you can already picture</b> · code either comes out or it does not, and starting with a solid one banks marks while you are fresh. Budget roughly <b>30 minutes per question</b>. For any "write a program" part, spend the first two minutes writing the <b>skeleton</b> · headers, <code>main()</code>, variable declarations · because that structure scores even if the logic in the middle is imperfect. Then fill in the logic, then <b>trace it once with a sample input</b> before moving on: a two-minute trace catches the missing <code>break;</code> or the off-by-one that would otherwise cost the whole question. Leave the pure theory parts for last · they are the fastest to write under time pressure.
 </div>
 
 <div class="footer-note">

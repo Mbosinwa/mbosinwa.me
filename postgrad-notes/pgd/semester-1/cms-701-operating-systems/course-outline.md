@@ -1,4 +1,4 @@
-# CMS 701 — Operating Systems: Course Outline
+# CMS 701: Operating Systems: Course Outline
 
 ## Course Topics
 

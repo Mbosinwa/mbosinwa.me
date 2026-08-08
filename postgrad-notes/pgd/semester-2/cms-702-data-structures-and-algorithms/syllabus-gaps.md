@@ -1,6 +1,6 @@
-# CMS 702 — Syllabus Topics NOT in My Handwritten Notes
+# CMS 702: Syllabus Topics NOT in My Handwritten Notes
 
-These topics appear on the official course outline ([the course outline](course-outline.html)) but are missing or only named in the class notes. Standard textbook material, kept short and exam-shaped. **Source: standard DSA material, not the lecturer's notes** — the wording in my notes always wins if they differ.
+These topics appear on the official course outline ([the course outline](course-outline.html)) but are missing or only named in the class notes. Standard textbook material, kept short and exam-shaped. **Source: standard DSA material, not the lecturer's notes**: the wording in my notes always wins if they differ.
 
 ---
 
@@ -9,10 +9,10 @@ These topics appear on the official course outline ([the course outline](course-
 A **graph** `G = (V, E)` is a non-linear data structure consisting of a set of **vertices** (nodes) `V` and a set of **edges** `E` connecting pairs of vertices.
 
 **Types**
-- **Undirected** — edges have no direction; (A,B) = (B,A).
-- **Directed (digraph)** — edges have direction; A→B ≠ B→A.
-- **Weighted** — each edge carries a cost/weight.
-- **Cyclic / Acyclic** — contains a cycle or not. A tree is a connected acyclic graph.
+- **Undirected**: edges have no direction; (A,B) = (B,A).
+- **Directed (digraph)**: edges have direction; A→B ≠ B→A.
+- **Weighted**: each edge carries a cost/weight.
+- **Cyclic / Acyclic**: contains a cycle or not. A tree is a connected acyclic graph.
 
 **Two standard representations**
 
@@ -24,7 +24,7 @@ A **graph** `G = (V, E)` is a non-linear data structure consisting of a set of *
 | List all neighbours | O(V) | O(degree) |
 | Best for | Dense graphs | Sparse graphs |
 
-Example — undirected graph with vertices A,B,C and edges AB, BC:
+Example, undirected graph with vertices A,B,C and edges AB, BC:
 
 ```
 Adjacency Matrix        Adjacency List
@@ -35,8 +35,8 @@ C [ 0  1  0 ]
 ```
 
 **Graph traversals**
-- **BFS (Breadth-First Search)** — uses a **queue**; visits level by level. O(V + E).
-- **DFS (Depth-First Search)** — uses a **stack** (or recursion); goes as deep as possible first. O(V + E).
+- **BFS (Breadth-First Search)**: uses a **queue**; visits level by level. O(V + E).
+- **DFS (Depth-First Search)**: uses a **stack** (or recursion); goes as deep as possible first. O(V + E).
 
 Note the link to my notes: BFS = queue = FIFO; DFS = stack = LIFO.
 
@@ -59,7 +59,7 @@ Your notes name five sorts but don't give mechanics or complexity. Learn this ta
 
 **Merge sort** is divide-and-conquer; **quick sort** is also divide-and-conquer but its worst case O(n²) occurs when the pivot is always the smallest/largest element (e.g. already-sorted input with a first-element pivot).
 
-**Counting and bucket sort are not comparison sorts** — this is how they beat the O(n log n) comparison lower bound.
+**Counting and bucket sort are not comparison sorts**: this is how they beat the O(n log n) comparison lower bound.
 
 ---
 
@@ -80,7 +80,7 @@ Your notes name five sorts but don't give mechanics or complexity. Learn this ta
 Named on the outline; state it as: *an algorithm can often be made faster by using more memory, or made to use less memory at the cost of running longer.*
 
 Examples to cite:
-- A **hash table** spends O(n) extra space to turn an O(n) search into O(1) — space bought speed.
+- A **hash table** spends O(n) extra space to turn an O(n) search into O(1), space bought speed.
 - **Merge sort** uses O(n) extra space to guarantee O(n log n); **quick sort** uses O(log n) space but risks O(n²).
 - **Counting sort** uses an O(k) count array to avoid comparisons.
 - **Memoization** in dynamic programming stores sub-results to avoid recomputation.
@@ -92,8 +92,8 @@ Examples to cite:
 A **recursive algorithm** solves a problem by calling itself on smaller sub-problems.
 
 Every recursion needs:
-1. A **base case** — the condition that stops the recursion.
-2. A **recursive case** — the call on a smaller input, moving toward the base case.
+1. A **base case**: the condition that stops the recursion.
+2. A **recursive case**: the call on a smaller input, moving toward the base case.
 
 ```
 factorial(n):
@@ -119,7 +119,7 @@ factorial(n):
 | Order | LIFO | Any order |
 | Failure mode | Stack overflow | Memory leak / fragmentation |
 
-**Run-time storage management** is the system's job of allocating memory as a program runs and reclaiming it afterwards — via the stack for call frames, the heap for dynamic data, plus **garbage collection** (automatic reclamation of unreachable objects) or manual deallocation.
+**Run-time storage management** is the system's job of allocating memory as a program runs and reclaiming it afterwards, via the stack for call frames, the heap for dynamic data, plus **garbage collection** (automatic reclamation of unreachable objects) or manual deallocation.
 
 **Don't confuse:** the *stack* (memory region) with the *stack ADT* (LIFO data structure), and the *heap* (memory region) with the *heap* data structure (the tree used by heap sort). Exam questions like to test this.
 
@@ -136,7 +136,7 @@ factorial(n):
 
 ## 8. Records / Structures
 
-A **record** (struct) is a composite data type grouping fields of possibly different types under one name — e.g. a `Student` record with `name` (string), `matric_no` (int), `cgpa` (float). Contrast with an **array**, which holds many elements of the **same** type. Records are the building block of a **node** (data field + pointer field).
+A **record** (struct) is a composite data type grouping fields of possibly different types under one name, e.g. a `Student` record with `name` (string), `matric_no` (int), `cgpa` (float). Contrast with an **array**, which holds many elements of the **same** type. Records are the building block of a **node** (data field + pointer field).
 
 ---
 
@@ -145,8 +145,8 @@ A **record** (struct) is a composite data type grouping fields of possibly diffe
 Algorithms operating on numeric data, where **precision and error** matter as much as speed. Examples worth naming:
 - **Euclid's algorithm** for GCD.
 - **Newton–Raphson** method for finding roots.
-- **Fast exponentiation** (exponentiation by squaring) — O(log n).
-- **Sieve of Eratosthenes** for primes — O(n log log n).
-- **Matrix multiplication** — naïve O(n³).
+- **Fast exponentiation** (exponentiation by squaring), O(log n).
+- **Sieve of Eratosthenes** for primes, O(n log log n).
+- **Matrix multiplication**: naïve O(n³).
 
 Key issue to mention: **floating-point round-off error** accumulates, so numerical algorithms are judged on numerical stability, not just complexity.

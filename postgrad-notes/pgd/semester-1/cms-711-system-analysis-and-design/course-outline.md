@@ -1,4 +1,4 @@
-# Course Outline — System Analysis & Design (CMS711)
+# Course Outline: System Analysis & Design (CMS711)
 
 1. Overview of System and their Components
 2. Introduction to System Analysis & Design

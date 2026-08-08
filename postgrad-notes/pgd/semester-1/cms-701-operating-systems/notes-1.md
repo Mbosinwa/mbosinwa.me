@@ -1,4 +1,4 @@
-# CMS 701 — Operating Systems Lecture Notes
+# CMS 701: Operating Systems Lecture Notes
 ## OS Types, Kernels & System Calls
 
 ---
@@ -65,7 +65,7 @@ It provides necessary services to manage networked computers, allowing them to c
 **Advantages**
 1. Users can manage resources from a central server.
 2. Sharing of files and devices across the network is easy.
-3. Various devices can connect and work together seamlessly.
+3. Various devices can connect and work together smoothly.
 
 **Disadvantages**
 1. It is dependent on network.
@@ -84,9 +84,9 @@ It is designed for systems that require rapid response time and high reliability
 3. Efficiency, optimized for performance and resource use.
 
 **Disadvantages**
-- Debugging challenges — timing issues can be tricky to deal with.
+- Debugging challenges, timing issues can be tricky to deal with.
 - May require specialized hardware and resource constraints.
-- Limited flexibility — tailored for specific applications.
+- Limited flexibility, tailored for specific applications.
 
 ---
 
@@ -114,7 +114,7 @@ A monolithic kernel is a single large program that contains all the core functio
 
 > **Scenario (Technical):** Imagine a server running a Linux distribution with a monolithic kernel. When an application needs to read a file from disk, the system calls are processed directly within the kernel space. This allows for high performance as data flows quickly between hardware and software without the overhead of switching contexts.
 
-> **Analogy — Small Startup Company:** Everyone sits in one big room. If the CEO needs a file, they just shout across the room. Communication is instant and fast because there are no walls. **The Problem:** If one employee gets the flu (a bug in a driver), they are so close to everyone else that they might infect the whole office, causing the entire company to stop working.
+> **Analogy, Small Startup Company:** Everyone sits in one big room. If the CEO needs a file, they just shout across the room. Communication is instant and fast because there are no walls. **The Problem:** If one employee gets the flu (a bug in a driver), they are so close to everyone else that they might infect the whole office, causing the entire company to stop working.
 
 **Advantages**
 - **High Performance:** Direct access to hardware reduces overhead.
@@ -128,11 +128,11 @@ A monolithic kernel is a single large program that contains all the core functio
 
 ### 2. Microkernel
 
-A microkernel takes the opposite approach. It keeps only the absolute essentials in the kernel space (like basic process scheduling). Everything else — drivers, file systems — is moved to the **User Space**.
+A microkernel takes the opposite approach. It keeps only the absolute essentials in the kernel space (like basic process scheduling). Everything else, drivers, file systems, is moved to the **User Space**.
 
 > **Scenario (Technical):** Consider a real-time operating system (RTOS) for embedded devices, such as a smart thermostat. The microkernel only handles basic tasks like process scheduling and inter-process communication. When the thermostat needs to adjust the temperature based on user inputs, the application running in user space communicates with the microkernel, ensuring the system remains responsive and stable.
 
-> **Analogy — Large Government Agency:** Every department is in a separate building. If you want to move a file from one department to another, you have to send a formal letter (called **Inter-Process Communication or IPC**). **The Benefit:** If the "Department of Parks" burns down (a driver crashes), the rest of the government keeps running perfectly fine. **The Downside:** Sending letters between buildings takes a lot of time compared to shouting across a room.
+> **Analogy, Large Government Agency:** Every department is in a separate building. If you want to move a file from one department to another, you have to send a formal letter (called **Inter-Process Communication or IPC**). **The Benefit:** If the "Department of Parks" burns down (a driver crashes), the rest of the government keeps running perfectly fine. **The Downside:** Sending letters between buildings takes a lot of time compared to shouting across a room.
 
 **Advantages**
 - **Stability:** Fewer components in the kernel reduce the risk of system crashes.
@@ -148,7 +148,7 @@ A microkernel takes the opposite approach. It keeps only the absolute essentials
 
 A hybrid kernel is a "best of both worlds" approach. It looks like a microkernel (modular) but runs most things in kernel space to keep the speed of a monolithic kernel. Hybrid kernels combine aspects of both monolithic and microkernel architectures, containing essential services in the kernel along with some user-space services.
 
-> **Analogy — Modern Open-Plan Office with Glass Cubicles:** Employees have their own protected spaces (modular), but the walls are made of glass so they can still talk to each other very quickly without leaving the room.
+> **Analogy, Modern Open-Plan Office with Glass Cubicles:** Employees have their own protected spaces (modular), but the walls are made of glass so they can still talk to each other very quickly without leaving the room.
 
 > **Scenario (Technical):** An OS like Windows uses a hybrid kernel. When you run software that requires network communication, the networking functions are included in the kernel for efficient data handling. However, components like file systems are managed in user space, providing flexibility and modularity.
 
@@ -169,7 +169,7 @@ A hybrid kernel is a "best of both worlds" approach. It looks like a microkernel
 
 Exokernels are unique because they don't try to manage resources for you. Instead, they give the application **direct access to the hardware** and let the application decide how to use it.
 
-> **Analogy — Self-Service Warehouse:** Instead of asking a clerk (the kernel) to go find a box for you, the warehouse gives you the keys and a map. You go get exactly what you need, how you want it.
+> **Analogy, Self-Service Warehouse:** Instead of asking a clerk (the kernel) to go find a box for you, the warehouse gives you the keys and a map. You go get exactly what you need, how you want it.
 
 **Advantages**
 - Maximum efficiency for specialized apps.
@@ -181,9 +181,9 @@ Exokernels are unique because they don't try to manage resources for you. Instea
 
 ### 5. Nanokernel
 
-A nanokernel is an extreme version of a microkernel. It is incredibly tiny — essentially just enough code to handle hardware interrupts and nothing else.
+A nanokernel is an extreme version of a microkernel. It is incredibly tiny, essentially just enough code to handle hardware interrupts and nothing else.
 
-> **Analogy — Remote Control:** It doesn't need to manage files, users, or complex networking. It just needs to know: "Did the user press a button? Okay, send a signal."
+> **Analogy, Remote Control:** It doesn't need to manage files, users, or complex networking. It just needs to know: "Did the user press a button? Okay, send a signal."
 
 > **Scenario (Technical):** Consider an IoT device like a smart light bulb. A nanokernel might handle only the absolute necessities, like scheduling tasks and managing interrupts. All other functionalities, such as communication protocols or application logic, would run as user-space applications. This simplicity helps in reducing power consumption, crucial for battery-operated devices.
 
@@ -278,7 +278,7 @@ A **process** is a program in execution, including the program code, current act
 ### Attributes / Components of a Process
 
 1. **Process ID (PID):** Unique identifier for each process.
-2. **Process States:** Current state — running, waiting, or ready.
+2. **Process States:** Current state, running, waiting, or ready.
 3. **Priority and CPU Scheduling Information:** Helps OS decide which process runs next.
 4. **File Descriptor:** Information about open files and network connections.
 5. **I/O Information:** Input/output devices the process is using.
@@ -297,7 +297,7 @@ A **process** is a program in execution, including the program code, current act
 2. **Interrupt Handling (Hardware Trigger):** An interrupt is a signal that requires immediate OS attention.
 3. **Kernel / User Mode Switch:** When the OS switches between kernel mode and user mode.
 
-> **Note:** Overhead — if triggers happen too frequently, the system spends more time switching than running.
+> **Note:** Overhead, if triggers happen too frequently, the system spends more time switching than running.
 
 ---
 

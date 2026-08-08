@@ -1,17 +1,17 @@
-# Artificial Intelligence — Lecture Notes
+# Artificial Intelligence: Lecture Notes
 
 ### What is Intelligence?
 
 > **Intelligence** is defined as "the capacity to think and comprehend the world in an elaborate way, involving knowledge, experience and understanding."
 
 - Machines are better than humans in some tasks such as computation, addition and subtraction etc., but struggle with creative tasks that humans do normally.
-- AI is concerned with understanding human cognition and building entities that have at least human-level cognition — in other words, to do the creative things that humans do but **FASTER**.
+- AI is concerned with understanding human cognition and building entities that have at least human-level cognition, in other words, to do the creative things that humans do but **FASTER**.
 
 ### Limits of Computational Power
 
 For humans performing a task requires learning in a natural order:
-- **First** — Perception, linguistics, Common Sense
-- **Later** — Engineering, medicine, finance etc.
+- **First**: Perception, linguistics, Common Sense
+- **Later**: Engineering, medicine, finance etc.
 
 The individual (formal) task requires much less knowledge to represent in a computer system than the mundane tasks.
 
@@ -79,13 +79,13 @@ A bar `|` represents the river. The initial state where farmer, lion, goat and y
 
 | State (Left) | State (Right) |
 |---|---|
-| `FLGY` | — |
+| `FLGY` |, |
 | `FLY` | `G` |
 | `FLY` \| `G` → cross goat back | ... |
 | ... | ... |
-| — | `FLGY` |
+|, | `FLGY` |
 
-> **[Diagram placeholder — see page 6]**
+> **[Diagram placeholder, see page 6]**
 > _Full state-space tree for the farmer problem is in `AI-pages/page-06.png`._
 
 ---
@@ -121,8 +121,8 @@ _Fig 1: An agent intercepts with environment through Sensors and actuators._
 - An agent's choice of actions at any given instant can depend on the built-in knowledge and on the **entire percept sequence** observed to date, but not on anything it has not perceived.
 - An agent's behaviour is described by the **agent function** that maps any given percept sequence to an action.
 - An agent function is implemented by an **agent program**.
-  - **Agent function** — abstract mathematical description
-  - **Agent program** — concrete implementation
+  - **Agent function**: abstract mathematical description
+  - **Agent program**: concrete implementation
 
 ---
 
@@ -248,7 +248,7 @@ return failure
    - This is particularly significant if many acceptable solutions exist.
    - DFS can stop when one of them is found.
 
-> **Disadvantages of BFS** — Next class
+> **Disadvantages of BFS**: Next class
 
 > Apart from BFS and DFS, what other search algorithms are there?
 
@@ -268,10 +268,10 @@ graph TD
 
 ### Mapping Between Facts and Representations
 
-- **Hallucination** — Facts that may not be there. Humans have consciousness and self-awareness.
+- **Hallucination**: Facts that may not be there. Humans have consciousness and self-awareness.
 
 **Two Entities:**
-- **Fact** — Truth in some relevant world. Things we want to represent.
+- **Fact**: Truth in some relevant world. Things we want to represent.
 - **Representation** of facts in some chosen formalism. This we actually manipulate.
 
 ---
@@ -294,8 +294,8 @@ graph TD
 |---|---|---|---|---|
 | Ronaldinho | 5-7 | 56 | Midfield | Right |
 | Jay-Matthew | 5-11 | 75 | Midfield | Right |
-| Lionel Messi | 5-5 | 76 | Attack-Left | — |
-| Ture Ingerami | 5-6 | 78 | Defence-Right | — |
+| Lionel Messi | 5-5 | 76 | Attack-Left |, |
+| Ture Ingerami | 5-6 | 78 | Defence-Right |, |
 
 - Database Systems use this type of KR.
 - It provides **weak inferential capabilities**.
@@ -304,7 +304,7 @@ graph TD
 
 ### 3. Inheritance / Inferential Relationships
 
-> **[Diagram placeholder — see page 16]**
+> **[Diagram placeholder, see page 16]**
 > _Inheritance relationship diagram saved at `AI-pages/page-16.png`._
 
 **Class hierarchy:**
@@ -374,11 +374,11 @@ Function    → Mother | Little
 
 ### Exercises
 
-**1.** How could introspection — reporting on one's inner thoughts — be accurate? Could I be wrong about what I'm thinking? Discuss.
+**1.** How could introspection, reporting on one's inner thoughts, be accurate? Could I be wrong about what I'm thinking? Discuss.
 
-**2.** "Surely computers cannot be intelligent — they can only do what their programmers tell them." Is the latter statement true, and does it imply the former?
+**2.** "Surely computers cannot be intelligent, they can only do what their programmers tell them." Is the latter statement true, and does it imply the former?
 
-**3.** "Surely animals cannot be intelligent — they can do only what their genes tell them." Is the latter statement true and does it imply the former?
+**3.** "Surely animals cannot be intelligent, they can do only what their genes tell them." Is the latter statement true and does it imply the former?
 
 **4.** Examine the AI world to find whether the following tasks can currently be solved by computers:
 - a) Playing a decent game of table tennis

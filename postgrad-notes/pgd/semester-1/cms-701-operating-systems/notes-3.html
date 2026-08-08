@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 701 Notes III — Multithreading, CPU Scheduling & Synchronization — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 701 Notes III: Multithreading, CPU Scheduling & Synchronization · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 701 Operating Systems: Threads, CPU scheduling algorithms and process synchronization.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-3.html">
-    <meta property="og:title" content="CMS 701 Notes III — Multithreading, CPU Scheduling & Synchronization — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 701 Notes III: Multithreading, CPU Scheduling & Synchronization · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 701 Operating Systems: Threads, CPU scheduling algorithms and process synchronization.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-3.html">
-    <meta property="twitter:title" content="CMS 701 Notes III — Multithreading, CPU Scheduling & Synchronization — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 701 Notes III: Multithreading, CPU Scheduling & Synchronization · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 701 Operating Systems: Threads, CPU scheduling algorithms and process synchronization.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -60,13 +60,13 @@
         </div>
     </nav>
     <main class="container">
-        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes III — Multithreading, CPU Scheduling & Synchronization</p>
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes III: Multithreading, CPU Scheduling & Synchronization</p>
         <div class="doc-actions">
             <button id="copy-md" data-md="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-3.md">Copy as Markdown</button>
             <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-3.md" download="CMS-701-notes-3.md">Download .md</a>
         </div>
         <article class="doc">
-<h1 id="cms-701--operating-systems-lecture-notes">CMS 701 — Operating
+<h1 id="cms-701-operating-systems-lecture-notes">CMS 701: Operating
 Systems Lecture Notes</h1>
 <h2
 id="multithreading-cpu-scheduling-algorithms--process-synchronization">Multithreading,
@@ -76,7 +76,7 @@ CPU Scheduling Algorithms &amp; Process Synchronization</h2>
 <p><strong>Multithreading</strong> is a technique where a process is
 divided into smaller execution units called <strong>threads</strong>
 that run concurrently. It allows a single process to have multiple
-threads running simultaneously — different parts of a program can run at
+threads running simultaneously, different parts of a program can run at
 the same time, improving efficiency and responsiveness.</p>
 <hr />
 <h2 id="application-examples">Application Examples</h2>
@@ -166,7 +166,7 @@ process blocks</strong>.</li>
 on multiprocessors.</li>
 </ul>
 <blockquote>
-<p>Thread management is done at user level, so it is efficient — but no
+<p>Thread management is done at user level, so it is efficient, but no
 multiprocessor advantage.</p>
 </blockquote>
 <h3 id="3-one-to-one-model">3. One-to-One Model</h3>
@@ -324,7 +324,7 @@ execution.</li>
 </blockquote>
 <p><strong>Advantages:</strong> Simple; easy to implement.
 <strong>Disadvantages:</strong> Long waiting time; <strong>"Convoy
-Effect"</strong> — short jobs wait behind long ones.</p>
+Effect"</strong>: short jobs wait behind long ones.</p>
 <hr />
 <h3 id="2-shortest-job-first-sjf">2. Shortest Job First (SJF)</h3>
 <p>Process with the shortest burst time is selected first.</p>
@@ -345,15 +345,15 @@ regular patients.</p>
 </blockquote>
 <p><strong>Advantages:</strong> Important tasks handled quickly.
 <strong>Disadvantages:</strong> Low-priority processes may starve.
-<strong>Fix:</strong> <strong>Aging</strong> — gradually increasing
+<strong>Fix:</strong> <strong>Aging</strong>: gradually increasing
 priority of long-waiting processes.</p>
 <hr />
 <h3 id="4-round-robin-rr">4. Round Robin (RR)</h3>
 <p>Each process gets a <strong>Time Quantum</strong> (10–100ms); if not
 done, goes to back of queue. Designed for time-sharing systems.</p>
 <blockquote>
-<p><strong>Scenario:</strong> Students taking turns on a shared computer
-— 5 minutes each.</p>
+<p><strong>Scenario:</strong> Students taking turns on a shared
+computer, 5 minutes each.</p>
 </blockquote>
 <p><strong>Advantages:</strong> Fair; good for time-sharing.
 <strong>Disadvantages:</strong> Too many context switches; performance
@@ -369,7 +369,7 @@ Scheduling</h3>
 Foreground vs. Background). Each queue has its own scheduling
 algorithm.</p>
 <blockquote>
-<p><strong>Scenario:</strong> In school — teachers, senior students, and
+<p><strong>Scenario:</strong> In school, teachers, senior students, and
 juniors have different service queues.</p>
 </blockquote>
 <p><strong>Advantages:</strong> Organized process handling.
@@ -453,7 +453,7 @@ resource access.</p>
 a limit.</li>
 </ul>
 <blockquote>
-<p><strong>Scenario:</strong> Only 3 computers available — semaphore
+<p><strong>Scenario:</strong> Only 3 computers available, semaphore
 ensures only 3 users access them at once.</p>
 </blockquote>
 <h3 id="3-monitors">3. Monitors</h3>
@@ -490,14 +490,14 @@ and Disadvantages of Process Synchronization</h2>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

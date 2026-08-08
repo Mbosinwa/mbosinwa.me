@@ -1,10 +1,10 @@
-# CMS 702 — Practice Questions
+# CMS 702: Practice Questions
 
 Built from the emphasis in the lecturer's notes (worked examples repeated in class are the likeliest exam questions). Try each before reading the answer.
 
 ---
 
-## Section A — Definitions (short answer)
+## Section A: Definitions (short answer)
 
 1. Define an algorithm and list any **five** types of algorithms.
 2. What is asymptotic analysis? State the three cases it considers.
@@ -20,10 +20,10 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 <details><summary>Answers</summary>
 
 1. A step-by-step procedure / set of commands to solve a specific problem. Any five of: brute force, recursive, encryption, backtracking, search, sort, divide and conquer, greedy, dynamic programming, randomized.
-2. Computing the running time of a piece of code in a mathematical unit of computation, expressed as f(n) — describing limiting behaviour. Cases: worst, best, average.
+2. Computing the running time of a piece of code in a mathematical unit of computation, expressed as f(n), describing limiting behaviour. Cases: worst, best, average.
 3. Big O = upper bound (worst case); Θ = tight bound, both upper and lower; Ω = lower bound (best case).
-4. Hashing means lookup — the most widely used technique to find aggregate data by key or id. Components: key, hash function, hash table.
-5. A collision occurs when h(x) = h(y) — two different keys map to the same hash value. Handled by separate chaining or open addressing.
+4. Hashing means lookup, the most widely used technique to find aggregate data by key or id. Components: key, hash function, hash table.
+5. A collision occurs when h(x) = h(y), two different keys map to the same hash value. Handled by separate chaining or open addressing.
 6. Number of items the hash table contains ÷ size of the hash table.
 7. A stack is open at one end only and follows LIFO (PUSH/POP); a queue is open at both ends and follows FIFO (Enqueue/Dequeue).
 8. A non-linear hierarchical data structure of nodes connected by edges. Properties: one root node with no parent; each node has one parent but may have many children; each node connects to its children via an edge.
@@ -34,7 +34,7 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 
 ---
 
-## Section B — Complexity
+## Section B: Complexity
 
 11. List the five complexity classes covered in class, with an example of each.
 12. Arrange in increasing order of growth: O(n²), O(1), O(2ⁿ), O(log n), O(n).
@@ -43,16 +43,16 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 
 <details><summary>Answers</summary>
 
-11. O(1) constant — fixed time regardless of data volume; O(log n) logarithmic — halves the problem each step, e.g. binary search; O(n) linear — time proportional to input size; O(n²) quadratic — nested loops; O(2ⁿ) exponential — grows rapidly with input size, e.g. naïve recursion.
+11. O(1) constant, fixed time regardless of data volume; O(log n) logarithmic, halves the problem each step, e.g. binary search; O(n) linear, time proportional to input size; O(n²) quadratic, nested loops; O(2ⁿ) exponential, grows rapidly with input size, e.g. naïve recursion.
 12. O(1) < O(log n) < O(n) < O(n²) < O(2ⁿ).
 13. O(log n); the dataset must be **sorted**.
-14. O(n²) — the inner loop runs n times for each of the n outer iterations, giving n × n operations.
+14. O(n²), the inner loop runs n times for each of the n outer iterations, giving n × n operations.
 
 </details>
 
 ---
 
-## Section C — Hashing (worked-example style)
+## Section C: Hashing (worked-example style)
 
 15. Given the strings `{"ab", "cd", "efg"}` with a=1, b=2 … g=7, compute the hash index of each in a table of size 7 and show the resulting table.
 16. State four properties of a good hash function.
@@ -72,7 +72,7 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 
 ---
 
-## Section D — Trees & BST (highest-yield section)
+## Section D: Trees & BST (highest-yield section)
 
 18. For the tree below, state the depth and height of nodes 10, 5, 2 and 1.
 
@@ -116,7 +116,7 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
           /     /  \
         13    36    50
     ```
-20. In-order: 13, 21, 36, 37, 40, 50 (sorted — always true for a BST). Pre-order: 37, 21, 13, 40, 36, 50. Post-order: 13, 21, 36, 50, 40, 37.
+20. In-order: 13, 21, 36, 37, 40, 50 (sorted, always true for a BST). Pre-order: 37, 21, 13, 40, 36, 50. Post-order: 13, 21, 36, 50, 40, 37.
 21. In-order traversal = 4, 8, 10, 12, 14, 20, 22. Successor of 8 = **10**; predecessor of 14 = **12**.
 22. **−1** is returned. (The in-order predecessor of the first node is **null**.)
 23.
@@ -131,14 +131,14 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
               /  \
             10    11
     ```
-24. Full — every node has 0 or 2 children. Perfect — every internal node has exactly 2 children **and** all leaves are on the same level. Complete — every level completely filled, leaves lean left, and the last leaf may lack a right sibling.
+24. Full, every node has 0 or 2 children. Perfect, every internal node has exactly 2 children **and** all leaves are on the same level. Complete, every level completely filled, leaves lean left, and the last leaf may lack a right sibling.
 25. l = 2^h = 2³ = **8 leaves**; n = 2^(h+1) − 1 = 2⁴ − 1 = **15 nodes**.
 
 </details>
 
 ---
 
-## Section E — Data structures generally
+## Section E: Data structures generally
 
 26. Define a data structure and state the three categories of data types.
 27. List six basic operations performed on data structures.
@@ -148,7 +148,7 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 
 <details><summary>Answers</summary>
 
-26. A data organization, management and storage format enabling efficient access and modification — a collection of data values, the relationships among them, and the operations applicable to them. Categories: inbuilt/primitive (integer, float, boolean); derived (stack, queue, list, array); complex (linked list, tree, graph).
+26. A data organization, management and storage format enabling efficient access and modification, a collection of data values, the relationships among them, and the operations applicable to them. Categories: inbuilt/primitive (integer, float, boolean); derived (stack, queue, list, array); complex (linked list, tree, graph).
 27. Traversal, searching, sorting, merging, insertion, deletion.
 28. Simple (singly), complex (doubly), circular.
 29. Locate the target node, then set the previous node's pointer to the target's next node, bypassing it: `Head → [A|•] → [TARGET|•] → [C|•]` becomes `Head → [A|•] ──────────────→ [C|•]`.
@@ -158,7 +158,7 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 
 ---
 
-## Section F — Likely "gap" questions (from the outline, not the notes — see [the syllabus gap notes](syllabus-gaps.html))
+## Section F: Likely "gap" questions (from the outline, not the notes, see [the syllabus gap notes](syllabus-gaps.html))
 
 31. Define a graph and describe its two standard representations.
 32. Compare BFS and DFS, naming the data structure each uses.
@@ -166,12 +166,12 @@ Built from the emphasis in the lecturer's notes (worked examples repeated in cla
 34. Explain the time–space tradeoff with one example.
 35. Differentiate between stack allocation and heap allocation.
 
-<details><summary>Answers — see [the syllabus gap notes](syllabus-gaps.html) for full detail</summary>
+<details><summary>Answers, see [the syllabus gap notes](syllabus-gaps.html) for full detail</summary>
 
-31. G = (V, E): a set of vertices and a set of edges connecting them. Adjacency matrix — V×V, O(V²) space, O(1) edge check, best for dense graphs. Adjacency list — array of neighbour lists, O(V + E) space, best for sparse graphs.
+31. G = (V, E): a set of vertices and a set of edges connecting them. Adjacency matrix, V×V, O(V²) space, O(1) edge check, best for dense graphs. Adjacency list, array of neighbour lists, O(V + E) space, best for sparse graphs.
 32. BFS uses a **queue** (FIFO) and visits level by level; DFS uses a **stack** (LIFO) or recursion and goes as deep as possible first. Both O(V + E).
 33. Merge sort divides in half, sorts each half and merges; guaranteed O(n log n), needs O(n) extra space. Quick sort partitions around a pivot and recurses; O(n log n) average but **O(n²) worst case** when the pivot is always the smallest/largest element.
-34. More memory can buy speed, and vice versa — e.g. a hash table spends O(n) extra space to make search O(1) instead of O(n).
+34. More memory can buy speed, and vice versa, e.g. a hash table spends O(n) extra space to make search O(1) instead of O(n).
 35. Stack: automatic, LIFO, fast, holds local variables and call frames, fixed small size, fails by overflow. Heap: manual/dynamic, any order, slower, holds dynamically allocated objects, large, fails by leak or fragmentation.
 
 </details>

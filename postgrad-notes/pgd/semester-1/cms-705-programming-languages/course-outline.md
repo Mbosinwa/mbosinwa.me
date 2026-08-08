@@ -1,4 +1,4 @@
-# CMS705 Programming Languages — Course Outline
+# CMS705 Programming Languages: Course Outline
 
 **Institution:** Rivers State University, Nkpolu-Oroworukwo, Port Harcourt
 **Course Code:** CMS 705

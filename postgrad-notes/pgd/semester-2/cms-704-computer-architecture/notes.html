@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 704 Lecture Notes — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 704 Lecture Notes · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 704 Computer Architecture: Transcription of 14 pages of class notes.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-2/cms-704-computer-architecture/notes.html">
-    <meta property="og:title" content="CMS 704 Lecture Notes — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 704 Lecture Notes · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 704 Computer Architecture: Transcription of 14 pages of class notes.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-2/cms-704-computer-architecture/notes.html">
-    <meta property="twitter:title" content="CMS 704 Lecture Notes — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 704 Lecture Notes · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 704 Computer Architecture: Transcription of 14 pages of class notes.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -66,7 +66,7 @@
             <a href="/postgrad-notes/pgd/semester-2/cms-704-computer-architecture/notes.md" download="CMS-704-notes.md">Download .md</a>
         </div>
         <article class="doc">
-<h1 id="cms-704--computer-architecture">CMS 704 — Computer
+<h1 id="cms-704-computer-architecture">CMS 704: Computer
 Architecture</h1>
 <p><strong>Programme:</strong> PGD Computer Science, Rivers State
 University <strong>Units:</strong> 3</p>
@@ -80,14 +80,14 @@ University <strong>Units:</strong> 3</p>
 dated 12/05/2026)</h2>
 <blockquote>
 <p>Fundamental building blocks, logic expression minimization, and
-design — sum of product terms, register transfer notations, physical
+design, sum of product terms, register transfer notations, physical
 considerations. Data representation and number bases, fixed and floating
 point systems, representation, memory systems organization and
 architecture. Memory systems, general characteristics of memory
-operation (technology — magnetic recording, semiconductor memory,
-complex devices, magnetic bubbles), memory addressing, memory hierarchy,
-virtual memory. Control systems, hardware control, micro-programmed
-control, asynchronous control, I/O bus control.</p>
+operation (technology, magnetic recording, semiconductor memory, complex
+devices, magnetic bubbles), memory addressing, memory hierarchy, virtual
+memory. Control systems, hardware control, micro-programmed control,
+asynchronous control, I/O bus control.</p>
 </blockquote>
 <hr />
 <h2 id="1-computer-architecture">1. Computer Architecture</h2>
@@ -96,32 +96,32 @@ control, asynchronous control, I/O bus control.</p>
 methods and procedures that define the <strong>functionality,
 organization and implementation</strong> of a computer system as seen by
 the machine-language programmer or compiler writer. It is the
-<strong>contract between software and hardware</strong> — a
-specification that remains constant across different implementations of
-the same architecture.</p>
+<strong>contract between software and hardware</strong>: a specification
+that remains constant across different implementations of the same
+architecture.</p>
 <h3 id="computer-architecture-specifies-the-following">Computer
 architecture specifies the following</h3>
 <ol type="1">
-<li><strong>The instruction set</strong> — the collection of operations
+<li><strong>The instruction set</strong>: the collection of operations
 (ADD, SUB, LOAD, etc.) that the processor can execute.</li>
-<li><strong>Data types and size</strong> — e.g. 8-bit byte, 16-bit word,
+<li><strong>Data types and size</strong>: e.g. 8-bit byte, 16-bit word,
 32-bit double word, etc.</li>
-<li><strong>Register set</strong> — the number, names and functions of
+<li><strong>Register set</strong>: the number, names and functions of
 programmer-visible registers.</li>
-<li><strong>Addressing modes</strong> — how instructions specify memory
+<li><strong>Addressing modes</strong>: how instructions specify memory
 addresses (immediate, direct, indirect, indexed).</li>
-<li><strong>Memory addressing model</strong> — byte addressable or word
+<li><strong>Memory addressing model</strong>: byte addressable or word
 addressable, etc.</li>
-<li><strong>Interrupt and exception handling</strong> — how the
-processor responds to external events or internal faults.</li>
-<li><strong>Input/output model</strong> — memory-mapped I/O or special
+<li><strong>Interrupt and exception handling</strong>: how the processor
+responds to external events or internal faults.</li>
+<li><strong>Input/output model</strong>: memory-mapped I/O or special
 I/O instructions.</li>
 </ol>
 <p>A software compiled for a given architecture, e.g.
 <strong>x86-64</strong>, will run correctly on <strong>any processor
 that implements that architecture</strong>, regardless of the internal
 implementation details. Computer architecture therefore defines the
-<strong>abstract interface between hardware and software</strong> — the
+<strong>abstract interface between hardware and software</strong>: the
 machine's behaviour as observed by a program executing on it,
 independent of the underlying micro-architecture.</p>
 <hr />
@@ -135,21 +135,21 @@ engineering decisions that affect <strong>cost/performance, power
 consumption and physical size</strong>.</p>
 <h3 id="organization-specifies">Organization specifies</h3>
 <ol type="1">
-<li><strong>Data path design</strong> — the layout and width of buses,
+<li><strong>Data path design</strong>: the layout and width of buses,
 the number of ALUs, the register file/write ports.</li>
-<li><strong>Control unit implementation</strong> — hard-wired control vs
+<li><strong>Control unit implementation</strong>: hard-wired control vs
 micro-programmed control; control-signal generator logic.</li>
-<li><strong>Pipelining structure</strong> — number of pipeline stages,
+<li><strong>Pipelining structure</strong>: number of pipeline stages,
 hazard handling.</li>
-<li><strong>Memory hierarchy implementation</strong> — cache size (L1,
+<li><strong>Memory hierarchy implementation</strong>: cache size (L1,
 L2, L3), cache associativity, replacement policy, translation lookaside
 buffer (TLB) size.</li>
-<li><strong>Clock frequency and voltage scaling</strong> — how fast the
+<li><strong>Clock frequency and voltage scaling</strong>: how fast the
 circuit runs and at what power cost.</li>
-<li><strong>Parallelism mechanisms</strong> — superscalar issue width
+<li><strong>Parallelism mechanisms</strong>: superscalar issue width
 (e.g. 3 instructions per cycle), out-of-order execution windows,
 simultaneous multi-threading (SMT).</li>
-<li><strong>Physical implementation</strong> — transistor technology,
+<li><strong>Physical implementation</strong>: transistor technology,
 chip area / thermal design power (TDP).</li>
 </ol>
 <hr />
@@ -157,19 +157,18 @@ chip area / thermal design power (TDP).</li>
 Fundamental building blocks and logic design (pages 2–4)</h2>
 <p><strong>Logic gates</strong> are the fundamental building blocks in
 digital circuits (digital electronics). A logic gate is a <strong>device
-that performs a boolean function</strong> — a logical operation
-performed on one or more binary inputs that produces a single binary
-output.</p>
+that performs a boolean function</strong>: a logical operation performed
+on one or more binary inputs that produces a single binary output.</p>
 <h3 id="the-three-3-primary-gates">The three (3) primary gates</h3>
-<p><strong>1. AND</strong> — <code>A·B</code>. For an AND gate, the
+<p><strong>1. AND</strong>: <code>A·B</code>. For an AND gate, the
 output is <strong>1 if and only if both inputs are 1</strong>, else
 0.</p>
 <pre><code>A ──┐
     │AND├── A·B
 B ──┘</code></pre>
-<p><strong>2. OR</strong> — <code>A+B</code>. For an OR gate, the output
+<p><strong>2. OR</strong>: <code>A+B</code>. For an OR gate, the output
 is <strong>0 if both inputs are 0</strong>, else 1.</p>
-<p><strong>3. NOT</strong> — <code>A → A'</code>. This gives the
+<p><strong>3. NOT</strong>: <code>A → A'</code>. This gives the
 <strong>opposite of the input</strong>.</p>
 <pre><code>A ──▷o── A&#39;        A | A&#39;
                    --+---
@@ -232,11 +231,11 @@ table</h3>
 </ul>
 <p><em>(If only one input, the NOT gate is suitable.)</em></p>
 <p><strong>Classwork:</strong> given the inputs A, B and C, draw a truth
-table for <code>A·B·C</code> and <code>A+B+C</code> — 8 rows.</p>
+table for <code>A·B·C</code> and <code>A+B+C</code>, 8 rows.</p>
 <h3 id="the-derived-gates-page-4">The derived gates (page 4)</h3>
-<p><strong>4. NAND gate (Not AND)</strong> — <code>C = (A·B)'</code></p>
-<p><strong>5. NOR gate (Not OR)</strong> — <code>C = (A+B)'</code></p>
-<p><strong>6. XOR gate (Exclusive OR)</strong> — the exclusive OR gives
+<p><strong>4. NAND gate (Not AND)</strong>: <code>C = (A·B)'</code></p>
+<p><strong>5. NOR gate (Not OR)</strong>: <code>C = (A+B)'</code></p>
+<p><strong>6. XOR gate (Exclusive OR)</strong>: the exclusive OR gives
 an <strong>output of 1 where the inputs are different</strong>.</p>
 <table>
 <thead>
@@ -270,7 +269,7 @@ an <strong>output of 1 where the inputs are different</strong>.</p>
 </tbody>
 </table>
 <pre><code>Y = A&#39;B + AB&#39;</code></pre>
-<p><strong>7. XNOR gate (Exclusive NOR)</strong> — output equal to
+<p><strong>7. XNOR gate (Exclusive NOR)</strong>: output equal to
 <strong>1 only when the inputs are the same</strong>.</p>
 <hr />
 <h2 id="4-boolean-algebra-page-5">4. Boolean Algebra (page 5)</h2>
@@ -335,23 +334,23 @@ required</strong> for digital circuits. It cuts production cost,
 minimizes heat generation and improves speed.</p>
 <h3 id="key-why-minimization-matters">Key: why minimization matters</h3>
 <ol type="1">
-<li><strong>Hardware efficiency</strong> — uses fewer logic gates and
+<li><strong>Hardware efficiency</strong>: uses fewer logic gates and
 interconnections.</li>
-<li><strong>Improved performance</strong> — it minimizes propagation
+<li><strong>Improved performance</strong>: it minimizes propagation
 delay, resulting in faster circuit operation.</li>
-<li><strong>Cost and power</strong> — lower power consumption and
-smaller silicon chip footprint.</li>
+<li><strong>Cost and power</strong>: lower power consumption and smaller
+silicon chip footprint.</li>
 </ol>
 <h3 id="common-minimization-techniques-page-6">Common minimization
 techniques (page 6)</h3>
 <ol type="1">
-<li><strong>Boolean algebra</strong> — applying mathematical laws to
+<li><strong>Boolean algebra</strong>: applying mathematical laws to
 factor out and eliminate terms algebraically.</li>
-<li><strong>Karnaugh maps (K-map)</strong> — a visual, graphical matrix
+<li><strong>Karnaugh maps (K-map)</strong>: a visual, graphical matrix
 method used to simplify expressions with up to 4–6 variables. Groupings
 are made in <strong>powers of 2ⁿ</strong> (2, 4, 6, 8 …) to find the
 minimal sum of products.</li>
-<li><strong>Quine–McCluskey algorithm</strong> — a tabular algorithmic
+<li><strong>Quine–McCluskey algorithm</strong>: a tabular algorithmic
 method used for expressions with a large number of variables, or for
 computer-aided design.</li>
 </ol>
@@ -447,7 +446,7 @@ Groupings:  1 and 2 ⇒ A&#39;B&#39;(C&#39;+C) = A&#39;B&#39;
 <blockquote>
 <p>[note: both classworks are recorded with faint groupings. The
 <strong>method</strong> is certain and matches the majority-vote worked
-example above — pair two minterms that differ in exactly one variable,
+example above, pair two minterms that differ in exactly one variable,
 factor that variable out using <code>X + X' = 1</code>. Re-derive from
 the truth table in the exam rather than relying on these two lines.]</p>
 </blockquote>
@@ -463,7 +462,7 @@ down the side and BC across the top:</p>
 product term each group leaves unchanged.</p>
 <pre><code>∴ F = AB&#39; + BC&#39;</code></pre>
 <blockquote>
-<p>[note: <strong>cancel the changing parameter</strong> — inside a
+<p>[note: <strong>cancel the changing parameter</strong>: inside a
 group, the variable that changes across the cells drops out and the
 variables that stay constant form the product term.]</p>
 </blockquote>
@@ -514,21 +513,20 @@ simultaneously</strong> during a single clock cycle</td>
 </table>
 <h3 id="micro-operations">Micro-operations</h3>
 <p><strong>Micro-operations</strong> are elementary operations performed
-on data in CPU registers during a clock pulse — <strong>arithmetic,
-logic and shift</strong> operations.</p>
+on data in CPU registers during a clock pulse, <strong>arithmetic, logic
+and shift</strong> operations.</p>
 <h3 id="types-of-micro-operations">Types of micro-operations</h3>
 <ol type="1">
-<li><strong>Register transfer operations</strong> — move binary data
-from one processor register to another <strong>without
-modifying</strong> the data. <code>R2 ← R1</code> (n = number of
-bits)</li>
-<li><strong>Arithmetic micro-operations</strong> — perform numeric
+<li><strong>Register transfer operations</strong>: move binary data from
+one processor register to another <strong>without modifying</strong> the
+data. <code>R2 ← R1</code> (n = number of bits)</li>
+<li><strong>Arithmetic micro-operations</strong>: perform numeric
 operations such as addition, subtraction, increment etc. on the data
 stored inside the registers. <code>R3 ← R1 + R2</code></li>
-<li><strong>Logic micro-operations</strong> — execute
+<li><strong>Logic micro-operations</strong>: execute
 <strong>bitwise</strong> operations (AND, OR, XOR or NOT) to manipulate
 bits independently within the register. <code>R ← R1 ∧ R2</code></li>
-<li><strong>Control function</strong> — boolean conditions that dictate
+<li><strong>Control function</strong>: boolean conditions that dictate
 <strong>when</strong> a transfer occurs. <code>P: R2 ← R1</code> means
 if the control signal <code>P = 1</code>, the transfer happens.</li>
 </ol>
@@ -543,7 +541,7 @@ if (K = 1) then R2 ← R1 else R2 ← R4         →   K:  R2 ← R1
 if (Z = 1 AND C = 0) then PC ← PC + 1        →   Z·C&#39;: PC ← PC + 1</code></pre>
 <blockquote>
 <p>★ The <strong>PC keeps track of the next instruction</strong> to be
-fetched by the CPU from memory — the <strong>fetch/execute
+fetched by the CPU from memory, the <strong>fetch/execute
 cycle</strong>: Fetch → PC, Decode → CU, Execute.</p>
 </blockquote>
 <hr />
@@ -593,13 +591,13 @@ Base 2:   10111001₂ = 1×2⁷ + 0×2⁶ + 1×2⁵ + 1×2⁴ + 1×2³ + 0×2² 
 Base 16:  ABCDEF → e.g. C×16³ + F×16² + E×16¹ + C×16⁰</code></pre>
 <hr />
 <h2 id="11-conversions-pages-1112">11. Conversions (pages 11–12)</h2>
-<h3 id="base-10-to-other-bases--successive-division">Base 10 to other
-bases — successive division</h3>
+<h3 id="base-10-to-other-bases-successive-division">Base 10 to other
+bases: successive division</h3>
 <pre><code>4832 to base 2  →  1001011100000₂
 4832 to base 8  →  11340₈
 4832 to base 16 →  12E0₁₆</code></pre>
-<h3 id="other-bases-to-base-10--positional-expansion">Other bases to
-base 10 — positional expansion</h3>
+<h3 id="other-bases-to-base-10-positional-expansion">Other bases to base
+10: positional expansion</h3>
 <pre><code>1001011100000₂ = 1×2¹² + 1×2⁹ + 1×2⁷ + 1×2⁶ + 1×2⁵
                = 4096 + 512 + 128 + 64 + 32
                = 4832
@@ -607,8 +605,8 @@ base 10 — positional expansion</h3>
 11340.0012₈ = 1×8⁴ + 1×8³ + 3×8² + 4×8¹ + 0×8⁰ + 0×8⁻¹ + 0×8⁻² + 1×8⁻³ + 2×8⁻⁴
             = 4096 + 512 + 192 + 32 + 1/512 + 2/4096
             = 4832.0024414062 5</code></pre>
-<h3 id="fractional-conversion--repeated-multiplication">Fractional
-conversion — repeated multiplication</h3>
+<h3 id="fractional-conversion-repeated-multiplication">Fractional
+conversion: repeated multiplication</h3>
 <pre><code>Convert 4832.0024414062 5 to base 8 = 11340.0012₈
 
 0.0024414062 5 × 8 = 0.01953125   → 0
@@ -616,7 +614,7 @@ conversion — repeated multiplication</h3>
 0.15625        × 8 = 1.25         → 1
 0.25           × 8 = 2.0          → 2      ∴ .0012₈</code></pre>
 <h3 id="interrelated-base-conversion">Interrelated base conversion</h3>
-<p><strong>Relationship between base 8 and base 2 — <code>8 = 2³</code>,
+<p><strong>Relationship between base 8 and base 2, <code>8 = 2³</code>,
 so the ratio is 3 : 1.</strong></p>
 <table>
 <thead>
@@ -662,7 +660,7 @@ so the ratio is 3 : 1.</strong></p>
 </table>
 <pre><code>4362₈ = 100 011 110 010 = 100011110010₂
 1001011100000₂ → group in 3s from the right → 1 001 011 100 000 → 11340₈</code></pre>
-<p><strong>Relationship between base 2 and base 16 —
+<p><strong>Relationship between base 2 and base 16,
 <code>16 = 2⁴</code>, so the ratio is 4 : 1</strong> (page 13).</p>
 <table>
 <thead>
@@ -748,7 +746,7 @@ remainder, after checking how many 8s are in that number.</p>
 - 127₈
 ───────
   117₈          [note: 166 − 87 = 79 = 117₈ ✓]</code></pre>
-<p><strong>Addition</strong> — <code>[?]</code> the operands are partly
+<p><strong>Addition</strong>: <code>[?]</code> the operands are partly
 illegible; the recorded answer is <code>514₈</code>. <em>(If the
 operands are 265₈ + 227₈ then 181 + 151 = 332 = 514₈ ✓, which fits the
 recorded answer.)</em></p>
@@ -764,14 +762,14 @@ recorded answer.)</em></p>
 <hr />
 <h2 id="13-signed-and-unsigned-bits-page-14">13. Signed and unsigned
 bits (page 14)</h2>
-<p>Covered in the lecturer's extra notes — see <a
+<p>Covered in the lecturer's extra notes, see <a
 href="extra-notes.html">the extra notes</a> §5.</p>
 <p><strong>Assignment (page 14):</strong> the relationship between
 hexadecimal and computer storage, and encoding schemes.</p>
 <p><strong>Types of encoding schemes:</strong></p>
 <ol type="1">
-<li><strong>BCD</strong> — Binary Coded Decimal</li>
-<li><strong>EBCDIC</strong> — Extended Binary Coded Decimal Interchange
+<li><strong>BCD</strong>: Binary Coded Decimal</li>
+<li><strong>EBCDIC</strong>: Extended Binary Coded Decimal Interchange
 Code</li>
 <li><strong>ASCII</strong></li>
 </ol>
@@ -779,15 +777,15 @@ Code</li>
 <h2 id="assignments-recorded-in-these-notes">Assignments recorded in
 these notes</h2>
 <ol type="1">
-<li><strong>Page 3</strong> — Given the inputs A, B and C, draw a truth
+<li><strong>Page 3</strong>: Given the inputs A, B and C, draw a truth
 table for <code>A·B·C</code> and <code>A+B+C</code>.</li>
-<li><strong>Page 10</strong> — What is the difference between a
+<li><strong>Page 10</strong>: What is the difference between a
 <strong>number</strong> and a <strong>digit</strong>?</li>
-<li><strong>Page 14</strong> — The relationship between hexadecimal and
+<li><strong>Page 14</strong>: The relationship between hexadecimal and
 computer storage; encoding schemes.</li>
 </ol>
 <hr />
-<p><em>End of transcription — 14 pages.</em></p>
+<p><em>End of transcription, 14 pages.</em></p>
 
         </article>
         <script>
@@ -799,14 +797,14 @@ computer storage; encoding schemes.</li>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

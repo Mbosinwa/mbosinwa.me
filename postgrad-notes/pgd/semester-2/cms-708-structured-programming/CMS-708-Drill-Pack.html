@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CMS 708 — Every Practice Exercise, Worked (Volume II)</title>
+<title>CMS 708 · Every Practice Exercise, Worked (Volume II)</title>
 <style>
 @page { size: A4; margin: 13mm 12mm; }
 
@@ -224,7 +224,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="masthead">
   <div class="eyebrow">Volume II · all 23 exercises solved · mock paper · walk-in sheet</div>
-  <h1>CMS 708 — Every Practice Exercise, Worked</h1>
+  <h1>CMS 708 · Every Practice Exercise, Worked</h1>
   <div class="sub">The course document sets 23 practice exercises across Modules 2, 3 and 4 and gives no solutions. This volume is all 23, written out as complete compilable programs, plus the supplied past-style questions worked in full, trace drills, error-spotting drills and a mock paper.</div>
   <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
   <div class="facts">
@@ -244,7 +244,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
   <tr><td><b>3 hours</b></td><td>Write §2 exercises 4, 7, 12, 15, 18, 21 and 23 <b>by hand on paper</b> → check → then sit the mock paper (§6).</td></tr>
   <tr><td><b>90 minutes</b></td><td>The seven exercises above, then the trace drills (§3) and error drills (§4).</td></tr>
   <tr><td><b>45 minutes</b></td><td>Skim every solution for its <b>shape</b>, then §3, §4 and the worked questions in §5.</td></tr>
-  <tr><td><b>10 minutes at the door</b></td><td>§7 only — the skeletons.</td></tr>
+  <tr><td><b>10 minutes at the door</b></td><td>§7 only · the skeletons.</td></tr>
   </tbody>
   </table>
 </div>
@@ -308,7 +308,7 @@ int main() {
 <!-- ============================================================ -->
 <h2 class="pagebreak"><span class="n">2</span>All 23 exercises, solved</h2>
 
-<h3>Module 2 — C++ fundamentals</h3>
+<h3>Module 2 · C++ fundamentals</h3>
 
 <div class="grid2">
 <div>
@@ -444,7 +444,7 @@ int main() {
 </div>
 </div>
 
-<h3 class="pagebreak">Module 3 — control structures</h3>
+<h3 class="pagebreak">Module 3 · control structures</h3>
 
 <div class="grid2">
 <div>
@@ -462,7 +462,7 @@ int main() {
     else                cout &lt;&lt; "It is hot."  &lt;&lt; endl;
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>Why <code>else if</code> and not three separate <code>if</code>s:</b> the chain guarantees exactly one branch runs, and each later test already knows the earlier ones failed — so <code>temp &lt; 30</code> means "between 15 and 30" without writing both bounds.</p>
+<p style="font-size:9.1pt"><b>Why <code>else if</code> and not three separate <code>if</code>s:</b> the chain guarantees exactly one branch runs, and each later test already knows the earlier ones failed · so <code>temp &lt; 30</code> means "between 15 and 30" without writing both bounds.</p>
 
 <h4>9 · ATM menu with <code>switch</code></h4>
 <pre>#include &lt;iostream&gt;
@@ -538,7 +538,7 @@ int main() {
     cout &lt;&lt; "The total is: " &lt;&lt; sum &lt;&lt; endl;
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>The accumulator pattern:</b> declare <code>sum = 0</code> <b>before</b> the loop, add inside it, print after. Forgetting to initialise <code>sum</code> is the classic bug — it then starts at whatever junk was in memory.</p>
+<p style="font-size:9.1pt"><b>The accumulator pattern:</b> declare <code>sum = 0</code> <b>before</b> the loop, add inside it, print after. Forgetting to initialise <code>sum</code> is the classic bug · it then starts at whatever junk was in memory.</p>
 </div>
 <div>
 <h4>13 · multiplication table 1 to 5, nested loops</h4>
@@ -606,11 +606,11 @@ int main() {
     else          cout &lt;&lt; "Access denied"    &lt;&lt; endl;
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>Three techniques in one answer</b> — a counted <code>for</code> loop for the attempt limit, a <b>flag variable</b> (<code>loggedIn</code>) to remember what happened, and <code>break</code> to leave early. This is the most exam-shaped exercise in the whole document; learn it as a template.</p>
+<p style="font-size:9.1pt"><b>Three techniques in one answer</b> · a counted <code>for</code> loop for the attempt limit, a <b>flag variable</b> (<code>loggedIn</code>) to remember what happened, and <code>break</code> to leave early. This is the most exam-shaped exercise in the whole document; learn it as a template.</p>
 </div>
 </div>
 
-<h3 class="pagebreak">Module 4 — functions and modular programming</h3>
+<h3 class="pagebreak">Module 4 · functions and modular programming</h3>
 
 <div class="grid2">
 <div>
@@ -644,7 +644,7 @@ int main() {
     cout &lt;&lt; "100C= " &lt;&lt; toFahrenheit(100) &lt;&lt; "F" &lt;&lt; endl;
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>Write <code>9.0 / 5.0</code>, not <code>9 / 5</code></b> — the integer version gives 1 and every answer comes out wrong. Expected output: 32, 98.6, 212.</p>
+<p style="font-size:9.1pt"><b>Write <code>9.0 / 5.0</code>, not <code>9 / 5</code></b> · the integer version gives 1 and every answer comes out wrong. Expected output: 32, 98.6, 212.</p>
 
 <h4>18 · by value <i>and</i> by reference in one program <span class="tag">HIGH YIELD</span></h4>
 <pre>#include &lt;iostream&gt;
@@ -693,7 +693,7 @@ int main() {
     cout &lt;&lt; "After swap:  a = " &lt;&lt; a &lt;&lt; ", b = " &lt;&lt; b &lt;&lt; endl;
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>A swap only works by reference</b> — by value it would swap two copies and the caller would see nothing. Say that sentence in the answer; it is the point of the exercise.</p>
+<p style="font-size:9.1pt"><b>A swap only works by reference</b> · by value it would swap two copies and the caller would see nothing. Say that sentence in the answer; it is the point of the exercise.</p>
 </div>
 <div>
 <h4>20 · global and local with the same name</h4>
@@ -709,7 +709,7 @@ int main() {
     cout &lt;&lt; "Global value: " &lt;&lt; ::value &lt;&lt; endl;   // 100
     return 0;
 }</pre>
-<p style="font-size:9.1pt"><b>The local variable "shadows" the global one.</b> To reach the global anyway, use the <b>scope resolution operator <code>::</code></b> — this is not in the course notes, so quoting it is free credit.</p>
+<p style="font-size:9.1pt"><b>The local variable "shadows" the global one.</b> To reach the global anyway, use the <b>scope resolution operator <code>::</code></b> · this is not in the course notes, so quoting it is free credit.</p>
 
 <h4>21 · static local variable counting calls <span class="tag">NOT IN THE NOTES</span></h4>
 <pre>#include &lt;iostream&gt;
@@ -729,7 +729,7 @@ int main() {
     return 0;
 }</pre>
 <div class="box warn" style="padding:5pt 7pt">
-<b>The course document sets this exercise but never teaches <code>static</code>.</b> A <b>static local variable</b> has the <b>scope of a local</b> — visible only inside the function — but the <b>lifetime of a global</b>: it is created once, keeps its value between calls, and is destroyed only when the program ends. Remove the word <code>static</code> and the counter resets to 0 every call, printing 1, 1, 1. That contrast is the whole answer.
+<b>The course document sets this exercise but never teaches <code>static</code>.</b> A <b>static local variable</b> has the <b>scope of a local</b> · visible only inside the function · but the <b>lifetime of a global</b>: it is created once, keeps its value between calls, and is destroyed only when the program ends. Remove the word <code>static</code> and the counter resets to 0 every call, printing 1, 1, 1. That contrast is the whole answer.
 </div>
 
 <h4>22 · recursive sum of 1 to n</h4>
@@ -781,12 +781,12 @@ int main() {
 }
 
 For terms = 8:   0 1 1 2 3 5 8 13</pre>
-<p style="font-size:9.1pt"><b>Fibonacci needs two base cases</b>, because the recursive step reaches back two places. Add the remark that this naive version <b>recomputes the same values many times</b> — a point worth a mark if the question asks about efficiency.</p>
+<p style="font-size:9.1pt"><b>Fibonacci needs two base cases</b>, because the recursive step reaches back two places. Add the remark that this naive version <b>recomputes the same values many times</b> · a point worth a mark if the question asks about efficiency.</p>
 </div>
 </div>
 
 <!-- ============================================================ -->
-<h2 class="pagebreak"><span class="n">3</span>Trace drills — predict the output</h2>
+<h2 class="pagebreak"><span class="n">3</span>Trace drills · predict the output</h2>
 
 <p style="font-size:9.1pt">Cover the right-hand column. "What does this program print?" is the cheapest question to set and the easiest to get wrong in a hurry.</p>
 
@@ -797,7 +797,7 @@ For terms = 8:   0 1 1 2 3 5 8 13</pre>
 cout &lt;&lt; a / b &lt;&lt; endl;
 cout &lt;&lt; a % b &lt;&lt; endl;</pre></td><td class="c"><b>3</b><br><b>1</b></td><td>Integer division <b>truncates</b>; <code>%</code> gives the remainder.</td></tr>
 <tr><td class="c">2</td><td><pre style="margin:0">for (int i = 0; i &lt; 3; i++)
-    cout &lt;&lt; i &lt;&lt; " ";</pre></td><td class="c"><b>0 1 2</b></td><td>Starts at 0 and stops <b>before</b> 3 — three iterations, not four.</td></tr>
+    cout &lt;&lt; i &lt;&lt; " ";</pre></td><td class="c"><b>0 1 2</b></td><td>Starts at 0 and stops <b>before</b> 3 · three iterations, not four.</td></tr>
 <tr><td class="c">3</td><td><pre style="margin:0">int i = 5;
 while (i &gt; 0) { cout &lt;&lt; i &lt;&lt; " "; i -= 2; }</pre></td><td class="c"><b>5 3 1</b></td><td>Stops when <code>i</code> reaches −1, which fails the test.</td></tr>
 <tr><td class="c">4</td><td><pre style="margin:0">int x = 0;
@@ -807,20 +807,20 @@ switch (n) {
   case 1: cout &lt;&lt; "one ";
   case 2: cout &lt;&lt; "two ";
   case 3: cout &lt;&lt; "three ";
-}</pre></td><td class="c"><b>two three</b></td><td><b>No <code>break;</code></b> — execution <b>falls through</b> from case 2 into case 3.</td></tr>
+}</pre></td><td class="c"><b>two three</b></td><td><b>No <code>break;</code></b> · execution <b>falls through</b> from case 2 into case 3.</td></tr>
 <tr><td class="c">6</td><td><pre style="margin:0">for (int i = 1; i &lt;= 2; i++)
   for (int j = 1; j &lt;= 3; j++)
-    cout &lt;&lt; i * j &lt;&lt; " ";</pre></td><td class="c"><b>1 2 3 2 4 6</b></td><td>The inner loop runs fully for <b>each</b> outer value — 2 × 3 = 6 numbers.</td></tr>
+    cout &lt;&lt; i * j &lt;&lt; " ";</pre></td><td class="c"><b>1 2 3 2 4 6</b></td><td>The inner loop runs fully for <b>each</b> outer value · 2 × 3 = 6 numbers.</td></tr>
 <tr><td class="c">7</td><td><pre style="margin:0">void f(int x) { x = 99; }
 int main() { int a = 1; f(a);
-             cout &lt;&lt; a; }</pre></td><td class="c"><b>1</b></td><td>Passed <b>by value</b> — the function changed only its own copy.</td></tr>
+             cout &lt;&lt; a; }</pre></td><td class="c"><b>1</b></td><td>Passed <b>by value</b> · the function changed only its own copy.</td></tr>
 <tr><td class="c">8</td><td><pre style="margin:0">void f(int &amp;x) { x = 99; }
 int main() { int a = 1; f(a);
-             cout &lt;&lt; a; }</pre></td><td class="c"><b>99</b></td><td>Passed <b>by reference</b> — the original variable was modified.</td></tr>
+             cout &lt;&lt; a; }</pre></td><td class="c"><b>99</b></td><td>Passed <b>by reference</b> · the original variable was modified.</td></tr>
 <tr><td class="c">9</td><td><pre style="margin:0">int f(int n) {
   if (n == 0) return 1;
   return n * f(n - 1); }
-cout &lt;&lt; f(4);</pre></td><td class="c"><b>24</b></td><td>4 × 3 × 2 × 1 × 1 — factorial by recursion.</td></tr>
+cout &lt;&lt; f(4);</pre></td><td class="c"><b>24</b></td><td>4 × 3 × 2 × 1 × 1 · factorial by recursion.</td></tr>
 <tr><td class="c">10</td><td><pre style="margin:0">int x = 5;
 cout &lt;&lt; (x &gt; 3) &lt;&lt; " " &lt;&lt; (x &lt; 3);</pre></td><td class="c"><b>1 0</b></td><td>A relational expression is a <code>bool</code>, printed as <b>1</b> for true and <b>0</b> for false.</td></tr>
 <tr><td class="c">11</td><td><pre style="margin:0">void g() { static int c = 0; c++;
@@ -828,20 +828,20 @@ cout &lt;&lt; (x &gt; 3) &lt;&lt; " " &lt;&lt; (x &lt; 3);</pre></td><td class="
 g(); g(); g();</pre></td><td class="c"><b>1 2 3</b></td><td><code>static</code> is initialised <b>once</b> and keeps its value between calls. Without it: <b>1 1 1</b>.</td></tr>
 <tr><td class="c">12</td><td><pre style="margin:0">int i;
 for (i = 1; i &lt;= 5; i++) { }
-cout &lt;&lt; i;</pre></td><td class="c"><b>6</b></td><td>The loop exits only <b>after</b> the update makes the test fail — a classic off-by-one.</td></tr>
+cout &lt;&lt; i;</pre></td><td class="c"><b>6</b></td><td>The loop exits only <b>after</b> the update makes the test fail · a classic off-by-one.</td></tr>
 </tbody>
 </table>
 
 <!-- ============================================================ -->
-<h2><span class="n">4</span>Spot the error — find the bug and name it</h2>
+<h2><span class="n">4</span>Spot the error · find the bug and name it</h2>
 
 <table class="tight">
 <thead><tr><th class="c" style="width:4%">#</th><th style="width:38%">Faulty code</th><th style="width:16%">Error type</th><th>Fix</th></tr></thead>
 <tbody>
 <tr><td class="c">1</td><td><code>cin &lt;&lt; number;</code></td><td class="c">Syntax</td><td>Arrows the wrong way: <code>cin &gt;&gt; number;</code></td></tr>
 <tr><td class="c">2</td><td><code>if (x = 5) cout &lt;&lt; "five";</code></td><td class="c"><b>Logic</b></td><td><code>=</code> assigns and is always true; use <code>if (x == 5)</code>.</td></tr>
-<tr><td class="c">3</td><td><code>for (int i = 0; i &lt; 5;) cout &lt;&lt; i;</code></td><td class="c">Runtime</td><td>No update — infinite loop. Add <code>i++</code>.</td></tr>
-<tr><td class="c">4</td><td><code>int f(int n){ return n * f(n-1); }</code></td><td class="c">Runtime</td><td><b>No base case</b> — infinite recursion, stack overflow. Add <code>if (n == 0) return 1;</code></td></tr>
+<tr><td class="c">3</td><td><code>for (int i = 0; i &lt; 5;) cout &lt;&lt; i;</code></td><td class="c">Runtime</td><td>No update · infinite loop. Add <code>i++</code>.</td></tr>
+<tr><td class="c">4</td><td><code>int f(int n){ return n * f(n-1); }</code></td><td class="c">Runtime</td><td><b>No base case</b> · infinite recursion, stack overflow. Add <code>if (n == 0) return 1;</code></td></tr>
 <tr><td class="c">5</td><td><code>string s = 'hello';</code></td><td class="c">Syntax</td><td>Single quotes are for one <code>char</code>. Use <code>"hello"</code>.</td></tr>
 <tr><td class="c">6</td><td><code>cout &lt;&lt; "Average: " &lt;&lt; total / 4;</code> with <code>int total</code></td><td class="c"><b>Logic</b></td><td>Integer division truncates the average. Use <code>total / 4.0</code>.</td></tr>
 <tr><td class="c">7</td><td>A <code>switch</code> whose cases have no <code>break;</code></td><td class="c"><b>Logic</b></td><td>Fall-through runs every later case. Add <code>break;</code> to each.</td></tr>
@@ -858,8 +858,8 @@ cout &lt;&lt; i;</pre></td><td class="c"><b>6</b></td><td>The loop exits only <b
 <h3>Q1 (a) · What is structured programming and what is its importance?</h3>
 <div class="grid2">
 <div>
-<p style="font-size:9.3pt"><b>Definition — open with this.</b> <b>Structured programming</b> is a programming approach that emphasizes the use of <b>clear control structures</b> — sequence, selection and iteration — together with <b>modular design</b>, instead of arbitrary jumps such as the <code>goto</code> statement. Its philosophy is to <b>break a complex problem into smaller, manageable parts and solve each part systematically</b>. It emerged as a response to the tangled, unmaintainable <b>"spaghetti code"</b> produced by unstructured programming.</p>
-<p style="font-size:9.3pt"><b>The three permitted constructs</b> — name them, they frame the whole answer:</p>
+<p style="font-size:9.3pt"><b>Definition · open with this.</b> <b>Structured programming</b> is a programming approach that emphasizes the use of <b>clear control structures</b> · sequence, selection and iteration · together with <b>modular design</b>, instead of arbitrary jumps such as the <code>goto</code> statement. Its philosophy is to <b>break a complex problem into smaller, manageable parts and solve each part systematically</b>. It emerged as a response to the tangled, unmaintainable <b>"spaghetti code"</b> produced by unstructured programming.</p>
+<p style="font-size:9.3pt"><b>The three permitted constructs</b> · name them, they frame the whole answer:</p>
 <table class="tight">
 <thead><tr><th style="width:24%">Construct</th><th>Meaning</th><th style="width:26%">In C++</th></tr></thead>
 <tbody>
@@ -868,10 +868,10 @@ cout &lt;&lt; i;</pre></td><td class="c"><b>6</b></td><td>The loop exits only <b
 <tr><td><b>Iteration</b></td><td>Repetition of a block while a condition holds</td><td><code>for</code>, <code>while</code>, <code>do-while</code></td></tr>
 </tbody>
 </table>
-<div class="box" style="padding:5pt 7pt"><b>A line that lifts the answer:</b> every program, however complex, can be written using only these three constructs — which is why <code>goto</code> is unnecessary, and why banning it costs nothing and buys clarity.</div>
+<div class="box" style="padding:5pt 7pt"><b>A line that lifts the answer:</b> every program, however complex, can be written using only these three constructs · which is why <code>goto</code> is unnecessary, and why banning it costs nothing and buys clarity.</div>
 </div>
 <div>
-<h4>Importance of structured programming — write nine points</h4>
+<h4>Importance of structured programming · write nine points</h4>
 <ol style="font-size:9.1pt">
 <li><b>Improved readability and clarity.</b> The logical flow mirrors human reasoning, so code can be read top to bottom rather than traced through jumps.</li>
 <li><b>Easier debugging and testing.</b> Errors are <b>isolated within modules</b>, so a fault can be located and fixed without reading the whole program.</li>
@@ -879,7 +879,7 @@ cout &lt;&lt; i;</pre></td><td class="c"><b>6</b></td><td>The loop exits only <b
 <li><b>Modularity and code reuse.</b> A function written once can be used in many places, reducing redundancy.</li>
 <li><b>Reduced development time and cost</b>, because reusable, well-organised code is written once and tested once.</li>
 <li><b>Supports teamwork.</b> Different programmers can work on separate modules without interfering with each other.</li>
-<li><b>Manages complexity</b> through divide-and-conquer — large problems become sets of small, solvable ones.</li>
+<li><b>Manages complexity</b> through divide-and-conquer · large problems become sets of small, solvable ones.</li>
 <li><b>Greater reliability.</b> Predictable control flow means fewer of the unpredictable-jump bugs that plague unstructured code.</li>
 <li><b>A foundation for advanced paradigms.</b> Mastering structured programming is <b>essential before moving on to object-oriented programming</b> and larger software projects.</li>
 </ol>
@@ -888,20 +888,20 @@ cout &lt;&lt; i;</pre></td><td class="c"><b>6</b></td><td>The loop exits only <b
 </div>
 
 <h3>Q1 (b) · Determine the value of the following</h3>
-<p style="font-size:9.3pt">Given <b>a = −3, b = 5, c = −2, d = 6</b>. Apply <b>precedence</b> first — <code>*</code>, <code>/</code> and <code>%</code> bind tighter than <code>+</code> and <code>−</code> — then work left to right. <b>Show every step;</b> the marks are for the working, not the number.</p>
+<p style="font-size:9.3pt">Given <b>a = −3, b = 5, c = −2, d = 6</b>. Apply <b>precedence</b> first · <code>*</code>, <code>/</code> and <code>%</code> bind tighter than <code>+</code> and <code>−</code> · then work left to right. <b>Show every step;</b> the marks are for the working, not the number.</p>
 
 <div class="grid2">
 <div>
 <p style="font-weight:700;font-size:9.6pt;margin:6pt 0 3pt;color:#b4531b">(i) &nbsp;<code>a − b + c / 2 − d * 5</code></p>
-<pre>Step 1 — do / and * first
+<pre>Step 1 · do / and * first
         c / 2  = −2 / 2 = −1
         d * 5  =  6 * 5 = 30
 
-Step 2 — substitute
+Step 2 · substitute
         = a − b + (−1) − (30)
         = −3 − 5 + (−1) − 30
 
-Step 3 — left to right
+Step 3 · left to right
         −3 − 5   = −8
         −8 + (−1)= −9
         −9 − 30  = −39
@@ -910,15 +910,15 @@ Step 3 — left to right
 </div>
 <div>
 <p style="font-weight:700;font-size:9.6pt;margin:6pt 0 3pt;color:#b4531b">(ii) &nbsp;<code>a − c + d / 2 + a² − 10</code></p>
-<pre>Step 1 — powers and division first
+<pre>Step 1 · powers and division first
         d / 2  = 6 / 2 = 3
         a²     = (−3)² = 9      ← square of a NEGATIVE
                                   number is POSITIVE
 
-Step 2 — substitute
+Step 2 · substitute
         = −3 − (−2) + 3 + 9 − 10
 
-Step 3 — left to right
+Step 3 · left to right
         −3 − (−2) = −3 + 2 = −1
         −1 + 3            =  2
          2 + 9            = 11
@@ -931,9 +931,9 @@ Step 3 — left to right
 <div class="box warn">
 <h4>Two traps in that pair</h4>
 <b>1. <code>a − (−2)</code> is <code>a + 2</code>.</b> Subtracting a negative adds. This single sign is where most of the lost marks in (ii) come from.<br>
-<b>2. <code>(−3)²</code> = <b>+9</b>, not −9</b> — squaring always gives a positive result.<br>
+<b>2. <code>(−3)²</code> = <b>+9</b>, not −9</b> · squaring always gives a positive result.<br>
 <hr class="thin">
-<b>And one for the C++ purists.</b> In real C++ the symbol <code>^</code> is <b>not</b> "to the power of" — it is the <b>bitwise XOR</b> operator, and it binds <b>more loosely than <code>+</code> and <code>−</code></b>. So if <code>a^2</code> were typed literally into a program, the compiler would read the whole line as <code>(a − c + d/2 + a) ^ (2 − 10)</code> = <code>(−1) ^ (−8)</code> = <b>7</b>, not 1. <b>Answer the arithmetic question as intended — a² = 9, giving 1 — but naming this discrepancy in one line shows genuine command of the language.</b> To raise a number to a power in C++ you use <code>pow(a, 2)</code> from <code>&lt;cmath&gt;</code>, or simply <code>a * a</code>.
+<b>And one for the C++ purists.</b> In real C++ the symbol <code>^</code> is <b>not</b> "to the power of" · it is the <b>bitwise XOR</b> operator, and it binds <b>more loosely than <code>+</code> and <code>−</code></b>. So if <code>a^2</code> were typed literally into a program, the compiler would read the whole line as <code>(a − c + d/2 + a) ^ (2 − 10)</code> = <code>(−1) ^ (−8)</code> = <b>7</b>, not 1. <b>Answer the arithmetic question as intended · a² = 9, giving 1 · but naming this discrepancy in one line shows genuine command of the language.</b> To raise a number to a power in C++ you use <code>pow(a, 2)</code> from <code>&lt;cmath&gt;</code>, or simply <code>a * a</code>.
 </div>
 
 <h3>Q2 · Trace the output from the following code</h3>
@@ -971,12 +971,12 @@ Step 3 — left to right
 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48
 49 50
 Sum of primes between 1 and 50 = 1275</pre>
-<p style="font-size:9.1pt">(All fifty numbers appear on <b>one line</b> separated by spaces — they are wrapped above only to fit the page. The <code>\n</code> at the start of the last <code>cout</code> is what moves to a new line before the message.)</p>
+<p style="font-size:9.1pt">(All fifty numbers appear on <b>one line</b> separated by spaces · they are wrapped above only to fit the page. The <code>\n</code> at the start of the last <code>cout</code> is what moves to a new line before the message.)</p>
 <div class="box warn" style="padding:6pt 8pt">
-<h4>The point of the question — say this</h4>
+<h4>The point of the question · say this</h4>
 The program's <b>message is a lie</b>. It claims to print the <b>sum of primes</b>, but the loop adds <b>every integer</b> from 1 to 50 and never tests primality at all. The printed value <b>1275</b> is the sum of 1…50; the true sum of the primes between 1 and 50 is <b>328</b>.
 <br><br>
-This is a <b>logic error</b>, not a syntax error: the code compiles and runs perfectly, which is exactly why logic errors are the most dangerous kind. It is also a <b>readability failure</b> of the sort this course warns about — the output label does not describe what the code does.
+This is a <b>logic error</b>, not a syntax error: the code compiles and runs perfectly, which is exactly why logic errors are the most dangerous kind. It is also a <b>readability failure</b> of the sort this course warns about · the output label does not describe what the code does.
 </div>
 <h4>The corrected program, if asked to fix it</h4>
 <pre>#include &lt;iostream&gt;
@@ -1006,22 +1006,22 @@ int main() {
 OUTPUT
 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 Sum of primes between 1 and 50 = 328</pre>
-<p style="font-size:9.1pt"><b>Note the modularity:</b> the primality test is its own function, so <code>main()</code> stays readable — the exact principle Module 1 teaches, demonstrated in the fix.</p>
+<p style="font-size:9.1pt"><b>Note the modularity:</b> the primality test is its own function, so <code>main()</code> stays readable · the exact principle Module 1 teaches, demonstrated in the fix.</p>
 </div>
 </div>
 
 <!-- ============================================================ -->
-<h2 class="pagebreak"><span class="n">6</span>Mock paper — sit this closed-book</h2>
+<h2 class="pagebreak"><span class="n">6</span>Mock paper · sit this closed-book</h2>
 
 <div class="box">
-<p style="margin:0"><b>RIVERS STATE UNIVERSITY · PGD COMPUTER SCIENCE · CMS 708 — STRUCTURED PROGRAMMING</b><br>
+<p style="margin:0"><b>RIVERS STATE UNIVERSITY · PGD COMPUTER SCIENCE · CMS 708 · STRUCTURED PROGRAMMING</b><br>
 <span style="font-size:8.9pt">Mock examination · Time allowed: 3 hours · <b>Answer any FIVE questions</b> · Each question carries 20 marks · All code must be complete and compilable</span></p>
 </div>
 
 <table class="tight">
 <thead><tr><th class="c" style="width:5%">Q</th><th>Question</th><th class="c" style="width:9%">Marks</th></tr></thead>
 <tbody>
-<tr><td class="c"><b>1</b></td><td><b>(a)</b> Distinguish between structured and unstructured programming, using a table with at least five bases of comparison. <b>(b)</b> Write two short C++ programs that perform the same task — one using <code>goto</code> and one using a loop — and explain which is preferable and why. <b>(c)</b> What is spaghetti code?</td><td class="c">8 + 9 + 3</td></tr>
+<tr><td class="c"><b>1</b></td><td><b>(a)</b> Distinguish between structured and unstructured programming, using a table with at least five bases of comparison. <b>(b)</b> Write two short C++ programs that perform the same task · one using <code>goto</code> and one using a loop · and explain which is preferable and why. <b>(c)</b> What is spaghetti code?</td><td class="c">8 + 9 + 3</td></tr>
 <tr><td class="c"><b>2</b></td><td><b>(a)</b> Explain <b>modularity</b> and <b>readability</b> and state why each matters. <b>(b)</b> Write a program that reads two numbers and prints their sum, difference, product and quotient <b>using a separate function for each operation</b>. <b>(c)</b> Why is C++ described as a structured programming language? Give three reasons.</td><td class="c">6 + 8 + 6</td></tr>
 <tr><td class="c"><b>3</b></td><td><b>(a)</b> List the six common C++ data types and give an example value of each. <b>(b)</b> State the five categories of operator in C++ with two examples each. <b>(c)</b> Write a payroll program that reads an employee's name, gross salary and tax rate, then computes and prints the net salary.</td><td class="c">6 + 5 + 9</td></tr>
 <tr><td class="c"><b>4</b></td><td><b>(a)</b> Differentiate between the <code>for</code>, <code>while</code> and <code>do-while</code> loops, stating when each should be used. <b>(b)</b> Write a program using a <code>switch</code> statement to simulate an ATM menu. <b>(c)</b> Write a program that prints a multiplication table from 1 to 5 using nested <code>for</code> loops, and state how many lines it prints.</td><td class="c">6 + 7 + 7</td></tr>
@@ -1032,16 +1032,16 @@ Sum of primes between 1 and 50 = 328</pre>
 </table>
 
 <div class="box star">
-<b>Where every answer lives.</b> Q1 → Vol I §2 · Q2 → Vol I §2 and exercise 4 · Q3 → Vol I §3 · Q4 → Vol I §4 and exercises 9 and 13 · Q5 → Vol I §5 and exercises 18 and 19 · Q6 → Vol I §5 and exercises 22 and 23 · Q7 → Vol I §6. <b>Every one of the seven is answerable from Volume I plus this pack</b> — which tells you how tightly this course's material maps onto its likely paper.
+<b>Where every answer lives.</b> Q1 → Vol I §2 · Q2 → Vol I §2 and exercise 4 · Q3 → Vol I §3 · Q4 → Vol I §4 and exercises 9 and 13 · Q5 → Vol I §5 and exercises 18 and 19 · Q6 → Vol I §5 and exercises 22 and 23 · Q7 → Vol I §6. <b>Every one of the seven is answerable from Volume I plus this pack</b> · which tells you how tightly this course's material maps onto its likely paper.
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">7</span>Walk-in sheet — the last ten minutes</h2>
+<h2><span class="n">7</span>Walk-in sheet · the last ten minutes</h2>
 
 <div class="box star" style="padding:9pt 12pt">
 <div class="grid2">
 <div>
-<h4>The program skeleton — write this first, every time</h4>
+<h4>The program skeleton · write this first, every time</h4>
 <pre style="margin:3pt 0">#include &lt;iostream&gt;
 #include &lt;string&gt;
 using namespace std;
@@ -1068,7 +1068,7 @@ int main() {
 </ol>
 </div>
 <div>
-<h4>The four analogies — one sentence each, free marks</h4>
+<h4>The four analogies · one sentence each, free marks</h4>
 <ul style="margin-bottom:4pt">
 <li><b>Unstructured code</b> = a traffic system where cars teleport to random roads</li>
 <li><b>Modularisation</b> = planning a wedding by dividing catering, decoration, music, photography, guests</li>
@@ -1080,11 +1080,11 @@ int main() {
 <li>Headers and <code>return 0;</code> on every program, no exceptions.</li>
 <li><code>cout &lt;&lt;</code> out, <code>cin &gt;&gt;</code> in.</li>
 <li><code>==</code> compares, <code>=</code> assigns.</li>
-<li>Want a decimal? Make one operand a <code>double</code> — <code>9.0 / 5.0</code>, <code>total / 4.0</code>.</li>
+<li>Want a decimal? Make one operand a <code>double</code> · <code>9.0 / 5.0</code>, <code>total / 4.0</code>.</li>
 <li>Indent one level per brace. On this course, <b>readability is itself on the syllabus.</b></li>
 </ol>
 <h4>If your mind goes blank</h4>
-<p style="margin-bottom:0">Write the <b>skeleton</b>, then the <b>variable declarations</b> the question implies, then the <b>prompts and <code>cin</code></b>. By the time those are on the page the logic in the middle is usually obvious — and even if it is not, most of the structure marks are already earned.</p>
+<p style="margin-bottom:0">Write the <b>skeleton</b>, then the <b>variable declarations</b> the question implies, then the <b>prompts and <code>cin</code></b>. By the time those are on the page the logic in the middle is usually obvious · and even if it is not, most of the structure marks are already earned.</p>
 </div>
 </div>
 </div>

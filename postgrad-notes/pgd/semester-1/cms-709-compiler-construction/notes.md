@@ -36,9 +36,9 @@ flowchart LR
 
 ## Why Separate LA from Syntax Analysis?
 
-- **(i)** Simplification of design — software engineering reasons.
+- **(i)** Simplification of design, software engineering reasons.
 - **(ii)** I/O issues are limited in LA alone.
-- **(iii)** More compact and faster parser — slimming the grammar (by eliminating comments, blanks, etc.) makes the parser faster.
+- **(iii)** More compact and faster parser, slimming the grammar (by eliminating comments, blanks, etc.) makes the parser faster.
 - **(iv)** LA based on Finite Automata are more efficient to implement than "pushdown" automata used for parsing (due to stack).
 
 ---
@@ -49,7 +49,7 @@ flowchart LR
 
 Also called "word". Is:
 
-- **(i)** A string of characters which logically belong together — float, identifier, equal, minus, operators, constants, etc.
+- **(i)** A string of characters which logically belong together, float, identifier, equal, minus, operators, constants, etc.
 - Tokens are treated as terminal symbols of grammars specifying the source language.
 
 ### Pattern
@@ -70,7 +70,7 @@ The sequence (actual) of characters forming a specific instance of a token. e.g.
 
 ---
 
-## Example — Tokens, Lexemes and Patterns
+## Example: Tokens, Lexemes and Patterns
 
 | Token    | Sample Lexeme              | Description of Pattern (informal)            |
 |----------|----------------------------|-----------------------------------------------|
@@ -89,7 +89,7 @@ The sequence (actual) of characters forming a specific instance of a token. e.g.
 
 ## Tokens in Practice (Attributes)
 
-In practice, a token has only a single attribute — a pointer to the symbol table entry in which the info about the token is kept such as:
+In practice, a token has only a single attribute, a pointer to the symbol table entry in which the info about the token is kept such as:
 
 - The lexeme, the line no. on which it was first seen, etc.
 
@@ -126,8 +126,8 @@ Tokens and associated attributes:
 
 - Certain languages do not have any reserved words. e.g.: while, do, if, else, etc. in C/C++, but not in PL/1.
 - In FORTRAN, some keywords are context-dependent. e.g.:
-  - `DO100I = 100,2` — `DO100I` is an identifier, and `DO` is not a keyword; but
-  - `DO 100 = 10,2` — `DO` is a keyword.
+  - `DO100I = 100,2`, `DO100I` is an identifier, and `DO` is not a keyword; but
+  - `DO 100 = 10,2`, `DO` is a keyword.
   - Such features require substantial lookahead for resolution.
 - In FORTRAN, blanks are not significant and can appear in the midst of identifiers, but not in C/C++.
 
@@ -156,9 +156,9 @@ Transition Diagrams (TD) are usually used to model LA by translating them to pro
 
 ---
 
-## Type 0 — Type 3 Languages
+## Type 0: Type 3 Languages
 
-Type 0 — Type 3 languages are finite representations of respective languages.
+Type 0, Type 3 languages are finite representations of respective languages.
 
 ### Examples of Languages
 
@@ -184,7 +184,7 @@ Let **Σ = {a, b, c}**
 
 ---
 
-## Input Buffering — General Idea
+## Input Buffering: General Idea
 
 - We use a buffer divided into 2-N character halves.
 - We read N input xtrs into each half of the buffer with one system command rather than invoking a read command for each input xter.
@@ -237,9 +237,9 @@ TDs depict the actions that take place when the lexer is called by the parser to
 
 ---
 
-## Example — FSA vs TD Diagrams
+## Example: FSA vs TD Diagrams
 
-### Fig (a) — FSA for digits
+### Fig (a): FSA for digits
 
 ```mermaid
 stateDiagram-v2
@@ -250,7 +250,7 @@ stateDiagram-v2
     1 --> [*]
 ```
 
-### Fig (b) — TD for digits with retraction
+### Fig (b): TD for digits with retraction
 
 ```mermaid
 stateDiagram-v2
@@ -299,7 +299,7 @@ This technique for separating identifiers from keywords consists in initializing
 
 ---
 
-## TD Example 1 — Combined TD for Identifiers, Keywords and Numbers
+## TD Example 1: Combined TD for Identifiers, Keywords and Numbers
 
 ```mermaid
 flowchart LR
@@ -320,7 +320,7 @@ flowchart LR
 
 ---
 
-## TD Example 2 — Unsigned/Signed Integers, Addition (+) and Increment (++)
+## TD Example 2: Unsigned/Signed Integers, Addition (+) and Increment (++)
 
 ```mermaid
 flowchart LR
@@ -338,19 +338,19 @@ flowchart LR
 
 ---
 
-## Transition Table — TD Example 2
+## Transition Table: TD Example 2
 
 | State | + | − | D     | Token   | Retraction |
 |-------|---|---|-------|---------|------------|
-| 0     | 1 | 8 | 6     | —       | —          |
-| 1     | 3 | 2 | 2     | —       | —          |
-| 2     | — | — | —     | ADD     | 1          |
-| 3     | 5 | 4 | 4     | —       | —          |
-| 4     | — | — | —     | ADD     | 2          |
-| 5     | — | — | —     | INCR    | 2 (or 0)   |
-| 6     | 7 | 6 | 6     | —       | —          |
-| 7     | — | — | —     | INTEGER | 1          |
-| 8     | error | error | — | —   | —          |
+| 0     | 1 | 8 | 6     |,       |,          |
+| 1     | 3 | 2 | 2     |,       |,          |
+| 2     |, |, |,     | ADD     | 1          |
+| 3     | 5 | 4 | 4     |,       |,          |
+| 4     |, |, |,     | ADD     | 2          |
+| 5     |, |, |,     | INCR    | 2 (or 0)   |
+| 6     | 7 | 6 | 6     |,       |,          |
+| 7     |, |, |,     | INTEGER | 1          |
+| 8     | error | error |, |,   |,          |
 
 ---
 

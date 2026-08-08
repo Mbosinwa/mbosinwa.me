@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 701 Notes I — OS Types, Kernels & System Calls — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 701 Notes I: OS Types, Kernels & System Calls · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 701 Operating Systems: What an operating system is, OS types, kernel architectures and system calls.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-1.html">
-    <meta property="og:title" content="CMS 701 Notes I — OS Types, Kernels & System Calls — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 701 Notes I: OS Types, Kernels & System Calls · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 701 Operating Systems: What an operating system is, OS types, kernel architectures and system calls.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-1.html">
-    <meta property="twitter:title" content="CMS 701 Notes I — OS Types, Kernels & System Calls — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 701 Notes I: OS Types, Kernels & System Calls · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 701 Operating Systems: What an operating system is, OS types, kernel architectures and system calls.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -60,13 +60,13 @@
         </div>
     </nav>
     <main class="container">
-        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes I — OS Types, Kernels & System Calls</p>
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Notes I: OS Types, Kernels & System Calls</p>
         <div class="doc-actions">
             <button id="copy-md" data-md="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-1.md">Copy as Markdown</button>
             <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/notes-1.md" download="CMS-701-notes-1.md">Download .md</a>
         </div>
         <article class="doc">
-<h1 id="cms-701--operating-systems-lecture-notes">CMS 701 — Operating
+<h1 id="cms-701-operating-systems-lecture-notes">CMS 701: Operating
 Systems Lecture Notes</h1>
 <h2 id="os-types-kernels--system-calls">OS Types, Kernels &amp; System
 Calls</h2>
@@ -144,7 +144,7 @@ allowing them to communicate and share resources.</p>
 <ol type="1">
 <li>Users can manage resources from a central server.</li>
 <li>Sharing of files and devices across the network is easy.</li>
-<li>Various devices can connect and work together seamlessly.</li>
+<li>Various devices can connect and work together smoothly.</li>
 </ol>
 <p><strong>Disadvantages</strong></p>
 <ol type="1">
@@ -164,10 +164,9 @@ reliability, often used in embedded systems.</p>
 </ol>
 <p><strong>Disadvantages</strong></p>
 <ul>
-<li>Debugging challenges — timing issues can be tricky to deal
-with.</li>
+<li>Debugging challenges, timing issues can be tricky to deal with.</li>
 <li>May require specialized hardware and resource constraints.</li>
-<li>Limited flexibility — tailored for specific applications.</li>
+<li>Limited flexibility, tailored for specific applications.</li>
 </ul>
 <hr />
 <h2 id="kernels-in-operating-system">Kernels in Operating System</h2>
@@ -205,8 +204,8 @@ between hardware and software without the overhead of switching
 contexts.</p>
 </blockquote>
 <blockquote>
-<p><strong>Analogy — Small Startup Company:</strong> Everyone sits in
-one big room. If the CEO needs a file, they just shout across the room.
+<p><strong>Analogy, Small Startup Company:</strong> Everyone sits in one
+big room. If the CEO needs a file, they just shout across the room.
 Communication is instant and fast because there are no walls.
 <strong>The Problem:</strong> If one employee gets the flu (a bug in a
 driver), they are so close to everyone else that they might infect the
@@ -230,7 +229,7 @@ crash the whole OS, affecting stability.</li>
 <h3 id="2-microkernel">2. Microkernel</h3>
 <p>A microkernel takes the opposite approach. It keeps only the absolute
 essentials in the kernel space (like basic process scheduling).
-Everything else — drivers, file systems — is moved to the <strong>User
+Everything else, drivers, file systems, is moved to the <strong>User
 Space</strong>.</p>
 <blockquote>
 <p><strong>Scenario (Technical):</strong> Consider a real-time operating
@@ -242,7 +241,7 @@ communicates with the microkernel, ensuring the system remains
 responsive and stable.</p>
 </blockquote>
 <blockquote>
-<p><strong>Analogy — Large Government Agency:</strong> Every department
+<p><strong>Analogy, Large Government Agency:</strong> Every department
 is in a separate building. If you want to move a file from one
 department to another, you have to send a formal letter (called
 <strong>Inter-Process Communication or IPC</strong>). <strong>The
@@ -274,7 +273,7 @@ speed of a monolithic kernel. Hybrid kernels combine aspects of both
 monolithic and microkernel architectures, containing essential services
 in the kernel along with some user-space services.</p>
 <blockquote>
-<p><strong>Analogy — Modern Open-Plan Office with Glass
+<p><strong>Analogy, Modern Open-Plan Office with Glass
 Cubicles:</strong> Employees have their own protected spaces (modular),
 but the walls are made of glass so they can still talk to each other
 very quickly without leaving the room.</p>
@@ -311,10 +310,9 @@ components can complicate updates and maintenance.</li>
 you. Instead, they give the application <strong>direct access to the
 hardware</strong> and let the application decide how to use it.</p>
 <blockquote>
-<p><strong>Analogy — Self-Service Warehouse:</strong> Instead of asking
-a clerk (the kernel) to go find a box for you, the warehouse gives you
-the keys and a map. You go get exactly what you need, how you want
-it.</p>
+<p><strong>Analogy, Self-Service Warehouse:</strong> Instead of asking a
+clerk (the kernel) to go find a box for you, the warehouse gives you the
+keys and a map. You go get exactly what you need, how you want it.</p>
 </blockquote>
 <p><strong>Advantages</strong></p>
 <ul>
@@ -328,10 +326,10 @@ manage its own hardware.</li>
 <hr />
 <h3 id="5-nanokernel">5. Nanokernel</h3>
 <p>A nanokernel is an extreme version of a microkernel. It is incredibly
-tiny — essentially just enough code to handle hardware interrupts and
+tiny, essentially just enough code to handle hardware interrupts and
 nothing else.</p>
 <blockquote>
-<p><strong>Analogy — Remote Control:</strong> It doesn't need to manage
+<p><strong>Analogy, Remote Control:</strong> It doesn't need to manage
 files, users, or complex networking. It just needs to know: "Did the
 user press a button? Okay, send a signal."</p>
 </blockquote>
@@ -463,8 +461,8 @@ a Process</h3>
 <ol type="1">
 <li><strong>Process ID (PID):</strong> Unique identifier for each
 process.</li>
-<li><strong>Process States:</strong> Current state — running, waiting,
-or ready.</li>
+<li><strong>Process States:</strong> Current state, running, waiting, or
+ready.</li>
 <li><strong>Priority and CPU Scheduling Information:</strong> Helps OS
 decide which process runs next.</li>
 <li><strong>File Descriptor:</strong> Information about open files and
@@ -493,7 +491,7 @@ is a signal that requires immediate OS attention.</li>
 between kernel mode and user mode.</li>
 </ol>
 <blockquote>
-<p><strong>Note:</strong> Overhead — if triggers happen too frequently,
+<p><strong>Note:</strong> Overhead, if triggers happen too frequently,
 the system spends more time switching than running.</p>
 </blockquote>
 <hr />
@@ -582,14 +580,14 @@ for control transfer.</p>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

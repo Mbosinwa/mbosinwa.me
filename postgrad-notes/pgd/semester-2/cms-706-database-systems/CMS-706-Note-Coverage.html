@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CMS 706 — ER Diagrams, Query Processing &amp; the Rest of the Paper (Volume III)</title>
+<title>CMS 706 · ER Diagrams, Query Processing &amp; the Rest of the Paper (Volume III)</title>
 <style>
 @page { size: A4; margin: 13mm 12mm; }
 
@@ -224,8 +224,8 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="masthead">
   <div class="eyebrow">Volume III · the past-paper gaps · everything the class never reached</div>
-  <h1>CMS 706 — ER Diagrams, Query Processing &amp; the Rest of the Paper</h1>
-  <div class="sub">Volume I covers the 29 pages of class notes. But the lecturer's own paper of 14/07/2026 devotes <b>four of its seven questions</b> to material the notes never touched — ER diagrams, the phases of query processing, the phases of data design and division-style queries — and the older CMS 445 paper adds functional dependency, normalization and distributed databases. This volume is all of that, worked.</div>
+  <h1>CMS 706 · ER Diagrams, Query Processing &amp; the Rest of the Paper</h1>
+  <div class="sub">Volume I covers the 29 pages of class notes. But the lecturer's own paper of 14/07/2026 devotes <b>four of its seven questions</b> to material the notes never touched · ER diagrams, the phases of query processing, the phases of data design and division-style queries · and the older CMS 445 paper adds functional dependency, normalization and distributed databases. This volume is all of that, worked.</div>
   <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
   <div class="facts">
     <span><b>Exam:</b> Friday 07 Aug 2026</span>
@@ -237,11 +237,11 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="box warn">
 <h4>Why this volume matters more than a normal gap-filler</h4>
-Both past papers say <b>"attempt any FIVE"</b>. On the lecturer's 2026 paper, only questions <b>1, 2 and 3</b> can be answered from the class notes alone. To reach five answers you <b>must</b> take at least two of questions 4–7, and every one of those four rests on material below. <b>ER diagrams alone are a 14-mark question.</b> Learn Volume I first, then §1, §2 and §3 here — in that order.
+Both past papers say <b>"attempt any FIVE"</b>. On the lecturer's 2026 paper, only questions <b>1, 2 and 3</b> can be answered from the class notes alone. To reach five answers you <b>must</b> take at least two of questions 4–7, and every one of those four rests on material below. <b>ER diagrams alone are a 14-mark question.</b> Learn Volume I first, then §1, §2 and §3 here · in that order.
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">1</span>ER modelling — the 14-mark question</h2>
+<h2><span class="n">1</span>ER modelling · the 14-mark question</h2>
 
 <p>An <b>Entity–Relationship (ER) model</b> is a <b>conceptual, graphical model of the data requirements of a system</b>, showing the <b>entities</b> about which data is stored, the <b>attributes</b> that describe them and the <b>relationships</b> among them. It is produced at the <b>conceptual design</b> phase (§3) and is later mapped to a relational schema.</p>
 
@@ -251,16 +251,16 @@ Both past papers say <b>"attempt any FIVE"</b>. On the lecturer's 2026 paper, on
 <table class="tight">
 <thead><tr><th style="width:26%">Symbol</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><b>Rectangle</b></td><td>An <b>entity</b> — a thing about which data is stored (Customer, Account)</td></tr>
-<tr><td><b>Double rectangle</b></td><td>A <b>weak entity</b> — cannot be identified without an owner entity</td></tr>
+<tr><td><b>Rectangle</b></td><td>An <b>entity</b> · a thing about which data is stored (Customer, Account)</td></tr>
+<tr><td><b>Double rectangle</b></td><td>A <b>weak entity</b> · cannot be identified without an owner entity</td></tr>
 <tr><td><b>Ellipse</b></td><td>An <b>attribute</b></td></tr>
-<tr><td><b>Underlined ellipse</b></td><td>A <b>key attribute</b> — uniquely identifies the entity</td></tr>
-<tr><td><b>Double ellipse</b></td><td>A <b>multivalued attribute</b> — e.g. several phone numbers</td></tr>
-<tr><td><b>Dashed ellipse</b></td><td>A <b>derived attribute</b> — computed, e.g. age from date of birth</td></tr>
+<tr><td><b>Underlined ellipse</b></td><td>A <b>key attribute</b> · uniquely identifies the entity</td></tr>
+<tr><td><b>Double ellipse</b></td><td>A <b>multivalued attribute</b> · e.g. several phone numbers</td></tr>
+<tr><td><b>Dashed ellipse</b></td><td>A <b>derived attribute</b> · computed, e.g. age from date of birth</td></tr>
 <tr><td><b>Diamond</b></td><td>A <b>relationship</b> between entities</td></tr>
-<tr><td><b>Line with 1 / N / M</b></td><td>The <b>cardinality</b> — 1:1, 1:N or M:N</td></tr>
-<tr><td><b>Double line</b></td><td><b>Total participation</b> — every instance must take part</td></tr>
-<tr><td><b>Single line</b></td><td><b>Partial participation</b> — participation is optional</td></tr>
+<tr><td><b>Line with 1 / N / M</b></td><td>The <b>cardinality</b> · 1:1, 1:N or M:N</td></tr>
+<tr><td><b>Double line</b></td><td><b>Total participation</b> · every instance must take part</td></tr>
+<tr><td><b>Single line</b></td><td><b>Partial participation</b> · participation is optional</td></tr>
 </tbody>
 </table>
 <h4>How to read a requirement into cardinality</h4>
@@ -272,7 +272,7 @@ Both past papers say <b>"attempt any FIVE"</b>. On the lecturer's 2026 paper, on
 <tr><td>"<b>one or more</b>"</td><td>Cardinality <b>N</b>, <b>total</b> participation</td></tr>
 <tr><td>"<b>zero or more</b>"</td><td>Cardinality <b>N</b>, <b>partial</b> participation</td></tr>
 <tr><td>"<b>at most one</b>"</td><td>Cardinality <b>1</b>, <b>partial</b> participation</td></tr>
-<tr><td>"are <b>not required</b> to have"</td><td>Explicitly <b>partial</b> — this phrasing is a deliberate hint</td></tr>
+<tr><td>"are <b>not required</b> to have"</td><td>Explicitly <b>partial</b> · this phrasing is a deliberate hint</td></tr>
 </tbody>
 </table>
 </div>
@@ -320,24 +320,24 @@ Both past papers say <b>"attempt any FIVE"</b>. On the lecturer's 2026 paper, on
     <text x="182" y="188">N:1 Employee–Branch · 1:N Employee–Customer</text>
   </g>
 </svg>
-<figcaption>Entities, relationships and cardinalities. Attributes are listed in the table below — in the exam draw them as ellipses hanging off each rectangle.</figcaption>
+<figcaption>Entities, relationships and cardinalities. Attributes are listed in the table below · in the exam draw them as ellipses hanging off each rectangle.</figcaption>
 </figure>
 <table class="tight">
 <thead><tr><th style="width:20%">Entity</th><th style="width:22%">Key attribute</th><th>Other attributes</th></tr></thead>
 <tbody>
-<tr><td><b>Customer</b></td><td><u>SSN</u></td><td>name · <b>phone (multivalued — double ellipse)</b> · occupation</td></tr>
+<tr><td><b>Customer</b></td><td><u>SSN</u></td><td>name · <b>phone (multivalued · double ellipse)</b> · occupation</td></tr>
 <tr><td><b>Account</b></td><td><u>account-no</u></td><td>balance · type (e.g. savings)</td></tr>
 <tr><td><b>Branch</b></td><td><u>branch-code</u></td><td>location · number-of-employees</td></tr>
 <tr><td><b>Employee</b></td><td><u>SSN</u></td><td>name · salary</td></tr>
 </tbody>
 </table>
 <div class="box" style="padding:5pt 7pt">
-<b>Requirement → diagram, line by line.</b> <b>Customer</b> — key <code>SSN</code>, attributes <code>name</code>, <code>phone</code> (<b>double ellipse</b>, "one or more"), <code>occupation</code>. <b>Account</b> — key <code>account-no</code>, attributes <code>balance</code>, <code>type</code>. <b>Customer–Account is M:N</b> ("an account belongs to one or more customers; a customer can have any number of accounts") with <b>total participation on the account side</b>. <b>Account–Branch is N:1</b>, total on the account side ("exactly one branch") and <b>partial on the branch side</b> ("branches are not required to have accounts"). <b>Branch</b> — key <code>branch-code</code>, attributes <code>location</code>, <code>no-of-employees</code>. <b>Employee</b> — key <code>SSN</code>, attributes <code>name</code>, <code>salary</code>. <b>Employee–Branch is N:1</b>, total both ways ("works for exactly one branch"; "branches have one or more employees"). <b>Employee–Customer is 1:N contact</b>, partial ("zero or more customers"; "at most one employee as a contact").
+<b>Requirement → diagram, line by line.</b> <b>Customer</b> · key <code>SSN</code>, attributes <code>name</code>, <code>phone</code> (<b>double ellipse</b>, "one or more"), <code>occupation</code>. <b>Account</b> · key <code>account-no</code>, attributes <code>balance</code>, <code>type</code>. <b>Customer–Account is M:N</b> ("an account belongs to one or more customers; a customer can have any number of accounts") with <b>total participation on the account side</b>. <b>Account–Branch is N:1</b>, total on the account side ("exactly one branch") and <b>partial on the branch side</b> ("branches are not required to have accounts"). <b>Branch</b> · key <code>branch-code</code>, attributes <code>location</code>, <code>no-of-employees</code>. <b>Employee</b> · key <code>SSN</code>, attributes <code>name</code>, <code>salary</code>. <b>Employee–Branch is N:1</b>, total both ways ("works for exactly one branch"; "branches have one or more employees"). <b>Employee–Customer is 1:N contact</b>, partial ("zero or more customers"; "at most one employee as a contact").
 </div>
 </div>
 </div>
 
-<h3>Mapping an ER model to relations — do this if asked, or to check yourself</h3>
+<h3>Mapping an ER model to relations · do this if asked, or to check yourself</h3>
 <div class="grid2">
 <div>
 <ol style="font-size:9.1pt">
@@ -359,7 +359,7 @@ Employee(<u>SSN</u>, name, salary, branch_code)</pre>
 </div>
 
 <!-- ============================================================ -->
-<h2 class="pagebreak"><span class="n">2</span>Phases of query processing — the 8-mark diagram question</h2>
+<h2 class="pagebreak"><span class="n">2</span>Phases of query processing · the 8-mark diagram question</h2>
 
 <p><b>Query processing</b> is the set of activities a DBMS performs to <b>translate a high-level query into an efficient sequence of low-level operations and execute it</b> against the stored data.</p>
 
@@ -395,18 +395,18 @@ Employee(<u>SSN</u>, name, salary, branch_code)</pre>
     <text x="216" y="40">execution plan</text>
   </g>
 </svg>
-<figcaption>Draw this shape and label every box and arrow — the marks are for the stages and their outputs, not for artistry.</figcaption>
+<figcaption>Draw this shape and label every box and arrow · the marks are for the stages and their outputs, not for artistry.</figcaption>
 </figure>
 
 <table class="tight">
 <thead><tr><th class="c" style="width:4%">#</th><th style="width:20%">Stage</th><th style="width:38%">Function</th><th>Output it hands on</th></tr></thead>
 <tbody>
 <tr><td class="c">1</td><td><b>Parsing and translation</b></td><td>Checks the query's <b>syntax</b>, verifies that the named <b>relations and attributes actually exist</b> in the data catalog, checks the user's <b>access rights</b>, and translates the query into an internal <b>relational-algebra</b> expression</td><td>A parse tree / relational-algebra expression</td></tr>
-<tr><td class="c">2</td><td><b>Optimization</b></td><td>Generates the <b>equivalent alternative execution plans</b> and estimates the cost of each using the <b>catalog statistics</b> — table sizes, index availability, selectivity — then <b>chooses the cheapest</b></td><td>The chosen <b>query execution plan</b></td></tr>
-<tr><td class="c">3</td><td><b>Evaluation / execution</b></td><td>The <b>evaluation engine</b> runs the chosen plan against the actual stored data, applying the physical operators — index scan, table scan, join, sort, aggregate</td><td>The <b>query result</b> returned to the user</td></tr>
+<tr><td class="c">2</td><td><b>Optimization</b></td><td>Generates the <b>equivalent alternative execution plans</b> and estimates the cost of each using the <b>catalog statistics</b> · table sizes, index availability, selectivity · then <b>chooses the cheapest</b></td><td>The chosen <b>query execution plan</b></td></tr>
+<tr><td class="c">3</td><td><b>Evaluation / execution</b></td><td>The <b>evaluation engine</b> runs the chosen plan against the actual stored data, applying the physical operators · index scan, table scan, join, sort, aggregate</td><td>The <b>query result</b> returned to the user</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>If more stages are wanted, split stage 1 into <i>parsing</i> (syntax) and <i>translation</i> (to relational algebra), and add a final <i>result return</i> stage</b> — a five-stage answer of parsing → translation → optimization → evaluation → output is equally acceptable, and it reads better against an 8-mark allocation. Note the tie back to Volume I §6: <b>the optimizer chooses the best execution plan by reducing disk access, reducing CPU usage, and using indexes and statistics</b> — that sentence from the notes <i>is</i> stage 2.</p>
+<p style="font-size:9.1pt"><b>If more stages are wanted, split stage 1 into <i>parsing</i> (syntax) and <i>translation</i> (to relational algebra), and add a final <i>result return</i> stage</b> · a five-stage answer of parsing → translation → optimization → evaluation → output is equally acceptable, and it reads better against an 8-mark allocation. Note the tie back to Volume I §6: <b>the optimizer chooses the best execution plan by reducing disk access, reducing CPU usage, and using indexes and statistics</b> · that sentence from the notes <i>is</i> stage 2.</p>
 
 <h3>Debugging the two broken queries <span class="tag">PAST Q · 6 MARKS</span></h3>
 <div class="grid2">
@@ -416,8 +416,8 @@ Employee(<u>SSN</u>, name, salary, branch_code)</pre>
           bdname varchar2(50), … )
 
 select d_no from BusDriver where d_no = 07;</pre>
-<p style="font-size:9.1pt"><b>The fault:</b> the attribute <code>d_no</code> <b>does not exist</b> in the relation <code>BusDriver</code> — the key column is called <code>bdno</code>. The query is therefore rejected at the very first stage of query processing, <b>parsing and translation</b>, when the parser consults the <b>data catalog</b> and cannot resolve the identifier. It never reaches the optimizer.</p>
-<p style="font-size:9.1pt"><b>Secondary fault worth a mark:</b> even with the right name, <code>bdno</code> is declared <code>varchar2(5)</code> — a <b>character</b> type — so comparing it with the <b>numeric</b> literal <code>07</code> is a type mismatch. A character comparison would also lose the leading zero.</p>
+<p style="font-size:9.1pt"><b>The fault:</b> the attribute <code>d_no</code> <b>does not exist</b> in the relation <code>BusDriver</code> · the key column is called <code>bdno</code>. The query is therefore rejected at the very first stage of query processing, <b>parsing and translation</b>, when the parser consults the <b>data catalog</b> and cannot resolve the identifier. It never reaches the optimizer.</p>
+<p style="font-size:9.1pt"><b>Secondary fault worth a mark:</b> even with the right name, <code>bdno</code> is declared <code>varchar2(5)</code> · a <b>character</b> type · so comparing it with the <b>numeric</b> literal <code>07</code> is a type mismatch. A character comparison would also lose the leading zero.</p>
 <pre><b>Solution</b>
 select bdno from BusDriver where bdno = '07';</pre>
 </div>
@@ -431,8 +431,8 @@ where bdsalary > 5000
   and dname = 'Hornsey'
   and BusDriver.dno = Depot.dno
   and bdsalary < 2000;</pre>
-<p style="font-size:9.1pt"><b>The fault:</b> the WHERE clause is <b>self-contradictory</b> — it requires <code>bdsalary &gt; 5000</code> <b>and</b> <code>bdsalary &lt; 2000</code> at the same time. No value can satisfy both, so the predicate is <b>unsatisfiable</b> and the query <b>always returns the empty set</b>. It is syntactically valid and will not be rejected — it simply cannot ever be right, which makes it worse than an error.</p>
-<pre><b>Solution</b> — decide which was meant, e.g.
+<p style="font-size:9.1pt"><b>The fault:</b> the WHERE clause is <b>self-contradictory</b> · it requires <code>bdsalary &gt; 5000</code> <b>and</b> <code>bdsalary &lt; 2000</code> at the same time. No value can satisfy both, so the predicate is <b>unsatisfiable</b> and the query <b>always returns the empty set</b>. It is syntactically valid and will not be rejected · it simply cannot ever be right, which makes it worse than an error.</p>
+<pre><b>Solution</b> · decide which was meant, e.g.
 select bdno, bdname
 from   BusDriver, Depot
 where  bdsalary > 5000
@@ -443,50 +443,50 @@ where  bdsalary > 5000
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">3</span>Phases of data design — the work-plan question <span class="tag">PAST Q · 8 MARKS</span></h2>
+<h2><span class="n">3</span>Phases of data design · the work-plan question <span class="tag">PAST Q · 8 MARKS</span></h2>
 
-<p>The question asks for a <b>work plan</b> giving, for each phase: <b>a description · the inputs · the outputs · a key issue addressed</b>. Answer it as a table — it is faster to write and impossible to mark down for missing a part.</p>
+<p>The question asks for a <b>work plan</b> giving, for each phase: <b>a description · the inputs · the outputs · a key issue addressed</b>. Answer it as a table · it is faster to write and impossible to mark down for missing a part.</p>
 
 <table class="tight">
 <thead><tr><th style="width:16%">Phase</th><th style="width:26%">Description</th><th style="width:18%">Inputs</th><th style="width:20%">Outputs</th><th>Key issue addressed</th></tr></thead>
 <tbody>
-<tr><td><b>1. Requirements analysis</b></td><td>Gather and document what data the business needs to store and what it must do with it, by interviewing users and studying existing documents and systems</td><td>Interviews, existing forms and reports, business rules, legacy files</td><td>A written <b>requirements specification</b> — data items, volumes, users, rules</td><td><b>Completeness and ambiguity</b> — have all user groups been consulted, and do any two of them contradict each other?</td></tr>
-<tr><td><b>2. Conceptual design</b></td><td>Build a <b>DBMS-independent</b> model of the data: identify entities, attributes and relationships</td><td>The requirements specification</td><td>A <b>conceptual schema</b> — the <b>ER model / ER diagram</b></td><td><b>Correct entities and cardinalities</b> — is this really an entity or just an attribute, and is that relationship 1:N or M:N?</td></tr>
-<tr><td><b>3. Logical design</b></td><td>Map the conceptual model onto the <b>data model of the chosen DBMS</b> — for an RDBMS, turn entities and relationships into tables, keys and foreign keys, then <b>normalize</b></td><td>The ER model, plus the choice of DBMS</td><td>A <b>logical schema</b> — normalized relations with primary and foreign keys and integrity constraints</td><td><b>Redundancy and the update anomalies</b> — normalization to remove insert, update and delete anomalies (§5)</td></tr>
-<tr><td><b>4. Physical design</b></td><td>Decide <b>how</b> the logical schema will actually be stored and accessed on the chosen hardware</td><td>The logical schema, expected query workload, volumes, hardware</td><td>Storage structures, <b>indexes</b>, file organization, partitioning, tuning parameters</td><td><b>Performance vs storage trade-off</b> — every index speeds reads but costs space and slows writes (Vol I §5)</td></tr>
-<tr><td><b>5. Implementation and testing</b></td><td>Create the database with DDL, load the data, and validate it against the requirements</td><td>The physical design and the source data</td><td>A <b>working, populated database</b> plus test results and documentation</td><td><b>Data migration and validation</b> — is legacy data clean and correctly converted?</td></tr>
+<tr><td><b>1. Requirements analysis</b></td><td>Gather and document what data the business needs to store and what it must do with it, by interviewing users and studying existing documents and systems</td><td>Interviews, existing forms and reports, business rules, legacy files</td><td>A written <b>requirements specification</b> · data items, volumes, users, rules</td><td><b>Completeness and ambiguity</b> · have all user groups been consulted, and do any two of them contradict each other?</td></tr>
+<tr><td><b>2. Conceptual design</b></td><td>Build a <b>DBMS-independent</b> model of the data: identify entities, attributes and relationships</td><td>The requirements specification</td><td>A <b>conceptual schema</b> · the <b>ER model / ER diagram</b></td><td><b>Correct entities and cardinalities</b> · is this really an entity or just an attribute, and is that relationship 1:N or M:N?</td></tr>
+<tr><td><b>3. Logical design</b></td><td>Map the conceptual model onto the <b>data model of the chosen DBMS</b> · for an RDBMS, turn entities and relationships into tables, keys and foreign keys, then <b>normalize</b></td><td>The ER model, plus the choice of DBMS</td><td>A <b>logical schema</b> · normalized relations with primary and foreign keys and integrity constraints</td><td><b>Redundancy and the update anomalies</b> · normalization to remove insert, update and delete anomalies (§5)</td></tr>
+<tr><td><b>4. Physical design</b></td><td>Decide <b>how</b> the logical schema will actually be stored and accessed on the chosen hardware</td><td>The logical schema, expected query workload, volumes, hardware</td><td>Storage structures, <b>indexes</b>, file organization, partitioning, tuning parameters</td><td><b>Performance vs storage trade-off</b> · every index speeds reads but costs space and slows writes (Vol I §5)</td></tr>
+<tr><td><b>5. Implementation and testing</b></td><td>Create the database with DDL, load the data, and validate it against the requirements</td><td>The physical design and the source data</td><td>A <b>working, populated database</b> plus test results and documentation</td><td><b>Data migration and validation</b> · is legacy data clean and correctly converted?</td></tr>
 </tbody>
 </table>
 
 <div class="box star">
-<b>How to frame the answer for the inventory-tracking scenario.</b> Open with one sentence: <i>"The data design team's work plan consists of five phases, each with defined inputs and deliverables, listed below."</i> Then the table. Then close by tying it to what the manager actually asked for: the <b>phase boundaries are what let the overall timeframe and cost be estimated</b>, because each phase's output is a reviewable deliverable — the requirements specification, the ER diagram, the normalized schema, the physical design, and the tested database. Naming a deliverable per phase is what turns a list of activities into a work plan.
+<b>How to frame the answer for the inventory-tracking scenario.</b> Open with one sentence: <i>"The data design team's work plan consists of five phases, each with defined inputs and deliverables, listed below."</i> Then the table. Then close by tying it to what the manager actually asked for: the <b>phase boundaries are what let the overall timeframe and cost be estimated</b>, because each phase's output is a reviewable deliverable · the requirements specification, the ER diagram, the normalized schema, the physical design, and the tested database. Naming a deliverable per phase is what turns a list of activities into a work plan.
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">4</span>The committee queries — division and its cousins <span class="tag">PAST Q · 9 MARKS</span></h2>
+<h2><span class="n">4</span>The committee queries · division and its cousins <span class="tag">PAST Q · 9 MARKS</span></h2>
 
 <pre>professor(<u>profname</u>, deptname)      department(<u>deptname</u>, <u>building</u>)      committee(<u>profname</u>, <u>commname</u>)</pre>
 
 <div class="grid2">
 <div>
-<h4>(i) In <b>any one</b> of Smith's committees — 2 marks</h4>
+<h4>(i) In <b>any one</b> of Smith's committees · 2 marks</h4>
 <pre>SELECT DISTINCT c.profname
 FROM   committee c
 WHERE  c.commname IN
        (SELECT commname
         FROM   committee
         WHERE  profname = 'Smith');</pre>
-<p style="font-size:9.1pt">"Any one" means <b>intersection is non-empty</b> — a simple <code>IN</code> subquery. Add <code>AND c.profname &lt;&gt; 'Smith'</code> if you want to exclude Smith himself; say which reading you chose.</p>
+<p style="font-size:9.1pt">"Any one" means <b>intersection is non-empty</b> · a simple <code>IN</code> subquery. Add <code>AND c.profname &lt;&gt; 'Smith'</code> if you want to exclude Smith himself; say which reading you chose.</p>
 
-<h4>(iv) Office in the ICICS building — 2 marks</h4>
+<h4>(iv) Office in the ICICS building · 2 marks</h4>
 <pre>SELECT p.profname
 FROM   professor p, department d
 WHERE  p.deptname = d.deptname
   AND  d.building = 'ICICS';</pre>
-<p style="font-size:9.1pt">The only trick is the sentence <i>"a professor's office is in the building in which her/his department is in"</i> — it tells you to <b>join through <code>department</code></b> rather than look for a building column on <code>professor</code>.</p>
+<p style="font-size:9.1pt">The only trick is the sentence <i>"a professor's office is in the building in which her/his department is in"</i> · it tells you to <b>join through <code>department</code></b> rather than look for a building column on <code>professor</code>.</p>
 </div>
 <div>
-<h4>(ii) In <b>at least all</b> of Smith's committees — 2 marks</h4>
+<h4>(ii) In <b>at least all</b> of Smith's committees · 2 marks</h4>
 <p style="font-size:9.1pt">This is <b>relational division</b>: professors for whom <b>there is no committee of Smith's that they are missing</b>. The standard SQL idiom is the <b>double NOT EXISTS</b>.</p>
 <pre>SELECT DISTINCT p.profname
 FROM   committee p
@@ -506,7 +506,7 @@ HAVING COUNT(DISTINCT c.commname) =
        (SELECT COUNT(*) FROM committee
         WHERE profname = 'Smith');</pre>
 
-<h4>(iii) In <b>exactly</b> Smith's committees — 3 marks</h4>
+<h4>(iii) In <b>exactly</b> Smith's committees · 3 marks</h4>
 <p style="font-size:9.1pt">"No more and no less" = <b>at least all of them</b> (ii) <b>and no others</b>. Easiest as two counts that must agree:</p>
 <pre>SELECT c.profname FROM committee c
 GROUP BY c.profname
@@ -530,7 +530,7 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 
 <div class="grid2">
 <div>
-<p><b>A functional dependency</b> <code>X → Y</code> exists when, <b>for any two rows that agree on X, they must also agree on Y</b> — the value of X <b>determines</b> the value of Y. X is the <b>determinant</b>.</p>
+<p><b>A functional dependency</b> <code>X → Y</code> exists when, <b>for any two rows that agree on X, they must also agree on Y</b> · the value of X <b>determines</b> the value of Y. X is the <b>determinant</b>.</p>
 <table class="tight">
 <thead><tr><th style="width:26%">Type</th><th>Definition and example</th></tr></thead>
 <tbody>
@@ -544,21 +544,21 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 <p style="font-size:9.1pt"><b>Three advantages of functional dependency:</b> it is the basis of <b>normalization</b> and so removes redundancy · it lets <b>keys and integrity constraints</b> be identified formally · it preserves <b>data consistency</b> by making the relationships between attributes explicit.</p>
 </div>
 <div>
-<h4>The three anomalies — always explain with one table</h4>
+<h4>The three anomalies · always explain with one table</h4>
 <p style="font-size:9.1pt">Take an unnormalized <code>StudentCourse(StudentID, StudentName, DeptName, CourseID, Grade)</code>:</p>
 <table class="tight">
 <thead><tr><th style="width:20%">Anomaly</th><th>What goes wrong</th></tr></thead>
 <tbody>
-<tr><td><b>Insert anomaly</b></td><td>You <b>cannot record a new department</b> until some student enrols in it, because the primary key requires a student — data you have cannot be stored</td></tr>
+<tr><td><b>Insert anomaly</b></td><td>You <b>cannot record a new department</b> until some student enrols in it, because the primary key requires a student · data you have cannot be stored</td></tr>
 <tr><td><b>Update anomaly</b></td><td>A student's name appears in <b>every row</b> for every course they take. Changing it means changing many rows, and missing one leaves the database <b>inconsistent</b></td></tr>
-<tr><td><b>Delete anomaly</b></td><td>Deleting the <b>last</b> student in a department <b>destroys the department's data too</b> — you lose facts you meant to keep</td></tr>
+<tr><td><b>Delete anomaly</b></td><td>Deleting the <b>last</b> student in a department <b>destroys the department's data too</b> · you lose facts you meant to keep</td></tr>
 </tbody>
 </table>
 <h4>The normal forms, in one line each</h4>
 <table class="tight">
 <thead><tr><th class="c" style="width:14%">Form</th><th>Requirement</th></tr></thead>
 <tbody>
-<tr><td class="c"><b>1NF</b></td><td>All attribute values are <b>atomic</b> — no repeating groups or multivalued cells</td></tr>
+<tr><td class="c"><b>1NF</b></td><td>All attribute values are <b>atomic</b> · no repeating groups or multivalued cells</td></tr>
 <tr><td class="c"><b>2NF</b></td><td>1NF <b>and</b> no <b>partial</b> dependency on part of a composite key</td></tr>
 <tr><td class="c"><b>3NF</b></td><td>2NF <b>and</b> no <b>transitive</b> dependency on the key</td></tr>
 <tr><td class="c"><b>BCNF</b></td><td>Every determinant is a <b>candidate key</b></td></tr>
@@ -573,13 +573,13 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 
 <div class="grid2">
 <div>
-<h4>Transaction — the definition and its delimiters</h4>
-<p style="font-size:9.1pt">A <b>transaction</b> is a <b>sequence of actions that represent a logical unit of work</b>, transforming the database from one consistent state to another. It is <b>scoped by the delimiters <code>BEGIN TRANSACTION</code> … <code>COMMIT</code> or <code>ROLLBACK</code></b>. After successful execution the transaction reaches the <b>partially committed</b> state, and once <b>committed</b> the changes are <b>permanent and durable</b> — the point of no return, after which recovery will redo rather than undo them.</p>
-<h4>ACID — the four properties</h4>
+<h4>Transaction · the definition and its delimiters</h4>
+<p style="font-size:9.1pt">A <b>transaction</b> is a <b>sequence of actions that represent a logical unit of work</b>, transforming the database from one consistent state to another. It is <b>scoped by the delimiters <code>BEGIN TRANSACTION</code> … <code>COMMIT</code> or <code>ROLLBACK</code></b>. After successful execution the transaction reaches the <b>partially committed</b> state, and once <b>committed</b> the changes are <b>permanent and durable</b> · the point of no return, after which recovery will redo rather than undo them.</p>
+<h4>ACID · the four properties</h4>
 <table class="tight">
 <thead><tr><th style="width:22%">Property</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><b>Atomicity</b></td><td><b>All or nothing</b> — either every action happens or none does</td></tr>
+<tr><td><b>Atomicity</b></td><td><b>All or nothing</b> · either every action happens or none does</td></tr>
 <tr><td><b>Consistency</b></td><td>The database moves from one <b>valid state</b> to another, respecting all constraints</td></tr>
 <tr><td><b>Isolation</b></td><td>Concurrent transactions do not interfere; each sees the database as if <b>alone</b></td></tr>
 <tr><td><b>Durability</b></td><td>Once committed, changes <b>survive failure</b></td></tr>
@@ -591,13 +591,13 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 </div>
 <div>
 <h4>Concurrent execution and why control is needed <span class="tag">PAST Q</span></h4>
-<p style="font-size:9.1pt"><b>Concurrent execution</b> means several transactions from different users are <b>interleaved and executed in overlapping time</b> in a multiuser system, rather than one strictly after another. It is done for <b>throughput and resource utilisation</b> — the CPU can work on one transaction while another waits for disk — and for <b>reduced waiting time</b>, so a short transaction is not stuck behind a long one.</p>
+<p style="font-size:9.1pt"><b>Concurrent execution</b> means several transactions from different users are <b>interleaved and executed in overlapping time</b> in a multiuser system, rather than one strictly after another. It is done for <b>throughput and resource utilisation</b> · the CPU can work on one transaction while another waits for disk · and for <b>reduced waiting time</b>, so a short transaction is not stuck behind a long one.</p>
 <p style="font-size:9.1pt"><b>Concurrency control is needed because uncontrolled interleaving destroys consistency.</b> The four classic problems:</p>
 <table class="tight">
 <thead><tr><th style="width:26%">Problem</th><th>What happens</th></tr></thead>
 <tbody>
 <tr><td><b>Lost update</b></td><td>Two transactions read the same value and both write; the second overwrites the first, whose update vanishes</td></tr>
-<tr><td><b>Dirty read</b></td><td>One transaction reads a value written by another that then <b>aborts</b> — it read data that never officially existed</td></tr>
+<tr><td><b>Dirty read</b></td><td>One transaction reads a value written by another that then <b>aborts</b> · it read data that never officially existed</td></tr>
 <tr><td><b>Unrepeatable read</b></td><td>A transaction reads the same row twice and gets <b>different values</b>, because another committed in between</td></tr>
 <tr><td><b>Phantom read</b></td><td>A repeated query returns <b>extra rows</b> inserted by another transaction</td></tr>
 </tbody>
@@ -608,7 +608,7 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 
 <div class="grid2">
 <div>
-<h4>Locking — pessimistic vs optimistic <span class="tag">PAPER A</span></h4>
+<h4>Locking · pessimistic vs optimistic <span class="tag">PAPER A</span></h4>
 <table class="tight">
 <thead><tr><th style="width:22%">Approach</th><th>How it works</th></tr></thead>
 <tbody>
@@ -622,10 +622,10 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 <h4>Commit and two-phase commit</h4>
 <p style="font-size:9.1pt"><b>Commit</b> makes a transaction's changes <b>permanent</b> in a single database. <b>Two-phase commit (2PC)</b> is the protocol used when a transaction spans <b>several databases or sites</b>, so all of them must agree:</p>
 <ol style="font-size:9.1pt">
-<li><b>Phase 1 — prepare/voting.</b> The coordinator asks every participant "can you commit?" Each writes its work to a log and replies <b>ready</b> or <b>abort</b>.</li>
-<li><b>Phase 2 — commit/decision.</b> If <b>all</b> voted ready, the coordinator broadcasts <b>commit</b> and all commit; if <b>any</b> voted abort, it broadcasts <b>abort</b> and all roll back.</li>
+<li><b>Phase 1 · prepare/voting.</b> The coordinator asks every participant "can you commit?" Each writes its work to a log and replies <b>ready</b> or <b>abort</b>.</li>
+<li><b>Phase 2 · commit/decision.</b> If <b>all</b> voted ready, the coordinator broadcasts <b>commit</b> and all commit; if <b>any</b> voted abort, it broadcasts <b>abort</b> and all roll back.</li>
 </ol>
-<p style="font-size:9.1pt">The point: it preserves <b>atomicity across sites</b> — never some sites committed and others not. Its weakness is <b>blocking</b> if the coordinator fails between the phases.</p>
+<p style="font-size:9.1pt">The point: it preserves <b>atomicity across sites</b> · never some sites committed and others not. Its weakness is <b>blocking</b> if the coordinator fails between the phases.</p>
 </div>
 </div>
 
@@ -637,30 +637,30 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 <p><b>A distributed database</b> is a single logical database whose data is <b>physically spread across several sites connected by a network</b>, yet appears to the user as one database.</p>
 <h4>Four advantages</h4>
 <ol style="font-size:9.1pt">
-<li><b>Reliability and availability</b> — one site failing does not take the whole system down</li>
-<li><b>Improved performance</b> — data is held near the users who use it, cutting network traffic and response time</li>
-<li><b>Modular growth</b> — new sites are added without redesigning the whole system</li>
-<li><b>Local autonomy</b> — each site controls its own data while still sharing it</li>
+<li><b>Reliability and availability</b> · one site failing does not take the whole system down</li>
+<li><b>Improved performance</b> · data is held near the users who use it, cutting network traffic and response time</li>
+<li><b>Modular growth</b> · new sites are added without redesigning the whole system</li>
+<li><b>Local autonomy</b> · each site controls its own data while still sharing it</li>
 </ol>
-<h4>Distributed vs centralized — three areas</h4>
+<h4>Distributed vs centralized · three areas</h4>
 <table class="tight">
 <thead><tr><th style="width:22%">Area</th><th>Distributed</th><th>Centralized</th></tr></thead>
 <tbody>
 <tr><td>Data location</td><td>Spread across many sites</td><td>All at one site</td></tr>
-<tr><td>Reliability</td><td>High — no single point of failure</td><td>Low — one failure stops everything</td></tr>
-<tr><td>Complexity &amp; cost</td><td>High — needs replication, fragmentation, distributed control</td><td>Lower — simpler to design, secure and administer</td></tr>
+<tr><td>Reliability</td><td>High · no single point of failure</td><td>Low · one failure stops everything</td></tr>
+<tr><td>Complexity &amp; cost</td><td>High · needs replication, fragmentation, distributed control</td><td>Lower · simpler to design, secure and administer</td></tr>
 </tbody>
 </table>
 <h4>The two classes</h4>
-<p style="font-size:9.1pt"><b>Homogeneous</b> — all sites run the <b>same DBMS software</b> and are aware of each other. Two types: <b>autonomous</b> (sites operate independently) and <b>non-autonomous</b> (a central node coordinates).<br>
-<b>Heterogeneous</b> — sites run <b>different DBMS software</b> or data models, needing translation. Two types: <b>federated</b> (sites keep their independence and cooperate) and <b>multidatabase</b> (a layer presents one interface over them).</p>
+<p style="font-size:9.1pt"><b>Homogeneous</b> · all sites run the <b>same DBMS software</b> and are aware of each other. Two types: <b>autonomous</b> (sites operate independently) and <b>non-autonomous</b> (a central node coordinates).<br>
+<b>Heterogeneous</b> · sites run <b>different DBMS software</b> or data models, needing translation. Two types: <b>federated</b> (sites keep their independence and cooperate) and <b>multidatabase</b> (a layer presents one interface over them).</p>
 </div>
 <div>
 <h4>Fragmentation and replication</h4>
 <p style="font-size:9.1pt"><b>Fragmentation</b> is the process of <b>dividing a relation into smaller pieces (fragments) which are stored at different sites</b>. <b>Horizontal</b> fragmentation splits by <b>rows</b>, <b>vertical</b> by <b>columns</b>, and <b>mixed/hybrid</b> does both.</p>
-<p style="font-size:9.1pt"><b>Two advantages of replication:</b> <b>availability</b> — data survives a site failure; <b>faster local reads</b> — queries are answered from a nearby copy.<br>
-<b>Two advantages of fragmentation:</b> <b>efficiency</b> — only the relevant subset is stored and scanned at each site; <b>locality</b> — data lives where it is used, reducing network cost.</p>
-<h4>Transparency — the 7-mark part</h4>
+<p style="font-size:9.1pt"><b>Two advantages of replication:</b> <b>availability</b> · data survives a site failure; <b>faster local reads</b> · queries are answered from a nearby copy.<br>
+<b>Two advantages of fragmentation:</b> <b>efficiency</b> · only the relevant subset is stored and scanned at each site; <b>locality</b> · data lives where it is used, reducing network cost.</p>
+<h4>Transparency · the 7-mark part</h4>
 <p style="font-size:9.1pt"><b>Transparency</b> means the distribution is <b>hidden from the user</b>, who queries the system as though it were a single ordinary database. Its kinds:</p>
 <table class="tight">
 <thead><tr><th style="width:30%">Kind</th><th>What is hidden</th></tr></thead>
@@ -681,7 +681,7 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 
 <div class="grid2">
 <div>
-<h4>Password policy — complexity, failed attempts, expiry <span class="tag">PAST Q · 5 MARKS</span></h4>
+<h4>Password policy · complexity, failed attempts, expiry <span class="tag">PAST Q · 5 MARKS</span></h4>
 <table class="tight">
 <thead><tr><th style="width:26%">Feature</th><th>What it does and how it protects</th></tr></thead>
 <tbody>
@@ -690,38 +690,38 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 <tr><td><b>Expired passwords</b></td><td>Forces a change after a set lifetime and blocks reuse of recent passwords. <b>Protection:</b> it <b>bounds the damage window</b> of a password that has been stolen or leaked without anyone noticing</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt">Close by placing them: all three are <b>authentication</b> controls — the first of the six security controls in Volume I §7 — and they protect the database by keeping <b>unauthorized access</b> out before authorization and encryption ever come into play.</p>
+<p style="font-size:9.1pt">Close by placing them: all three are <b>authentication</b> controls · the first of the six security controls in Volume I §7 · and they protect the database by keeping <b>unauthorized access</b> out before authorization and encryption ever come into play.</p>
 </div>
 <div>
 <h4>A data cleaning plan for multi-country data <span class="tag">PAST Q · 8 MARKS</span></h4>
 <p style="font-size:9.1pt"><i>"A dataset from three different countries with varying languages, currencies and date formats."</i> Give an ordered plan, naming the problem each step fixes:</p>
 <ol style="font-size:9.1pt">
-<li><b>Profile and audit</b> the data first — record counts, column types, ranges, missing values and how each country's file differs.</li>
-<li><b>Standardize date formats</b> to one convention (ISO <code>YYYY-MM-DD</code>). <b>DD/MM vs MM/DD is silently destructive</b> — 03/08 is two different days — so convert using each source's known locale, not a guess.</li>
-<li><b>Normalize currency</b> — convert all monetary values to a single reporting currency at a <b>stated exchange rate and date</b>, and keep the original value and currency code in extra columns for audit.</li>
-<li><b>Resolve language and encoding</b> — set everything to UTF-8, transliterate or translate category labels to one language, and map synonyms onto one vocabulary.</li>
-<li><b>Deduplicate</b> — the same customer may appear once per country file; match on a stable key and merge.</li>
-<li><b>Handle missing values</b> — decide per column whether to drop, impute or flag, and document the choice.</li>
-<li><b>Correct data types and units</b> — numbers stored as text, decimal commas vs points, kg vs lb, and remove stray whitespace.</li>
-<li><b>Validate against rules</b> — ranges, formats, referential checks — then <b>document every transformation</b> so the cleaning is reproducible.</li>
+<li><b>Profile and audit</b> the data first · record counts, column types, ranges, missing values and how each country's file differs.</li>
+<li><b>Standardize date formats</b> to one convention (ISO <code>YYYY-MM-DD</code>). <b>DD/MM vs MM/DD is silently destructive</b> · 03/08 is two different days · so convert using each source's known locale, not a guess.</li>
+<li><b>Normalize currency</b> · convert all monetary values to a single reporting currency at a <b>stated exchange rate and date</b>, and keep the original value and currency code in extra columns for audit.</li>
+<li><b>Resolve language and encoding</b> · set everything to UTF-8, transliterate or translate category labels to one language, and map synonyms onto one vocabulary.</li>
+<li><b>Deduplicate</b> · the same customer may appear once per country file; match on a stable key and merge.</li>
+<li><b>Handle missing values</b> · decide per column whether to drop, impute or flag, and document the choice.</li>
+<li><b>Correct data types and units</b> · numbers stored as text, decimal commas vs points, kg vs lb, and remove stray whitespace.</li>
+<li><b>Validate against rules</b> · ranges, formats, referential checks · then <b>document every transformation</b> so the cleaning is reproducible.</li>
 </ol>
-<p style="font-size:9.1pt">Tie it back: this is step 2, <b>data cleaning</b>, of the five-step data science process in Volume I §4 — "removing errors, duplicates, spaces".</p>
+<p style="font-size:9.1pt">Tie it back: this is step 2, <b>data cleaning</b>, of the five-step data science process in Volume I §4 · "removing errors, duplicates, spaces".</p>
 </div>
 </div>
 
 <div class="grid2">
 <div>
 <h4>The hospital DBMS scenario <span class="tag">PAST Q · 8 MARKS</span></h4>
-<p style="font-size:9.1pt"><b>(i) Hardware required:</b> a database <b>server</b> with sufficient CPU and RAM · <b>storage</b> (RAID disks or SSD) sized for records and images · <b>backup storage</b> and an off-site copy · <b>client workstations</b> for wards and clinics · <b>networking</b> — switches, cabling, Wi-Fi for mobile devices · <b>UPS and power backup</b> · peripherals — scanners, barcode readers, printers.</p>
-<p style="font-size:9.1pt"><b>Software required:</b> a <b>DBMS</b> (Oracle, MySQL, SQL Server) · an <b>EHR application</b> front end · the <b>operating system</b> · <b>security software</b> — firewall, antivirus, encryption · <b>backup and recovery</b> software · reporting and analytics tools.</p>
-<p style="font-size:9.1pt"><b>(ii) Benefits</b> — quote Volume I: <b>reduced redundancy</b>, <b>data integrity</b>, <b>improved security</b>, <b>easy retrieval</b> and <b>multi-user access</b> (several clinicians reading one record at once), plus the sector benefits: <b>improved patient care, faster diagnosis, reduced errors</b> — and records that cannot be lost or misfiled as paper can.</p>
-<p style="font-size:9.1pt"><b>(iii) Implementation challenges</b> — <b>high cost</b> of hardware, licences and expertise · <b>data migration</b> of years of paper records, which must be digitised and validated · <b>staff training and resistance to change</b> · <b>data privacy and regulatory compliance</b> (HIPAA and local law) · <b>integration</b> with lab and imaging systems · <b>downtime and continuity</b> — a hospital cannot stop · ongoing <b>maintenance and the need for a database administrator</b>.</p>
+<p style="font-size:9.1pt"><b>(i) Hardware required:</b> a database <b>server</b> with sufficient CPU and RAM · <b>storage</b> (RAID disks or SSD) sized for records and images · <b>backup storage</b> and an off-site copy · <b>client workstations</b> for wards and clinics · <b>networking</b> · switches, cabling, Wi-Fi for mobile devices · <b>UPS and power backup</b> · peripherals · scanners, barcode readers, printers.</p>
+<p style="font-size:9.1pt"><b>Software required:</b> a <b>DBMS</b> (Oracle, MySQL, SQL Server) · an <b>EHR application</b> front end · the <b>operating system</b> · <b>security software</b> · firewall, antivirus, encryption · <b>backup and recovery</b> software · reporting and analytics tools.</p>
+<p style="font-size:9.1pt"><b>(ii) Benefits</b> · quote Volume I: <b>reduced redundancy</b>, <b>data integrity</b>, <b>improved security</b>, <b>easy retrieval</b> and <b>multi-user access</b> (several clinicians reading one record at once), plus the sector benefits: <b>improved patient care, faster diagnosis, reduced errors</b> · and records that cannot be lost or misfiled as paper can.</p>
+<p style="font-size:9.1pt"><b>(iii) Implementation challenges</b> · <b>high cost</b> of hardware, licences and expertise · <b>data migration</b> of years of paper records, which must be digitised and validated · <b>staff training and resistance to change</b> · <b>data privacy and regulatory compliance</b> (HIPAA and local law) · <b>integration</b> with lab and imaging systems · <b>downtime and continuity</b> · a hospital cannot stop · ongoing <b>maintenance and the need for a database administrator</b>.</p>
 </div>
 <div>
-<h4>Databases and data science — the relationship</h4>
-<p style="font-size:9.1pt">The relationship is <b>supply and consumption</b>. A database is the <b>organized, reliable store</b> where data is collected and kept with controlled redundancy and integrity; data science is the <b>discipline that extracts insight</b> from that data using algorithms and statistical methods. <b>Data science depends on databases</b> as its main source — the first of its five steps is "data is collected from databases, APIs and sensors" — and <b>without data, analysis is impossible</b>. Conversely, data science <b>feeds back into database design</b>: the queries analysts run drive which indexes are built, which is exactly the physical-design phase in §3. In short: <b>databases answer "what is stored"; data science answers "what does it mean"</b>.</p>
+<h4>Databases and data science · the relationship</h4>
+<p style="font-size:9.1pt">The relationship is <b>supply and consumption</b>. A database is the <b>organized, reliable store</b> where data is collected and kept with controlled redundancy and integrity; data science is the <b>discipline that extracts insight</b> from that data using algorithms and statistical methods. <b>Data science depends on databases</b> as its main source · the first of its five steps is "data is collected from databases, APIs and sensors" · and <b>without data, analysis is impossible</b>. Conversely, data science <b>feeds back into database design</b>: the queries analysts run drive which indexes are built, which is exactly the physical-design phase in §3. In short: <b>databases answer "what is stored"; data science answers "what does it mean"</b>.</p>
 <h4>Importance of data as a database component</h4>
-<p style="font-size:9.1pt">Of the four components — data, relationship, constraints, schema — <b>data is the substance and the other three exist only to serve it</b>. Relationships describe correspondences <i>between data elements</i>; constraints are predicates defining the correct state <i>of the data</i>; the schema describes how <i>the data</i> is organized. Without data the database is an empty structure of no value: it is what users query, what decisions are made from, and what the whole DBMS apparatus of storage, security, concurrency and recovery is built to protect.</p>
+<p style="font-size:9.1pt">Of the four components · data, relationship, constraints, schema · <b>data is the substance and the other three exist only to serve it</b>. Relationships describe correspondences <i>between data elements</i>; constraints are predicates defining the correct state <i>of the data</i>; the schema describes how <i>the data</i> is organized. Without data the database is an empty structure of no value: it is what users query, what decisions are made from, and what the whole DBMS apparatus of storage, security, concurrency and recovery is built to protect.</p>
 </div>
 </div>
 
@@ -729,7 +729,7 @@ HAVING COUNT(*) = (SELECT COUNT(*) FROM committee
 <div class="grid2">
 <div class="box">
 <h4>The ER model</h4>
-A <b>conceptual, graphical data model</b> that represents the data requirements of a system as <b>entities</b>, the <b>attributes</b> describing them and the <b>relationships</b> among them. It is <b>DBMS-independent</b> and is the output of the conceptual design phase — the blueprint later mapped onto tables.
+A <b>conceptual, graphical data model</b> that represents the data requirements of a system as <b>entities</b>, the <b>attributes</b> describing them and the <b>relationships</b> among them. It is <b>DBMS-independent</b> and is the output of the conceptual design phase · the blueprint later mapped onto tables.
 </div>
 <div class="box">
 <h4>The relational model</h4>
@@ -738,23 +738,23 @@ A data model that <b>stores data in the form of tables (relations)</b> of rows a
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">9</span>Coverage map — where every past-paper question is answered</h2>
+<h2><span class="n">9</span>Coverage map · where every past-paper question is answered</h2>
 
 <table class="tight">
 <thead><tr><th style="width:8%">Paper</th><th style="width:8%">Q</th><th style="width:38%">Topic</th><th>Answered in</th></tr></thead>
 <tbody>
-<tr><td rowspan="7"><b>DTS 304</b><br>14/07/2026<br><i>this lecturer</i></td><td class="c">1</td><td>Hospital DBMS — hardware, software, benefits, challenges · logical independence · data as a component · consent</td><td>Vol III §8 · Vol I §10, §8, §7</td></tr>
+<tr><td rowspan="7"><b>DTS 304</b><br>14/07/2026<br><i>this lecturer</i></td><td class="c">1</td><td>Hospital DBMS · hardware, software, benefits, challenges · logical independence · data as a component · consent</td><td>Vol III §8 · Vol I §10, §8, §7</td></tr>
 <tr><td class="c">2</td><td>Databases and data science · data masking · data vs information · the data lifecycle</td><td>Vol III §8 · <b>Vol I §7, §2, §3</b></td></tr>
 <tr><td class="c">3</td><td>Data cleaning plan · indexing at 20 M records · GPS and decision-making · classifying data formats</td><td>Vol III §8 · <b>Vol I §5, §11, §4</b></td></tr>
 <tr><td class="c">4</td><td><b>ER diagram for a bank (14 marks)</b></td><td><b>Vol III §1</b></td></tr>
 <tr><td class="c">5</td><td>Committee queries (any one / at least all / exactly) · office building · password policy</td><td><b>Vol III §4 · §8</b></td></tr>
 <tr><td class="c">6</td><td><b>Phases of query processing</b> · debugging two SQL queries</td><td><b>Vol III §2</b></td></tr>
 <tr><td class="c">7</td><td><b>Phases of data design</b> · concurrent execution and concurrency control · define transaction</td><td><b>Vol III §3 · §6</b></td></tr>
-<tr><td rowspan="7"><b>CMS 445</b><br>2022/2023</td><td class="c">1</td><td>Five SQL queries on an EMP table</td><td>Vol II §3 — every one worked</td></tr>
+<tr><td rowspan="7"><b>CMS 445</b><br>2022/2023</td><td class="c">1</td><td>Five SQL queries on an EMP table</td><td>Vol II §3 · every one worked</td></tr>
 <tr><td class="c">2</td><td>Transaction concept, delimiters, properties, operations</td><td><b>Vol III §6</b></td></tr>
-<tr><td class="c">3</td><td>Functional dependency — definition, four types, three advantages</td><td><b>Vol III §5</b></td></tr>
+<tr><td class="c">3</td><td>Functional dependency · definition, four types, three advantages</td><td><b>Vol III §5</b></td></tr>
 <tr><td class="c">4</td><td>Insert/update/delete anomalies · replication and fragmentation · transparency</td><td><b>Vol III §5 · §7</b></td></tr>
-<tr><td class="c">5</td><td>Distributed databases — advantages, comparison, homogeneous vs heterogeneous, fragmentation</td><td><b>Vol III §7</b></td></tr>
+<tr><td class="c">5</td><td>Distributed databases · advantages, comparison, homogeneous vs heterogeneous, fragmentation</td><td><b>Vol III §7</b></td></tr>
 <tr><td class="c">6</td><td>Commit and two-phase commit · optimistic and pessimistic locking · transaction states</td><td><b>Vol III §6</b></td></tr>
 <tr><td class="c">7</td><td>Define the ER model and the relational model</td><td><b>Vol III §8</b> · Vol I §9</td></tr>
 </tbody>

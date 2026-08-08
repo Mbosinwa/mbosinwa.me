@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 709 Lexical Analysis — Lecture Notes — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 709 Lexical Analysis: Lecture Notes · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 709 Compiler Construction: Tokens, patterns and lexemes, finite automata and scanner design.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/notes.html">
-    <meta property="og:title" content="CMS 709 Lexical Analysis — Lecture Notes — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 709 Lexical Analysis: Lecture Notes · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 709 Compiler Construction: Tokens, patterns and lexemes, finite automata and scanner design.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/notes.html">
-    <meta property="twitter:title" content="CMS 709 Lexical Analysis — Lecture Notes — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 709 Lexical Analysis: Lecture Notes · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 709 Compiler Construction: Tokens, patterns and lexemes, finite automata and scanner design.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -60,7 +60,7 @@
         </div>
     </nav>
     <main class="container">
-        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/">CMS 709 Compiler Construction</a> / Lexical Analysis — Lecture Notes</p>
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/">CMS 709 Compiler Construction</a> / Lexical Analysis: Lecture Notes</p>
         <div class="doc-actions">
             <button id="copy-md" data-md="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/notes.md">Copy as Markdown</button>
             <a href="/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/notes.md" download="CMS-709-notes.md">Download .md</a>
@@ -102,10 +102,10 @@ Parser</p>
 <h2 id="why-separate-la-from-syntax-analysis">Why Separate LA from
 Syntax Analysis?</h2>
 <ul>
-<li><strong>(i)</strong> Simplification of design — software engineering
+<li><strong>(i)</strong> Simplification of design, software engineering
 reasons.</li>
 <li><strong>(ii)</strong> I/O issues are limited in LA alone.</li>
-<li><strong>(iii)</strong> More compact and faster parser — slimming the
+<li><strong>(iii)</strong> More compact and faster parser, slimming the
 grammar (by eliminating comments, blanks, etc.) makes the parser
 faster.</li>
 <li><strong>(iv)</strong> LA based on Finite Automata are more efficient
@@ -118,7 +118,7 @@ stack).</li>
 <p>Also called "word". Is:</p>
 <ul>
 <li><strong>(i)</strong> A string of characters which logically belong
-together — float, identifier, equal, minus, operators, constants,
+together, float, identifier, equal, minus, operators, constants,
 etc.</li>
 <li>Tokens are treated as terminal symbols of grammars specifying the
 source language.</li>
@@ -138,7 +138,7 @@ token. e.g.: <code>"num"</code> or <code>"float"</code>,
 <code>"abs_zero_kelvin"</code>, <code>"e_yn_m"</code>, <code>273</code>,
 <code>"."</code>, etc.</p>
 <hr />
-<h2 id="example--tokens-lexemes-and-patterns">Example — Tokens, Lexemes
+<h2 id="example-tokens-lexemes-and-patterns">Example: Tokens, Lexemes
 and Patterns</h2>
 <table>
 <thead>
@@ -198,7 +198,7 @@ tokens into their associated attributes.</p>
 <hr />
 <h2 id="tokens-in-practice-attributes">Tokens in Practice
 (Attributes)</h2>
-<p>In practice, a token has only a single attribute — a pointer to the
+<p>In practice, a token has only a single attribute, a pointer to the
 symbol table entry in which the info about the token is kept such
 as:</p>
 <ul>
@@ -243,9 +243,9 @@ design.</li>
 if, else, etc. in C/C++, but not in PL/1.</li>
 <li>In FORTRAN, some keywords are context-dependent. e.g.:
 <ul>
-<li><code>DO100I = 100,2</code> — <code>DO100I</code> is an identifier,
+<li><code>DO100I = 100,2</code>, <code>DO100I</code> is an identifier,
 and <code>DO</code> is not a keyword; but</li>
-<li><code>DO 100 = 10,2</code> — <code>DO</code> is a keyword.</li>
+<li><code>DO 100 = 10,2</code>, <code>DO</code> is a keyword.</li>
 <li>Such features require substantial lookahead for resolution.</li>
 </ul></li>
 <li>In FORTRAN, blanks are not significant and can appear in the midst
@@ -277,8 +277,8 @@ specification using LEX.</p>
 <p>Transition Diagrams (TD) are usually used to model LA by translating
 them to programs by hand.</p>
 <hr />
-<h2 id="type-0--type-3-languages">Type 0 — Type 3 Languages</h2>
-<p>Type 0 — Type 3 languages are finite representations of respective
+<h2 id="type-0-type-3-languages">Type 0: Type 3 Languages</h2>
+<p>Type 0, Type 3 languages are finite representations of respective
 languages.</p>
 <h3 id="examples-of-languages">Examples of Languages</h3>
 <p>Let <strong>Σ = {a, b, c}</strong></p>
@@ -316,8 +316,7 @@ language over the alphabet Σ.</li>
 </ul></li>
 </ul>
 <hr />
-<h2 id="input-buffering--general-idea">Input Buffering — General
-Idea</h2>
+<h2 id="input-buffering-general-idea">Input Buffering: General Idea</h2>
 <ul>
 <li>We use a buffer divided into 2-N character halves.</li>
 <li>We read N input xtrs into each half of the buffer with one system
@@ -388,16 +387,16 @@ Automata).</p>
 <p>TDs depict the actions that take place when the lexer is called by
 the parser to get the next token.</p>
 <hr />
-<h2 id="example--fsa-vs-td-diagrams">Example — FSA vs TD Diagrams</h2>
-<h3 id="fig-a--fsa-for-digits">Fig (a) — FSA for digits</h3>
+<h2 id="example-fsa-vs-td-diagrams">Example: FSA vs TD Diagrams</h2>
+<h3 id="fig-a-fsa-for-digits">Fig (a): FSA for digits</h3>
 <pre class="mermaid"><code>stateDiagram-v2
     direction LR
     [*] --&gt; 0
     0 --&gt; 1 : [0-9]
     1 --&gt; 1 : [0-9]
     1 --&gt; [*]</code></pre>
-<h3 id="fig-b--td-for-digits-with-retraction">Fig (b) — TD for digits
-with retraction</h3>
+<h3 id="fig-b-td-for-digits-with-retraction">Fig (b): TD for digits with
+retraction</h3>
 <pre class="mermaid"><code>stateDiagram-v2
     direction LR
     [*] --&gt; 0
@@ -477,8 +476,8 @@ specification.</li>
 </ul>
 <hr />
 <h2
-id="td-example-1--combined-td-for-identifiers-keywords-and-numbers">TD
-Example 1 — Combined TD for Identifiers, Keywords and Numbers</h2>
+id="td-example-1-combined-td-for-identifiers-keywords-and-numbers">TD
+Example 1: Combined TD for Identifiers, Keywords and Numbers</h2>
 <pre class="mermaid"><code>flowchart LR
     0 --&gt;|letter| 1
     0 --&gt;|digit| 3
@@ -495,8 +494,8 @@ Example 1 — Combined TD for Identifiers, Keywords and Numbers</h2>
     9 --&gt;|other *| 11</code></pre>
 <hr />
 <h2
-id="td-example-2--unsignedsigned-integers-addition--and-increment-">TD
-Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
+id="td-example-2-unsignedsigned-integers-addition--and-increment-">TD
+Example 2: Unsigned/Signed Integers, Addition (+) and Increment
 (++)</h2>
 <pre class="mermaid"><code>flowchart LR
     0 --&gt;|digit| 6
@@ -510,7 +509,7 @@ Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
     6 --&gt;|+| 8
     8 --&gt;|digit| 6</code></pre>
 <hr />
-<h2 id="transition-table--td-example-2">Transition Table — TD Example
+<h2 id="transition-table-td-example-2">Transition Table: TD Example
 2</h2>
 <table>
 <thead>
@@ -529,22 +528,22 @@ Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
 <td>1</td>
 <td>8</td>
 <td>6</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
 </tr>
 <tr>
 <td>1</td>
 <td>3</td>
 <td>2</td>
 <td>2</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
 </tr>
 <tr>
 <td>2</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
+<td>,</td>
 <td>ADD</td>
 <td>1</td>
 </tr>
@@ -553,22 +552,22 @@ Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
 <td>5</td>
 <td>4</td>
 <td>4</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
 </tr>
 <tr>
 <td>4</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
+<td>,</td>
 <td>ADD</td>
 <td>2</td>
 </tr>
 <tr>
 <td>5</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
+<td>,</td>
 <td>INCR</td>
 <td>2 (or 0)</td>
 </tr>
@@ -577,14 +576,14 @@ Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
 <td>7</td>
 <td>6</td>
 <td>6</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
 </tr>
 <tr>
 <td>7</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
+<td>,</td>
 <td>INTEGER</td>
 <td>1</td>
 </tr>
@@ -592,9 +591,9 @@ Example 2 — Unsigned/Signed Integers, Addition (+) and Increment
 <td>8</td>
 <td>error</td>
 <td>error</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
+<td>,</td>
+<td>,</td>
+<td>,</td>
 </tr>
 </tbody>
 </table>
@@ -669,14 +668,14 @@ an identifier instead).</p></li>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

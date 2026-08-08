@@ -7,7 +7,7 @@
 
 ## Course Overview
 
-CMS705 Programming Languages examines how programming languages are designed, defined, and implemented — from the linguistic foundations that describe their structure, to the runtime mechanisms that execute them. The course spans language theory (syntax, semantics, pragmatics), data representation (types and data structures), program control (control structures and data flow), and language processing (lexical analysis, parsing, interpretation, and compilation). It provides the theoretical grounding behind every programming language a software engineer uses in practice.
+CMS705 Programming Languages examines how programming languages are designed, defined, and implemented, from the linguistic foundations that describe their structure, to the runtime mechanisms that execute them. The course spans language theory (syntax, semantics, pragmatics), data representation (types and data structures), program control (control structures and data flow), and language processing (lexical analysis, parsing, interpretation, and compilation). It provides the theoretical grounding behind every programming language a software engineer uses in practice.
 
 ---
 
@@ -134,12 +134,12 @@ Programming Languages (CMS705)
 
 ## Central Concepts
 
-These are the most connected concepts in the course — master these first:
+These are the most connected concepts in the course, master these first:
 
 | Concept | Connections | Why Central |
 |---------|-------------|-------------|
-| **Syntax** | 5 | Core of language structure, lexical analysis, parsing, readability/writability — appears in every topic |
-| **Data Flow** | 6 | Ties together control structures, memory, functions, runtime — underpins all of computer science |
+| **Syntax** | 5 | Core of language structure, lexical analysis, parsing, readability/writability, appears in every topic |
+| **Data Flow** | 6 | Ties together control structures, memory, functions, runtime, underpins all of computer science |
 | **Control Structures** | 5 | Directly determines how data flows; connects selection, iteration, jump, and sequential logic |
 | **Compilation vs Interpretation** | 5 | Core of runtime considerations and interpretative language topics; determines execution model |
 | **Static vs Dynamic Semantics** | 4 | Bridges language definition theory with runtime behaviour; essential for understanding type systems |
@@ -151,21 +151,21 @@ These are the most connected concepts in the course — master these first:
 
 Recommended study order based on dependencies:
 
-1. **What is a Language?** — establish the conceptual foundation
-2. **Language Structure** (Phonology, Morphology, Syntax, Semantics, Pragmatics) — understand the components
-3. **Static vs Dynamic Semantics** — understand how languages are precisely defined
-4. **Types of Language** (Machine → Assembly → Middle → High-level) — understand abstraction levels
-5. **Lexical Analysis and Parsing** — apply Phonology, Morphology, Syntax to language processing
-6. **Primitive Data Types** — foundation of all data representation
-7. **Non-Primitive Data Types** — built from primitives; adds complexity
-8. **Stack and Heap Memory** — understand how data is stored at runtime
-9. **Linear Data Structures** (Array, Linked List, Stack, Queue) — sequential organisation
-10. **Non-linear Data Structures** (Tree, Graph, Heap) — hierarchical and complex organisation
-11. **Control Structures** — how programs direct execution flow
-12. **Data Flow** (Sequential, Conditional, Iterative, Procedural) — how data moves through programs
-13. **Explicit vs Implicit Data Flow** — visibility and traceability of data movement
-14. **Implementation Methods** (Assembly, Compilation, Interpretation) — translating programs to machine code
-15. **JIT Compilation and Interpretative Languages** — hybrid execution models; Java/JVM
+1. **What is a Language?**: establish the conceptual foundation
+2. **Language Structure** (Phonology, Morphology, Syntax, Semantics, Pragmatics), understand the components
+3. **Static vs Dynamic Semantics**: understand how languages are precisely defined
+4. **Types of Language** (Machine → Assembly → Middle → High-level), understand abstraction levels
+5. **Lexical Analysis and Parsing**: apply Phonology, Morphology, Syntax to language processing
+6. **Primitive Data Types**: foundation of all data representation
+7. **Non-Primitive Data Types**: built from primitives; adds complexity
+8. **Stack and Heap Memory**: understand how data is stored at runtime
+9. **Linear Data Structures** (Array, Linked List, Stack, Queue), sequential organisation
+10. **Non-linear Data Structures** (Tree, Graph, Heap), hierarchical and complex organisation
+11. **Control Structures**: how programs direct execution flow
+12. **Data Flow** (Sequential, Conditional, Iterative, Procedural), how data moves through programs
+13. **Explicit vs Implicit Data Flow**: visibility and traceability of data movement
+14. **Implementation Methods** (Assembly, Compilation, Interpretation), translating programs to machine code
+15. **JIT Compilation and Interpretative Languages**: hybrid execution models; Java/JVM
 
 ---
 
@@ -177,10 +177,10 @@ Recommended study order based on dependencies:
 | Phonology | Study of smallest units (tokens/phonemes) in a language |
 | Morphology | Study of how tokens/words are formed from root elements |
 | Syntax | Rules governing how tokens are arranged into valid programs |
-| Semantics | The meaning of programs — what they actually do |
+| Semantics | The meaning of programs, what they actually do |
 | Pragmatics | Practical usage of a language; readability, writability, efficiency |
-| Static Semantics | Compile-time checks — type compatibility, variable declarations |
-| Dynamic Semantics | Runtime behaviour — how values are computed and change during execution |
+| Static Semantics | Compile-time checks, type compatibility, variable declarations |
+| Dynamic Semantics | Runtime behaviour, how values are computed and change during execution |
 | Data Type | Classification of what kind of data a variable holds and what operations are allowed |
 | Primitive Type | Built-in, fixed-size type (int, float, char, bool, void) |
 | Non-Primitive Type | Complex, reference-based type built from primitives (String, Array, Class) |
@@ -202,16 +202,16 @@ Recommended study order based on dependencies:
 ## Tutor Reference Notes
 
 
-- **Best entry-point concept:** Start with *Language Structure* (Phonology → Morphology → Syntax) — it unifies linguistics and programming language theory and is the backbone of topics 1 and 5
+- **Best entry-point concept:** Start with *Language Structure* (Phonology → Morphology → Syntax), it unifies linguistics and programming language theory and is the backbone of topics 1 and 5
 - **Most common misconceptions:**
   - Confusing *Syntax errors* (Static Semantics) with *Logic errors* (Dynamic Semantics)
-  - Thinking *Interpretation* is always slower than *Compilation* — JIT narrows this gap significantly
-  - Conflating *Stack (data structure)* with *Stack Memory* — same LIFO principle, different contexts
-  - Assuming *Non-primitive types* are always on the Heap — compiler/language dependent
+  - Thinking *Interpretation* is always slower than *Compilation*, JIT narrows this gap significantly
+  - Conflating *Stack (data structure)* with *Stack Memory*, same LIFO principle, different contexts
+  - Assuming *Non-primitive types* are always on the Heap, compiler/language dependent
 - **Concepts students typically conflate:**
   - Static Semantics ↔ Dynamic Semantics
   - Stack (data structure) ↔ Stack Memory
   - Compilation ↔ JIT Compilation
   - Explicit Data Flow ↔ Implicit Data Flow
   - Middle-level Language ↔ Low-level Language
-- **Mbosinwa's context:** Strong software engineering background — connect theoretical concepts to practical tools he already uses (e.g. JIT → JVM in Java, Heap → `new`/`delete` in C++, Syntax → compiler errors he's seen). Over-explain by default; he will say if he needs less detail.
+- **Mbosinwa's context:** Strong software engineering background, connect theoretical concepts to practical tools he already uses (e.g. JIT → JVM in Java, Heap → `new`/`delete` in C++, Syntax → compiler errors he's seen). Over-explain by default; he will say if he needs less detail.

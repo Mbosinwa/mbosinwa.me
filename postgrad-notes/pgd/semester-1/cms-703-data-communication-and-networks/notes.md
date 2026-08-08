@@ -13,11 +13,11 @@ It is the sharing of information locally or remotely.
 
 A **Data Communication System** has five components that make up the data communication system:
 
-1. **Message** — refers to the data (information) to be transmitted (e.g. pictures, text, audio, numbers, etc.)
-2. **Sender** — originating device from which the data is sent (e.g. mobile phone, computer, camera, etc.)
-3. **Receiver** — the destination device that will receive the message (e.g. mobile phone, television, etc.)
-4. **Transmission Medium** — the physical path where the message travels (or passes) from the sender point to the receiving point (e.g. twisted pair wire, coaxial cable, fibre-optic cable, radio waves, etc.)
-5. **Protocol** — a set of rules that guide data communication. It enables synchronization between the sender and receiver.
+1. **Message**: refers to the data (information) to be transmitted (e.g. pictures, text, audio, numbers, etc.)
+2. **Sender**: originating device from which the data is sent (e.g. mobile phone, computer, camera, etc.)
+3. **Receiver**: the destination device that will receive the message (e.g. mobile phone, television, etc.)
+4. **Transmission Medium**: the physical path where the message travels (or passes) from the sender point to the receiving point (e.g. twisted pair wire, coaxial cable, fibre-optic cable, radio waves, etc.)
+5. **Protocol**: a set of rules that guide data communication. It enables synchronization between the sender and receiver.
 
 ```mermaid
 flowchart LR
@@ -35,7 +35,7 @@ The data that is communicated can be in different forms and has its representati
 
 ### Text
 
-Represented by bit patterns — a collection of binary bits (0s or 1s).
+Represented by bit patterns, a collection of binary bits (0s or 1s).
 
 There are different sets of bit patterns (codes) used to represent text symbols and each set is called a **code**. The mostly used code is called **Unicode**. It uses 32 bits for a symbol or character in any language globally. The ASCII code makes up 127 characters on the Unicode and is referred to as Basic Latin.
 
@@ -43,7 +43,7 @@ There are different sets of bit patterns (codes) used to represent text symbols 
 
 ### Images
 
-Also represented by bit patterns. Composed of a matrix of pixels (picture elements). The size of the pixel depends on the **resolution**. An image divided into pixels — each pixel is assigned a bit pattern and the value and size depend on the image. For example:
+Also represented by bit patterns. Composed of a matrix of pixels (picture elements). The size of the pixel depends on the **resolution**. An image divided into pixels, each pixel is assigned a bit pattern and the value and size depend on the image. For example:
 - Black pixel assigned to `00`
 - Dark grey pixel assigned to `01`
 - Light grey pixel assigned to `10`
@@ -57,7 +57,7 @@ Has a continuous signal and not discrete. Can be changed to digital. Represented
 
 ### Video
 
-Can be a continuous entity or a combination of images. Can be changed to digital or analog (voltage, current, electromagnetic wave). To transmit a continuous signal digitally, it must first be **sampled** or **quantized** — the signal is measured at regular intervals. To quantize it, each sample is approximated with a finite set of values, and the values are represented as bit patterns which is called **Encoding**.
+Can be a continuous entity or a combination of images. Can be changed to digital or analog (voltage, current, electromagnetic wave). To transmit a continuous signal digitally, it must first be **sampled** or **quantized**: the signal is measured at regular intervals. To quantize it, each sample is approximated with a finite set of values, and the values are represented as bit patterns which is called **Encoding**.
 
 ---
 
@@ -120,17 +120,17 @@ Usually found in backbone networks. Has wide bandwidth and is cost-effective. Ca
 #### Advantages of Fibre-Optic Cable
 
 1. High bandwidth
-2. Less signal attenuation — 8km for 50km vs coaxial or twisted pairs that need repeaters every 5km
+2. Less signal attenuation, 8km for 50km vs coaxial or twisted pairs that need repeaters every 5km
 3. Immunity to electromagnetic interference (EM noise cannot affect it)
 4. Resistance to corrosive materials (glass)
-5. Light weight — much lighter
+5. Light weight, much lighter
 6. Higher immunity to tapping (copper cables create antenna effects that can be tapped)
 
 #### Disadvantages of Fibre-Optic Cable
 
 1. Installation and maintenance require expertise
 2. Expensive to install
-3. Fragile — can be broken if bent too sharply or under excessive pressure
+3. Fragile, can be broken if bent too sharply or under excessive pressure
 
 ---
 
@@ -143,7 +143,7 @@ Signal travels from source to destination in 3 ways:
 
 ### Radio Waves
 
-Characterized by frequencies ranging between **3 KHz and 1 GHz**. Can be **omnidirectional** — sending and receiving antennas don't have to be aligned. Radio waves propagated in sky mode travel long distances, appropriate for broadcasting (AM radio). The radio wave band is relatively small (less than 1 GHz) compared to microwaves. Used for multicasting — one sender and many receivers.
+Characterized by frequencies ranging between **3 KHz and 1 GHz**. Can be **omnidirectional**: sending and receiving antennas don't have to be aligned. Radio waves propagated in sky mode travel long distances, appropriate for broadcasting (AM radio). The radio wave band is relatively small (less than 1 GHz) compared to microwaves. Used for multicasting, one sender and many receivers.
 
 - **Examples:** AM and FM radio, TV, Maritime radio, cordless microphones, paging.
 
@@ -153,7 +153,7 @@ Electromagnetic waves with frequencies ranging between **1 and 300 GHz**. Microw
 
 #### Characteristics of Microwave Signals
 
-1. **Line-of-sight propagation** — positioned towers or mounted antennas to avoid curvature of the earth. For very distant communication, repeaters are required.
+1. **Line-of-sight propagation**: positioned towers or mounted antennas to avoid curvature of the earth. For very distant communication, repeaters are required.
 2. Very high frequency microwaves cannot pass through walls.
 3. Relatively wide band of about 299 GHz. Wider sub-bands can be allocated to achieve a high data rate.
 4. Some part of the band restricted, requires permission of regulatory authorities.
@@ -172,10 +172,10 @@ A concept that analyses a function of time to generate a function of frequencies
 
 ### Applications of Fourier Analysis
 
-1. **Engineering and Signal Processing** — to filter noise, data analysis, compress signals
-2. **Physics** — important for acoustics, optics and quantum mechanics
-3. **Neuroscience** — for analysing time series data to find hidden rhythms in neural recordings
-4. **Mathematics** — for reducing complex differential equations to simpler algebraic ones
+1. **Engineering and Signal Processing**: to filter noise, data analysis, compress signals
+2. **Physics**: important for acoustics, optics and quantum mechanics
+3. **Neuroscience**: for analysing time series data to find hidden rhythms in neural recordings
+4. **Mathematics**: for reducing complex differential equations to simpler algebraic ones
 
 ---
 
@@ -212,12 +212,12 @@ Where:
   - sinx → the **fundamental frequency**
   - sin(3x) → the **harmonics** (exact multiple of the fundamental frequency)
 
-- The **amplitude** is how high or low the wave is — controls the size of the wave.
+- The **amplitude** is how high or low the wave is, controls the size of the wave.
   - E.g. y = A sin(θ). If A = 1, the wave moves amplitude from +1 to −1.
 
 Given `f(x) = (4/π)[sin(x)/1 + sin(3x)/3 + sin(5x)/5 + sin(7x)/7 + ...]` this approximates a square wave.
 
-### Fourier Series of a Square Wave — Worked Example
+### Fourier Series of a Square Wave: Worked Example
 
 Given:
 
@@ -298,10 +298,10 @@ f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega)\,e^{i\omega t}\,d\omega
 
 ### Applications of Fourier Transform
 
-1. **Signal Processing** — Compression, Filtering, Modulation
-2. **Image Processing** — Edge detection, Blurring, Sharpening
-3. **Physics** — Solving wave and heat equations
-4. **Engineering** — Analyze vibrations, circuits and control systems
+1. **Signal Processing**: Compression, Filtering, Modulation
+2. **Image Processing**: Edge detection, Blurring, Sharpening
+3. **Physics**: Solving wave and heat equations
+4. **Engineering**: Analyze vibrations, circuits and control systems
 
 ### Fourier Transform of a Square Pulse
 
@@ -342,7 +342,7 @@ Designing a system that will transmit digital data over a physical medium (e.g. 
 **Solution approach:**
 
 1. **Model the signal** (e.g. square pulses)
-2. **Apply Fourier Transform** — transforms into Sinc function
+2. **Apply Fourier Transform**: transforms into Sinc function
 3. **Analyze the spectrum:**
    - Identify the dominant frequencies
    - Determine the bandwidth needed to transmit without distortion
@@ -353,7 +353,7 @@ flowchart LR
     A["Digital Signal\n(binary 1,0)"] --> B["Fourier Transform\n(Sinc-like spectrum)"] --> C["Low-pass Filter\n(removes high frequencies)"]
 ```
 
-> Engineers can use this to allocate frequency bands in WiFi, 4G, and 5G. This principle powers **OFDM (Orthogonal Frequency Division Multiplexing)** — a core technology in 5G and LTE (Long Term Evolution).
+> Engineers can use this to allocate frequency bands in WiFi, 4G, and 5G. This principle powers **OFDM (Orthogonal Frequency Division Multiplexing)**: a core technology in 5G and LTE (Long Term Evolution).
 
 ---
 
@@ -367,7 +367,7 @@ Method where data is transmitted **one bit after another** over a single communi
 
 #### Advantages of Serial Transmission
 
-1. Cost effective — requires fewer cables or wire
+1. Cost effective, requires fewer cables or wire
 2. Reliable over long distances (less signal distortion and data corruption)
 3. Widely used in modern networks (e.g. USB, Ethernet, serial ports RS-232)
 
@@ -390,7 +390,7 @@ Method where **multiple bits are transmitted simultaneously** across multiple ch
 
 #### Disadvantages of Parallel Data Transmission
 
-1. Expensive — requires more wires and connectors
+1. Expensive, requires more wires and connectors
 2. Signal might be skewed (bits arriving at different times)
 3. Not suitable for long distances due to interference and synchronization issues (e.g. computer buses, data bus in CPU, printer connections, internal memory transfer)
 
@@ -398,10 +398,10 @@ Method where **multiple bits are transmitted simultaneously** across multiple ch
 
 | Technology | Transmission Type |
 |---|---|
-| Telephone Network (Digital Telephony) | Serial — voice sent bit by bit over T1, E1 lines |
-| Fibre Optic Communication | Serial — light pulses in a single stream (Internet backbone, undersea cables) |
-| Satellite Communication | Serial — bit streams before modulation and transmission |
-| Wireless (WiFi, 4G/5G) | Serial — data packets transmitted one bit after another over radio waves |
+| Telephone Network (Digital Telephony) | Serial, voice sent bit by bit over T1, E1 lines |
+| Fibre Optic Communication | Serial, light pulses in a single stream (Internet backbone, undersea cables) |
+| Satellite Communication | Serial, bit streams before modulation and transmission |
+| Wireless (WiFi, 4G/5G) | Serial, data packets transmitted one bit after another over radio waves |
 
 ### Serial Communication Applications in Embedded Systems
 
@@ -427,10 +427,10 @@ Characterized by **character-by-character** framing with Start and Stop bits. No
 | Start bit | D0 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | [Parity] | Stop bit |
 ```
 
-- **Start bit** — signals beginning of the character
-- **Data bits** — 7 or 8 bits (actual information)
-- **Parity bit** — optional, for error detection
-- **Stop bit** — signals end of the character
+- **Start bit**: signals beginning of the character
+- **Data bits**: 7 or 8 bits (actual information)
+- **Parity bit**: optional, for error detection
+- **Stop bit**: signals end of the character
 
 #### Advantages of Asynchronous Transmission
 

@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 701 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 701 Knowledge Map · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 701 Operating Systems: Topic and concept map of the whole course, with relationships and entry points.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/knowledge-map.html">
-    <meta property="og:title" content="CMS 701 Knowledge Map — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 701 Knowledge Map · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 701 Operating Systems: Topic and concept map of the whole course, with relationships and entry points.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-701-operating-systems/knowledge-map.html">
-    <meta property="twitter:title" content="CMS 701 Knowledge Map — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 701 Knowledge Map · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 701 Operating Systems: Topic and concept map of the whole course, with relationships and entry points.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -78,7 +78,7 @@ Systems (CMS701)</h1>
 an OS manages hardware and software resources. The course progresses
 from OS architecture (kernels, system calls) through process and thread
 management, CPU scheduling algorithms, multithreading models, and
-concludes with process synchronization — the mechanisms that keep
+concludes with process synchronization, the mechanisms that keep
 concurrent processes safe and consistent. Two topics from the outline
 (Spooling, Mechanisms &amp; Policies) are not yet covered in available
 lecture notes.</p>
@@ -256,20 +256,20 @@ Quantum</strong> size</li>
 </ul>
 <h3 id="contrast-contrasts-with">Contrast (Contrasts-with)</h3>
 <ul>
-<li><strong>Monolithic Kernel</strong> vs <strong>Microkernel</strong> —
+<li><strong>Monolithic Kernel</strong> vs <strong>Microkernel</strong>:
 performance vs. stability/modularity</li>
 <li><strong>Preemptive</strong> vs <strong>Non-Preemptive</strong>
-Scheduling — OS control vs. process control</li>
+Scheduling, OS control vs. process control</li>
 <li><strong>User-Level Thread</strong> vs <strong>Kernel-Level
-Thread</strong> — speed vs. multiprocessor power</li>
-<li><strong>Many-to-One</strong> vs <strong>One-to-One</strong> Model —
+Thread</strong>: speed vs. multiprocessor power</li>
+<li><strong>Many-to-One</strong> vs <strong>One-to-One</strong> Model,
 efficiency vs. true parallelism</li>
-<li><strong>Process</strong> vs <strong>Thread</strong> —
+<li><strong>Process</strong> vs <strong>Thread</strong>:
 heavyweight/isolated vs. lightweight/shared</li>
 </ul>
 <hr />
 <h2 id="central-concepts">Central Concepts</h2>
-<p>These are the most connected concepts in the course — master these
+<p>These are the most connected concepts in the course, master these
 first:</p>
 <table>
 <thead>
@@ -337,7 +337,7 @@ starvation</td>
         ↓
 5. Process State Models (2-state → 5-state → 7-state)
         ↓
-6. Process Control Block — PCB (what data the OS tracks)
+6. Process Control Block, PCB (what data the OS tracks)
         ↓
 7. Context Switching (how the OS switches between processes)
         ↓
@@ -520,7 +520,7 @@ status)</td>
 </tr>
 <tr>
 <td><strong>Spooling</strong></td>
-<td>⚠ Pending — not yet covered in available lecture notes</td>
+<td>⚠ Pending, not yet covered in available lecture notes</td>
 </tr>
 </tbody>
 </table>
@@ -529,45 +529,45 @@ status)</td>
 <p><em>For use during learning sessions:</em></p>
 <ul>
 <li><p><strong>Best entry-point concept:</strong> Start with
-<em>Process</em> — it anchors topics 3 through 7 and gives Mbosinwa (a
+<em>Process</em>, it anchors topics 3 through 7 and gives Mbosinwa (a
 software engineer) an immediately relatable mental model (every app he
 has built runs as processes).</p></li>
 <li><p><strong>Most common misconceptions in this course:</strong></p>
 <ol type="1">
-<li>Confusing <em>context switch</em> with <em>process switch</em> — a
+<li>Confusing <em>context switch</em> with <em>process switch</em>, a
 context switch is the mechanism; a process switch is the event that
 triggers it.</li>
-<li>Thinking <em>multithreading</em> = <em>multiprocessing</em> —
-threads share memory; processes do not.</li>
-<li>Assuming <em>Shortest Job First</em> is always best — it causes
+<li>Thinking <em>multithreading</em> = <em>multiprocessing</em>, threads
+share memory; processes do not.</li>
+<li>Assuming <em>Shortest Job First</em> is always best, it causes
 starvation in practice.</li>
-<li>Thinking <em>deadlock</em> and <em>starvation</em> are the same —
+<li>Thinking <em>deadlock</em> and <em>starvation</em> are the same,
 deadlock is a circular wait (no one proceeds); starvation is unfair
 scheduling (one never proceeds).</li>
 </ol></li>
 <li><p><strong>Concepts students typically conflate:</strong></p>
 <ul>
-<li><strong>Deadlock</strong> vs <strong>Starvation</strong> — both mean
+<li><strong>Deadlock</strong> vs <strong>Starvation</strong>: both mean
 a process never runs, but deadlock is a circular dependency; starvation
 is a scheduling fairness failure.</li>
-<li><strong>Preemptive</strong> vs <strong>Non-Preemptive</strong> —
-easy to mix up which is "interruptible."</li>
+<li><strong>Preemptive</strong> vs <strong>Non-Preemptive</strong>: easy
+to mix up which is "interruptible."</li>
 <li><strong>User-Level Thread</strong> vs <strong>Kernel-Level
-Thread</strong> — both are threads; difference is <em>who manages
+Thread</strong>: both are threads; difference is <em>who manages
 them</em>.</li>
-<li><strong>Many-to-One</strong> vs <strong>One-to-One</strong> — the
+<li><strong>Many-to-One</strong> vs <strong>One-to-One</strong>: the
 naming is intuitive but the trade-offs (efficiency vs. parallelism) are
 what matter.</li>
-<li><strong>PCB</strong> vs <strong>Process</strong> — PCB is the
+<li><strong>PCB</strong> vs <strong>Process</strong>: PCB is the
 <em>record</em> of a process, not the process itself.</li>
-<li><strong>Short-Term Scheduler</strong> vs <strong>Dispatcher</strong>
-— scheduler <em>decides</em>; dispatcher <em>executes</em> the
-switch.</li>
+<li><strong>Short-Term Scheduler</strong> vs
+<strong>Dispatcher</strong>: scheduler <em>decides</em>; dispatcher
+<em>executes</em> the switch.</li>
 </ul></li>
 <li><p><strong>⚠ Coverage gaps to flag during tutoring:</strong></p>
 <ul>
 <li>Spooling, System Programs, Mechanisms &amp; Policies not yet in
-lecture notes — flag if exam questions arise on these.</li>
+lecture notes, flag if exam questions arise on these.</li>
 </ul></li>
 </ul>
 
@@ -581,14 +581,14 @@ lecture notes — flag if exam questions arise on these.</li>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

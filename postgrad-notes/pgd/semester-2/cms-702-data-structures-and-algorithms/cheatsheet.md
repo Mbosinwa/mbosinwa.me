@@ -1,11 +1,11 @@
-# CMS 702 — Exam Cheatsheet
+# CMS 702: Exam Cheatsheet
 
 
 Everything here comes straight from my own notes. Definitions are worded so you can write them almost verbatim.
 
 > ⭐ **Confirmed by the past paper** ([the solved past questions](past-questions-solved.html)). Five questions came up, all bookwork:
 > **Q1** asymptotic analysis + the 3 notations **with a diagram** · **Q2** define sort algorithm, search algorithm, dynamic programming **with examples** · **Q3** hashing, hash function, hash table · **Q4** importance of data structures · **Q5** queue vs static data structure.
-> Sections **1, 2, 3, 7 and 10** below carry those answers. Learn them first — then the BST material, which the lecturer drilled hardest in class.
+> Sections **1, 2, 3, 7 and 10** below carry those answers. Learn them first, then the BST material, which the lecturer drilled hardest in class.
 
 ---
 
@@ -13,15 +13,15 @@ Everything here comes straight from my own notes. Definitions are worded so you 
 
 | Term | Definition to write |
 |---|---|
-| Algorithm | A step-by-step procedure — a set of commands or instructions — to solve a specific problem. |
+| Algorithm | A step-by-step procedure, a set of commands or instructions, to solve a specific problem. |
 | Asymptotic analysis | Computing the running time of a piece of code in a mathematical unit of computation, expressed as a function f(n); the method of describing limiting behaviour. |
 | Big O | The **upper bound** of the growth rate of a function; measures worst-case performance. |
-| Θ (Theta) | The **tight** bound — expresses upper *and* lower bound of the running time. |
-| Ω (Omega) | The **lower bound** — expresses only the best-case running time. |
+| Θ (Theta) | The **tight** bound, expresses upper *and* lower bound of the running time. |
+| Ω (Omega) | The **lower bound**: expresses only the best-case running time. |
 | Data structure | A data organization, management and storage format enabling efficient access and modification; a collection of data values, the relationships among them, and the operations applicable to them. |
-| Hashing | Lookup — the most widely used technique to find aggregate data by key or id; stored in a hash map/hash table. |
+| Hashing | Lookup, the most widely used technique to find aggregate data by key or id; stored in a hash map/hash table. |
 | Hash function | Receives the input key and returns the index of an element in an array called the hash table. |
-| Collision | Occurs when h(x) = h(y) — two different keys map to the same hash value. |
+| Collision | Occurs when h(x) = h(y), two different keys map to the same hash value. |
 | Load factor | Number of items in the hash table ÷ size of the hash table. |
 | Stack | An abstract data type that implements LIFO; insert = PUSH, remove = POP; open at one end only. |
 | Queue | An abstract data structure open at both ends; follows FIFO; insert = Enqueue(), remove = Dequeue(). |
@@ -62,7 +62,7 @@ Everything here comes straight from my own notes. Definitions are worded so you 
 
 ---
 
-## 3. Traversals — the three you must not mix up
+## 3. Traversals: the three you must not mix up
 
 | Traversal | Order |
 |---|---|
@@ -92,7 +92,7 @@ Practise on this tree until it is automatic:
 
 ---
 
-## 4. Successor / Predecessor (the lecturer worked these twice — likely exam question)
+## 4. Successor / Predecessor (the lecturer worked these twice: likely exam question)
 
 - **In-order successor of K** = node with the *smallest value greater than* K. If none exists, return **−1**.
 - **In-order predecessor of K** = the *previous* node in the in-order traversal. **Null** for the first node.
@@ -106,7 +106,7 @@ On the tree above (in-order = 4, 8, 10, 12, 14, 20, 22):
 
 ---
 
-## 5. Building a BST — two exam formats
+## 5. Building a BST: two exam formats
 
 ### (a) From a list of values
 Insert one at a time from the root, going left if smaller, right if larger.
@@ -147,7 +147,7 @@ Root = 1. In-order splits into left `8,4,10,9,11,2,5` and right `6,3,7`.
 
 ---
 
-## 6. Height / Depth / Degree — the classic 5-mark question
+## 6. Height / Depth / Degree: the classic 5-mark question
 
 - **Depth of a node** = number of edges from the **root down to** that node.
 - **Height of a node** = number of edges from that node **down to the deepest leaf**.
@@ -184,13 +184,13 @@ Show the sum, then the modulo, then the slot. If two strings land on the same sl
 
 ---
 
-## 8. Tree types — one line each
+## 8. Tree types: one line each
 
-- **General tree** — no restriction on number of children (e.g. family tree / folder structure).
-- **Binary tree** — at most 2 children per node.
-- **Full binary tree** — every node has **0 or 2** children.
-- **Perfect binary tree** — every internal node has exactly 2 children **and** all leaves are at the same level. `l = 2^h`, `n = 2^(h+1) − 1`.
-- **Complete binary tree** — every level completely filled, leaves lean left, last leaf may lack a right sibling.
+- **General tree**: no restriction on number of children (e.g. family tree / folder structure).
+- **Binary tree**: at most 2 children per node.
+- **Full binary tree**: every node has **0 or 2** children.
+- **Perfect binary tree**: every internal node has exactly 2 children **and** all leaves are at the same level. `l = 2^h`, `n = 2^(h+1) − 1`.
+- **Complete binary tree**: every level completely filled, leaves lean left, last leaf may lack a right sibling.
 
 ---
 
@@ -198,13 +198,13 @@ Show the sum, then the modulo, then the slot. If two strings land on the same sl
 
 Full versions in [the solved past questions](past-questions-solved.html). This is the version to revise in the last hour.
 
-**Formal definitions of the three notations** (write these under the diagram — they earn the top marks):
+**Formal definitions of the three notations** (write these under the diagram, they earn the top marks):
 ```
 f(n) = O(g(n))  if  0 ≤ f(n) ≤ c·g(n)              for all n ≥ n₀     (upper)
 f(n) = Θ(g(n))  if  0 ≤ k₁·g(n) ≤ f(n) ≤ k₂·g(n)   for all n ≥ n₀     (tight)
 f(n) = Ω(g(n))  if  0 ≤ c·g(n) ≤ f(n)              for all n ≥ n₀     (lower)
 ```
-Diagram shape: **O** — f(n) stays *below* c·g(n). **Θ** — f(n) *trapped between* k₁·g(n) and k₂·g(n). **Ω** — f(n) stays *above* c·g(n). Mark `n₀` on every sketch.
+Diagram shape: **O**: f(n) stays *below* c·g(n). **Θ**: f(n) *trapped between* k₁·g(n) and k₂·g(n). **Ω**: f(n) stays *above* c·g(n). Mark `n₀` on every sketch.
 
 **Sequential search vs binary search** (the "with examples" part of the search question):
 
@@ -214,24 +214,24 @@ Diagram shape: **O** — f(n) stays *below* c·g(n). **Θ** — f(n) *trapped be
 | Method | Check each element in turn | Compare with middle, discard half, repeat |
 | Worst case | O(n) | **O(log n)** |
 
-**Dynamic programming** = break a complex problem into smaller sub-problems, solve each once, **store the result and reuse it**. Needs *overlapping sub-problems* + *optimal substructure*. Differs from divide-and-conquer, which solves *independent* sub-problems. Example: Fibonacci — naïve recursion O(2ⁿ), with DP **O(n)**. Others: knapsack, longest common subsequence.
+**Dynamic programming** = break a complex problem into smaller sub-problems, solve each once, **store the result and reuse it**. Needs *overlapping sub-problems* + *optimal substructure*. Differs from divide-and-conquer, which solves *independent* sub-problems. Example: Fibonacci, naïve recursion O(2ⁿ), with DP **O(n)**. Others: knapsack, longest common subsequence.
 
-**Importance of data structures** — write 8 points, not 3 (marks are per point):
+**Importance of data structures**: write 8 points, not 3 (marks are per point):
 efficient access/retrieval · efficient memory use · they make algorithms efficient (BFS↔queue, DFS↔stack, binary search↔sorted array) · they model real-world relationships (trees=hierarchies, graphs=networks) · reusability and abstraction (ADT vs implementation) · they support the six standard operations · maintainable, readable code · they let you manage the time–space tradeoff deliberately · they underpin databases, compilers, operating systems and AI.
 
-**Queue vs static data structure** — the trap is that these are *not the same kind of thing*: a queue is an **ADT defined by FIFO behaviour**; "static" is a **memory-allocation category** whose standard example is the fixed-size array. Say that, then compare queue against array:
+**Queue vs static data structure**: the trap is that these are *not the same kind of thing*: a queue is an **ADT defined by FIFO behaviour**; "static" is a **memory-allocation category** whose standard example is the fixed-size array. Say that, then compare queue against array:
 
 | Basis | Queue | Static (fixed-size array) |
 |---|---|---|
 | Size | Grows/shrinks at run time | Fixed at compile time |
 | Memory | Dynamic (heap) | Static (stack), allocated in advance |
-| Access | Restricted — rear in, front out | Random access by index, O(1) |
+| Access | Restricted, rear in, front out | Random access by index, O(1) |
 | Order | Strictly FIFO | No ordering rule |
 | Ends | Open at **both** ends | Concept does not apply |
 | Operations | Enqueue(), Dequeue() | Insert/delete/search/update at any index |
 | Waste | Uses only what it holds | May waste memory or overflow |
 
-Bonus line worth a mark: *a queue can itself be built on a static array (a circular/bounded queue), inheriting a fixed capacity — FIFO behaviour is what makes it a queue, the array is only the storage underneath.*
+Bonus line worth a mark: *a queue can itself be built on a static array (a circular/bounded queue), inheriting a fixed capacity, FIFO behaviour is what makes it a queue, the array is only the storage underneath.*
 
 **Stack vs Queue** (the likelier variant of Q5): LIFO vs FIFO · one end vs both ends · PUSH/POP vs Enqueue/Dequeue · one pointer (top) vs two (front, rear) · pile of plates vs queue of people · recursion & DFS vs scheduling & BFS.
 
@@ -239,9 +239,9 @@ Bonus line worth a mark: *a queue can itself be built on a static array (a circu
 
 ## 10. Things you can lose easy marks on
 
-1. Writing "O(n)" for the tight bound — it is **Θ**.
-2. Saying a queue is open at one end — that's the **stack**. Queue is open at **both** ends.
+1. Writing "O(n)" for the tight bound, it is **Θ**.
+2. Saying a queue is open at one end, that's the **stack**. Queue is open at **both** ends.
 3. Forgetting the **−1** answer when an in-order successor does not exist.
 4. Swapping depth and height.
-5. Binary search on an **unsorted** list — it requires a sorted dataset. Complexity **O(log n)**.
-6. Forgetting that BST in-order traversal is sorted — it is the free sanity-check on any tree you draw.
+5. Binary search on an **unsorted** list, it requires a sorted dataset. Complexity **O(log n)**.
+6. Forgetting that BST in-order traversal is sorted, it is the free sanity-check on any tree you draw.

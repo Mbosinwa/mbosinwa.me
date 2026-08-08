@@ -1,4 +1,4 @@
-# CMS 702 — Data Structures and Computer Algorithms
+# CMS 702: Data Structures and Computer Algorithms
 
 **Programme:** PGD Computer Science, Rivers State University
 **Units:** 3
@@ -14,12 +14,12 @@ An **algorithm** is a step-by-step procedure to solve a specific problem. It is 
 
 ### Types of Algorithms
 
-1. **Brute Force Algorithm** — tries all possible solutions to solve a specific problem.
-2. **Recursive Algorithm** — a method that breaks a problem into smaller sub-problems and repeatedly breaks the problem until it is able to solve it.
-3. **Encryption Algorithm** — utilises cryptographic techniques to transform data into a secure, readable form. Ensures confidentiality, privacy, digital communication and translation.
-4. **Backtracking Algorithm** — uses trial-and-error techniques to explore potential solutions.
-5. **Search Algorithm** — designed to find a specific target within a data search (dataset), enabling effective retrieval of information.
-6. **Sort Algorithm** — aims at arranging elements in a specific order.
+1. **Brute Force Algorithm**: tries all possible solutions to solve a specific problem.
+2. **Recursive Algorithm**: a method that breaks a problem into smaller sub-problems and repeatedly breaks the problem until it is able to solve it.
+3. **Encryption Algorithm**: utilises cryptographic techniques to transform data into a secure, readable form. Ensures confidentiality, privacy, digital communication and translation.
+4. **Backtracking Algorithm**: uses trial-and-error techniques to explore potential solutions.
+5. **Search Algorithm**: designed to find a specific target within a data search (dataset), enabling effective retrieval of information.
+6. **Sort Algorithm**: aims at arranging elements in a specific order.
 7. Divide and Rule (Divide and Conquer) Algorithm
 8. Greedy Algorithm
 9. Dynamic Programming Algorithm
@@ -33,9 +33,9 @@ Refers to computing the running time of any piece of code or operation in a math
 
 This is the time required by the algorithm, and it falls under three types:
 
-1. **Worst Case** — the maximum time required by an algorithm. Most likely the case used when analysing an algorithm.
-2. **Best Case** — the minimum time it will take an algorithm to perform its complete execution.
-3. **Average Case** — the average time an algorithm will take to complete execution.
+1. **Worst Case**: the maximum time required by an algorithm. Most likely the case used when analysing an algorithm.
+2. **Best Case**: the minimum time it will take an algorithm to perform its complete execution.
+3. **Average Case**: the average time an algorithm will take to complete execution.
 
 ### Asymptotic Notations
 
@@ -45,7 +45,7 @@ This is the time required by the algorithm, and it falls under three types:
 | **Θ** | Theta | Tight bound (upper *and* lower) |
 | **Ω** | Omega | Lower bound (best case) |
 
-**Big O notation** — measures the performance or complexity of an algorithm. Refers to the **upper bound** of the growth rate of a function. E.g. if the function `g(x)` grows no faster than `f(x)`, then `g` is said to be a member of `O`.
+**Big O notation**: measures the performance or complexity of an algorithm. Refers to the **upper bound** of the growth rate of a function. E.g. if the function `g(x)` grows no faster than `f(x)`, then `g` is said to be a member of `O`.
 
 Growth-rate ordering drawn in class (time vs. input size):
 
@@ -53,9 +53,9 @@ Growth-rate ordering drawn in class (time vs. input size):
 O(1)  <  O(log n)  <  O(n)  <  O(n²)
 ```
 
-**Θ notation** — the tighter notation. Used to express **both** the upper bound and the lower bound of an algorithm's running time; the running time is sandwiched between `k₁·n` and `k₂·n` for all `n ≥ n₀`.
+**Θ notation**: the tighter notation. Used to express **both** the upper bound and the lower bound of an algorithm's running time; the running time is sandwiched between `k₁·n` and `k₂·n` for all `n ≥ n₀`.
 
-**Ω (Omega) notation** — expresses only the **best case** time complexity, i.e. the least amount of time an algorithm needs to reach completion. `f(n) = Ω g(n)` when `f(x)` stays at or above `c·g(n)` for `n ≥ n₀`.
+**Ω (Omega) notation**: expresses only the **best case** time complexity, i.e. the least amount of time an algorithm needs to reach completion. `f(n) = Ω g(n)` when `f(x)` stays at or above `c·g(n)` for `n ≥ n₀`.
 
 ### Upper and Average Complexity Bound
 
@@ -70,11 +70,11 @@ These classes categorize algorithms based on their worst-case time or space comp
 
 | # | Class | Behaviour | Example |
 |---|---|---|---|
-| 1 | **Constant Time — O(1)** | Executes a fixed amount of time regardless of the volume of data | Array index access |
-| 2 | **Logarithmic Time — O(log n)** | Divides the problem size into half at each step | Binary search |
-| 3 | **Linear Time — O(n)** | Time directly proportional to the size of the input | Single loop / linear search |
-| 4 | **Quadratic Time — O(n²)** | Time proportional to the square of the input size | Nested loops |
-| 5 | **Exponential Time — O(2ⁿ)** | Complexity grows rapidly with the size of the input | Naïve recursion |
+| 1 | **Constant Time, O(1)** | Executes a fixed amount of time regardless of the volume of data | Array index access |
+| 2 | **Logarithmic Time, O(log n)** | Divides the problem size into half at each step | Binary search |
+| 3 | **Linear Time, O(n)** | Time directly proportional to the size of the input | Single loop / linear search |
+| 4 | **Quadratic Time, O(n²)** | Time proportional to the square of the input size | Nested loops |
+| 5 | **Exponential Time, O(2ⁿ)** | Complexity grows rapidly with the size of the input | Naïve recursion |
 
 ---
 
@@ -113,9 +113,9 @@ Hashing is a method of representing dictionaries for large datasets. It allows *
 
 ### Components of Hashing
 
-1. **Key** — any string or integer used as input to the hash function. A technique that determines an index or location for storing an item in a data structure.
-2. **Hash Function** — receives the input key and returns the index of an element in an array called the Hash Table.
-3. **Hash Table** — a data structure that maps keys to values using a special function (the hash function), storing data in an associative manner in an array where each data value has its own unique index.
+1. **Key**: any string or integer used as input to the hash function. A technique that determines an index or location for storing an item in a data structure.
+2. **Hash Function**: receives the input key and returns the index of an element in an array called the Hash Table.
+3. **Hash Table**: a data structure that maps keys to values using a special function (the hash function), storing data in an associative manner in an array where each data value has its own unique index.
 
 ```
    Keys                Hash Function            Buckets (Hash Table)
@@ -165,11 +165,11 @@ A hash function that maps every item into its own unique slot is known as a **pe
 
 ### Collision
 
-A **collision** occurs when `h(x) = h(y)` — two different keys map to the same hash value. Hash collisions can be intentionally created for many hash algorithms.
+A **collision** occurs when `h(x) = h(y)`, two different keys map to the same hash value. Hash collisions can be intentionally created for many hash algorithms.
 
 **Collision handling:**
-1. **Separate chaining** — each cell of the hash table points to a linked list of records.
-2. **Open addressing** — all the elements are stored in the hash table itself.
+1. **Separate chaining**: each cell of the hash table points to a linked list of records.
+2. **Open addressing**: all the elements are stored in the hash table itself.
 
 ### Load Factor
 
@@ -191,9 +191,9 @@ A **data structure** is a data organization, management and storage format that 
 
 ### Types of Data Structures
 
-1. **Inbuilt (primitive) data types** — integer, float, boolean
-2. **Derived data types** — Stack, Queue, List, Array, etc.
-3. **Complex data types** — used to store large data, e.g. linked list, tree, graph
+1. **Inbuilt (primitive) data types**: integer, float, boolean
+2. **Derived data types**: Stack, Queue, List, Array, etc.
+3. **Complex data types**: used to store large data, e.g. linked list, tree, graph
 
 ### Basic Operations in Data Structures
 
@@ -223,8 +223,8 @@ Name: Int Array(10)          Elements: {35, 33, 42, 10, 14, 19, 27, 44, 26, 31}
 
 ### Types of Arrays
 
-1. **Fixed-size arrays** — cannot be altered; indexes are numbered.
-2. **Dynamic-size arrays** — can be altered/changed. Can be one-, two- or three-dimensional.
+1. **Fixed-size arrays**: cannot be altered; indexes are numbered.
+2. **Dynamic-size arrays**: can be altered/changed. Can be one-, two- or three-dimensional.
 
 ### Types of Linked List
 
@@ -245,7 +245,7 @@ Head → [A|•] → [TARGET|•] → [C|•] → NULL
 
 A **stack** is an abstract data type commonly used in most programming languages. Named "stack" because it behaves like a real-world stack, e.g. a stack of pizza, a pile of plates. A real-world stack allows operations at one end only, and at one time.
 
-- Implements **LIFO** — Last In, First Out.
+- Implements **LIFO**: Last In, First Out.
 - Insertion is called **PUSH**; removal is called **POP**.
 - Can be implemented by means of arrays, pointers, linked lists and structures.
 - Can be fixed-size or dynamic in sizing.
@@ -266,8 +266,8 @@ A **stack** is an abstract data type commonly used in most programming languages
 A **queue** is an abstract data structure similar to the stack. Unlike the stack, the queue is open at **both ends**. It follows **FIFO** methodology (First In, First Out).
 
 Two operations:
-- **Enqueue()** — Add / Insert
-- **Dequeue()** — Remove
+- **Enqueue()**: Add / Insert
+- **Dequeue()**: Remove
 
 ---
 
@@ -305,12 +305,12 @@ A node is an entity that contains a **key or value** and **pointers to its child
 
 ### Height, Depth, Degree
 
-- **Root** — the topmost node of a tree.
-- **Height of a node** — the number of edges from that node down to the deepest leaf (longest downward path).
-- **Depth of a node** — the number of edges from the root to that node.
-- **Height of the tree** — the longest path, in edges, to a leaf node.
-- **Degree of a node** — the total number of branches at that node.
-- **Forest** — a collection of disjoint trees.
+- **Root**: the topmost node of a tree.
+- **Height of a node**: the number of edges from that node down to the deepest leaf (longest downward path).
+- **Depth of a node**: the number of edges from the root to that node.
+- **Height of the tree**: the longest path, in edges, to a leaf node.
+- **Degree of a node**: the total number of branches at that node.
+- **Forest**: a collection of disjoint trees.
 
 **Worked example (page 11): find the depth and height of this tree**
 
@@ -341,20 +341,20 @@ The type of tree depends on the number of children a node has.
 A tree in which there is **no restriction** on the number of children a node has. E.g. a family tree (like a folder structure).
 
 ### 2. Binary Tree
-Every node can have **at most two children** — left and right.
+Every node can have **at most two children**: left and right.
 
 Binary trees are further divided into:
 
-**(a) Full Binary Tree** — every node in the tree has either **0 or 2** children.
+**(a) Full Binary Tree**: every node in the tree has either **0 or 2** children.
 
-**(b) Perfect Binary Tree** — every internal node has exactly 2 children and all the leaf nodes are at the same level.
+**(b) Perfect Binary Tree**: every internal node has exactly 2 children and all the leaf nodes are at the same level.
 
 ```
 l = 2^h          n = 2^(h+1) − 1
 ```
 where `n` = number of nodes, `h` = height of the tree, `l` = number of leaf nodes.
 
-**(c) Complete Binary Tree** — like a full binary tree but with a few differences: every level must be completely filled, all leaf elements must lean towards the left, and the last leaf element might not have a right sibling.
+**(c) Complete Binary Tree**: like a full binary tree but with a few differences: every level must be completely filled, all leaf elements must lean towards the left, and the last leaf element might not have a right sibling.
 
 ```
         1
@@ -382,8 +382,8 @@ Every node in the tree must strictly follow these rules:
 
 1. Every node in the **left sub-tree** contains a value **strictly less** than the parent node's value.
 2. Every node in the **right sub-tree** contains a value **strictly greater** than the parent node's value.
-3. **Recursive application** — the left and right sub-trees must themselves be valid binary search trees.
-4. **No duplicates** — standard BST implementations contain unique keys, to maintain a properly structured ordering.
+3. **Recursive application**: the left and right sub-trees must themselves be valid binary search trees.
+4. **No duplicates**: standard BST implementations contain unique keys, to maintain a properly structured ordering.
 
 ### Worked example: build a BST from (37, 21, 13, 40, 36, 50)
 
@@ -470,7 +470,7 @@ Pre-order   = A, B, D, C, E, G, F, H, I
 Post-order  = D, B, G, E, H, I, F, C, A
 ```
 
-[note: the tree diagram on page 14 is faint — re-check the original scans against these three sequences before using them as a memorised answer.]
+[note: the tree diagram on page 14 is faint, re-check the original scans against these three sequences before using them as a memorised answer.]
 
 ---
 
@@ -501,7 +501,7 @@ Resulting tree:
         10    11
 ```
 
-A second construction exercise is worked on page 15 — the digits are hard to read in the scan, see the original scans.
+A second construction exercise is worked on page 15, the digits are hard to read in the scan, see the original scans.
 
 ### From Pre-order + Post-order
 
@@ -528,9 +528,9 @@ Both reconstructions give the same tree:
 
 ## Assignments recorded in these notes
 
-1. **Page 5** — Consider an array as a map where the key is the index and the value is the value at that index; find the value at `A[i]` where `A` is the location and `i` is the integer.
-2. **Page 13** — In-order successor: `root = [20, 8, 22, 4, 12, N, N, N, N, 10, 14]`, `K = 8`. (Answer worked in class: **10**.)
+1. **Page 5**: Consider an array as a map where the key is the index and the value is the value at that index; find the value at `A[i]` where `A` is the location and `i` is the integer.
+2. **Page 13**: In-order successor: `root = [20, 8, 22, 4, 12, N, N, N, N, 10, 14]`, `K = 8`. (Answer worked in class: **10**.)
 
 ---
 
-*End of transcription — 16 pages.*
+*End of transcription, 16 pages.*

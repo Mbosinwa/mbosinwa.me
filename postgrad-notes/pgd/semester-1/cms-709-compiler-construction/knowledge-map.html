@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 709 Knowledge Map — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 709 Knowledge Map · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 709 Compiler Construction: Topic and concept map of the whole course, with relationships and entry points.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/knowledge-map.html">
-    <meta property="og:title" content="CMS 709 Knowledge Map — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 709 Knowledge Map · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 709 Compiler Construction: Topic and concept map of the whole course, with relationships and entry points.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-709-compiler-construction/knowledge-map.html">
-    <meta property="twitter:title" content="CMS 709 Knowledge Map — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 709 Knowledge Map · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 709 Compiler Construction: Topic and concept map of the whole course, with relationships and entry points.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -75,7 +75,7 @@ Construction</h1>
 <hr />
 <h2 id="course-overview">Course Overview</h2>
 <p>Compiler Construction (CMS709) covers the theory and practice of
-building a compiler — a program that translates source code into
+building a compiler, a program that translates source code into
 executable form. The course begins with <strong>Lexical
 Analysis</strong>, the first compiler phase, which converts raw
 character streams into structured tokens using formal language theory,
@@ -95,11 +95,11 @@ compiler phases.</p>
 │   └── Secondary tasks: comment removal, error line tracking
 │
 ├── 2. Tokens, Patterns and Lexemes                 [5 concepts]
-│   ├── Token — terminal symbol of grammar
+│   ├── Token, terminal symbol of grammar
 │   │   └── Key Concepts: Keywords, Operators, Identifiers, Constants
-│   ├── Pattern — regular expression rule
+│   ├── Pattern, regular expression rule
 │   │   └── Key Concepts: Regular Expression ★
-│   ├── Lexeme — actual matched character sequence
+│   ├── Lexeme, actual matched character sequence
 │   └── Token attributes → Symbol Table pointer ★
 │
 ├── 3. Difficulties and Errors in LA                [2 concepts]
@@ -198,7 +198,7 @@ Token</strong></li>
 </ul>
 <hr />
 <h2 id="central-concepts">Central Concepts</h2>
-<p>These are the most connected concepts — master these first:</p>
+<p>These are the most connected concepts, master these first:</p>
 <table>
 <thead>
 <tr>
@@ -244,24 +244,24 @@ stores all token information</td>
 <h2 id="prerequisite-learning-path">Prerequisite Learning Path</h2>
 <p>Recommended study order based on dependencies:</p>
 <ol type="1">
-<li><strong>Formal Language Theory</strong> — understand alphabets, Σ*,
+<li><strong>Formal Language Theory</strong>: understand alphabets, Σ*,
 and the Chomsky hierarchy (what kinds of languages exist)</li>
-<li><strong>Regular Expressions</strong> — the notation used to describe
+<li><strong>Regular Expressions</strong>: the notation used to describe
 token patterns (Type 3 / Regular Languages)</li>
-<li><strong>Tokens, Patterns, Lexemes</strong> — the three core
+<li><strong>Tokens, Patterns, Lexemes</strong>: the three core
 abstractions of lexical analysis</li>
-<li><strong>FSA (Finite State Automata)</strong> — the mathematical
-model for recognising regular languages</li>
-<li><strong>Transition Diagrams</strong> — practical FSA variant used to
+<li><strong>FSA (Finite State Automata)</strong>: the mathematical model
+for recognising regular languages</li>
+<li><strong>Transition Diagrams</strong>: practical FSA variant used to
 build lexers by hand</li>
-<li><strong>Input Buffering</strong> — how the lexer reads characters
+<li><strong>Input Buffering</strong>: how the lexer reads characters
 efficiently (forward pointer, retraction)</li>
-<li><strong>Lexical Analysis</strong> — the full LA phase combining all
+<li><strong>Lexical Analysis</strong>: the full LA phase combining all
 above into a working analyser</li>
-<li><strong>Specification and Recognition of Tokens</strong> — regular
+<li><strong>Specification and Recognition of Tokens</strong>: regular
 definitions, TD construction, keyword recognition, priority rules</li>
-<li><strong>Implementation</strong> — LEX/FLEX generators vs
-hand-written approaches</li>
+<li><strong>Implementation</strong>: LEX/FLEX generators vs hand-written
+approaches</li>
 </ol>
 <hr />
 <h2 id="definitions-quick-reference">Definitions Quick Reference</h2>
@@ -290,7 +290,7 @@ particular token</td>
 </tr>
 <tr>
 <td>Lexeme</td>
-<td>The actual character sequence that matches a pattern — a concrete
+<td>The actual character sequence that matches a pattern, a concrete
 token instance</td>
 </tr>
 <tr>
@@ -300,8 +300,8 @@ type)</td>
 </tr>
 <tr>
 <td>FSA</td>
-<td>Finite State Automaton — mathematical model that accepts or rejects
-a string</td>
+<td>Finite State Automaton, mathematical model that accepts or rejects a
+string</td>
 </tr>
 <tr>
 <td>Transition Diagram</td>
@@ -364,23 +364,23 @@ Construction:</em></p>
 <ul>
 <li><strong>Best entry point for Socratic sessions:</strong> Start with
 <em>"What problem is Lexical Analysis solving, and why can't the parser
-do it itself?"</em> — this opens up the LA/parser separation rationale
+do it itself?"</em>, this opens up the LA/parser separation rationale
 and naturally leads into tokens.</li>
 <li><strong>Most common misconceptions:</strong>
 <ul>
 <li>Students confuse <strong>token</strong> (the category) with
-<strong>lexeme</strong> (the actual string) — always use a concrete
+<strong>lexeme</strong> (the actual string), always use a concrete
 example (e.g., <code>pi</code> is the lexeme; <code>identifier</code> is
 the token)</li>
 <li>Students confuse <strong>FSA</strong> (theory: accepts/rejects) with
-<strong>TD</strong> (practice: finds and returns token) — the key
+<strong>TD</strong> (practice: finds and returns token), the key
 difference is what happens at accepting states</li>
-<li>Students think ALL errors are caught by LA — reinforce that LA has a
+<li>Students think ALL errors are caught by LA, reinforce that LA has a
 very localized view and cannot detect semantic errors</li>
 </ul></li>
 <li><strong>Concepts students typically conflate:</strong>
 <ul>
-<li>Token vs Lexeme vs Pattern (the holy trinity — needs repeated
+<li>Token vs Lexeme vs Pattern (the holy trinity, needs repeated
 examples)</li>
 <li>FSA vs Transition Diagram (same structure, different behavior at
 accepting states)</li>
@@ -389,9 +389,9 @@ accepting states)</li>
 efficiency)</li>
 </ul></li>
 <li><strong>Mbosinwa context:</strong> Strong software engineering
-background — relate FSA/TD to state machines in software design
-patterns; relate Symbol Table to hash maps/dictionaries; relate LEX to
-parser generator tools like ANTLR he may have encountered.</li>
+background, relate FSA/TD to state machines in software design patterns;
+relate Symbol Table to hash maps/dictionaries; relate LEX to parser
+generator tools like ANTLR he may have encountered.</li>
 </ul>
 
         </article>
@@ -404,14 +404,14 @@ parser generator tools like ANTLR he may have encountered.</li>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

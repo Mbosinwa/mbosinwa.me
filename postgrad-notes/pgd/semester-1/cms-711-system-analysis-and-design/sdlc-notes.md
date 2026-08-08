@@ -61,7 +61,7 @@ flowchart TD
 
 ---
 
-## Phases of the SDLC — Summary Table
+## Phases of the SDLC: Summary Table
 
 | Phase | Purpose | Activities | Deliverables |
 |---|---|---|---|
@@ -77,7 +77,7 @@ flowchart TD
 
 ## System Development Methodologies
 
-A **methodology** is a formalized approach to implementing the SDLC — it includes a list of steps and deliverables.
+A **methodology** is a formalized approach to implementing the SDLC, it includes a list of steps and deliverables.
 
 ### Categories of System Methodologies
 
@@ -98,8 +98,8 @@ Attempts to balance the focus between process and data by incorporating both int
 Structured design methodologies adopt a **formal step-by-step approach** to the SDLC that moves logically from one phase to the next.
 
 Popular methods include:
-- **Structured Analysis** — traditional method
-- **Object-Oriented Analysis and Design** — widely used newer strategy
+- **Structured Analysis**: traditional method
+- **Object-Oriented Analysis and Design**: widely used newer strategy
 
 ---
 
@@ -225,7 +225,7 @@ flowchart TD
     D --> A
 ```
 
-> **[Full spiral diagram — see page 6]**
+> **[Full spiral diagram, see page 6]**
 > _Original spiral image saved at `SDLC-pages/pages/page-6.png`._
 
 ---

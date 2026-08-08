@@ -62,7 +62,7 @@ The interface means the medium through which the users can interact with the sys
 3. **Manual System**
 4. **Automated System**
 
-- An **open system** interacts with the environment by receiving input and output — e.g., businesses, ecosystems, computer systems connected to the internet.
+- An **open system** interacts with the environment by receiving input and output, e.g., businesses, ecosystems, computer systems connected to the internet.
 - A **closed system** does not interact with the environment. All input and output are contained within the system.
 - A **manual system** is controlled by humans.
 - An **automated system** is controlled by machines.
@@ -105,8 +105,8 @@ The primary goal is to ensure the system meets the user requirements and provide
 
 A requirement is simply a statement of what a system must do or what characteristics it must have.
 
-- During **analysis**, requirements are written from the perspective of the business and focus on "who" of the system — these are called **Business Requirements**.
-- During the **design phase**, business requirements evolve to become more technical and describe how the system will be implemented — these are called **System Requirements**.
+- During **analysis**, requirements are written from the perspective of the business and focus on "who" of the system, these are called **Business Requirements**.
+- During the **design phase**, business requirements evolve to become more technical and describe how the system will be implemented, these are called **System Requirements**.
 
 ---
 
@@ -134,11 +134,11 @@ Non-functional requirements refer to the **behavioral properties** that the syst
 The System Analyst is responsible for gathering requirements using a variety of techniques that ensure the current business processes and needs of the new system are well understood before moving into design.
 
 **Techniques include:**
-- **Interviews** — structured or unstructured conversations with stakeholders
-- **Questionnaires** — paper-based or electronic (e.g., Google Forms)
-- **Joint Application Techniques (JAD/RAP)** — collaborative workshops
-- **Brainstorming** — group idea generation sessions
-- **Workshops** — structured group sessions
+- **Interviews**: structured or unstructured conversations with stakeholders
+- **Questionnaires**: paper-based or electronic (e.g., Google Forms)
+- **Joint Application Techniques (JAD/RAP)**: collaborative workshops
+- **Brainstorming**: group idea generation sessions
+- **Workshops**: structured group sessions
 
 ---
 

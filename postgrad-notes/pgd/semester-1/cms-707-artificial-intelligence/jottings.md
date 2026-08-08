@@ -1,5 +1,5 @@
-# CMS 707 — Class Jottings: Problem Solving & State Space Representation
-*(Partial class jottings — superseded by full class notes: [the full class notes](notes.html))*
+# CMS 707: Class Jottings: Problem Solving & State Space Representation
+*(Partial class jottings, superseded by full class notes: [the full class notes](notes.html))*
 
 ## Key Concepts Introduced
 

@@ -1,5 +1,5 @@
 
-# Knowledge Map: CMS 703 — Data Communication and Networks
+# Knowledge Map: CMS 703: Data Communication and Networks
 
 > Generated: 2026-03-30 | Topics: 24 | Concepts: 54 | Relationships: 67
 
@@ -7,7 +7,7 @@
 
 ## Course Overview
 
-This course covers the foundational principles of data communication and computer networking — from the five basic components of a communication system, through signal representation and Fourier analysis, to physical and wireless transmission media, network types and topologies, switching and routing techniques, and the OSI reference model. It also covers how data is encoded as bit patterns, how serial and parallel transmission work in practice, and how Fourier mathematics powers real-world technologies like OFDM in 5G and LTE.
+This course covers the foundational principles of data communication and computer networking, from the five basic components of a communication system, through signal representation and Fourier analysis, to physical and wireless transmission media, network types and topologies, switching and routing techniques, and the OSI reference model. It also covers how data is encoded as bit patterns, how serial and parallel transmission work in practice, and how Fourier mathematics powers real-world technologies like OFDM in 5G and LTE.
 
 ---
 
@@ -38,83 +38,83 @@ CMS 703: Data Communication and Networks
 │   ├── Fourier Transform (Non-periodic Signals)
 │   │   ├── Forward: F(ω) = ∫f(t)e^{-iωt}dt
 │   │   ├── Inverse: f(t) = (1/2π)∫F(ω)e^{iωt}dω
-│   │   ├── Square Pulse: F(ω) = T·sinc(ωT/2) — wider pulse = narrower freq spread
+│   │   ├── Square Pulse: F(ω) = T·sinc(ωT/2), wider pulse = narrower freq spread
 │   │   ├── Worked: f(t)=e^{-at}u(t) → F(ω) = 1/(a+iω), a>0
 │   │   └── Real-world: OFDM in 5G/LTE uses Fourier Transform for spectrum allocation
 │   └── Related Transforms
-│       ├── Laplace Transform — design tool for continuous-time systems
-│       └── Z Transform — discrete-time equivalent of Laplace
+│       ├── Laplace Transform, design tool for continuous-time systems
+│       └── Z Transform, discrete-time equivalent of Laplace
 │
 ├── 3. Data Transmission Modes                               [3 concepts]
-│   ├── Simplex — unidirectional only (keyboard→PC, TV broadcast)
-│   ├── Half-Duplex — bidirectional, one direction at a time (walkie-talkie, WiFi)
-│   └── Full-Duplex — simultaneous bidirectional (telephone, live chat)
+│   ├── Simplex, unidirectional only (keyboard→PC, TV broadcast)
+│   ├── Half-Duplex, bidirectional, one direction at a time (walkie-talkie, WiFi)
+│   └── Full-Duplex, simultaneous bidirectional (telephone, live chat)
 │
 ├── 4. Data Transmission Forms                               [2 concepts]
-│   ├── Analog — continuous waveform
-│   └── Digital — discrete 0/1 states
+│   ├── Analog, continuous waveform
+│   └── Digital, discrete 0/1 states
 │
 ├── 5. Data Transmission Speed                               [2 concepts]
-│   ├── Bandwidth — data transfer capacity per unit time
-│   └── BPS (Bits Per Second) — rate of bit transmission
+│   ├── Bandwidth, data transfer capacity per unit time
+│   └── BPS (Bits Per Second), rate of bit transmission
 │
 ├── 6. Transmission Media                                    [9 concepts]
 │   ├── Guided Media (physical path)
-│   │   ├── Twisted Pair Wire — copper conductors twisted; STP and UTP types
+│   │   ├── Twisted Pair Wire, copper conductors twisted; STP and UTP types
 │   │   │   └── Used in: telephone, 10Base-T and 100Base-T LANs
-│   │   ├── Coaxial Cable — central copper core + insulated sheath + outer shield
+│   │   ├── Coaxial Cable, central copper core + insulated sheath + outer shield
 │   │   │   └── Used in: cable TV, satellite, CCTV, analog/digital telephony
-│   │   └── Fibre-Optic Cable — transmits light through glass/plastic core + cladding
+│   │   └── Fibre-Optic Cable, transmits light through glass/plastic core + cladding
 │   │       ├── Advantages: high bandwidth, low attenuation (50km vs 5km repeaters),
 │   │       │   immune to EM interference, corrosion-resistant, lightweight, hard to tap
 │   │       ├── Disadvantages: expensive, fragile, requires expert installation
 │   │       └── Used in: backbone networks, 100Base-FX, 1000Base-X, hybrid cable TV
 │   └── Unguided Media (wireless)
-│       ├── Radio Waves — 3 KHz to 1 GHz; omnidirectional; AM/FM radio, TV, paging
-│       ├── Microwaves — 1 to 300 GHz; unidirectional (parabolic dish/horn antenna)
+│       ├── Radio Waves, 3 KHz to 1 GHz; omnidirectional; AM/FM radio, TV, paging
+│       ├── Microwaves, 1 to 300 GHz; unidirectional (parabolic dish/horn antenna)
 │       │   └── Line-of-sight; towers needed; restricted bands require regulatory approval
-│       └── Infrared — 300 GHz to 400 THz; short-distance; cannot penetrate walls
+│       └── Infrared, 300 GHz to 400 THz; short-distance; cannot penetrate walls
 │           └── Used in: remote controls, night vision, missile guidance, gas detectors
 │
 ├── 7. Computer Networks                                     [7 concepts]
 │   ├── Network Types (by scope)
-│   │   ├── LAN — Local Area Network (office, home)
-│   │   ├── MAN — Metropolitan Area Network (city, large campus)
-│   │   └── WAN — Wide Area Network (global, e.g. Internet)
+│   │   ├── LAN, Local Area Network (office, home)
+│   │   ├── MAN, Metropolitan Area Network (city, large campus)
+│   │   └── WAN, Wide Area Network (global, e.g. Internet)
 │   └── Network Topologies
-│       ├── Bus — all nodes share single backbone cable
-│       ├── Star — all nodes connect to central hub/switch; most common
-│       ├── Ring — closed loop; sequential transmission
-│       └── Mesh — every node interconnected; most redundant
+│       ├── Bus, all nodes share single backbone cable
+│       ├── Star, all nodes connect to central hub/switch; most common
+│       ├── Ring, closed loop; sequential transmission
+│       └── Mesh, every node interconnected; most redundant
 │
 ├── 8. Switching Techniques                                  [2 concepts]
-│   ├── Circuit Switching — dedicated physical path for full connection duration
+│   ├── Circuit Switching, dedicated physical path for full connection duration
 │   │   └── Example: PTCL telephone network; reliable but wastes idle bandwidth
-│   └── Packet Switching — data split into independently routed packets
+│   └── Packet Switching, data split into independently routed packets
 │       └── Example: Internet; efficient; Central concept for modern networking
 │
 ├── 9. Routing Techniques                                    [2 concepts]
-│   ├── Source Routing — full path specified by source node
-│   └── Hop-by-Hop Routing — each node forwards to the next
+│   ├── Source Routing, full path specified by source node
+│   └── Hop-by-Hop Routing, each node forwards to the next
 │
 ├── 10. Communication Protocols & OSI Model                  [10 concepts]
 │    ├── Protocol Functions
 │    │   └── Packet size, numbering, error control, security, routing
 │    ├── Standards Organisations (ISO, IEEE, etc.)
-│    └── OSI Model — 7 layers (ISO, 1984)           ← CENTRAL
-│        ├── Layer 1: Physical — bit stream, hardware, NIC
-│        ├── Layer 2: Data Link — frames, physical addressing
-│        ├── Layer 3: Network — routing, logical addressing
-│        ├── Layer 4: Transport — end-to-end delivery, flow control  ← Central
-│        ├── Layer 5: Session — dialogue/session management
-│        ├── Layer 6: Presentation — encryption, compression, syntax
-│        └── Layer 7: Application — user interface and network services
+│    └── OSI Model, 7 layers (ISO, 1984)           ← CENTRAL
+│        ├── Layer 1: Physical, bit stream, hardware, NIC
+│        ├── Layer 2: Data Link, frames, physical addressing
+│        ├── Layer 3: Network, routing, logical addressing
+│        ├── Layer 4: Transport, end-to-end delivery, flow control  ← Central
+│        ├── Layer 5: Session, dialogue/session management
+│        ├── Layer 6: Presentation, encryption, compression, syntax
+│        └── Layer 7: Application, user interface and network services
 │
 ├── 11. Modulation, Multiplexing & Channel Topics            [5 concepts]
-│    ├── Modulation / Demodulation — encoding info onto a carrier signal
-│    ├── TDM — Time Division Multiplexing
-│    ├── FDM — Frequency Division Multiplexing
-│    ├── FCM — Frequency Code Multiplexing
+│    ├── Modulation / Demodulation, encoding info onto a carrier signal
+│    ├── TDM, Time Division Multiplexing
+│    ├── FDM, Frequency Division Multiplexing
+│    ├── FCM, Frequency Code Multiplexing
 │    └── Noise, Distortion, Channel Characteristics
 │
 ├── 12. Serial vs Parallel Data Transmission                 [6 concepts]
@@ -139,11 +139,11 @@ CMS 703: Data Communication and Networks
 │        └── Apps: Ethernet, broadband, digital telephony, satellite
 │
 └── 14. Bandwidth Allocation & Real-World Applications       [3 concepts]
-     ├── Signal Modelling — represent digital data as square pulses
+     ├── Signal Modelling, represent digital data as square pulses
      ├── Fourier Transform of Square Pulse → Sinc spectrum
      │   └── Identifies dominant frequencies, bandwidth needed, interference zones
      └── OFDM (Orthogonal Frequency Division Multiplexing)
-         └── Core technology in 5G and LTE — allocates frequency bands per FT principles
+         └── Core technology in 5G and LTE, allocates frequency bands per FT principles
 ```
 
 ---
@@ -191,22 +191,22 @@ CMS 703: Data Communication and Networks
 5. `OSI Layer 1 (Physical)` → `Layer 2` → `Layer 3` → ... → `Layer 7 (Application)`
 
 ### Contrast (Contrasts-with)
-- `Simplex` vs `Half-Duplex` vs `Full-Duplex` — direction and simultaneity of data flow
-- `Analog` vs `Digital` — continuous waveform vs discrete 0/1 states
-- `Circuit Switching` vs `Packet Switching` — dedicated path vs independent packets
-- `Guided Media` vs `Unguided Media` — physical cable vs wireless broadcast
-- `Fourier Series` vs `Fourier Transform` — periodic vs non-periodic signal analysis
-- `Source Routing` vs `Hop-by-Hop Routing` — full path known upfront vs incremental forwarding
-- `Serial Transmission` vs `Parallel Transmission` — one-bit-at-a-time vs multi-bit simultaneous
-- `Asynchronous` vs `Synchronous Transmission` — character-framed vs block-framed, no clock vs shared clock
-- `STP` vs `UTP` — shielded vs unshielded twisted pair
-- `Radio Waves` vs `Microwaves` vs `Infrared` — frequency range and directionality differences
+- `Simplex` vs `Half-Duplex` vs `Full-Duplex`, direction and simultaneity of data flow
+- `Analog` vs `Digital`, continuous waveform vs discrete 0/1 states
+- `Circuit Switching` vs `Packet Switching`, dedicated path vs independent packets
+- `Guided Media` vs `Unguided Media`, physical cable vs wireless broadcast
+- `Fourier Series` vs `Fourier Transform`, periodic vs non-periodic signal analysis
+- `Source Routing` vs `Hop-by-Hop Routing`, full path known upfront vs incremental forwarding
+- `Serial Transmission` vs `Parallel Transmission`, one-bit-at-a-time vs multi-bit simultaneous
+- `Asynchronous` vs `Synchronous Transmission`, character-framed vs block-framed, no clock vs shared clock
+- `STP` vs `UTP`, shielded vs unshielded twisted pair
+- `Radio Waves` vs `Microwaves` vs `Infrared`, frequency range and directionality differences
 
 ---
 
 ## Central Concepts
 
-These are the most connected concepts — master these first:
+These are the most connected concepts, master these first:
 
 | Concept | Connections | Why Central |
 |---------|-------------|-------------|
@@ -224,20 +224,20 @@ These are the most connected concepts — master these first:
 
 Recommended study order based on dependencies:
 
-1. **Introduction to Data Communication** — 5 components, data representation (text/image/audio/video), principles
-2. **Data Transmission Modes** — simplex, half-duplex, full-duplex
-3. **Data Transmission Forms** — analog vs digital
-4. **Transmission Media** — guided (twisted pair, coaxial, fibre-optic) and unguided (radio, microwave, infrared)
-5. **Serial vs Parallel Transmission** — how bits actually travel; advantages and trade-offs
-6. **Asynchronous vs Synchronous Transmission** — timing and framing at character/block level
-7. **Fourier Analysis** — signal representation; Fourier Series for periodic signals, Fourier Transform for non-periodic
-8. **Bandwidth & Data Transmission Speed** — capacity, BPS, signal spectrum
-9. **Bandwidth Allocation & OFDM** — real-world application of Fourier in 5G/LTE
-10. **Computer Networks** — LAN/MAN/WAN, topologies (bus/star/ring/mesh)
-11. **Switching Techniques** — circuit switching vs packet switching
-12. **Routing Techniques** — source routing, hop-by-hop routing
-13. **Communication Protocols & OSI Model** — 7 layers, functions per layer
-14. **Modulation & Multiplexing** — encoding and combining signals (TDM, FDM)
+1. **Introduction to Data Communication**: 5 components, data representation (text/image/audio/video), principles
+2. **Data Transmission Modes**: simplex, half-duplex, full-duplex
+3. **Data Transmission Forms**: analog vs digital
+4. **Transmission Media**: guided (twisted pair, coaxial, fibre-optic) and unguided (radio, microwave, infrared)
+5. **Serial vs Parallel Transmission**: how bits actually travel; advantages and trade-offs
+6. **Asynchronous vs Synchronous Transmission**: timing and framing at character/block level
+7. **Fourier Analysis**: signal representation; Fourier Series for periodic signals, Fourier Transform for non-periodic
+8. **Bandwidth & Data Transmission Speed**: capacity, BPS, signal spectrum
+9. **Bandwidth Allocation & OFDM**: real-world application of Fourier in 5G/LTE
+10. **Computer Networks**: LAN/MAN/WAN, topologies (bus/star/ring/mesh)
+11. **Switching Techniques**: circuit switching vs packet switching
+12. **Routing Techniques**: source routing, hop-by-hop routing
+13. **Communication Protocols & OSI Model**: 7 layers, functions per layer
+14. **Modulation & Multiplexing**: encoding and combining signals (TDM, FDM)
 
 ---
 
@@ -267,9 +267,9 @@ Recommended study order based on dependencies:
 | Microwaves | 1–300 GHz; unidirectional; line-of-sight; terrestrial and satellite links |
 | Infrared | 300 GHz–400 THz; short-distance; cannot penetrate walls; remote controls |
 | Bandwidth | Measure of data transfer capacity over a network per unit time |
-| LAN | Local Area Network — limited geographic area (office, home) |
-| MAN | Metropolitan Area Network — city or large campus |
-| WAN | Wide Area Network — global interconnection |
+| LAN | Local Area Network, limited geographic area (office, home) |
+| MAN | Metropolitan Area Network, city or large campus |
+| WAN | Wide Area Network, global interconnection |
 | Star Topology | All nodes connect to a central hub/switch |
 | Ring Topology | Nodes connected in a closed loop |
 | Bus Topology | All nodes share a single backbone cable |
@@ -279,14 +279,14 @@ Recommended study order based on dependencies:
 | Source Routing | Full path from source to destination specified by source node |
 | Hop-by-Hop Routing | Each node passes data to the next along the path |
 | OSI Model | 7-layer network reference model released by ISO in 1984 |
-| Physical Layer | Layer 1 — hardware, bit stream transmission, NIC |
-| Data Link Layer | Layer 2 — frames, physical addressing |
-| Network Layer | Layer 3 — routing, logical addressing |
-| Transport Layer | Layer 4 — end-to-end delivery, error control, flow control |
-| Session Layer | Layer 5 — session and dialogue management |
-| Presentation Layer | Layer 6 — encryption, compression, syntax translation |
-| Application Layer | Layer 7 — user-facing network services |
-| NIC | Network Interface Card — hardware connecting a device to a network |
+| Physical Layer | Layer 1, hardware, bit stream transmission, NIC |
+| Data Link Layer | Layer 2, frames, physical addressing |
+| Network Layer | Layer 3, routing, logical addressing |
+| Transport Layer | Layer 4, end-to-end delivery, error control, flow control |
+| Session Layer | Layer 5, session and dialogue management |
+| Presentation Layer | Layer 6, encryption, compression, syntax translation |
+| Application Layer | Layer 7, user-facing network services |
+| NIC | Network Interface Card, hardware connecting a device to a network |
 | Serial Transmission | Data sent one bit at a time over a single channel; reliable long-distance |
 | Parallel Transmission | Multiple bits sent simultaneously over multiple channels; fast, short-distance |
 | Asynchronous Transmission | Character-framed with Start/Stop bits; no shared clock |
@@ -295,8 +295,8 @@ Recommended study order based on dependencies:
 | Fourier Transform | Decomposes non-periodic signals from time domain to frequency domain |
 | Harmonic | Frequency component at an integral multiple of the fundamental frequency |
 | Dirichlet Conditions | Three conditions a periodic signal must meet for Fourier Series to exist |
-| Orthogonality | Property of harmonics — each is independent of the others |
-| OFDM | Orthogonal Frequency Division Multiplexing — core 5G/LTE technology using Fourier Transform |
+| Orthogonality | Property of harmonics, each is independent of the others |
+| OFDM | Orthogonal Frequency Division Multiplexing, core 5G/LTE technology using Fourier Transform |
 | Modulation | Encoding information onto a carrier signal |
 | Multiplexing | Combining multiple signals over a shared medium (TDM, FDM, FCM) |
 
@@ -305,16 +305,16 @@ Recommended study order based on dependencies:
 ## Tutor Reference Notes
 
 
-- **Best entry-point concept:** Start with the 5 components of a data communication system (Message, Sender, Receiver, Transmission Medium, Protocol) — every other topic in this course builds from here.
+- **Best entry-point concept:** Start with the 5 components of a data communication system (Message, Sender, Receiver, Transmission Medium, Protocol), every other topic in this course builds from here.
 
 - **Most common misconceptions:**
-  - Confusing *half-duplex* with *simplex* — half-duplex CAN go both ways, just not simultaneously
-  - Thinking *digital* is always better than *analog* — depends entirely on context and medium
-  - Believing OSI layers are strict physical hardware boundaries — they are logical abstractions
-  - Confusing *routing* with *switching* — switching connects within a network; routing connects networks
-  - Thinking *serial* is always slower than *parallel* — not true over long distances (parallel suffers skew)
-  - Confusing *asynchronous* with *half-duplex* — they describe different aspects (timing vs direction)
-  - Thinking only even harmonics cancel in a square wave — it's the even harmonics that cancel, odd survive
+  - Confusing *half-duplex* with *simplex*, half-duplex CAN go both ways, just not simultaneously
+  - Thinking *digital* is always better than *analog*, depends entirely on context and medium
+  - Believing OSI layers are strict physical hardware boundaries, they are logical abstractions
+  - Confusing *routing* with *switching*, switching connects within a network; routing connects networks
+  - Thinking *serial* is always slower than *parallel*, not true over long distances (parallel suffers skew)
+  - Confusing *asynchronous* with *half-duplex*, they describe different aspects (timing vs direction)
+  - Thinking only even harmonics cancel in a square wave, it's the even harmonics that cancel, odd survive
 
 - **Concepts students typically conflate:**
   - `Circuit Switching` ↔ `Packet Switching` (dedicated path vs shared packets)
@@ -329,6 +329,6 @@ Recommended study order based on dependencies:
   - `Asynchronous` ↔ `Synchronous` Transmission (character-framed vs block-framed)
 
 - **Mbosinwa-specific notes:**
-  - Has strong software/systems engineering background — use analogies to protocols (HTTP, TCP), buses (USB, SPI), and embedded systems (RS-232, RS-485) when explaining networking concepts
+  - Has strong software/systems engineering background, use analogies to protocols (HTTP, TCP), buses (USB, SPI), and embedded systems (RS-232, RS-485) when explaining networking concepts
   - Over-explain by default; he will signal if something needs less detail
-  - Fourier mathematics may need extra scaffolding — connect abstract formulas to concrete examples (square wave, OFDM, 5G) to build intuition
+  - Fourier mathematics may need extra scaffolding, connect abstract formulas to concrete examples (square wave, OFDM, 5G) to build intuition

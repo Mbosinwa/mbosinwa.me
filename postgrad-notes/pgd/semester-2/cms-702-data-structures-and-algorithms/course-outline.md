@@ -1,4 +1,4 @@
-# CMS 702 — Data Structures & Computer Algorithms (3 Units)
+# CMS 702: Data Structures & Computer Algorithms (3 Units)
 
 **Official course outline**
 

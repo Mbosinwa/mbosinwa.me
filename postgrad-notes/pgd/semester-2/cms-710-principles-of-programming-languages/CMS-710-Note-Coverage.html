@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CMS 710 — Beyond the Four Modules (Volume III)</title>
+<title>CMS 710 · Beyond the Four Modules (Volume III)</title>
 <style>
 @page { size: A4; margin: 13mm 12mm; }
 
@@ -224,7 +224,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="masthead">
   <div class="eyebrow">Volume III · the gaps · binding, scoping, paradigms and translation</div>
-  <h1>CMS 710 — Beyond the Four Modules</h1>
+  <h1>CMS 710 · Beyond the Four Modules</h1>
   <div class="sub">The class modules cover language definition, types, data structures and control flow. A Principles of Programming Languages paper also draws on binding times, static versus dynamic scoping, the full family of parameter-passing models, language paradigms and how translation actually works. This volume is that material, aligned to what the modules already say.</div>
   <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
   <div class="facts">
@@ -237,7 +237,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="box warn">
 <h4>Read this in the right order</h4>
-<b>§1 and §2 are direct extensions of the lecturer's own test questions</b> — he asked about scope and lifetime, and the natural follow-up is <b>binding times</b> and <b>static versus dynamic scoping</b>; he asked about pass by value and reference, and the natural follow-up is <b>the other three passing models</b>. Learn those two sections first. <b>§3–§6</b> are standard PPL topics the modules never reach; take them after Volumes I and II are secure.
+<b>§1 and §2 are direct extensions of the lecturer's own test questions</b> · he asked about scope and lifetime, and the natural follow-up is <b>binding times</b> and <b>static versus dynamic scoping</b>; he asked about pass by value and reference, and the natural follow-up is <b>the other three passing models</b>. Learn those two sections first. <b>§3–§6</b> are standard PPL topics the modules never reach; take them after Volumes I and II are secure.
 </div>
 
 <!-- ============================================================ -->
@@ -250,26 +250,26 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 <thead><tr><th class="c" style="width:4%">#</th><th style="width:18%">Attribute</th><th>What it is</th></tr></thead>
 <tbody>
 <tr><td class="c">1</td><td><b>Name</b></td><td>The <b>identifier</b> used to refer to it in the source text</td></tr>
-<tr><td class="c">2</td><td><b>Address</b></td><td>The <b>memory location</b> it occupies — its <b>l-value</b></td></tr>
-<tr><td class="c">3</td><td><b>Type</b></td><td>The <b>set of values and permitted operations</b> — Module 2's definition</td></tr>
-<tr><td class="c">4</td><td><b>Value</b></td><td>The <b>contents</b> of that location — its <b>r-value</b></td></tr>
-<tr><td class="c">5</td><td><b>Lifetime</b></td><td>The <b>period during which it exists in memory</b> — Module 4's definition</td></tr>
-<tr><td class="c">6</td><td><b>Scope</b></td><td><b>Where in the program it is visible</b> — Module 4's definition</td></tr>
+<tr><td class="c">2</td><td><b>Address</b></td><td>The <b>memory location</b> it occupies · its <b>l-value</b></td></tr>
+<tr><td class="c">3</td><td><b>Type</b></td><td>The <b>set of values and permitted operations</b> · Module 2's definition</td></tr>
+<tr><td class="c">4</td><td><b>Value</b></td><td>The <b>contents</b> of that location · its <b>r-value</b></td></tr>
+<tr><td class="c">5</td><td><b>Lifetime</b></td><td>The <b>period during which it exists in memory</b> · Module 4's definition</td></tr>
+<tr><td class="c">6</td><td><b>Scope</b></td><td><b>Where in the program it is visible</b> · Module 4's definition</td></tr>
 </tbody>
 </table>
-<div class="box" style="padding:5pt 7pt"><b>l-value and r-value</b> — worth one line. In <code>x = y</code>, the <b>l-value</b> of <code>x</code> is used (its address, where the result goes) and the <b>r-value</b> of <code>y</code> is used (its contents). This is why <code>10 = x</code> is illegal: a literal has an r-value but no l-value.</div>
+<div class="box" style="padding:5pt 7pt"><b>l-value and r-value</b> · worth one line. In <code>x = y</code>, the <b>l-value</b> of <code>x</code> is used (its address, where the result goes) and the <b>r-value</b> of <code>y</code> is used (its contents). This is why <code>10 = x</code> is illegal: a literal has an r-value but no l-value.</div>
 <h4>Aliases</h4>
-<p style="font-size:9.1pt">Two names bound to the <b>same memory address</b> are <b>aliases</b>. Pass-by-reference creates one deliberately: inside <code>void f(int &amp;x)</code>, the name <code>x</code> and the caller's variable are aliases for one location. Aliasing is powerful but <b>damages readability and reliability</b>, because a change through one name silently changes the other — which is precisely the risk column in the pass-by-reference table.</p>
+<p style="font-size:9.1pt">Two names bound to the <b>same memory address</b> are <b>aliases</b>. Pass-by-reference creates one deliberately: inside <code>void f(int &amp;x)</code>, the name <code>x</code> and the caller's variable are aliases for one location. Aliasing is powerful but <b>damages readability and reliability</b>, because a change through one name silently changes the other · which is precisely the risk column in the pass-by-reference table.</p>
 </div>
 <div>
 <h4>Binding and binding time <span class="tag">EXTENDS THE SCOPE QUESTION</span></h4>
-<p style="font-size:9.3pt">A <b>binding</b> is an <b>association between an attribute and an entity</b> — between a name and a type, or a name and a memory address. <b>Binding time</b> is <b>when that association is made</b>.</p>
+<p style="font-size:9.3pt">A <b>binding</b> is an <b>association between an attribute and an entity</b> · between a name and a type, or a name and a memory address. <b>Binding time</b> is <b>when that association is made</b>.</p>
 <table class="tight">
 <thead><tr><th style="width:26%">Binding time</th><th>Example of what is bound then</th></tr></thead>
 <tbody>
 <tr><td><b>Language design time</b></td><td>The meaning of <code>*</code> as multiplication; the set of keywords</td></tr>
 <tr><td><b>Language implementation time</b></td><td>The range of <code>int</code>; how floating point is represented</td></tr>
-<tr><td><b>Compile time</b></td><td>A variable's <b>type</b> in C++ — <code>int x;</code></td></tr>
+<tr><td><b>Compile time</b></td><td>A variable's <b>type</b> in C++ · <code>int x;</code></td></tr>
 <tr><td><b>Link time</b></td><td>A call to a library function bound to its actual code</td></tr>
 <tr><td><b>Load time</b></td><td>A <b>global variable bound to its address</b> when the program loads</td></tr>
 <tr><td><b>Run time</b></td><td>A <b>local variable bound to a stack address</b> when its function is entered; a variable's <b>value</b> whenever it is assigned</td></tr>
@@ -278,25 +278,25 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 <table class="tight">
 <thead><tr><th style="width:22%">Kind</th><th>Definition</th><th style="width:26%">Example</th></tr></thead>
 <tbody>
-<tr><td><b>Static binding</b></td><td>Occurs <b>before run time</b> and <b>does not change</b> during execution</td><td>C++ <code>int x = 10;</code> — the type is fixed at compile time</td></tr>
-<tr><td><b>Dynamic binding</b></td><td>Occurs <b>during execution</b> and <b>may change</b></td><td>Python <code>x = 10</code> then <code>x = "CMS710"</code> — the type is rebound</td></tr>
+<tr><td><b>Static binding</b></td><td>Occurs <b>before run time</b> and <b>does not change</b> during execution</td><td>C++ <code>int x = 10;</code> · the type is fixed at compile time</td></tr>
+<tr><td><b>Dynamic binding</b></td><td>Occurs <b>during execution</b> and <b>may change</b></td><td>Python <code>x = 10</code> then <code>x = "CMS710"</code> · the type is rebound</td></tr>
 </tbody>
 </table>
 <div class="box star" style="padding:5pt 7pt"><b>This unifies Module 2 and Module 4.</b> <b>Static typing is early type binding; dynamic typing is late type binding.</b> And the lifetime distinction in the lecturer's Q3 is a <b>storage binding</b> question: a global's address is bound at <b>load time</b> and never released, a local's at <b>run time</b> on entry and released on return. Saying it that way shows the two questions are one idea.</div>
 </div>
 </div>
 
-<h3>Storage bindings — the four categories</h3>
+<h3>Storage bindings · the four categories</h3>
 <table class="tight">
 <thead><tr><th style="width:20%">Category</th><th>When storage is allocated</th><th style="width:22%">Example</th><th>Advantage / disadvantage</th></tr></thead>
 <tbody>
 <tr><td><b>Static</b></td><td><b>Before execution begins</b>, and kept for the whole program</td><td>C++ <code>static</code> variables · globals</td><td>Efficient, direct addressing, values survive calls · but no memory reuse and no recursion support</td></tr>
 <tr><td><b>Stack-dynamic</b></td><td><b>When the declaration is elaborated</b>, i.e. when the block is entered</td><td>Ordinary local variables</td><td><b>Allows recursion</b> and shares memory between calls · but costs allocation time and indirect addressing</td></tr>
-<tr><td><b>Explicit heap-dynamic</b></td><td>By an <b>explicit instruction</b> from the programmer at run time</td><td>C++ <code>new</code> / <code>delete</code></td><td>Full flexibility · but unreliable and costly — <b>leaks and dangling pointers</b></td></tr>
+<tr><td><b>Explicit heap-dynamic</b></td><td>By an <b>explicit instruction</b> from the programmer at run time</td><td>C++ <code>new</code> / <code>delete</code></td><td>Full flexibility · but unreliable and costly · <b>leaks and dangling pointers</b></td></tr>
 <tr><td><b>Implicit heap-dynamic</b></td><td><b>Automatically, on assignment</b></td><td>Python lists and objects; JavaScript arrays</td><td>Maximum flexibility · but high run-time cost and errors are detected late</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>Why this matters for recursion:</b> recursion is only possible because locals are <b>stack-dynamic</b> — each call gets a fresh set. If all variables were statically allocated, every recursive call would overwrite the previous one's data. That single sentence connects the lecturer's Q2 and Q3.</p>
+<p style="font-size:9.1pt"><b>Why this matters for recursion:</b> recursion is only possible because locals are <b>stack-dynamic</b> · each call gets a fresh set. If all variables were statically allocated, every recursive call would overwrite the previous one's data. That single sentence connects the lecturer's Q2 and Q3.</p>
 
 <!-- ============================================================ -->
 <h2 class="pagebreak"><span class="n">2</span>Static vs dynamic scoping, and the other parameter-passing models</h2>
@@ -304,16 +304,16 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 <div class="grid2">
 <div>
 <h4>Static (lexical) vs dynamic scoping <span class="tag">THE NATURAL FOLLOW-UP</span></h4>
-<p style="font-size:9.3pt">Module 4 distinguishes <b>global, local and block</b> scope. A deeper question asks <b>how a non-local name is resolved</b> — and there are two answers.</p>
+<p style="font-size:9.3pt">Module 4 distinguishes <b>global, local and block</b> scope. A deeper question asks <b>how a non-local name is resolved</b> · and there are two answers.</p>
 <table class="tight">
 <thead><tr><th style="width:22%">Basis</th><th>Static (lexical) scoping</th><th>Dynamic scoping</th></tr></thead>
 <tbody>
 <tr><td><b>Rule</b></td><td>A name refers to the declaration in the <b>nearest enclosing block in the program text</b></td><td>A name refers to the declaration in the <b>most recent active call</b> at run time</td></tr>
 <tr><td><b>Resolved</b></td><td>At <b>compile time</b>, by reading the source</td><td>At <b>run time</b>, by searching the call chain</td></tr>
-<tr><td><b>Readability</b></td><td><b>High</b> — you can tell what a name means by reading</td><td><b>Low</b> — the meaning depends on who called</td></tr>
-<tr><td><b>Reliability</b></td><td>High</td><td>Low — a caller can accidentally capture a name</td></tr>
-<tr><td><b>Cost</b></td><td>Cheap — addresses known in advance</td><td>Expensive — a run-time search</td></tr>
-<tr><td><b>Used by</b></td><td><b>Almost all modern languages</b> — C++, Python, JavaScript, Java</td><td>Early LISP, some shell languages, Perl's <code>local</code></td></tr>
+<tr><td><b>Readability</b></td><td><b>High</b> · you can tell what a name means by reading</td><td><b>Low</b> · the meaning depends on who called</td></tr>
+<tr><td><b>Reliability</b></td><td>High</td><td>Low · a caller can accidentally capture a name</td></tr>
+<tr><td><b>Cost</b></td><td>Cheap · addresses known in advance</td><td>Expensive · a run-time search</td></tr>
+<tr><td><b>Used by</b></td><td><b>Almost all modern languages</b> · C++, Python, JavaScript, Java</td><td>Early LISP, some shell languages, Perl's <code>local</code></td></tr>
 </tbody>
 </table>
 <pre>x = 10                     # global
@@ -329,7 +329,7 @@ caller()
 
 STATIC scoping  → prints 10   ← Python's answer
 DYNAMIC scoping → prints 99   (would look up the caller)</pre>
-<p style="font-size:9.1pt"><b>The conclusion to write:</b> languages overwhelmingly chose <b>static scoping</b> because it lets a reader — and a compiler — determine the meaning of every name <b>from the program text alone</b>, which serves the design goals of <b>readability and reliability</b> from Module 1.</p>
+<p style="font-size:9.1pt"><b>The conclusion to write:</b> languages overwhelmingly chose <b>static scoping</b> because it lets a reader · and a compiler · determine the meaning of every name <b>from the program text alone</b>, which serves the design goals of <b>readability and reliability</b> from Module 1.</p>
 <h4>Referencing environment</h4>
 <p style="font-size:9.1pt">The <b>referencing environment</b> of a statement is <b>the complete collection of names visible at that point</b>. Under static scoping it is the local declarations plus those of all enclosing scopes; under dynamic scoping it is the locals of every active call. It is the formal way of saying "what is in scope here".</p>
 </div>
@@ -341,25 +341,25 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <tbody>
 <tr><td><b>Pass by value</b></td><td class="c"><b>in</b></td><td>The value is <b>copied into</b> the parameter; the caller's variable is never touched</td></tr>
 <tr><td><b>Pass by result</b></td><td class="c"><b>out</b></td><td>Nothing is passed in; the parameter's <b>final value is copied back</b> to the caller on return</td></tr>
-<tr><td><b>Pass by value-result</b></td><td class="c"><b>in out</b></td><td>Copied in <b>and</b> copied back on return — also called <b>copy-restore</b></td></tr>
-<tr><td><b>Pass by reference</b></td><td class="c"><b>in out</b></td><td>The <b>address</b> is passed, so the function works directly on the caller's variable — <b>no copying</b></td></tr>
-<tr><td><b>Pass by name</b></td><td class="c">—</td><td>The argument is <b>textually substituted</b> for the parameter and re-evaluated on every use — powerful, but confusing and now rare</td></tr>
+<tr><td><b>Pass by value-result</b></td><td class="c"><b>in out</b></td><td>Copied in <b>and</b> copied back on return · also called <b>copy-restore</b></td></tr>
+<tr><td><b>Pass by reference</b></td><td class="c"><b>in out</b></td><td>The <b>address</b> is passed, so the function works directly on the caller's variable · <b>no copying</b></td></tr>
+<tr><td><b>Pass by name</b></td><td class="c">-</td><td>The argument is <b>textually substituted</b> for the parameter and re-evaluated on every use · powerful, but confusing and now rare</td></tr>
 </tbody>
 </table>
-<div class="box" style="padding:5pt 7pt"><b>Value-result vs reference — the classic exam distinction.</b> Both let a function change the caller's variable, but <b>value-result works on a copy and writes back at the end</b>, while <b>reference works on the original throughout</b>. They differ if the same variable is passed twice, or if the function fails part-way: reference leaves partial changes behind, value-result does not.</div>
+<div class="box" style="padding:5pt 7pt"><b>Value-result vs reference · the classic exam distinction.</b> Both let a function change the caller's variable, but <b>value-result works on a copy and writes back at the end</b>, while <b>reference works on the original throughout</b>. They differ if the same variable is passed twice, or if the function fails part-way: reference leaves partial changes behind, value-result does not.</div>
 <h4>Design considerations for parameter passing</h4>
 <ol style="font-size:9.1pt">
-<li><b>Efficiency</b> — copying large objects is expensive, which argues for reference</li>
-<li><b>Safety</b> — one-way (in mode) passing protects the caller's data</li>
+<li><b>Efficiency</b> · copying large objects is expensive, which argues for reference</li>
+<li><b>Safety</b> · one-way (in mode) passing protects the caller's data</li>
 <li><b>Whether results should be returned through parameters</b> at all, or only through return values</li>
 </ol>
 <h4>How the three course languages actually do it</h4>
 <table class="tight">
 <thead><tr><th style="width:24%">Language</th><th>Mechanism</th></tr></thead>
 <tbody>
-<tr><td><b>C++</b></td><td><b>By value by default</b>; <b>by reference</b> with <code>&amp;</code>; <b>by pointer</b> with <code>*</code> and <code>&amp;</code>. The programmer chooses explicitly — hence "parameter passing complexity: <b>high</b>"</td></tr>
-<tr><td><b>Python</b></td><td><b>Pass-by-object-reference</b> — mutating the object affects the caller, rebinding the name does not</td></tr>
-<tr><td><b>JavaScript</b></td><td>Primitives <b>by value</b>; objects and arrays <b>by reference to the object</b> — the same split as Python</td></tr>
+<tr><td><b>C++</b></td><td><b>By value by default</b>; <b>by reference</b> with <code>&amp;</code>; <b>by pointer</b> with <code>*</code> and <code>&amp;</code>. The programmer chooses explicitly · hence "parameter passing complexity: <b>high</b>"</td></tr>
+<tr><td><b>Python</b></td><td><b>Pass-by-object-reference</b> · mutating the object affects the caller, rebinding the name does not</td></tr>
+<tr><td><b>JavaScript</b></td><td>Primitives <b>by value</b>; objects and arrays <b>by reference to the object</b> · the same split as Python</td></tr>
 </tbody>
 </table>
 </div>
@@ -373,10 +373,10 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <table class="tight">
 <thead><tr><th style="width:14%">Paradigm</th><th style="width:26%">Core idea</th><th style="width:20%">Languages</th><th>Strengths and weaknesses</th></tr></thead>
 <tbody>
-<tr><td><b>Imperative / procedural</b></td><td>Describes <b>how</b> a task is performed, as a sequence of <b>statements that change program state</b>. Built on the <b>von Neumann architecture</b> — variables model memory cells, assignment models storing</td><td>C, C++, Pascal, Python, JavaScript</td><td>Efficient and close to the machine · but state changes make programs harder to reason about</td></tr>
+<tr><td><b>Imperative / procedural</b></td><td>Describes <b>how</b> a task is performed, as a sequence of <b>statements that change program state</b>. Built on the <b>von Neumann architecture</b> · variables model memory cells, assignment models storing</td><td>C, C++, Pascal, Python, JavaScript</td><td>Efficient and close to the machine · but state changes make programs harder to reason about</td></tr>
 <tr><td><b>Object-oriented</b></td><td>Programs are <b>objects that combine data and behaviour</b>, using encapsulation, inheritance and polymorphism</td><td>C++, Java, Python, JavaScript</td><td>Strong modelling of real-world entities, reuse through inheritance · but added complexity and overhead</td></tr>
 <tr><td><b>Functional</b></td><td>Describes <b>what</b> is to be computed by <b>applying functions</b>, avoiding changeable state and <b>side effects</b></td><td>Haskell, Lisp, ML; supported in Python and JavaScript</td><td>Simpler code, easier reasoning, easier parallelism · but unfamiliar and sometimes less efficient</td></tr>
-<tr><td><b>Logic / declarative</b></td><td>Programs are <b>facts and rules</b>; the system <b>infers</b> answers rather than following steps</td><td><b>Prolog</b> — the 4GL of Module 1</td><td>Excellent for AI, reasoning and knowledge representation · but limited control over efficiency</td></tr>
+<tr><td><b>Logic / declarative</b></td><td>Programs are <b>facts and rules</b>; the system <b>infers</b> answers rather than following steps</td><td><b>Prolog</b> · the 4GL of Module 1</td><td>Excellent for AI, reasoning and knowledge representation · but limited control over efficiency</td></tr>
 <tr><td><b>Scripting</b></td><td><b>Interpreted</b>, high-level languages for automating tasks and gluing components together</td><td>Python, JavaScript, Bash</td><td>Rapid development · but slower execution and late error detection</td></tr>
 </tbody>
 </table>
@@ -384,7 +384,7 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <div class="grid2">
 <div>
 <div class="box star" style="padding:6pt 8pt">
-<b>The von Neumann connection — a strong opening line.</b> Imperative languages dominate because they mirror the <b>von Neumann architecture</b>, in which instructions and data share one memory and are processed sequentially. <b>Variables correspond to memory cells, assignment to storing a value, and iteration to the efficient repetition of instructions already in memory.</b> This is also why <b>iteration is faster than recursion</b> on such machines — a point that ties straight back to the lecturer's Q2.
+<b>The von Neumann connection · a strong opening line.</b> Imperative languages dominate because they mirror the <b>von Neumann architecture</b>, in which instructions and data share one memory and are processed sequentially. <b>Variables correspond to memory cells, assignment to storing a value, and iteration to the efficient repetition of instructions already in memory.</b> This is also why <b>iteration is faster than recursion</b> on such machines · a point that ties straight back to the lecturer's Q2.
 </div>
 </div>
 <div>
@@ -393,7 +393,7 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 </div>
 
 <!-- ============================================================ -->
-<h2 class="pagebreak"><span class="n">4</span>Translation — compilation, interpretation and the phases</h2>
+<h2 class="pagebreak"><span class="n">4</span>Translation · compilation, interpretation and the phases</h2>
 
 <div class="grid2">
 <div>
@@ -413,13 +413,13 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <tr><td>Execution speed</td><td><b>Fast</b></td><td>Slower</td></tr>
 <tr><td>Error detection</td><td>All syntax errors found <b>before</b> execution</td><td>Found only when the line is <b>reached</b></td></tr>
 <tr><td>Portability</td><td>Machine-specific binary</td><td><b>Portable</b> source</td></tr>
-<tr><td>Development speed</td><td>Slower — recompile to test</td><td><b>Faster</b> — run immediately</td></tr>
+<tr><td>Development speed</td><td>Slower · recompile to test</td><td><b>Faster</b> · run immediately</td></tr>
 <tr><td>Memory</td><td>Needs no translator at run time</td><td><b>Interpreter must be present</b></td></tr>
 </tbody>
 </table>
 </div>
 <div>
-<h4>The phases of compilation — and where Module 3's trees live</h4>
+<h4>The phases of compilation · and where Module 3's trees live</h4>
 <figure>
 <svg viewBox="0 0 300 214" xmlns="http://www.w3.org/2000/svg">
   <g fill="none" stroke="#1a1c22" stroke-width="1.1">
@@ -459,14 +459,14 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <table class="tight">
 <thead><tr><th style="width:30%">Phase</th><th>What it does</th></tr></thead>
 <tbody>
-<tr><td><b>1. Lexical analysis</b></td><td>Groups characters into <b>tokens</b> — keywords, identifiers, literals, operators. Catches illegal characters</td></tr>
+<tr><td><b>1. Lexical analysis</b></td><td>Groups characters into <b>tokens</b> · keywords, identifiers, literals, operators. Catches illegal characters</td></tr>
 <tr><td><b>2. Syntax analysis</b></td><td>Checks tokens against the <b>grammar (BNF)</b> and builds the <b>parse tree</b>. Catches missing semicolons and mismatched brackets</td></tr>
-<tr><td><b>3. Semantic analysis</b></td><td>Checks <b>meaning</b> — type compatibility, undeclared variables — and produces the <b>AST</b>. This is where <b>static semantics</b> is enforced</td></tr>
+<tr><td><b>3. Semantic analysis</b></td><td>Checks <b>meaning</b> · type compatibility, undeclared variables · and produces the <b>AST</b>. This is where <b>static semantics</b> is enforced</td></tr>
 <tr><td><b>4. Optimization</b></td><td>Improves the intermediate code without changing its meaning</td></tr>
 <tr><td><b>5. Code generation</b></td><td>Emits <b>machine or object code</b> from the AST</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>The symbol table</b> runs alongside every phase, holding each identifier's <b>name, type, scope and address</b> — the six attributes of §1 in one data structure.</p>
+<p style="font-size:9.1pt"><b>The symbol table</b> runs alongside every phase, holding each identifier's <b>name, type, scope and address</b> · the six attributes of §1 in one data structure.</p>
 </div>
 </div>
 
@@ -490,21 +490,21 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <table class="tight">
 <thead><tr><th style="width:28%">Term</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><b>Terminal</b></td><td>A symbol that appears in the program itself — <code>+</code>, <code>=</code>, <code>if</code></td></tr>
-<tr><td><b>Non-terminal</b></td><td>A named construct defined by a rule — <code>&lt;expr&gt;</code></td></tr>
+<tr><td><b>Terminal</b></td><td>A symbol that appears in the program itself · <code>+</code>, <code>=</code>, <code>if</code></td></tr>
+<tr><td><b>Non-terminal</b></td><td>A named construct defined by a rule · <code>&lt;expr&gt;</code></td></tr>
 <tr><td><b>Start symbol</b></td><td>The non-terminal a whole program derives from</td></tr>
 <tr><td><b>Derivation</b></td><td>The sequence of rule applications producing a sentence</td></tr>
-<tr><td><b>Ambiguous grammar</b></td><td>One that allows <b>two different parse trees</b> for the same statement — a defect, because meaning becomes undefined</td></tr>
+<tr><td><b>Ambiguous grammar</b></td><td>One that allows <b>two different parse trees</b> for the same statement · a defect, because meaning becomes undefined</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>How a grammar encodes precedence:</b> in the rules above, <code>&lt;term&gt;</code> handles <code>*</code> and sits <b>below</b> <code>&lt;expr&gt;</code>, which handles <code>+</code>. Because multiplication is generated deeper in the tree, it is <b>evaluated first</b> — exactly what Module 3's parse tree for <code>a + b * c</code> shows. That connection is worth a mark on its own.</p>
+<p style="font-size:9.1pt"><b>How a grammar encodes precedence:</b> in the rules above, <code>&lt;term&gt;</code> handles <code>*</code> and sits <b>below</b> <code>&lt;expr&gt;</code>, which handles <code>+</code>. Because multiplication is generated deeper in the tree, it is <b>evaluated first</b> · exactly what Module 3's parse tree for <code>a + b * c</code> shows. That connection is worth a mark on its own.</p>
 </div>
 <div>
 <h4>Static and dynamic semantics</h4>
 <table class="tight">
 <thead><tr><th style="width:26%">Kind</th><th>What it describes</th></tr></thead>
 <tbody>
-<tr><td><b>Static semantics</b></td><td>Rules that can be <b>checked before execution</b> but are not expressible in BNF — e.g. "a variable must be declared before use", "operand types must be compatible". Formalised with <b>attribute grammars</b></td></tr>
+<tr><td><b>Static semantics</b></td><td>Rules that can be <b>checked before execution</b> but are not expressible in BNF · e.g. "a variable must be declared before use", "operand types must be compatible". Formalised with <b>attribute grammars</b></td></tr>
 <tr><td><b>Dynamic semantics</b></td><td>The <b>meaning of statements when executed</b></td></tr>
 </tbody>
 </table>
@@ -514,18 +514,18 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <tbody>
 <tr><td><b>Operational</b></td><td>Describe meaning by the <b>changes of state</b> a statement causes on an abstract machine</td><td>Teaching and language manuals</td></tr>
 <tr><td><b>Denotational</b></td><td>Map each construct onto a <b>mathematical object</b> (a function) that denotes its meaning</td><td>Rigorous specification; hardest to read</td></tr>
-<tr><td><b>Axiomatic</b></td><td>Describe meaning by <b>logical assertions</b> — preconditions and postconditions</td><td><b>Program verification</b> and correctness proofs</td></tr>
+<tr><td><b>Axiomatic</b></td><td>Describe meaning by <b>logical assertions</b> · preconditions and postconditions</td><td><b>Program verification</b> and correctness proofs</td></tr>
 </tbody>
 </table>
 <div class="box" style="padding:5pt 7pt"><b>The one-line summary if asked:</b> <b>syntax</b> is described by <b>BNF</b>, <b>static semantics</b> by <b>attribute grammars</b>, and <b>dynamic semantics</b> by <b>operational, denotational or axiomatic</b> methods. That sentence covers a whole question on language description.</p>
 </div>
 <h4>Type checking, coercion and equivalence</h4>
 <ul style="font-size:9.1pt">
-<li><b>Type checking</b> — ensuring operands of an operator are of <b>compatible types</b>.</li>
-<li><b>Coercion</b> — an <b>implicit, automatic type conversion</b> performed by the language. JavaScript's <code>"5" + 2 → "52"</code> is coercion, and it is why weak typing lowers reliability.</li>
-<li><b>Casting</b> — an <b>explicit</b> conversion requested by the programmer, e.g. <code>(double)x</code>.</li>
-<li><b>Name type equivalence</b> — two variables have the same type only if declared with the <b>same type name</b>. Strict, safe.</li>
-<li><b>Structural type equivalence</b> — same type if their <b>structures are identical</b>. Flexible, but two unrelated records that happen to match become interchangeable.</li>
+<li><b>Type checking</b> · ensuring operands of an operator are of <b>compatible types</b>.</li>
+<li><b>Coercion</b> · an <b>implicit, automatic type conversion</b> performed by the language. JavaScript's <code>"5" + 2 → "52"</code> is coercion, and it is why weak typing lowers reliability.</li>
+<li><b>Casting</b> · an <b>explicit</b> conversion requested by the programmer, e.g. <code>(double)x</code>.</li>
+<li><b>Name type equivalence</b> · two variables have the same type only if declared with the <b>same type name</b>. Strict, safe.</li>
+<li><b>Structural type equivalence</b> · same type if their <b>structures are identical</b>. Flexible, but two unrelated records that happen to match become interchangeable.</li>
 </ul>
 </div>
 </div>
@@ -540,24 +540,24 @@ DYNAMIC scoping → prints 99   (would look up the caller)</pre>
 <tbody>
 <tr><td rowspan="5"><b>Readability</b><br><span style="font-size:8.4pt">the ease with which programs can be understood</span></td><td><b>Simplicity</b></td><td>Few constructs, little feature multiplicity, minimal operator overloading. Too many ways to do one thing hurts the reader</td></tr>
 <tr><td><b>Orthogonality</b></td><td>A <b>small set of primitives combinable in a small number of ways</b>, with <b>few exceptions</b>. High orthogonality means rules compose predictably</td></tr>
-<tr><td><b>Data types</b></td><td>Adequate types and structures — a <code>bool</code> reads better than an <code>int</code> holding 0 or 1</td></tr>
+<tr><td><b>Data types</b></td><td>Adequate types and structures · a <code>bool</code> reads better than an <code>int</code> holding 0 or 1</td></tr>
 <tr><td><b>Syntax design</b></td><td>Meaningful keywords, clear form for compound statements, identifier rules</td></tr>
-<tr><td><b>Control statements</b></td><td>Well-designed control structures — the argument against <code>GOTO</code></td></tr>
+<tr><td><b>Control statements</b></td><td>Well-designed control structures · the argument against <code>GOTO</code></td></tr>
 <tr><td rowspan="3"><b>Writability</b><br><span style="font-size:8.4pt">the ease with which programs can be created</span></td><td><b>Simplicity and orthogonality</b></td><td>Fewer constructs to remember, combined consistently</td></tr>
-<tr><td><b>Expressivity</b></td><td>Convenient ways to specify computations — <code>total = sum(numbers)</code> over a written-out loop</td></tr>
-<tr><td><b>Support for abstraction</b></td><td>The ability to define and use complex structures and operations while ignoring detail — <b>Module 2's data abstraction</b></td></tr>
+<tr><td><b>Expressivity</b></td><td>Convenient ways to specify computations · <code>total = sum(numbers)</code> over a written-out loop</td></tr>
+<tr><td><b>Support for abstraction</b></td><td>The ability to define and use complex structures and operations while ignoring detail · <b>Module 2's data abstraction</b></td></tr>
 <tr><td rowspan="4"><b>Reliability</b><br><span style="font-size:8.4pt">performing to specification under all conditions</span></td><td><b>Type checking</b></td><td>Testing for type errors, ideally at <b>compile time</b></td></tr>
 <tr><td><b>Exception handling</b></td><td>Intercepting run-time errors and taking corrective action rather than crashing</td></tr>
-<tr><td><b>Restricted aliasing</b></td><td>Limiting the number of names bound to one address — see §1</td></tr>
+<tr><td><b>Restricted aliasing</b></td><td>Limiting the number of names bound to one address · see §1</td></tr>
 <tr><td><b>Readability and writability</b></td><td>Both feed reliability: code that is hard to read or write is more likely to be wrong</td></tr>
-<tr><td rowspan="2"><b>Cost</b></td><td><b>Training, writing, compiling, executing, maintaining</b></td><td>The total cost of ownership — <b>maintenance often dominates</b>, which is why Module 1 lists maintainability as a goal in its own right</td></tr>
+<tr><td rowspan="2"><b>Cost</b></td><td><b>Training, writing, compiling, executing, maintaining</b></td><td>The total cost of ownership · <b>maintenance often dominates</b>, which is why Module 1 lists maintainability as a goal in its own right</td></tr>
 <tr><td><b>Implementation system cost</b></td><td>The cost and availability of compilers and tools, and the language's reliability record</td></tr>
 </tbody>
 </table>
 
 <div class="grid2">
 <div>
-<h4>Exception handling — worth knowing in outline</h4>
+<h4>Exception handling · worth knowing in outline</h4>
 <p style="font-size:9.1pt">An <b>exception</b> is an <b>unusual event, erroneous or not, detectable by hardware or software, that requires special processing</b>. <b>Exception handling</b> lets a program intercept it and respond rather than terminate.</p>
 <pre>C++      try {
              risky();
@@ -579,12 +579,12 @@ Python   try:
 <tr><td><b>Simplicity vs expressiveness</b></td><td>Easy to learn and read, versus powerful and concise</td></tr>
 <tr><td><b>Efficiency vs safety</b></td><td>C++'s performance and explicit control, versus Python's productivity and protection</td></tr>
 <tr><td><b>Flexibility vs reliability</b></td><td>Dynamic typing's rapid development, versus static typing's early error detection</td></tr>
-<tr><td><b>Readability vs writability</b></td><td>Terse constructs are quick to write and slow to read — the two goals genuinely conflict</td></tr>
+<tr><td><b>Readability vs writability</b></td><td>Terse constructs are quick to write and slow to read · the two goals genuinely conflict</td></tr>
 <tr><td><b>Time vs space</b></td><td>Module 3's data-structure principle: faster usually means more memory</td></tr>
 </tbody>
 </table>
 <div class="box star" style="padding:6pt 8pt">
-<b>The universal closing sentence for this course.</b> No language optimises every criterion; <b>language design is the deliberate selection of a point in these trade-offs to suit an intended domain</b> — which is exactly why Python, JavaScript and C++ look so different while computing the same things.
+<b>The universal closing sentence for this course.</b> No language optimises every criterion; <b>language design is the deliberate selection of a point in these trade-offs to suit an intended domain</b> · which is exactly why Python, JavaScript and C++ look so different while computing the same things.
 </div>
 </div>
 </div>

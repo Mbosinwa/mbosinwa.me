@@ -10,7 +10,7 @@
       gtag('config', 'G-P6GF5HF40L');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS 705 Lecture Notes — Part II — Postgrad Notes — Mbosinwa Awunor</title>
+    <title>CMS 705 Lecture Notes: Part II · Postgrad Notes · Mbosinwa Awunor</title>
     <meta name="description" content="CMS 705 Programming Languages: Second part of the class notes.">
     <meta name="author" content="Mbosinwa Awunor">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Mbosinwa Awunor">
     <meta property="og:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-705-programming-languages/notes-2.html">
-    <meta property="og:title" content="CMS 705 Lecture Notes — Part II — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="og:title" content="CMS 705 Lecture Notes: Part II · Postgrad Notes · Mbosinwa Awunor">
     <meta property="og:description" content="CMS 705 Programming Languages: Second part of the class notes.">
     <meta property="og:image" content="https://mbosinwa.dev/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mbosinwa.dev/postgrad-notes/pgd/semester-1/cms-705-programming-languages/notes-2.html">
-    <meta property="twitter:title" content="CMS 705 Lecture Notes — Part II — Postgrad Notes — Mbosinwa Awunor">
+    <meta property="twitter:title" content="CMS 705 Lecture Notes: Part II · Postgrad Notes · Mbosinwa Awunor">
     <meta property="twitter:description" content="CMS 705 Programming Languages: Second part of the class notes.">
     <meta property="twitter:image" content="https://mbosinwa.dev/image/social-cover.png">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -60,7 +60,7 @@
         </div>
     </nav>
     <main class="container">
-        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/">CMS 705 Programming Languages</a> / Lecture Notes — Part II</p>
+        <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/">CMS 705 Programming Languages</a> / Lecture Notes: Part II</p>
         <div class="doc-actions">
             <button id="copy-md" data-md="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/notes-2.md">Copy as Markdown</button>
             <a href="/postgrad-notes/pgd/semester-1/cms-705-programming-languages/notes-2.md" download="CMS-705-notes-2.md">Download .md</a>
@@ -82,11 +82,11 @@ Nkpolu-Oroworukwo, Port Harcourt <strong>Course Code:</strong> CMS 705
 <p>Data flows through:</p>
 <ol type="1">
 <li><strong>Variables</strong></li>
-<li><strong>Assignments</strong> — giving a value to a variable
+<li><strong>Assignments</strong>: giving a value to a variable
 (<code>variable = value;</code>)</li>
-<li><strong>Expressions</strong> — anything that produces a value (e.g.
+<li><strong>Expressions</strong>: anything that produces a value (e.g.
 <code>5 + 8</code>)</li>
-<li><strong>Functions</strong> — a block of code that performs a
+<li><strong>Functions</strong>: a block of code that performs a
 task</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre
@@ -94,9 +94,9 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#c
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// code</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <ul>
-<li><strong>B. Parameter</strong> — a value you give to a function so it
+<li><strong>B. Parameter</strong>: a value you give to a function so it
 can work with it.</li>
-<li><strong>C. Return value</strong> — what a function sends back after
+<li><strong>C. Return value</strong>: what a function sends back after
 finishing its work.</li>
 <li><strong>4. Control Structures</strong></li>
 <li><strong>5. Memory</strong></li>
@@ -266,7 +266,7 @@ is called an <strong>argument</strong>.</p>
 <h2 id="types-of-data-flow-based-on-visibility">Types of Data Flow Based
 on Visibility</h2>
 <blockquote>
-<p>A different description from program-execution types — describes
+<p>A different description from program-execution types, describes
 <strong>how</strong> data movement is expressed in code. Two types:</p>
 </blockquote>
 <h3 id="1-explicit-data-flow">1. Explicit Data Flow</h3>
@@ -325,7 +325,7 @@ debug.</p>
 shared memory or global variables</li>
 <li>Data flow occurs through control structures and conditions, not
 directly through assignment</li>
-<li><strong>Not clearly visible</strong> — flows "as data-as-value"
+<li><strong>Not clearly visible</strong>: flows "as data-as-value"
 through decisions or execution paths</li>
 </ul>
 <div class="sourceCode" id="cb14"><pre
@@ -489,14 +489,14 @@ concept</strong> in computer science because it is important in:</p>
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
         })();
         </script>
         <footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>
     </main>
     <script>

@@ -7,7 +7,7 @@
 
 ## Course Overview
 
-Compiler Construction (CMS709) covers the theory and practice of building a compiler — a program that translates source code into executable form. The course begins with **Lexical Analysis**, the first compiler phase, which converts raw character streams into structured tokens using formal language theory, finite automata, and transition diagrams. It establishes the foundational concepts of tokens, patterns, lexemes, regular expressions, and the formal Chomsky language hierarchy that underpin all subsequent compiler phases.
+Compiler Construction (CMS709) covers the theory and practice of building a compiler, a program that translates source code into executable form. The course begins with **Lexical Analysis**, the first compiler phase, which converts raw character streams into structured tokens using formal language theory, finite automata, and transition diagrams. It establishes the foundational concepts of tokens, patterns, lexemes, regular expressions, and the formal Chomsky language hierarchy that underpin all subsequent compiler phases.
 
 ---
 
@@ -24,11 +24,11 @@ Compiler Construction (CMS709)
 │   └── Secondary tasks: comment removal, error line tracking
 │
 ├── 2. Tokens, Patterns and Lexemes                 [5 concepts]
-│   ├── Token — terminal symbol of grammar
+│   ├── Token, terminal symbol of grammar
 │   │   └── Key Concepts: Keywords, Operators, Identifiers, Constants
-│   ├── Pattern — regular expression rule
+│   ├── Pattern, regular expression rule
 │   │   └── Key Concepts: Regular Expression ★
-│   ├── Lexeme — actual matched character sequence
+│   ├── Lexeme, actual matched character sequence
 │   └── Token attributes → Symbol Table pointer ★
 │
 ├── 3. Difficulties and Errors in LA                [2 concepts]
@@ -108,7 +108,7 @@ Compiler Construction (CMS709)
 
 ## Central Concepts
 
-These are the most connected concepts — master these first:
+These are the most connected concepts, master these first:
 
 | Concept | Connections | Why Central |
 |---------|-------------|-------------|
@@ -124,15 +124,15 @@ These are the most connected concepts — master these first:
 
 Recommended study order based on dependencies:
 
-1. **Formal Language Theory** — understand alphabets, Σ*, and the Chomsky hierarchy (what kinds of languages exist)
-2. **Regular Expressions** — the notation used to describe token patterns (Type 3 / Regular Languages)
-3. **Tokens, Patterns, Lexemes** — the three core abstractions of lexical analysis
-4. **FSA (Finite State Automata)** — the mathematical model for recognising regular languages
-5. **Transition Diagrams** — practical FSA variant used to build lexers by hand
-6. **Input Buffering** — how the lexer reads characters efficiently (forward pointer, retraction)
-7. **Lexical Analysis** — the full LA phase combining all above into a working analyser
-8. **Specification and Recognition of Tokens** — regular definitions, TD construction, keyword recognition, priority rules
-9. **Implementation** — LEX/FLEX generators vs hand-written approaches
+1. **Formal Language Theory**: understand alphabets, Σ*, and the Chomsky hierarchy (what kinds of languages exist)
+2. **Regular Expressions**: the notation used to describe token patterns (Type 3 / Regular Languages)
+3. **Tokens, Patterns, Lexemes**: the three core abstractions of lexical analysis
+4. **FSA (Finite State Automata)**: the mathematical model for recognising regular languages
+5. **Transition Diagrams**: practical FSA variant used to build lexers by hand
+6. **Input Buffering**: how the lexer reads characters efficiently (forward pointer, retraction)
+7. **Lexical Analysis**: the full LA phase combining all above into a working analyser
+8. **Specification and Recognition of Tokens**: regular definitions, TD construction, keyword recognition, priority rules
+9. **Implementation**: LEX/FLEX generators vs hand-written approaches
 
 ---
 
@@ -143,9 +143,9 @@ Recommended study order based on dependencies:
 | Lexical Analysis | First compiler phase; converts character stream to token sequence |
 | Token | A categorised unit (keyword, identifier, operator, etc.); terminal grammar symbol |
 | Pattern | A regular expression rule describing all strings that form a particular token |
-| Lexeme | The actual character sequence that matches a pattern — a concrete token instance |
+| Lexeme | The actual character sequence that matches a pattern, a concrete token instance |
 | Symbol Table | Compiler data structure storing token info (lexeme, line number, type) |
-| FSA | Finite State Automaton — mathematical model that accepts or rejects a string |
+| FSA | Finite State Automaton, mathematical model that accepts or rejects a string |
 | Transition Diagram | FSA variant used for lexers; reads characters until it finds and returns a token |
 | Dead State | Non-accepting state with no valid transitions; signals end of recognition |
 | Retraction | Rolling back the forward pointer after scanning past the valid lexeme |
@@ -164,14 +164,14 @@ Recommended study order based on dependencies:
 
 _For use during learning sessions on Compiler Construction:_
 
-- **Best entry point for Socratic sessions:** Start with *"What problem is Lexical Analysis solving, and why can't the parser do it itself?"* — this opens up the LA/parser separation rationale and naturally leads into tokens.
+- **Best entry point for Socratic sessions:** Start with *"What problem is Lexical Analysis solving, and why can't the parser do it itself?"*, this opens up the LA/parser separation rationale and naturally leads into tokens.
 - **Most common misconceptions:**
-  - Students confuse **token** (the category) with **lexeme** (the actual string) — always use a concrete example (e.g., `pi` is the lexeme; `identifier` is the token)
-  - Students confuse **FSA** (theory: accepts/rejects) with **TD** (practice: finds and returns token) — the key difference is what happens at accepting states
-  - Students think ALL errors are caught by LA — reinforce that LA has a very localized view and cannot detect semantic errors
+  - Students confuse **token** (the category) with **lexeme** (the actual string), always use a concrete example (e.g., `pi` is the lexeme; `identifier` is the token)
+  - Students confuse **FSA** (theory: accepts/rejects) with **TD** (practice: finds and returns token), the key difference is what happens at accepting states
+  - Students think ALL errors are caught by LA, reinforce that LA has a very localized view and cannot detect semantic errors
 - **Concepts students typically conflate:**
-  - Token vs Lexeme vs Pattern (the holy trinity — needs repeated examples)
+  - Token vs Lexeme vs Pattern (the holy trinity, needs repeated examples)
   - FSA vs Transition Diagram (same structure, different behavior at accepting states)
   - Scanner vs Evaluator (both stages of LA, but distinct roles)
   - LEX/FLEX vs hand-written LA (trade-off: development speed vs runtime efficiency)
-- **Mbosinwa context:** Strong software engineering background — relate FSA/TD to state machines in software design patterns; relate Symbol Table to hash maps/dictionaries; relate LEX to parser generator tools like ANTLR he may have encountered.
+- **Mbosinwa context:** Strong software engineering background, relate FSA/TD to state machines in software design patterns; relate Symbol Table to hash maps/dictionaries; relate LEX to parser generator tools like ANTLR he may have encountered.

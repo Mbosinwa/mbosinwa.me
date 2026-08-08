@@ -1,4 +1,4 @@
-# CMS 704 — Lecturer's Extra Notes
+# CMS 704: Lecturer's Extra Notes
 
 
 > Two distinct sets:
@@ -26,7 +26,7 @@ A computer's **memory hierarchy** is an **organizational pyramid that categorize
 | 1 | **CPU registers** | Extremely fast (sub-nanosecond, direct CPU clock cycle) | Tiny (measured in bytes, e.g. 16 to 64 bits) | Directly built inside the CPU core to hold the exact data or instructions being executed in the current cycle |
 | 2 | **Cache memory (L1, L2, L3)** | Very fast (often utilizes static RAM, SRAM) | Small to moderate (kilobytes to megabytes) | Acts as a **buffer** between the CPU registers and slower system RAM. The CPU relies on the principles of locality (both spatial and temporal) to preload frequently and recently accessed data into the cache for quicker retrieval |
 | 3 | **Main memory (RAM)** | Moderate | Moderate to large (gigabytes, e.g. 16 GB to 64 GB) | The primary working memory for the operating system and running applications. Data is temporarily housed here for the CPU to fetch and process |
-| 4 | **Secondary storage** (external / auxiliary memory) | Slow (measured in milliseconds) | Massive (terabytes) | **Non-volatile** storage — SSDs and HDDs. It retains data even when the computer is powered down and acts as a long-term repository for files, operating systems and programs |
+| 4 | **Secondary storage** (external / auxiliary memory) | Slow (measured in milliseconds) | Massive (terabytes) | **Non-volatile** storage, SSDs and HDDs. It retains data even when the computer is powered down and acts as a long-term repository for files, operating systems and programs |
 | 5 | **Tertiary storage** (optical) | Very slow | Infinite (scalable) | Used for offline, archival and backup data, including magnetic tape libraries or optical disks |
 
 > **Moving up the pyramid** results in higher cost per bit, faster access times and smaller storage capacity. **Moving down the pyramid** results in lower cost per bit, slower access times and much larger capacities. **The main goal of this architecture is to create the illusion that the entire massive storage pool is as fast as the topmost level.**
@@ -39,8 +39,8 @@ A computer's **memory hierarchy** is an **organizational pyramid that categorize
 
 Cache memory operates on the **principle of locality of reference**, assuming that programs will repeatedly access the same data or instructions.
 
-1. **Cache hit** — when the CPU needs data, it checks the cache first. If the data is found, it is retrieved almost instantly (in nanoseconds).
-2. **Cache miss** — if the requested data isn't in the cache, the CPU must fetch it from the slower RAM. The data is then copied into the cache for future use.
+1. **Cache hit**: when the CPU needs data, it checks the cache first. If the data is found, it is retrieved almost instantly (in nanoseconds).
+2. **Cache miss**: if the requested data isn't in the cache, the CPU must fetch it from the slower RAM. The data is then copied into the cache for future use.
 
 ### Levels of cache
 
@@ -48,7 +48,7 @@ CPU caches are divided into different levels (L1, L2, L3) based on **size, speed
 
 | Level | Location | Size | Speed |
 |---|---|---|---|
-| **L1 cache** | Directly on the CPU core | Smallest — typically **2 KB to 64 KB per core** | **Fastest** |
+| **L1 cache** | Directly on the CPU core | Smallest, typically **2 KB to 64 KB per core** | **Fastest** |
 | **L2 cache** | Inside or immediately outside the core | **256 KB to 512 KB** | Acts as a bridge for the L1 cache |
 | **L3 cache** | Shared among all cores | **1 MB to 8 MB or higher** | Largest but **slowest** of the CPU caches; feeds into the L2 cache |
 
@@ -56,8 +56,8 @@ CPU caches are divided into different levels (L1, L2, L3) based on **size, speed
 
 While cache memory usually refers to physical CPU cache, caching technology is used in various other computing forms:
 
-1. **Disk / file cache** — used by operating systems to store recently read files or disk data in system RAM for quicker opening.
-2. **Browser cache** — web browsers store images, scripts and webpage data on local storage to load pages faster during subsequent visits.
+1. **Disk / file cache**: used by operating systems to store recently read files or disk data in system RAM for quicker opening.
+2. **Browser cache**: web browsers store images, scripts and webpage data on local storage to load pages faster during subsequent visits.
 
 ---
 
@@ -65,9 +65,9 @@ While cache memory usually refers to physical CPU cache, caching technology is u
 
 **Cache memory mapping** describes the different configurations:
 
-1. **Direct mapped cache** — has each block mapped to **exactly one** cache memory location.
-2. **Fully associative cache mapping** — similar to direct mapping in structure, but enables a memory block to be mapped to **any** cache location rather than to a pre-specified cache memory location.
-3. **Set associative cache mapping** — a **compromise** between direct mapping and fully associative mapping, in which each block is mapped to a **subset** of cache locations. It is sometimes called **N-way set associative mapping**, which provides for a location in main memory to be cached to any of `N` locations in the L1 cache.
+1. **Direct mapped cache**: has each block mapped to **exactly one** cache memory location.
+2. **Fully associative cache mapping**: similar to direct mapping in structure, but enables a memory block to be mapped to **any** cache location rather than to a pre-specified cache memory location.
+3. **Set associative cache mapping**: a **compromise** between direct mapping and fully associative mapping, in which each block is mapped to a **subset** of cache locations. It is sometimes called **N-way set associative mapping**, which provides for a location in main memory to be cached to any of `N` locations in the L1 cache.
 
 ### Data writing policies
 
@@ -88,11 +88,11 @@ The two main techniques when writing into cache memory are:
 
 ### Types of locality
 
-1. **Temporal locality (locality in time)** — if a specific memory location is accessed, it is **highly likely to be accessed again in the near future**.
-   *Example:* a loop or a counter in programming — the CPU continuously accesses the same variables and instructions within that short time frame.
+1. **Temporal locality (locality in time)**: if a specific memory location is accessed, it is **highly likely to be accessed again in the near future**.
+   *Example:* a loop or a counter in programming, the CPU continuously accesses the same variables and instructions within that short time frame.
 
-2. **Spatial locality (locality in space)** — if a specific memory location is accessed, **nearby memory locations are also likely to be accessed soon**.
-   *Example:* arrays or sequential data structures — when the processor loads data from main memory to the cache, it brings in a **block of adjacent data** in anticipation of the next request.
+2. **Spatial locality (locality in space)**: if a specific memory location is accessed, **nearby memory locations are also likely to be accessed soon**.
+   *Example:* arrays or sequential data structures, when the processor loads data from main memory to the cache, it brings in a **block of adjacent data** in anticipation of the next request.
 
 ### Other forms of locality
 
@@ -106,8 +106,8 @@ In computer architecture, **performance measures how quickly and efficiently a c
 
 ### Two core metrics
 
-1. **Response time (execution time)** — the total time required to complete a **single task** from start to finish.
-2. **Throughput (bandwidth)** — the total amount of work completed **per unit of time** (e.g. number of instructions or programs executed per second).
+1. **Response time (execution time)**: the total time required to complete a **single task** from start to finish.
+2. **Throughput (bandwidth)**: the total amount of work completed **per unit of time** (e.g. number of instructions or programs executed per second).
 
 ### The Iron Law of Processor Performance
 
@@ -121,7 +121,7 @@ CPU Time  =  Instruction Count  ×  CPI  ×  Clock Cycle Time
 |---|---|---|
 | **Instruction Count (IC)** | The total number of instructions executed in a program | The software **compiler** and the **instruction set architecture (ISA)** |
 | **Cycles Per Instruction (CPI)** | The average number of clock cycles the processor takes to execute one instruction | The **hardware design** and **pipeline efficiency** |
-| **Clock Cycle Time** | The duration of a single hardware clock tick — the **inverse of clock frequency**, like 3.0 GHz | **Semiconductor technology** and hardware engineering |
+| **Clock Cycle Time** | The duration of a single hardware clock tick, the **inverse of clock frequency**, like 3.0 GHz | **Semiconductor technology** and hardware engineering |
 
 ### Quantitative measurement
 
@@ -139,8 +139,8 @@ Relative Performance = Performance A / Performance B = Execution Time B / Execut
 
 ### Other performance indicators
 
-i. **MIPS** — Million Instructions Per Second
-ii. **FLOPS** — Floating Point Operations Per Second
+i. **MIPS**: Million Instructions Per Second
+ii. **FLOPS**: Floating Point Operations Per Second
 
 ---
 
@@ -150,7 +150,7 @@ ii. **FLOPS** — Floating Point Operations Per Second
 
 All of the number systems presented in the prior sections were **positive**. We also need a mechanism to indicate **negative** numbers. When looking at negative numbers we only focus on the mapping between **decimal and binary**, since octal and hexadecimal are just another representation of a binary number.
 
-In decimal we use the negative **sign** in front of a number to indicate that it is negative (e.g. `-34₁₀`). In binary this notation works fine on paper (e.g. `-1010₂`), but we need a mechanism that can be implemented in **real circuitry**. In a real digital circuit, the circuits can only deal with 0s and 1s — **there is no "−" in a digital circuit**. Since we only have 0s and 1s in the hardware, we use a **bit to represent whether a number is positive or negative**. This is referred to as the **sign bit**.
+In decimal we use the negative **sign** in front of a number to indicate that it is negative (e.g. `-34₁₀`). In binary this notation works fine on paper (e.g. `-1010₂`), but we need a mechanism that can be implemented in **real circuitry**. In a real digital circuit, the circuits can only deal with 0s and 1s, **there is no "−" in a digital circuit**. Since we only have 0s and 1s in the hardware, we use a **bit to represent whether a number is positive or negative**. This is referred to as the **sign bit**.
 
 - If a binary number is not going to have any negative values, it is called an **unsigned number** and can only represent positive numbers.
 - If a binary number is going to allow negative numbers, it is called a **signed number**.
@@ -168,7 +168,7 @@ Range of an n-bit UNSIGNED number                   =  0  …  2ⁿ − 1
 
 For an 8-bit number that is `2⁸ = 256` unique codes, `0000 0000₂` to `1111 1111₂`.
 
-For `n = 4`, the range runs from `+0₁₀ (0000₂)` to `+15₁₀ (1111₂)`. Note that while the number has **16 unique codes**, the **highest decimal value it can represent is 15** — because one of the codes represents `0₁₀`. This is why the highest decimal value is given by `2ⁿ − 1`.
+For `n = 4`, the range runs from `+0₁₀ (0000₂)` to `+15₁₀ (1111₂)`. Note that while the number has **16 unique codes**, the **highest decimal value it can represent is 15**: because one of the codes represents `0₁₀`. This is why the highest decimal value is given by `2ⁿ − 1`.
 
 ### 8.7.2 Signed binary number representation
 
@@ -255,4 +255,4 @@ Add 1:       1000111
 
 ---
 
-*End of extra-notes transcription — 8 handwritten pages + textbook §8.7.*
+*End of extra-notes transcription, 8 handwritten pages + textbook §8.7.*

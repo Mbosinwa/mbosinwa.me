@@ -87,12 +87,12 @@ const PROGRAMMES = [
             code: 'CMS 701',
             dir: 'operating-systems',
             title: 'Operating Systems',
-            blurb: 'Operating system fundamentals — OS types, kernels and system calls, processes and schedulers, multithreading, CPU scheduling and synchronization.',
+            blurb: 'Operating system fundamentals: OS types, kernels and system calls, processes and schedulers, multithreading, CPU scheduling and synchronization.',
             pages: [
               { src: 'materials/01-course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
-              { src: 'materials/02-lecture-notes-os-types-kernels-system-calls.md', out: 'notes-1.html', title: 'Notes I — OS Types, Kernels & System Calls', group: 'Notes', desc: 'What an operating system is, OS types, kernel architectures and system calls.' },
-              { src: 'materials/03-lecture-notes-process-state-pcb-schedulers.md', out: 'notes-2.html', title: 'Notes II — Processes, PCB & Schedulers', group: 'Notes', desc: 'Process states, the process control block, and long/short/medium-term schedulers.' },
-              { src: 'materials/04-lecture-notes-multithreading-cpu-scheduling-synchronization.md', out: 'notes-3.html', title: 'Notes III — Multithreading, CPU Scheduling & Synchronization', group: 'Notes', desc: 'Threads, CPU scheduling algorithms and process synchronization.' },
+              { src: 'materials/02-lecture-notes-os-types-kernels-system-calls.md', out: 'notes-1.html', title: 'Notes I: OS Types, Kernels & System Calls', group: 'Notes', desc: 'What an operating system is, OS types, kernel architectures and system calls.' },
+              { src: 'materials/03-lecture-notes-process-state-pcb-schedulers.md', out: 'notes-2.html', title: 'Notes II: Processes, PCB & Schedulers', group: 'Notes', desc: 'Process states, the process control block, and long/short/medium-term schedulers.' },
+              { src: 'materials/04-lecture-notes-multithreading-cpu-scheduling-synchronization.md', out: 'notes-3.html', title: 'Notes III: Multithreading, CPU Scheduling & Synchronization', group: 'Notes', desc: 'Threads, CPU scheduling algorithms and process synchronization.' },
               { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
             ],
           },
@@ -104,7 +104,7 @@ const PROGRAMMES = [
             blurb: 'Data transmission fundamentals, communication system components, networking and the OSI model.',
             pages: [
               { src: 'materials/cms703-course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
-              { src: 'materials/cms703-lecture-notes-dr-saturday.md', out: 'notes.html', title: 'Lecture Notes', group: 'Notes', desc: 'Full class notes — data communication components, transmission, networking and the OSI model.' },
+              { src: 'materials/cms703-lecture-notes-dr-saturday.md', out: 'notes.html', title: 'Lecture Notes', group: 'Notes', desc: 'Full class notes: data communication components, transmission, networking and the OSI model.' },
               { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
             ],
             downloads: [
@@ -116,11 +116,11 @@ const PROGRAMMES = [
             code: 'CMS 705',
             dir: 'programming-languages',
             title: 'Programming Languages',
-            blurb: 'Programming language concepts — language structure, paradigms, syntax and semantics, translators and language design.',
+            blurb: 'Programming language concepts: language structure, paradigms, syntax and semantics, translators and language design.',
             pages: [
               { src: 'materials/course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
-              { src: 'materials/programming_lang.md', out: 'notes-1.html', title: 'Lecture Notes — Part I', group: 'Notes', desc: 'First part of the class notes.' },
-              { src: 'materials/programming_lang2.md', out: 'notes-2.html', title: 'Lecture Notes — Part II', group: 'Notes', desc: 'Second part of the class notes.' },
+              { src: 'materials/programming_lang.md', out: 'notes-1.html', title: 'Lecture Notes: Part I', group: 'Notes', desc: 'First part of the class notes.' },
+              { src: 'materials/programming_lang2.md', out: 'notes-2.html', title: 'Lecture Notes: Part II', group: 'Notes', desc: 'Second part of the class notes.' },
               { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
             ],
             downloads: [
@@ -136,7 +136,7 @@ const PROGRAMMES = [
             pages: [
               { src: 'materials/cms707-ai-course-outline.md', out: 'course-outline.html', title: 'Course Outline', group: 'Notes', desc: 'The official course outline.' },
               { src: 'materials/cms707-full-class-notes-dr-friday-orji.md', out: 'notes.html', title: 'Full Class Notes', group: 'Notes', desc: 'Complete lecture notes for the course.' },
-              { src: 'materials/cms707-class-jottings-problem-solving.md', out: 'jottings.html', title: 'Class Jottings — Problem Solving', group: 'Notes', desc: 'In-class jottings on problem solving and state space search.' },
+              { src: 'materials/cms707-class-jottings-problem-solving.md', out: 'jottings.html', title: 'Class Jottings: Problem Solving', group: 'Notes', desc: 'In-class jottings on problem solving and state space search.' },
               { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
               { src: 'links.md', out: 'resources.html', title: 'Further Resources', group: 'Study Aids', desc: 'Curated external links for going deeper.' },
             ],
@@ -151,9 +151,9 @@ const PROGRAMMES = [
             code: 'CMS 709',
             dir: 'compiler-construction',
             title: 'Compiler Construction',
-            blurb: 'Compiler phases with a deep dive into lexical analysis — tokens, patterns, finite automata and scanner design.',
+            blurb: 'Compiler phases, with lexical analysis covered in depth: tokens, patterns, finite automata and scanner design.',
             pages: [
-              { src: 'materials/lexical-analysis-lecture-notes.md', out: 'notes.html', title: 'Lexical Analysis — Lecture Notes', group: 'Notes', desc: 'Tokens, patterns and lexemes, finite automata and scanner design.' },
+              { src: 'materials/lexical-analysis-lecture-notes.md', out: 'notes.html', title: 'Lexical Analysis: Lecture Notes', group: 'Notes', desc: 'Tokens, patterns and lexemes, finite automata and scanner design.' },
               { src: 'knowledge-map.md', out: 'knowledge-map.html', title: 'Knowledge Map', group: 'Study Aids', desc: 'Topic and concept map of the whole course, with relationships and entry points.' },
             ],
           },
@@ -186,12 +186,12 @@ const PROGRAMMES = [
             title: 'Data Structures & Algorithms',
             blurb: 'Algorithms and asymptotic analysis, arrays, stacks, queues, linked lists, hashing, binary search trees and graphs.',
             pages: [
-              { src: 'notes/CMS-702-lecture-notes.md', out: 'notes.html', title: 'Lecture Notes', group: 'Notes', desc: 'Full transcription of 16 pages of class notes — algorithms, asymptotic analysis, core data structures, hashing and BSTs.' },
+              { src: 'notes/CMS-702-lecture-notes.md', out: 'notes.html', title: 'Lecture Notes', group: 'Notes', desc: 'Full transcription of 16 pages of class notes: algorithms, asymptotic analysis, core data structures, hashing and BSTs.' },
               { src: 'course-outline.md', out: 'course-outline.html', title: 'Course Outline & Coverage', group: 'Notes', desc: 'The official course outline with a topic-by-topic check of what the class notes cover.' },
               { src: 'exam-prep/01-cheatsheet.md', out: 'cheatsheet.html', title: 'Exam Cheatsheet', group: 'Exam Prep', desc: 'Definitions, lists and diagrams to memorise, worded for direct recall.' },
-              { src: 'exam-prep/02-syllabus-gaps.md', out: 'syllabus-gaps.html', title: 'Syllabus Gap Notes', group: 'Exam Prep', desc: 'Outline topics the class notes skip — graphs, sorting mechanics, stack vs heap — covered short and exam-shaped.' },
+              { src: 'exam-prep/02-syllabus-gaps.md', out: 'syllabus-gaps.html', title: 'Syllabus Gap Notes', group: 'Exam Prep', desc: 'Outline topics the class notes skip: graphs, sorting mechanics, stack vs heap, covered short and exam-shaped.' },
               { src: 'exam-prep/03-practice-questions.md', out: 'practice-questions.html', title: 'Practice Questions', group: 'Exam Prep', desc: '35 questions with answers, in exam format.' },
-              { src: 'exam-prep/04-past-questions-solved.md', out: 'past-questions-solved.html', title: 'Past Questions — Solved', group: 'Exam Prep', desc: 'Five past questions answered at full length, with model structure notes.' },
+              { src: 'exam-prep/04-past-questions-solved.md', out: 'past-questions-solved.html', title: 'Past Questions: Solved', group: 'Exam Prep', desc: 'Five past questions answered at full length, with model structure notes.' },
             ],
             volumes: [
               { base: 'CMS-702-Study-Guide', title: 'Study Guide (Vol. I)', desc: 'Cheatsheet and study guide built from the class notes.' },
@@ -235,7 +235,7 @@ const PROGRAMMES = [
             code: 'CMS 708',
             dir: 'CMS-708-Structured-Programming',
             title: 'Structured Programming',
-            blurb: 'Structured programming in C++ — modularity, control structures, functions, arrays and standard programs.',
+            blurb: 'Structured programming in C++: modularity, control structures, functions, arrays and standard programs.',
             pages: [
               { src: 'notes/PGD-structured-programming-notes.md', out: 'notes.html', title: 'Course Notes', group: 'Notes', desc: 'Full course notes with 22 C++ code listings.' },
             ],
@@ -252,10 +252,10 @@ const PROGRAMMES = [
             title: 'Principles of Programming Languages',
             blurb: 'Language definition, syntax and semantics, data types, binding and scoping, parameter passing and paradigms.',
             pages: [
-              { src: 'notes/module-1.md', out: 'module-1.html', title: 'Module 1 — Language Definition Structure', group: 'Notes', desc: 'Programming language goals, syntax vs semantics, grammars and language specification.' },
-              { src: 'notes/module-2.md', out: 'module-2.html', title: 'Module 2 — Data Types and Structures', group: 'Notes', desc: 'Primitive and composite types, user-defined types, type systems and data abstraction.' },
-              { src: 'notes/module-3.md', out: 'module-3.html', title: 'Module 3 — Basic Data Types, Lists and Trees', group: 'Notes', desc: 'Review of basic data types including lists and trees.' },
-              { src: 'notes/module-4.md', out: 'module-4.html', title: 'Module 4 — Control Structure and Data Flow', group: 'Notes', desc: 'Control structures, data flow, and evaluation.' },
+              { src: 'notes/module-1.md', out: 'module-1.html', title: 'Module 1: Language Definition Structure', group: 'Notes', desc: 'Programming language goals, syntax vs semantics, grammars and language specification.' },
+              { src: 'notes/module-2.md', out: 'module-2.html', title: 'Module 2: Data Types and Structures', group: 'Notes', desc: 'Primitive and composite types, user-defined types, type systems and data abstraction.' },
+              { src: 'notes/module-3.md', out: 'module-3.html', title: 'Module 3: Basic Data Types, Lists and Trees', group: 'Notes', desc: 'Review of basic data types including lists and trees.' },
+              { src: 'notes/module-4.md', out: 'module-4.html', title: 'Module 4: Control Structure and Data Flow', group: 'Notes', desc: 'Control structures, data flow, and evaluation.' },
             ],
             volumes: [
               { base: 'CMS-710-Study-Guide', title: 'Study Guide (Vol. I)', desc: 'All four modules with comparison tables and code reconstructed.' },
@@ -337,6 +337,20 @@ function sanitize(md, course) {
   text = text.replace(/`(\.\.\/)?scans\/[^`]*`/g, 'the original scans');
   text = text.replace(/`(\.\.\/)?source\/[^`]*`/g, 'the original source document');
 
+  // em dashes read as machine-written; convert by context
+  text = text.replace(/^(#{1,6} .*?) — /gm, '$1: ');          // headings: "CMS 702 — DSA" -> "CMS 702: DSA"
+  text = text.replace(/(\*\*[^*\n]+\*\*) — /g, '$1: ');       // bold-term lists: "**Term** — def" -> "**Term**: def"
+  text = text.replace(/ — /g, ', ');                          // remaining prose dashes
+  text = text.replace(/—/g, '-');
+
+  // machine-writing tells -> plain words (conservative, meaning-preserving)
+  text = text.replace(/\bseamlessly\b/g, 'smoothly').replace(/\bSeamlessly\b/g, 'Smoothly');
+  text = text.replace(/\bseamless\b/g, 'smooth').replace(/\bSeamless\b/g, 'Smooth');
+  text = text.replace(/\bleveraging\b/g, 'using').replace(/\bLeveraging\b/g, 'Using');
+  text = text.replace(/\bleverages\b/g, 'uses').replace(/\bleverage\b/g, 'use');
+  text = text.replace(/\bdelve into\b/g, 'dig into').replace(/\bDelve into\b/g, 'Dig into');
+  text = text.replace(/\bFurthermore,/g, 'Also,').replace(/\bMoreover,/g, 'Also,');
+
   return text;
 }
 
@@ -354,6 +368,9 @@ function sanitizeVolumeHtml(html) {
   t = t.replace(/\b(Whyte|Oraye|Abiye-Suku|Oriji|Jaja|Matthias|Cookey|Okwu|Orji|Deedam|Bennett|Omaegbu)\b/g, 'the lecturer');
   t = t.replace(/the lecturer (&amp;|&) the lecturer/g, 'the lecturers');
   t = t.replace(/Invigilator\s*/g, '');
+  // em dashes in cover lines and prose; middle dot matches the docs' separator style
+  t = t.replace(/ — /g, ' · ');
+  t = t.replace(/—/g, '-');
   return t;
 }
 
@@ -376,7 +393,7 @@ function head({ title, desc, canonical }) {
     <meta property="og:image" content="${SITE}/image/social-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Mbosinwa Awunor — Postgrad Notes">
+    <meta property="og:image:alt" content="Mbosinwa Awunor, Postgrad Notes">
     <meta property="og:locale" content="en_US">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="${canonical}">
@@ -414,7 +431,7 @@ const NAVBAR = `<nav class="navbar">
     </nav>`;
 
 const FOOTER_NOTE = `<footer class="section-footer">
-            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
+            <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study; a link back is appreciated.</p>
         </footer>`;
 
 function page({ title, desc, canonical, body }) {
@@ -442,7 +459,7 @@ function docPage(prog, sem, course, pg, bodyHtml) {
   const base = `/postgrad-notes/${prog.slug}/${sem.slug}/${course.slug}`;
   const mdName = pg.out.replace(/\.html$/, '.md');
   return page({
-    title: `${course.code} ${pg.title} — Postgrad Notes — Mbosinwa Awunor`,
+    title: `${course.code} ${pg.title} · Postgrad Notes · Mbosinwa Awunor`,
     desc: `${course.code} ${course.title}: ${pg.desc}`,
     canonical: `${SITE}${base}/${pg.out}`,
     body: `        ${crumb([['Postgrad Notes', '/postgrad-notes/'], [prog.name, `/postgrad-notes/${prog.slug}/`], [sem.name, `/postgrad-notes/${prog.slug}/${sem.slug}/`], [`${course.code} ${course.title}`, `${base}/`], [pg.title]])}
@@ -462,7 +479,7 @@ ${bodyHtml}
               await navigator.clipboard.writeText(await res.text());
               btn.textContent = 'Copied!';
             } catch (e) {
-              btn.textContent = 'Copy failed — use Download';
+              btn.textContent = 'Copy failed, use Download';
             }
             setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
           });
@@ -520,7 +537,7 @@ ${course.downloads.map((d) => `                <div class="material-item">
   }
 
   return page({
-    title: `${course.code} — ${course.title} — Postgrad Notes — Mbosinwa Awunor`,
+    title: `${course.code} ${course.title} · Postgrad Notes · Mbosinwa Awunor`,
     desc: `${course.title} study materials: ${course.blurb}`,
     canonical: `${SITE}${base}/`,
     body: `        ${crumb([['Postgrad Notes', '/postgrad-notes/'], [prog.name, `/postgrad-notes/${prog.slug}/`], [sem.name, `/postgrad-notes/${prog.slug}/${sem.slug}/`], [`${course.code} ${course.title}`]])}
@@ -544,13 +561,13 @@ function semesterPage(prog, sem) {
   }).join('\n');
 
   return page({
-    title: `${sem.name} — ${prog.name} — Postgrad Notes — Mbosinwa Awunor`,
+    title: `${sem.name} · ${prog.name} · Postgrad Notes · Mbosinwa Awunor`,
     desc: `${sem.name} study materials from my ${prog.name} at ${prog.school}: lecture notes, cheatsheets, practice questions and exam study guides.`,
     canonical: `${SITE}/postgrad-notes/${prog.slug}/${sem.slug}/`,
     body: `        ${crumb([['Postgrad Notes', '/postgrad-notes/'], [prog.name, `/postgrad-notes/${prog.slug}/`], [sem.name]])}
         <header class="page-header">
             <span class="kicker">${prog.name} · ${sem.name} · ${sem.year}</span>
-            <h1>${sem.name} — Study Materials</h1>
+            <h1>${sem.name} Study Materials</h1>
             <p class="lede">Lecture notes, cheatsheets, study aids and exam-prep materials for the ${sem.name.toLowerCase()} of my ${prog.name}. All self-authored, all free to use.</p>
         </header>
         <div class="card-grid">
@@ -565,13 +582,13 @@ function programmePage(prog) {
     return `            <a class="course-card" href="/postgrad-notes/${prog.slug}/${s.slug}/">
                 <span class="code">${s.year}</span>
                 <h2>${s.name}</h2>
-                <p>${count} courses — lecture notes, cheatsheets, practice questions and exam study guides.</p>
+                <p>${count} courses: lecture notes, cheatsheets, practice questions and exam study guides.</p>
                 <span class="count">${count} courses →</span>
             </a>`;
   }).join('\n');
 
   return page({
-    title: `${prog.name} — Postgrad Notes — Mbosinwa Awunor`,
+    title: `${prog.name} · Postgrad Notes · Mbosinwa Awunor`,
     desc: `Study materials from my ${prog.name} at ${prog.school}, organised by semester.`,
     canonical: `${SITE}/postgrad-notes/${prog.slug}/`,
     body: `        ${crumb([['Postgrad Notes', '/postgrad-notes/'], [prog.name]])}
@@ -599,13 +616,13 @@ function landingPage() {
   }).join('\n');
 
   return page({
-    title: 'Postgrad Notes — Postgraduate Study Materials — Mbosinwa Awunor',
+    title: 'Postgrad Notes: Postgraduate Study Materials, Mbosinwa Awunor',
     desc: 'Free study materials from my postgraduate studies in Computer Science at Rivers State University: transcribed lecture notes, cheatsheets, practice questions and exam study guides.',
     canonical: `${SITE}/postgrad-notes/`,
     body: `        <header class="page-header">
             <span class="kicker">Study Materials</span>
             <h1>Postgrad Notes</h1>
-            <p class="lede">Notes and study materials from my postgraduate journey in Computer Science — PGD, then MSc, then PhD. Transcribed lecture notes, cheatsheets, practice questions and multi-volume exam study guides, organised by programme and semester. All self-authored, all free to use.</p>
+            <p class="lede">Notes and study materials from my postgraduate journey in Computer Science: PGD, then MSc, then PhD. Transcribed lecture notes, cheatsheets, practice questions and multi-volume exam study guides, organised by programme and semester. All self-authored, all free to use.</p>
         </header>
         <div class="card-grid">
 ${cards}
@@ -696,7 +713,9 @@ console.log('built index.html');
 {
   const { readdirSync, statSync, existsSync } = await import('node:fs');
   const SURNAMES = /Whyte|Oraye|Abiye-Suku|Oriji(?![a-z])|Jaja|Matthias|Cookey|Okwu|Orji(?![a-z])|Deedam|Bennett|Omaegbu|Sarah Joe|ust\.edu|Invigilator|SC 28-30/;
+  const AI_TELLS = /\b(delve|delving|seamless(ly)?|leverag(e|es|ing)|furthermore|moreover|in conclusion|it is worth noting|it's worth noting|deep dive|game.chang|cutting.edge|in today's [a-z]+ (world|landscape))\b/i;
   const problems = [];
+  const warnings = [];
 
   const walk = (d) => readdirSync(d).flatMap((f) => {
     const p = join(d, f);
@@ -709,6 +728,9 @@ console.log('built index.html');
       const text = readFileSync(f, 'utf8');
       const m = text.match(SURNAMES);
       if (m) problems.push(`name leak "${m[0]}" in ${f}`);
+      if (text.includes('—')) problems.push(`em dash in ${f}`);
+      const tell = text.match(AI_TELLS);
+      if (tell) warnings.push(`AI-tell phrase "${tell[0]}" in ${f}`);
       if (f.endsWith('.html')) {
         for (const [, href] of text.matchAll(/href="([^"#]+)"/g)) {
           if (/^(http|mailto)/.test(href)) continue;
@@ -725,11 +747,15 @@ console.log('built index.html');
         const m = text.match(SURNAMES);
         if (m) problems.push(`name leak "${m[0]}" in ${f}`);
       } catch {
-        console.log(`(pdftotext unavailable — skipped text check for ${f})`);
+        console.log(`(pdftotext unavailable, skipped text check for ${f})`);
       }
     }
   }
 
+  if (warnings.length) {
+    console.warn(`\nWARNINGS (${warnings.length}) - review the wording, build still passes:`);
+    for (const w of warnings) console.warn('  - ' + w);
+  }
   if (problems.length) {
     console.error(`\nVERIFICATION FAILED (${problems.length}):`);
     for (const p of problems) console.error('  - ' + p);

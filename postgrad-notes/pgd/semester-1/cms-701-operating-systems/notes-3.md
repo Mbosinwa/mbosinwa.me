@@ -1,11 +1,11 @@
-# CMS 701 — Operating Systems Lecture Notes
+# CMS 701: Operating Systems Lecture Notes
 ## Multithreading, CPU Scheduling Algorithms & Process Synchronization
 
 ---
 
 ## What is Multithreading?
 
-**Multithreading** is a technique where a process is divided into smaller execution units called **threads** that run concurrently. It allows a single process to have multiple threads running simultaneously — different parts of a program can run at the same time, improving efficiency and responsiveness.
+**Multithreading** is a technique where a process is divided into smaller execution units called **threads** that run concurrently. It allows a single process to have multiple threads running simultaneously, different parts of a program can run at the same time, improving efficiency and responsiveness.
 
 ---
 
@@ -56,7 +56,7 @@ Many user threads mapped to **one** kernel thread. Thread management in user spa
 - When any thread makes a blocking system call, the **entire process blocks**.
 - Only one thread can access the kernel at a time; no true parallelism on multiprocessors.
 
-> Thread management is done at user level, so it is efficient — but no multiprocessor advantage.
+> Thread management is done at user level, so it is efficient, but no multiprocessor advantage.
 
 ### 3. One-to-One Model
 
@@ -153,7 +153,7 @@ FIFO queue; the first process to arrive gets CPU first.
 > **Scenario:** Students lining up to use a printer.
 
 **Advantages:** Simple; easy to implement.
-**Disadvantages:** Long waiting time; **"Convoy Effect"** — short jobs wait behind long ones.
+**Disadvantages:** Long waiting time; **"Convoy Effect"**: short jobs wait behind long ones.
 
 ---
 
@@ -176,7 +176,7 @@ Each process has a priority number; highest priority gets CPU first.
 
 **Advantages:** Important tasks handled quickly.
 **Disadvantages:** Low-priority processes may starve.
-**Fix:** **Aging** — gradually increasing priority of long-waiting processes.
+**Fix:** **Aging**: gradually increasing priority of long-waiting processes.
 
 ---
 
@@ -184,7 +184,7 @@ Each process has a priority number; highest priority gets CPU first.
 
 Each process gets a **Time Quantum** (10–100ms); if not done, goes to back of queue. Designed for time-sharing systems.
 
-> **Scenario:** Students taking turns on a shared computer — 5 minutes each.
+> **Scenario:** Students taking turns on a shared computer, 5 minutes each.
 
 **Advantages:** Fair; good for time-sharing.
 **Disadvantages:** Too many context switches; performance depends on time quantum size.
@@ -196,7 +196,7 @@ Each process gets a **Time Quantum** (10–100ms); if not done, goes to back of 
 
 Ready queue partitioned into separate queues by process type (e.g., Foreground vs. Background). Each queue has its own scheduling algorithm.
 
-> **Scenario:** In school — teachers, senior students, and juniors have different service queues.
+> **Scenario:** In school, teachers, senior students, and juniors have different service queues.
 
 **Advantages:** Organized process handling.
 **Disadvantages:** Rigid structure; possible starvation.
@@ -262,7 +262,7 @@ Synchronization objects maintaining a count; allow or restrict resource access.
 - **Binary semaphore:** 0 or 1 (like a lock).
 - **Counting semaphore:** Allows multiple accesses up to a limit.
 
-> **Scenario:** Only 3 computers available — semaphore ensures only 3 users access them at once.
+> **Scenario:** Only 3 computers available, semaphore ensures only 3 users access them at once.
 
 ### 3. Monitors
 Higher-level constructs encapsulating shared data and procedures. Ensure only one process executes within the monitor at a time.

@@ -1,4 +1,4 @@
-# CMS 701 — Operating Systems Lecture Notes
+# CMS 701: Operating Systems Lecture Notes
 ## Process State, Process Control Block & Schedulers
 
 ---
@@ -15,7 +15,7 @@ A process is either actively using the CPU or waiting until it gets a chance to 
 
 ### States
 - **Running:** The process is currently using the CPU.
-- **Not Running:** The process is not using the CPU — waiting for input, resources, or simply paused.
+- **Not Running:** The process is not using the CPU, waiting for input, resources, or simply paused.
 
 ### How It Works
 1. A newly created process starts in the **Not Running** state.
@@ -107,7 +107,7 @@ Selects the next process from the ready queue to run on the CPU; works very freq
 > **Scenario:** While typing, this scheduler flicks the CPU back and forth between your keyboard, music player, and Wi-Fi.
 
 ### Medium-Term Scheduler
-Handles **swapping** — suspends processes and moves them between main memory and secondary storage.
+Handles **swapping**: suspends processes and moves them between main memory and secondary storage.
 
 > **Scenario:** A browser not used in three hours gets "frozen" and moved to disk to free memory for an active game.
 
@@ -177,7 +177,7 @@ Temporary data needed by the CPU: Accumulator, Index registers, Stack pointer, P
 ### 6. Process Scheduling Information
 
 - **Process State:** Current state (Running, Ready, Waiting).
-- **Priority:** Numerical value — higher priority processes get more CPU time.
+- **Priority:** Numerical value, higher priority processes get more CPU time.
 - **Accounting Information:** CPU time used, waiting time, nice value (Unix/Linux).
 
 ### 7. I/O and File Information
@@ -191,4 +191,4 @@ Temporary data needed by the CPU: Accumulator, Index registers, Stack pointer, P
 
 Each Chrome tab is a separate process. If Tab A plays YouTube, its PCB tracks the network and sound card connections. The PCB keeps track of buffered video seconds even when the tab is deprioritized.
 
-When a program finishes but its PCB isn't deleted (parent didn't check child exit status), the child's PCB stays in memory. This is a **Zombie Process** — no CPU usage, but occupies a slot in the OS process table.
+When a program finishes but its PCB isn't deleted (parent didn't check child exit status), the child's PCB stays in memory. This is a **Zombie Process**: no CPU usage, but occupies a slot in the OS process table.

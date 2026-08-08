@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CMS 702 — Data Structures &amp; Algorithms — Exam Study Guide</title>
+<title>CMS 702 · Data Structures &amp; Algorithms · Exam Study Guide</title>
 <style>
 @page { size: A4; margin: 13mm 12mm; }
 
@@ -224,7 +224,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 
 <div class="masthead">
   <div class="eyebrow">Exam cheatsheet · study guide · one-night revision pack</div>
-  <h1>CMS 702 — Data Structures &amp; Computer Algorithms</h1>
+  <h1>CMS 702 · Data Structures &amp; Computer Algorithms</h1>
   <div class="sub">PGD Computer Science, Rivers State University, Nkpolu-Oroworukwo, Port Harcourt · built from the lecturer's lecture notes, the official course outline and the solved past paper</div>
   <div class="byline">Prepared by <b>Mbosinwa Awunor</b> · <span class="url">www.mbosinwa.dev</span></div>
   <div class="facts">
@@ -237,7 +237,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 </div>
 
 <div class="box star">
-  <h4>How this examiner marks — read before anything else</h4>
+  <h4>How this examiner marks · read before anything else</h4>
   All five questions on the past paper were <b>bookwork</b>: definitions, numbered lists, one example per term, one diagram. Answer in that exact shape every time.
   <ol style="margin-bottom:0">
     <li><b>Define first, always.</b> Even when the question only says "differentiate", open with a one-line definition of each term.</li>
@@ -247,7 +247,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
     <li><b>Draw the diagram.</b> Q1 asked for it explicitly. Label the axes and mark <code>n₀</code>.</li>
   </ol>
   <hr class="thin">
-  <b>Confirmed past-paper questions:</b> Q1 asymptotic analysis + 3 notations with diagram · Q2 define sort algorithm, search algorithm, dynamic programming with examples · Q3 hashing, hash function, hash table · Q4 importance of data structures · Q5 queue vs static data structure. <b>Highest-risk unseen topic:</b> BSTs — the lecturer spent the most board time there.
+  <b>Confirmed past-paper questions:</b> Q1 asymptotic analysis + 3 notations with diagram · Q2 define sort algorithm, search algorithm, dynamic programming with examples · Q3 hashing, hash function, hash table · Q4 importance of data structures · Q5 queue vs static data structure. <b>Highest-risk unseen topic:</b> BSTs · the lecturer spent the most board time there.
 </div>
 
 <!-- ============================================================ -->
@@ -256,16 +256,16 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 <table>
 <thead><tr><th style="width:20%">Term</th><th>Definition</th></tr></thead>
 <tbody>
-<tr><td><b>Algorithm</b></td><td>A step-by-step procedure — a set of commands or instructions — to solve a specific problem.</td></tr>
+<tr><td><b>Algorithm</b></td><td>A step-by-step procedure · a set of commands or instructions · to solve a specific problem.</td></tr>
 <tr><td><b>Asymptotic analysis</b></td><td>Computing the running time of any piece of code or operation in a mathematical unit of computation, expressed as a function <code>f(n)</code>; the method of describing the <b>limiting behaviour</b> of an algorithm as input size grows.</td></tr>
-<tr><td><b>Big O (O)</b></td><td>The <b>upper bound</b> of the growth rate of a function; measures worst-case performance — the algorithm will never be slower than this.</td></tr>
-<tr><td><b>Theta (Θ)</b></td><td>The <b>tight bound</b> — expresses <i>both</i> the upper and the lower bound of the running time. The most precise notation.</td></tr>
-<tr><td><b>Omega (Ω)</b></td><td>The <b>lower bound</b> — expresses only the best-case running time; the algorithm will never be faster than this.</td></tr>
+<tr><td><b>Big O (O)</b></td><td>The <b>upper bound</b> of the growth rate of a function; measures worst-case performance · the algorithm will never be slower than this.</td></tr>
+<tr><td><b>Theta (Θ)</b></td><td>The <b>tight bound</b> · expresses <i>both</i> the upper and the lower bound of the running time. The most precise notation.</td></tr>
+<tr><td><b>Omega (Ω)</b></td><td>The <b>lower bound</b> · expresses only the best-case running time; the algorithm will never be faster than this.</td></tr>
 <tr><td><b>Data structure</b></td><td>A data organization, management and storage format that enables efficient access and modification; a collection of data values, the relationships among them, and the operations applicable to them.</td></tr>
-<tr><td><b>Hashing</b></td><td>Lookup — the most widely used technique to find aggregate data by <i>key</i> or <i>id</i>; mapping a large set of arbitrary data to a tabular index using a hash function. Stored in a hash map / hash table.</td></tr>
+<tr><td><b>Hashing</b></td><td>Lookup · the most widely used technique to find aggregate data by <i>key</i> or <i>id</i>; mapping a large set of arbitrary data to a tabular index using a hash function. Stored in a hash map / hash table.</td></tr>
 <tr><td><b>Hash function</b></td><td>The function that receives the input key and returns the index of an element in an array called the hash table.</td></tr>
 <tr><td><b>Hash table</b></td><td>A data structure that maps keys to values using the hash function, storing data in an associative manner in an array where each data value has its own unique index.</td></tr>
-<tr><td><b>Collision</b></td><td>Occurs when <code>h(x) = h(y)</code> — two different keys map to the same hash value.</td></tr>
+<tr><td><b>Collision</b></td><td>Occurs when <code>h(x) = h(y)</code> · two different keys map to the same hash value.</td></tr>
 <tr><td><b>Load factor</b></td><td>Number of items the hash table contains ÷ size of the hash table.</td></tr>
 <tr><td><b>Stack</b></td><td>An abstract data type that implements <b>LIFO</b>; open at one end only; insertion = <b>PUSH</b>, removal = <b>POP</b>.</td></tr>
 <tr><td><b>Queue</b></td><td>An abstract data structure open at <b>both ends</b>; follows <b>FIFO</b>; insertion = <b>Enqueue()</b>, removal = <b>Dequeue()</b>.</td></tr>
@@ -273,7 +273,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 <tr><td><b>Node</b></td><td>An entity that contains a key or value plus pointers to its child nodes.</td></tr>
 <tr><td><b>BST</b></td><td>A binary tree in which the value of the left node is less than its parent and the value of the right node is greater than its parent.</td></tr>
 <tr><td><b>Dynamic programming</b></td><td>A method of solving a complex problem by breaking it down into smaller units or sub-problems, solving each once and storing the result for reuse.</td></tr>
-<tr><td><b>Graph</b></td><td><code>G = (V, E)</code> — a non-linear data structure consisting of a set of vertices <code>V</code> and a set of edges <code>E</code> connecting pairs of vertices.</td></tr>
+<tr><td><b>Graph</b></td><td><code>G = (V, E)</code> · a non-linear data structure consisting of a set of vertices <code>V</code> and a set of edges <code>E</code> connecting pairs of vertices.</td></tr>
 <tr><td><b>Recursive algorithm</b></td><td>A method that breaks a problem into smaller sub-problems and calls itself repeatedly until it reaches a base case it can solve directly.</td></tr>
 </tbody>
 </table>
@@ -315,13 +315,13 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 </tbody>
 </table>
 
-<h3>The diagram the examiner asks for — draw all three</h3>
+<h3>The diagram the examiner asks for · draw all three</h3>
 
 <figure>
 <svg viewBox="0 0 570 156" xmlns="http://www.w3.org/2000/svg">
   <!-- ===== Big O ===== -->
   <g transform="translate(8,26)">
-    <text class="svgtxt" x="0" y="-10" style="font-weight:700">Big O — UPPER bound</text>
+    <text class="svgtxt" x="0" y="-10" style="font-weight:700">Big O · UPPER bound</text>
     <path class="axis" d="M22,100 L22,6 M22,100 L172,100"/>
     <text class="svgtxt sm" x="0" y="12">time</text>
     <text class="svgtxt sm" x="118" y="114">input size n</text>
@@ -336,7 +336,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
   </g>
   <!-- ===== Theta ===== -->
   <g transform="translate(200,26)">
-    <text class="svgtxt" x="0" y="-10" style="font-weight:700">Θ — TIGHT bound</text>
+    <text class="svgtxt" x="0" y="-10" style="font-weight:700">Θ · TIGHT bound</text>
     <path class="axis" d="M22,100 L22,6 M22,100 L172,100"/>
     <text class="svgtxt sm" x="0" y="12">time</text>
     <text class="svgtxt sm" x="118" y="114">input size n</text>
@@ -353,7 +353,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
   </g>
   <!-- ===== Omega ===== -->
   <g transform="translate(392,26)">
-    <text class="svgtxt" x="0" y="-10" style="font-weight:700">Ω — LOWER bound</text>
+    <text class="svgtxt" x="0" y="-10" style="font-weight:700">Ω · LOWER bound</text>
     <path class="axis" d="M22,100 L22,6 M22,100 L166,100"/>
     <text class="svgtxt sm" x="0" y="12">time</text>
     <text class="svgtxt sm" x="112" y="114">input size n</text>
@@ -367,7 +367,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
     <text class="svgtxt sm" x="0" y="128">f(n) stays ABOVE c·g(n) for all n ≥ n₀</text>
   </g>
 </svg>
-<figcaption>Vertical axis = running time, horizontal axis = input size n. Mark n₀ on every sketch — the bound only has to hold for n ≥ n₀.</figcaption>
+<figcaption>Vertical axis = running time, horizontal axis = input size n. Mark n₀ on every sketch · the bound only has to hold for n ≥ n₀.</figcaption>
 </figure>
 
 <h3>Complexity classes and the growth-rate curve</h3>
@@ -386,7 +386,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 </tbody>
 </table>
 <div class="formula">O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n²) &lt; O(2ⁿ)</div>
-<p style="font-size:9.1pt"><b>Upper complexity bound</b> guarantees performance in the worst case — the algorithm will never behave unexpectedly poorly. <b>Average complexity</b> is the expected performance given that all inputs of a certain size follow a certain distribution.</p>
+<p style="font-size:9.1pt"><b>Upper complexity bound</b> guarantees performance in the worst case · the algorithm will never behave unexpectedly poorly. <b>Average complexity</b> is the expected performance given that all inputs of a certain size follow a certain distribution.</p>
 </div>
 <div>
 <figure>
@@ -421,7 +421,7 @@ hr.thin { border: none; border-top: 0.5pt solid var(--rule); margin: 6pt 0; }
 <!-- ============================================================ -->
 <h2><span class="n">4</span>Sorting &amp; searching <span class="tag">PAST Q2</span></h2>
 
-<p><b>Sort algorithm</b> — an algorithm that aims at arranging the elements of a list in a specific order: ascending or descending numerical order, or lexicographic (alphabetical) order. Sorting matters because a sorted collection makes other operations — above all searching — far more efficient.</p>
+<p><b>Sort algorithm</b> · an algorithm that aims at arranging the elements of a list in a specific order: ascending or descending numerical order, or lexicographic (alphabetical) order. Sorting matters because a sorted collection makes other operations · above all searching · far more efficient.</p>
 
 <pre>Unsorted Array:  9   1   3   2   7   4
                      ↓  sort
@@ -440,10 +440,10 @@ Sorted Array:    1   2   3   4   7   9</pre>
 <tr><td><b>Insertion</b></td><td>Insert each element into its place in the sorted prefix</td><td class="c">O(n)</td><td class="c">O(n²)</td><td class="c">O(n²)</td><td class="c">O(1)</td><td class="c">Yes</td></tr>
 </tbody>
 </table>
-<p style="font-size:8.9pt">★ = the five named in the lecturer's notes. <b>Quick sort's O(n²) worst case</b> occurs when the pivot is always the smallest or largest element (e.g. already-sorted input with a first-element pivot). <b>Counting and bucket sort are not comparison sorts</b> — that is how they beat the O(n log n) comparison lower bound.</p>
+<p style="font-size:8.9pt">★ = the five named in the lecturer's notes. <b>Quick sort's O(n²) worst case</b> occurs when the pivot is always the smallest or largest element (e.g. already-sorted input with a first-element pivot). <b>Counting and bucket sort are not comparison sorts</b> · that is how they beat the O(n log n) comparison lower bound.</p>
 
 <h3>Search algorithms</h3>
-<p>A <b>search algorithm</b> is designed to find a specific target within a dataset, enabling effective retrieval of information — it answers "is this item present, and if so, where?"</p>
+<p>A <b>search algorithm</b> is designed to find a specific target within a dataset, enabling effective retrieval of information · it answers "is this item present, and if so, where?"</p>
 
 <div class="grid2">
 <div>
@@ -457,34 +457,34 @@ Sorted Array:    1   2   3   4   7   9</pre>
 <tr><td>Works on</td><td>Arrays, linked lists</td><td>Arrays (needs random access)</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>Third example worth naming:</b> BST search — exploits the BST property to discard half the tree at each node, O(log n) on a balanced tree.</p>
+<p style="font-size:9.1pt"><b>Third example worth naming:</b> BST search · exploits the BST property to discard half the tree at each node, O(log n) on a balanced tree.</p>
 </div>
 <div>
-<h4>Binary search worked — find 7 in <code>1 2 3 4 7 9</code></h4>
+<h4>Binary search worked · find 7 in <code>1 2 3 4 7 9</code></h4>
 <pre>Step 1:  1  2  3 [4] 7  9    middle = 4, 7 &gt; 4
                              → discard the LEFT half
 Step 2:              7 [9]   middle = 9, 7 &lt; 9
                              → discard the RIGHT half
 Step 3:             [7]      FOUND</pre>
-<p style="font-size:9.1pt">Each step halves the search space — <code>n → n/2 → n/4 → …</code> — which is exactly why the cost is <b>log₂ n</b>.</p>
+<p style="font-size:9.1pt">Each step halves the search space · <code>n → n/2 → n/4 → …</code> · which is exactly why the cost is <b>log₂ n</b>.</p>
 </div>
 </div>
 
 <h3>Dynamic programming <span class="tag">PAST Q2(c)</span></h3>
 <p><b>Dynamic programming (DP)</b> is a method of solving a complex problem by breaking it down into smaller units or sub-problems, solving each sub-problem <b>once</b>, and <b>storing its result</b> so it is not recomputed when the same sub-problem arises again.</p>
-<p>It applies to problems with two features: <b>(1) overlapping sub-problems</b> — the same sub-problem is solved repeatedly; <b>(2) optimal substructure</b> — the optimal solution of the whole is built from optimal solutions of its parts.</p>
-<p><b>DP vs divide-and-conquer:</b> divide-and-conquer solves <i>independent</i> sub-problems; dynamic programming <i>stores and reuses</i> answers to <i>overlapping</i> ones. This is the time–space tradeoff — DP spends memory to save time.</p>
+<p>It applies to problems with two features: <b>(1) overlapping sub-problems</b> · the same sub-problem is solved repeatedly; <b>(2) optimal substructure</b> · the optimal solution of the whole is built from optimal solutions of its parts.</p>
+<p><b>DP vs divide-and-conquer:</b> divide-and-conquer solves <i>independent</i> sub-problems; dynamic programming <i>stores and reuses</i> answers to <i>overlapping</i> ones. This is the time–space tradeoff · DP spends memory to save time.</p>
 
 <div class="grid2">
 <div>
-<h4>Example — Fibonacci</h4>
-<pre>Naïve recursion — O(2ⁿ)
+<h4>Example · Fibonacci</h4>
+<pre>Naïve recursion · O(2ⁿ)
 fib(5) → fib(4) + fib(3)
          fib(3)+fib(2)  fib(2)+fib(1)
          ↑ fib(3), fib(2) recomputed</pre>
 </div>
 <div>
-<h4>With DP — O(n)</h4>
+<h4>With DP · O(n)</h4>
 <pre>fib[0] = 0
 fib[1] = 1
 for i = 2 to n:
@@ -496,7 +496,7 @@ for i = 2 to n:
 <!-- ============================================================ -->
 <h2 class="pagebreak"><span class="n">5</span>Hashing <span class="tag">PAST Q3</span></h2>
 
-<p><b>Hashing</b> means <b>lookup</b>. It is the most widely used technique to find aggregate data by key or id, and can also be described as mapping a large set of arbitrary data to a tabular index using a hash function. It is a method of representing dictionaries for large datasets; its central advantage is that <b>lookup, update and retrieval occur in constant time — O(1)</b> — instead of the O(n) needed to scan a list. The value obtained from the hash function is the <b>hash code</b>.</p>
+<p><b>Hashing</b> means <b>lookup</b>. It is the most widely used technique to find aggregate data by key or id, and can also be described as mapping a large set of arbitrary data to a tabular index using a hash function. It is a method of representing dictionaries for large datasets; its central advantage is that <b>lookup, update and retrieval occur in constant time · O(1)</b> · instead of the O(n) needed to scan a list. The value obtained from the hash function is the <b>hash code</b>.</p>
 
 <h3>The three components</h3>
 <table class="tight">
@@ -510,7 +510,7 @@ for i = 2 to n:
 
 <div class="grid2">
 <div>
-<h4>Diagram — key → hash function → bucket</h4>
+<h4>Diagram · key → hash function → bucket</h4>
 <figure>
 <svg viewBox="0 0 270 120" xmlns="http://www.w3.org/2000/svg">
   <!-- keys -->
@@ -569,18 +569,18 @@ A hash function that maps every item into its own unique slot is a <b>perfect ha
 </div>
 <div class="box">
 <h4>Collision</h4>
-Occurs when <code>h(x) = h(y)</code> — two different keys map to the same hash value. Handled by:
-<ul style="margin-bottom:0"><li><b>Separate chaining</b> — each cell of the table points to a linked list of records</li><li><b>Open addressing</b> — all elements are stored in the hash table itself</li></ul>
+Occurs when <code>h(x) = h(y)</code> · two different keys map to the same hash value. Handled by:
+<ul style="margin-bottom:0"><li><b>Separate chaining</b> · each cell of the table points to a linked list of records</li><li><b>Open addressing</b> · all elements are stored in the hash table itself</li></ul>
 </div>
 <div class="box">
 <h4>Load factor</h4>
 <div class="formula" style="margin-top:2pt">λ = items in table ÷ table size</div>
-A table of size 10 holding 7 items has λ = <b>0.7</b>. A high load factor means more collisions and slower lookup — which is why keeping λ low is a property of a good hash function.
+A table of size 10 holding 7 items has λ = <b>0.7</b>. A high load factor means more collisions and slower lookup · which is why keeping λ low is a property of a good hash function.
 </div>
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">6</span>Trees — terminology, height and depth</h2>
+<h2><span class="n">6</span>Trees · terminology, height and depth</h2>
 
 <p>A <b>tree</b> is a hierarchical, <b>non-linear</b> data structure representing <b>nodes connected by edges</b>. It is used as an abstract data type for data storage, and in data science for building predictive models because it handles large amounts of data well.</p>
 
@@ -605,7 +605,7 @@ A table of size 10 holding 7 items has λ = <b>0.7</b>. A high load factor means
 </table>
 </div>
 <div>
-<h4>Height · Depth · Degree — the classic 5-mark question</h4>
+<h4>Height · Depth · Degree · the classic 5-mark question</h4>
 <ul style="font-size:9.3pt">
 <li><b>Depth of a node</b> = number of edges from the <b>root down to</b> that node.</li>
 <li><b>Height of a node</b> = number of edges from that node <b>down to its deepest leaf</b>.</li>
@@ -623,26 +623,26 @@ A table of size 10 holding 7 items has λ = <b>0.7</b>. A high load factor means
 </div>
 </div>
 
-<h3>Types of tree — one line each</h3>
+<h3>Types of tree · one line each</h3>
 <table class="tight">
 <thead><tr><th style="width:18%">Type</th><th>Definition</th><th style="width:26%">Note / formula</th></tr></thead>
 <tbody>
 <tr><td><b>General tree</b></td><td>No restriction on the number of children a node may have</td><td>e.g. a family tree, a folder structure</td></tr>
-<tr><td><b>Binary tree</b></td><td>Every node has <b>at most two</b> children — left and right</td><td>Parent of the three types below</td></tr>
-<tr><td><b>Full binary tree</b></td><td>Every node has either <b>0 or 2</b> children — never exactly one</td><td>No node with a single child</td></tr>
+<tr><td><b>Binary tree</b></td><td>Every node has <b>at most two</b> children · left and right</td><td>Parent of the three types below</td></tr>
+<tr><td><b>Full binary tree</b></td><td>Every node has either <b>0 or 2</b> children · never exactly one</td><td>No node with a single child</td></tr>
 <tr><td><b>Perfect binary tree</b></td><td>Every internal node has exactly 2 children <b>and</b> all leaves are at the same level</td><td><code>l = 2ʰ</code> · <code>n = 2^(h+1) − 1</code><br>h = 3 → 8 leaves, 15 nodes</td></tr>
 <tr><td><b>Complete binary tree</b></td><td>Every level completely filled, leaves lean towards the <b>left</b>, and the last leaf may lack a right sibling</td><td>The shape used by a heap</td></tr>
 </tbody>
 </table>
 
 <!-- ============================================================ -->
-<h2><span class="n">7</span>Binary search trees — the highest-yield section</h2>
+<h2><span class="n">7</span>Binary search trees · the highest-yield section</h2>
 
 <p>A <b>BST</b> is a node-based binary tree used to store and manage data in a <b>sorted</b> manner. Its advantage: it bridges the gap between the fast lookup of a sorted array and the flexible modification of a linked list.</p>
 
-<p><b>The four properties</b> — every node must strictly obey them: <b>(1)</b> every node in the <b>left</b> sub-tree holds a value <b>strictly less</b> than the parent's; <b>(2)</b> every node in the <b>right</b> sub-tree holds a value <b>strictly greater</b> than the parent's; <b>(3)</b> the rule applies <b>recursively</b> — every sub-tree is itself a valid BST; <b>(4)</b> <b>no duplicate keys</b>.</p>
+<p><b>The four properties</b> · every node must strictly obey them: <b>(1)</b> every node in the <b>left</b> sub-tree holds a value <b>strictly less</b> than the parent's; <b>(2)</b> every node in the <b>right</b> sub-tree holds a value <b>strictly greater</b> than the parent's; <b>(3)</b> the rule applies <b>recursively</b> · every sub-tree is itself a valid BST; <b>(4)</b> <b>no duplicate keys</b>.</p>
 
-<h3>The three traversals — do not mix these up</h3>
+<h3>The three traversals · do not mix these up</h3>
 <div class="grid2">
 <div>
 <table class="tight">
@@ -653,7 +653,7 @@ A table of size 10 holding 7 items has λ = <b>0.7</b>. A high load factor means
 <tr><td><b>Post-order</b></td><td>Left → Right → <b>Root</b></td><td>L-R-Root</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>Memory hook:</b> the position of <i>Root</i> in the name is its position in the visit order — <b>pre</b> = first, <b>in</b> = middle, <b>post</b> = last. Left always comes before Right.</p>
+<p style="font-size:9.1pt"><b>Memory hook:</b> the position of <i>Root</i> in the name is its position in the visit order · <b>pre</b> = first, <b>in</b> = middle, <b>post</b> = last. Left always comes before Right.</p>
 <div class="box" style="padding:4pt 6pt"><b>Key exam fact:</b> the in-order traversal of a BST always comes out <b>sorted ascending</b>. Use it as a free sanity-check on any tree you draw.</div>
 </div>
 <div>
@@ -695,7 +695,7 @@ Post-order : 4, 10, 14, 12, 8, 22, 20</pre>
 </div>
 </div>
 
-<h3>Building a BST — the two exam formats</h3>
+<h3>Building a BST · the two exam formats</h3>
 <div class="grid2">
 <div>
 <h4>(a) From a list of values</h4>
@@ -732,7 +732,7 @@ Root = 1 → left = 8,4,10,9,11,2,5 | right = 6,3,7
 </div>
 
 <!-- ============================================================ -->
-<h2 class="pagebreak"><span class="n">8</span>Linear structures — arrays, linked lists, stacks, queues <span class="tag">PAST Q5</span></h2>
+<h2 class="pagebreak"><span class="n">8</span>Linear structures · arrays, linked lists, stacks, queues <span class="tag">PAST Q5</span></h2>
 
 <div class="grid2">
 <div>
@@ -746,7 +746,7 @@ Elements: {35,33,42,10,14,19,27,44,26,31}
 LINKED LIST
 [Head] → [Data|•] → [Data|•] → [Data|•] → NULL
             Node       Node       Node</pre>
-<p style="font-size:9.1pt"><b>Types of array:</b> <b>fixed-size</b> — cannot be altered, indexes are numbered; <b>dynamic-size</b> — can be altered/resized, may be one-, two- or three-dimensional.<br>
+<p style="font-size:9.1pt"><b>Types of array:</b> <b>fixed-size</b> · cannot be altered, indexes are numbered; <b>dynamic-size</b> · can be altered/resized, may be one-, two- or three-dimensional.<br>
 <b>Types of linked list:</b> simple (singly) · complex (doubly) · circular.</p>
 <h4>Deleting a node from a singly linked list</h4>
 <pre>Head → [A|•] → [TARGET|•] → [C|•] → NULL
@@ -755,14 +755,14 @@ Locate the target, then redirect the previous
 node's pointer past it to the target's next node.</pre>
 </div>
 <div>
-<h4>Stack — LIFO</h4>
+<h4>Stack · LIFO</h4>
 <p style="font-size:9.1pt">An abstract data type named after a real-world stack (a pile of plates, a stack of pizza), which allows operations at <b>one end only</b>, one at a time. Insertion is <b>PUSH</b>, removal is <b>POP</b>. It can be implemented with arrays, pointers, linked lists or structures, and can be fixed-size or dynamic.</p>
 <pre>        PUSH ↓   ↑ POP
        ┌──────────────┐
        │ ▓▓▓▓▓▓▓▓▓▓▓▓ │   LIFO
        │ ▓▓▓▓▓▓▓▓▓▓▓▓ │   one end only
        └──────────────┘</pre>
-<h4>Queue — FIFO</h4>
+<h4>Queue · FIFO</h4>
 <p style="font-size:9.1pt">Similar to the stack but <b>open at both ends</b> and following <b>FIFO</b>. <b>Enqueue()</b> adds at the rear, <b>Dequeue()</b> removes from the front.</p>
 <pre>   Dequeue                          Enqueue
   (remove) ←── [A][B][C][D] ←── (insert)
@@ -775,41 +775,41 @@ node's pointer past it to the target's next node.</pre>
 <table class="tight">
 <thead><tr><th style="width:16%">Basis</th><th>Stack</th><th>Queue</th></tr></thead>
 <tbody>
-<tr><td>Principle</td><td><b>LIFO</b> — Last In, First Out</td><td><b>FIFO</b> — First In, First Out</td></tr>
+<tr><td>Principle</td><td><b>LIFO</b> · Last In, First Out</td><td><b>FIFO</b> · First In, First Out</td></tr>
 <tr><td>Open at</td><td>One end only</td><td>Both ends</td></tr>
 <tr><td>Operations</td><td>PUSH (insert), POP (remove)</td><td>Enqueue() (insert), Dequeue() (remove)</td></tr>
-<tr><td>Pointers used</td><td>One — <i>top</i></td><td>Two — <i>front</i> and <i>rear</i></td></tr>
+<tr><td>Pointers used</td><td>One · <i>top</i></td><td>Two · <i>front</i> and <i>rear</i></td></tr>
 <tr><td>Analogy</td><td>A pile of plates, a stack of pizza</td><td>A queue of people at a counter</td></tr>
 <tr><td>Used in</td><td>Recursion &amp; function calls, undo, <b>DFS</b></td><td>CPU scheduling, printer spooling, <b>BFS</b></td></tr>
 </tbody>
 </table>
 
-<h3>Queue vs static data structure — the exam trap <span class="tag">PAST Q5</span></h3>
+<h3>Queue vs static data structure · the exam trap <span class="tag">PAST Q5</span></h3>
 <div class="box warn">
 <b>The comparison is not symmetrical, and saying so earns marks.</b> A <b>queue</b> names a specific <b>ADT defined by its behaviour</b> (FIFO); "<b>static</b>" names a whole <b>memory-allocation category</b> whose standard example is the fixed-size array. State that distinction first, then compare the queue against the fixed-size array.
 </div>
 <table class="tight">
 <thead><tr><th class="c" style="width:4%">#</th><th style="width:16%">Basis</th><th>Queue</th><th>Static data structure (fixed-size array)</th></tr></thead>
 <tbody>
-<tr><td class="c">1</td><td>What it is</td><td>An abstract data type, defined by <i>behaviour</i> (FIFO), not by storage</td><td>A storage category, defined by <i>how memory is allocated</i> — fixed at compile time</td></tr>
+<tr><td class="c">1</td><td>What it is</td><td>An abstract data type, defined by <i>behaviour</i> (FIFO), not by storage</td><td>A storage category, defined by <i>how memory is allocated</i> · fixed at compile time</td></tr>
 <tr><td class="c">2</td><td>Size</td><td>Logically unbounded; grows and shrinks at run time (linked implementation)</td><td>Fixed and declared in advance; cannot grow or shrink at run time</td></tr>
 <tr><td class="c">3</td><td>Memory allocation</td><td>Dynamic, at run time (heap)</td><td>Static, at compile time (stack), allocated in advance</td></tr>
-<tr><td class="c">4</td><td>Access pattern</td><td>Restricted — insert at the <b>rear</b>, remove from the <b>front</b> only</td><td>Random access — any element reached directly by index <code>A[i]</code> in O(1)</td></tr>
+<tr><td class="c">4</td><td>Access pattern</td><td>Restricted · insert at the <b>rear</b>, remove from the <b>front</b> only</td><td>Random access · any element reached directly by index <code>A[i]</code> in O(1)</td></tr>
 <tr><td class="c">5</td><td>Order of operation</td><td>Strictly FIFO</td><td>No ordering rule; any order the programmer chooses</td></tr>
 <tr><td class="c">6</td><td>Points of entry/exit</td><td>Open at <b>both ends</b></td><td>Every position equally accessible; "ends" does not apply</td></tr>
-<tr><td class="c">7</td><td>Operations</td><td>Enqueue() and Dequeue() only</td><td>Insert, delete, traverse, search, update at any index — but capacity is fixed</td></tr>
+<tr><td class="c">7</td><td>Operations</td><td>Enqueue() and Dequeue() only</td><td>Insert, delete, traverse, search, update at any index · but capacity is fixed</td></tr>
 <tr><td class="c">8</td><td>Memory efficiency</td><td>Uses exactly as much memory as it holds</td><td>May waste memory if under-filled, or overflow if declared too small</td></tr>
-<tr><td class="c">9</td><td>Insert/delete cost</td><td>O(1) at the designated end</td><td>O(n) in the middle — elements must be shifted</td></tr>
+<tr><td class="c">9</td><td>Insert/delete cost</td><td>O(1) at the designated end</td><td>O(n) in the middle · elements must be shifted</td></tr>
 <tr><td class="c">10</td><td>Examples</td><td>Printer queue, CPU scheduling, BFS, call-centre line, keyboard buffer</td><td>Fixed-size array, a record/struct, a fixed-size matrix</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>Bonus sentence worth a mark:</b> a queue can itself be implemented on top of a static array (a circular or bounded queue), inheriting a fixed capacity and the possibility of overflow — the FIFO <i>behaviour</i> is what makes it a queue; the array is only the storage underneath.</p>
+<p style="font-size:9.1pt"><b>Bonus sentence worth a mark:</b> a queue can itself be implemented on top of a static array (a circular or bounded queue), inheriting a fixed capacity and the possibility of overflow · the FIFO <i>behaviour</i> is what makes it a queue; the array is only the storage underneath.</p>
 
 <!-- ============================================================ -->
-<h2><span class="n">9</span>Graphs and their representation <span class="tag">OUTLINE TOPIC — NOT IN THE NOTES</span></h2>
+<h2><span class="n">9</span>Graphs and their representation <span class="tag">OUTLINE TOPIC · NOT IN THE NOTES</span></h2>
 
 <p>A <b>graph</b> <code>G = (V, E)</code> is a non-linear data structure consisting of a set of <b>vertices</b> (nodes) <code>V</code> and a set of <b>edges</b> <code>E</code> connecting pairs of vertices.</p>
-<p><b>Types:</b> <b>undirected</b> — edges have no direction, (A,B) = (B,A) · <b>directed (digraph)</b> — edges have direction, A→B ≠ B→A · <b>weighted</b> — each edge carries a cost/weight · <b>cyclic / acyclic</b> — contains a cycle or not. <i>A tree is a connected acyclic graph.</i></p>
+<p><b>Types:</b> <b>undirected</b> · edges have no direction, (A,B) = (B,A) · <b>directed (digraph)</b> · edges have direction, A→B ≠ B→A · <b>weighted</b> · each edge carries a cost/weight · <b>cyclic / acyclic</b> · contains a cycle or not. <i>A tree is a connected acyclic graph.</i></p>
 
 <div class="grid2">
 <div>
@@ -825,15 +825,15 @@ node's pointer past it to the target's next node.</pre>
 </table>
 </div>
 <div>
-<h4>Example — undirected, vertices A B C, edges AB and BC</h4>
+<h4>Example · undirected, vertices A B C, edges AB and BC</h4>
 <pre>Adjacency Matrix        Adjacency List
     A  B  C             A → B
 A [ 0  1  0 ]           B → A, C
 B [ 1  0  1 ]           C → B
 C [ 0  1  0 ]</pre>
-<p style="font-size:9.1pt"><b>Traversals — link them back to the notes:</b><br>
-<b>BFS</b> (Breadth-First Search) uses a <b>queue</b> (FIFO) and visits level by level — O(V + E).<br>
-<b>DFS</b> (Depth-First Search) uses a <b>stack</b> (LIFO) or recursion and goes as deep as possible first — O(V + E).</p>
+<p style="font-size:9.1pt"><b>Traversals · link them back to the notes:</b><br>
+<b>BFS</b> (Breadth-First Search) uses a <b>queue</b> (FIFO) and visits level by level · O(V + E).<br>
+<b>DFS</b> (Depth-First Search) uses a <b>stack</b> (LIFO) or recursion and goes as deep as possible first · O(V + E).</p>
 </div>
 </div>
 
@@ -855,7 +855,7 @@ C [ 0  1  0 ]</pre>
 <tr><td>Failure mode</td><td>Stack overflow</td><td>Memory leak / fragmentation</td></tr>
 </tbody>
 </table>
-<p style="font-size:9.1pt"><b>Run-time storage management</b> is the system's job of allocating memory while a program runs and reclaiming it afterwards — the stack for call frames, the heap for dynamic data, plus <b>garbage collection</b> (automatic reclamation of unreachable objects) or manual deallocation.</p>
+<p style="font-size:9.1pt"><b>Run-time storage management</b> is the system's job of allocating memory while a program runs and reclaiming it afterwards · the stack for call frames, the heap for dynamic data, plus <b>garbage collection</b> (automatic reclamation of unreachable objects) or manual deallocation.</p>
 <div class="box warn" style="padding:4pt 6pt"><b>Don't confuse:</b> the <i>stack</i> (memory region) with the <i>stack ADT</i> (LIFO structure), or the <i>heap</i> (memory region) with the <i>heap</i> data structure (the tree used by heap sort). Examiners like testing exactly this.</div>
 </div>
 <div>
@@ -872,7 +872,7 @@ C [ 0  1  0 ]</pre>
 <h3>Time–space tradeoff</h3>
 <p style="font-size:9.3pt">An algorithm can often be made <b>faster by using more memory</b>, or made to <b>use less memory at the cost of running longer</b>. Examples to cite:</p>
 <ul style="font-size:9.1pt">
-<li>A <b>hash table</b> spends O(n) extra space to turn an O(n) search into O(1) — space buys speed.</li>
+<li>A <b>hash table</b> spends O(n) extra space to turn an O(n) search into O(1) · space buys speed.</li>
 <li><b>Merge sort</b> uses O(n) extra space to guarantee O(n log n); <b>quick sort</b> uses only O(log n) but risks O(n²).</li>
 <li><b>Counting sort</b> uses an O(k) count array to avoid comparisons entirely.</li>
 <li><b>Memoization</b> in DP stores sub-results to avoid recomputation.</li>
@@ -887,7 +887,7 @@ A <b>string</b> is an array/sequence of characters, usually terminated by a null
 </div>
 <div class="box">
 <h4>Records / structures</h4>
-A <b>record</b> (struct) is a composite data type grouping fields of possibly <b>different</b> types under one name — e.g. a <code>Student</code> record with <code>name</code> (string), <code>matric_no</code> (int), <code>cgpa</code> (float). Contrast with an <b>array</b>, which holds many elements of the <b>same</b> type. A record is the building block of a <b>node</b>: data field + pointer field.
+A <b>record</b> (struct) is a composite data type grouping fields of possibly <b>different</b> types under one name · e.g. a <code>Student</code> record with <code>name</code> (string), <code>matric_no</code> (int), <code>cgpa</code> (float). Contrast with an <b>array</b>, which holds many elements of the <b>same</b> type. A record is the building block of a <b>node</b>: data field + pointer field.
 </div>
 <div class="box">
 <h4>Numerical algorithms</h4>
@@ -896,16 +896,16 @@ Algorithms operating on numeric data, where <b>precision and error</b> matter as
 </div>
 
 <!-- ============================================================ -->
-<h2><span class="n">11</span>Importance of data structures — write nine points <span class="tag">PAST Q4</span></h2>
+<h2><span class="n">11</span>Importance of data structures · write nine points <span class="tag">PAST Q4</span></h2>
 
 <p><b>Open with the definition,</b> then list. Marks are per valid point, so write eight or nine, not three.</p>
 <ol style="font-size:9.3pt">
-<li><b>Efficient access and retrieval.</b> The right structure finds an item quickly: unsorted list O(n), sorted array with binary search O(log n), hash table O(1). The structure — not the processor speed — decides this.</li>
+<li><b>Efficient access and retrieval.</b> The right structure finds an item quickly: unsorted list O(n), sorted array with binary search O(log n), hash table O(1). The structure · not the processor speed · decides this.</li>
 <li><b>Efficient use of memory.</b> Structures determine how data is represented in memory: static structures such as arrays reserve memory in advance; dynamic structures such as linked lists allocate only as needed, avoiding waste.</li>
-<li><b>They make algorithms possible and efficient.</b> Every algorithm runs on some structure — binary search needs a sorted array, BFS needs a queue, DFS needs a stack, heap sort needs a heap. A good choice can cut an algorithm from O(n²) to O(n log n).</li>
+<li><b>They make algorithms possible and efficient.</b> Every algorithm runs on some structure · binary search needs a sorted array, BFS needs a queue, DFS needs a stack, heap sort needs a heap. A good choice can cut an algorithm from O(n²) to O(n log n).</li>
 <li><b>They model real-world relationships.</b> Trees model hierarchies (file systems, org charts, family trees), graphs model networks (roads, social networks, the internet), queues model waiting lines, stacks model undo and function-call handling.</li>
 <li><b>Reusability and abstraction.</b> A structure defines an interface (the ADT) separately from its implementation, so the same stack or queue is reused across programs without rewriting.</li>
-<li><b>They support the six standard operations</b> — traversal, searching, sorting, merging, insertion, deletion — in an organised and predictable way.</li>
+<li><b>They support the six standard operations</b> · traversal, searching, sorting, merging, insertion, deletion · in an organised and predictable way.</li>
 <li><b>Program maintainability and readability.</b> Properly structured data produces cleaner, shorter code that is easier to debug and extend.</li>
 <li><b>They let the time–space tradeoff be managed deliberately.</b> A hash table spends memory to make search constant-time; a linked list spends memory on pointers to make insertion and deletion cheap.</li>
 <li><b>They are the foundation of larger systems.</b> Databases use B-trees and indexes, compilers use parse trees and symbol tables, operating systems use queues for scheduling, and AI uses graphs and trees for search.</li>
@@ -918,12 +918,12 @@ Algorithms operating on numeric data, where <b>precision and error</b> matter as
 <div>
 <h3>Ten easy marks people lose</h3>
 <ol style="font-size:9.3pt">
-<li>Writing <b>O</b> for the tight bound — the tight bound is <b>Θ</b>.</li>
-<li>Saying a queue is open at one end — that is the <b>stack</b>. A queue is open at <b>both</b> ends.</li>
+<li>Writing <b>O</b> for the tight bound · the tight bound is <b>Θ</b>.</li>
+<li>Saying a queue is open at one end · that is the <b>stack</b>. A queue is open at <b>both</b> ends.</li>
 <li>Forgetting the <b>−1</b> when an in-order successor does not exist (and <b>null</b> for a missing predecessor).</li>
 <li>Swapping <b>depth</b> and <b>height</b>. Depth counts down from the root; height counts up from the leaves.</li>
-<li>Running binary search on <b>unsorted</b> data — it requires a sorted dataset. O(log n).</li>
-<li>Forgetting that a BST's in-order traversal is <b>sorted</b> — the free check on every tree you draw.</li>
+<li>Running binary search on <b>unsorted</b> data · it requires a sorted dataset. O(log n).</li>
+<li>Forgetting that a BST's in-order traversal is <b>sorted</b> · the free check on every tree you draw.</li>
 <li>Defining a term without giving the <b>example</b> the question asked for.</li>
 <li>Answering a comparison question in prose instead of a <b>table</b>.</li>
 <li>Drawing an asymptotic diagram with no <b>axes labels</b> and no <code>n₀</code>.</li>
@@ -931,7 +931,7 @@ Algorithms operating on numeric data, where <b>precision and error</b> matter as
 </ol>
 </div>
 <div>
-<h3>Self-test — cover the right column</h3>
+<h3>Self-test · cover the right column</h3>
 <table class="tight">
 <thead><tr><th style="width:52%">Prompt</th><th>Answer</th></tr></thead>
 <tbody>
@@ -944,9 +944,9 @@ Algorithms operating on numeric data, where <b>precision and error</b> matter as
 <tr><td>Perfect binary tree, h = 3: leaves and nodes</td><td>l = 2³ = 8 leaves · n = 2⁴ − 1 = 15 nodes</td></tr>
 <tr><td>Depth and height of node 5 in the §6 tree</td><td>d = 1, h = 2</td></tr>
 <tr><td>Traversal order of post-order</td><td>Left → Right → Root</td></tr>
-<tr><td>BST from 37,21,13,40,36,50 — pre-order</td><td>37, 21, 13, 40, 36, 50</td></tr>
+<tr><td>BST from 37,21,13,40,36,50 · pre-order</td><td>37, 21, 13, 40, 36, 50</td></tr>
 <tr><td>In-order successor of 8 in the §7 tree</td><td>10</td></tr>
-<tr><td>Nested loop over n elements</td><td>O(n²) — n × n operations</td></tr>
+<tr><td>Nested loop over n elements</td><td>O(n²) · n × n operations</td></tr>
 <tr><td>Data structure each traversal uses</td><td>BFS → queue · DFS → stack</td></tr>
 <tr><td>Merge sort space vs quick sort worst case</td><td>O(n) space · O(n²) worst</td></tr>
 <tr><td>Three types of linked list</td><td>Simple (singly) · complex (doubly) · circular</td></tr>
@@ -958,7 +958,7 @@ Algorithms operating on numeric data, where <b>precision and error</b> matter as
 
 <div class="box star">
 <h4>Timing plan for a 3-hour paper</h4>
-Read the whole paper for 5 minutes and start with the question you know best — usually a definitions question, which banks marks fast. Budget roughly <b>30 minutes per question</b> for five questions, leaving 20 minutes to draw and label diagrams properly and 10 minutes to re-read. If a question has parts (a), (b), (c), <b>split the time evenly</b> and never let one part eat another's marks. Any question that says "with a diagram" gets the diagram <b>first</b>, before the prose — it is the part you will run out of time for.
+Read the whole paper for 5 minutes and start with the question you know best · usually a definitions question, which banks marks fast. Budget roughly <b>30 minutes per question</b> for five questions, leaving 20 minutes to draw and label diagrams properly and 10 minutes to re-read. If a question has parts (a), (b), (c), <b>split the time evenly</b> and never let one part eat another's marks. Any question that says "with a diagram" gets the diagram <b>first</b>, before the prose · it is the part you will run out of time for.
 </div>
 
 <div class="footer-note">

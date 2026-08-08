@@ -1,4 +1,4 @@
-# CMS 708 — Structured Programming
+# CMS 708: Structured Programming
 
 
 > original indentation was lost in the source document, so the C++ snippets are flat.
@@ -10,11 +10,11 @@
 
 ### Concept of Structured Programming vs. Unstructured Programming
 
-Programming has evolved significantly over the decades, and one of the most important milestones in this evolution is the shift from *unstructured* to *structured* programming. Unstructured programming, often associated with early languages like BASIC or assembly, relied heavily on the use of '**goto' statements** and sequential execution. While it allowed programmers to develop code quickly, it often resulted in "spaghetti code"—programs that are tangled, difficult to read, and even harder to maintain. In such programs, the flow of control jumps unpredictably, making debugging and modification a nightmare.
+Programming has evolved significantly over the decades, and one of the most important milestones in this evolution is the shift from *unstructured* to *structured* programming. Unstructured programming, often associated with early languages like BASIC or assembly, relied heavily on the use of '**goto' statements** and sequential execution. While it allowed programmers to develop code quickly, it often resulted in "spaghetti code"-programs that are tangled, difficult to read, and even harder to maintain. In such programs, the flow of control jumps unpredictably, making debugging and modification a nightmare.
 
 Structured programming emerged as a response to these challenges. It emphasizes the use of 'clear control structures' such as sequence, selection (if/else, switch), and iteration (loops). Instead of arbitrary jumps, structured programming enforces logical flow and modular design. This approach makes programs easier to understand, test, and extend. The philosophy is simple: break down a complex problem into smaller, manageable parts, and solve each part systematically.
 
-In the early days of programming, developers often relied on **unstructured code** that used 'goto' statements to jump around the program. This approach worked for small tasks but quickly became unmanageable for larger projects. Imagine a traffic system where cars could suddenly teleport to random roads without rules—that's what unstructured programming feels like.
+In the early days of programming, developers often relied on **unstructured code** that used 'goto' statements to jump around the program. This approach worked for small tasks but quickly became unmanageable for larger projects. Imagine a traffic system where cars could suddenly teleport to random roads without rules-that's what unstructured programming feels like.
 
 Unstructured Program Example **(**using **'**goto'**):**
 
@@ -71,7 +71,7 @@ The two key pillars of structured programming are 'modularity' and 'readability'
 
 **Readability** ensures that code is understandable not only to the original author but also to others who may need to maintain or extend it later. Readable code uses meaningful variable names, consistent indentation, and clear documentation. It avoids unnecessary complexity and follows logical patterns that mirror human reasoning.
 
-Together, modularity and readability make programming a disciplined activity rather than a chaotic one. They transform code into a form of communication— not just between the programmer and the computer, but also between programmers themselves. In academic and professional settings, these qualities are indispensable, as they ensure that software can evolve gracefully over time.
+Together, modularity and readability make programming a disciplined activity rather than a chaotic one. They transform code into a form of communication- not just between the programmer and the computer, but also between programmers themselves. In academic and professional settings, these qualities are indispensable, as they ensure that software can evolve gracefully over time.
 
 In real-world software development, teams often work on large projects like banking systems, hospital management software, or even video games. Without modularity, the codebase becomes overwhelming. Modularity allows developers to break problems into smaller, reusable functions.
 
@@ -260,7 +260,7 @@ return 0;
 }
 ```
 
-This program demonstrates arithmetic, relational, and logical operators. In real-world terms, operators are used in decision-making systems—for example, checking if a student's score is greater than 50 to determine if they passed.
+This program demonstrates arithmetic, relational, and logical operators. In real-world terms, operators are used in decision-making systems-for example, checking if a student's score is greater than 50 to determine if they passed.
 
 
 ### Putting It All Together: A Real-World Example

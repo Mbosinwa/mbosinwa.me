@@ -7,7 +7,7 @@
 
 ## Course Overview
 
-CMS707 covers the theory and practice of Artificial Intelligence — from the foundational question of what intelligence is, through problem-solving via state space search, to knowledge representation using predicate logic and probabilistic reasoning. The course then extends to advanced application areas including machine learning, NLP, expert systems, fuzzy logic, and genetic algorithms. It is grounded in the AIMA (Russell & Norvig) framework and closely follows the lecturer's lecture series.
+CMS707 covers the theory and practice of Artificial Intelligence, from the foundational question of what intelligence is, through problem-solving via state space search, to knowledge representation using predicate logic and probabilistic reasoning. The course then extends to advanced application areas including machine learning, NLP, expert systems, fuzzy logic, and genetic algorithms. It is grounded in the AIMA (Russell & Norvig) framework and closely follows the lecturer's lecture series.
 
 ---
 
@@ -49,7 +49,7 @@ Artificial Intelligence (CMS707)
 │   │   ├── Key Concepts: Predicate Logic, Quantifiers (∀/∃), Constants/Variables/Predicates,
 │   │   │                 Inference Rules, Resolution, Forward/Backward Chaining
 │   │   ├── Central: Predicate Logic
-│   │   └── Example: Marcus/Caesar — 8 axioms → logical inference chain
+│   │   └── Example: Marcus/Caesar, 8 axioms → logical inference chain
 │   │
 │   ├── 7. Probabilistic Reasoning                     [3 concepts]
 │   │   ├── Key Concepts: Uncertainty, Bayesian Reasoning, Bayesian Networks
@@ -129,7 +129,7 @@ Artificial Intelligence (CMS707)
 
 ## Central Concepts
 
-These are the most connected concepts in the course — master these first:
+These are the most connected concepts in the course, master these first:
 
 | Concept | Connections | Why Central |
 |---------|-------------|-------------|
@@ -137,7 +137,7 @@ These are the most connected concepts in the course — master these first:
 | Rational Agent | 4 | Defined by goal maximisation, evaluated by performance measure, acts on percept sequence, foundation of all AI system design |
 | State Space Search | 4 | Foundation of problem-solving, solves classic problems, prerequisite for BFS/DFS/A*, underpins all search algorithms |
 | BFS / DFS | 5 | Combined by Iterative Deepening and Best-First, contrasted by memory/completeness trade-offs, basis of all uninformed search |
-| Machine Learning | 3 | Basis of Deep Learning, Reinforcement Learning, and Supervised Learning — connects to NLP, Robotics, Expert Systems |
+| Machine Learning | 3 | Basis of Deep Learning, Reinforcement Learning, and Supervised Learning, connects to NLP, Robotics, Expert Systems |
 | Knowledge Representation | 5 | Subsumes Natural Language, Relational, Inferential KR; enables Expert Systems; tied to NLP and Predicate Logic |
 
 ---
@@ -146,17 +146,17 @@ These are the most connected concepts in the course — master these first:
 
 Recommended study order based on concept dependencies:
 
-1. **Intelligence & AI** — What is AI? What counts as intelligent behaviour?
-2. **Mundane vs Formal Tasks** — Why mundane tasks are computationally harder
-3. **Agents & Rational Agents** — Percept Sequence, Agent Function, Performance Measure
-4. **State Space Representation** — Foundation of all problem-solving
-5. **Uninformed Search (BFS, DFS)** — How to navigate state spaces
-6. **Informed Search (Heuristic, Best-First, A*)** — Smarter navigation
-7. **Iterative Deepening** — Combining BFS completeness + DFS memory
-8. **Knowledge Representation (Natural Language → Relational → Inferential)** — Moving from data to reasoning
-9. **Predicate Logic** — Formal language for inference; Marcus/Caesar worked example
-10. **Probabilistic Reasoning & Bayesian Networks** — Handling uncertainty
-11. **Semantic Nets** — Graph-based KR
+1. **Intelligence & AI**: What is AI? What counts as intelligent behaviour?
+2. **Mundane vs Formal Tasks**: Why mundane tasks are computationally harder
+3. **Agents & Rational Agents**: Percept Sequence, Agent Function, Performance Measure
+4. **State Space Representation**: Foundation of all problem-solving
+5. **Uninformed Search (BFS, DFS)**: How to navigate state spaces
+6. **Informed Search (Heuristic, Best-First, A*)**, Smarter navigation
+7. **Iterative Deepening**: Combining BFS completeness + DFS memory
+8. **Knowledge Representation (Natural Language → Relational → Inferential)**: Moving from data to reasoning
+9. **Predicate Logic**: Formal language for inference; Marcus/Caesar worked example
+10. **Probabilistic Reasoning & Bayesian Networks**: Handling uncertainty
+11. **Semantic Nets**: Graph-based KR
 12. **Machine Learning** (Supervised → Unsupervised → Reinforcement → Neural Networks → Deep Learning)
 13. **Application Areas** (NLP, Expert Systems, Fuzzy Logic, Genetic Algorithms, Robotics)
 
@@ -166,7 +166,7 @@ Recommended study order based on concept dependencies:
 
 | Term | Definition (brief) |
 |------|-------------------|
-| Intelligence | Capacity to think and comprehend the world — involving knowledge, experience and understanding |
+| Intelligence | Capacity to think and comprehend the world, involving knowledge, experience and understanding |
 | Artificial Intelligence | Field of building systems that act rationally to maximally achieve predefined goals |
 | Agent | Entity that perceives its environment via sensors and acts via actuators; persists and adapts |
 | Rational Agent | Agent that acts to achieve the best/expected outcome, judged by a performance measure |
@@ -175,8 +175,8 @@ Recommended study order based on concept dependencies:
 | Agent Program | Concrete implementation of the agent function |
 | Performance Measure | Criterion capturing best/expected outcome for a rational agent |
 | State Space | Set of all possible states in a problem, connected by operators |
-| BFS | Breadth-First Search — FIFO queue, explores level by level, complete and optimal |
-| DFS | Depth-First Search — LIFO stack, memory efficient, may get trapped |
+| BFS | Breadth-First Search, FIFO queue, explores level by level, complete and optimal |
+| DFS | Depth-First Search, LIFO stack, memory efficient, may get trapped |
 | Iterative Deepening | DFS with increasing depth limit; BFS completeness + DFS memory |
 | Best-First Search | Heuristic-guided search combining BFS and DFS advantages |
 | A* Search | Informed search using f(n) = g(n) + h(n); optimal if heuristic admissible |
@@ -195,18 +195,18 @@ Recommended study order based on concept dependencies:
 
 _For use by the tutor agent during learning sessions with Mbosinwa:_
 
-- **Best Socratic entry point:** Start with "What makes a task difficult for a computer?" — bridges Mundane vs Formal Tasks and leads naturally into State Space Search
+- **Best Socratic entry point:** Start with "What makes a task difficult for a computer?", bridges Mundane vs Formal Tasks and leads naturally into State Space Search
 - **Most common misconceptions:**
   - Conflating *Agent Function* (abstract) with *Agent Program* (concrete)
-  - Thinking BFS is always better than DFS — each has specific advantages
+  - Thinking BFS is always better than DFS, each has specific advantages
   - Believing Rational Agent = "smart agent" rather than "goal-maximising agent"
   - Confusing Iterative Deepening with repeated BFS
-  - Thinking Predicate Logic is just maths — it's a KR tool for real-world facts
+  - Thinking Predicate Logic is just maths, it's a KR tool for real-world facts
 - **Concepts students typically conflate:**
-  - BFS (Breadth-First) vs Best-First Search — different algorithms, confusingly named
+  - BFS (Breadth-First) vs Best-First Search, different algorithms, confusingly named
   - Agent Function vs Agent Program
   - Percept vs Percept Sequence
   - Inferential KR vs Predicate Logic (the latter is a *form* of the former)
   - Supervised vs Reinforcement Learning
-- **Mbosinwa context:** Strong engineering background, rusty on theory. Use real-world analogies. Over-explain — he will say when to stop.
+- **Mbosinwa context:** Strong engineering background, rusty on theory. Use real-world analogies. Over-explain, he will say when to stop.
 - **Exercises available:** Session 1 (5 questions on AI theory/philosophy) and Session 2 (2 problem formulation tasks including Missionaries & Cannibals)

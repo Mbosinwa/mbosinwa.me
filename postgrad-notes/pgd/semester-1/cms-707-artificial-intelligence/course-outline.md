@@ -1,4 +1,4 @@
-# CMS 707 — Artificial Intelligence: Course Outline
+# CMS 707: Artificial Intelligence: Course Outline
 
 ## Part I - Problem-solving and Search
 1. Introduction

@@ -7,7 +7,7 @@
 
 ## Course Overview
 
-Operating Systems (CMS701) covers the fundamental principles of how an OS manages hardware and software resources. The course progresses from OS architecture (kernels, system calls) through process and thread management, CPU scheduling algorithms, multithreading models, and concludes with process synchronization — the mechanisms that keep concurrent processes safe and consistent. Two topics from the outline (Spooling, Mechanisms & Policies) are not yet covered in available lecture notes.
+Operating Systems (CMS701) covers the fundamental principles of how an OS manages hardware and software resources. The course progresses from OS architecture (kernels, system calls) through process and thread management, CPU scheduling algorithms, multithreading models, and concludes with process synchronization, the mechanisms that keep concurrent processes safe and consistent. Two topics from the outline (Spooling, Mechanisms & Policies) are not yet covered in available lecture notes.
 
 ---
 
@@ -159,17 +159,17 @@ Operating Systems (CMS701)
 
 ### Contrast (Contrasts-with)
 
-- **Monolithic Kernel** vs **Microkernel** — performance vs. stability/modularity
-- **Preemptive** vs **Non-Preemptive** Scheduling — OS control vs. process control
-- **User-Level Thread** vs **Kernel-Level Thread** — speed vs. multiprocessor power
-- **Many-to-One** vs **One-to-One** Model — efficiency vs. true parallelism
-- **Process** vs **Thread** — heavyweight/isolated vs. lightweight/shared
+- **Monolithic Kernel** vs **Microkernel**: performance vs. stability/modularity
+- **Preemptive** vs **Non-Preemptive** Scheduling, OS control vs. process control
+- **User-Level Thread** vs **Kernel-Level Thread**: speed vs. multiprocessor power
+- **Many-to-One** vs **One-to-One** Model, efficiency vs. true parallelism
+- **Process** vs **Thread**: heavyweight/isolated vs. lightweight/shared
 
 ---
 
 ## Central Concepts
 
-These are the most connected concepts in the course — master these first:
+These are the most connected concepts in the course, master these first:
 
 | Concept | Connections | Why Central |
 |---------|-------------|-------------|
@@ -198,7 +198,7 @@ Recommended study order based on concept dependencies:
         ↓
 5. Process State Models (2-state → 5-state → 7-state)
         ↓
-6. Process Control Block — PCB (what data the OS tracks)
+6. Process Control Block, PCB (what data the OS tracks)
         ↓
 7. Context Switching (how the OS switches between processes)
         ↓
@@ -256,7 +256,7 @@ Recommended study order based on concept dependencies:
 | **Monitor** | High-level construct ensuring only one process executes shared code at a time |
 | **Zombie Process** | Finished process whose PCB still exists (parent hasn't read exit status) |
 | **Convoy Effect** | FCFS problem: short processes stuck behind a long one |
-| **Spooling** | ⚠ Pending — not yet covered in available lecture notes |
+| **Spooling** | ⚠ Pending, not yet covered in available lecture notes |
 
 ---
 
@@ -264,21 +264,21 @@ Recommended study order based on concept dependencies:
 
 *For use during learning sessions:*
 
-- **Best entry-point concept:** Start with *Process* — it anchors topics 3 through 7 and gives Mbosinwa (a software engineer) an immediately relatable mental model (every app he has built runs as processes).
+- **Best entry-point concept:** Start with *Process*, it anchors topics 3 through 7 and gives Mbosinwa (a software engineer) an immediately relatable mental model (every app he has built runs as processes).
 
 - **Most common misconceptions in this course:**
-  1. Confusing *context switch* with *process switch* — a context switch is the mechanism; a process switch is the event that triggers it.
-  2. Thinking *multithreading* = *multiprocessing* — threads share memory; processes do not.
-  3. Assuming *Shortest Job First* is always best — it causes starvation in practice.
-  4. Thinking *deadlock* and *starvation* are the same — deadlock is a circular wait (no one proceeds); starvation is unfair scheduling (one never proceeds).
+  1. Confusing *context switch* with *process switch*, a context switch is the mechanism; a process switch is the event that triggers it.
+  2. Thinking *multithreading* = *multiprocessing*, threads share memory; processes do not.
+  3. Assuming *Shortest Job First* is always best, it causes starvation in practice.
+  4. Thinking *deadlock* and *starvation* are the same, deadlock is a circular wait (no one proceeds); starvation is unfair scheduling (one never proceeds).
 
 - **Concepts students typically conflate:**
-  - **Deadlock** vs **Starvation** — both mean a process never runs, but deadlock is a circular dependency; starvation is a scheduling fairness failure.
-  - **Preemptive** vs **Non-Preemptive** — easy to mix up which is "interruptible."
-  - **User-Level Thread** vs **Kernel-Level Thread** — both are threads; difference is *who manages them*.
-  - **Many-to-One** vs **One-to-One** — the naming is intuitive but the trade-offs (efficiency vs. parallelism) are what matter.
-  - **PCB** vs **Process** — PCB is the *record* of a process, not the process itself.
-  - **Short-Term Scheduler** vs **Dispatcher** — scheduler *decides*; dispatcher *executes* the switch.
+  - **Deadlock** vs **Starvation**: both mean a process never runs, but deadlock is a circular dependency; starvation is a scheduling fairness failure.
+  - **Preemptive** vs **Non-Preemptive**: easy to mix up which is "interruptible."
+  - **User-Level Thread** vs **Kernel-Level Thread**: both are threads; difference is *who manages them*.
+  - **Many-to-One** vs **One-to-One**: the naming is intuitive but the trade-offs (efficiency vs. parallelism) are what matter.
+  - **PCB** vs **Process**: PCB is the *record* of a process, not the process itself.
+  - **Short-Term Scheduler** vs **Dispatcher**: scheduler *decides*; dispatcher *executes* the switch.
 
 - **⚠ Coverage gaps to flag during tutoring:**
-  - Spooling, System Programs, Mechanisms & Policies not yet in lecture notes — flag if exam questions arise on these.
+  - Spooling, System Programs, Mechanisms & Policies not yet in lecture notes, flag if exam questions arise on these.
