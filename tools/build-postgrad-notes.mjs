@@ -139,10 +139,8 @@ const PROGRAMMES = [
             ],
             downloads: [
               { base: 'CMS707-Exam-Practice-Questions', title: 'Exam Practice Questions', desc: 'Practice questions in exam format.', srcPdf: 'cms707_exam_practice_questions.pdf' },
-              // The three PDFs below have no editable source; the owner chose to publish them as-is
-              { base: 'CMS707-AI-CheatSheet', title: 'AI Cheat Sheet', desc: 'One-look revision sheet for the whole course.', srcPdf: 'CMS707-AI-CheatSheet-MbosinwaAwunor.pdf' },
-              { base: 'CMS707-Practice-Answers', title: 'Practice Questions — Answers', desc: 'Full model answers to the practice questions.', srcPdf: 'cms707-practice-answers.pdf' },
-              { base: 'CMS707-Session-2-Answers', title: 'Session 2 — Worked Answers', desc: 'Worked answers from the second problem-solving session.', srcPdf: 'cms707-session2-answers.pdf' },
+              // AI CheatSheet / practice-answers / session2-answers PDFs are NOT published:
+              // they embed the lecturer's name and have no editable source to sanitize
             ],
           },
           {
@@ -378,8 +376,20 @@ const NAVBAR = `<nav class="navbar">
         <div class="nav-content">
             <a href="/" class="nav-brand">MA</a>
             <div class="nav-right">
-                <a href="/" class="nav-link">Home</a>
+                <a href="/#hero" class="nav-link">Home</a>
+                <a href="/#about" class="nav-link">About</a>
+                <a href="/#experience" class="nav-link">Journey</a>
+                <a href="/#skills" class="nav-link">Skills</a>
                 <a href="/postgrad-notes/" class="nav-link">Postgrad Notes</a>
+                <a href="https://ventriplus.com" target="_blank" class="nav-lazyfire" title="Ventriplus">
+                    <img src="/image/ventriplus-symbol.svg" alt="Ventriplus" class="lazyfire-logo" width="28" height="28">
+                    <span class="nav-lazyfire-text">Ventriplus</span>
+                </a>
+                <a href="https://portalsolutions.ng/" target="_blank" class="nav-lazyfire nav-hypergrep" title="Portal Solutions - Premier Software Company & Apple Gadget Store">
+                    <img src="https://portalsolutions.ng/icon.png" alt="Portal Solutions" class="lazyfire-logo" width="28" height="28">
+                    <span class="nav-lazyfire-text">Portal Solutions</span>
+                </a>
+                <a href="/#contact" class="nav-cta">Get in Touch!</a>
                 <button id="theme-toggle" class="theme-toggle-nav" aria-label="Toggle theme">☾</button>
             </div>
         </div>
@@ -402,6 +412,7 @@ ${body}
         ${FOOTER_NOTE}
     </main>
     ${THEME_SCRIPT}
+    <script src="/postgrad-notes/pn-shell.js" defer></script>
 </body>
 </html>
 `;
