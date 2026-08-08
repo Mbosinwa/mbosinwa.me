@@ -46,6 +46,10 @@
     </nav>
     <main class="container">
         <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-2/">Second Semester</a> / <a href="/postgrad-notes/pgd/semester-2/cms-702-data-structures-and-algorithms/">CMS 702 Data Structures & Algorithms</a> / Syllabus Gap Notes</p>
+        <div class="doc-actions">
+            <button id="copy-md" data-md="/postgrad-notes/pgd/semester-2/cms-702-data-structures-and-algorithms/syllabus-gaps.md">Copy as Markdown</button>
+            <a href="/postgrad-notes/pgd/semester-2/cms-702-data-structures-and-algorithms/syllabus-gaps.md" download="CMS-702-syllabus-gaps.md">Download .md</a>
+        </div>
         <article class="doc">
 <h1 id="cms-702--syllabus-topics-not-in-my-handwritten-notes">CMS 702 —
 Syllabus Topics NOT in My Handwritten Notes</h1>
@@ -404,6 +408,21 @@ accumulates, so numerical algorithms are judged on numerical stability,
 not just complexity.</p>
 
         </article>
+        <script>
+        (function () {
+          const btn = document.getElementById('copy-md');
+          btn.addEventListener('click', async function () {
+            try {
+              const res = await fetch(btn.dataset.md);
+              await navigator.clipboard.writeText(await res.text());
+              btn.textContent = 'Copied!';
+            } catch (e) {
+              btn.textContent = 'Copy failed — use Download';
+            }
+            setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
+          });
+        })();
+        </script>
         <footer class="section-footer">
             <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
         </footer>

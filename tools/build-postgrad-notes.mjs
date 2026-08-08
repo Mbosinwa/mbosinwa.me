@@ -422,14 +422,34 @@ const crumb = (parts) => `<p class="breadcrumb">${parts.map(([label, href]) => (
 
 function docPage(prog, sem, course, pg, bodyHtml) {
   const base = `/postgrad-notes/${prog.slug}/${sem.slug}/${course.slug}`;
+  const mdName = pg.out.replace(/\.html$/, '.md');
   return page({
     title: `${course.code} ${pg.title} — Postgrad Notes — Mbosinwa Awunor`,
     desc: `${course.code} ${course.title}: ${pg.desc}`,
     canonical: `${SITE}${base}/${pg.out}`,
     body: `        ${crumb([['Postgrad Notes', '/postgrad-notes/'], [prog.name, `/postgrad-notes/${prog.slug}/`], [sem.name, `/postgrad-notes/${prog.slug}/${sem.slug}/`], [`${course.code} ${course.title}`, `${base}/`], [pg.title]])}
+        <div class="doc-actions">
+            <button id="copy-md" data-md="${base}/${mdName}">Copy as Markdown</button>
+            <a href="${base}/${mdName}" download="${course.code.replace(' ', '-')}-${mdName}">Download .md</a>
+        </div>
         <article class="doc">
 ${bodyHtml}
-        </article>`,
+        </article>
+        <script>
+        (function () {
+          const btn = document.getElementById('copy-md');
+          btn.addEventListener('click', async function () {
+            try {
+              const res = await fetch(btn.dataset.md);
+              await navigator.clipboard.writeText(await res.text());
+              btn.textContent = 'Copied!';
+            } catch (e) {
+              btn.textContent = 'Copy failed — use Download';
+            }
+            setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
+          });
+        })();
+        </script>`,
   });
 }
 
@@ -447,7 +467,7 @@ function coursePage(prog, sem, course) {
 ${pages.map((p) => `                <div class="material-item">
                     <h3><a href="${base}/${p.out}">${p.title}</a></h3>
                     <p>${p.desc}</p>
-                    <div class="material-links"><a href="${base}/${p.out}">Read online</a></div>
+                    <div class="material-links"><a href="${base}/${p.out}">Read online</a><a href="${base}/${p.out.replace(/\.html$/, '.md')}">.md</a></div>
                 </div>`).join('\n')}
             </div>
         </section>`;
@@ -587,6 +607,7 @@ for (const prog of PROGRAMMES) {
         const raw = readFileSync(join(sem.srcDir, course.dir, pg.src), 'utf8');
         const clean = sanitize(raw, course);
         const html = execFileSync('pandoc', ['-f', 'gfm', '-t', 'html5'], { input: clean, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+        writeFileSync(join(dir, pg.out.replace(/\.html$/, '.md')), clean);
         writeFileSync(join(dir, pg.out), docPage(prog, sem, course, pg, html));
         console.log(`built ${prog.slug}/${sem.slug}/${course.slug}/${pg.out}`);
       }

@@ -46,6 +46,10 @@
     </nav>
     <main class="container">
         <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-2/">Second Semester</a> / <a href="/postgrad-notes/pgd/semester-2/cms-708-structured-programming/">CMS 708 Structured Programming</a> / Course Notes</p>
+        <div class="doc-actions">
+            <button id="copy-md" data-md="/postgrad-notes/pgd/semester-2/cms-708-structured-programming/notes.md">Copy as Markdown</button>
+            <a href="/postgrad-notes/pgd/semester-2/cms-708-structured-programming/notes.md" download="CMS-708-notes.md">Download .md</a>
+        </div>
         <article class="doc">
 <h1 id="cms-708--structured-programming">CMS 708 — Structured
 Programming</h1>
@@ -847,6 +851,21 @@ Bottom-Up</h3>
 bottom-up implementation to balance clarity and reusability.</p>
 
         </article>
+        <script>
+        (function () {
+          const btn = document.getElementById('copy-md');
+          btn.addEventListener('click', async function () {
+            try {
+              const res = await fetch(btn.dataset.md);
+              await navigator.clipboard.writeText(await res.text());
+              btn.textContent = 'Copied!';
+            } catch (e) {
+              btn.textContent = 'Copy failed — use Download';
+            }
+            setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
+          });
+        })();
+        </script>
         <footer class="section-footer">
             <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
         </footer>

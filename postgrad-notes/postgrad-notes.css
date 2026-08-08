@@ -408,6 +408,35 @@ body[data-theme="dark"] .checkpoint.active .checkpoint-dot {
   background: var(--pink);
 }
 
+/* Doc toolbar */
+.doc-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.doc-actions button,
+.doc-actions a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #000;
+  background: var(--cyan);
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.doc-actions button:hover,
+.doc-actions a:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--border);
+}
+
 /* Rendered document (converted markdown) */
 .doc {
   background: var(--white);

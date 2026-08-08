@@ -46,6 +46,10 @@
     </nav>
     <main class="container">
         <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/">CMS 701 Operating Systems</a> / Course Outline</p>
+        <div class="doc-actions">
+            <button id="copy-md" data-md="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/course-outline.md">Copy as Markdown</button>
+            <a href="/postgrad-notes/pgd/semester-1/cms-701-operating-systems/course-outline.md" download="CMS-701-course-outline.md">Download .md</a>
+        </div>
         <article class="doc">
 <h1 id="cms-701--operating-systems-course-outline">CMS 701 — Operating
 Systems: Course Outline</h1>
@@ -59,6 +63,21 @@ Systems: Course Outline</h1>
 </ul>
 
         </article>
+        <script>
+        (function () {
+          const btn = document.getElementById('copy-md');
+          btn.addEventListener('click', async function () {
+            try {
+              const res = await fetch(btn.dataset.md);
+              await navigator.clipboard.writeText(await res.text());
+              btn.textContent = 'Copied!';
+            } catch (e) {
+              btn.textContent = 'Copy failed — use Download';
+            }
+            setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
+          });
+        })();
+        </script>
         <footer class="section-footer">
             <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
         </footer>

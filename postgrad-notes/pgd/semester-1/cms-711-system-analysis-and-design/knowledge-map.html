@@ -46,6 +46,10 @@
     </nav>
     <main class="container">
         <p class="breadcrumb"><a href="/postgrad-notes/">Postgrad Notes</a> / <a href="/postgrad-notes/pgd/">PGD Computer Science</a> / <a href="/postgrad-notes/pgd/semester-1/">First Semester</a> / <a href="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/">CMS 711 System Analysis & Design</a> / Knowledge Map</p>
+        <div class="doc-actions">
+            <button id="copy-md" data-md="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/knowledge-map.md">Copy as Markdown</button>
+            <a href="/postgrad-notes/pgd/semester-1/cms-711-system-analysis-and-design/knowledge-map.md" download="CMS-711-knowledge-map.md">Download .md</a>
+        </div>
         <article class="doc">
 <h1 id="knowledge-map-system-analysis--design-cms711">Knowledge Map:
 System Analysis &amp; Design (CMS711)</h1>
@@ -442,6 +446,21 @@ roles/types — do not test on these until materials are onboarded.</li>
 </ul>
 
         </article>
+        <script>
+        (function () {
+          const btn = document.getElementById('copy-md');
+          btn.addEventListener('click', async function () {
+            try {
+              const res = await fetch(btn.dataset.md);
+              await navigator.clipboard.writeText(await res.text());
+              btn.textContent = 'Copied!';
+            } catch (e) {
+              btn.textContent = 'Copy failed — use Download';
+            }
+            setTimeout(function () { btn.textContent = 'Copy as Markdown'; }, 2000);
+          });
+        })();
+        </script>
         <footer class="section-footer">
             <p>All materials in this section were written by <a href="/">Mbosinwa Awunor</a> during postgraduate study at Rivers State University. Free to use for your own study — a link back is appreciated.</p>
         </footer>
